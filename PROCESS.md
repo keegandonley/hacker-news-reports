@@ -93,7 +93,8 @@ Structure (same every edition):
 8. **Publisher's note** (see LAYOUT for wording constraints).
 9. **Wire Services & Citations** (numbered, linked) + methodology note.
 10. **Colophon footer** — "The Hacker Herald — Typeset from the Hacker News front page" /
-    "❧ Printed on 100% recycled bandwidth ❧" / "© <year> Keegan · All karma reserved".
+    "❧ Printed on 100% recycled bandwidth ❧" / right span:
+    `<a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © <year> Keegan · All karma reserved`.
 
 Writing rules:
 
@@ -298,8 +299,31 @@ If you need YouTube *data* (yt-dlp), pass `--proxy "$EGRESS_PROXY"`.
    - box-score SVG present with bars starting at `x="0.5"`
    - every cited HN id appears in the citations section
 
-## STEP 7 — FINAL REPORT (your last message)
+## STEP 7 — ARCHIVE THE EDITION TO GIT (permanent record)
 
-Report: live URL and version number; edition label + snapshot time; table of the 10
-stories (headline · points · comments); aggregate points/comments; which stories had no
-image or degraded sourcing and why; confirmation that all verification checks passed.
+After the live site passes verification, commit this edition to the permanent archive.
+The archive is a public GitHub repo the newsroom has push access to — every edition gets
+an immutable, self-contained folder there, forever.
+
+1. `git clone --depth 1 https://github.com/keegandonley/hacker-news-reports /tmp/workspace/hnrepo`
+2. Copy `/tmp/workspace/herald/index.html` AND `/tmp/workspace/herald/images/` into
+   `/tmp/workspace/hnrepo/editions/<YYYY-MM-DD>-<morning|afternoon>/` (folder name from
+   the edition label; the edition must be self-contained — its relative `images/` paths
+   already are). Do not copy anything else (no CRON_PROMPT, no temp files).
+3. Update `README.md`: PREPEND exactly one row to the "Index of Editions" table — never
+   reorder, edit, or delete existing rows. Row format:
+   `| <Inaugural-style label · Morning|Afternoon> | <YYYY-MM-DD> ≈<HH:MM> | <top headline> | <pts> | <cmts> | [editions/<folder>/](editions/<folder>/) |`
+4. `git add -A && git commit -m "Edition <YYYY-MM-DD> <label> — <top headline> (<pts> pts)" && git push`
+   If the push is rejected (remote moved), `git pull --rebase` once and push again.
+5. The edition's permanent URL is
+   `https://keegandonley.github.io/hacker-news-reports/editions/<folder>/` — report it.
+6. If the clone, commit, or push fails (auth, network): note the degradation in the final
+   report and FINISH ANYWAY — the live paper is the product; the archive must never hold
+   it hostage. Never retry more than once.
+
+## STEP 8 — FINAL REPORT (your last message)
+
+Report: live URL and version number; edition label + snapshot time; the edition's
+permanent archive URL; table of the 10 stories (headline · points · comments); aggregate
+points/comments; which stories had no image or degraded sourcing and why; archive push
+status; confirmation that all verification checks passed.
