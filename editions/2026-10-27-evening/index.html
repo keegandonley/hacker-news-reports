@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, Oct. 27, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+@media (max-width:980px){
+  .lead,.row3,.sec2,.chartrow,.bulletins{grid-template-columns:1fr}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell,.bulletins .cell+.cell{border-left:none; border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:33px}
+  .sources{columns:1}
+  body{padding:20px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- ======================= TOP BAR ======================= -->
+<div class="topbar">
+  <span>Hacker News Front Page &middot; Snapshot &#8776;20:40 UTC</span>
+  <span class="mid">Evening Edition</span>
+  <span>10 Stories &middot; 2,307 Points &middot; 1,324 Comments</span>
+</div>
+
+<!-- ======================= NAMEPLATE ======================= -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <span class="l">Compiled from news.ycombinator.com</span>
+  <span class="c">Tuesday, October 27, 2026</span>
+  <span class="r">Every fact checked; every joke earned</span>
+</div>
+
+<!-- ======================= BULLETINS ======================= -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Lead Bulletin</span><b>Genie 4 announced</b>DeepMind&rsquo;s world model now generates sound and speech along with the scenery &mdash; readers query the physics.</div>
+  <div class="cell"><span class="tag">Language Desk</span><b>Python JIT delisted</b>Experimental compiler to be removed after PEP&nbsp;836 withdrawn; a standards-track PEP was the price of admission.</div>
+  <div class="cell"><span class="tag">Shipping</span><b>Ghostty 1.4.0</b>Seven months, 172 contributors, one complete Kitty graphics implementation, three security advisories.</div>
+  <div class="cell"><span class="tag">Machinery</span><b>M6 everywhere</b>Apple refreshes iMac and MacBook Pro in a same-day blitz; the chin survives another generation.</div>
+</div>
+
+<!-- ======================= LEAD ======================= -->
+<div class="lead">
+  <div class="cell main">
+    <span class="kicker">Lead Story &middot; Artificial Intelligence</span>
+    <h2 class="headline">Genie 4: DeepMind&rsquo;s World Simulator Learns to Talk Back</h2>
+    <h3 class="deck">The new model generates music, ambient noise and dialogue simultaneously with its worlds &mdash; whether the marble obeys gravity remains contested</h3>
+    <div class="byline"><span>From the AI Desk</span><span class="score"><b>&#9733; 495 pts &middot; 296 comments</b></span></div>
+    <figure>
+      <img src="images/genie4.webp" alt="Genie 4 promotional image from DeepMind">
+      <figcaption>A still from DeepMind&rsquo;s Genie 4 announcement material. <span class="cr">Google DeepMind</span></figcaption>
+    </figure>
+    <p class="first">MOUNTAIN VIEW &mdash; Google DeepMind on Tuesday unveiled <b>Genie 4</b>, its newest &ldquo;world model&rdquo; for real-time interactive simulation &mdash; and the day&rsquo;s most-upvoted story withal. The headline upgrade: the model is <b>natively multimodal</b> &mdash; music, ambient noise and interactive dialogue are generated <i>simultaneously with</i> the world, not layered on afterward.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>Genie 4 leans on the Gemini family: <b>Gemini Omni anchors the simulations in real-world appearance and behavior</b>, while other Gemini models supply &ldquo;the complex reasoning needed to help maintain a simulation&rsquo;s coherence and continuity.&rdquo;<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The gallery demos are striking &mdash; a stained-glass landscape, a porcelain-menagerie wizard&rsquo;s room &mdash; but the commentariat was unpersuaded. Complaints centered on apparent weak player control relative to Genie 3; a marble bust that, per one frame-by-frame auditor, <i>should have toppled off a watermelon but didn&rsquo;t</i>; and a marquee &ldquo;do you really think we&rsquo;re going to make it?&rdquo; moment whose expression was &ldquo;totally out of sync with the scene.&rdquo; One verdict summed up the room: &ldquo;It still looks like a video game rendering.&rdquo; From Google, that may or may not be an insult.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="jump">&raquo; Continued in the comments, all 296 of them</div>
+  </div>
+
+  <div class="cell side">
+    <span class="kicker">Developer Tools</span>
+    <h2 class="headline">Ghostty 1.4.0 Ships With a Mea Culpa</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 421 &middot; 130 cmts</b></span></div>
+    <figure>
+      <img src="images/ghostty.jpg" alt="Ghostty social share card">
+      <figcaption>Ghostty&rsquo;s 1.4.0 release card. <span class="cr">ghostty.org</span></figcaption>
+    </figure>
+    <p class="first">The terminal emulator dropped a major release capping <b>seven months of work from 172 contributors over 2,889 commits</b>. Highlights: &ldquo;large performance and memory improvements,&rdquo; a <b>100%-complete Kitty graphics implementation</b> including animation and relative placements &mdash; the first non-Kitty terminal to get there &mdash; and SSH integration upgrades.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The notes also disclose three security advisories, most notably a paste-protection bug in which a carriage return could sneak a command past confirmation, and malicious Kitty graphics escapes that could read or delete files outside allowed directories. The notes are &ldquo;hand-crafted&rdquo; and take &ldquo;a combined 16+ hours to write,&rdquo; a fact the maintainers would like you to appreciate &mdash; and, having read them, you may.</p>
+    <div class="statbox">
+      <div class="t">By the Numbers &mdash; Ghostty 1.4.0</div>
+      <table>
+        <tr><td>Months of work</td><td>7</td></tr>
+        <tr><td>Contributors</td><td>172</td></tr>
+        <tr><td>Commits</td><td>2,889</td></tr>
+        <tr><td>Security advisories</td><td>3</td></tr>
+        <tr><td>Kitty graphics completion</td><td>100%</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cell side">
+    <span class="kicker">Language Affairs</span>
+    <h2 class="headline">Python Pulls the Plug on Its Experimental JIT</h2>
+    <div class="byline"><span>Language Desk</span><span class="score"><b>&#9733; 379 &middot; 199 cmts</b></span></div>
+    <figure>
+      <img src="images/jittalk.jpg" alt="Brandt Bucher presenting the JIT at the 2023 CPython core developer sprint">
+      <figcaption>Bucher presents the JIT, core developer sprint, 2023. <span class="cr">encukou / YouTube</span></figcaption>
+    </figure>
+    <p class="first">The JIT compiler merged into CPython 3.13 is headed for deletion after maintainers <b>withdrew PEP&nbsp;836</b> (&ldquo;JIT Go Brrr&rdquo;) rather than meet the steering council&rsquo;s bar for a supported feature. The council had demanded a standards-track PEP with maintenance commitments, success metrics, and a compatibility review far earlier than the proposed <b>August 2028</b> date.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <p>Co-author Savannah Ostrowski &mdash; also release manager for Python 3.16/3.17 &mdash; cited lack of &ldquo;personal bandwidth&rdquo;; Brett Cannon noted a replacement PEP is unlikely, since &ldquo;all the people actively driving the JIT&rdquo; were on this one. Removal is expected early in the 3.16 cycle, the reference implementation parked off-tree for whoever wants it.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <div class="pullquote">&ldquo;I have no plans to check this in. &hellip; I know we aren&rsquo;t crazy about experiments in main.&rdquo;
+      <span class="attr">&mdash; Brandt Bucher, Nov. 2023<sup class="cite"><a href="#src5">[5]</a></sup></span>
+    </div>
+    <p style="font-size:12.5px"><b>Editor&rsquo;s note:</b> The Herald reviewed the 2023 sprint talk embedded in LWN&rsquo;s coverage and found Bucher told the room he had &ldquo;no plans to check this in,&rdquo; months before doing exactly that &mdash; floating the merge as a trial balloon while naming the very process concern (&ldquo;experiments in main&rdquo;) that unwound the project in 2026. In the phrase &ldquo;experimental JIT,&rdquo; it turns out, the load-bearing word was &ldquo;experimental.&rdquo;<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <div class="videobox">
+      <div class="vt"><span>The Picture Show &mdash; Staff Screening</span><span>47:50</span></div>
+      <iframe src="https://www.youtube.com/embed/HxSHIpEQRjs" title="Brandt Bucher – A JIT Compiler for CPython" loading="lazy" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= ROW: CULTURE / HARDWARE / MATH ======================= -->
+<div class="row3">
+  <div class="cell">
+    <span class="kicker">Internet Culture</span>
+    <h2 class="headline">Wikipedia&rsquo;s Editors vs. the Machine Flood</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 382 &middot; 173 cmts</b></span></div>
+    <figure>
+      <img src="images/wikipedia.png" alt="IEEE Spectrum illustration of Wikipedia and AI content">
+      <figcaption>Spectrum&rsquo;s illustration for the WikiProject AI Cleanup feature. <span class="cr">IEEE Spectrum</span></figcaption>
+    </figure>
+    <p class="first">IEEE Spectrum goes inside <b>WikiProject AI Cleanup</b>, the volunteer effort keeping the encyclopedia human-written since editors first spotted &ldquo;very strange articles with the same odd characteristics&rdquo; around December 2023.<sup class="cite"><a href="#src6">[6]</a></sup> The piece landed hard on the forum, where debate split between &ldquo;AI will eventually write encyclopedic content&rdquo; and veterans invoking the <i>low-background steel</i> problem &mdash; content uncontaminated by AI, like pre-nuclear steel for radiation instruments.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>One editor&rsquo;s lament about the AIDS article &mdash; once &ldquo;a very informative (and satisfying) 20-minute read,&rdquo; now &ldquo;pages and pages of probably-factual text&rdquo; &mdash; did more argumentative work than any policy essay.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Hardware Desk</span>
+    <h2 class="headline">Apple&rsquo;s M6 Blitz: iMac and MacBook Pro Refreshed in One Day</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>&#9733; 244+170 &middot; 480 cmts</b></span></div>
+    <figure>
+      <img src="images/imac.png" alt="Apple iMac M6 product image">
+      <figcaption>The iMac: seven colors, one chin. <span class="cr">Apple</span></figcaption>
+    </figure>
+    <p class="first">CUPERTINO &mdash; Apple rolled out its M6 silicon across the consumer line in a coordinated Tuesday assault. The <b>14-inch MacBook Pro</b> gets a 12-core CPU (&ldquo;the world&rsquo;s fastest CPU core,&rdquo; per Apple&rsquo;s footnotes), a GPU claimed <b>30% faster in graphics and 25% faster in AI</b> than M5 &mdash; or up to 13&times; the AI throughput if fleeing an M1 &mdash; plus a Dual 16-core Neural Engine, Wi-Fi&nbsp;7, Bluetooth&nbsp;6, and the ritual &ldquo;up to 24 hours&rdquo; of battery.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <p>The <b>iMac</b> keeps its seven-color wardrobe, 24-inch 4.5K display, up to 32&nbsp;GB unified memory, and &mdash; yes &mdash; the chin, now up to 18&times; faster than &ldquo;the most popular Intel-based iMac.&rdquo;<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <figure>
+      <img src="images/mbp.jpg" alt="Apple MacBook Pro 14-inch with M6 product image">
+      <figcaption>The 14-inch MacBook Pro with M6. <span class="cr">Apple</span></figcaption>
+    </figure>
+    <p>The comment sections were less about silicon than grievances: the iMac&rsquo;s 60&nbsp;Hz panel (&ldquo;24&Prime; and 60Hz&hellip;&rdquo; &mdash; ellipsis of despair), the immortal chin, and disbelief that <b>the Magic Mouse still appears in promo photos</b>, charging port downward, as God intended.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Mathematics Desk</span>
+    <h2 class="headline">Enormous Theorem, Enormous Flex: Finite Simple Groups Formalized in Lean</h2>
+    <div class="byline"><span>Science Desk</span><span class="score"><b>&#9733; 108 &middot; 25 cmts</b></span></div>
+    <figure>
+      <img src="images/cfsg.png" alt="Classification of Finite Simple Groups in Lean project card">
+      <figcaption>The CFSG-in-Lean project site. <span class="cr">axiommath.ai</span></figcaption>
+    </figure>
+    <p class="first">The Classification of Finite Simple Groups &mdash; roughly 100 mathematicians, several decades, thousands of journal pages &mdash; has been <b>completely formalized in Lean</b>, every logical step checked by the kernel.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The kicker: along the way the team (Cureton, Ilin, Mehta, Voss, et al.) found <b>counterexamples to a closure assertion in a published route</b> to the Unbalanced Group Theorem &mdash; a genuine erratum in the literature, patched via Solomon&rsquo;s 1976 theory of maximal 2-components. A formal errata list is being compiled with working group theorists. The machines checked the humans&rsquo; homework, and found a smudge.</p>
+    <div class="statbox">
+      <div class="t">The Proof, by Weight</div>
+      <table>
+        <tr><td>Lines of Lean</td><td>43,100,000</td></tr>
+        <tr><td>Declarations</td><td>2,050,000</td></tr>
+        <tr><td>Papers &amp; books distilled</td><td>715</td></tr>
+        <tr><td>Milestones</td><td>100</td></tr>
+        <tr><td>Errata found in literature</td><td>&ge;1</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= SECURITY + PRACTICAL ======================= -->
+<div class="sec2">
+  <div class="cell">
+    <span class="kicker">Security Briefing</span>
+    <h2 class="headline">Tailscale Races to Patch Privilege Escalation in Tailscale SSH</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 46 &middot; 8 cmts</b></span></div>
+    <p class="first">Tailscale disclosed that its SSH feature harbors <b>privilege-escalation issues</b>: users already authorized to connect may act &ldquo;beyond the permissions of their configured local user, including potentially gaining elevated privileges.&rdquo; Exploitation depends on configuration; the company is <b>not recommending everyone disable Tailscale SSH</b>, and targeted a patched client by end of day Tuesday. Interim guidance: audit SSH access policies and set <code>TS_SSH_DISABLE_FORWARDING=1</code> if forwarding isn&rsquo;t needed.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <h2 class="headline" style="font-size:18px; margin-top:12px">Also on the Security Desk: Three TLS Bugs in GoAhead</h2>
+    <p>GoAhead &mdash; an embedded web server in <b>hundreds of millions of devices</b> (routers, printers, gateways, industrial controls) &mdash; shipped three independent TLS flaws: revoked client certificates silently accepted despite a configured CRL (CVSS <b>9.1</b>); a LibreSSL verifier chain-depth bypass (7.4); and an Mbed TLS buffer-length typo that <b>shrinks a 2048-bit DH modulus to one byte</b>, making TLS&nbsp;1.2 sessions decryptable (5.9). Fix: upgrade to 6.1.1 &mdash; or wait approximately forever for the router firmware update.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <figure>
+      <svg viewBox="0 0 620 118" role="img" aria-label="CVSS severity chart for GoAhead TLS bugs" style="width:100%">
+        <defs>
+          <pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+            <rect width="6" height="6" fill="none"/><line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.4"/>
+          </pattern>
+        </defs>
+        <text x="0" y="14" style="font-size:10px; letter-spacing:.2em" fill="#7a1f1f" font-weight="700">GOAHEAD TLS BUGS &mdash; SEVERITY (CVSS v3)</text>
+        <text x="0" y="42" class="barlabel" fill="#191510">OpenSSL &middot; revoked certs accepted</text>
+        <rect x="270" y="30" width="310" height="14" fill="url(#hatch)" stroke="#191510"/>
+        <text x="276" y="41" class="barval" fill="#191510" font-weight="700">9.1 CRITICAL</text>
+        <text x="0" y="72" class="barlabel" fill="#191510">LibreSSL &middot; chain-depth bypass</text>
+        <rect x="270" y="60" width="253" height="14" fill="url(#hatch)" stroke="#191510"/>
+        <text x="276" y="71" class="barval" fill="#191510">7.4 HIGH</text>
+        <text x="0" y="102" class="barlabel" fill="#191510">Mbed TLS &middot; 1-byte DH modulus</text>
+        <rect x="270" y="90" width="202" height="14" fill="url(#hatch)" stroke="#191510"/>
+        <text x="276" y="101" class="barval" fill="#191510">5.9 MEDIUM</text>
+      </svg>
+      <figcaption>The severity ledger. Bars to scale, 0&ndash;10. <span class="cr">The Hacker Herald</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Practical Tech Corner</span>
+    <h2 class="headline">Survival LLM: A Bug-Out Bag for the Model Weights</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 32 &middot; 11 cmts</b></span></div>
+    <figure>
+      <img src="images/survival.png" alt="Survival LLM project card">
+      <figcaption>An offline assistant for when the internet is the casualty. <span class="cr">brangus.io</span></figcaption>
+    </figure>
+    <p class="first">A free, open-source emergency assistant that runs <b>entirely offline</b>: the model and a 9&nbsp;GB library (FEMA and CDC guidance, medical references, repair manuals, ~930,000 Wikipedia articles) live on your machine, and every answer cites the exact passage it came from.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <p>It picks a model to fit your RAM &mdash; from Nemotron&nbsp;3.5 Super (80&nbsp;GB download, 128&nbsp;GB+ Macs) down to IBM Granite&nbsp;8B (6&nbsp;GB) &mdash; scoring 21/22 vs. 14/22 on a blind-graded 22-question blackout-and-first-aid test. Setup takes &ldquo;20 minutes to about 2&frac12; hours,&rdquo; which the manual suggests doing before the emergency, not during it.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <div class="pullquote" style="font-size:16px">&ldquo;Smaller models make more mistakes, so the app always shows the source to check.&rdquo;<span class="attr">&mdash; The project&rsquo;s honest footnote</span></div>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Quote of the Day</span>
+    <div class="pullquote" style="font-size:21px">&ldquo;It seems like the plan should be [to merge it to] main. Am I right?&rdquo; &hellip; &ldquo;That&rsquo;s how I feel as well.&rdquo;
+      <span class="attr">&mdash; Core developer Q&amp;A, CPython sprint, 2023<sup class="cite"><a href="#src5">[5]</a></sup></span>
+    </div>
+    <p style="font-size:12.5px">Two years and one withdrawn PEP later, the plan to main is now the plan <i>out of</i> main &mdash; see Language Affairs, this edition.</p>
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p><b>LOST:</b> One (1) experimental JIT compiler, last seen in CPython main. Answers to &ldquo;JIT Go Brrr.&rdquo; Reward: custody of a 43M-line fork.</p>
+      <p><b>FOUND:</b> Erratum in the finite simple groups literature. Owner may claim at axiommath.ai; proof of identity required (Lean kernel accepted).</p>
+      <p><b>WANTED:</b> 60&nbsp;Hz panel, one each, for a desktop computer in 2026. Serious inquiries: Cupertino.</p>
+      <p><b>FOR SALE:</b> Marble bust, barely toppled. Physics not included.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= BOX SCORE ======================= -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Box Score &mdash; Front Page by the Points</span></div>
+        <svg viewBox="0 0 640 392" role="img" aria-label="Bar chart of Hacker News points per story, bars spanning the full chart width" style="width:100%; height:auto; display:block">
+      <defs>
+        <pattern id="ink" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="5" height="5" fill="none"/><line x1="0" y1="0" x2="0" y2="5" stroke="#191510" stroke-width="1.8"/>
+        </pattern>
+        <pattern id="inkr" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="5" height="5" fill="none"/><line x1="0" y1="0" x2="0" y2="5" stroke="#7a1f1f" stroke-width="1.8"/>
+        </pattern>
+      </defs>
+      <!-- vertical gridlines behind bars; scale: x = pts/495 * 520 -->
+      <line x1="105" y1="6" x2="105" y2="344" class="grid"/>
+      <line x1="210" y1="6" x2="210" y2="344" class="grid"/>
+      <line x1="315" y1="6" x2="315" y2="344" class="grid"/>
+      <line x1="420" y1="6" x2="420" y2="344" class="grid"/>
+      <line x1="525" y1="6" x2="525" y2="344" class="grid"/>
+      <g>
+        <text x="0" y="18" class="barlabel" fill="#191510">Genie 4</text>
+        <rect x="0.5" y="22" width="520" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="527" y="34" class="barval" fill="#191510" font-weight="700">495 &#9733; &middot; 296 cmts</text>
+        <text x="0" y="52" class="barlabel" fill="#191510">Ghostty 1.4.0</text>
+        <rect x="0.5" y="56" width="442" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="449" y="68" class="barval" fill="#191510">421 &middot; 130</text>
+        <text x="0" y="86" class="barlabel" fill="#191510">Wikipedia AI cleanup</text>
+        <rect x="0.5" y="90" width="401" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="408" y="102" class="barval" fill="#191510">382 &middot; 173</text>
+        <text x="0" y="120" class="barlabel" fill="#191510">Python JIT removed</text>
+        <rect x="0.5" y="124" width="398" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="405" y="136" class="barval" fill="#191510">379 &middot; 199</text>
+        <text x="0" y="154" class="barlabel" fill="#191510">iMac M6 &#8224;</text>
+        <rect x="0.5" y="158" width="256" height="15" fill="url(#inkr)" stroke="#191510"/>
+        <text x="263" y="170" class="barval" fill="#7a1f1f" font-weight="700">244 &middot; 296</text>
+        <text x="0" y="188" class="barlabel" fill="#191510">MacBook Pro M6</text>
+        <rect x="0.5" y="192" width="179" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="186" y="204" class="barval" fill="#191510">170 &middot; 181</text>
+        <text x="0" y="222" class="barlabel" fill="#191510">CFSG in Lean</text>
+        <rect x="0.5" y="226" width="113" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="120" y="238" class="barval" fill="#191510">108 &middot; 25</text>
+        <text x="0" y="256" class="barlabel" fill="#191510">Tailscale SSH</text>
+        <rect x="0.5" y="260" width="48" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="55" y="272" class="barval" fill="#191510">46 &middot; 8</text>
+        <text x="0" y="290" class="barlabel" fill="#191510">Survival LLM</text>
+        <rect x="0.5" y="294" width="34" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="41" y="306" class="barval" fill="#191510">32 &middot; 11</text>
+        <text x="0" y="324" class="barlabel" fill="#191510">GoAhead TLS</text>
+        <rect x="0.5" y="328" width="32" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="39" y="340" class="barval" fill="#191510">30 &middot; 2</text>
+      </g>
+      <line x1="0.5" y1="6" x2="0.5" y2="352" class="axis"/>
+      <line x1="0.5" y1="352" x2="525" y2="352" class="axis"/>
+      <text x="0" y="366" text-anchor="start" class="barval" fill="#3d352a">0</text>
+      <text x="105" y="366" text-anchor="middle" class="barval" fill="#3d352a">100</text>
+      <text x="210" y="366" text-anchor="middle" class="barval" fill="#3d352a">200</text>
+      <text x="315" y="366" text-anchor="middle" class="barval" fill="#3d352a">300</text>
+      <text x="420" y="366" text-anchor="middle" class="barval" fill="#3d352a">400</text>
+      <text x="525" y="366" text-anchor="middle" class="barval" fill="#3d352a">500</text>
+      <text x="0" y="386" class="barval" fill="#3d352a">&#9733; = points &middot; cmts = comments &middot; &#8224; most-discussed story of the day &middot; red hatch marks Apple coverage.</text>
+    </svg>
+  </div>
+  <div class="cell">
+    <div class="section-label"><span>The Day in One Line</span></div>
+    <div class="pullquote" style="font-size:19px">Google simulates worlds, Lean checks a 10,000-page proof, Python deletes a compiler, Apple sells the same chin &mdash; and the iMac&rsquo;s comment section outdraws everything but Genie&nbsp;4.</div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories surveyed</td><td>10</td></tr>
+        <tr><td>Aggregate points</td><td>2,307</td></tr>
+        <tr><td>Aggregate comments</td><td>1,324</td></tr>
+        <tr><td>Most-discussed</td><td>iMac M6 (296)</td></tr>
+        <tr><td>Best points-per-comment</td><td>Genie 4</td></tr>
+        <tr><td>Security stories</td><td>4 of 10</td></tr>
+        <tr><td>Chins retained</td><td>1</td></tr>
+      </table>
+    </div>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>Correction:</b> In earlier editions, the Magic Mouse was described as &ldquo;ergonomic.&rdquo; The Herald regrets the characterization and has downgraded it to &ldquo;photogenic from certain angles.&rdquo;</p>
+      <p><b>Correction:</b> An earlier edition implied the marble bust in the Genie 4 demonstration would topple. The model disagrees; physics has been asked for comment.</p>
+      <p><b>Clarification:</b> In the phrase &ldquo;experimental JIT compiler,&rdquo; the word &ldquo;experimental&rdquo; was, in retrospect, the most load-bearing word in the sentence.</p>
+      <p><b>Correction:</b> The iMac&rsquo;s 24-inch 4.5K display was described by some observers as &ldquo;ready for ProMotion.&rdquo; It is 60&nbsp;Hz. The Herald will update this correction annually.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= PUBLISHER'S NOTE ======================= -->
+<div class="publisher">
+  <div class="t">From the Publisher&rsquo;s Desk</div>
+  <p>This paper has a circulation of one, which keeps the editorial standard simple: every story below earned its place by being worth Keegan&rsquo;s time &mdash; checked against the source, quoted from the record, and cut where it dragged. The front page chose the news; the Herald only chose what to keep. Complaints about the editorial line may be addressed to the publisher, who is also the reader, and will certainly see it your way.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- ======================= SOURCES ======================= -->
+<div class="rule-thick"></div>
+<div class="section-label"><span>Wire Services &amp; Citations</span></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">Google DeepMind, &ldquo;Genie 4: A new generation of world simulation,&rdquo; <a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" target="_blank" rel="noopener">deepmind.google</a>, Oct. 27, 2026.</li>
+    <li data-n="[2]" id="src2">Hacker News discussion: &ldquo;Genie 4,&rdquo; <a href="https://news.ycombinator.com/item?id=50261319" target="_blank" rel="noopener">news.ycombinator.com/item?id=50261319</a>.</li>
+    <li data-n="[3]" id="src3">Ghostty, &ldquo;Release notes for 1.4.0,&rdquo; <a href="https://ghostty.org/docs/install/release-notes/1-4-0" target="_blank" rel="noopener">ghostty.org</a>, Oct. 27, 2026. Hacker News: <a href="https://news.ycombinator.com/item?id=50261998" target="_blank" rel="noopener">id=50261998</a>.</li>
+    <li data-n="[4]" id="src4">J. Brockmeier, &ldquo;Python&rsquo;s experimental JIT to be removed,&rdquo; LWN.net, Oct. 26, 2026, <a href="https://lwn.net/SubscriberLink/1102102/0c00e4d550f25f8c/" target="_blank" rel="noopener">lwn.net</a>. Hacker News: <a href="https://news.ycombinator.com/item?id=50257419" target="_blank" rel="noopener">id=50257419</a>.</li>
+    <li data-n="[5]" id="src5">B. Bucher, &ldquo;A JIT Compiler for CPython,&rdquo; talk at the 2023 CPython Core Developer Sprint, uploaded by encukou, Nov. 15, 2023, <a href="https://www.youtube.com/watch?v=HxSHIpEQRjs" target="_blank" rel="noopener">youtube.com/watch?v=HxSHIpEQRjs</a>. Quotes drawn from best-effort auto-captions; ellipses ours.</li>
+    <li data-n="[6]" id="src6">IEEE Spectrum, &ldquo;Inside Wikipedia&rsquo;s Cleanup of AI-Generated Content,&rdquo; <a href="https://spectrum.ieee.org/wikipedia-wikiproject-ai-writing-cleanup" target="_blank" rel="noopener">spectrum.ieee.org</a>, Oct. 2026.</li>
+    <li data-n="[7]" id="src7">Hacker News discussion: <a href="https://news.ycombinator.com/item?id=50257326" target="_blank" rel="noopener">id=50257326</a>.</li>
+    <li data-n="[8]" id="src8">Apple Newsroom, &ldquo;Apple introduces the new 14-inch MacBook Pro with M6,&rdquo; <a href="https://www.apple.com/in/newsroom/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/" target="_blank" rel="noopener">apple.com</a>, Oct. 27, 2026. Hacker News: <a href="https://news.ycombinator.com/item?id=50261352" target="_blank" rel="noopener">id=50261352</a>.</li>
+    <li data-n="[9]" id="src9">Apple, &ldquo;iMac,&rdquo; <a href="https://www.apple.com/imac/" target="_blank" rel="noopener">apple.com/imac</a>.</li>
+    <li data-n="[10]" id="src10">Hacker News discussion: &ldquo;New iMac with M6,&rdquo; <a href="https://news.ycombinator.com/item?id=50258538" target="_blank" rel="noopener">id=50258538</a>.</li>
+    <li data-n="[11]" id="src11">&ldquo;The Classification of Finite Simple Groups, formalized in Lean,&rdquo; <a href="https://cfsg.axiommath.ai/" target="_blank" rel="noopener">cfsg.axiommath.ai</a>. Hacker News: <a href="https://news.ycombinator.com/item?id=50261647" target="_blank" rel="noopener">id=50261647</a>.</li>
+    <li data-n="[12]" id="src12">Tailscale, &ldquo;Tailscale SSH: Investigation and remediation update,&rdquo; <a href="https://tailscale.com/ssh-investigation-update" target="_blank" rel="noopener">tailscale.com</a>, Oct. 2026. Hacker News: <a href="https://news.ycombinator.com/item?id=50264857" target="_blank" rel="noopener">id=50264857</a>.</li>
+    <li data-n="[13]" id="src13">foxio, &ldquo;Choose Your Backend: Three TLS Bugs in GoAhead,&rdquo; <a href="https://foxio.io/blog/choose-your-backend-three-tls-bugs-in-goahead" target="_blank" rel="noopener">foxio.io</a>, Oct. 2026. Hacker News: <a href="https://news.ycombinator.com/item?id=50263701" target="_blank" rel="noopener">id=50263701</a>.</li>
+    <li data-n="[14]" id="src14">&ldquo;Survival LLM: AI assistant and emergency library that runs on your own computer,&rdquo; <a href="https://www.brangus.io/survival-llm" target="_blank" rel="noopener">brangus.io</a>. Hacker News: <a href="https://news.ycombinator.com/item?id=50264853" target="_blank" rel="noopener">id=50264853</a>.</li>
+  </ol>
+</div>
+<p class="method"><b>Methodology:</b> Compiled from the Hacker News front page at approximately 20:40 UTC on Oct. 27, 2026; points and comment counts are snapshots of a moving target and will have changed by the time you check. Story texts are summarized from the linked primary sources; reader quotations paraphrase or quote the linked HN threads. The Bucher quotes come from the uploader&rsquo;s best-effort auto-captions of the 2023 sprint talk. Image credits appear beneath each photograph; charts are the Herald&rsquo;s own. Corrections, like the news above, are non-fiction.</p>
+
+<footer class="colophon">
+  <span>The Hacker Herald &mdash; Typeset from the Hacker News front page</span>
+  <span>&#10087; Printed on 100% recycled bandwidth &#10087;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/" target="_blank" rel="noopener">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</span>
+</footer>
+
+</body>
+</html>
