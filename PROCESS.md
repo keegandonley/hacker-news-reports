@@ -305,7 +305,13 @@ After the live site passes verification, commit this edition to the permanent ar
 The archive is a public GitHub repo the newsroom has push access to — every edition gets
 an immutable, self-contained folder there, forever.
 
-1. `git clone --depth 1 https://github.com/keegandonley/hacker-news-reports /tmp/workspace/hnrepo`
+1. Sparse-clone (this is deliberate — the repo grows ~2.4MB per edition, so NEVER do a
+   full or non-sparse clone, and never `sparse-checkout disable` — that would download
+   every edition ever published):
+   `git clone --depth 1 --filter=blob:none --sparse https://github.com/keegandonley/hacker-news-reports /tmp/workspace/hnrepo`
+   This checks out ONLY the root files (`README.md`, `PROCESS.md`). Old editions are
+   intentionally absent from the working tree — they live in the tree objects, which is
+   all the push needs.
 2. Copy `/tmp/workspace/herald/index.html` AND `/tmp/workspace/herald/images/` into
    `/tmp/workspace/hnrepo/editions/<YYYY-MM-DD>-<morning|afternoon>/` (folder name from
    the edition label; the edition must be self-contained — its relative `images/` paths
@@ -313,7 +319,8 @@ an immutable, self-contained folder there, forever.
 3. Update `README.md`: PREPEND exactly one row to the "Index of Editions" table — never
    reorder, edit, or delete existing rows. Row format:
    `| <Inaugural-style label · Morning|Afternoon> | <YYYY-MM-DD> ≈<HH:MM> | <top headline> | <pts> | <cmts> | [editions/<folder>/](editions/<folder>/) |`
-4. `git add -A && git commit -m "Edition <YYYY-MM-DD> <label> — <top headline> (<pts> pts)" && git push`
+4. `git add --sparse -A && git commit -m "Edition <YYYY-MM-DD> <label> — <top headline> (<pts> pts)" && git push`
+   (`--sparse` is required: the new edition folder sits outside the sparse cone.)
    If the push is rejected (remote moved), `git pull --rebase` once and push again.
 5. The edition's permanent URL is
    `https://keegandonley.github.io/hacker-news-reports/editions/<folder>/` — report it.
