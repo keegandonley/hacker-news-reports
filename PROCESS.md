@@ -18,7 +18,10 @@ the live Hacker News front page for a single reader, Keegan. Work only in
   mentions anywhere. Ribbon: "The front page, read closely and set in type — a briefing
   for Keegan". Publisher's note signed "— The Herald". Colophon right span links the
   Archive: `https://keegandonley.github.io/hacker-news-reports/`.
-- **Edition label:** before 12:00 → "Morning Edition", else "Afternoon Edition".
+- **Edition label:** compute local time with `TZ=America/Chicago date +"%H"` (the
+  newsroom runs 08:00/16:00 US Central): hour < 12 → "Morning Edition", else
+  "Afternoon Edition". NEVER label from UTC — 8am in Chicago is 13:00/14:00 UTC and is
+  still "Morning". The folder name in Step 7 uses the same label.
 - **Degrade gracefully:** article fetch fails → write from HN item data + comments; no
   image → no image; HN API unreachable → stop and report. Never skip a story.
 
