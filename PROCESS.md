@@ -33,12 +33,32 @@ For a full worked reference: `git show HEAD:<newest editions/ folder>/index.html
 NEVER widen the sparse checkout, `sparse-checkout disable`, or make a full clone — the
 repo grows ~2.4MB per edition.
 
-## STEP 1 — SNAPSHOT
+## STEP 1 — SNAPSHOT, CANDIDATES & DEDUP
 
-Record `date -u` (this timestamp goes in the top bar + methodology note). Fetch
-`https://hacker-news.firebaseio.com/v0/topstories.json`, then the first ~12
-`.../item/<id>.json`; keep the **top 10 by score** (record id, title, url, score,
-descendants). Sum points and comments exactly — they feed the top bar and Front Page Ledger.
+Record `date -u` (this timestamp goes in the top bar + methodology note). Get a wide
+candidate pool in one call:
+`curl -s "https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=50"`
+(fallback: Firebase topstories.json + item fetches, first 40). Record id, title, url,
+score, comments for candidates. Then dedup against **`/tmp/workspace/hnrepo/manifest.json`**
+(already in the sparse checkout): every HN id covered by the previous 4 editions (~48h)
+is "recently covered".
+
+Pick the edition's 10 stories from candidates sorted by score:
+- Prefer stories NOT recently covered (fresh).
+- A recently covered story may return as a **Follow-Up** (kicker "Follow-Up"; byline shows
+  the delta, e.g. `★ 612 pts · ▲ +117 since the last edition`) ONLY if its score grew
+  ≥ +40% AND ≥ +150 since coverage — max 2 Follow-Ups per edition.
+- If fewer than 10 fresh + Follow-Ups exist, fill the remaining slots with the best
+  remaining candidates but typeset repeats inside a **"Still Making the Rounds"** digest
+  box (a .statbox: one line each — title · current pts/cmts · one-sentence update), not
+  as full articles. Only if the pool is somehow exhausted anyway may a repeat run as a
+  full article (kicker "Second Look").
+- Only if fresh stories < 8: supplement with a second wire —
+  `curl -s https://lobste.rs/hottest.json` (top by score), kicker "From the Wire ·
+  Lobsters", cited like any source. Never pad with filler.
+
+Sum the 10 chosen stories' points/comments exactly — top bar + Front Page Ledger (which
+also gets real rows: "Fresh stories N · Follow-ups M · Carried in digest K").
 
 ## STEP 2 — SOURCE EACH STORY
 
@@ -114,6 +134,9 @@ Copy `index.html` AND `images/` into `hnrepo/editions/<YYYY-MM-DD>-<morning|afte
 (self-contained; nothing else). PREPEND one row to README's "Index of Editions" table
 (never reorder or edit existing rows):
 `| <label · Morning|Afternoon> | <YYYY-MM-DD> ≈<HH:MM> | <top headline> | <pts> | <cmts> | [editions/<folder>/](editions/<folder>/) |`
+Also update **`manifest.json`** (root): PREPEND to `editions` (newest first; trim the
+array past 30 entries; never edit older entries) one object:
+`{"folder": "<folder>", "date": "<YYYY-MM-DD>", "label": "<Morning|Afternoon>", "snapshot_utc": "<HH:MM>", "items": [{"id": <hn_id>, "title": "<hn title>", "score": <pts>, "comments": <cmts>} … one per chosen story, incl. Follow-Ups and digest entries]}`
 Then `git add --sparse -A && git commit -m "Edition <YYYY-MM-DD> <label> — <top headline>
 (<pts> pts)" && git push` (if rejected: `git pull --rebase`, push once more). Permanent
 URL: `https://keegandonley.github.io/hacker-news-reports/editions/<folder>/` .
@@ -123,4 +146,5 @@ outranks the archive.
 ## FINAL REPORT (your last message)
 
 Live URL + version; edition label + snapshot time; archive URL + push status; the 10
-stories with points/comments; aggregates; any degradations; verification confirmation.
+stories with points/comments (marking Follow-Ups and digest entries); fresh/follow-up/
+digest/wire counts; aggregates; any degradations; verification confirmation.
