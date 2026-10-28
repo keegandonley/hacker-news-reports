@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, Oct. 28, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+@media (max-width:980px){
+  .lead,.row3,.sec2,.chartrow,.bulletins{grid-template-columns:1fr}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell,.bulletins .cell+.cell{border-left:none; border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:33px}
+  .sources{columns:1}
+  body{padding:20px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- ======================= TOP BAR ======================= -->
+<div class="topbar">
+  <span>Hacker News Front Page &middot; Snapshot &#8776;13:01 UTC</span>
+  <span class="mid">Afternoon Edition</span>
+  <span>10 Stories &middot; 3,923 Points &middot; 1,547 Comments</span>
+</div>
+
+<!-- ======================= NAMEPLATE ======================= -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <span class="l">Compiled from news.ycombinator.com</span>
+  <span class="c">Wednesday, October 28, 2026</span>
+  <span class="r">Every fact checked; every joke earned</span>
+</div>
+
+<!-- ======================= BULLETINS ======================= -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Tools Desk</span><b>Ghostty 1.4.0 ships</b>Seven months, 172 contributors, 2,889 commits &mdash; and the first complete Kitty graphics implementation outside Kitty itself.</div>
+  <div class="cell"><span class="tag">AI Desk</span><b>Genie 4 announced</b>DeepMind&rsquo;s world model now generates ambient sound and dialogue along with the scenery; 542 readers generate opinions faster.</div>
+  <div class="cell"><span class="tag">Law &amp; Code</span><b>The U.S. Code, versioned</b>A git-style record for federal statutes: 365 changes replayed, 361 reproduced exactly.</div>
+  <div class="cell"><span class="tag">Science Desk</span><b>Ink, frozen mid-air</b>A 25-year-old German photographer takes Nikon&rsquo;s Small World with an inkjet printhead at 20&times; magnification.</div>
+</div>
+
+<!-- ======================= LEAD ======================= -->
+<div class="lead">
+  <div class="cell main">
+    <span class="kicker">Lead Story &middot; Artificial Intelligence</span>
+    <h2 class="headline">Genie 4: The World Simulator Learns to Talk Back</h2>
+    <h3 class="deck">DeepMind&rsquo;s new model generates sound, speech and physics in real time &mdash; the commentariat&rsquo;s physics remain unchanged</h3>
+    <div class="byline"><span>From the AI Desk</span><span class="score"><b>&#9733; 939 pts &middot; 542 comments</b></span></div>
+    <figure>
+      <img src="images/genie.webp" alt="Genie 4 share card from Google DeepMind">
+      <figcaption>The official share card for Genie 4. <span class="cr">deepmind.google</span></figcaption>
+    </figure>
+    <p class="first">LONDON &mdash; Google DeepMind on Tuesday announced <b>Genie 4</b>, a &ldquo;new generation of world simulation&rdquo; and the day&rsquo;s most-discussed story by a wide margin. The model is <b>natively multimodal</b>: ambient sound, music and interactive dialogue are generated simultaneously with the world it renders, and characters &ldquo;converse and react to your inputs or events in the world, all in real-time.&rdquo; Genie 4 leans on the Gemini family &mdash; <b>Gemini Omni</b> anchors simulations in real-world appearance, while <b>Gemini 3.8 Flash</b> rides along as &ldquo;a guiding agent in the loop,&rdquo; breaking goals into steps and checking each frame for progress.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The announcement is a <b>research preview for trusted testers</b>, rolling out to Google AI Ultra subscribers in Project Genie and early-access partners; the company has also been experimenting with pairing <b>Gemini 4 Argon</b> and Genie 4 to simulate <b>Apptronik&rsquo;s Apollo humanoid playing checkers</b>, breaking the game into real-time steps. Testers in filmmaking, journalism, gaming and engineering are using it as a rapid &ldquo;draft mode&rdquo; &mdash; filmmakers step into live simulations of a scene and run multiple takes, adjusting camera, lighting and dialogue on the fly. DeepMind concedes the model &ldquo;remains an early, experimental model.&rdquo;<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The forum was less reverent. One reader judged that Genie 4 &ldquo;almost looks <b>worse than Genie 3</b> in terms of player control? It doesn&rsquo;t even seem to respond to inputs.&rdquo; Another saw the endgame plainly: &ldquo;Stadia + World Models = <b>New generation of DRM for games</b>&rdquo; &mdash; the artifact never ships, only the stream. On the demo footage, one verdict stood: &ldquo;It also still looks like a video game rendering.&rdquo; And a reader watching the announcement video caught its auto-captions rendering &ldquo;Genie 4&rdquo; as &ldquo;Genie form,&rdquo; marveling at &ldquo;the juxtaposition of such advanced generative AI and such terrible speech-to-text coming from the same parent company.&rdquo;<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <div class="jump">&raquo; Continued in the comments, all 542 of them</div>
+  </div>
+
+  <div class="cell side">
+    <span class="kicker">Tools Desk</span>
+    <h2 class="headline">Ghostty 1.4.0: A Terminal That Compresses Its Own Past</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 1108 pts &middot; 353 cmts</b></span></div>
+    <figure>
+      <img src="images/ghostty.jpg" alt="Ghostty 1.4.0 share card">
+      <figcaption>The official share card for Ghostty 1.4.0. <span class="cr">ghostty.org</span></figcaption>
+    </figure>
+    <p class="first">The day&rsquo;s top story by points: Ghostty 1.4.0, released October 27 after <b>seven months, 172 contributors and 2,889 commits</b>. The marquee: a <b>100%-complete Kitty graphics implementation</b> &mdash; animation and relative placements included &mdash; making Ghostty &ldquo;the first terminal to do this outside of Kitty itself.&rdquo; Image payloads now parse with SIMD, about <b>16&times; faster</b>; scrollback is transparently compressed, cutting memory <b>70&ndash;90%</b> and letting the default history grow from 10&nbsp;MB to 50&nbsp;MB.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The best find is archaeological: on macOS, &ldquo;the kernel caps every read from a pty at about 1&nbsp;KiB no matter how large the read buffer is,&rdquo; so Ghostty now drains on one thread and parses on another &mdash; throughput up <b>25&ndash;55%</b>, and <i>cat</i>-ing a 150&nbsp;MB file falls from 1.5 seconds to <b>566&nbsp;ms</b>. The release also carries <b>ten security advisories</b> (CVEs &ldquo;requested weeks ago,&rdquo; unassigned), supports macOS 27 &ldquo;Golden Gate,&rdquo; and raises GTK requirements past what Ubuntu 24.04 LTS provides.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>In the thread, creator Mitchell Hashimoto reminded readers what the project is for: <i>&ldquo;Ghostty GUI is just a glorified tech demo for libghostty.&rdquo;</i> Elsewhere a terminal veteran paid the genre its due: &ldquo;Wrote a VT parser once, bracketed paste edge cases ate a whole week. Respect.&rdquo;<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="statbox">
+      <div class="t">By the Numbers &mdash; Ghostty 1.4.0</div>
+      <table>
+        <tr><td>Months of work</td><td>7</td></tr>
+        <tr><td>Contributors</td><td>172</td></tr>
+        <tr><td>Commits</td><td>2,889</td></tr>
+        <tr><td>Security advisories</td><td>10</td></tr>
+        <tr><td>Kitty graphics spec covered</td><td>100%</td></tr>
+        <tr><td>Scrollback limit (was 10 MB)</td><td>50 MB</td></tr>
+        <tr><td>Plain-ASCII parse speed</td><td>128&rarr;725 MB/s</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cell side">
+    <span class="kicker">Field Desk</span>
+    <h2 class="headline">Survival LLM: The Bug-Out Bag Now Includes Weights</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 400 pts &middot; 152 cmts</b></span></div>
+    <figure>
+      <img src="images/survival.png" alt="Survival LLM share card">
+      <figcaption>Survival LLM&rsquo;s share card. <span class="cr">brangus.io</span></figcaption>
+    </figure>
+    <p class="first">Back for a second front-page appearance: Survival LLM, a free, open-source assistant that runs <b>entirely offline</b> &mdash; the model and a 9&nbsp;GB library (19&nbsp;GB installed) live on your machine, spanning <b>~930,000 of Wikipedia&rsquo;s most-read articles</b>, FEMA and CDC guidance, WikiMed, military survival manuals, wikiHow, iFixit and ham-radio Q&amp;A. Every answer cites the exact passage it came from. Version 0.3.4, shipped October 27, adds a reasoning dial &mdash; Off, 1,000, 4,000, 16,000 tokens, or no limit &mdash; so &ldquo;a model stuck reasoning in circles still answers.&rdquo;<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>The engineering honesty is the draw: on a MacBook Pro it draws <b>about 100 W</b> per answer, so a full battery answers &ldquo;roughly 100 to 300&rdquo; questions &mdash; a budget worth knowing before the blackout. The commentariat split on the premise, with several readers asking why not simply ship the searchable archive without the model. The project&rsquo;s own footnote answers: smaller models err more, so &ldquo;the app always shows the source to check.&rdquo;<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <div class="pullquote" style="font-size:16px">&ldquo;AI models make mistakes, the small ones more often. Every answer shows the articles it used, so you can check.&rdquo;<span class="attr">&mdash; The project&rsquo;s own warning label<sup class="cite"><a href="#src5">[5]</a></sup></span></div>
+  </div>
+</div>
+
+<!-- ======================= ROW: CULTURE / APPLE / SCIENCE ======================= -->
+<div class="row3">
+  <div class="cell">
+    <span class="kicker">Culture Desk &middot; Law Is Code</span>
+    <h2 class="headline">Git Blame Comes to the United States Code</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 318 &middot; 171 cmts</b></span></div>
+    <figure>
+      <img src="images/uscode.png" alt="Lexifina share card for Git for the US Code">
+      <figcaption>Lexifina&rsquo;s card for the U.S. Code project. <span class="cr">lexifina.com</span></figcaption>
+    </figure>
+    <p class="first">A programmer can point at any line of code and see who wrote it and when; a lawyer reading a federal statute, Lexifina notes, usually cannot &mdash; at least not without &ldquo;an afternoon in the notes at the foot of the section.&rdquo; So the firm built <b>a version-controlled U.S. Code</b>: pick a date, get the text in force on it, each phrase colored by the Act that wrote it. The stakes are not academic &mdash; the small-business debt limit in 11&nbsp;USC&nbsp;&sect;&nbsp;1182(1) was $7.5&nbsp;million in March 2020, lapsed March 27, 2022, was restored that June reaching back over the gap, expired again in June 2024, and stands today at <b>$3,424,000</b>. Which number governs depends on the filing date.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>The verification work is the story: replaying every public law between release points from 2017 onward, <b>365 changes across nine titles, 361 reproduced the next official release exactly</b> &mdash; the other four are flagged rather than guessed. The piece leans on Technical University of Munich research in which a model answered 24% of post-cutoff statutory questions alone but <b>87%</b> once the right text was retrieved; attempts to have models re-apply amendments looked 93&ndash;99% right while getting only half of single amendments exactly right. &ldquo;The history has to be checkable.&rdquo; Commenters recalled a French predecessor and worried about stewardship &mdash; one warned that a private gatekeeper creates &ldquo;a profit motive to rewrite history.&rdquo;<sup class="cite"><a href="#src8">[8]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">The Cupertino File &middot; Hardware &amp; Security</span>
+    <h2 class="headline">Ten Days On, Apple&rsquo;s Git Still Trusts the Compromised Certificates</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>&#9733; 199 &middot; 73 cmts</b></span></div>
+    <p class="first">The eMudhra certificate-compromise trackers report that Apple was notified on <b>October 17</b>; as of October 28, the developer tools macOS ships &mdash; <b>git, curl and python3</b> &mdash; &ldquo;still trust the compromised certificates.&rdquo; Anyone on the network path can intercept those tools&rsquo; HTTPS: clones can deliver attacker-chosen code, pushes can be altered, GitHub tokens harvested. Worse, <b>macOS 27.2, released October 26, did not fix the issue</b> and &ldquo;undid the workaround that users had applied by hand, leaving them vulnerable again&rdquo; &mdash; while &ldquo;dozens of other projects, many run by volunteers, shipped fixes days ago.&rdquo; The remedy is blunt: delete the affected roots from <code>/etc/ssl/cert.pem</code>, and re-check after every macOS update.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The thread quibbled with the headline &mdash; &ldquo;Apple still ships compromised CA in /etc/. Git is just a victim like every other app using system CA&rdquo; &mdash; but not with the substance: &ldquo;They just released MacOS 27.2 a few days ago? How and why did they not do a patch at least then?&rdquo;<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <h2 class="headline" style="font-size:17px; margin-top:12px">Also in the File: The 1996 Apple Network Server Boots Mac OS Again</h2>
+    <div class="byline"><span>Retro Hardware</span><span class="score"><b>&#9733; 74 &middot; 1 cmt</b></span></div>
+    <figure>
+      <img src="images/ans.jpg" alt="Apple Network Server hardware photograph">
+      <figcaption>The Apple Network Server, dorm-fridge class, photographed for the post. <span class="cr">oldvcr.blogspot.com</span></figcaption>
+    </figure>
+    <p class="first">From the same company, thirty years earlier: a v1.0 release of a <b>MacOS Extensions Pack for the Apple Network Server</b>, the 1996 $10,000-plus AIX machine Steve Jobs killed on arrival. Apple&rsquo;s then-CTO claimed in 1997 that a ROM swap would let it boot Mac OS; the ROMs were &ldquo;believed to be vapourware&rdquo; until a former employee surfaced a dump. The author, holding the <b>preproduction ROM 1.1.20.1</b>, has now fixed its MACE Ethernet, on-board video and restart behavior in software &mdash; while keeping the machine able to boot AIX, &ldquo;preserving the entire historical reason for Shiner&rsquo;s existence.&rdquo; Its sole commenter: &ldquo;Love these little dives into history!&rdquo;<sup class="cite"><a href="#src19">[19]</a></sup><sup class="cite"><a href="#src20">[20]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Science Desk</span>
+    <h2 class="headline">Ink Droplets, Frozen Mid-Air, Win Nikon&rsquo;s Small World</h2>
+    <div class="byline"><span>Science Desk</span><span class="score"><b>&#9733; 289 &middot; 44 cmts</b></span></div>
+    <figure>
+      <img src="images/ink.jpg" alt="Winning Nikon Small World photomicrograph of ink droplets">
+      <figcaption>The winning image, as carried with Ars Technica&rsquo;s report. <span class="cr">arstechnica.net</span></figcaption>
+    </figure>
+    <p class="first">Ole Bielfeldt, a <b>25-year-old German experimental photographer</b>, has won the 2026 Nikon Small World photomicrography competition with an image of inkjet droplets being deposited onto paper &mdash; beating <b>1,802 entries from 69 countries</b> in the contest&rsquo;s 52nd year. The droplets moved faster than his shutter, so Bielfeldt deconstructed the printer until the paper moved under a stationary printhead, shot in a dark room, and used the flash itself as the shutter, freezing the drops mid-air. No expensive rig, and pointedly <b>no AI</b>: he learned the craft in lockdown with a microscope found in his parents&rsquo; attic, coupled to his father&rsquo;s camera with a tube and some wood.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>A Nikon spokesperson praised &ldquo;the intersection of microscope imaging, ingenuity, and artistry.&rdquo; The forum concurred, with one reader admitting &ldquo;I refused to believe it was real,&rdquo; and another filing the supporting brief: &ldquo;Inkjet printers for their faults are some of the most insane technology that I can think of.&rdquo; A thread veteran noted the win took <b>20&times; magnification</b> where Bielfeldt&rsquo;s earlier candle and match entries needed only 2.5&times; &mdash; &ldquo;which just goes to show as to how tiny the printer mechanics really are.&rdquo;<sup class="cite"><a href="#src12">[12]</a></sup></p>
+  </div>
+</div>
+
+<!-- ======================= SECURITY + FIELD + QUOTE ======================= -->
+<div class="sec2">
+  <div class="cell">
+    <span class="kicker">Security Briefing</span>
+    <h2 class="headline">Tailscale&rsquo;s SSH Woes Graduate to Four Bulletins</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 315 &middot; 168 cmts</b></span></div>
+    <figure>
+      <img src="images/tailscale.png" alt="Tailscale share card">
+      <figcaption>Tailscale&rsquo;s card for the SSH remediation update. <span class="cr">tailscale.com</span></figcaption>
+    </figure>
+    <p class="first">The Tailscale SSH saga, day two: the company now points to <b>four security bulletins &mdash; TS-2026-014 through 017</b> &mdash; plus a findings-and-fixes blog post. Most issues concern <b>privilege escalation</b>: someone already authorized to connect &ldquo;may be able to perform actions beyond the permissions of their configured local user, including potentially gaining elevated privileges.&rdquo; A patched client was targeted for &ldquo;the end of Tuesday 27 October&rdquo;; interim guidance is to audit SSH access policies and set <code>TS_SSH_DISABLE_FORWARDING=1</code>, which &ldquo;mitigates several of the more serious findings.&rdquo; The company is <b>not</b> recommending everyone disable Tailscale SSH.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>Readers parsed the hedging like a disclosure in itself: &ldquo;&lsquo;Most&rsquo;? &lsquo;In some circumstances&rsquo;? Makes me think that they could also be investigating a full on unauthorized connection issue.&rdquo; Others voted with their home labs &mdash; one moved to plain WireGuard &mdash; and one longtime customer filed the feature-count complaint: &ldquo;I just want a VPN for connectivity, no taildrop, taildrive, SSH, funnel, services, DNS, node sharing&hellip;&rdquo;<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <h2 class="headline" style="font-size:17px; margin-top:12px">Also on the Desk: Ghostty&rsquo;s Ten</h2>
+    <p style="font-size:13px">The day&rsquo;s top story doubles as a security digest: among Ghostty 1.4.0&rsquo;s ten advisories, a carriage return could sneak a command past paste protection, and malicious Kitty graphics commands could <b>read or delete files outside the allowed directories</b> &mdash; &ldquo;only requiring displaying malicious output.&rdquo; CVE numbers remain pending with GitHub, weeks after they were requested.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Field Desk &middot; Weekend Projects</span>
+    <h2 class="headline">Decompiling Fast Food Tycoon 2, One Pizza at a Time</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 93 &middot; 17 cmts</b></span></div>
+    <p class="first">A developer spent days decompiling a favorite oddball <b>2001 business simulator</b> &mdash; <i>Fast Food Tycoon 2</i>, a.k.a. <i>Pizza Connection 2</i> in Europe &mdash; with an agentic loop and Ghidra: <b>4,046 functions became 9.5&nbsp;MB of C-like text</b>, loaded into SQLite, with <code>ReadProcessMemory</code> matching on-screen values to memory addresses. The findings are loving: a dirty-region renderer; a 25-entry daylight table rising from 70 to 251; streetlamps that switch on &ldquo;around 18:25&ndash;18:30&rdquo; in groups of eight; an errand boy who walks <b>27&nbsp;px/second</b> to the celebrity&rsquo;s 13.8; and citizens with standing schedules &mdash; goths stay home until 09:00, students draw a 40% pub allocation at midnight, big shots take 70% opera at dusk.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>The childhood mystery got solved too: pizza scoring divides the pie into <b>24 regions</b>, checks symmetry across opposite sides, and runs <b>a plagiarism check on ingredient weights</b> &mdash; a copied recipe is marked &ldquo;not original&rdquo; and forfeits +30 taste points with yuppies, goths and tourists (big shots: +5). Readers saluted the format: &ldquo;This is how an AI-assisted article should be&hellip; they used AI to help themselves understand, not used AI to do everything.&rdquo;<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <h2 class="headline" style="font-size:17px; margin-top:12px">Also on the Field Desk: Graph Theory, Free of Charge</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 188 &middot; 26 cmts</b></span></div>
+    <figure>
+      <img src="images/vertex.png" alt="Start Doing Graph Theory link card">
+      <figcaption>The textbook&rsquo;s link card. <span class="cr">vertex.degree</span></figcaption>
+    </figure>
+    <p class="first"><b>Start Doing Graph Theory</b>, Mikhail Lavrov&rsquo;s introductory textbook &mdash; free online and as a PDF under CC&nbsp;BY-SA&nbsp;4.0 &mdash; reached the front page. Chapters run from &ldquo;Coloring Switzerland&rdquo; and the Towers of Hanoi through Euler tours, Cayley&rsquo;s formula, and Kőnig&rsquo;s and Hall&rsquo;s theorems. The thread&rsquo;s one regret: no solutions for the practice problems &mdash; &ldquo;which makes it hard to use for self-learning.&rdquo; One job-seeker called it &ldquo;very timely&rdquo; for the interview circuit; a working graph veteran conceded he has &ldquo;never needed a Hamilton path.&rdquo;<sup class="cite"><a href="#src15">[15]</a></sup><sup class="cite"><a href="#src16">[16]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Quote of the Day</span>
+    <div class="pullquote" style="font-size:21px">&ldquo;Ghostty GUI is just a glorified tech demo for libghostty.&rdquo;
+      <span class="attr">&mdash; Mitchell Hashimoto, in his own release thread<sup class="cite"><a href="#src2">[2]</a></sup></span>
+    </div>
+    <p style="font-size:12.5px">Posted in the comments under a 1,108-point celebration of the GUI in question. The tech demo, it should be noted, ships with a hundred percent of a graphics protocol and ten security advisories.</p>
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p><b>LOST:</b> Ten (10) days of certificate trust, last seen in <i>/etc/ssl/cert.pem</i>. If found, keep; macOS updates may remove it again.</p>
+      <p><b>FOUND:</b> One (1) preproduction ROM (v1.1.20.1) booting Mac OS on the 1996 Apple Network Server. Believed vapourware since 1997; claim with proof of AIX.</p>
+      <p><b>FOR SALE:</b> Pizza recipe, 24 evenly spread regions, passes the plagiarism check. Yuppies +30 taste points; big shots +5; no returns.</p>
+      <p><b>WANTED:</b> Solutions to practice problems, &ldquo;Start Doing Graph Theory,&rdquo; any condition. Generations of self-learners waiting.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= BOX SCORE ======================= -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Box Score &mdash; Front Page by the Points</span></div>
+    <svg viewBox="0 0 640 392" role="img" aria-label="Bar chart of Hacker News points per story" style="width:100%; height:auto; display:block">
+      <defs>
+        <pattern id="ink" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="5" height="5" fill="none"/><line x1="0" y1="0" x2="0" y2="5" stroke="#191510" stroke-width="1.8"/>
+        </pattern>
+        <pattern id="inkr" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="5" height="5" fill="none"/><line x1="0" y1="0" x2="0" y2="5" stroke="#7a1f1f" stroke-width="1.8"/>
+        </pattern>
+      </defs>
+      <!-- gridlines behind bars; scale: axisMax=1200, s=520/1200 -->
+      <line x1="87" y1="6" x2="87" y2="344" class="grid"/>
+      <line x1="173" y1="6" x2="173" y2="344" class="grid"/>
+      <line x1="260" y1="6" x2="260" y2="344" class="grid"/>
+      <line x1="347" y1="6" x2="347" y2="344" class="grid"/>
+      <line x1="433" y1="6" x2="433" y2="344" class="grid"/>
+      <line x1="520" y1="6" x2="520" y2="344" class="grid"/>
+      <g>
+        <text x="0" y="18" class="barlabel" fill="#191510">Ghostty 1.4.0</text>
+        <rect x="0.5" y="22" width="480" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="487" y="34" class="barval" fill="#191510" font-weight="700">1108 &#9733; &middot; 353 cmts</text>
+        <text x="0" y="52" class="barlabel" fill="#191510">Genie 4 &#8224;</text>
+        <rect x="0.5" y="56" width="407" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="414" y="68" class="barval" fill="#191510">939 &middot; 542</text>
+        <text x="0" y="86" class="barlabel" fill="#191510">Survival LLM</text>
+        <rect x="0.5" y="90" width="173" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="180" y="102" class="barval" fill="#191510">400 &middot; 152</text>
+        <text x="0" y="120" class="barlabel" fill="#191510">Git for the US Code</text>
+        <rect x="0.5" y="124" width="138" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="145" y="136" class="barval" fill="#191510">318 &middot; 171</text>
+        <text x="0" y="154" class="barlabel" fill="#191510">Tailscale SSH</text>
+        <rect x="0.5" y="158" width="136" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="143" y="170" class="barval" fill="#191510">315 &middot; 168</text>
+        <text x="0" y="188" class="barlabel" fill="#191510">Nikon Small World</text>
+        <rect x="0.5" y="192" width="125" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="132" y="204" class="barval" fill="#191510">289 &middot; 44</text>
+        <text x="0" y="222" class="barlabel" fill="#191510">eMudhra certs</text>
+        <rect x="0.5" y="226" width="86" height="15" fill="url(#inkr)" stroke="#191510"/>
+        <text x="93" y="238" class="barval" fill="#7a1f1f" font-weight="700">199 &middot; 73</text>
+        <text x="0" y="256" class="barlabel" fill="#191510">Graph theory</text>
+        <rect x="0.5" y="260" width="81" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="88" y="272" class="barval" fill="#191510">188 &middot; 26</text>
+        <text x="0" y="290" class="barlabel" fill="#191510">Fast Food Tycoon 2</text>
+        <rect x="0.5" y="294" width="40" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="47" y="306" class="barval" fill="#191510">93 &middot; 17</text>
+        <text x="0" y="324" class="barlabel" fill="#191510">Apple Network Server</text>
+        <rect x="0.5" y="328" width="32" height="15" fill="url(#inkr)" stroke="#191510"/>
+        <text x="39" y="340" class="barval" fill="#7a1f1f" font-weight="700">74 &middot; 1</text>
+      </g>
+      <line x1="0.5" y1="6" x2="0.5" y2="352" class="axis"/>
+      <line x1="0.5" y1="352" x2="520" y2="352" class="axis"/>
+      <text x="0" y="366" text-anchor="start" class="barval" fill="#3d352a">0</text>
+      <text x="87" y="366" text-anchor="middle" class="barval" fill="#3d352a">200</text>
+      <text x="173" y="366" text-anchor="middle" class="barval" fill="#3d352a">400</text>
+      <text x="260" y="366" text-anchor="middle" class="barval" fill="#3d352a">600</text>
+      <text x="347" y="366" text-anchor="middle" class="barval" fill="#3d352a">800</text>
+      <text x="433" y="366" text-anchor="middle" class="barval" fill="#3d352a">1000</text>
+      <text x="520" y="366" text-anchor="middle" class="barval" fill="#3d352a">1200</text>
+      <text x="0" y="386" class="barval" fill="#3d352a">&#9733; = points &middot; cmts = comments &middot; &#8224; most-discussed story of the day &middot; red hatch marks Apple coverage.</text>
+    </svg>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>The Day in One Line</span></div>
+    <div class="pullquote" style="font-size:18px">A terminal completes a graphics protocol, a world model learns dialogue, git gets a law degree, a printer sits for its portrait &mdash; and Apple&rsquo;s certificates still haven&rsquo;t gotten the memo.</div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories surveyed</td><td>10</td></tr>
+        <tr><td>Aggregate points</td><td>3,923</td></tr>
+        <tr><td>Aggregate comments</td><td>1,547</td></tr>
+        <tr><td>Most-discussed</td><td>Genie 4 (542)</td></tr>
+        <tr><td>Top story by points</td><td>Ghostty 1.4.0 (1,108)</td></tr>
+        <tr><td>Security stories</td><td>3 of 10</td></tr>
+        <tr><td>Apple stories (red hatch)</td><td>2</td></tr>
+        <tr><td>Pizza scoring regions</td><td>24</td></tr>
+      </table>
+    </div>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>Correction:</b> An earlier item described Genie 4&rsquo;s demo footage as &ldquo;photorealistic.&rdquo; One reader counters that it &ldquo;still looks like a video game rendering&rdquo;; the footage has been downgraded to &ldquo;photographic from certain angles.&rdquo;<sup class="cite"><a href="#src4">[4]</a></sup></p>
+      <p><b>Clarification:</b> The macOS 27.2 release was described in some coverage as an &ldquo;update.&rdquo; It did update one thing: it removed the certificate workaround users had applied by hand.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+      <p><b>Correction:</b> The Herald&rsquo;s 2001 review described Fast Food Tycoon 2&rsquo;s pizza scoring as &ldquo;charmingly simple.&rdquo; The game divides each pizza into 24 regions, checks opposite-side symmetry, and runs a plagiarism check on ingredient weights. The Herald regrets underestimating the sauces of 2001.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+      <p><b>Correction:</b> This paper&rsquo;s 1997 coverage, had it existed, would have reported that ROM swaps enabling Mac OS on the Apple Network Server were vapourware. A former Apple employee has since produced a working dump; the 1997 claim stands awkwardly corrected.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= PUBLISHER'S NOTE ======================= -->
+<div class="publisher">
+  <div class="t">From the Publisher&rsquo;s Desk</div>
+  <p>An afternoon front page that cannot decide what century it is in: a terminal emulator ships a hundred percent of a graphics protocol while a 1996 server learns to boot an operating system its maker unlearned; statutes get version control while a printer&rsquo;s droplets get a portrait. The Herald&rsquo;s rule held all the same &mdash; every number above was counted this afternoon, every quote lifted from the record, and every joke left on the cutting-room floor unless a source paid for it. The certificates, at press time, remain compromised. So does the irony.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- ======================= SOURCES ======================= -->
+<div class="rule-thick"></div>
+<div class="section-label"><span>Wire Services &amp; Citations</span></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">Ghostty, &ldquo;Release notes for 1.4.0,&rdquo; <a href="https://ghostty.org/docs/install/release-notes/1-4-0" target="_blank" rel="noopener">ghostty.org</a>, Oct. 27, 2026.</li>
+    <li data-n="[2]" id="src2">Hacker News discussion: &ldquo;Ghostty 1.4,&rdquo; incl. comments by mitchellh and kettlecrisp99, <a href="https://news.ycombinator.com/item?id=50261998" target="_blank" rel="noopener">news.ycombinator.com/item?id=50261998</a>.</li>
+    <li data-n="[3]" id="src3">R. Hadsell, D. Rivas and H. Qi, &ldquo;Genie 4: A new generation of world simulation,&rdquo; Google DeepMind, <a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" target="_blank" rel="noopener">deepmind.google</a>, Oct. 27, 2026.</li>
+    <li data-n="[4]" id="src4">Hacker News discussion: &ldquo;Genie 4,&rdquo; incl. comments by sodacanner, rvz, wolttam and Zambyte, <a href="https://news.ycombinator.com/item?id=50261319" target="_blank" rel="noopener">news.ycombinator.com/item?id=50261319</a>.</li>
+    <li data-n="[5]" id="src5">&ldquo;Survival LLM: AI assistant and emergency library that runs on your own computer,&rdquo; <a href="https://www.brangus.io/survival-llm" target="_blank" rel="noopener">brangus.io</a>, updated Oct. 27, 2026.</li>
+    <li data-n="[6]" id="src6">Hacker News discussion: &ldquo;Survival LLM,&rdquo; <a href="https://news.ycombinator.com/item?id=50264853" target="_blank" rel="noopener">news.ycombinator.com/item?id=50264853</a>.</li>
+    <li data-n="[7]" id="src7">Lexifina, &ldquo;Git for the US Code,&rdquo; <a href="https://lexifina.com/blog/git-for-the-us-code" target="_blank" rel="noopener">lexifina.com</a>.</li>
+    <li data-n="[8]" id="src8">Hacker News discussion: &ldquo;Git for the US Code,&rdquo; incl. comments by TomAbel and iAMkenough, <a href="https://news.ycombinator.com/item?id=50268380" target="_blank" rel="noopener">news.ycombinator.com/item?id=50268380</a>.</li>
+    <li data-n="[9]" id="src9">Tailscale, &ldquo;Tailscale SSH: Investigation and remediation update,&rdquo; <a href="https://tailscale.com/ssh-investigation-update" target="_blank" rel="noopener">tailscale.com</a>, updated Oct. 27, 2026.</li>
+    <li data-n="[10]" id="src10">Hacker News discussion: &ldquo;Tailscale SSH,&rdquo; incl. comments by 6thbit, wrxd and aborsy, <a href="https://news.ycombinator.com/item?id=50264857" target="_blank" rel="noopener">news.ycombinator.com/item?id=50264857</a>.</li>
+    <li data-n="[11]" id="src11">Ars Technica, &ldquo;Ink droplets in motion snag top prize in Nikon Small World contest,&rdquo; <a href="https://arstechnica.com/science/2026/10/meet-the-2026-winner-of-nikons-small-world-photomicrography-contest/" target="_blank" rel="noopener">arstechnica.com</a>, Oct. 2026.</li>
+    <li data-n="[12]" id="src12">Hacker News discussion: Nikon Small World, incl. comments by King-Aaron, selectodude and hn-aarvin, <a href="https://news.ycombinator.com/item?id=50234796" target="_blank" rel="noopener">news.ycombinator.com/item?id=50234796</a>.</li>
+    <li data-n="[13]" id="src13">D. Jackson et al., &ldquo;Apple&rsquo;s git still trusts the compromised eMudhra certificates,&rdquo; <a href="https://emudhra.we-have-a-problem.com/apple.html" target="_blank" rel="noopener">emudhra.we-have-a-problem.com</a>, Oct. 28, 2026.</li>
+    <li data-n="[14]" id="src14">Hacker News discussion: eMudhra certificates, incl. comments by InsidiousWombat and kd913, <a href="https://news.ycombinator.com/item?id=50271640" target="_blank" rel="noopener">news.ycombinator.com/item?id=50271640</a>.</li>
+    <li data-n="[15]" id="src15">M. Lavrov, &ldquo;Start Doing Graph Theory,&rdquo; <a href="https://vertex.degree/" target="_blank" rel="noopener">vertex.degree</a>, CC BY-SA 4.0.</li>
+    <li data-n="[16]" id="src16">Hacker News discussion: &ldquo;Start Doing Graph Theory,&rdquo; <a href="https://news.ycombinator.com/item?id=50208960" target="_blank" rel="noopener">news.ycombinator.com/item?id=50208960</a>.</li>
+    <li data-n="[17]" id="src17">healeycodes, &ldquo;Decompiling Fast Food Tycoon 2: Drawing the World,&rdquo; <a href="https://healeycodes.com/decompiling-fast-food-tycoon-2-drawing-the-world" target="_blank" rel="noopener">healeycodes.com</a>.</li>
+    <li data-n="[18]" id="src18">Hacker News discussion: &ldquo;Decompiling Fast Food Tycoon 2,&rdquo; <a href="https://news.ycombinator.com/item?id=50223739" target="_blank" rel="noopener">news.ycombinator.com/item?id=50223739</a>.</li>
+    <li data-n="[19]" id="src19">ClassicHasClass, &ldquo;MacOS Extensions pack for the Apple Network Server v1.0,&rdquo; <a href="http://oldvcr.blogspot.com/2026/10/macos-extensions-pack-for-apple-network.html" target="_blank" rel="noopener">oldvcr.blogspot.com</a>, Oct. 24, 2026.</li>
+    <li data-n="[20]" id="src20">Hacker News discussion: &ldquo;MacOS Extensions Pack for the Apple Network Server v1.0,&rdquo; <a href="https://news.ycombinator.com/item?id=50227400" target="_blank" rel="noopener">news.ycombinator.com/item?id=50227400</a>.</li>
+  </ol>
+</div>
+<p class="method"><b>Methodology:</b> Compiled from the Hacker News front page at approximately 13:01 UTC on Oct. 28, 2026; the first twelve items of <i>topstories</i> were fetched and the top ten by score retained. Points and comment counts are snapshots of a moving target and will have changed by the time you check. Story texts are summarized from the linked primary sources; reader quotations quote or paraphrase the linked HN threads. Image credits appear beneath each photograph; the Box Score is the Herald&rsquo;s own. Corrections, like the news above, are non-fiction.</p>
+
+<footer class="colophon">
+  <span>The Hacker Herald &mdash; Typeset from the Hacker News front page</span>
+  <span>&#10087; Printed on 100% recycled bandwidth &#10087;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/" target="_blank" rel="noopener">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</span>
+</footer>
+
+</body>
+</html>
