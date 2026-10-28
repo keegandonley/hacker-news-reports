@@ -2,6 +2,98 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-10-28-afternoon-2",
+      "date": "2026-10-28",
+      "label": "Afternoon",
+      "snapshot_utc": "21:00",
+      "items": [
+        {
+          "id": 50271640,
+          "title": "Apple's git still trusts the compromised eMudhra certificates",
+          "score": 947,
+          "comments": 359
+        },
+        {
+          "id": 50276792,
+          "title": "Gemini 4 Carbon",
+          "score": 607,
+          "comments": 505
+        },
+        {
+          "id": 50208960,
+          "title": "Start Doing Graph Theory",
+          "score": 499,
+          "comments": 110
+        },
+        {
+          "id": 50276940,
+          "title": "MacBook Pro with PROLED XDR Display and Touch",
+          "score": 396,
+          "comments": 673
+        },
+        {
+          "id": 50276998,
+          "title": "Why Is This Fingerprinting Script Creating Bioweapons?",
+          "score": 376,
+          "comments": 81
+        },
+        {
+          "id": 50273396,
+          "title": "Kentucky man becomes the first humanist granted religious exemption from AI",
+          "score": 360,
+          "comments": 414
+        },
+        {
+          "id": 50273171,
+          "title": "Emacs Turns 50",
+          "score": 346,
+          "comments": 142
+        },
+        {
+          "id": 50243060,
+          "title": "The Grid, a factory-scale robot in Massachusetts that builds PCBs on demand",
+          "score": 344,
+          "comments": 171
+        },
+        {
+          "id": 50274409,
+          "title": "CNC Stone Carving",
+          "score": 328,
+          "comments": 105
+        },
+        {
+          "id": 50265609,
+          "title": "Early progress on accelerating drug development with Claude",
+          "score": 315,
+          "comments": 320
+        },
+        {
+          "id": 50268380,
+          "title": "Git for the US Code",
+          "score": 419,
+          "comments": 231
+        },
+        {
+          "id": 50234796,
+          "title": "Ink droplets in motion snag top prize in Nikon Small World contest",
+          "score": 381,
+          "comments": 69
+        },
+        {
+          "id": 50264857,
+          "title": "Tailscale SSH: Investigation and remediation update",
+          "score": 367,
+          "comments": 187
+        },
+        {
+          "id": 50223739,
+          "title": "Decompiling Fast Food Tycoon 2: Drawing the World",
+          "score": 178,
+          "comments": 37
+        }
+      ]
+    },
+    {
       "folder": "2026-10-27-evening",
       "date": "2026-10-27",
       "label": "Evening",

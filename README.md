@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-10-28 · Afternoon | 2026-10-28 ≈21:00 | Apple's git still trusts the compromised eMudhra certificates | 947 | 359 | [editions/2026-10-28-afternoon-2/](editions/2026-10-28-afternoon-2/) |
 | 2026-10-28 · Afternoon | 2026-10-28 ≈13:01 | Ghostty 1.4 | 1,108 | 353 | [editions/2026-10-28-afternoon/](editions/2026-10-28-afternoon/) |
 | Inaugural · Evening | 2026-10-27 ≈20:40 | Genie 4: DeepMind's World Simulator Learns to Talk Back | 495 | 296 | [editions/2026-10-27-evening/](editions/2026-10-27-evening/) |
 

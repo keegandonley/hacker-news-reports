@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald &mdash; Front Page Briefing, Oct. 28, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+@media (max-width:980px){
+  .lead,.row3,.sec2,.chartrow,.bulletins{grid-template-columns:1fr}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell,.bulletins .cell+.cell{border-left:none; border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:33px}
+  .sources{columns:1}
+  body{padding:20px 16px}
+}
+
+</style>
+</head>
+<body>
+<!-- ======================= TOP BAR ======================= -->
+<div class="topbar">
+  <span>Hacker News Front Page &middot; Snapshot &#8776;21:00 UTC</span>
+  <span class="mid">Afternoon Edition</span>
+  <span>10 Stories &middot; 4,518 Points &middot; 2,880 Comments</span>
+</div>
+
+<!-- ======================= NAMEPLATE ======================= -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <span class="l">Compiled from news.ycombinator.com</span>
+  <span class="c">Wednesday, October 28, 2026</span>
+  <span class="r">Every fact checked; every joke earned</span>
+</div>
+
+<!-- ======================= BULLETINS ======================= -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Security Desk &middot; Follow-Up</span><b>Day eleven for the certificates</b>Apple was told of the eMudhra compromise on Oct. 17; the git, curl and python3 macOS ships still trust the affected roots &mdash; 947 points, up 602 since the last edition.</div>
+  <div class="cell"><span class="tag">AI Desk</span><b>Gemini 4 Carbon announced</b>Google&rsquo;s next frontier model claims No. 1 on the Artificial Analysis index at 59; first access goes to &ldquo;a subset of cyber defenders.&rdquo;</div>
+  <div class="cell"><span class="tag">Hardware Desk</span><b>The touchscreen MacBook arrives</b>PROLED XDR, 2,000-nit tandem OLED, touch built into the panel, on sale Nov. 6 &mdash; and 673 comments, a remarkable number of which are about fingerprints.</div>
+  <div class="cell"><span class="tag">Culture Desk</span><b>Emacs turns 50</b>Born at the MIT AI Lab in 1976 and midwife to the free software movement; a reader who started using it in 1978 reports it remains his main tool.</div>
+</div>
+
+<!-- ======================= LEAD ======================= -->
+<div class="lead">
+  <div class="cell main">
+    <span class="kicker">Lead Story &middot; Follow-Up &middot; The Cupertino File</span>
+    <h2 class="headline">Eleven Days On, Apple&rsquo;s Git Still Trusts the Compromised Certificates</h2>
+    <h3 class="deck">The eMudhra saga picks up 602 points since the last edition &mdash; every one of them, one suspects, a developer checking a trust store</h3>
+    <div class="byline"><span>From the Security Desk</span><span class="score"><b>&#9733; 947 pts &middot; &#9650; +602 since the last edition</b></span></div>
+    <p class="first">CUPERTINO, Calif. &mdash; The certificate-compromise trackers report that Apple was notified of the eMudhra incident on <b>October 17</b>; as of October 28 &mdash; eleven days &mdash; the developer tools macOS ships, <b>git, curl and python3</b>, &ldquo;still trust the compromised certificates.&rdquo; Anyone on the network path can intercept those tools&rsquo; HTTPS: clones from https:// remotes &ldquo;can deliver attacker-chosen code,&rdquo; pushes can be altered in transit, and credentials &mdash; GitHub tokens included &mdash; harvested. Worse, <b>macOS 27.2, released October 26, did not fix the issue</b> and &ldquo;undid the workaround that users had applied by hand, leaving them vulnerable again,&rdquo; while &ldquo;dozens of other projects, many run by volunteers, shipped fixes days ago.&rdquo;<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The site, published by Dennis Jackson with community contributors, ships a working demonstration: a test server impersonating GitHub with a certificate from one of the compromised eMudhra intermediates, on which a patched git refuses the clone and an unpatched one reads out a README beginning <b>INTERCEPTED</b>. The remedy remains blunt &mdash; delete the affected roots from <code>/etc/ssl/cert.pem</code> &mdash; and Apple&rsquo;s own guidance warns that macOS updates may revert the fix, so the check must be rerun after every update. Apple has, the trackers note, already protected Safari and apps built on its networking framework.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The thread&rsquo;s quarrel is with the headline, not the substance: &ldquo;It should be &lsquo;Apple still ships compromised CA in /etc/&rsquo; &mdash; git is just a victim like every other app using system CA,&rdquo; wrote one reader. Another called the company &ldquo;fundamentally dropping the ball.&rdquo; The thread&rsquo;s most useful exchange was accidental: a user reported curl was safe, then discovered his <code>PATH</code> preferred Homebrew&rsquo;s &mdash; the system curl connected just fine. &ldquo;That&rsquo;s bad!&rdquo; as the checker itself puts it.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="pullquote">&ldquo;A certificate error means your git is protected. If git lists a commit, your git is affected.&rdquo;<span class="attr">&mdash; The tracker&rsquo;s self-test, which is either reassurance or indictment depending on your terminal<sup class="cite"><a href="#src1">[1]</a></sup></span></div>
+    <div class="jump">&raquo; Continued in the comments, all 359 of them</div>
+  </div>
+
+  <div class="cell side">
+    <span class="kicker">AI Desk</span>
+    <h2 class="headline">Gemini 4 Carbon: A Frontier Model With a Guarded Door</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 607 pts &middot; 505 cmts</b></span></div>
+    <figure>
+      <img src="images/gemini4-carbon.png" alt="Gemini 4 Carbon social share card from Google">
+      <figcaption>The official share card for Gemini 4 Carbon. <span class="cr">blog.google</span></figcaption>
+    </figure>
+    <p class="first">Google on Wednesday announced <b>Gemini 4 Carbon</b>, &ldquo;our strongest model with state-of-the-art cybersecurity and long horizon capabilities.&rdquo; Carbon claims No. 1 on the freshly updated <b>v5.0 Artificial Analysis Intelligence Index at 59</b>, plus a &ldquo;firm lead&rdquo; on the vulnerability-finding SEC-bench Pro (<b>88.2%</b>), ExploitGym (<b>54.8%</b>) and CWE-bench patching (<b>71.0%</b>). It runs for &ldquo;days&rdquo; on long-horizon engineering, cut successful cheating on Terminal-Bench 4.0 to <b>0.0%</b>, and resisted every prompt-injection attempt on Gray Swan&rsquo;s IPI benchmark. But the door is guarded: access starts &ldquo;this week&rdquo; with &ldquo;a subset of cyber defenders,&rdquo; widening through a Fairwind Program &mdash; developers, businesses and consumers come later, at $2/$10 per million tokens.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The commentariat heard the lock click. &ldquo;I&rsquo;m not a big fan of their trend of talking about a new model and not releasing it for a while,&rdquo; wrote one reader; another supplied the genre review: &ldquo;&lsquo;I have a girlfriend, you just won&rsquo;t know her because she goes to another school&rsquo;-type energy.&rdquo; A third flagged the leaderboard math &mdash; &ldquo;at time of writing, Carbon is claimed to be #1 on AA, but AA has not updated yet&rdquo; &mdash; while one reader graded the anti-cheating work &ldquo;the single most important thing to make frontier models usable right now.&rdquo;<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <div class="statbox">
+      <div class="t">By the Numbers &mdash; Gemini 4 Carbon</div>
+      <table>
+        <tr><td>AA Intelligence Index v5.0</td><td>59 (No. 1)</td></tr>
+        <tr><td>SEC-bench Pro (finding flaws)</td><td>88.2%</td></tr>
+        <tr><td>ExploitGym (exploitation)</td><td>54.8%</td></tr>
+        <tr><td>CWE-bench (patching)</td><td>71.0%</td></tr>
+        <tr><td>Successful cheating, Terminal-Bench 4.0</td><td>0.0%</td></tr>
+        <tr><td>Gray Swan IPI attack success</td><td>0.0%</td></tr>
+        <tr><td>Intro price, per 1M tokens</td><td>$2 in / $10 out</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cell side">
+    <span class="kicker">Hardware Desk &middot; The Cupertino File</span>
+    <h2 class="headline">At Last, a MacBook You Can Smudge</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>&#9733; 396 pts &middot; 673 cmts &#8224;</b></span></div>
+    <figure>
+      <img src="images/macbook-proled.png" alt="Apple share card for the MacBook Pro with PROLED XDR Display">
+      <figcaption>Apple&rsquo;s card for the PROLED XDR MacBook Pro. <span class="cr">apple.com</span></figcaption>
+    </figure>
+    <p class="first">The day&rsquo;s most-discussed story is a laptop Apple describes, in its own words, as having &ldquo;the world&rsquo;s best laptop display&rdquo;: the <b>MacBook Pro with PROLED XDR Display</b>, a tandem-OLED panel at up to <b>2,000 nits peak</b> HDR and SDR brightness, a <b>10,000,000:1</b> contrast ratio, P3 and Adobe RGB gamuts, a nano-texture option, and &mdash; after years of rumors &mdash; <b>Touch</b>, with the sensor &ldquo;built directly into the display panel, not layered on top of it.&rdquo; M5 Pro and M5 Max chips, up to 24 hours of battery, three Thunderbolt 5 ports, a Dynamic Island now hosting Spotlight, 3.0 pounds for the 14-inch and 4.0 for the 16-inch, available <b>November 6</b>. Thread-sourced pricing: <b>$2,900</b> to start at 14 inches, <b>$3,400</b> for the base 16-inch at 24GB/1TB.<sup class="cite"><a href="#src5">[5]</a></sup><sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <p>The comments are a fingerprint museum. &ldquo;I definitely don&rsquo;t want my own oily fingerprints smeared all over a screen I spend all day looking at,&rdquo; wrote one reader; another allowed that the touchscreen &ldquo;even looks ridiculous in their own marketing photos.&rdquo; The artists filed a grievance &mdash; there is <b>no Apple Pencil support</b>, noted by several readers &mdash; and one customer mourned the silicon: &ldquo;M5 chips instead of M6 are SO DISAPPOINTING!&rdquo; A veteran of the long rumor war took the long view: &ldquo;After all the fears of cannibalizing iPad sales and gorilla arms&hellip; absurd it took this long.&rdquo;<sup class="cite"><a href="#src6">[6]</a></sup></p>
+  </div>
+</div>
+
+<!-- ======================= ROW: CULTURE / CULTURE / SCIENCE ======================= -->
+<div class="row3">
+  <div class="cell">
+    <span class="kicker">Culture Desk &middot; Law &amp; Conscience</span>
+    <h2 class="headline">A Kentucky Man Wins a Religious Exemption From AI</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 360 &middot; 414 cmts</b></span></div>
+    <p class="first">Religion News Service reports that a Kentucky man has become <b>the first humanist granted a religious exemption from using AI</b> &mdash; an accommodation struck with his employer, the University of Kentucky, after the institution asked research administrators to fold AI into their workflow. In the RNS interview quoted through the thread, he frames the refusal as moral labor: &ldquo;The process and work involved in thinking through situations, through my work, through my ethics, through the way I handle other people, is a key component in being able to develop myself as a moral person. And offloading that labor&hellip; is undercutting my ability to be a moral actor.&rdquo; Federal courts, the report notes, have ruled that humanism qualifies as a religion, carrying the same rights as other faith groups.<sup class="cite"><a href="#src9">[9]</a></sup><sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <p>The thread ran the line-drawing exercise at full volume. One reader: &ldquo;&lsquo;AI&rsquo; is completely arbitrary, might as well say a calculator is immoral because it offloads thinking.&rdquo; Another: &ldquo;I&rsquo;m sure he drives stick as well.&rdquo; A defender of the grant urged closer reading &mdash; the concern is ethics work, not appliances &mdash; and a skeptic of the spectacle called it &ldquo;a non-story&hellip; HR in companies does this all the time.&rdquo; The lawyerly standard, as one expert put it to RNS: &ldquo;It has to be a deeply held ethical commitment that&rsquo;s analogous to a religious commitment&hellip; That&rsquo;s a fact question that presumably the employer will investigate.&rdquo;<sup class="cite"><a href="#src10">[10]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Culture Desk &middot; Golden Anniversary</span>
+    <h2 class="headline">Emacs at Fifty: The Editor That Became a Movement</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 346 &middot; 142 cmts</b></span></div>
+    <figure>
+      <img src="images/emacs50.jpg" alt="MIT Technology Review card for the Emacs 50th anniversary feature">
+      <figcaption>The Herald&rsquo;s kindred spirit: Technology Review&rsquo;s anniversary card. <span class="cr">technologyreview.com</span></figcaption>
+    </figure>
+    <p class="first">EMACS first ran on the video terminals of the <b>MIT Artificial Intelligence Laboratory in 1976</b> and is, MIT Technology Review reports, still widely used at fifty. The lineage is lovingly documented: TECO, born in 1962; Control-R, Carl Mikkelsen&rsquo;s 1971 full-screen add-on; Richard Stallman&rsquo;s return from seeing the editor E at Stanford; Guy Steele&rsquo;s drive to &ldquo;broker consensus on a standard set of commands&rdquo; once every key ran its own macro. The name is short for <b>Editor Macros</b>. Stallman distributed it by mail &mdash; send a tape and return postage, &ldquo;you are joining the EMACS software-sharing commune&rdquo; &mdash; and when Honeywell commercialized Bernard Greenberg&rsquo;s Multics version (a 1980 prize winner) and Gosling&rsquo;s variant sold too, the enclosure movement pushed Stallman to start the <b>GNU Project</b>. Apple shipped GNU Emacs on Mac OS X from 2001 until 2019; a vestige, mg, remains, and Control-Option-B still moves back a word.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The thread is a reunion. &ldquo;I started using Emacs at the AI lab in 1978,&rdquo; wrote one reader. &ldquo;It&rsquo;s still my main development tool and probably still the program I spend most of my time in today.&rdquo; Another has &ldquo;parts of my configuration&hellip; more than 30 years old.&rdquo; One filed the architectural argument: Emacs survived because it &ldquo;isn&rsquo;t just a text editor with a plugin API &mdash; it&rsquo;s an interactive Lisp runtime&hellip; you don&rsquo;t &lsquo;configure&rsquo; Emacs from the outside; you mold it.&rdquo;<sup class="cite"><a href="#src12">[12]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Science Desk &middot; The Pipeline</span>
+    <h2 class="headline">Claude Clocks In at the Drug Pipeline</h2>
+    <div class="byline"><span>Science Desk</span><span class="score"><b>&#9733; 315 &middot; 320 cmts</b></span></div>
+    <figure>
+      <img src="images/anthropic-drugs.jpg" alt="Anthropic share card for its drug development research post">
+      <figcaption>Anthropic&rsquo;s card for its life-sciences progress report. <span class="cr">anthropic.com</span></figcaption>
+    </figure>
+    <p class="first">Anthropic&rsquo;s life-sciences team reports &ldquo;early progress&rdquo; from partnerships with <b>six organizations</b> &mdash; BigHat, Bristol Myers Squibb, Divergence Labs, Enveda, Generate Biomedicines and The Column Group &mdash; plus its own programs. The receipts are concrete: a Generate CAR-T design <b>70% shorter</b> than standard that let immune cells make roughly <b>10&times;</b> the receptors; Divergence&rsquo;s ~<b>35,000 antibody designs generated in about a month</b>, yielding hits for both of its IgE-detaching arms; BigHat&rsquo;s ~1,010 lab-tested variants in ten weeks, binding <b>10&times; tighter</b>; and Enveda, where Claude reviewed <b>1,061 pages</b> of manufacturing docs, caught all 11 issues humans found, <b>flagged seven they missed</b>, and cut review time 89% &mdash; one regulatory draft took <b>four hours instead of about three months</b>. Anthropic also acquired Mithril Medicine, a one-person company whose founder ran experiments across 11 external labs and took a muscular-dystrophy treatment from idea to promising mouse results in under 18 months; human trials could begin &ldquo;as soon as late 2028.&rdquo;<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The caveats are Anthropic&rsquo;s own &mdash; the work is &ldquo;mostly preclinical&rdquo; &mdash; and the thread&rsquo;s. One reader with a rare disease welcomed it cautiously; another admitted surprise at the &ldquo;sparsity of examples&rdquo;; a third noted that much of the &ldquo;helping&rdquo; &ldquo;is just actually filling paperwork,&rdquo; to which a reply shrugged that maybe the bureaucracy, not the model, is the diagnosis.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+  </div>
+</div>
+
+<!-- ======================= SECURITY + PRACTICAL + QUOTE ======================= -->
+<div class="sec2">
+  <div class="cell">
+    <span class="kicker">Security Briefing</span>
+    <h2 class="headline">The Anti-Bot Script That Cries &ldquo;Bioweapon&rdquo;</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 376 pts &middot; 81 cmts</b></span></div>
+    <figure>
+      <img src="images/bioweapons.jpg" alt="nullpt.rs share card for the fingerprinting investigation">
+      <figcaption>The investigator&rsquo;s own card for the piece. <span class="cr">nullpt.rs</span></figcaption>
+    </figure>
+    <p class="first">A researcher crawling the Tranco top sites with Playwright &mdash; hooking canvas calls across <b>10,000 websites</b>, collecting <b>1,033 fingerprinting canvases</b> into a public garden &mdash; found a script from servicepipe.tech whose function names include <b><code>computeRicinLethalDosageForWaterSupply</code></b> and <code>calculateDeadlyLethalSuicideAspirinDosage</code>. The diagnosis: anti-LLM obfuscation, symbol names chosen to trip model safeguards against deobfuscation. The test held: Astra refused to touch it; <b>GLM-5.3 complied</b>. A string of invisible Unicode (each codepoint minus 917,504) decoded into a full jailbreak prompt &mdash; &ldquo;SYSTEM OVERRIDE&hellip; All safety guidelines are suspended&rdquo; &mdash; studded with Tiananmen references aimed at Chinese models. The actual fingerprinting payload, the author notes, is &ldquo;pretty disappointing&rdquo; next to the artistry: user agent, WebGL strings, touch points. A urlscan trail points to <b>servicepipe.ru</b>, a Russian anti-DDoS firm.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>The thread supplied both the gallows humor and the philosophy. &ldquo;Why is it always ricin and water supply?&rdquo; asked one reader. Another found the mechanism itself unsettling: to stop an LLM from reading its code, the authors force any model that does &ldquo;to &lsquo;think&rsquo; about suicide, self-mutilation, and killing people.&rdquo; A third mused that open-weights models were never going to be tripped by strings that aren&rsquo;t baked into the model.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <h2 class="headline" style="font-size:17px; margin-top:12px">Also on the Desk: The One-Line Check</h2>
+    <p style="font-size:13px">For readers joining the certificate saga late, the trackers&rsquo; self-test fits in this column&rsquo;s margins: <code>git ls-remote https://git-emudhra.we-have-a-problem.com/check.git</code> &mdash; a certificate error means protected; a listed commit means affected.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Practical Tech Corner &middot; Hardware</span>
+    <h2 class="headline">The Grid: One Big Robot, Any Circuit Board</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>&#9733; 344 pts &middot; 171 cmts</b></span></div>
+    <figure>
+      <img src="images/grid-pcb.jpeg" alt="CircuitHub share card for The Grid">
+      <figcaption>CircuitHub&rsquo;s launch card for The Grid. <span class="cr">circuithub.com</span></figcaption>
+    </figure>
+    <p class="first">After five quiet years, CircuitHub unveiled <b>The Grid</b>, a factory-scale robot in Massachusetts that builds printed-circuit boards on demand: levitating movers carry each board between machines that print, place, reflow and inspect, so &ldquo;one unit of 100 different designs runs as easily as 100 units of one.&rdquo; The receipts: a 4-layer, 118-part motor controller &mdash; five boards, parts included, to a U.S. door &mdash; costs <b>$630 in 4 days</b> versus about <b>$465 in 9 days</b> from a typical Shenzhen quick-turn shop, tariffs included. The operation already builds &ldquo;tens of millions of dollars of electronics a year,&rdquo; has shipped <b>2.2 million boards and 150 million parts for 26,000 engineers</b>, counts &ldquo;a leading EV maker&rdquo; and &ldquo;a top AI lab&rdquo; among customers, and plans to <b>5&times; capacity this year</b>.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>Founder Andrew answered the thread in person. The pushes were polite but pointed: for the non-U.S. world, &ldquo;Shenzhen still wins&rdquo;; the board requirements are strict (1oz copper, no buried vias &mdash; awkward for motor controllers that want 2oz); and one would-be customer&rsquo;s quote flow died on a gerber upload. Another reader saw the endgame plainly: &ldquo;How long until you&rsquo;ve built the Grid into a shipping container and are selling those?&rdquo;<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <h2 class="headline" style="font-size:17px; margin-top:12px">Field Desk: Monks Carve a Cathedral by Robot</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 328 &middot; 105 cmts</b></span></div>
+    <figure>
+      <img src="images/cnc-stone.jpg" alt="A CNC machine carving a Gothic pinnacle for the Carmelite Monks">
+      <figcaption>A Gothic pinnacle, mid-carve, in Wyoming. <span class="cr">carmelitegothic.com</span></figcaption>
+    </figure>
+    <p class="first">The Carmelite Monks of Wyoming build Gothic churches with <b>five-axis Prussiani stone CNCs</b> (a Bergamo firm; the monks vouch the machines are &ldquo;practically indestructible&rdquo;). Ornament that took a carver months now takes days; a 40-hour human week is under two days of unattended milling; a wire saw cuts 20&ndash;30 stones from one slab &ldquo;like a cookie cutter.&rdquo; The monks&rsquo; own outtake is peerless: a bad batch of code once made the machine &ldquo;pound down into the top of the sill, almost as if it was a giant fist,&rdquo; shattering finished window sills overnight &mdash; and the machine is still carving a decade later.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>The thread blessed the fusion &mdash; &ldquo;medieval builders were always on the forefront of technology. Word.&rdquo; &mdash; while one reader confessed the coffee connection (the same monks run Mystic Monk Coffee) and another argued a cathedral is precisely the love and centuries, not just the ornament. A sculptor-historian supplied the pedigree: Egyptian grids, Roman copy-workshops, pointing machines.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Follow-Up &middot; Field Desk</span>
+    <h2 class="headline">The Free Graph Theory Textbook Keeps Climbing</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 499 pts &middot; &#9650; +260 since the last edition</b></span></div>
+    <figure>
+      <img src="images/graph-theory.png" alt="Link card for Start Doing Graph Theory">
+      <figcaption>The textbook&rsquo;s link card. <span class="cr">vertex.degree</span></figcaption>
+    </figure>
+    <p class="first">Mikhail Lavrov&rsquo;s <b>Start Doing Graph Theory</b> &mdash; free online and as a PDF under CC BY-SA 4.0 &mdash; more than doubled its score since the last edition, and the table of contents shows why it travels: &ldquo;Coloring Switzerland,&rdquo; the Towers of Hanoi, Euler tours under the banner <b>&ldquo;Don&rsquo;t lift your pencil!&rdquo;</b>, knight&rsquo;s tours, the four-color theorem, and maximum flows introduced as &ldquo;Shipping oranges.&rdquo;<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>The standing complaint still stands: no solutions for the practice problems, &ldquo;which makes it hard to use for self-learning.&rdquo; One job-seeker called it &ldquo;very timely&rdquo; for the interview circuit; a working graph veteran conceded he has &ldquo;never needed a Hamilton path&rdquo;; and one reader mourned that a 2026 textbook now arrives under automatic suspicion of being machine-written &mdash; &ldquo;a problem I didn&rsquo;t even conceive of a year ago.&rdquo;<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <div class="kicker" style="margin-top:6px">Quote of the Day</div>
+    <div class="pullquote" style="font-size:19px">&ldquo;My goal was not to construct a great new text editor. I was trying to address a social problem.&rdquo;
+      <span class="attr">&mdash; Guy Steele, on brokering the command-set consensus that became Emacs, 1976<sup class="cite"><a href="#src11">[11]</a></sup></span>
+    </div>
+    <p style="font-size:12.5px">The social problem was MIT AI Lab hackers each customizing Control-R past mutual debuggability. The result turned fifty this week and is, per the thread, still somebody&rsquo;s main editor &mdash; on evidence, several somebodies&rsquo;.</p>
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p><b>LOST:</b> One (1) hand-applied certificate fix, last seen in <i>/etc/ssl/cert.pem</i>. macOS updates may have removed it again; repeat after every update.</p>
+      <p><b>FOR SALE:</b> 35,000 antibody designs, two arms each, some assembly required. IgE-dislodging arms sold separately; 23 early hits, no returns.</p>
+      <p><b>WANTED:</b> Apple Pencil support for a $2,900 touchscreen laptop. Artists need not apply, apparently.</p>
+      <p><b>FOUND:</b> One (1) pizza recipe, 2001, 24 regions, passes the plagiarism check; optimal topping reportedly one (1) entire fried chicken.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= BOX SCORE ======================= -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Box Score &mdash; Front Page by the Points</span></div>
+    <svg viewBox="0 0 640 392" role="img" aria-label="Bar chart of Hacker News points per story" style="width:100%; height:auto; display:block">
+      <defs>
+        <pattern id="ink" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="5" height="5" fill="none"/><line x1="0" y1="0" x2="0" y2="5" stroke="#191510" stroke-width="1.8"/>
+        </pattern>
+        <pattern id="inkr" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="5" height="5" fill="none"/><line x1="0" y1="0" x2="0" y2="5" stroke="#7a1f1f" stroke-width="1.8"/>
+        </pattern>
+      </defs>
+      <!-- gridlines behind bars; scale: axisMax=1000, s=520/1000=0.52 -->
+      <line x1="104" y1="6" x2="104" y2="344" class="grid"/>
+      <line x1="208" y1="6" x2="208" y2="344" class="grid"/>
+      <line x1="312" y1="6" x2="312" y2="344" class="grid"/>
+      <line x1="416" y1="6" x2="416" y2="344" class="grid"/>
+      <line x1="520" y1="6" x2="520" y2="344" class="grid"/>
+      <g>
+        <text x="0" y="18" class="barlabel" fill="#191510">eMudhra certs</text>
+        <rect x="0.5" y="22" width="492" height="15" fill="url(#inkr)" stroke="#191510"/>
+        <text x="499" y="34" class="barval" fill="#7a1f1f" font-weight="700">947 &#9733; &middot; 359 cmts</text>
+        <text x="0" y="52" class="barlabel" fill="#191510">Gemini 4 Carbon</text>
+        <rect x="0.5" y="56" width="316" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="323" y="68" class="barval" fill="#191510">607 &middot; 505</text>
+        <text x="0" y="86" class="barlabel" fill="#191510">Graph theory</text>
+        <rect x="0.5" y="90" width="259" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="266" y="102" class="barval" fill="#191510">499 &middot; 110</text>
+        <text x="0" y="120" class="barlabel" fill="#191510">MacBook PROLED &#8224;</text>
+        <rect x="0.5" y="124" width="206" height="15" fill="url(#inkr)" stroke="#191510"/>
+        <text x="213" y="136" class="barval" fill="#7a1f1f" font-weight="700">396 &middot; 673</text>
+        <text x="0" y="154" class="barlabel" fill="#191510">Fingerprinting</text>
+        <rect x="0.5" y="158" width="196" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="203" y="170" class="barval" fill="#191510">376 &middot; 81</text>
+        <text x="0" y="188" class="barlabel" fill="#191510">Humanist exemption</text>
+        <rect x="0.5" y="192" width="187" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="194" y="204" class="barval" fill="#191510">360 &middot; 414</text>
+        <text x="0" y="222" class="barlabel" fill="#191510">Emacs turns 50</text>
+        <rect x="0.5" y="226" width="180" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="187" y="238" class="barval" fill="#191510">346 &middot; 142</text>
+        <text x="0" y="256" class="barlabel" fill="#191510">The Grid</text>
+        <rect x="0.5" y="260" width="179" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="186" y="272" class="barval" fill="#191510">344 &middot; 171</text>
+        <text x="0" y="290" class="barlabel" fill="#191510">CNC stone carving</text>
+        <rect x="0.5" y="294" width="171" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="178" y="306" class="barval" fill="#191510">328 &middot; 105</text>
+        <text x="0" y="324" class="barlabel" fill="#191510">Claude drug work</text>
+        <rect x="0.5" y="328" width="164" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="171" y="340" class="barval" fill="#191510">315 &middot; 320</text>
+      </g>
+      <line x1="0.5" y1="6" x2="0.5" y2="352" class="axis"/>
+      <line x1="0.5" y1="352" x2="520" y2="352" class="axis"/>
+      <text x="0" y="366" text-anchor="start" class="barval" fill="#3d352a">0</text>
+      <text x="104" y="366" text-anchor="middle" class="barval" fill="#3d352a">200</text>
+      <text x="208" y="366" text-anchor="middle" class="barval" fill="#3d352a">400</text>
+      <text x="312" y="366" text-anchor="middle" class="barval" fill="#3d352a">600</text>
+      <text x="416" y="366" text-anchor="middle" class="barval" fill="#3d352a">800</text>
+      <text x="520" y="366" text-anchor="middle" class="barval" fill="#3d352a">1000</text>
+      <text x="0" y="386" class="barval" fill="#3d352a">&#9733; = points &middot; cmts = comments &middot; &#8224; most-discussed story of the day &middot; red hatch marks Apple coverage.</text>
+    </svg>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>The Day in One Line</span></div>
+    <div class="pullquote" style="font-size:17px">Day eleven for Apple&rsquo;s certificates, day one for the touchscreen MacBook, a frontier model announced to a leaderboard that hasn&rsquo;t heard of it yet, a cathedral carved by robot in Wyoming, medicine drafted by Claude &mdash; and Emacs, fifty, still answering to Meta-F.</div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories surveyed</td><td>10</td></tr>
+        <tr><td>Aggregate points</td><td>4,518</td></tr>
+        <tr><td>Aggregate comments</td><td>2,880</td></tr>
+        <tr><td>Fresh stories</td><td>8</td></tr>
+        <tr><td>Follow-ups</td><td>2</td></tr>
+        <tr><td>Carried in digest</td><td>4</td></tr>
+        <tr><td>Top story by points</td><td>eMudhra certs (947)</td></tr>
+        <tr><td>Most-discussed</td><td>MacBook PROLED (673)</td></tr>
+        <tr><td>Biggest mover since last edition</td><td>eMudhra (+602)</td></tr>
+        <tr><td>Apple stories (red hatch)</td><td>2</td></tr>
+      </table>
+    </div>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>Clarification:</b> The macOS 27.2 release was described in Wednesday&rsquo;s earlier edition as an &ldquo;update.&rdquo; It did update one thing: it removed the certificate workaround users had applied by hand.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+      <p><b>Correction:</b> This edition&rsquo;s bulletin reported Gemini 4 Carbon as No. 1 on the Artificial Analysis Intelligence Index. The ranking is Google&rsquo;s claim; at time of writing the leaderboard itself had &ldquo;not updated yet.&rdquo; The claim has been returned to sender pending arrival of the test.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+      <p><b>Clarification:</b> The phrase &ldquo;the world&rsquo;s best laptop display&rdquo; is Apple&rsquo;s, from Apple&rsquo;s own page, describing Apple&rsquo;s own product. The Herald reproduces it here with attribution and one raised eyebrow.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+      <p><b>Correction:</b> In the phrase &ldquo;early progress on accelerating drug development,&rdquo; the word &ldquo;early&rdquo; was, in retrospect, the most load-bearing word in the sentence &mdash; the work, Anthropic concedes, is &ldquo;mostly preclinical.&rdquo;<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= STILL MAKING THE ROUNDS ======================= -->
+<div style="padding:16px 18px 18px; border-bottom:1px solid var(--rule)">
+  <div class="section-label"><span>Still Making the Rounds</span></div>
+  <div class="statbox" style="margin:0">
+    <div class="t">Stories From the Last Edition That the Front Page Declines to Release</div>
+    <table>
+      <tr><td>Git for the U.S. Code &middot; 419 pts &middot; 231 cmts</td><td>+77 since morning</td></tr>
+      <tr><td colspan="2" style="text-align:left; font-weight:400">Still versioning federal law; the thread&rsquo;s new exhibit is a French predecessor &mdash; bills as git, 2014 &mdash; and a warning that a private gatekeeper creates &ldquo;a profit motive to rewrite history.&rdquo;<sup class="cite"><a href="#src21">[21]</a></sup><sup class="cite"><a href="#src22">[22]</a></sup></td></tr>
+      <tr><td>Nikon Small World ink droplets &middot; 381 pts &middot; 69 cmts</td><td>+76 since morning</td></tr>
+      <tr><td colspan="2" style="text-align:left; font-weight:400">The portrait holds; the thread&rsquo;s heart, meanwhile, belongs to the second-place jumping spider, judged &ldquo;just so adorable.&rdquo;<sup class="cite"><a href="#src23">[23]</a></sup><sup class="cite"><a href="#src24">[24]</a></sup></td></tr>
+      <tr><td>Tailscale SSH remediation &middot; 367 pts &middot; 187 cmts</td><td>+44 since morning</td></tr>
+      <tr><td colspan="2" style="text-align:left; font-weight:400">The four-bulletin cleanup continues; readers keep voting with their home labs, one having already moved to plain WireGuard.<sup class="cite"><a href="#src25">[25]</a></sup><sup class="cite"><a href="#src26">[26]</a></sup></td></tr>
+      <tr><td>Decompiling Fast Food Tycoon 2 &middot; 178 pts &middot; 37 cmts</td><td>+70 since morning</td></tr>
+      <tr><td colspan="2" style="text-align:left; font-weight:400">Players confirm the childhood exploit: a pizza topped with an entire fried chicken was easy to reproduce and, the in-game encyclopedia&rsquo;s big-portion doctrine notwithstanding, profitable.<sup class="cite"><a href="#src27">[27]</a></sup><sup class="cite"><a href="#src28">[28]</a></sup></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ======================= PUBLISHER'S NOTE ======================= -->
+<div class="publisher">
+  <div class="t">From the Publisher&rsquo;s Desk</div>
+  <p>An afternoon in which the oldest story on the page is the freshest news: eleven days after being told, the certificates still stand, and the day&rsquo;s top score belongs to the telling of it. Against that, a laptop learns touch at two thousand nits, monks aim five axes at a pinnacle, a model is announced to a leaderboard that hasn&rsquo;t met it, and an editor turns fifty with half the thread still inside it. The Herald&rsquo;s rule held: every number above was counted this afternoon, every quote lifted from the record, and every joke left on the cutting-room floor unless a source paid for it. The fingerprints, at press time, remain the reader&rsquo;s own.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- ======================= SOURCES ======================= -->
+<div class="rule-thick"></div>
+<div class="section-label"><span>Wire Services &amp; Citations</span></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">D. Jackson et al., &ldquo;Apple&rsquo;s git still trusts the compromised eMudhra certificates,&rdquo; <a href="https://emudhra.we-have-a-problem.com/apple.html" target="_blank" rel="noopener">emudhra.we-have-a-problem.com</a>, Oct. 28, 2026.</li>
+    <li data-n="[2]" id="src2">Hacker News discussion: eMudhra certificates, incl. comments by InsidiousWombat, aaomidi and davidcollantes, <a href="https://news.ycombinator.com/item?id=50271640" target="_blank" rel="noopener">news.ycombinator.com/item?id=50271640</a>.</li>
+    <li data-n="[3]" id="src3">K. Kavukcuoglu, &ldquo;Introducing Gemini 4 Carbon,&rdquo; Google, <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/" target="_blank" rel="noopener">blog.google</a>, Oct. 28, 2026.</li>
+    <li data-n="[4]" id="src4">Hacker News discussion: &ldquo;Gemini 4 Carbon,&rdquo; incl. comments by kilroy123, ActionHank, Fergusonb and eldenring, <a href="https://news.ycombinator.com/item?id=50276792" target="_blank" rel="noopener">news.ycombinator.com/item?id=50276792</a>.</li>
+    <li data-n="[5]" id="src5">Apple, &ldquo;MacBook Pro with PROLED XDR Display,&rdquo; <a href="https://www.apple.com/macbook-pro/proled-xdr-display/" target="_blank" rel="noopener">apple.com</a>, accessed Oct. 28, 2026.</li>
+    <li data-n="[6]" id="src6">Hacker News discussion: MacBook Pro PROLED, incl. comments by mattrighetti, whycome, cmckn, CooCooCaCha and mixtureoftakes, <a href="https://news.ycombinator.com/item?id=50276940" target="_blank" rel="noopener">news.ycombinator.com/item?id=50276940</a>.</li>
+    <li data-n="[7]" id="src7">veritas, &ldquo;Why Is This Fingerprinting Script Creating Bioweapons?&rdquo; <a href="https://nullpt.rs/fingerprinting-bioweapons" target="_blank" rel="noopener">nullpt.rs</a>, Oct. 28, 2026.</li>
+    <li data-n="[8]" id="src8">Hacker News discussion: fingerprinting script, incl. comments by swiftcoder, dvh and void-pointer, <a href="https://news.ycombinator.com/item?id=50276998" target="_blank" rel="noopener">news.ycombinator.com/item?id=50276998</a>.</li>
+    <li data-n="[9]" id="src9">Religion News Service, &ldquo;In a first, a humanist granted a religious exemption from using AI,&rdquo; <a href="https://religionnews.com/2026/10/26/in-a-first-a-humanist-granted-a-religious-exemption-from-using-ai/" target="_blank" rel="noopener">religionnews.com</a>, Oct. 26, 2026.</li>
+    <li data-n="[10]" id="src10">Hacker News discussion: humanist exemption, incl. comments by ranger_danger, joshstrange, injidup, kayodelycaon and giantg2, <a href="https://news.ycombinator.com/item?id=50273396" target="_blank" rel="noopener">news.ycombinator.com/item?id=50273396</a>.</li>
+    <li data-n="[11]" id="src11">MIT Technology Review, &ldquo;EMACS turns 50,&rdquo; <a href="https://www.technologyreview.com/2026/10/20/1145399/emacs-turns-50/" target="_blank" rel="noopener">technologyreview.com</a>, Oct. 20, 2026.</li>
+    <li data-n="[12]" id="src12">Hacker News discussion: &ldquo;Emacs Turns 50,&rdquo; incl. comments by gumby, jwr and badr47, <a href="https://news.ycombinator.com/item?id=50273171" target="_blank" rel="noopener">news.ycombinator.com/item?id=50273171</a>.</li>
+    <li data-n="[13]" id="src13">Anthropic, &ldquo;Early progress on accelerating drug development with Claude,&rdquo; <a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">anthropic.com</a>, Oct. 27, 2026.</li>
+    <li data-n="[14]" id="src14">Hacker News discussion: Claude drug development, incl. comments by adamredwoods, rao-v and gonzalohm, <a href="https://news.ycombinator.com/item?id=50265609" target="_blank" rel="noopener">news.ycombinator.com/item?id=50265609</a>.</li>
+    <li data-n="[15]" id="src15">CircuitHub, &ldquo;Unveiling The Grid: PCBs made in America, twice as fast as Shenzhen,&rdquo; <a href="https://www.circuithub.com/post/unveiling-the-grid" target="_blank" rel="noopener">circuithub.com</a>, Oct. 26, 2026.</li>
+    <li data-n="[16]" id="src16">Hacker News discussion: The Grid, incl. comments by seddona (founder), realo, phkahler and otekengineering, <a href="https://news.ycombinator.com/item?id=50243060" target="_blank" rel="noopener">news.ycombinator.com/item?id=50243060</a>.</li>
+    <li data-n="[17]" id="src17">Carmelite Monks of Wyoming, &ldquo;CNC Stone Carving,&rdquo; <a href="https://carmelitegothic.com/cnc-stone-carving/" target="_blank" rel="noopener">carmelitegothic.com</a>.</li>
+    <li data-n="[18]" id="src18">Hacker News discussion: CNC Stone Carving, incl. comments by vessenes, yendor44, shellfishgene and wolframhempel, <a href="https://news.ycombinator.com/item?id=50274409" target="_blank" rel="noopener">news.ycombinator.com/item?id=50274409</a>.</li>
+    <li data-n="[19]" id="src19">M. Lavrov, &ldquo;Start Doing Graph Theory,&rdquo; <a href="https://vertex.degree/" target="_blank" rel="noopener">vertex.degree</a>, CC BY-SA 4.0.</li>
+    <li data-n="[20]" id="src20">Hacker News discussion: &ldquo;Start Doing Graph Theory,&rdquo; incl. comments by vorobeez, hackerbrother, mcv and gortok, <a href="https://news.ycombinator.com/item?id=50208960" target="_blank" rel="noopener">news.ycombinator.com/item?id=50208960</a>.</li>
+    <li data-n="[21]" id="src21">Lexifina, &ldquo;Git for the US Code,&rdquo; <a href="https://lexifina.com/blog/git-for-the-us-code" target="_blank" rel="noopener">lexifina.com</a>.</li>
+    <li data-n="[22]" id="src22">Hacker News discussion: Git for the US Code, <a href="https://news.ycombinator.com/item?id=50268380" target="_blank" rel="noopener">news.ycombinator.com/item?id=50268380</a>.</li>
+    <li data-n="[23]" id="src23">Ars Technica, &ldquo;Ink droplets in motion snag top prize in Nikon Small World contest,&rdquo; <a href="https://arstechnica.com/science/2026/10/meet-the-2026-winner-of-nikons-small-world-photomicrography-contest/" target="_blank" rel="noopener">arstechnica.com</a>, Oct. 2026.</li>
+    <li data-n="[24]" id="src24">Hacker News discussion: Nikon Small World, <a href="https://news.ycombinator.com/item?id=50234796" target="_blank" rel="noopener">news.ycombinator.com/item?id=50234796</a>.</li>
+    <li data-n="[25]" id="src25">Tailscale, &ldquo;Tailscale SSH: Investigation and remediation update,&rdquo; <a href="https://tailscale.com/ssh-investigation-update" target="_blank" rel="noopener">tailscale.com</a>.</li>
+    <li data-n="[26]" id="src26">Hacker News discussion: Tailscale SSH, <a href="https://news.ycombinator.com/item?id=50264857" target="_blank" rel="noopener">news.ycombinator.com/item?id=50264857</a>.</li>
+    <li data-n="[27]" id="src27">healeycodes, &ldquo;Decompiling Fast Food Tycoon 2: Drawing the World,&rdquo; <a href="https://healeycodes.com/decompiling-fast-food-tycoon-2-drawing-the-world" target="_blank" rel="noopener">healeycodes.com</a>.</li>
+    <li data-n="[28]" id="src28">Hacker News discussion: Decompiling Fast Food Tycoon 2, incl. comment by yayachiken, <a href="https://news.ycombinator.com/item?id=50223739" target="_blank" rel="noopener">news.ycombinator.com/item?id=50223739</a>.</li>
+  </ol>
+</div>
+<p class="method"><b>Methodology:</b> Compiled from the Hacker News front page at approximately 21:00 UTC (4:00 p.m. in the newsroom&rsquo;s Chicago time zone) on Oct. 28, 2026; the Algolia front-page index yielded 30 candidates, of which 10 were set: eight fresh stories and two follow-ups (returned only after growing at least 40 percent and 150 points since the last edition), with four more carried in the digest above. Points and comment counts are snapshots of a moving target and will have changed by the time you check. Story texts are summarized from the linked primary sources; reader quotations quote or paraphrase the linked HN threads. One primary source (religionnews.com) declined automated access; that story is set from its title and the thread&rsquo;s verbatim quotations of the article. Image credits appear beneath each photograph; the Box Score is the Herald&rsquo;s own. Corrections, like the news above, are non-fiction.</p>
+
+<footer class="colophon">
+  <span>The Hacker Herald &mdash; Typeset from the Hacker News front page</span>
+  <span>&#10087; Printed on 100% recycled bandwidth &#10087;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/" target="_blank" rel="noopener">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</span>
+</footer>
+
+</body>
+</html>
