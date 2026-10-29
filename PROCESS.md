@@ -121,6 +121,8 @@ story of the day · <what the red hatch marks>`.
 
 `/tmp/workspace/herald/index.html` from `template.html` + full contents of `herald.css`
 inlined in `<style>` + `images/`. The edition must be self-contained (no external CSS).
+Any extra CSS or inline styles you add must stay mobile-safe: no fixed pixel widths, no
+`white-space:nowrap` on prose — the page must fit a 360px phone with no sideways scroll.
 
 ## STEP 6 — PUBLISH & VERIFY
 
