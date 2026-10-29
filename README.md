@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-10-29 · Afternoon | 2026-10-29 ≈21:01 | Patrick Stewart Has Died | 1,159 | 211 | [editions/2026-10-29-afternoon/](editions/2026-10-29-afternoon/) |
 | 2026-10-29 · Morning | 2026-10-29 ≈13:01 | The Fingerprinter That Cries “Ricin” | 1,359 | 250 | [editions/2026-10-29-morning/](editions/2026-10-29-morning/) |
 | 2026-10-28 · Afternoon | 2026-10-28 ≈21:00 | Apple's git still trusts the compromised eMudhra certificates | 947 | 359 | [editions/2026-10-28-afternoon-2/](editions/2026-10-28-afternoon-2/) |
 | 2026-10-28 · Afternoon | 2026-10-28 ≈13:01 | Ghostty 1.4 | 1,108 | 353 | [editions/2026-10-28-afternoon/](editions/2026-10-28-afternoon/) |

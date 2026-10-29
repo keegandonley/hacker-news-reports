@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, October 29, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- ======================= 1. TOP BAR ======================= -->
+<div class="topbar">
+  <span>Hacker News Front Page &middot; Snapshot &#8776;21:01 UTC</span>
+  <span class="mid">Afternoon Edition</span>
+  <span>10 Stories &middot; 4,160 Points &middot; 2,326 Comments</span>
+</div>
+
+<!-- ======================= 2. NAMEPLATE ======================= -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Thursday, October 29, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- ======================= 3. BULLETINS ======================= -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Culture Desk &middot; The Lead</span><b>Patrick Stewart has died</b>The New York Times&rsquo; report leads the page at 1,159 points, and the thread beneath it has become a wake: sonnets read during lockdown, a 1981 Excalibur, and one reader&rsquo;s flute.</div>
+  <div class="cell"><span class="tag">AI Desk &middot; Open Weights</span><b>Mistral frees Le Chonk</b>One trillion parameters, open-weight, trained on European infrastructure &mdash; and named, by its own maker, after a very large cat. The smallest announced quant still wants 256&nbsp;GB of VRAM.</div>
+  <div class="cell"><span class="tag">Commerce Desk &middot; Consolidation</span><b>DoorDash to buy Instacart</b>$65.00 a share, $17 billion in equity, a 26 percent premium &mdash; and the day&rsquo;s most-discussed story, with 539 comments and a thread already litigating antitrust.</div>
+  <div class="cell"><span class="tag">Big Tech Desk &middot; A Milestone</span><b>Search dips under one half</b>Google Search was 49.7 percent of Alphabet&rsquo;s revenue in the quarter through September &mdash; the first sub-half quarter since the company began reporting it separately.</div>
+</div>
+
+<!-- ======================= 4. LEAD SPREAD ======================= -->
+<div class="lead">
+  <div class="cell main">
+    <span class="kicker">Lead Story &middot; Obituary &middot; Culture Desk</span>
+    <h2 class="headline">Patrick Stewart Has Died</h2>
+    <h3 class="deck">The Times&rsquo; report, filed in its arts section, sends the front page into mourning; the thread below the news is four hours old and already full of childhoods</h3>
+    <div class="byline"><span>From the Culture Desk</span><span class="score"><b>&#9733; 1,159 pts &middot; 211 comments</b></span></div>
+    <p class="first">NEW YORK &mdash; The New York Times reported the death of Patrick Stewart on Thursday, in a piece filed to its arts and television desk, and the news needed no second headline: submitted to Hacker News under the plain words &ldquo;Patrick Stewart has died,&rdquo; it gathered 1,159 points by early evening, the day&rsquo;s top score.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup> The Herald&rsquo;s attempts to read the obituary itself were turned away at the Times&rsquo; gates, so this dispatch is typeset from the report&rsquo;s fact and from the 211 comments beneath it &mdash; which, on this story, is where the reporting lives anyway.</p>
+    <p>What the thread holds, chiefly, is testimony. One reader: &ldquo;It feels similar to having a good childhood friend pass into the night.&rdquo;<sup class="cite"><a href="#src2">[2]</a></sup> Another calls Stewart &ldquo;a base rock part of my personality,&rdquo; Star Trek: The Next Generation having been formative for him from ages 7 to 12.<sup class="cite"><a href="#src2">[2]</a></sup> A third remembers the pandemic version of the man: &ldquo;when COVID lockdowns started, he just made reels reading Shakespeare&rsquo;s sonnets. It was such a lovely break from everything else on social media.&rdquo;<sup class="cite"><a href="#src2">[2]</a></sup> The range gets its own exhibits &mdash; a recommendation to watch him in <em>Excalibur</em> (1981), and the observation that &ldquo;to be an actor of that level, yet still have so much fun in American Dad! is so cool.&rdquo;<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="pullquote" style="font-size:17px">&ldquo;Plays a melancholy melody on a flute.&rdquo;<span class="attr">A reader, below the news &middot; HN thread</span></div>
+    <p>The shortest tribute in the thread is also the longest-lens one: seven words, no capital letter, a scene every mourner present recognized on sight.<sup class="cite"><a href="#src2">[2]</a></sup> Another reader keeps a miniature USS Enterprise, a gift of an uncle who watched the show with him; the thread, this afternoon, is that shelf.<sup class="cite"><a href="#src2">[2]</a></sup> The Herald sets the lead in black and adds nothing to it. Some pages set themselves.</p>
+  </div>
+
+  <div class="cell side">
+    <span class="kicker">AI Desk &middot; Open Weights</span>
+    <h2 class="headline">Mistral Opens the Weights of Le Chonk</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 961 pts &middot; 270 cmts</b></span></div>
+    <p class="first">Mistral has released the weights of Mistral Large 4, a one-trillion-parameter, natively multimodal model that the company also, and without apparent embarrassment, calls &ldquo;Le Chonk.&rdquo;<sup class="cite"><a href="#src3">[3]</a></sup> The claims arrive with receipts: 19.7 percent on Cognition&rsquo;s private FrontierCode 2.0, a benchmark scored by &ldquo;whether a repository maintainer would merge the agent&rsquo;s change&rdquo;; a 13-point jump to 41 percent on Terminal-Bench 4.0 while cutting output tokens 30 percent; and 48 percent on the Artificial Analysis Coding Agent Index, tied with GLM-5.3 at 47 percent fewer tokens per task.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <figure>
+      <img src="images/mistral.jpg" alt="Mistral Large 4 open-weight announcement artwork" loading="lazy">
+      <figcaption>The announcement art for the open-weight release. <span class="cr">Mistral.ai</span></figcaption>
+    </figure>
+    <p>The defenders&rsquo; edition: 51 percent on the Artificial Analysis Cyber Index, a 96.6 percent refusal rate on malicious cyber requests &mdash; &ldquo;the highest we measure among open models&rdquo; &mdash; and testimonials from Booz Allen, Cisco, Cloudflare, CrowdStrike, Elastic, ENISA, Fortinet and NVIDIA.<sup class="cite"><a href="#src3">[3]</a></sup> Cloudflare&rsquo;s Stephanie Cohen supplies the doctrine: &ldquo;a defense you don&rsquo;t control isn&rsquo;t defense &mdash; it&rsquo;s exposure.&rdquo;<sup class="cite"><a href="#src3">[3]</a></sup> The thread got practical fast: one reader flags that the Hugging Face links are &ldquo;kind of buried down at the end&rdquo;;<sup class="cite"><a href="#src4">[4]</a></sup> another learns the smallest day-zero quant &ldquo;will still require 256GB VRAM&rdquo; and does the household math &mdash; &ldquo;Ugh, ok &hellip; another 32GB and it would work.&rdquo;<sup class="cite"><a href="#src4">[4]</a></sup> A third is blunt about the rest of us: &ldquo;I have no idea how you could shrink this down to fit on any type of prosumer hardware.&rdquo;<sup class="cite"><a href="#src4">[4]</a></sup></p>
+  </div>
+
+  <div class="cell side">
+    <span class="kicker">Commerce Desk &middot; The Weekly Shop</span>
+    <h2 class="headline">DoorDash Agrees to Buy Instacart for $17 Billion</h2>
+    <div class="byline"><span>Commerce Desk</span><span class="score"><b>&#9733; 343 pts &middot; 539 cmts</b></span></div>
+    <p class="first">DoorDash will acquire Instacart &mdash; formally Maplebear Inc. &mdash; at $65.00 per share, a 26 percent premium to Instacart&rsquo;s Oct. 22 close and an equity value of roughly $17 billion, with at least 75 percent of the consideration in cash and Instacart&rsquo;s board voting yes unanimously.<sup class="cite"><a href="#src5">[5]</a></sup> The framing is Mom-and-pop: together, the companies say, they will &ldquo;help local stores win&rdquo; against the biggest online retailers, handing grocers Instacart&rsquo;s technology, DoorDash&rsquo;s delivery network, DashMart fulfillment, and &ldquo;the advertising and AI tools each company has built.&rdquo;<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <figure>
+      <img src="images/doordash.png" alt="DoorDash and Instacart acquisition announcement graphic" loading="lazy">
+      <figcaption>The deal, as drawn by the buyers. <span class="cr">About.doordash.com</span></figcaption>
+    </figure>
+    <p>The chief executive supplies the tenderest sentence in merger prose: &ldquo;Grocery is one of the hardest things to get right online. Someone has to pick a ripe avocado, find a substitute you&rsquo;d choose yourself, and get the ice cream to you before it melts.&rdquo;<sup class="cite"><a href="#src5">[5]</a></sup> The thread&rsquo;s 539 comments are less romantic. One reader: &ldquo;I&rsquo;d cry &lsquo;antitrust&rsquo; but who are we kidding at this point.&rdquo;<sup class="cite"><a href="#src6">[6]</a></sup> Another, of the pair: &ldquo;If they both disappeared tomorrow I think most people wouldn&rsquo;t care.&rdquo;<sup class="cite"><a href="#src6">[6]</a></sup> A third asks after the disabled customers who order food this way, and is told about Meals on Wheels; a fourth simply remembers the ZIRP era, &ldquo;a new food delivery (or e-scooter) startup almost every week.&rdquo;<sup class="cite"><a href="#src6">[6]</a></sup></p>
+  </div>
+</div>
+
+<!-- ======================= 5. ROW OF 3 ======================= -->
+<div class="row3">
+  <div class="cell">
+    <span class="kicker">Big Tech Desk &middot; The Ledger</span>
+    <h2 class="headline">Google Search Slips Below Half of Alphabet</h2>
+    <div class="byline"><span>Big Tech Desk</span><span class="score"><b>&#9733; 364 pts &middot; 310 cmts</b></span></div>
+    <p class="first">In the quarter through September, Google Search brought in $63.4 billion of Alphabet&rsquo;s $128 billion &mdash; 49.7 percent, the first time the share has fallen below half since Alphabet began reporting Search separately.<sup class="cite"><a href="#src7">[7]</a></sup> In the 31 quarters before, Search ran between 52.8 and 62.0 percent; over the same years Google Cloud went from 4.4 percent of revenue to 24.1 percent.<sup class="cite"><a href="#src7">[7]</a></sup> The report is careful about the direction of causation, and the headline is not: &ldquo;Search revenue still grew &mdash; the share fell because the rest of Alphabet grew faster.&rdquo;<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <figure>
+      <img src="images/googlesearch.png" alt="Chart of Google Search's share of Alphabet revenue falling below 50 percent" loading="lazy">
+      <figcaption>The share, crossing the line. <span class="cr">Kadoa.com</span></figcaption>
+    </figure>
+    <p>The thread cannot decide whether to mourn or congratulate. &ldquo;Isn&rsquo;t this good news because they&rsquo;re diversifying their streams?&rdquo; one reader asks;<sup class="cite"><a href="#src8">[8]</a></sup> another answers that Google &ldquo;really had developed only 2 good products (not including acquisitions such as YouTube): search and gmail,&rdquo; and that the company may be rotating toward the fate of &ldquo;old businesses (I.e IBM, AOL).&rdquo;<sup class="cite"><a href="#src8">[8]</a></sup> The YouTube aside detonates its own skirmish: bought as &ldquo;a galaxy-scale cash incinerator,&rdquo; one reader insists, and made to work only on Google&rsquo;s own fiber &mdash; to which a third replies that the acquirer merely &ldquo;waited for cost of storage, bandwidth, compute to come down below revenue from advertising. As it would have done naturally anyway.&rdquo;<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <div class="statbox">
+      <div class="t">The Share, As Reported</div>
+      <table>
+        <tr><td>Search, share of Alphabet revenue, Q3 2026</td><td>49.7%</td></tr>
+        <tr><td>Search share, previous 31 quarters</td><td>52.8&ndash;62.0%</td></tr>
+        <tr><td>Google Cloud, then and now</td><td>4.4% &rarr; 24.1%</td></tr>
+        <tr><td>Search revenue itself</td><td>Grew</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Field Desk &middot; Reported From the Thread</span>
+    <h2 class="headline">The Cars Americans Can&rsquo;t Buy, and the Article They Can&rsquo;t Read</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 260 pts &middot; 285 cmts</b></span></div>
+    <p class="first">MEXICO CITY, MEXICO &mdash; The Washington Post sent a reporter to Mexico to test-drive the cheap Chinese-brand electric cars Americans cannot buy &mdash; so says the headline; the slug underneath adds &ldquo;i-saw-future-driving-cheap-ev-chinese-brands-mexico.&rdquo;<sup class="cite"><a href="#src9">[9]</a></sup> The Herald could not obtain the article either: the Post&rsquo;s wall turned this newsroom away, a fact the thread documented within minutes of posting (&ldquo;This link still runs into a subscription paywall, as do most of your recent posts&rdquo;), leaving the cars and the prose about them in the same condition &mdash; adjacent to America, unavailable to it.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <p>The thread, then, is the test drive. A visitor to Mexico reports being &ldquo;pleasantly surprised to see as many BYD as I did,&rdquo; concluding that &ldquo;being able to see the car in person is far more impressive than a YouTube video&rdquo;; another was &ldquo;really impressed with the BYDs I rode in for uber while in Mexico.&rdquo;<sup class="cite"><a href="#src10">[10]</a></sup> At a friend&rsquo;s wedding, a fourth found &ldquo;about half the Ubers we took were driving Chinese EVs.&rdquo;<sup class="cite"><a href="#src10">[10]</a></sup> And from South Africa, where the cars are sold, a Sealion 5 owner reports buying in May and doing about 4,500 kilometers with the tank &ldquo;still over half full since last filling it up mid July.&rdquo;<sup class="cite"><a href="#src10">[10]</a></sup> The future, the thread agrees, is already on the road south of the border &mdash; it is merely waiting on a trade lawyer.</p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Culture Desk &middot; The Craft</span>
+    <h2 class="headline">Martin Fowler Names the Tell: &ldquo;the Uncanny Valley of Prose&rdquo;</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 254 pts &middot; 137 cmts</b></span></div>
+    <p class="first">In a bliki post dated today, Martin Fowler gives the sensation of reading machine-written text its own name and its own diagnostic: &ldquo;the uncanny valley of prose.&rdquo;<sup class="cite"><a href="#src11">[11]</a></sup> The tells, he notes, are not what the discourse claims &mdash; &ldquo;it&rsquo;s not the em-dashes, it&rsquo;s the load-bearing tapestries&rdquo; &mdash; and no detector will save you: &ldquo;By the time I&rsquo;d reach for a tool to tell me what I&rsquo;m reading, it&rsquo;s already too late.&rdquo;<sup class="cite"><a href="#src11">[11]</a></sup> His counsel to authors is austere: do not let the model draft, because the voice survives the edit &mdash; he knows one fully LLM-drafted piece that read clean, &ldquo;but it did need a professional editor at a major periodical publication.&rdquo;<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <figure>
+      <img src="images/llmvoice.png" alt="The martinfowler.com site logo" loading="lazy">
+      <figcaption>The site&rsquo;s own mark, which has never once sounded like anything else. <span class="cr">Martinfowler.com</span></figcaption>
+    </figure>
+    <p>The stakes, for Fowler, are not stylistic: &ldquo;As more people delegate writing to LLMs they will also delegate thinking and comprehension to LLMs. I don&rsquo;t want to do that &mdash; where&rsquo;s the fun of writing then?&rdquo;<sup class="cite"><a href="#src11">[11]</a></sup> He carves his exceptions carefully &mdash; a colleague with Parkinson&rsquo;s for whom the LLM is essential (&ldquo;I&rsquo;ll gladly deal with LLM-Voice in order to continue imbibing my old friend&rsquo;s wisdom&rdquo;), translation, and &ldquo;a report I suspect no-one will ever read.&rdquo;<sup class="cite"><a href="#src11">[11]</a></sup> The thread adds the mirror: one reader finds that because most of what he reads is LLM output, &ldquo;I tend to &lsquo;adopt&rsquo; this style in my writing &hellip; writing as an LLM without using one&rdquo;;<sup class="cite"><a href="#src12">[12]</a></sup> another runs the arithmetic &mdash; humanity writes half a trillion tokens a day and reads two trillion, &ldquo;more than the whole training set of GPT-4&rdquo; in a week: &ldquo;Human language is being shaped back by AI language.&rdquo;<sup class="cite"><a href="#src12">[12]</a></sup></p>
+  </div>
+</div>
+
+<!-- ======================= 6. SECURITY & PRACTICAL ======================= -->
+<div class="sec2">
+  <div class="cell">
+    <span class="kicker">Security Briefing &middot; PHP2Shell</span>
+    <h2 class="headline">One HTTP Request, 883 MB of Bad Manners, and 25 Rooted Firewalls</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 238 pts &middot; 104 cmts</b></span></div>
+    <p class="first">On Oct. 25, researchers at Dream, hunting with the firm&rsquo;s autonomous cyber-research product Hero, uncovered artifacts of a campaign that rooted 25 Palo Alto Networks PAN-OS firewall and management servers across the United States, Japan, Taiwan and South Korea &mdash; including three servers in &ldquo;a US government-affiliated environment&rdquo; &mdash; then turned on Active Directory for credential extraction and directory enumeration.<sup class="cite"><a href="#src13">[13]</a></sup> Palo Alto&rsquo;s Unit 42 has &ldquo;independently verified the attacker&rsquo;s tooling and results,&rdquo; and fixed PAN-OS versions are rolling out.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <figure>
+      <img src="images/php2shell.jpg" alt="Illustration for the Chained PHP2Shell exploit write-up" loading="lazy">
+      <figcaption>The write-up&rsquo;s own art. <span class="cr">Dreamgroup.com</span></figcaption>
+    </figure>
+    <p>The exploit is a chain &mdash; PHP2Shell (CVE-2026-109618/109619) welded to the Fragnesia kernel privilege escalation (CVE-2026-46300) &mdash; that reaches root on an internet-facing firewall &ldquo;in a single HTTP request without any credentials,&rdquo; aimed at PHP&rsquo;s <em>session.upload_progress</em> on PAN-OS&rsquo; appweb server, which runs PHP 8.0.30.<sup class="cite"><a href="#src13">[13]</a></sup> The choreography asks for roughly 383 MB of memory exhaustion to force a predictable layout, leaks the base address of <em>libphp.so</em> through a Set-Cookie header, spends another ~500 MB setting up a stale reference, then forges a PHP HashTable entry whose destructor points at <em>zif_system</em> &mdash; the machine politely calling <em>system()</em> during cleanup.<sup class="cite"><a href="#src13">[13]</a></sup> Roughly 40 custom post-exploitation scripts came with it.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The uncomfortable detail is the workbench: the attacker&rsquo;s infrastructure had Claude Code installed, an offensive platform called aiscan configured with DeepSeek and Kimi, and API keys for the Chinese recon platform FOFA &mdash; though the researchers concede &ldquo;no direct evidence&rdquo; the AI tools wrote the exploit, only that style and consistency &ldquo;suggest AI-assisted development.&rdquo;<sup class="cite"><a href="#src13">[13]</a></sup> The thread, meanwhile, re-litigates the underlying PHP bug&rsquo;s reputation: &ldquo;RCE on every PHP server, from anywhere on the internet, no other requirements,&rdquo; one reader summarizes &mdash; and a skeptic answers that the standing Bitcoin bounty went unclaimed so long that &ldquo;a lot of people&rdquo; concluded the vulnerability was oversold, until the test rig was fixed &ldquo;and got popped within like 2 hours.&rdquo;<sup class="cite"><a href="#src14">[14]</a></sup> The closing question hangs over the whole bench: &ldquo;Which best practices did you use to prevent exploitability? And would you stake your bitcoin on it?&rdquo;<sup class="cite"><a href="#src14">[14]</a></sup></p>
+
+    <hr style="border:none; border-top:1px solid var(--rule-soft); margin:13px 0">
+    <span class="kicker">Network Desk &middot; Cartography</span>
+    <h2 class="headline">If IPv4 Were Land, the Dutch Would Rule the World</h2>
+    <div class="byline"><span>Network Desk</span><span class="score"><b>&#9733; 195 pts &middot; 216 cmts</b></span></div>
+    <p class="first">The premise of a new visualization from IP Trust: the world has about 135 million km&sup2; of land outside Antarctica and 3.6 billion locatable IPv4 addresses, so redraw every country with area proportional to its share of addresses instead of ground.<sup class="cite"><a href="#src15">[15]</a></sup> The Herald ran the page&rsquo;s own published country data: the United States, holding 1.53 billion addresses &mdash; 42 percent of the world&rsquo;s routable internet &mdash; swells to roughly 5.8 times its size; the Netherlands, with 51.4 million addresses against 33,480 km&sup2; of actual land, fattens to about 57 times itself.<sup class="cite"><a href="#src15">[15]</a></sup> The thread&rsquo;s favorite exhibit was inevitable: &ldquo;Good to see the Dutch were able to seize a lot of blocks from the sea!&rdquo; &mdash; &ldquo;It&rsquo;s what we do ;).&rdquo;<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <p>The losses are the point: the Democratic Republic of the Congo, holding 233,717 addresses against 2.27 million km&sup2;, shrinks to under half a percent of itself, and a reader quoting the page&rsquo;s tables reports North Korea drawn 1,069.6 times smaller and Greenland 1,507.8 times smaller.<sup class="cite"><a href="#src15">[15]</a></sup><sup class="cite"><a href="#src16">[16]</a></sup> (Small territories with no map outline at this resolution &mdash; some 52 million addresses, mostly Hong Kong, Singapore and Mauritius &mdash; are left off entirely.<sup class="cite"><a href="#src15">[15]</a></sup>) The commentariat supplies the moral without being asked: &ldquo;The fact that we have yet to fully deprecate IPv4 should be considered a great failure in the tech industry&rsquo;s competence&rdquo; &mdash; and the reply, from the other side of the ledger: what holder of &ldquo;such a large capital of IPs&rdquo; would volunteer to make it worthless by supporting IPv6?<sup class="cite"><a href="#src16">[16]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Practical Tech Corner &middot; A Classic Returns</span>
+    <h2 class="headline">H.264 Is Still Magic, and the Math Is Still Rude</h2>
+    <div class="byline"><span>Practical Tech Corner</span><span class="score"><b>&#9733; 229 pts &middot; 103 cmts</b></span></div>
+    <p class="first">Sid Bala&rsquo;s 2016 essay on H.264 is back on the front page, and its opening stunt has lost none of its cheek: a PNG screenshot of the Apple homepage weighs 1,015 KB, while five seconds of 60-frames-per-second H.264 video of that same page &mdash; 300 frames &mdash; weighs 175 KB. &ldquo;Those file sizes look switched,&rdquo; he writes. They are not: storing 300 times the data in a fifth the space, &ldquo;H.264 would seem to be 1500x as efficient as PNG.&rdquo;<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <figure>
+      <img src="images/h264.jpg" alt="Title art for the H.264 Is Magic essay" loading="lazy">
+      <figcaption>The essay&rsquo;s title art, ten years old and still compressing. <span class="cr">Sidbala.com</span></figcaption>
+    </figure>
+    <p>The explanations are a small liberal-arts education: raw 1080p at 60 Hz is &ldquo;~370 MB/sec,&rdquo; enough that &ldquo;a 50GB Blu-ray disk will only hold ~2 mins&rdquo;; lossy compression is taught through a street-racing diet (&ldquo;Those back seats? pfft. Chuck those. That subwoofer? Gone.&rdquo;); entropy through a coin that lands heads ten times, which you would describe as &ldquo;10 tosses, all heads&rdquo; &mdash; compressed, by you, just now.<sup class="cite"><a href="#src17">[17]</a></sup> Detail-discard alone puts a MacBook Pro at 7 percent of its size, speaker-grill holes gone.<sup class="cite"><a href="#src17">[17]</a></sup> The thread fast-forwards a decade: &ldquo;Article is dated (2016),&rdquo; one reader notes; &ldquo;Ten years later, 2026 magic: AV1,&rdquo; another answers, with AV2 on the runway &mdash; and then the thread argues about whether AV1 is &ldquo;mainstream&rdquo; until someone points out the Shield being cited as counter-evidence is seven years old, &ldquo;only one year newer than AV1 itself.&rdquo;<sup class="cite"><a href="#src18">[18]</a></sup></p>
+
+    <hr style="border:none; border-top:1px solid var(--rule-soft); margin:13px 0">
+    <span class="kicker">The Long View &middot; Prehistory of Code</span>
+    <h2 class="headline">&ldquo;Else&rdquo; Had to Be Invented</h2>
+    <div class="byline"><span>The Long View</span><span class="score"><b>&#9733; 157 pts &middot; 151 cmts</b></span></div>
+    <p class="first">A 2020 talk-as-transcript by Eric, resurfaced: <em>if-then-else had to be invented</em>, and the proof is linguistic. &ldquo;That&rsquo;s just English, right? Except that it isn&rsquo;t. I can&rsquo;t use &lsquo;else&rsquo; as a conjunction in normal speech, only in computer programs.&rdquo;<sup class="cite"><a href="#src19">[19]</a></sup> The archives agree with him: pre-computer records yield &ldquo;if yes,&rdquo; &ldquo;if no,&rdquo; and &ldquo;if however,&rdquo; but no &ldquo;else&rdquo;; the 1946 ENIAC work of Haskell Curry and Willa Wyatt called the choosing facility &ldquo;discrimination&rdquo;; the conditional jump of a 1949 BINAC brochure checked whether a number was negative; Fortran&rsquo;s first &ldquo;if&rdquo; leapt three ways at once, by sign; and Grace Hopper&rsquo;s Flow-Matic named the leftover case &ldquo;otherwise.&rdquo;<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <figure>
+      <img src="images/ifthenelse.png" alt="Opening slide of the if-then-else talk: an absurd idea" loading="lazy">
+      <figcaption>Slide one of the talk: the absurd idea, stated plainly. <span class="cr">GitHub</span></figcaption>
+    </figure>
+    <p>The thread, being a comments section, immediately tests the thesis against the language. &ldquo;The English language origin is from programming if/then/else,&rdquo; one reader asserts; &ldquo;Very not true,&rdquo; comes the two-word rejoinder &mdash; and then the counterevidence, fluent and everyday: &ldquo;Hurry up, else we&rsquo;ll be late. You&rsquo;d better leave now, else you&rsquo;ll miss the bus. Do what I say, else there&rsquo;ll be trouble.&rdquo;<sup class="cite"><a href="#src20">[20]</a></sup> A third reader&rsquo;s verdict on the whole matter is the thread in miniature: sure you can use &ldquo;else&rdquo; in speech &mdash; &ldquo;who&rsquo;s going to stop you?&rdquo; &mdash; to which the answer, of course, is: someone else.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Quote of the Day</span></div>
+    <div class="pullquote">&ldquo;Grocery is one of the hardest things to get right online. Someone has to pick a ripe avocado, find a substitute you&rsquo;d choose yourself, and get the ice cream to you before it melts.&rdquo;<span class="attr">Tony Xu, CEO of DoorDash, announcing the Instacart acquisition &middot; about.doordash.com</span></div>
+    <p style="font-size:12.5px; color:var(--ink-soft)">From the third story of this edition.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p>FOR SALE: One (1) cat, one trillion parameters, answers to &ldquo;Le Chonk.&rdquo; Open weights, closed mortgage &mdash; smallest quant still requires 256GB VRAM and a sunny windowsill.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+      <p>ANTIQUE: &ldquo;Else,&rdquo; one careful owner since 1958. Previously &ldquo;otherwise.&rdquo; Still legal in speech, contrary to rumor.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+      <p>WANTED: IPv4 addresses, any condition. Will pay in land. The Netherlands is already 57 times richer in /8s than in territory and is accepting applications from the sea.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+      <p>NOTICE TO GROCERS: The avocado must still be picked by hand and the ice cream will still melt. All other steps have been acquired for $17 billion.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    </div>
+
+    <div class="statbox">
+      <div class="t">Also on the Wire</div>
+      <table>
+        <tr><td>Tom&aacute;&scaron; Mikolov awarded the Czech Medal of Merit</td><td>140 pts</td></tr>
+        <tr><td>Alleged Chinese spy had &lsquo;close relationship&rsquo; with Nvidia&rsquo;s Jensen Huang</td><td>136 pts</td></tr>
+        <tr><td>Zombie stats: where the numbers AI quotes come from</td><td>117 pts</td></tr>
+        <tr><td>What we know so far about the Spain train crash</td><td>110 pts</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= 7. BOX SCORE ======================= -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Box Score &mdash; Front Page by the Points</span></div>
+    <svg viewBox="0 0 640 392" role="img" aria-label="Bar chart of Hacker News points per story" style="width:100%; height:auto; display:block">
+      <defs>
+        <pattern id="ink" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="5" height="5" fill="none"/><line x1="0" y1="0" x2="0" y2="5" stroke="#191510" stroke-width="1.8"/>
+        </pattern>
+        <pattern id="inkr" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="5" height="5" fill="none"/><line x1="0" y1="0" x2="0" y2="5" stroke="#7a1f1f" stroke-width="1.8"/>
+        </pattern>
+      </defs>
+      <!-- gridlines behind bars; scale: axisMax=1200, s=520/1200, ticks every 200 -->
+      <line x1="87" y1="6" x2="87" y2="344" class="grid"/>
+      <line x1="173" y1="6" x2="173" y2="344" class="grid"/>
+      <line x1="260" y1="6" x2="260" y2="344" class="grid"/>
+      <line x1="347" y1="6" x2="347" y2="344" class="grid"/>
+      <line x1="433" y1="6" x2="433" y2="344" class="grid"/>
+      <line x1="520" y1="6" x2="520" y2="344" class="grid"/>
+      <g>
+        <text x="0" y="18" class="barlabel" fill="#191510">Patrick Stewart</text>
+        <rect x="0.5" y="22" width="502" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="509" y="34" class="barval" fill="#7a1f1f" font-weight="700">1159 &#9733; &middot; 211 cmts</text>
+        <text x="0" y="52" class="barlabel" fill="#191510">Le Chonk, open-weight</text>
+        <rect x="0.5" y="56" width="416" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="423" y="68" class="barval" fill="#191510">961 &middot; 270</text>
+        <text x="0" y="86" class="barlabel" fill="#191510">Search under half</text>
+        <rect x="0.5" y="90" width="158" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="165" y="102" class="barval" fill="#191510">364 &middot; 310</text>
+        <text x="0" y="120" class="barlabel" fill="#191510">DoorDash buys Instacart &#8224;</text>
+        <rect x="0.5" y="124" width="149" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="156" y="136" class="barval" fill="#191510">343 &middot; 539</text>
+        <text x="0" y="154" class="barlabel" fill="#191510">Mexico&rsquo;s forbidden EVs</text>
+        <rect x="0.5" y="158" width="113" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="120" y="170" class="barval" fill="#191510">260 &middot; 285</text>
+        <text x="0" y="188" class="barlabel" fill="#191510">LLM Voice</text>
+        <rect x="0.5" y="192" width="110" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="117" y="204" class="barval" fill="#191510">254 &middot; 137</text>
+        <text x="0" y="222" class="barlabel" fill="#191510">PHP2Shell chain</text>
+        <rect x="0.5" y="226" width="103" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="110" y="238" class="barval" fill="#191510">238 &middot; 104</text>
+        <text x="0" y="256" class="barlabel" fill="#191510">H.264 Is Magic</text>
+        <rect x="0.5" y="260" width="99" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="106" y="272" class="barval" fill="#191510">229 &middot; 103</text>
+        <text x="0" y="290" class="barlabel" fill="#191510">If IPv4 were land</text>
+        <rect x="0.5" y="294" width="85" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="92" y="306" class="barval" fill="#191510">195 &middot; 216</text>
+        <text x="0" y="324" class="barlabel" fill="#191510">If-then-else</text>
+        <rect x="0.5" y="328" width="68" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="75" y="340" class="barval" fill="#191510">157 &middot; 151</text>
+      </g>
+      <line x1="0.5" y1="6" x2="0.5" y2="352" class="axis"/>
+      <line x1="0.5" y1="352" x2="520" y2="352" class="axis"/>
+      <text x="0" y="366" class="barval" fill="#3d352a" text-anchor="start">0</text>
+      <text x="87" y="366" class="barval" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="173" y="366" class="barval" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="260" y="366" class="barval" fill="#3d352a" text-anchor="middle">600</text>
+      <text x="347" y="366" class="barval" fill="#3d352a" text-anchor="middle">800</text>
+      <text x="433" y="366" class="barval" fill="#3d352a" text-anchor="middle">1000</text>
+      <text x="520" y="366" class="barval" fill="#3d352a" text-anchor="middle">1200</text>
+      <text x="0" y="386" class="barval" fill="#3d352a">&#9733; = points &middot; cmts = comments &middot; &#8224; most-discussed story of the day &middot; red hatch marks Apple coverage (none today)</text>
+    </svg>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>The Day in One Line</span></div>
+    <div class="pullquote" style="font-size:15.5px">Ten fresh stories, 4,160 points, 2,326 comments: Patrick Stewart&rsquo;s death leads the page and its thread becomes a wake; Mistral opens the weights of a one-trillion-parameter model named Le Chonk; DoorDash agrees to pay $17 billion for Instacart while the thread argues about whether anyone would notice; Google Search slips below half of Alphabet for the first time; and two classics &mdash; H.264&rsquo;s 1,500-fold magic and the invention of &ldquo;else&rdquo; &mdash; return to explain the invisible.</div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories surveyed</td><td>10</td></tr>
+        <tr><td>Aggregate points</td><td>4,160</td></tr>
+        <tr><td>Aggregate comments</td><td>2,326</td></tr>
+        <tr><td>Fresh stories</td><td>10</td></tr>
+        <tr><td>Follow-ups</td><td>0</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Top story by points</td><td>Patrick Stewart (1,159)</td></tr>
+        <tr><td>Most-discussed</td><td>DoorDash&ndash;Instacart (539)</td></tr>
+        <tr><td>Stories the newsroom could not open</td><td>2 (Times, Post)</td></tr>
+        <tr><td>Apple stories (red hatch)</td><td>0</td></tr>
+      </table>
+    </div>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>Clarification:</b> In the phrase &ldquo;AI-assisted campaign,&rdquo; the evidence is that the tools were installed &mdash; Claude Code, aiscan with DeepSeek and Kimi, FOFA keys &mdash; not that they drove. The researchers&rsquo; own words: &ldquo;no direct evidence.&rdquo; The adjective is doing more lifting than the noun.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+      <p><b>Correction:</b> This page&rsquo;s bulletin said Google Search &ldquo;dips under one half,&rdquo; which is true of the share and misleading of the money: Search revenue grew to $63.4 billion in the quarter. The line it crossed was alphabetical, not financial.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+      <p><b>Correction:</b> The cars Americans can&rsquo;t buy are, as of press time, joined by the article about them: the Post&rsquo;s paywall turned away this newsroom and, the thread reports, most everyone else. The Herald regrets the symmetry.<sup class="cite"><a href="#src9">[9]</a></sup><sup class="cite"><a href="#src10">[10]</a></sup></p>
+      <p><b>Clarification:</b> In &ldquo;open weights,&rdquo; the word &ldquo;open&rdquo; describes the license, not the luggage. Le Chonk weighs one trillion parameters; the smallest announced quant still requires 256GB of VRAM.<sup class="cite"><a href="#src3">[3]</a></sup><sup class="cite"><a href="#src4">[4]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= 8. PUBLISHER'S NOTE ======================= -->
+<div class="publisher">
+  <div class="t">From the Publisher&rsquo;s Desk</div>
+  <p>An afternoon in which the top of the page is an obituary and the bottom of it is a eulogy for &ldquo;else&rdquo; &mdash; the news that Patrick Stewart has died arrived via a Times report this newsroom could not open, so the Culture Desk typeset it from the 211 comments beneath the link, and found them equal to the assignment: a flute, some sonnets, a childhood or two hundred. Around that, the machines kept their appointments: Mistral gave away a one-trillion-parameter model it calls Le Chonk and the thread immediately measured its own graphics cards against the cat; DoorDash agreed to buy Instacart for $17 billion, a sum the thread weighed against the cost of a ripe avocado; Google Search fell below half of Alphabet&rsquo;s revenue while growing anyway, a demotion and a promotion in the same sentence; and a single unauthenticated HTTP request was shown to root a firewall, provided it may first eat 883 megabytes of memory. The Herald&rsquo;s rule held: every number above was counted at 21:01 UTC, every quote lifted from the record, and every joke paid for by a source. The Captain&rsquo;s log, this once, writes itself.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- ======================= 9. SOURCES ======================= -->
+<div class="rule-thick"></div>
+<div class="section-label"><span>Wire Services &amp; Citations</span></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">&ldquo;Patrick Stewart has died&rdquo; &mdash; The New York Times, arts/television, Oct. 29, 2026 (the article itself was unreachable from this newsroom; the story above is reported from the submission and its thread). <a href="https://www.nytimes.com/2026/10/29/arts/television/patrick-stewart-dead.html">nytimes.com</a></li>
+    <li data-n="[2]" id="src2">Hacker News thread, 211 comments. <a href="https://news.ycombinator.com/item?id=50294702">news.ycombinator.com/item?id=50294702</a></li>
+    <li data-n="[3]" id="src3">&ldquo;Mistral Large 4 (Le Chonk) is now open weight&rdquo; &mdash; Mistral AI, Oct. 2026. <a href="https://mistral.ai/news/mistral-large-4-oss/">mistral.ai/news/mistral-large-4-oss</a></li>
+    <li data-n="[4]" id="src4">Hacker News thread, 270 comments. <a href="https://news.ycombinator.com/item?id=50289418">news.ycombinator.com/item?id=50289418</a></li>
+    <li data-n="[5]" id="src5">&ldquo;DoorDash to Acquire Instacart to Help Local Stores Win&rdquo; &mdash; DoorDash newsroom, Oct. 29, 2026. <a href="https://about.doordash.com/en-us/news/doordash-to-acquire-instacart">about.doordash.com</a></li>
+    <li data-n="[6]" id="src6">Hacker News thread, 539 comments. <a href="https://news.ycombinator.com/item?id=50287919">news.ycombinator.com/item?id=50287919</a></li>
+    <li data-n="[7]" id="src7">&ldquo;Google Search Is Less Than 50% of Alphabet&rsquo;s Revenue for the First Time Ever&rdquo; &mdash; Company Atlas (Kadoa), Oct. 29, 2026. <a href="https://www.kadoa.com/companies/insights/google-search-below-half">kadoa.com</a></li>
+    <li data-n="[8]" id="src8">Hacker News thread, 310 comments. <a href="https://news.ycombinator.com/item?id=50291945">news.ycombinator.com/item?id=50291945</a></li>
+    <li data-n="[9]" id="src9">&ldquo;I went to Mexico to test-drive the cars Americans can&rsquo;t buy&rdquo; &mdash; The Washington Post, climate-environment, Oct. 27, 2026 (paywalled; unreachable from this newsroom; the story above is reported from the submission and its thread). <a href="https://www.washingtonpost.com/climate-environment/2026/10/27/i-saw-future-driving-cheap-ev-chinese-brands-mexico/">washingtonpost.com</a></li>
+    <li data-n="[10]" id="src10">Hacker News thread, 285 comments. <a href="https://news.ycombinator.com/item?id=50290668">news.ycombinator.com/item?id=50290668</a></li>
+    <li data-n="[11]" id="src11">&ldquo;LLM Voice&rdquo; &mdash; Martin Fowler, bliki, Oct. 29, 2026. <a href="https://martinfowler.com/bliki/LLM-Voice.html">martinfowler.com/bliki/LLM-Voice</a></li>
+    <li data-n="[12]" id="src12">Hacker News thread, 137 comments. <a href="https://news.ycombinator.com/item?id=50290177">news.ycombinator.com/item?id=50290177</a></li>
+    <li data-n="[13]" id="src13">&ldquo;Chained PHP2Shell Exploit Roots 25 Servers, including US Government Servers&rdquo; &mdash; Dream Research, updated Oct. 29, 2026. <a href="https://dreamgroup.com/blog/chained-php2shell-exploit-roots-25-servers">dreamgroup.com</a></li>
+    <li data-n="[14]" id="src14">Hacker News thread, 104 comments. <a href="https://news.ycombinator.com/item?id=50286987">news.ycombinator.com/item?id=50286987</a></li>
+    <li data-n="[15]" id="src15">&ldquo;If IPv4 were land&rdquo; &mdash; IP Trust, October 2026 dataset (country address counts from the page&rsquo;s own published data; ratios computed by The Herald from that data). <a href="https://iptrust.co/blog/if-ipv4-were-land">iptrust.co/blog/if-ipv4-were-land</a></li>
+    <li data-n="[16]" id="src16">Hacker News thread, 216 comments. <a href="https://news.ycombinator.com/item?id=50287775">news.ycombinator.com/item?id=50287775</a></li>
+    <li data-n="[17]" id="src17">&ldquo;H.264 Is Magic&rdquo; &mdash; Sid Bala, 2016. <a href="https://sidbala.com/h-264-is-magic/">sidbala.com/h-264-is-magic</a></li>
+    <li data-n="[18]" id="src18">Hacker News thread, 103 comments. <a href="https://news.ycombinator.com/item?id=50291054">news.ycombinator.com/item?id=50291054</a></li>
+    <li data-n="[19]" id="src19">&ldquo;if-then-else had to be invented&rdquo; (talk transcript) &mdash; Eric Normal, 2020. <a href="https://github.com/e-n-f/if-then-else/blob/master/if-then-else.md">github.com/e-n-f/if-then-else</a></li>
+    <li data-n="[20]" id="src20">Hacker News thread, 151 comments. <a href="https://news.ycombinator.com/item?id=50233059">news.ycombinator.com/item?id=50233059</a></li>
+  </ol>
+  <div class="method">Methodology: The front page was snapshotted at &#8776;21:01 UTC on Oct. 29, 2026, via the Hacker News (Algolia) front-page API (30 live stories) and scored as found. Ten stories were selected preferring those not covered in the previous four editions; none of the ten had been covered, so this edition runs ten fresh stories, no follow-ups, and no digest. Aggregates (4,160 points; 2,326 comments) are the exact sums of the ten snapshot scores. The New York Times and Washington Post articles were unreachable from this newsroom (bot wall and paywall/timeout respectively); both stories are typeset from submission metadata and thread comments, as noted in their sources. The IPv4 map figures are computed from the page&rsquo;s own published country dataset (IP Trust geolocation database, October 2026); world land area of 135 million km&sup2; and 3.6 billion locatable addresses are the page&rsquo;s stated constants. Article text, comments and images were fetched from each source this run; images are each site&rsquo;s own announcement art, credited by host, with file types verified by magic bytes (Mistral&rsquo;s image is served as JPEG under a .webp address and was re-extended accordingly). Every quote is from a fetched article or thread. Corrections and classifieds reference today&rsquo;s stories only.</div>
+</div>
+
+<!-- ======================= 10. COLOPHON ======================= -->
+<footer class="colophon">
+  <span>The Hacker Herald &mdash; Typeset from the Hacker News front page</span>
+  <span>&#10087; Printed on 100% recycled bandwidth &#10087;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</span>
+</footer>
+
+</body>
+</html>
