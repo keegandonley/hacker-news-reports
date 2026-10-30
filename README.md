@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-10-30 · Afternoon | 2026-10-30 ≈21:00 | The Claude Code Backdoor, in Full | 625 | 415 | [editions/2026-10-30-afternoon/](editions/2026-10-30-afternoon/) |
 | 2026-10-30 · Morning | 2026-10-30 ≈13:01 | We're releasing the weights of Mistral Large 4 | 1,556 | 408 | [editions/2026-10-30-morning/](editions/2026-10-30-morning/) |
 | 2026-10-29 · Afternoon | 2026-10-29 ≈21:01 | Patrick Stewart Has Died | 1,159 | 211 | [editions/2026-10-29-afternoon/](editions/2026-10-29-afternoon/) |
 | 2026-10-29 · Morning | 2026-10-29 ≈13:01 | The Fingerprinter That Cries “Ricin” | 1,359 | 250 | [editions/2026-10-29-morning/](editions/2026-10-29-morning/) |

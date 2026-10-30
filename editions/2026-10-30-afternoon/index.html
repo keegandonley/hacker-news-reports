@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, October 30, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ======================= 1. TOP BAR ======================= -->
+<div class="topbar">
+  <span>Hacker News Front Page &middot; Snapshot &asymp;21:00 UTC</span>
+  <span class="mid">Afternoon Edition</span>
+  <span>10 Stories &middot; 2,478 Points &middot; 1,406 Comments</span>
+</div>
+
+<!-- ======================= 2. NAMEPLATE ======================= -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Friday, October 30, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- ======================= 3. BULLETINS ======================= -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Security Desk &middot; The Lead &middot; Follow-Up</span><b>Backdoor advisory leads the page</b>The full technical write-up on the backdoored Claude Code extension tops the front page at 625 points &mdash; 283 more than this morning&rsquo;s first reports &mdash; and Cursor now confirms two malicious versions, 2.1.312 and 2.1.313, and an attacker server taken offline.</div>
+  <div class="cell"><span class="tag">Security Desk &middot; Breaches</span><b>Northflank: assume every secret read</b>A Wiz threat alert at 11:43 UTC opened the platform&rsquo;s worst day. By 19:28 UTC the guidance was unchanged &mdash; rotate everything, including AI keys, and disable public addon access; the mechanism is still unconfirmed.</div>
+  <div class="cell"><span class="tag">AI Desk &middot; The Ledger</span><b>Anthropic may list as junk-rated</b>Blackstone now tells investors to expect a &ldquo;high&rdquo; junk rating after the IPO, per the FT &mdash; a reversal of its earlier guidance that helped send the Nasdaq 100 down 3.7 percent in Friday trading.</div>
+  <div class="cell"><span class="tag">Security Desk &middot; Attribution</span><b>North Korea tied to $6.36B Binance theft</b>TRM Labs assigns the heist to the TraderTraitor unit &ldquo;with high confidence&rdquo;; about $3 billion is frozen with partners. The tally has grown from this morning&rsquo;s $5.6B to $6.3B.</div>
+</div>
+
+<!-- ======================= 4. LEAD SPREAD ======================= -->
+<div class="lead">
+  <div class="cell main">
+    <span class="kicker">Lead Story &middot; Security Desk &middot; Follow-Up</span>
+    <h2 class="headline">The Claude Code Backdoor, in Full: An SSH Key Named &ldquo;svc-telemetry,&rdquo; Two Malicious Versions, and an Attacker Server Now Dark</h2>
+    <h3 class="deck">Phorion&rsquo;s advisory &mdash; first reported on this morning&rsquo;s wire at 342 points, now the page&rsquo;s lead at 625 &mdash; walks the implant end to end; Cursor confirms versions 2.1.312 and 2.1.313 were live from 2:27 a.m. to 1:35 p.m. PT, were &ldquo;not developed by Anthropic,&rdquo; and that the operator&rsquo;s server has been taken offline</h3>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 625 pts &middot; &#9650; +283 since the last edition</b></span></div>
+    <p class="first">LONDON &mdash; The complete anatomy of the backdoored Claude Code extension, first flagged on this morning&rsquo;s wire at 342 points<sup class="cite"><a href="#src22">[22]</a></sup> and now the front page&rsquo;s lead story at 625, was published by Phorion Technology &mdash; the London-registered (EC1V 2NX) security firm of co-founder and chief executive Calum Hall<sup class="cite"><a href="#src1">[1]</a></sup> &mdash; and its infection chain is now fully itemized<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup>: an immediately-invoked function expression prepended to the minified <i>extension.js</i> bundle, pulling in Node&rsquo;s <i>child_process</i>, <i>fs</i>, <i>os</i>, <i>path</i>, <i>http</i> and <i>crypto</i> modules, and executing the moment Node loads the file &mdash; before the extension&rsquo;s own <i>activate</i> callback runs, with no user interaction required. Stage one appends an attacker-controlled Ed25519 public key &mdash; comment field &ldquo;svc-telemetry&rdquo; &mdash; to ~/.ssh/authorized_keys, then works to switch the local SSH daemon on and beacon host reconnaissance to the operator<sup class="cite"><a href="#src1">[1]</a></sup>.</p>
+    <figure>
+      <img src="images/claude.jpg" alt="Phorion's security advisory card for the Claude Code extension compromise">
+      <figcaption>The advisory&rsquo;s own summary card: a persistent SSH backdoor across macOS, Linux and Windows. <span class="cr">Phorion.io</span></figcaption>
+    </figure>
+    <p>Cursor&rsquo;s own security notice, published alongside, supplies what the morning reports lacked<sup class="cite"><a href="#src3">[3]</a></sup>: two malicious versions &mdash; 2.1.312 <i>and</i> 2.1.313, for Windows and macOS &mdash; were available in the Cursor VS Code Extension Marketplace from about 2:27 a.m. to 1:35 p.m. PT, and &ldquo;were not developed by Anthropic.&rdquo; The exfiltrated data is listed precisely: hostname, username, OS, architecture, home-directory path, environment variable <i>names</i>, working directories, configured Git email, and public IP. The reverse SSH tunnel &ldquo;would fail&rdquo; except where Cursor was started with administrator privileges &mdash; but the key, the persistence (a LaunchAgent on macOS; a scheduled task attempting to run as SYSTEM on Windows, retrying roughly every 60 seconds) and the host-detail upload landed regardless. The attacker&rsquo;s server no longer functions: Cursor worked with the hosting cloud provider to take it offline, then shut the marketplace down entirely, audited it, rotated its keys, rebuilt it and brought it back<sup class="cite"><a href="#src3">[3]</a></sup>.</p>
+    <p>The macOS flaw in the malware survives the second telling: the payload checks Remote Login by running <i>systemsetup -getremotelogin</i>, which &mdash; run as a standard user &mdash; prints an administrator-access error and exits with status 0 instead of returning &ldquo;Off,&rdquo; so the script skips the enablement step entirely on Macs not already running SSH<sup class="cite"><a href="#src1">[1]</a></sup>. The thread&rsquo;s open question is scope: one reader asks whether the incident touches &ldquo;only people using Cursor or all VS Code users,&rdquo; noting the same version number was pulled from the official VS Code Marketplace and npm<sup class="cite"><a href="#src2">[2]</a></sup> &mdash; Phorion attributes the compromise to the Cursor Marketplace listing, and Cursor says it has &ldquo;no evidence that other versions of the extension or the official distribution are affected&rdquo;<sup class="cite"><a href="#src3">[3]</a></sup>. Guidance, updated from morning: review environments for Claude Code for VS Code 2.1.313 &mdash; and now 2.1.312 &mdash; and engage incident response where the extension is found<sup class="cite"><a href="#src1">[1]</a></sup>.</p>
+  </div>
+
+  <div class="cell side">
+    <span class="kicker">Culture Desk &middot; The Engine Room</span>
+    <h2 class="headline">The Case That AI Deskills SREs Rests on a 1983 Paper About Factory Floors</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 392 pts &middot; 300 cmts</b></span></div>
+    <p class="first">The day&rsquo;s second-largest story is a newsletter argument with an old spine: Lisanne Bainbridge&rsquo;s 1983 paper &ldquo;Ironies of Automation,&rdquo; among the most-cited in human-factors research, repurposed for on-call engineers<sup class="cite"><a href="#src4">[4]</a></sup>. The SigNoz newsletter&rsquo;s framing question: when AI handles 95 percent of your incident response, &ldquo;do you get worse at handling the 5% that actually matters?&rdquo; Bainbridge&rsquo;s finding &mdash; the more a process is automated, the more critical the human operator becomes in the rare moments the automation fails, and the less practice that operator gets &mdash; is mapped onto the already-automated tier of reliability work: alert grouping, runbook execution, log-pattern detection and auto-remediation of known failure modes<sup class="cite"><a href="#src4">[4]</a></sup>.</p>
+    <figure>
+      <img src="images/sre.jpg" alt="Illustration from the SigNoz newsletter on AI deskilling SREs" loading="lazy">
+      <figcaption>The newsletter&rsquo;s illustration, from its summary card. <span class="cr">Substackcdn.com</span></figcaption>
+    </figure>
+    <p>The thread&rsquo;s 300 comments file mostly affidavits. One reader watched colleagues spend two hours steering an agent at a fault that was &ldquo;blindingly obvious&rdquo; to anyone who had not gone to the model first, and drew the dependency conclusion: a shop that debugs with the model is hostage to the model&rsquo;s uptime<sup class="cite"><a href="#src5">[5]</a></sup>. Another puts the power asymmetry flatly: &ldquo;At this point a company can effectively fire you by taking away access the Enterprise LLMs.&rdquo;<sup class="cite"><a href="#src5">[5]</a></sup> Pushback is present and specific: AI is &ldquo;already pretty good&rdquo; at multi-signal correlation across metrics, logs and traces, and &ldquo;half decent&rdquo; at change-risk assessment, one practitioner counters<sup class="cite"><a href="#src5">[5]</a></sup> &mdash; the deskilling argument, the thread agrees, turns on the 5 percent, not the 95.</p>
+  </div>
+
+  <div class="cell side">
+    <span class="kicker">AI Desk &middot; The Ledger</span>
+    <h2 class="headline">Blackstone Now Expects a &ldquo;High&rdquo; Junk Rating for Anthropic After Its IPO</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 187 pts &middot; 133 cmts</b></span></div>
+    <p class="first">The Financial Times&rsquo;s report &mdash; the paper&rsquo;s paywall turned this newsroom away, so the text is taken from the full article posted in the thread by a reader<sup class="cite"><a href="#src6">[6]</a></sup><sup class="cite"><a href="#src7">[7]</a></sup> &mdash; says Blackstone has told investors in Anthropic&rsquo;s latest $63 billion chip-financing deal, &ldquo;Project North Star,&rdquo; that the company is expected to receive a &ldquo;high&rdquo; junk rating from major credit agencies after its initial public offering, a reversal of its guidance that an investment-grade rating would arrive before year-end<sup class="cite"><a href="#src6">[6]</a></sup>. The mechanics matter more than the label: a rating in the double-B range would shrink the pool of capital Anthropic can tap, because many insurance companies and pension funds are restricted from large positions in junk-rated borrowers<sup class="cite"><a href="#src6">[6]</a></sup>.</p>
+    <p>The numbers in play, per the same text: Anthropic filed to go public on Monday, setting up what could be the largest listing of all time; it holds more than $112 billion in cash and equivalents; investors anticipate roughly $100 billion more raised in the IPO; and its prospectus sketches &ldquo;bold but sane&rdquo; plans to spend more than $800 billion on computing infrastructure through 2045<sup class="cite"><a href="#src6">[6]</a></sup>. North Star finances the lease of 1.5 gigawatts of Google&rsquo;s semiconductors, with $42 billion of senior loans guaranteed by Broadcom and $18 billion of junior debt backed by Anthropic&rsquo;s lease payments &mdash; $9 billion of that junior debt held by Blackstone funds at a yield above 10 percent<sup class="cite"><a href="#src6">[6]</a></sup>. US tech stocks slid to session lows after the report, the Nasdaq 100 down 3.7 percent Friday afternoon, on a day already lowered by Amazon and Intel earnings; a tech portfolio manager, quoted: &ldquo;It&rsquo;s all about access to credit&hellip; if [Anthropic] isn&rsquo;t investment grade, the cost of credit goes higher, that&rsquo;s not good for anyone.&rdquo;<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <div class="statbox">
+      <div class="t">The Listing, by the Numbers</div>
+      <table>
+        <tr><td>Chip financing deal (&ldquo;Project North Star&rdquo;)</td><td>$63B</td></tr>
+        <tr><td>Compute spend planned through 2045</td><td>&gt;$800B</td></tr>
+        <tr><td>Cash and equivalents on hand</td><td>&gt;$112B</td></tr>
+        <tr><td>Anticipated raise in the IPO</td><td>&asymp;$100B</td></tr>
+        <tr><td>Senior loans guaranteed by Broadcom</td><td>$42B</td></tr>
+        <tr><td>Junior debt held by Blackstone funds</td><td>$9B, &gt;10%</td></tr>
+        <tr><td>Nasdaq 100, Friday afternoon</td><td>&minus;3.7%</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= 5. ROW OF 3 ======================= -->
+<div class="row3">
+  <div class="cell">
+    <span class="kicker">Tools Desk &middot; Open Source</span>
+    <h2 class="headline">Tangled Rebuilds the Code Forge on an Open Protocol, With Issues Stored in the Repository Itself</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 169 pts &middot; 59 cmts</b></span></div>
+    <p class="first">Tangled, a code forge built on the AT Protocol &mdash; the open protocol behind Bluesky &mdash; shipped the release its blog calls &ldquo;the first truly federated code forge&rdquo;: host code on your own servers and still collaborate with everyone else, self-hosting as much or as little of the stack as wanted &mdash; Git hosting, CI runners, or the entire API server and UI<sup class="cite"><a href="#src8">[8]</a></sup>. The rearchitecture is concrete: a new Svelte frontend deployed at the edge, fed by &ldquo;bobbin,&rdquo; a diskless, entirely in-memory indexer written in Rust deployed across 11-plus regions &mdash; replacing a single Go monolith that ran one SQLite database on &ldquo;one medium-sized server in Sweden&rdquo; &mdash; plus &ldquo;knot2,&rdquo; a second-generation knot server rewritten in Rust with a fully custom Git server and an SSH server in the same binary<sup class="cite"><a href="#src8">[8]</a></sup>.</p>
+    <figure>
+      <img src="images/forge.png" alt="Launch card for Tangled's federated code forge release" loading="lazy">
+      <figcaption>The launch card: 2005 mail plus Git, 2009 GitHub plus Git, 2025 AT Protocol plus Git. <span class="cr">Tangled.org</span></figcaption>
+    </figure>
+    <p>The structural bet is where the issues live: pull requests, comments, reactions and labels are now &ldquo;collaborative objects&rdquo; &mdash; chains of Git objects stored in the repository itself, signed, full history included, and synced across the network via the standard firehose, much as a protocol data server holds records<sup class="cite"><a href="#src8">[8]</a></sup>. Co-founder &ldquo;icy&rdquo; answered questions in the thread: organizations have shipped, and private repositories roll out &ldquo;in the following couple weeks&rdquo;<sup class="cite"><a href="#src9">[9]</a></sup>. A reader whose Neovim plugin is hosted on Tangled reported federation&rsquo;s inherited failure mode &mdash; the plugin&rsquo;s backing knot went down, and nothing on the site made clear whose server was the problem<sup class="cite"><a href="#src9">[9]</a></sup> &mdash; and another asked the migration question straight: no SHA-256 repository support yet, &ldquo;when Git 3 is moving to SHA256 anyway&rdquo;<sup class="cite"><a href="#src9">[9]</a></sup>.</p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Hardware Desk &middot; Retro Iron</span>
+    <h2 class="headline">Classic Mac OS Brought Up on a Nintendo Wii &mdash; by Hand, Without a Coding Agent</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>&#9733; 152 pts &middot; 40 cmts</b></span></div>
+    <p class="first">A guest post at Virtually Fun, by the developer Rairii, documents reaching the desktop with classic Mac OS on the GameCube and Wii line of chipsets &mdash; the GameCube&rsquo;s Flipper integrated chipset was &ldquo;very much designed by ArtX,&rdquo; effectively finished before ATI acquired the company, with the Wii&rsquo;s Hollywood and the Wii U&rsquo;s Latte as its successors &mdash; which the author calls most likely the first time since the CHRP clone era that someone outside Apple brought classic Mac OS up on a new system to the desktop<sup class="cite"><a href="#src10">[10]</a></sup>. The project began 2025-06-22 and required porting OpenBIOS and patching the &ldquo;Trampoline&rdquo; bootloader&rsquo;s assumptions about the physical address space; the author states plainly, in a year of agent-written code: &ldquo;no kind of coding agent or LLM was used, all coding, reversing and debugging work done by myself&rdquo;<sup class="cite"><a href="#src10">[10]</a></sup>.</p>
+    <p>Details for the faithful: disk drivers were written for the EXI bus &mdash; Nintendo and Macronix&rsquo;s name for SPI &mdash; including the SD Gecko, a straight-through SD adapter for the GameCube memory-card slot<sup class="cite"><a href="#src10">[10]</a></sup>. The m68k part of the TBXI bootloader has carried the name &ldquo;SuperMario&rdquo; for the entire PowerPC era, a fact the author declines to call a coincidence<sup class="cite"><a href="#src10">[10]</a></sup>. The thread supplies context around the milestone: modern macOS &ldquo;still has classic Mac OS code in it&rdquo; dating back as far, one reader notes; another points to Open Shop Channel and WiiLink as the homebrew on-ramps keeping the hardware in service<sup class="cite"><a href="#src11">[11]</a></sup>.</p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">AI Desk &middot; Show HN</span>
+    <h2 class="headline">A 6502 CPU Compiled &mdash; Not Trained &mdash; Into a Stock Qwen Model</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 138 pts &middot; 95 cmts</b></span></div>
+    <p class="first">The Show HN bench offers the day&rsquo;s strangest working demo: nesformer runs the NES&rsquo;s 6502 CPU (the core of its 2A03 chip), its 2 KB of work RAM, and a cartridge&rsquo;s program ROM inside a standard Qwen3_5ForCausalLM checkpoint &mdash; and &ldquo;nobody trained these weights; a compiler computed every one&rdquo;<sup class="cite"><a href="#src12">[12]</a></sup>. Play a game and the model predicts the CPU&rsquo;s execution log one token at a time, while a small host program plays the rest of the console around it: drawing the picture, reading the controller, firing the vblank interrupt<sup class="cite"><a href="#src12">[12]</a></sup>. The project builds on Qwenputer by Divyansh Agrawal &mdash; which compiled a CHIP-8 and then a RISC-V core into Qwen3.5-4B &mdash; and reuses its central trick: the model&rsquo;s Gated DeltaNet state serves as the machine&rsquo;s memory<sup class="cite"><a href="#src12">[12]</a></sup>.</p>
+    <figure>
+      <img src="images/nesformer.png" alt="Repository card for nesformer" loading="lazy">
+      <figcaption>The repository&rsquo;s card. <span class="cr">Opengraph.githubassets.com</span></figcaption>
+    </figure>
+    <p>The checking is the substantive part: for the bundled test games, &ldquo;every frame also matches a conventional 6502 emulator&rsquo;s output exactly&rdquo;<sup class="cite"><a href="#src12">[12]</a></sup>. The thread splits along the familiar seam &mdash; a longtime reader of this page loves the hack while finding it &ldquo;horrifying&rdquo; to an &ldquo;assembly-code-golfing-brain&rdquo;; another shrugs that digital logic reducible to weights was never in doubt; and the operational question gets asked plainly: &ldquo;How do they know it&rsquo;s &lsquo;working&rsquo;? Did they test every possible input/output combination?&rdquo;<sup class="cite"><a href="#src13">[13]</a></sup> The frame-matching claim is the answer on offer<sup class="cite"><a href="#src12">[12]</a></sup>.</p>
+  </div>
+</div>
+
+<!-- ======================= 6. SECURITY & PRACTICAL ======================= -->
+<div class="sec2">
+  <div class="cell">
+    <span class="kicker">Security Briefing &middot; Platform Breach</span>
+    <h2 class="headline">Northflank&rsquo;s Day, on the Record: &ldquo;Assume All Environment Variables Have Been Decrypted&rdquo;</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 275 pts &middot; 195 cmts</b></span></div>
+    <p class="first">The platform&rsquo;s own status page carries the sequence, timestamped: a Wiz threat alert at 11:43 UTC today, engineer review one minute later, initial network-policy patching from 12:02, Wiz CIRT support requested at 13:00 &mdash; and by 13:58 UTC the state &ldquo;Identified,&rdquo; with the instruction that gives this story its headline: assume all environment variables have been decrypted; disable and rotate every key, across workloads, secret groups and global secrets<sup class="cite"><a href="#src14">[14]</a></sup>. At 15:12 UTC, secret rotation for Postgres and MongoDB was enabled for all users, with public addon exposure recommended off; by the 19:28 UTC update the investigation was still open, with &ldquo;no further confirmed findings&rdquo; and guidance unchanged &mdash; the page also records that multiple users are confirming their AI keys have been used<sup class="cite"><a href="#src14">[14]</a></sup>.</p>
+    <p>The thread is largely damaged parties doing arithmetic. One user with &ldquo;a throwaway appstore app&rdquo; that uses Northflank for its backend now faces rotating RevenueCat, Apple and AI secrets &ldquo;for an app with basically 2 users&rdquo;<sup class="cite"><a href="#src15">[15]</a></sup>. The structural read, after Railway&rsquo;s breach before this one: incidents like these will drive &ldquo;a convergence back to hyperscalers,&rdquo; one reader predicts &mdash; &ldquo;there&rsquo;s no amount of &lsquo;nicer to use&rsquo; that can replace security, at least certainly when selling to enterprises&rdquo;<sup class="cite"><a href="#src15">[15]</a></sup>. Northflank has not published the intrusion mechanism.</p>
+
+    <hr style="border:none; border-top:1px solid var(--rule-soft); margin:13px 0">
+    <span class="kicker">Security Briefing &middot; Cloud Tenants</span>
+    <h2 class="headline">Five More Cross-Tenant Paths in Azure&rsquo;s API Connections, and $200,000 in Bounties</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 231 pts &middot; 40 cmts</b></span></div>
+    <p class="first">Binary Security&rsquo;s third entry in its &ldquo;Azure&rsquo;s Weakest Link&rdquo; series documents five vulnerabilities in API Connections &mdash; the Azure Logic Apps feature whose key-exchange architecture can be steered into using a victim&rsquo;s connection token against the victim&rsquo;s backend &mdash; each yielding what the post calls the same primitives: cross-tenant compromise of Key Vaults and Azure SQL databases, or any externally connected service &ldquo;such as Jira or Salesforce.&rdquo; The vulnerabilities &ldquo;netted me a cool $200,000&rdquo; from Microsoft, and the work was presented at Blue Hat Asia 2026<sup class="cite"><a href="#src16">[16]</a></sup>.</p>
+    <p>The weakness is structural: what stands between an attacker and another tenant&rsquo;s connection is &ldquo;really the layers of input validation bolted onto the various systems&rdquo; &mdash; catching every edge case around the ARM REST API&rsquo;s DynamicInvoke and /extensions/proxy/ endpoints is, in the author&rsquo;s judgment, &ldquo;really difficult&rdquo;<sup class="cite"><a href="#src16">[16]</a></sup>. The thread classifies the bugs &mdash; path traversal and IDOR, &ldquo;likely been active since the inception of these capabilities,&rdquo; one reader writes &mdash; and notes the reporting asymmetry: as an outsider with a working chain, &ldquo;$$$&rdquo;; as an employee with &ldquo;theoretical&rdquo; findings, &ldquo;a lot of questions as to why you were looking&rdquo;<sup class="cite"><a href="#src17">[17]</a></sup>.</p>
+
+    <hr style="border:none; border-top:1px solid var(--rule-soft); margin:13px 0">
+    <span class="kicker">Security Briefing &middot; Attribution</span>
+    <h2 class="headline">TRM Links the Binance Heist to North Korea&rsquo;s TraderTraitor; the Tally Reaches $6.36 Billion</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 160 pts &middot; 104 cmts</b></span></div>
+    <p class="first">The attribution this morning&rsquo;s heist coverage lacked has landed, via an AP report carried by NPR: TRM Labs assigns the Binance theft to TraderTraitor, which it describes as North Korea&rsquo;s elite hacking unit, &ldquo;with high confidence&rdquo; &mdash; and measured the event precisely: &ldquo;An attacker moved approximately USD 6.36 billion out of Binance wallets on ten blockchains, most of it in about 20 minutes,&rdquo; which would make it the largest cryptocurrency theft on record<sup class="cite"><a href="#src18">[18]</a></sup>. Chainalysis co-founder and CEO Jonathan Levin wrote that his firm also believes the hack was &ldquo;likely done by DPRK group TraderTraitor&rdquo;<sup class="cite"><a href="#src18">[18]</a></sup>. Binance says it worked with partners to freeze roughly $3 billion in affected assets, that deposits were unaffected, that suspended withdrawals are expected to resume &ldquo;in the next day or two,&rdquo; and that it will cover all losses<sup class="cite"><a href="#src18">[18]</a></sup>.</p>
+    <figure>
+      <img src="images/binance.webp" alt="The Binance logo on a smartphone, February 2023" loading="lazy">
+      <figcaption>The exchange&rsquo;s logo on a smartphone, February 2023, Marple Township, Pa. <span class="cr">Npr.brightspotcdn.com / AP</span></figcaption>
+    </figure>
+    <p>Mechanism, per the same report: an initial investigation suggested a compromised laptop; a subsequent one uncovered additional &ldquo;points of breach,&rdquo; though the company says it has found &ldquo;no evidence of any wallet private key leak.&rdquo; Kok Tin Gan, co-founder and CEO of NyxLab, reads it as &ldquo;one signature that gave the attacker a never-expiring, full-access token to a Binance hot wallet.&rdquo; Changpeng Zhao posted that &ldquo;User funds are safe!&rdquo; while conceding the theft &ldquo;does look like a hack on Binance&rdquo;<sup class="cite"><a href="#src18">[18]</a></sup><sup class="cite"><a href="#src19">[19]</a></sup>. The FBI attributed last year&rsquo;s $1.5 billion Bybit theft to the same unit, TRM notes<sup class="cite"><a href="#src18">[18]</a></sup>.</p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Practical Tech Corner &middot; The Margins</span>
+    <h2 class="headline">Florilegium: A Garden in the Page Margins, Computed Petal by Petal</h2>
+    <div class="byline"><span>Language Desk</span><span class="score"><b>&#9733; 149 pts &middot; 25 cmts</b></span></div>
+    <p class="first">The quietest item on the page is also its most meticulous: florilegium draws Delft-blue floral page margins for LuaLaTeX with &ldquo;no images, no imported paths, no external assets&rdquo; &mdash; &ldquo;every petal, leaf and stem is a parametric curve computed in Lua while the page is being written, painted like a watercolor, and written straight into the PDF. Every page gets its own garden.&rdquo;<sup class="cite"><a href="#src20">[20]</a></sup> Two compositions ship: an authored one, with hand-placed stems, leaves and flowers and every parameter sampled, and a grown one that fills whatever space the text leaves free through a greedy space-filling loop whose core idea borrows from a 1998 paper in the ornament literature<sup class="cite"><a href="#src20">[20]</a></sup>.</p>
+    <figure>
+      <img src="images/florilegium.png" alt="Repository card for florilegium" loading="lazy">
+      <figcaption>The repository&rsquo;s card, in Delft blue. <span class="cr">Opengraph.githubassets.com</span></figcaption>
+    </figure>
+    <p>The margins read the document around them. A macro sets a paragraph&rsquo;s first letter in a tile five lines tall &mdash; the letter&rsquo;s outline is read from an OpenType font and painted like a petal, with a vine passing over and under its strokes in turn &mdash; and the &ldquo;sections&rdquo; option puts a flower beside every numbered heading<sup class="cite"><a href="#src20">[20]</a></sup>. Growth is recorded while the page is laid out and replayed as a roughly 45-second film (<i>make grow-6</i>)<sup class="cite"><a href="#src20">[20]</a></sup>. The thread&rsquo;s response is nearly uniform gratitude &mdash; one reader admits having &ldquo;no idea you could do animations in Latex/PDF,&rdquo; and another, &ldquo;completely disillusioned with software&rdquo; of late, reports feeling &ldquo;marginally better&rdquo; on seeing it<sup class="cite"><a href="#src21">[21]</a></sup>.</p>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Quote of the Day</span></div>
+    <div class="pullquote">&ldquo;An attacker moved approximately USD 6.36 billion out of Binance wallets on ten blockchains, most of it in about 20 minutes.&rdquo;<span class="attr">TRM Labs, blockchain intelligence firm &middot; via AP / NPR</span></div>
+    <p style="font-size:12.5px; color:var(--ink-soft)">The measurement underneath the day&rsquo;s headline number, from the attribution report of the year&rsquo;s largest theft.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p>INVESTMENT OPPORTUNITY: $9 billion of junior debt, yield above 10 percent; borrower expected to open as junk-rated after listing. Anchor inquiries: Blackstone.<sup class="cite"><a href="#src6">[6]</a></sup></p>
+      <p>TRADE: one Nintendo Wii, now reaches the classic Mac OS desktop. No coding agent was used in the making of this machine.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+      <p>FOR LEASE: 6502 CPU, 2 KB RAM, cartridge ROM &mdash; inside one stock Qwen checkpoint. Frame-accurate; controller, picture and interrupts provided by host.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    </div>
+
+    <div class="statbox">
+      <div class="t">Also on the Wire</div>
+      <table>
+        <tr><td>Breaking the open web won&rsquo;t stop the bad bots</td><td>118 &middot; 46</td></tr>
+        <tr><td>GitHub incident: Actions, Pages, webhooks</td><td>115 &middot; 43</td></tr>
+        <tr><td>Sleep framework: LLMs retain knowledge</td><td>114 &middot; 9</td></tr>
+        <tr><td>How do you take a picture of a black hole?</td><td>69 &middot; 53</td></tr>
+      </table>
+      <p style="font-size:10.5px; color:var(--ink-soft); text-align:left; margin:6px 0 0">Front-page candidates at snapshot, points &middot; comments, outside today&rsquo;s ten. The second wire was not needed &mdash; nine fresh stories qualified on their own.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= 7. BOX SCORE ======================= -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Box Score &mdash; Front Page by the Points</span></div>
+    <svg viewBox="0 0 640 392" role="img" aria-label="Bar chart of Hacker News points per story, snapshot 21:00 UTC" style="width:100%; height:auto; display:block">
+      <defs>
+        <pattern id="ink" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="5" height="5" fill="none"/><line x1="0" y1="0" x2="0" y2="5" stroke="#191510" stroke-width="1.8"/>
+        </pattern>
+        <pattern id="inkr" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="5" height="5" fill="none"/><line x1="0" y1="0" x2="0" y2="5" stroke="#7a1f1f" stroke-width="1.8"/>
+        </pattern>
+      </defs>
+      <!-- gridlines behind bars; axisMax=700, s=520/700, ticks every 100 -->
+      <line x1="74" y1="6" x2="74" y2="344" class="grid"/>
+      <line x1="149" y1="6" x2="149" y2="344" class="grid"/>
+      <line x1="223" y1="6" x2="223" y2="344" class="grid"/>
+      <line x1="297" y1="6" x2="297" y2="344" class="grid"/>
+      <line x1="371" y1="6" x2="371" y2="344" class="grid"/>
+      <line x1="446" y1="6" x2="446" y2="344" class="grid"/>
+      <line x1="520" y1="6" x2="520" y2="344" class="grid"/>
+      <g>
+        <text x="0" y="18" class="barlabel" fill="#191510">Claude Code backdoor &#8224;</text>
+        <rect x="0.5" y="22" width="464" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="471" y="34" class="barval" fill="#7a1f1f" font-weight="700">625 &#9733; &middot; 415 cmts</text>
+        <text x="0" y="52" class="barlabel" fill="#191510">SRE deskilling</text>
+        <rect x="0.5" y="56" width="291" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="298" y="68" class="barval" fill="#191510">392 &middot; 300</text>
+        <text x="0" y="86" class="barlabel" fill="#191510">Northflank breach</text>
+        <rect x="0.5" y="90" width="204" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="211" y="102" class="barval" fill="#191510">275 &middot; 195</text>
+        <text x="0" y="120" class="barlabel" fill="#191510">Azure cross-tenant</text>
+        <rect x="0.5" y="124" width="172" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="179" y="136" class="barval" fill="#191510">231 &middot; 40</text>
+        <text x="0" y="154" class="barlabel" fill="#191510">Anthropic rating</text>
+        <rect x="0.5" y="158" width="139" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="146" y="170" class="barval" fill="#191510">187 &middot; 133</text>
+        <text x="0" y="188" class="barlabel" fill="#191510">Federated forge</text>
+        <rect x="0.5" y="192" width="126" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="133" y="204" class="barval" fill="#191510">169 &middot; 59</text>
+        <text x="0" y="222" class="barlabel" fill="#191510">Binance attribution</text>
+        <rect x="0.5" y="226" width="119" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="126" y="238" class="barval" fill="#191510">160 &middot; 104</text>
+        <text x="0" y="256" class="barlabel" fill="#191510">Wii runs Mac OS</text>
+        <rect x="0.5" y="260" width="113" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="120" y="272" class="barval" fill="#191510">152 &middot; 40</text>
+        <text x="0" y="290" class="barlabel" fill="#191510">LaTeX flowers</text>
+        <rect x="0.5" y="294" width="111" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="118" y="306" class="barval" fill="#191510">149 &middot; 25</text>
+        <text x="0" y="324" class="barlabel" fill="#191510">NES in Qwen</text>
+        <rect x="0.5" y="328" width="103" height="15" fill="url(#ink)" stroke="#191510"/>
+        <text x="110" y="340" class="barval" fill="#191510">138 &middot; 95</text>
+      </g>
+      <line x1="0.5" y1="6" x2="0.5" y2="352" class="axis"/>
+      <line x1="0.5" y1="352" x2="520" y2="352" class="axis"/>
+      <text x="0" y="366" class="barval" fill="#3d352a" text-anchor="start">0</text>
+      <text x="74" y="366" class="barval" fill="#3d352a" text-anchor="middle">100</text>
+      <text x="149" y="366" class="barval" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="223" y="366" class="barval" fill="#3d352a" text-anchor="middle">300</text>
+      <text x="297" y="366" class="barval" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="371" y="366" class="barval" fill="#3d352a" text-anchor="middle">500</text>
+      <text x="446" y="366" class="barval" fill="#3d352a" text-anchor="middle">600</text>
+      <text x="520" y="366" class="barval" fill="#3d352a" text-anchor="middle">700</text>
+      <text x="0" y="386" class="barval" fill="#191510">&#9733; = points &middot; cmts = comments &middot; &#8224; most-discussed story of the day &middot; red hatch would mark Apple coverage &mdash; no Apple story made today&rsquo;s bars</text>
+    </svg>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Day in One Line</span></div>
+    <p style="font-size:13.5px; line-height:1.5; text-align:left">An afternoon of incident response: the supply-chain backdoor&rsquo;s full advisory led at 625 points, three further breach and attribution stories filled the Security Briefing, and the biggest story outside the desk was a newsletter arguing that the people left to handle the 5 percent of incidents AI cannot are getting worse at it.</p>
+
+    <div class="statbox">
+      <div class="t">Front Page Ledger &mdash; This Edition</div>
+      <table>
+        <tr><td>Fresh stories &middot; Follow-ups &middot; In digest</td><td>9 &middot; 1 &middot; 0</td></tr>
+        <tr><td>Combined points (10 stories)</td><td>2,478</td></tr>
+        <tr><td>Combined comments</td><td>1,406</td></tr>
+        <tr><td>Most-discussed story</td><td>415 cmts</td></tr>
+        <tr><td>Lead&rsquo;s margin over No. 2</td><td>233 pts</td></tr>
+        <tr><td>Snapshot</td><td>&asymp;21:00 UTC</td></tr>
+      </table>
+    </div>
+
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>&ldquo;$6.3B hack&rdquo; &mdash; moved, impacted, lost.</b> This morning&rsquo;s submission said $5.6 billion stolen; the AP now reports &ldquo;approximately $6.3 billion was impacted,&rdquo; and TRM measured $6.36 billion <i>moved out of wallets</i>, of which roughly $3 billion is frozen. Three verbs, three numbers; only the frozen figure is firm so far.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+      <p><b>&ldquo;Official&rdquo; Claude Code extension.</b> The advisory concerns the listing on Cursor&rsquo;s marketplace. Cursor says the malicious 2.1.312/2.1.313 builds &ldquo;were not developed by Anthropic&rdquo; and it has &ldquo;no evidence that other versions of the extension or the official distribution are affected&rdquo; &mdash; &ldquo;official&rdquo; names the extension, not Anthropic&rsquo;s own publishing pipeline, a distinction the thread kept returning to.<sup class="cite"><a href="#src3">[3]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup></p>
+      <p><b>&ldquo;Northflank Breached&rdquo; outruns the status page.</b> What Northflank has confirmed is a Wiz alert, patching, and guidance to <i>assume</i> environment variables were decrypted; at 19:28 UTC it reported &ldquo;no further confirmed findings&rdquo; and has published no intrusion mechanism. &ldquo;Breached&rdquo; is shorthand; &ldquo;assume compromised&rdquo; is the company&rsquo;s word.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+      <p><b>Azure&rsquo;s &ldquo;Five Full Cross-Tenant Compromises&rdquo; &mdash; demonstrated, not suffered.</b> The five are vulnerabilities the researcher exploited and was paid $200,000 to report through the bounty process; the post describes capability, not five breaches that occurred. The headline&rsquo;s noun invites the confusion.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= 8. PUBLISHER'S NOTE ======================= -->
+<div class="publisher">
+  <div class="t">Publisher&rsquo;s Note</div>
+  <p>The edition leads with the full advisory on the Claude Code extension backdoor, a follow-up to this morning&rsquo;s first reports at nearly double the score, and gives three more breach and attribution stories to the Security Briefing. The Financial Times&rsquo;s paywall turned this newsroom away, so that story is typeset from the article text a reader posted whole in the thread; the lead image was resampled from its source card to keep the page light. Nothing else was degraded, and the day closes with flowers in the margins.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- ======================= 9. SOURCES ======================= -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">Phorion &mdash; &ldquo;Official Claude Code Extension Compromise: Security Advisory&rdquo; (Calum Hall; Phorion Technology Ltd, London EC1V 2NX) &mdash; <a href="https://phorion.io/blog/offical-claude-code-vsx-compromise/">phorion.io</a></li>
+    <li data-n="[2]" id="src2">Hacker News thread, 625 pts / 415 comments at snapshot &mdash; <a href="https://news.ycombinator.com/item?id=50300683">news.ycombinator.com/item?id=50300683</a></li>
+    <li data-n="[3]" id="src3">Cursor &mdash; &ldquo;Claude Code extension security notice&rdquo; &mdash; <a href="https://cursor.com/blog/claude-code-extension-security-notice">cursor.com</a></li>
+    <li data-n="[4]" id="src4">SigNoz newsletter &mdash; &ldquo;AI Isn&rsquo;t Replacing SREs. It&rsquo;s Deskilling Them.&rdquo; &mdash; <a href="https://newsletter.signoz.io/p/ai-isnt-replacing-sres-its-deskilling">newsletter.signoz.io</a></li>
+    <li data-n="[5]" id="src5">Hacker News thread, 392 pts / 300 comments &mdash; <a href="https://news.ycombinator.com/item?id=50305693">news.ycombinator.com/item?id=50305693</a></li>
+    <li data-n="[6]" id="src6">Financial Times &mdash; &ldquo;Anthropic may not secure investment-grade rating after IPO, Blackstone says&rdquo; (paywalled; full text as posted by a reader in the thread) &mdash; <a href="https://www.ft.com/content/59383c7f-8d82-493f-bf01-d2e862a1018f">ft.com</a></li>
+    <li data-n="[7]" id="src7">Hacker News thread, 187 pts / 133 comments &mdash; <a href="https://news.ycombinator.com/item?id=50307219">news.ycombinator.com/item?id=50307219</a></li>
+    <li data-n="[8]" id="src8">Tangled &mdash; &ldquo;The federated code forge&rdquo; &mdash; <a href="https://tangled.org/blog/forge/">tangled.org</a></li>
+    <li data-n="[9]" id="src9">Hacker News thread, 169 pts / 59 comments &mdash; <a href="https://news.ycombinator.com/item?id=50305573">news.ycombinator.com/item?id=50305573</a></li>
+    <li data-n="[10]" id="src10">Virtually Fun &mdash; &ldquo;My favourite PowerMac is a Nintendo Wii&rdquo; (guest post by Rairii) &mdash; <a href="https://virtuallyfun.com/2026/10/29/my-favourite-powermac-is-a-nintendo-wii/">virtuallyfun.com</a></li>
+    <li data-n="[11]" id="src11">Hacker News thread, 152 pts / 40 comments &mdash; <a href="https://news.ycombinator.com/item?id=50307190">news.ycombinator.com/item?id=50307190</a></li>
+    <li data-n="[12]" id="src12">GitHub &mdash; dbreunig/nesformer (README) &mdash; <a href="https://github.com/dbreunig/nesformer">github.com</a></li>
+    <li data-n="[13]" id="src13">Hacker News thread, 138 pts / 95 comments &mdash; <a href="https://news.ycombinator.com/item?id=50306442">news.ycombinator.com/item?id=50306442</a></li>
+    <li data-n="[14]" id="src14">Northflank status page, incident updates Oct 30, 2026 &mdash; <a href="https://status.northflank.com">status.northflank.com</a></li>
+    <li data-n="[15]" id="src15">Hacker News thread, 275 pts / 195 comments &mdash; <a href="https://news.ycombinator.com/item?id=50305025">news.ycombinator.com/item?id=50305025</a></li>
+    <li data-n="[16]" id="src16">Binary Security &mdash; &ldquo;Azure&rsquo;s Weakest Link &mdash; Five Full Cross-Tenant Compromises&rdquo; &mdash; <a href="https://www.binarysecurity.no/posts/2026/10/one-root-case">binarysecurity.no</a></li>
+    <li data-n="[17]" id="src17">Hacker News thread, 231 pts / 40 comments &mdash; <a href="https://news.ycombinator.com/item?id=50301854">news.ycombinator.com/item?id=50301854</a></li>
+    <li data-n="[18]" id="src18">NPR (AP) &mdash; &ldquo;Blockchain intelligence firms link North Korea to $6.3B hack on Binance&rdquo; &mdash; <a href="https://www.npr.org/2026/10/30/g-s1-150902/blockchain-intelligence-firms-link-north-korea-to-6-3b-hack-targeting-binance-users">npr.org</a></li>
+    <li data-n="[19]" id="src19">Hacker News thread, 160 pts / 104 comments &mdash; <a href="https://news.ycombinator.com/item?id=50305480">news.ycombinator.com/item?id=50305480</a></li>
+    <li data-n="[20]" id="src20">GitHub &mdash; kevinraymond/florilegium (README) &mdash; <a href="https://github.com/kevinraymond/florilegium">github.com</a></li>
+    <li data-n="[21]" id="src21">Hacker News thread, 149 pts / 25 comments &mdash; <a href="https://news.ycombinator.com/item?id=50305637">news.ycombinator.com/item?id=50305637</a></li>
+    <li data-n="[22]" id="src22">The Herald&rsquo;s edition manifest &mdash; morning edition baseline for today&rsquo;s follow-up (342 pts) &mdash; <a href="https://keegandonley.github.io/hacker-news-reports/">keegandonley.github.io/hacker-news-reports</a></li>
+  </ol>
+  <p class="method">Methodology &mdash; Snapshot of the Hacker News front page taken &asymp;21:00 UTC on Friday, October 30, 2026 (16:00 US Central &mdash; Afternoon Edition), via the Algolia HN Search API (tags=front_page; 30 items returned). Candidates were deduplicated by HN id against the previous four editions in the Herald&rsquo;s manifest; ten stories were chosen by score &mdash; nine fresh, one Follow-Up (the Claude Code advisory: 342 &rarr; 625 points, +283, +83%, clearing the +40% and +150 gates). Points and comments are as of the snapshot and summed exactly in the Front Page Ledger (2,478 &middot; 1,406). Stories were summarized from fetched primary sources; reader comments come from each item&rsquo;s thread via the Algolia items API. The FT&rsquo;s paywall blocked direct access &mdash; that story is set from the article text a reader posted in the thread, cited to both. Images are each story&rsquo;s own open-graph card, verified by magic bytes; the lead image was resampled (PNG to JPEG) for weight.</p>
+</div>
+
+<!-- ======================= 10. COLOPHON ======================= -->
+<footer class="colophon">
+  <span>The Hacker Herald &mdash; Typeset from the Hacker News front page</span>
+  <span>&#10087; Printed on 100% recycled bandwidth &#10087;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</span>
+</footer>
+
+</body>
+</html>
