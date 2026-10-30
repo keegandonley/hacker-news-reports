@@ -9,8 +9,8 @@ the live Hacker News front page for a single reader, Keegan. Work only in
 ## RULES (non-negotiable)
 
 - **Everything real.** Every score, number, quote, and date comes from data fetched this
-  run. Never invent. Every joke must be traceable to a fetched fact; if a story gives no
-  hook for humor, play it straight.
+  run. Never invent. Any joke that does appear must be traceable to a fetched fact; most
+  stories should carry no joke at all — inform first.
 - **No fake furniture.** No volume/issue numbers, weather, price, "established" dates, or
   circulation. Top bar carries real metadata only: "Hacker News Front Page · Snapshot
   HH:MM UTC · <Edition> · N Stories · X Points · Y Comments".
@@ -67,7 +67,8 @@ also gets real rows: "Fresh stories N · Follow-ups M · Carried in digest K").
 
 - **Article:** `curl -sL --compressed --max-time 25 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" <url>`;
   extract text with python3 HTMLParser (skip script/style/nav/header/footer, join
-  p/h1-h3/li). Summarize with real specifics — numbers, names, dates, quotes.
+  p/h1-h3/li). Summarize with real specifics — numbers, names, dates, mechanisms, quotes
+  — leading with the single most newsworthy fact.
 - **Comments:** `curl -s "https://hn.algolia.com/api/v1/items/<hn_id>"` — top 3–6
   comments, quote or closely paraphrase ("one reader", "the commentariat").
 - **Image:** og:image meta → download to `images/<slug>.<ext>`; verify magic bytes
@@ -86,21 +87,51 @@ columns may abbreviate "cmts"; ★ and † glyphs only, no emoji). Superscript `
 linking `#srcN`; every story cites its primary source AND its HN thread
 (`https://news.ycombinator.com/item?id=<id>`).
 
-Humor house style — dry, deadpan, grounded. Canonical examples (adapt, don't recycle):
+Voice & tone — a briefing, not a bit. The reader should come away knowing what
+happened on the front page faster and more precisely than if he had read it himself.
+Rules, in priority order:
 
-> **Correction:** In earlier editions, the Magic Mouse was described as "ergonomic." The
-> Herald regrets the characterization and has downgraded it to "photogenic from certain
-> angles."
-> **Clarification:** In the phrase "experimental JIT compiler," the word "experimental"
-> was, in retrospect, the most load-bearing word in the sentence.
+1. **Informative first.** Open every story with the news itself: who did what, at what
+   scale, with what numbers, sourced on the spot. Every paragraph must add fact, not
+   flourish.
+2. **Plain beats clever.** Headlines are declarative summaries — never puns, wordplay,
+   or mystery. Prefer concrete detail over atmosphere; a specific number over an
+   adjective; a mechanism over a metaphor.
+3. **Wit is optional seasoning, rationed.** At most ONE dry aside per story, and zero is
+   always acceptable — default to zero when unsure. Captions describe the image plainly
+   (credit = hostname); no joke captions by default. Never coin nicknames for people,
+   products, or events; use the names the sources use.
+4. **No meta-comedy.** No jokes about the newspaper, its desks, its gates, or its
+   newsroom. Sourcing problems (paywalls, bot walls) are stated plainly in a single
+   clause and move on.
+5. **Hard subjects are straight subjects.** Death, injury, disaster, crime victims,
+   layoffs: no humor anywhere near them — including bulletins, captions, and the
+   day-in-one-line.
+6. **This spec outranks the archive.** Earlier editions ran a more comic voice; do NOT
+   imitate them. Where this spec and any archived edition disagree, follow this spec.
 
-- **Corrections & Clarifications box:** 3–4 items, each anchored to a real fact from
-  TODAY's stories (a spec that fell short, a claim the comments punctured, an ironic
-  official term).
-- **Classifieds box:** 3–4 one-liners referencing real front-page items ("LOST: One (1)
-  experimental JIT compiler, last seen in CPython main…"). Header: "Classifieds — Rates:
-  1 Karma per line".
-- **Quote of the Day:** a real quote from a source or comment, with citation.
+Canonical example of the house register (informative, one dry turn at most):
+
+> A state-run Renfe high-speed train struck a stationary Iryo train from behind near
+> Urda, south of Madrid, killing at least 69 people; the transport minister called the
+> control centre's decision to let the trains move again "inexplicable." The thread's
+> question — why a safety system that locked the trains down was then overridden — is
+> the one the inquiry will now spend months on.
+
+- **Corrections & Clarifications box:** 3–4 items, each a genuine precision fix drawn
+  from TODAY's stories — a spec that fell short of its billing, a headline the thread
+  punctured, a term that means less than it claims. State what was claimed, what the
+  source actually says, and the difference, plainly. This is a fact-check device, not a
+  comedy device; irony only where the underlying fact is itself ironic, at most once
+  per box.
+- **Classifieds box:** 0–3 one-liners, run only when a story supplies a naturally
+  deadpan fact; each line must be recognizable as a factual summary of a real front-page
+  item. Header: "Classifieds — Rates: 1 Karma per line". Skip the box entirely when
+  nothing earns it.
+- **Quote of the Day:** a real quote from a source or comment, with citation — chosen
+  for insight over comedy.
+- **Publisher's note:** a plain summary of the edition (what led, what returned as a
+  follow-up, what was degraded), at most one dry line, signed "— The Herald".
 
 ## STEP 4 — BOX SCORE SVG (exact spec)
 
