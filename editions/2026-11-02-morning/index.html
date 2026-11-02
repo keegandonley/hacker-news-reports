@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 2, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+
+/* Edition-specific responsive safeguards. */
+@media(max-width:600px){.byline{flex-wrap:wrap}.score{white-space:normal}.statbox table{table-layout:fixed}.statbox td{overflow-wrap:anywhere}.bulletins .cell{overflow-wrap:anywhere}}
+
+</style>
+</head>
+<body>
+<div class="topbar"><span>Hacker News Front Page · Snapshot 14:00 UTC</span><span class="mid">Morning Edition</span><span>10 Stories · 7,199 Points · 2,674 Comments</span></div>
+<div class="nameplate"><h1>The Hacker Herald</h1><div class="sub">The front page, read closely and set in type — a briefing for Keegan</div></div>
+<div class="dateline"><div class="l">Compiled from news.ycombinator.com</div><div class="c">Monday, November 2, 2026</div><div class="r">Ten stories at the 14:00 UTC snapshot</div></div>
+<div class="bulletins"><div class="cell"><span class="tag">Culture Desk · The Lead</span><b>HackerTube: 6,454 videos</b>Karpathy’s two-hour project sorted 39,834 HN recommendations into 150 topics. It led the snapshot at 2,689 points.</div><div class="cell"><span class="tag">Culture Desk · The Follow-On</span><b>HackerBooks: 16,500 titles</b>Books mentioned by at least two HN commenters now have their own index, with links to the discussions that cited them.</div><div class="cell"><span class="tag">Tools Desk · Release Watch</span><b>PostgreSQL 19 likely in November</b>Three late feature reverts and a rise in bug-fix back-patches have pushed the release beyond its usual window.</div><div class="cell"><span class="tag">Security Desk · Reader Question</span><b>TV privacy drew 622 comments</b>The most-discussed item asks how to use a television as an offline display for Apple TV; readers debate practical limits.</div></div>
+<div class="lead"><div class="cell main"><article id="story-50319510"><span class="kicker">Lead Story · Culture Desk</span><h2 class="headline">HackerTube indexes 6,454 videos recommended in HN comments</h2><h3 class="deck">Andrej Karpathy used AI to sift 39,834 recommendations from 2007–2026 into a video site with 150 topics and no user accounts.</h3><div class="byline"><span>Culture Desk</span><span class="score">★ 2,689 pts · 598 comments</span></div><figure><img src="images/hackertube-article.webp" alt="A view of HackerTube from the project announcement." loading="lazy"><figcaption>A view of HackerTube from the project announcement. <span class="cr">bear-images.sfo2.cdn.digitaloceanspaces.com</span></figcaption></figure><p class="first">UNITED STATES — Andrej Karpathy built HackerTube from 6,454 YouTube videos recommended in 39,834 Hacker News comments dating from 2007 to 2026. His post says an AI workflow filtered HN comments, used Sonnet to identify recommendations and organized the surviving videos into 150 topics; the site serves a YouTube-like interface, but recommendations do not require an account.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup></p><p>Karpathy says it took about two hours. The site uses video frames at the midpoint instead of uploaded thumbnails, keeps its recommendation state in the browser session, offers keyboard shortcuts and exports its data. In the thread, he reports 504 million input tokens, about 90% cached, and 7.6 million output tokens, with more than 90% of the usage going to Sonnet labeling calls; app building and deployment used about one million Opus 5.5 tokens.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup></p><p>He says his manual steps were creating a Google Cloud API key for video metadata, starting a VPS and buying the domain; he directed the rest through Claude Code. Those are the author’s reported process and usage figures, not an independently measured benchmark.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup></p><div class="jump"><a href="https://news.ycombinator.com/item?id=50319510">Read the discussion ↗</a></div></article></div><div class="cell side"><article id="story-50326821"><span class="kicker">Culture Desk · Show HN</span><h2 class="headline">HackerBooks counts 16,500 books mentioned by HN readers</h2><h3 class="deck">A successor to HackerTube tracks books cited by at least two commenters.</h3><div class="byline"><span>Culture Desk</span><span class="score">★ 1,610 pts · 265 cmts</span></div><p class="first">HackerBooks collects roughly 16,500 books mentioned by at least two different Hacker News commenters between 2007 and 2026, according to its maker’s Show HN post. Each entry links back to the comments that mentioned it, and the dataset is downloadable from the site’s About page.<sup class="cite"><a href="#src3">[3]</a></sup><sup class="cite"><a href="#src4">[4]</a></sup></p><p>The maker says Claude wrote almost all of the data pipeline and site under human direction. The site ranks mentions, not approval: a complaint and a recommendation both increase a book’s count. The homepage shuffles its books daily rather than displaying a fixed popularity list.<sup class="cite"><a href="#src3">[3]</a></sup><sup class="cite"><a href="#src4">[4]</a></sup></p><div class="jump"><a href="https://news.ycombinator.com/item?id=50326821">Read the discussion ↗</a></div></article></div><div class="cell side"><article id="story-50312408"><span class="kicker">Tools Desk · Release Watch</span><h2 class="headline">PostgreSQL 19 slips toward November as bug fixes mount</h2><h3 class="deck">Robert Haas reports a sharp rise in back-patched commits and three late feature reversals.</h3><div class="byline"><span>Tools Desk</span><span class="score">★ 617 pts · 376 cmts</span></div><p class="first">PostgreSQL 19 is likely to ship in November, later than the mid-September to mid-October window that has held for major releases over the past decade, committer Robert Haas writes. Three substantial features were reverted between August 27 and September 15: UPDATE/DELETE FOR PORTION OF, SQL Property Graph Queries and ALTER TABLE MERGE PARTITION/SPLIT PARTITION.<sup class="cite"><a href="#src5">[5]</a></sup><sup class="cite"><a href="#src6">[6]</a></sup></p><p>For April 8 to September 25, Haas counts 724 commits to the current stable branch in 2025 against 1,169 to its 2026 counterpart, an increase of more than 60%. Back-patches to the prior stable branch rose from 248 to 433, more than 74%. He attributes much of the load to bugs found with LLMs: discovery has accelerated more than human review and fixing. He says diverted review time also delayed deciding what to remove from version 19.<sup class="cite"><a href="#src5">[5]</a></sup></p><p>A reader in the thread points to verification capacity as the limiting step: reports and draft fixes still have to be checked by maintainers. Haas calls the delay modest and a consequence of the project’s quality standards, not evidence that PostgreSQL 19 is abandoned.<sup class="cite"><a href="#src5">[5]</a></sup><sup class="cite"><a href="#src6">[6]</a></sup></p><div class="jump"><a href="https://news.ycombinator.com/item?id=50312408">Read the discussion ↗</a></div></article></div></div>
+<div class="row3"><div class="cell"><article id="story-50328896"><span class="kicker">Security Desk · Ask HN</span><h2 class="headline">TV privacy thread converges on keeping the display offline</h2><h3 class="deck">A buyer wants a 60–80-inch 4K screen, at least 60 Hz, to use only with Apple TV.</h3><div class="byline"><span>Security Desk</span><span class="score">★ 509 pts · 622 comments</span></div><p class="first">An Ask HN reader seeking a privacy-conscious 60–80-inch 4K television with at least a 60 Hz refresh rate asked whether a display can be used only as an Apple TV screen. The most repeated practical answer in the thread is to choose a display and never connect the television itself to a network; a separate player then handles streaming.<sup class="cite"><a href="#src7">[7]</a></sup><sup class="cite"><a href="#src8">[8]</a></sup></p><p>One commenter recommends Jellyfin for a self-hosted media setup. Another warns that a guest could connect the screen to a phone hotspot later. A claim that disconnected televisions already use neighbors’ open Wi-Fi or cellular links drew a direct challenge: other readers asked for documented cases, and none were supplied in that exchange. Offline use is a recommendation, not a guarantee against every possible data path.<sup class="cite"><a href="#src8">[8]</a></sup></p><div class="jump"><a href="https://news.ycombinator.com/item?id=50328896">Read the discussion ↗</a></div></article></div><div class="cell"><article id="story-50323088"><span class="kicker">AI Desk · Benchmarks</span><h2 class="headline">Framework test measures agents across five builds per stack</h2><h3 class="deck">A Pokémon app benchmark compares build cost, code size and Lighthouse results; its author warns against generalizing to interactive apps.</h3><div class="byline"><span>AI Desk</span><span class="score">★ 406 pts · 314 comments</span></div><p class="first">Nolan Lawson asked Opus 5.5 to build the same small Pokémon app against a conformance suite in several JavaScript frameworks and compared median results from five builds per stack. He measured wall-clock time, token cost, code size and Lighthouse performance and accessibility. Angular produced only three measurable apps for some metrics after two runs failed to meet the deployment requirement.<sup class="cite"><a href="#src9">[9]</a></sup><sup class="cite"><a href="#src10">[10]</a></sup></p><p>SvelteKit, Gracile with Lit and Angular were among the more expensive builds in this test; Lawson says the agents repeatedly read unfamiliar framework material in some runs. Astro performed well on build time and shipped no client-side JavaScript for this content-oriented app, according to a commenter. Another reader notes that this advantage may not carry over to a highly interactive application.<sup class="cite"><a href="#src9">[9]</a></sup><sup class="cite"><a href="#src10">[10]</a></sup></p><p>Lawson explicitly limits the experiment to one relatively low-interactivity app, with stochastic agent behavior and variable Lighthouse readings. His quoted dollar figures are API-equivalent costs; he says his actual use was covered by a subscription.<sup class="cite"><a href="#src9">[9]</a></sup></p><figure><img src="images/frameworks.webp" alt="A figure from the framework benchmark." loading="lazy"><figcaption>A figure from the framework benchmark. <span class="cr">nolanlawson.com</span></figcaption></figure><div class="jump"><a href="https://news.ycombinator.com/item?id=50323088">Read the discussion ↗</a></div></article></div><div class="cell"><article id="story-50331402"><span class="kicker">Culture Desk · Open Source</span><h2 class="headline">OccupySaaS proposes clean-room replacements for paid platforms</h2><h3 class="deck">Its first two projects target identity and CRM; both are early and their compatibility is limited.</h3><div class="byline"><span>Culture Desk</span><span class="score">★ 381 pts · 228 comments</span></div><p class="first">OccupySaaS is organizing AI-assisted, Apache-2.0, self-hostable replacements for subscription software. Its public site names two early projects: ZeroAuthy, an Auth0-compatible identity server, and SalesCompel, a Salesforce-oriented CRM with a Go/PostgreSQL core and a Vue editor.<sup class="cite"><a href="#src11">[11]</a></sup><sup class="cite"><a href="#src12">[12]</a></sup></p><p>The group says its process separates public-spec writers from implementers, records provenance in CLEAN_ROOM.md, builds contracts before code and tests implementations against vendors’ public SDKs. ZeroAuthy lists OIDC discovery, JWKS, PKCE and selected SDKs; SalesCompel lists Account and Contact CRUD, object descriptions, limited queries and external-ID upsert. The site itself says neither project is production-ready.<sup class="cite"><a href="#src11">[11]</a></sup></p><p>In the HN discussion, readers question whether buying AI capacity from major vendors is an effective response to layoffs and SaaS pricing. The project’s claim is narrower than replacing complete commercial products today: it offers open implementations of specified interfaces with compatibility still under test.<sup class="cite"><a href="#src11">[11]</a></sup><sup class="cite"><a href="#src12">[12]</a></sup></p><figure><img src="images/occupysaas.jpg" alt="OccupySaaS project preview card." loading="lazy"><figcaption>OccupySaaS project preview card. <span class="cr">occupysaas.com</span></figcaption></figure><div class="jump"><a href="https://news.ycombinator.com/item?id=50331402">Read the discussion ↗</a></div></article></div></div>
+<div class="sec2"><div class="cell"><div class="section-label"><span>Tools · The Show Circuit</span></div><article id="story-50333339"><span class="kicker">Tools Desk · Show HN</span><h2 class="headline">Wikihack ranks Wikipedia links shared on HN</h2><h3 class="deck">The third project in the day’s HN-remix cluster provides a scrollable article feed.</h3><div class="byline"><span>Tools Desk</span><span class="score">★ 293 pts · 89 comments</span></div><p class="first">Wikihack scrapes Wikipedia links in Hacker News submissions and comments and ranks articles by how often they are linked, its maker says. It presents a scrollable feed with links back to the submissions and comments that cited each article; a Rising view emphasizes the past 12 months.<sup class="cite"><a href="#src13">[13]</a></sup><sup class="cite"><a href="#src14">[14]</a></sup></p><p>The maker says the Random view is slightly weighted toward frequently linked articles and that the site is served entirely by its frontend. Asked why the desktop layout resembles a mobile feed, the maker says the design keeps article and HN-comment context side by side. These are link-frequency signals, not editorial judgments of accuracy or importance.<sup class="cite"><a href="#src13">[13]</a></sup><sup class="cite"><a href="#src14">[14]</a></sup></p><div class="jump"><a href="https://news.ycombinator.com/item?id=50333339">Read the discussion ↗</a></div></article><div class="rule-thick"></div><article id="story-50325253"><span class="kicker">Tools Desk · Show HN</span><h2 class="headline">OmniDiff applies type-specific algorithms to files beyond code</h2><h3 class="deck">The AGPLv3 tool handles code, images, PDFs, archives and configuration files.</h3><div class="byline"><span>Tools Desk</span><span class="score">★ 274 pts · 81 comments</span></div><p class="first">OmniDiff is a Rust-based, AGPLv3 diff tool that routes files to content-specific comparison pipelines rather than coloring a standard line diff. Its maker says it handles code in 25 languages as well as configuration, images, PDFs and archives, and can diff C++ files of tens of thousands of lines in under 100 milliseconds on a 2023 ThinkPad T14s.<sup class="cite"><a href="#src15">[15]</a></sup><sup class="cite"><a href="#src16">[16]</a></sup></p><p>The maker studied 2,000 sampled diffs from 7,400 Gentoo-listed repositories before building the pipelines. The repository calls the current release version 0.3.0 and reports content-specific algorithms for 98.8% of changes, while explicitly noting that PDFs have fewer than ten judged test cases. In the thread, the maker says moved-code comparisons are much better than Delta’s, but that is a developer claim, not a neutral head-to-head measurement.<sup class="cite"><a href="#src15">[15]</a></sup><sup class="cite"><a href="#src16">[16]</a></sup></p><figure><img src="images/omnidiff.png" alt="OmniDiff repository preview image." loading="lazy"><figcaption>OmniDiff repository preview image. <span class="cr">repository-images.githubusercontent.com</span></figcaption></figure><div class="jump"><a href="https://news.ycombinator.com/item?id=50325253">Read the discussion ↗</a></div></article></div><div class="cell"><div class="section-label"><span>Science · In the Field</span></div><article id="story-50290533"><span class="kicker">Science Desk · Field App</span><h2 class="headline">Outcrop overlays geologic maps on a phone camera view</h2><h3 class="deck">Bedrock data can be saved offline; some live layers still need a connection.</h3><div class="byline"><span>Science Desk</span><span class="score">★ 228 pts · 48 comments</span></div><p class="first">Outcrop overlays geologic maps on a landscape seen through a phone camera, identifying the mapped rock, its age and how it formed. It uses Macrostrat geologic maps and Christopher Scotese’s PALEOMAP reconstructions to show where a rock’s continent lay when it formed.<sup class="cite"><a href="#src17">[17]</a></sup><sup class="cite"><a href="#src18">[18]</a></sup></p><p>Users can save an outlined area so the map and camera view work without a signal; fossil finds and active faults in the live camera view still need a connection. The developer says Android is publicly available and the iPhone version is in beta. In the thread, a reader reported Android tracking failing to start, while the developer said a web version would be difficult because the AR view relies heavily on ARCore and ARKit.<sup class="cite"><a href="#src17">[17]</a></sup><sup class="cite"><a href="#src18">[18]</a></sup></p><figure><img src="images/outcrop.jpg" alt="Outcrop’s geologic landscape preview." loading="lazy"><figcaption>Outcrop’s geologic landscape preview. <span class="cr">outcrop.rocks</span></figcaption></figure><div class="jump"><a href="https://news.ycombinator.com/item?id=50290533">Read the discussion ↗</a></div></article><div class="rule-thick"></div><article id="story-50280131"><span class="kicker">Science Desk · Citizen Data</span><h2 class="headline">Radiaverse maps dose-rate tracks from pocket detectors</h2><h3 class="deck">Community measurements are public; readers caution that device differences can distort apparent hotspots.</h3><div class="byline"><span>Science Desk</span><span class="score">★ 192 pts · 53 comments</span></div><p class="first">Radiaverse combines location and dose-rate tracks uploaded by RadiaCode detector owners into a public world map. Its site says a detector logs dose rate and location every second; users can publish tracks anonymously, inspect individual measurements and add contextual areas with photos. An account is required to publish, not to browse.<sup class="cite"><a href="#src19">[19]</a></sup><sup class="cite"><a href="#src20">[20]</a></sup></p><p>The site reports 9,090 square kilometers of unique street-resolution coverage in the United States and 2,332 in Germany at the fetched page. In the thread, readers caution that zoom levels and apparently inconsistent devices make some hotspots hard to interpret; one commenter says a California track was corroborated as a uranium deposit by a geological survey. These are community measurements, not a calibrated public-health assessment.<sup class="cite"><a href="#src19">[19]</a></sup><sup class="cite"><a href="#src20">[20]</a></sup></p><figure><img src="images/radiaverse.png" alt="Radiaverse global radiation map preview." loading="lazy"><figcaption>Radiaverse global radiation map preview. <span class="cr">radiaverse.com</span></figcaption></figure><div class="jump"><a href="https://news.ycombinator.com/item?id=50280131">Read the discussion ↗</a></div></article></div><div class="cell"><div class="section-label"><span>Quote of the Day</span></div><div class="pullquote">“Fixing them has also gotten easier, but not to the same degree.”<span class="attr">Robert Haas, on LLM-found PostgreSQL bugs <sup class="cite"><a href="#src5">[5]</a></sup></span></div><div class="statbox"><div class="t">Read closely</div><p>Three of the ten selected stories turn Hacker News discussions into browsable media: video recommendations, book mentions and Wikipedia links. Their rankings measure mentions or links, not approval or accuracy.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src3">[3]</a></sup><sup class="cite"><a href="#src13">[13]</a></sup></p></div></div></div>
+<div class="chartrow"><div class="cell"><div class="section-label"><span>The Box Score — Front Page by the Points</span></div><svg viewBox="0 0 640 392" role="img" aria-label="Hacker News points by story at 14:00 UTC" style="width:100%; height:auto; display:block"><defs>
+<pattern id="ink" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="none"/><line x1="0" y1="0" x2="0" y2="5" stroke="#191510" stroke-width="1.8"/></pattern>
+<pattern id="inkr" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="none"/><line x1="0" y1="0" x2="0" y2="5" stroke="#7a1f1f" stroke-width="1.8"/></pattern></defs>
+<line x1="39" y1="6" x2="39" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="77" y1="6" x2="77" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="116" y1="6" x2="116" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="154" y1="6" x2="154" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="193" y1="6" x2="193" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="231" y1="6" x2="231" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="270" y1="6" x2="270" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="308" y1="6" x2="308" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="347" y1="6" x2="347" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="385" y1="6" x2="385" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="424" y1="6" x2="424" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="462" y1="6" x2="462" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="501" y1="6" x2="501" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<text x="0" y="18" fill="#191510" font-size="12" font-weight="600">HackerTube</text>
+<rect x="0.5" y="22" width="518" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="525" y="34" fill="#191510" font-size="11" font-weight="700">2689 ★ · 598 cmts</text>
+<text x="0" y="52" fill="#191510" font-size="12" font-weight="600">HackerBooks</text>
+<rect x="0.5" y="56" width="310" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="317" y="68" fill="#191510" font-size="11">1610 · 265</text>
+<text x="0" y="86" fill="#191510" font-size="12" font-weight="600">PostgreSQL 19</text>
+<rect x="0.5" y="90" width="119" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="126" y="102" fill="#191510" font-size="11">617 · 376</text>
+<text x="0" y="120" fill="#191510" font-size="12" font-weight="600">TV privacy &#8224;</text>
+<rect x="0.5" y="124" width="98" height="15" fill="url(#inkr)" stroke="#7a1f1f"/>
+<text x="105" y="136" fill="#191510" font-size="11">509 · 622</text>
+<text x="0" y="154" fill="#191510" font-size="12" font-weight="600">Framework test</text>
+<rect x="0.5" y="158" width="78" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="85" y="170" fill="#191510" font-size="11">406 · 314</text>
+<text x="0" y="188" fill="#191510" font-size="12" font-weight="600">OccupySaaS</text>
+<rect x="0.5" y="192" width="73" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="80" y="204" fill="#191510" font-size="11">381 · 228</text>
+<text x="0" y="222" fill="#191510" font-size="12" font-weight="600">Wikihack</text>
+<rect x="0.5" y="226" width="56" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="63" y="238" fill="#191510" font-size="11">293 · 89</text>
+<text x="0" y="256" fill="#191510" font-size="12" font-weight="600">OmniDiff</text>
+<rect x="0.5" y="260" width="53" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="60" y="272" fill="#191510" font-size="11">274 · 81</text>
+<text x="0" y="290" fill="#191510" font-size="12" font-weight="600">Outcrop</text>
+<rect x="0.5" y="294" width="44" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="51" y="306" fill="#191510" font-size="11">228 · 48</text>
+<text x="0" y="324" fill="#191510" font-size="12" font-weight="600">Radiaverse</text>
+<rect x="0.5" y="328" width="37" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="44" y="340" fill="#191510" font-size="11">192 · 53</text>
+<line x1="0.5" y1="6" x2="0.5" y2="352" stroke="#191510" stroke-width="1"/>
+<line x1="0.5" y1="352" x2="520" y2="352" stroke="#191510" stroke-width="1"/>
+<text x="0" y="366" fill="#3d352a" font-size="11" text-anchor="start">0</text>
+<text x="39" y="366" fill="#3d352a" font-size="11" text-anchor="middle">200</text>
+<text x="77" y="366" fill="#3d352a" font-size="11" text-anchor="middle">400</text>
+<text x="116" y="366" fill="#3d352a" font-size="11" text-anchor="middle">600</text>
+<text x="154" y="366" fill="#3d352a" font-size="11" text-anchor="middle">800</text>
+<text x="193" y="366" fill="#3d352a" font-size="11" text-anchor="middle">1000</text>
+<text x="231" y="366" fill="#3d352a" font-size="11" text-anchor="middle">1200</text>
+<text x="270" y="366" fill="#3d352a" font-size="11" text-anchor="middle">1400</text>
+<text x="308" y="366" fill="#3d352a" font-size="11" text-anchor="middle">1600</text>
+<text x="347" y="366" fill="#3d352a" font-size="11" text-anchor="middle">1800</text>
+<text x="385" y="366" fill="#3d352a" font-size="11" text-anchor="middle">2000</text>
+<text x="424" y="366" fill="#3d352a" font-size="11" text-anchor="middle">2200</text>
+<text x="462" y="366" fill="#3d352a" font-size="11" text-anchor="middle">2400</text>
+<text x="501" y="366" fill="#3d352a" font-size="11" text-anchor="middle">2600</text>
+<text x="0" y="386" fill="#191510" font-size="11">★ = points · cmts = comments · &#8224; most-discussed story of the day · red hatch marks Apple TV coverage</text></svg></div><div class="cell"><div class="section-label"><span>Day in One Line</span></div><p>HackerTube led at 2,689 points; HackerBooks and Wikihack extended the same HN-as-index idea, while PostgreSQL’s bug-fix workload and a 622-comment TV privacy discussion supplied the day’s practical questions.</p>
+<div class="statbox"><div class="t">Front Page Ledger — This Edition</div><table><tr><td>Fresh stories</td><td>10</td></tr><tr><td>Follow-ups</td><td>0</td></tr><tr><td>Carried in digest</td><td>0</td></tr><tr><td>Combined points</td><td>7,199</td></tr><tr><td>Combined comments</td><td>2,674</td></tr><tr><td>Most-discussed story</td><td>TV privacy · 622 comments</td></tr><tr><td>Lead’s margin over No. 2</td><td>1,079 points</td></tr><tr><td>Snapshot</td><td>14:00 UTC</td></tr></table></div>
+<div class="corrections"><div class="t">Corrections &amp; Clarifications</div>
+<p><b>“Books recommended” versus books mentioned.</b> HackerBooks requires two different commenters, but counts criticism and praise alike. Its ranking is a frequency index, not a recommendation score.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+<p><b>“PostgreSQL 19 is late” versus canceled.</b> Haas expects November, perhaps later; his release explanation also names three features reverted late in beta. The release has not been described as canceled.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+<p><b>“Drop-in replacements” versus current scope.</b> OccupySaaS says both first projects are early, SalesCompel supports only limited queries, and the site does not call either production-ready. Compatibility is a goal being tested against public SDKs, not a complete replacement today.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+<p><b>“Radiation hotspots” versus calibrated readings.</b> Radiaverse visualizes community detector tracks. HN readers report apparent device and scale inconsistencies; the map alone does not establish that a location is hazardous.<sup class="cite"><a href="#src19">[19]</a></sup><sup class="cite"><a href="#src20">[20]</a></sup></p></div></div></div>
+<div class="publisher"><div class="t">Publisher’s Note</div><p>The lead is Karpathy’s HackerTube, followed by two projects that also turn HN discussions into indexes. PostgreSQL’s delayed release and the TV privacy thread bring the largest technical and practical debates. All ten selected stories were fresh against the previous four editions; no story needed a Follow-Up or digest treatment. Wikihack’s page is frontend-rendered, so its account relies chiefly on the maker’s HN description.</p><div class="sig">— The Herald</div></div>
+<div class="rule-thick"></div><div class="sources"><ol><li data-n="[1]" id="src1">Andrej Karpathy — “HackerTube” — <a href="https://karpathy.bearblog.dev/hacker-tube/">karpathy.bearblog.dev</a></li><li data-n="[2]" id="src2">Hacker News thread, 2,689 points / 598 comments at snapshot — <a href="https://news.ycombinator.com/item?id=50319510">news.ycombinator.com/item?id=50319510</a></li><li data-n="[3]" id="src3">HackerBooks — site and About page — <a href="https://hackerbooks.org">hackerbooks.org</a></li><li data-n="[4]" id="src4">Hacker News thread, 1,610 points / 265 comments at snapshot — <a href="https://news.ycombinator.com/item?id=50326821">news.ycombinator.com/item?id=50326821</a></li><li data-n="[5]" id="src5">Robert Haas — “Postgres 19 is late, and it’s AI’s fault” — <a href="https://rhaas.blogspot.com/2026/10/postgres-19-is-late-and-its-ais-fault.html">rhaas.blogspot.com</a></li><li data-n="[6]" id="src6">Hacker News thread, 617 points / 376 comments at snapshot — <a href="https://news.ycombinator.com/item?id=50312408">news.ycombinator.com/item?id=50312408</a></li><li data-n="[7]" id="src7">Ask HN — original question, via Algolia item record — <a href="https://hn.algolia.com/api/v1/items/50328896">hn.algolia.com</a></li><li data-n="[8]" id="src8">Hacker News thread, 509 points / 622 comments at snapshot — <a href="https://news.ycombinator.com/item?id=50328896">news.ycombinator.com/item?id=50328896</a></li><li data-n="[9]" id="src9">Nolan Lawson — “The AI cost of JavaScript frameworks” — <a href="https://nolanlawson.com/2026/10/28/the-ai-cost-of-javascript-frameworks/">nolanlawson.com</a></li><li data-n="[10]" id="src10">Hacker News thread, 406 points / 314 comments at snapshot — <a href="https://news.ycombinator.com/item?id=50323088">news.ycombinator.com/item?id=50323088</a></li><li data-n="[11]" id="src11">OccupySaaS — project site — <a href="https://occupysaas.com/">occupysaas.com</a></li><li data-n="[12]" id="src12">Hacker News thread, 381 points / 228 comments at snapshot — <a href="https://news.ycombinator.com/item?id=50331402">news.ycombinator.com/item?id=50331402</a></li><li data-n="[13]" id="src13">Wikihack — site and maker’s Show HN description — <a href="https://wikihack.netlify.app">wikihack.netlify.app</a></li><li data-n="[14]" id="src14">Hacker News thread, 293 points / 89 comments at snapshot — <a href="https://news.ycombinator.com/item?id=50333339">news.ycombinator.com/item?id=50333339</a></li><li data-n="[15]" id="src15">OmniDiff — repository README — <a href="https://github.com/ivankovic/omnidiff">github.com</a></li><li data-n="[16]" id="src16">Hacker News thread, 274 points / 81 comments at snapshot — <a href="https://news.ycombinator.com/item?id=50325253">news.ycombinator.com/item?id=50325253</a></li><li data-n="[17]" id="src17">Outcrop — project site — <a href="https://outcrop.rocks/">outcrop.rocks</a></li><li data-n="[18]" id="src18">Hacker News thread, 228 points / 48 comments at snapshot — <a href="https://news.ycombinator.com/item?id=50290533">news.ycombinator.com/item?id=50290533</a></li><li data-n="[19]" id="src19">Radiaverse — project site — <a href="https://radiaverse.com/">radiaverse.com</a></li><li data-n="[20]" id="src20">Hacker News thread, 192 points / 53 comments at snapshot — <a href="https://news.ycombinator.com/item?id=50280131">news.ycombinator.com/item?id=50280131</a></li></ol><p class="method">Methodology — Snapshot of the Hacker News front page recorded at 14:00:39 UTC on Monday, November 2, 2026 (08:00 US Central; Morning Edition), via the Algolia HN Search API (tags=front_page; 30 items returned). The ten highest-scoring fresh stories were chosen after comparison with HN IDs in the previous four edition manifests. Totals use the points and full comment counts in that one search response: 7,199 points and 2,674 comments. Primary pages were fetched directly, except the initial PostgreSQL blog request met a bot challenge; a second request retrieved the complete post. Wikihack’s frontend offered only metadata without a rendered article, so its maker’s HN text and comments supplied the details. Reader comments came from the Algolia items API. Images are from their linked source pages or their open-graph cards and were checked by file signature.</p></div>
+<footer class="colophon"><span>The Hacker Herald — Typeset from the Hacker News front page</span><span>Front page · 7,199 points · 2,674 comments</span><span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</span></footer>
+</body>
+</html>

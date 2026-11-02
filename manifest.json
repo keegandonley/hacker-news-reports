@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-02-morning",
+      "date": "2026-11-02",
+      "label": "Morning",
+      "snapshot_utc": "14:00",
+      "items": [
+        {
+          "id": 50319510,
+          "title": "HackerTube: YouTube built from videos recommended by HN",
+          "score": 2689,
+          "comments": 598
+        },
+        {
+          "id": 50326821,
+          "title": "Show HN: HackerBooks – HackerTube, but for books mentioned on HN",
+          "score": 1610,
+          "comments": 265
+        },
+        {
+          "id": 50312408,
+          "title": "Postgres 19 is late because so many more bugs are being found now",
+          "score": 617,
+          "comments": 376
+        },
+        {
+          "id": 50328896,
+          "title": "Ask HN: Which TV do you recommend for privacy?",
+          "score": 509,
+          "comments": 622
+        },
+        {
+          "id": 50323088,
+          "title": "The AI cost of JavaScript frameworks",
+          "score": 406,
+          "comments": 314
+        },
+        {
+          "id": 50331402,
+          "title": "OccupySaaS",
+          "score": 381,
+          "comments": 228
+        },
+        {
+          "id": 50333339,
+          "title": "Show HN: Wikihack – HackerTube, but for Wikipedia articles mentioned on HN",
+          "score": 293,
+          "comments": 89
+        },
+        {
+          "id": 50325253,
+          "title": "Show HN: OmniDiff – Opensource, super fast, content aware Git difftool, in Rust",
+          "score": 274,
+          "comments": 81
+        },
+        {
+          "id": 50290533,
+          "title": "Show HN: Point your camera at a landscape to learn about its geology",
+          "score": 228,
+          "comments": 48
+        },
+        {
+          "id": 50280131,
+          "title": "Radiation Map of the World",
+          "score": 192,
+          "comments": 53
+        }
+      ]
+    },
+    {
       "folder": "2026-10-30-afternoon",
       "date": "2026-10-30",
       "label": "Afternoon",
