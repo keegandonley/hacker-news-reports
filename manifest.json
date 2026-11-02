@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-02-afternoon",
+      "date": "2026-11-02",
+      "label": "Afternoon",
+      "snapshot_utc": "22:01",
+      "items": [
+        {
+          "id": 50341174,
+          "title": "Astra can read and write weights to improve Qwen",
+          "score": 1308,
+          "comments": 412
+        },
+        {
+          "id": 50337608,
+          "title": "WTF Ubuntu?",
+          "score": 1159,
+          "comments": 557
+        },
+        {
+          "id": 50340088,
+          "title": "Show HN: Subvocal – Talk to your computer without making noise",
+          "score": 412,
+          "comments": 237
+        },
+        {
+          "id": 50335615,
+          "title": "Supermarket freezers across Europe hit by second suspected cyber-attack",
+          "score": 333,
+          "comments": 382
+        },
+        {
+          "id": 50336518,
+          "title": "If you love a website, back it up",
+          "score": 296,
+          "comments": 73
+        },
+        {
+          "id": 50339494,
+          "title": "Anthropic's internal AI use, at retail prices, now exceeds its employee pay",
+          "score": 250,
+          "comments": 203
+        },
+        {
+          "id": 50339397,
+          "title": "US boy names that became girl names and vice versa",
+          "score": 208,
+          "comments": 231
+        },
+        {
+          "id": 50334704,
+          "title": "Show HN: I've updated my Linux System Call website and API",
+          "score": 190,
+          "comments": 48
+        },
+        {
+          "id": 50339221,
+          "title": "Show HN: Warsaw in voxels – An interactive 3D map of the city centre",
+          "score": 171,
+          "comments": 31
+        },
+        {
+          "id": 50341462,
+          "title": "Ubuntu still has not released patch for Linux 0day RCE in almost 3 weeks",
+          "score": 159,
+          "comments": 27
+        }
+      ]
+    },
+    {
       "folder": "2026-11-02-morning",
       "date": "2026-11-02",
       "label": "Morning",

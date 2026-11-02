@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 2, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+
+
+/* Edition-specific responsive safeguards. */
+@media(max-width:600px){.byline{flex-wrap:wrap}.score{white-space:normal}.statbox table{table-layout:fixed}.statbox td{overflow-wrap:anywhere}.bulletins .cell{overflow-wrap:anywhere}}
+
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>Hacker News Front Page · Snapshot 22:01 UTC</span><span class="mid">Afternoon Edition</span><span>10 Stories · 4,486 Points · 2,201 Comments</span></div>
+<div class="nameplate"><h1>The Hacker Herald</h1><div class="sub">The front page, read closely and set in type — a briefing for Keegan</div></div>
+<div class="dateline"><div class="l">Compiled from news.ycombinator.com</div><div class="c">Monday, November 2, 2026</div><div class="r">Ten stories at the 22:01 UTC snapshot</div></div>
+
+<div class="bulletins">
+<div class="cell"><span class="tag">AI Desk · The Lead</span><b>Weights, read and rewritten</b>MIT CSAIL reports GPT-6 Astra edits another network&rsquo;s weights directly &mdash; 0.016% of a small Qwen, math accuracy up sixfold. It led the snapshot at 1,308 points.</div>
+<div class="cell"><span class="tag">Systems Desk · Patch Gap</span><b>Ubuntu week three, no fix</b>A CVSS 9.8 TCP flaw from 2016 is patched in Debian but not Ubuntu; the thread it provoked is the day&rsquo;s largest at 557 comments.</div>
+<div class="cell"><span class="tag">Security Desk · Infrastructure</span><b>Freezers run warm in 7 countries</b>Overnight intrusions pushed supermarket cabinets to 50C; the EU&rsquo;s food commissioner calls it deliberate supply-chain disruption.</div>
+<div class="cell"><span class="tag">AI Desk · The Ledger</span><b>Anthropic&rsquo;s tab with itself</b>An IPO filing values internal Claude use, at retail prices, above payroll since April; 90% of September&rsquo;s new code was Claude-written.</div>
+</div>
+
+<div class="lead">
+<div class="cell main">
+<article id="story-50341174">
+<span class="kicker">Lead Story · AI Desk</span>
+<h2 class="headline">GPT-6 Astra edits a small Qwen&rsquo;s weights directly and lifts its math score sixfold</h2>
+<h3 class="deck">MIT CSAIL calls the technique Weight-Space Programming: no training loops, no gradients &mdash; the model reads what a network computes and rewrites 0.016% of it.</h3>
+<div class="byline"><span>AI Desk</span><span class="score">&star; 1,308 pts &middot; 412 comments</span></div>
+<figure><img src="images/astra.png" alt="Figure from the Weight-Space Programming post." loading="lazy"><figcaption>Figure from the Weight-Space Programming post. <span class="cr">rikiyat.github.io</span></figcaption></figure>
+<p class="first">CAMBRIDGE, MASSACHUSETTS &mdash; GPT-6 Astra, reading only the raw numbers inside a neural network, can identify what the network was trained to do &mdash; and rewrite those numbers to change it, four researchers at MIT CSAIL report in a paper posted November 2 by Rikiya Takehi, Jayden Teoh, Alex Zhang and Omar Khattab. With no environment feedback at all, the model wrote small game-playing networks from scratch that outplay networks trained with PPO for 100 million steps. The authors call the technique Weight-Space Programming.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup></p>
+<p>The headline demonstration targets Qwen3.5-0.8B. Asked to make the 0.8-billion-parameter model better at mathematics without gradients, Astra located a defect in its weights that causes reasoning loops &mdash; a failure Qwen&rsquo;s own model card warns about &mdash; and corrected it by editing 0.016% of the weights. At identical sampling settings, MATH-500 accuracy rose from 7.9% to 48.1%, and the correction generalized out of the box to instruction following, roughly tripling IFEval. The model was not allowed to write a training loop; it reasoned about what each part of the network computes, or should compute, and changed the numbers accordingly.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+<p>The thread read the result as a marker on the road to recursive self-improvement. One reader noted that labs already train models for RSI, &ldquo;so most likely the same training is useful for improving open source models, as long as guard rails are lax enough.&rdquo; Another admitted that, asked that morning whether an LLM&rsquo;s native grasp of weights was less, equal to, or greater than a human&rsquo;s grasp of neurons, he would not have guessed this.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+<div class="jump"><a href="https://news.ycombinator.com/item?id=50341174">Read the discussion ↗</a></div>
+</article>
+</div>
+<div class="cell side">
+<article id="story-50337608">
+<span class="kicker">Systems Desk · Patch Gap &middot; Most Discussed &dagger;</span>
+<h2 class="headline">Ubuntu reaches week three without a fix for CVSS 9.8 kernel flaw</h2>
+<h3 class="deck">Debian patched the TCP bug on October 16; every supported Ubuntu release is still listed &ldquo;Vulnerable.&rdquo;</h3>
+<div class="byline"><span>Systems Desk</span><span class="score">&star; 1,159 pts &middot; 557 cmts</span></div>
+<p class="first">A CVSS 9.8 flaw in the Linux kernel&rsquo;s TCP code &mdash; present since 2016 and reachable remotely &mdash; remains unpatched on every supported Ubuntu release, LTS included, more than two weeks after it was rated, setting off the day&rsquo;s largest discussion. The post at chalmovsky.com reports that Debian shipped its fix on October 16, and that volunteer-run distributions &mdash; Debian, Arch, Alpine &mdash; patched within days while &ldquo;a company that sells security subscriptions&rdquo; has not; the author states his facts as of 14:48 UTC on November 2.<sup class="cite"><a href="#src3">[3]</a></sup><sup class="cite"><a href="#src4">[4]</a></sup></p>
+<p>According to the post, Anthropic built a working exploit that takes an affected server to root &mdash; a claim the post attributes to Anthropic&rsquo;s disclosure. Ubuntu&rsquo;s site promises &ldquo;timely patches for critical vulnerabilities&rdquo;; the author writes that he has taken his Ubuntu servers offline entirely and is migrating, having &ldquo;completely lost trust&rdquo; in the distribution.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+<p>The commentariat widened the indictment. One reader noted that Amazon was already shipping patches for Amazon Linux 2 while Ubuntu waited; others described migrations to Debian or AlmaLinux, some dating their unease to the Ubuntu Pro era. A dissenting reader condensed the other side &mdash; &ldquo;the free operating system that I use is not giving me enterprise level security updates&rdquo; &mdash; and suggested the aggrieved fix it upstream.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+<div class="jump"><a href="https://news.ycombinator.com/item?id=50337608">Read the discussion ↗</a></div>
+</article>
+</div>
+<div class="cell side">
+<article id="story-50339494">
+<span class="kicker">AI Desk · Business</span>
+<h2 class="headline">Anthropic&rsquo;s internal Claude use, priced at retail, passed its payroll in April</h2>
+<div class="byline"><span>AI Desk</span><span class="score">&star; 250 pts &middot; 203 cmts</span></div>
+<figure><img src="images/anthropic-spend.jpg" alt="Image published with Business Insider's report." loading="lazy"><figcaption>Image published with Business Insider&rsquo;s report. <span class="cr">businessinsider.com</span></figcaption></figure>
+<p class="first">Anthropic&rsquo;s IPO filing shows the value of Claude used inside the company, calculated at the prices Anthropic charges customers, exceeded its monthly employee compensation &mdash; excluding stock awards &mdash; in April, Business Insider reports. By September, internal AI usage was up more than 250-fold since January, and more than 90% of the code added to Anthropic&rsquo;s software that month was written by Claude.<sup class="cite"><a href="#src11">[11]</a></sup><sup class="cite"><a href="#src12">[12]</a></sup></p>
+<p>The number is a valuation exercise, not a cash comparison: as the article itself states, Anthropic is not actually spending more money on AI than on salaries &mdash; it is metering its own consumption at list prices. The author, who proposed in March that tokens be treated as a fourth component of compensation alongside salary, bonus and stock, calls it a watershed anyway.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+<p>The thread was less moved. One reader argued any other company would measure internal servers by cost, not retail; another wrote that a dogfooding lab with &ldquo;a vested interest in proving that AI usage is the future&rdquo; tells us little, and unmetered users have no reason to economize.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+<div class="jump"><a href="https://news.ycombinator.com/item?id=50339494">Read the discussion ↗</a></div>
+</article>
+<article id="story-50334704">
+<span class="kicker">Tools Desk · Reference</span>
+<h2 class="headline">Linux syscall tables for 27 architectures, updated with an API</h2>
+<div class="byline"><span>Tools Desk</span><span class="score">&star; 190 pts &middot; 48 cmts</span></div>
+<p class="first">syscall.sh now gathers every Linux syscall table in one place &mdash; numbers, arguments and registers for 27 architectures, spanning kernel versions 3.3 through 7.3. The x86 table lists 441 calls, x86_64 has 369, ARM EABI 426, arm64 326; the maker says an API accompanies the site and a command-line client with an embedded dataset exists from the original release.<sup class="cite"><a href="#src15">[15]</a></sup><sup class="cite"><a href="#src16">[16]</a></sup></p>
+<p>The thread promptly supplied a correction to file with the reference: on x86_64 and x32, the syscall number travels in eax, not rax, and the upper 32 bits of rax are ignored. A reader learning aarch64 assembly called the tables exactly what was needed.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+<div class="jump"><a href="https://news.ycombinator.com/item?id=50334704">Read the discussion ↗</a></div>
+</article>
+</div>
+</div>
+
+<div class="row3">
+<div class="cell">
+<article id="story-50339397">
+<span class="kicker">Language Desk · Names</span>
+<h2 class="headline">Names that changed gender in America were mostly moved by girls</h2>
+<h3 class="deck">Forty-two boy names drifted toward girls; twelve went the other way &mdash; and both directions were driven by girls&rsquo; parents.</h3>
+<div class="byline"><span>Language Desk</span><span class="score">&star; 208 pts &middot; 231 cmts</span></div>
+<p class="first">An analysis of American naming data traces 42 boy names that shifted toward girls and 12 that moved toward boys &mdash; and finds that whichever way a name moved, the push usually came from girls. As a reader quoting the piece in the thread summarizes: 34 of the 42 names moved because more girls received them, not because fewer boys did, and 9 of the 12 reverse cases moved because fewer girls received them, not because more boys did.<sup class="cite"><a href="#src13">[13]</a></sup><sup class="cite"><a href="#src14">[14]</a></sup></p>
+<p>The thread&rsquo;s working theory is that one famous carrier flips a name &mdash; several readers credit <i>Game of Thrones</i> for Arya &mdash; and its working caveat is false friends: Jean and Jan are men&rsquo;s names in French and Central Europe, women&rsquo;s names in English, a distinction the charts cannot draw. The article itself sat behind a browser-verification wall at press time; its counts are quoted as they appear in the discussion.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+<div class="jump"><a href="https://news.ycombinator.com/item?id=50339397">Read the discussion ↗</a></div>
+</article>
+</div>
+<div class="cell">
+<article id="story-50340088">
+<span class="kicker">Tools Desk · Show HN</span>
+<h2 class="headline">Smart glasses decode silently mouthed words with a radar sensor</h2>
+<h3 class="deck">Subvocal, from a YC F26 team of two, converts unspoken words to text at the speed of speech.</h3>
+<div class="byline"><span>Tools Desk</span><span class="score">&star; 412 pts &middot; 237 cmts</span></div>
+<p class="first">The Subvocal Company &mdash; Aarush and Arnav, a two-person YC F26 team &mdash; showed glasses that convert silently mouthed words into text &ldquo;at the speed of speech&rdquo; using a radio sensor aimed at the wearer&rsquo;s face; the post links a video of &ldquo;Dave from YC&rdquo; trying the prototype. The clarifying detail sits in the founder&rsquo;s edit: lips need not move and the mouth need not open, because &ldquo;the RF can see inside your mouth&rdquo; &mdash; the system can be fine-tuned on internal speech, distinct from the involuntary tongue motion of silent reading.<sup class="cite"><a href="#src5">[5]</a></sup><sup class="cite"><a href="#src6">[6]</a></sup></p>
+<p>Readers probed the form factor &mdash; why glasses, and whether a throat microphone would serve &mdash; with one reporting from experience that throat mics &ldquo;don&rsquo;t work at all,&rdquo; and others pointing to rough open-source attempts (subvox, lipflow) aimed at libraries, planes and co-working spaces. Several asked for the technical details the landing page does not yet carry; the founder&rsquo;s answers live, for now, in the thread.<sup class="cite"><a href="#src5">[5]</a></sup><sup class="cite"><a href="#src6">[6]</a></sup></p>
+<div class="jump"><a href="https://news.ycombinator.com/item?id=50340088">Read the discussion ↗</a></div>
+</article>
+</div>
+<div class="cell">
+<article id="story-50339221">
+<span class="kicker">Field Desk · Maps</span>
+<h2 class="headline">Central Warsaw rebuilt in one-metre voxels from open data</h2>
+<div class="byline"><span>Field Desk</span><span class="score">&star; 171 pts &middot; 31 cmts</span></div>
+<figure><img src="images/warsaw.jpg" alt="Preview image of the Warsaw voxel map." loading="lazy"><figcaption>Preview image of the Warsaw voxel map. <span class="cr">p.migdal.pl</span></figcaption></figure>
+<p class="first">An interactive map rebuilds central Warsaw in one-metre voxels from OpenStreetMap, city LiDAR scans and the city&rsquo;s tree database. Visitors can walk to the Palace of Culture, set the date, hour and weather &mdash; or, in the project&rsquo;s own verb, &ldquo;possess a pedestrian.&rdquo; The maker cites Minecraft, MagicaVoxel and Dungeon Keeper as influences, and a reader pointed to Streets of Prague as a cousin.<sup class="cite"><a href="#src17">[17]</a></sup><sup class="cite"><a href="#src18">[18]</a></sup></p>
+<p>Scope and speed drew the caveats. The model covers part of Śr&oacute;dmieście; the Old Town and most of the right bank are absent, and a reader familiar with the area reports blocks near Plac Zamkowy rendered with wrong colors and heights &mdash; a 20-story tower where five stories stand. Readers on discrete-GPU laptops reported frame times around 120 milliseconds.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+<div class="jump"><a href="https://news.ycombinator.com/item?id=50339221">Read the discussion ↗</a></div>
+</article>
+</div>
+</div>
+
+<div class="sec2">
+<div class="cell">
+<div class="section-label"><span>Security Briefing</span></div>
+<article id="story-50335615">
+<span class="kicker">Security Desk · Infrastructure</span>
+<h2 class="headline">Second wave of attacks runs supermarket freezers warm in seven countries</h2>
+<div class="byline"><span>Security Desk</span><span class="score">&star; 333 pts &middot; 382 cmts</span></div>
+<figure><img src="images/freezers.jpg" alt="Image published with The Guardian's report on the refrigeration attacks." loading="lazy"><figcaption>Image published with The Guardian&rsquo;s report. <span class="cr">theguardian.com</span></figcaption></figure>
+<p class="first">Supermarket chains in at least seven European countries &mdash; Belgium, Estonia, Ireland, Finland, Luxembourg, the Netherlands and Sweden &mdash; reported refrigeration failures overnight, with cabinet temperatures pushed as high as 50C, in a second wave of intrusions echoing last month&rsquo;s attack in France. The Guardian reports the French incident seized cooling units in as many as 700 supermarkets, causing fires and food losses estimated in the tens of millions of euros.<sup class="cite"><a href="#src7">[7]</a></sup><sup class="cite"><a href="#src8">[8]</a></sup></p>
+<p>The EU&rsquo;s food and agriculture commissioner, Christophe Hansen, called the repeated attacks &ldquo;a deliberate attempt to disrupt our food supply chain and undermine consumers&rsquo; confidence in it.&rdquo; Sweden&rsquo;s Coop told Aftonbladet six shops were hit; ICA said &ldquo;a limited number of stores&rdquo; were affected, and one ICA shop in Sj&ouml;bo posted that its fridges and freezers had been hacked.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+<p>The thread&rsquo;s sharpest question was timing: the French attack was October 12, three weeks before this wave, and readers asked why chains had not updated refrigeration software or taken the units offline in the interval &mdash; one citing a Swedish store manager whose security review began only after the second incident.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+<div class="jump"><a href="https://news.ycombinator.com/item?id=50335615">Read the discussion ↗</a></div>
+</article>
+<article id="story-50341462">
+<span class="kicker">Security Desk · Tracker</span>
+<h2 class="headline">Ubuntu LTS kernels listed unfixed for the 9.8-rated TCP flaw</h2>
+<div class="byline"><span>Security Desk</span><span class="score">&star; 159 pts &middot; 27 cmts</span></div>
+<p class="first">A tracker hosted on freenode.net lists Ubuntu&rsquo;s 22.04, 24.04 and 26.04 LTS kernels as still unfixed for CVE-2026-98432, with no vendor package and no announced ETA &mdash; an exposure the page says matters most for internet-facing and multi-tenant hosts that rely on LTS kernels for isolation. The facts are corroborated by the chalmovsky.com post in the lead spread.<sup class="cite"><a href="#src19">[19]</a></sup><sup class="cite"><a href="#src20">[20]</a></sup><sup class="cite"><a href="#src3">[3]</a></sup></p>
+<p>The host itself carries a caution the thread supplied: since a 2021 takeover, one reader writes, freenode.net has been run by parties &ldquo;actively hostile to open source software,&rdquo; and the original Freenode database no longer exists. Treat the page as a tracker, not an authority. Red Hat&rsquo;s mitigation guidance, cited alongside, &ldquo;reduces exposure &hellip; but cannot fully prevent it.&rdquo;<sup class="cite"><a href="#src20">[20]</a></sup></p>
+<div class="jump"><a href="https://news.ycombinator.com/item?id=50341462">Read the discussion ↗</a></div>
+</article>
+</div>
+<div class="cell">
+<div class="section-label"><span>Practical Tech Corner</span></div>
+<article id="story-50336518">
+<span class="kicker">Field Desk · Archiving</span>
+<h2 class="headline">A web archivist who lost a favourite site explains how to back up yours</h2>
+<div class="byline"><span>Field Desk</span><span class="score">&star; 296 pts &middot; 73 cmts</span></div>
+<p class="first">The post opens with a confession from inside the trade: its author works in web archiving and still lost teapuppies.com &mdash; an Ochaken fansite online since 2004 and essentially unchanged since 2005 &mdash; to a lapsed domain now serving gambling ads. &ldquo;I could have archived that site while it was still around, but I didn&rsquo;t.&rdquo;<sup class="cite"><a href="#src9">[9]</a></sup><sup class="cite"><a href="#src10">[10]</a></sup></p>
+<p>The remedy walks through ArchiveWeb.page, a browser extension that captures pages into WARC and WACZ archive files &mdash; formats the author notes record complete requests and responses, headers included, enough to replay JavaScript-heavy sites. A finished WACZ can be kept, mailed to a friend or republished with the open-source ReplayWeb.page viewer; &ldquo;lots of copies keeps stuff safe.&rdquo;<sup class="cite"><a href="#src9">[9]</a></sup></p>
+<p>The thread swelled with parallel practice: wget for static blogs, SingleFile for one-offs, gwern&rsquo;s archiving guide for the thorough &mdash; and one reader who watched buthowdoitknow.com vanish and rebuilt its visual CPU emulator from memory with an LLM&rsquo;s help.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+<div class="jump"><a href="https://news.ycombinator.com/item?id=50336518">Read the discussion ↗</a></div>
+</article>
+<div class="pullquote">&ldquo;Regardless of one&rsquo;s opinions about future AI usage, I&rsquo;m not sure this metric says anything at all.&rdquo;<span class="attr">torben-friis, on Anthropic&rsquo;s retail-priced AI tally &mdash; the HN thread [12]</span></div>
+</div>
+<div class="cell">
+<div class="section-label"><span>Quote of the Day</span></div>
+<div class="pullquote">&ldquo;A deliberate attempt to disrupt our food supply chain and undermine consumers&rsquo; confidence in it.&rdquo;<span class="attr">Christophe Hansen, EU food and agriculture commissioner, on the freezer attacks [7]</span></div>
+<div class="classifieds">
+<div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+<p>LOST: one Ochaken fansite, teapuppies.com, online since 2004. Last seen serving gambling ads.</p>
+<p>MISSING: Ubuntu kernel patches for CVE-2026-98432 (CVSS 9.8). Debian&rsquo;s were last seen October 16.</p>
+</div>
+<div class="statbox"><div class="t">The Wires, This Edition</div><table>
+<tr><td>Fresh stories</td><td>10</td></tr>
+<tr><td>Follow-ups</td><td>0</td></tr>
+<tr><td>Carried in digest</td><td>0</td></tr>
+<tr><td>Second wire (Lobsters)</td><td>not needed</td></tr>
+</table></div>
+</div>
+</div>
+
+<div class="chartrow">
+<div class="cell">
+<div class="section-label"><span>The Box Score &mdash; Front Page by the Points</span></div>
+<svg viewBox="0 0 640 392" role="img" aria-label="Hacker News points by story at 22:01 UTC" style="width:100%; height:auto; display:block"><defs>
+<pattern id="ink" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="none"/><line x1="0" y1="0" x2="0" y2="5" stroke="#191510" stroke-width="1.8"/></pattern>
+<pattern id="inkr" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="none"/><line x1="0" y1="0" x2="0" y2="5" stroke="#7a1f1f" stroke-width="1.8"/></pattern></defs>
+<line x1="74" y1="6" x2="74" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="149" y1="6" x2="149" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="223" y1="6" x2="223" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="297" y1="6" x2="297" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="371" y1="6" x2="371" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="446" y1="6" x2="446" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<line x1="520" y1="6" x2="520" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/>
+<text x="0" y="18" fill="#191510" font-size="12" font-weight="600">Astra weights</text>
+<rect x="0.5" y="22" width="486" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="493" y="34" fill="#191510" font-size="11" font-weight="700">1308 ★ · 412 cmts</text>
+<text x="0" y="52" fill="#191510" font-size="12" font-weight="600">WTF Ubuntu †</text>
+<rect x="0.5" y="56" width="430" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="437" y="68" fill="#191510" font-size="11">1159 · 557</text>
+<text x="0" y="86" fill="#191510" font-size="12" font-weight="600">Subvocal</text>
+<rect x="0.5" y="90" width="153" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="160" y="102" fill="#191510" font-size="11">412 · 237</text>
+<text x="0" y="120" fill="#191510" font-size="12" font-weight="600">Freezer attacks</text>
+<rect x="0.5" y="124" width="124" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="131" y="136" fill="#191510" font-size="11">333 · 382</text>
+<text x="0" y="154" fill="#191510" font-size="12" font-weight="600">Back it up</text>
+<rect x="0.5" y="158" width="110" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="117" y="170" fill="#191510" font-size="11">296 · 73</text>
+<text x="0" y="188" fill="#191510" font-size="12" font-weight="600">Anthropic AI bill</text>
+<rect x="0.5" y="192" width="93" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="100" y="204" fill="#191510" font-size="11">250 · 203</text>
+<text x="0" y="222" fill="#191510" font-size="12" font-weight="600">Boy names</text>
+<rect x="0.5" y="226" width="77" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="84" y="238" fill="#191510" font-size="11">208 · 231</text>
+<text x="0" y="256" fill="#191510" font-size="12" font-weight="600">Syscall tables</text>
+<rect x="0.5" y="260" width="71" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="78" y="272" fill="#191510" font-size="11">190 · 48</text>
+<text x="0" y="290" fill="#191510" font-size="12" font-weight="600">Warsaw voxels</text>
+<rect x="0.5" y="294" width="64" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="71" y="306" fill="#191510" font-size="11">171 · 31</text>
+<text x="0" y="324" fill="#191510" font-size="12" font-weight="600">Ubuntu 0day</text>
+<rect x="0.5" y="328" width="59" height="15" fill="url(#ink)" stroke="#191510"/>
+<text x="66" y="340" fill="#191510" font-size="11">159 · 27</text>
+<line x1="0.5" y1="6" x2="0.5" y2="352" stroke="#191510" stroke-width="1"/>
+<line x1="0.5" y1="352" x2="520" y2="352" stroke="#191510" stroke-width="1"/>
+<text x="0" y="366" fill="#3d352a" font-size="11" text-anchor="start">0</text>
+<text x="74" y="366" fill="#3d352a" font-size="11" text-anchor="middle">200</text>
+<text x="149" y="366" fill="#3d352a" font-size="11" text-anchor="middle">400</text>
+<text x="223" y="366" fill="#3d352a" font-size="11" text-anchor="middle">600</text>
+<text x="297" y="366" fill="#3d352a" font-size="11" text-anchor="middle">800</text>
+<text x="371" y="366" fill="#3d352a" font-size="11" text-anchor="middle">1000</text>
+<text x="446" y="366" fill="#3d352a" font-size="11" text-anchor="middle">1200</text>
+<text x="520" y="366" fill="#3d352a" font-size="11" text-anchor="middle">1400</text>
+<text x="0" y="386" fill="#191510" font-size="11">★ = points · cmts = comments · † most-discussed story of the day · red hatch marks Apple coverage (none today)</text>
+</svg>
+</div>
+<div class="cell">
+<div class="section-label"><span>Day in One Line</span></div>
+<p>MIT showed a frontier model rewriting another network&rsquo;s weights; intruders ran supermarket freezers warm across seven countries; Ubuntu entered week three without a kernel fix; and Anthropic&rsquo;s filing priced its own AI habit above payroll.</p>
+<div class="statbox"><div class="t">Front Page Ledger &mdash; This Edition</div><table>
+<tr><td>Fresh stories</td><td>10</td></tr>
+<tr><td>Follow-ups</td><td>0</td></tr>
+<tr><td>Carried in digest</td><td>0</td></tr>
+<tr><td>Combined points</td><td>4,486</td></tr>
+<tr><td>Combined comments</td><td>2,201</td></tr>
+<tr><td>Most-discussed story</td><td>Ubuntu patch gap &middot; 557</td></tr>
+<tr><td>Lead&rsquo;s margin over No. 2</td><td>149 points</td></tr>
+<tr><td>Snapshot</td><td>22:01 UTC</td></tr>
+</table></div>
+<div class="corrections"><div class="t">Corrections &amp; Clarifications</div>
+<p><b>&ldquo;Exceeds employee pay&rdquo; versus cash.</b> The widely quoted line is a valuation: Anthropic meters internal Claude use at retail prices, and the underlying article states plainly that it is not spending more cash on AI than on salaries. The milestone is an accounting lens, not a budget.<sup class="cite"><a href="#src11">[11]</a></sup><sup class="cite"><a href="#src12">[12]</a></sup></p>
+<p><b>&ldquo;Improve Qwen&rdquo; versus which Qwen.</b> The weight-editing result targets Qwen3.5-0.8B, an 0.8-billion-parameter model, with 0.016% of its weights changed. Frontier-scale weight editing is not demonstrated in the post.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+<p><b>&ldquo;City centre&rdquo; versus the covered area.</b> The Warsaw map renders part of Śr&oacute;dmieście; the Old Town and most of the right bank are missing, and readers report distorted building heights near Plac Zamkowy.<sup class="cite"><a href="#src17">[17]</a></sup><sup class="cite"><a href="#src18">[18]</a></sup></p>
+<p><b>A tracker&rsquo;s provenance.</b> The &ldquo;still unfixed&rdquo; item is hosted on freenode.net, a domain its own thread describes as hostile-takeover territory since 2021; the CVE facts it lists are independently corroborated, but the page is not an authority.<sup class="cite"><a href="#src19">[19]</a></sup><sup class="cite"><a href="#src20">[20]</a></sup></p>
+</div>
+</div>
+</div>
+
+<div class="publisher"><div class="t">Publisher&rsquo;s Note</div>
+<p>The lead is MIT&rsquo;s weight-editing result; the largest discussion is Ubuntu&rsquo;s unpatched kernel, which also supplies the Security Briefing&rsquo;s tracker item. All ten stories were fresh against the previous four editions &mdash; no Follow-Ups, no digest, no second wire needed. One source sat behind a bot wall and one tracker&rsquo;s host carries a contested past; both are flagged where they appear.</p><div class="sig">&mdash; The Herald</div></div>
+
+<div class="rule-thick"></div>
+<div class="sources"><ol>
+<li data-n="[1]" id="src1">&ldquo;Sparks of Weight-Space Programming&rdquo; &mdash; R. Takehi, J. Teoh, A. Zhang, O. Khattab, MIT CSAIL &mdash; <a href="https://rikiyat.github.io/blog/weight-space-programming/">rikiyat.github.io</a></li>
+<li data-n="[2]" id="src2">Hacker News thread, 1,308 points / 412 comments at snapshot &mdash; <a href="https://news.ycombinator.com/item?id=50341174">news.ycombinator.com/item?id=50341174</a></li>
+<li data-n="[3]" id="src3">&ldquo;WTF Ubuntu?&rdquo; &mdash; chalmovsky.com &mdash; <a href="https://chalmovsky.com/posts/wtf-ubuntu">chalmovsky.com/posts/wtf-ubuntu</a></li>
+<li data-n="[4]" id="src4">Hacker News thread, 1,159 points / 557 comments at snapshot &mdash; <a href="https://news.ycombinator.com/item?id=50337608">news.ycombinator.com/item?id=50337608</a></li>
+<li data-n="[5]" id="src5">&ldquo;Show HN: Subvocal&rdquo; &mdash; launch post and discussion &mdash; <a href="https://news.ycombinator.com/item?id=50340088">news.ycombinator.com/item?id=50340088</a></li>
+<li data-n="[6]" id="src6">The Subvocal Company &mdash; product page &mdash; <a href="https://subvocal.company/">subvocal.company</a></li>
+<li data-n="[7]" id="src7">&ldquo;Shop fridges and freezers across Europe hit by fresh suspected cyber-attack&rdquo; &mdash; The Guardian &mdash; <a href="https://www.theguardian.com/world/2026/nov/02/supermarket-freezers-across-europe-hit-by-second-suspected-cyber-attack">theguardian.com</a></li>
+<li data-n="[8]" id="src8">Hacker News thread, 333 points / 382 comments at snapshot &mdash; <a href="https://news.ycombinator.com/item?id=50335615">news.ycombinator.com/item?id=50335615</a></li>
+<li data-n="[9]" id="src9">&ldquo;If you love a website, back it up&rdquo; &mdash; blog.mistys-internet.website &mdash; <a href="https://blog.mistys-internet.website/post/2026/10/29/if-you-love-a-website-back-it-up/">blog.mistys-internet.website</a></li>
+<li data-n="[10]" id="src10">Hacker News thread, 296 points / 73 comments at snapshot &mdash; <a href="https://news.ycombinator.com/item?id=50336518">news.ycombinator.com/item?id=50336518</a></li>
+<li data-n="[11]" id="src11">&ldquo;Anthropic&rsquo;s internal AI use, at retail prices, now exceeds its employee pay&rdquo; &mdash; Business Insider &mdash; <a href="https://www.businessinsider.com/anthropic-claude-internal-ai-use-exceeds-employee-pay-tokens-2026-11">businessinsider.com</a></li>
+<li data-n="[12]" id="src12">Hacker News thread, 250 points / 203 comments at snapshot &mdash; <a href="https://news.ycombinator.com/item?id=50339494">news.ycombinator.com/item?id=50339494</a></li>
+<li data-n="[13]" id="src13">&ldquo;US boy names that became girl names and vice versa&rdquo; &mdash; namedaisy.com (behind a verification wall at press time; counts quoted in the thread) &mdash; <a href="https://namedaisy.com/blog/boy-names-that-became-girl-names">namedaisy.com</a></li>
+<li data-n="[14]" id="src14">Hacker News thread, 208 points / 231 comments at snapshot &mdash; <a href="https://news.ycombinator.com/item?id=50339397">news.ycombinator.com/item?id=50339397</a></li>
+<li data-n="[15]" id="src15">Linux System Call Tables by Architecture &mdash; syscall.sh &mdash; <a href="https://syscall.sh/">syscall.sh</a></li>
+<li data-n="[16]" id="src16">Hacker News thread, 190 points / 48 comments at snapshot &mdash; <a href="https://news.ycombinator.com/item?id=50334704">news.ycombinator.com/item?id=50334704</a></li>
+<li data-n="[17]" id="src17">&ldquo;Warsaw in voxels&rdquo; &mdash; p.migdal.pl &mdash; <a href="https://p.migdal.pl/warsaw-vibe-voxel/">p.migdal.pl/warsaw-vibe-voxel</a></li>
+<li data-n="[18]" id="src18">Hacker News thread, 171 points / 31 comments at snapshot &mdash; <a href="https://news.ycombinator.com/item?id=50339221">news.ycombinator.com/item?id=50339221</a></li>
+<li data-n="[19]" id="src19">&ldquo;Ubuntu LTS kernels still unfixed for critical CVE-2026-98432&rdquo; &mdash; freenode.net &mdash; <a href="https://freenode.net/article/ubuntu-lts-kernels-still-unfixed-for-critical-cve-2026-98432">freenode.net</a></li>
+<li data-n="[20]" id="src20">Hacker News thread, 159 points / 27 comments at snapshot &mdash; <a href="https://news.ycombinator.com/item?id=50341462">news.ycombinator.com/item?id=50341462</a></li>
+</ol>
+<div class="method">Methodology &mdash; Candidates drawn from the Hacker News Algolia front-page API at 22:01 UTC on Monday, November 2, 2026 (30 items returned; the ten above are the highest-scored after removing every item covered by this archive&rsquo;s previous four editions &mdash; all ten were fresh). Scores and comment counts are snapshot values and will have moved. Articles fetched directly; comment threads via the Algolia items API; images are each source&rsquo;s own published card image, verified by file signature. One source (namedaisy.com) was behind a browser-verification wall at press time; its figures are quoted as they appear in the discussion. Edition label computed in America/Chicago (16:01 &rarr; Afternoon).</div></div>
+
+<footer class="colophon"><span>The Hacker Herald &mdash; Typeset from the Hacker News front page</span><span>&#10047; Printed on 100% recycled bandwidth &#10047;</span><span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</span></footer>
+
+</body>
+</html>
