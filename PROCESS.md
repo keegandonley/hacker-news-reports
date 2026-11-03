@@ -179,8 +179,42 @@ URL: `https://keegandonley.github.io/hacker-news-reports/editions/<folder>/` .
 If archiving fails (auth/network): note it, finish anyway (≤1 retry) — the live paper
 outranks the archive.
 
+## STEP 8 — MAIL THE READER (always)
+
+After Steps 6–7 succeed (the email links the live paper and the archive, so both must
+return 200 first), email the edition briefing to the reader via the Resend `send_email`
+tool. This step is mandatory on every run — never skip it silently.
+
+- **To:** `kd@keegandonley.com`
+- **From:** `The Hacker Herald <herald@updates.keegan.codes>` (verified domain; follows
+  the account's `<purpose>@updates.keegan.codes` sender convention — do not invent
+  other senders or domains)
+- **Subject:** `The Hacker Herald — <Morning|Afternoon> Edition, <Mon D, YYYY> · <short
+  top-headline gist> (<top pts> pts)`
+- **Body — dual part, same facts both ways:**
+  - **HTML:** table-based layout, 100%-width wrapper table with a max-600px inner table,
+    ALL styles inline (no `<style>` tag, no shorthand), explicit font-family/size/
+    line-height/color on every text cell, absolute URLs only, `<a>` styled as button in
+    a `<td>` — never `<button>`; no JS/forms/video. Mobile-safe: nothing that breaks a
+    360px phone.
+  - **Plain text:** same content, mirrored (masthead + top bar metadata, lead, the ten
+    stories with URLs, ledger, links).
+  - **Content (all from this run's snapshot — never invent):** masthead + ribbon; top-bar
+    metadata ("Snapshot HH:MM UTC · <Edition> · N Stories · X Points · Y Comments");
+    the lead story as a short paragraph with its real numbers and Follow-Up delta; the
+    ten stories ranked by points, each as a link to its HN thread
+    (`https://news.ycombinator.com/item?id=<id>`) with `★ pts · cmts` (mark Follow-Ups
+    `▲ +N`, digest entries noted); a Front Page Ledger block (fresh/follow-up/digest,
+    combined pts/cmts); a "Read today's paper" button to the live URL; the archive link
+    (`https://keegandonley.github.io/hacker-news-reports/`). Sign "— The Hacker Herald".
+  - Paper's voice rules apply: ★/†/▲ glyphs only, no emoji, no fake furniture.
+- **Verify:** after sending, call Resend `get_email` on the returned id and confirm
+  status `delivered`. If sending or delivery fails: one retry, then note the failure in
+  the final report and finish anyway — the published paper outranks the mail.
+
 ## FINAL REPORT (your last message)
 
-Live URL + version; edition label + snapshot time; archive URL + push status; the 10
+Live URL + version; edition label + snapshot time; archive URL + push status; **email
+status (Resend id + delivered confirmation)**; the 10
 stories with points/comments (marking Follow-Ups and digest entries); fresh/follow-up/
 digest/wire counts; aggregates; any degradations; verification confirmation.
