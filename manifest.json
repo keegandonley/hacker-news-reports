@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-03-morning",
+      "date": "2026-11-03",
+      "label": "Morning",
+      "snapshot_utc": "14:00",
+      "items": [
+        {
+          "id": 50341174,
+          "title": "Astra can read and write weights to improve Qwen",
+          "score": 2849,
+          "comments": 861
+        },
+        {
+          "id": 50340088,
+          "title": "Show HN: Subvocal – Talk to your computer without making noise",
+          "score": 754,
+          "comments": 355
+        },
+        {
+          "id": 50346981,
+          "title": "Show HN: Hacker Times, a New York Times-inspired version of Hacker News",
+          "score": 356,
+          "comments": 111
+        },
+        {
+          "id": 50346849,
+          "title": "DiscImageStudio: burn visible artwork onto CDs, DVDs and Blu-ray discs",
+          "score": 295,
+          "comments": 58
+        },
+        {
+          "id": 50340619,
+          "title": "Self-Employed? Solopreneur? NIST Has a Cybersecurity Guide Just for You",
+          "score": 278,
+          "comments": 82
+        },
+        {
+          "id": 50323123,
+          "title": "Resisting Cognitive Surrender",
+          "score": 239,
+          "comments": 115
+        },
+        {
+          "id": 50351111,
+          "title": "The 'Astra can read and write weights to improve Qwen' post is misleading",
+          "score": 228,
+          "comments": 44
+        },
+        {
+          "id": 50348962,
+          "title": "Nvidia – open-source auto-ontology",
+          "score": 177,
+          "comments": 57
+        },
+        {
+          "id": 50334523,
+          "title": "European RISC-V Industrial Computing Initiative",
+          "score": 162,
+          "comments": 87
+        },
+        {
+          "id": 50321605,
+          "title": "Toit v2.0.0",
+          "score": 159,
+          "comments": 49
+        }
+      ]
+    },
+    {
       "folder": "2026-11-02-afternoon",
       "date": "2026-11-02",
       "label": "Afternoon",

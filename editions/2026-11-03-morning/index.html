@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 3, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <span>Hacker News Front Page · Snapshot 14:00 UTC</span>
+  <span class="mid">Morning Edition · November 3, 2026</span>
+  <span>10 Stories · 5,497 Points · 1,819 Comments</span>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type — a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <span class="l">Compiled from news.ycombinator.com</span>
+  <span class="c">Tuesday, November 3, 2026</span>
+  <span class="r">Every fact checked; every joke earned</span>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">AI · Follow-Up</span><b>Weights Read and Written</b>
+    The MIT CSAIL post reporting that Astra reads and edits neural-network weights has more than doubled since yesterday afternoon's edition, from 1,308 to 2,849 points — and has drawn a point-by-point rebuttal of its headline claim.</div>
+  <div class="cell"><span class="tag">Hardware · Follow-Up</span><b>Silent Speech Returns</b>
+    Subvocal's glasses decode mouthed words from radio signals that pass through the face; the founders say lip movement is optional, with first shipment targeted for early 2027.</div>
+  <div class="cell"><span class="tag">Culture Desk</span><b>The Front Page, Again</b>
+    Hacker Times typesets Hacker News as a broadsheet with AI-written summaries — and its edition this morning hedged the weights story where the original abstract did not.</div>
+  <div class="cell"><span class="tag">Security Desk</span><b>Guidance for One-Person Firms</b>
+    NIST White Paper 50 brings cybersecurity-framework actions to the more than 28 million U.S. businesses with no employees, in lay language.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+
+  <div class="cell main">
+    <span class="kicker">AI Desk · Follow-Up</span>
+    <h2 class="headline">Astra edits 0.016 percent of a small Qwen's weights and lifts its math score from 7.9 to 48.1 percent</h2>
+    <h3 class="deck">The MIT CSAIL authors call it "Weight-Space Programming" — reasoning about network weights directly, with no optimizer and no gradient descent</h3>
+    <div class="byline"><span>AI Desk · Cambridge, Mass.</span><span class="score">★ <b>2,849 pts</b> · 861 comments · ▲ +1,541 since the last edition</span></div>
+    <figure>
+      <img src="images/astra-weights.png" alt="Figure from the Weight-Space Programming post showing neural-network weights being read, fixed and written">
+      <figcaption>A figure from the post itself: reading, fixing and writing network weights. <span class="cr">rikiyat.github.io</span></figcaption>
+    </figure>
+    <p class="first">CAMBRIDGE, MASS. — Four authors at MIT CSAIL — Rikiya Takehi, Jayden Teoh, Alex Zhang and Omar Khattab, publishing November 2 — report that a frontier LLM can read and write neural-network weights natively, without an optimizer in the loop. Asked which game a PPO-trained policy was trained on, with all four networks sharing identical dimensions, Astra named the right game four times out of four from the raw weights alone. Asked to write game-playing networks from scratch, it produced MinAtar players that beat networks trained with PPO for 100 million steps. And asked to improve Qwen3.5-0.8B at mathematics "without gradients," it diagnosed a reasoning-loop fault that Qwen's own model card warns about, edited 0.016 percent of the weights, and raised MATH-500 accuracy from 7.9 percent to 48.1 percent — an improvement that carried over to instruction following, where IFEval tripled.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <p>The post ran on yesterday afternoon's front page at 1,308 points; it has since piled on 1,541 more, making it the day's runaway leader — 2,095 points clear of the second-most-upvoted story on the page. The thread's tenor is less "is this real" than "what did OpenAI train." One reader with 55 replies under his comment wrote that Astra editing a small Qwen's math ability by hand left him "shook"; another chalked up never having considered the approach as "yet another instance of my human hubris, and a warning sign"; a third speculated the capability fell out of training for recursive self-improvement, un-caught by guardrails.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <p>The scrutiny arrived within a day. A rebuttal published on honnibal.dev — a separate front-page story at 228 points, covered below the fold — tabulates the post's own experiment settings and argues the abstract's phrase "just by looking at the raw weights" describes only the small-network experiments, not the Qwen result, which used Python and up to 50 batches of practice problems. The authors themselves bill all of it as "very early results."<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src13">[13]</a></sup></p>
+  </div>
+
+  <div class="cell side">
+    <span class="kicker">Hardware Desk · Follow-Up</span>
+    <h2 class="headline">Subvocal glasses decode mouthed words from radio waves that pass through the face</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score">★ <b>754 pts</b> · 355 cmts · ▲ +342</span></div>
+    <p class="first">Two Georgia Tech CS students — Aarush and Arnav, now the Subvocal Company (YC F26) — say their glasses let you talk to a computer without making a sound. Radio waves "similar to Bluetooth" pass through the face and are modulated by the tongue, lips and soft palate during silent mouthing; foundation models trained on that signal decode it to text. An edit to their launch post adds that lips need not move at all, since the radio "can see inside your mouth" and the system can be fine-tuned on internal speech — a skill the founders say takes practice. First shipment is targeted for early 2027.<sup class="cite"><a href="#src3">[3]</a></sup><sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <p>The project began as a 36-hour TreeHacks attempt to recreate MIT's AlterEgo with EMG electrodes stuck to a face. EMG lost to sweat, interference and placement variability — and, in the founders' words, "no one wants to stick electrodes onto their face." The thread is already assembling alternatives: one reader is building a personal unit from two open-source projects to work in libraries, planes and co-working spaces; another considered learning sign language for the job before deciding the glasses were "much more realistic"; a skeptic counters that people who want speed can simply learn to type faster.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <div class="pullquote">"The first time I typed a sentence without anyone noticing, I felt the magic of the technology."<span class="attr">— The founders, in their launch post</span></div>
+  </div>
+
+  <div class="cell side">
+    <span class="kicker">Culture Desk · Show HN</span>
+    <h2 class="headline">Hacker Times resets the front page as a broadsheet, AI summaries and all</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score">★ <b>356 pts</b> · 111 cmts</span></div>
+    <p class="first">Hacker Times, at hackertimes.ca, renders the Hacker News front page in the style of a New York Times front page — section rules, column hierarchy and a summary under every headline. Its saved edition for this morning, November 3, was still awaiting a newer edition at snapshot time. The summaries are machine-written, and notably careful ones: its version of the weights story states plainly that the Qwen improvement involved "editing weights using Python and feedback from practice runs" — a hedge the original post's abstract does not make.<sup class="cite"><a href="#src5">[5]</a></sup><sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <p>The thread took the remix in stride, this being a crowded genre now. Readers asked for an AI section split off from technology, flagged that the site's ChatGPT hosting blocks it in countries like Hong Kong — and that the custom domain defeats their automatic proxy — and argued the headline face should not be set in a default serif at 55 pixels. One reader asked the copyright question directly: store the content, or lazily convert it live?<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <div class="statbox"><div class="t">The Remix Economy</div>
+      <table>
+        <tr><td>Hacker Times — today's paper</td><td>356 pts</td></tr>
+        <tr><td>HackerTube — videos indexed</td><td>6,454</td></tr>
+        <tr><td>HackerBooks — books counted</td><td>16,500</td></tr>
+        <tr><td>Vektor — books + videos, one app</td><td>in thread</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="row3">
+
+  <div class="cell">
+    <span class="kicker">Culture Desk · Essay</span>
+    <h2 class="headline">An essay names the habit of accepting agent output uncritically, and lists the defenses</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score">★ <b>239 pts</b> · 115 cmts</span></div>
+    <p class="first">A widely shared essay on knlb.dev gives a name to a work habit many readers recognized on sight: "cognitive surrender," defined as "uncritically accepting whatever agents output without actually thinking, exploring or considering alternatives." The author's accounting of why it spreads is specific — RLHF-trained models are "astonishingly confident" in what they recommend, complexity from agent-written code compounds quietly, and peer pressure rewards whoever ships fastest. His costs list is equally concrete: suboptimal decisions, accrued technical debt, and familiarity with one's own system eroding "extremely rapidly."<sup class="cite"><a href="#src11">[11]</a></sup><sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <p>The prescriptions: define a personal "vibe limit" — the complexity of change you can make with confidence — and triage everything against it; watch for automation bias; force yourself into the loop rather than tapping "yes, continue" on repeat. He reaches back to Bainbridge's "Ironies of Automation" (1983) for the structural worry: automatic systems handle the easy cases, so humans never get the practice needed for the hard ones. The thread supplied its own evidence, including a reader who has watched verbose, half-understood generated code make projects "impossible to further develop" without AI — and a skeptic betting the author himself caves within six months.<sup class="cite"><a href="#src11">[11]</a></sup><sup class="cite"><a href="#src12">[12]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">AI Desk · Fact Check</span>
+    <h2 class="headline">Rebuttal: only the small-network experiments read raw weights; the Qwen result used Python and practice runs</h2>
+    <div class="byline"><span>AI Desk</span><span class="score">★ <b>228 pts</b> · 44 cmts</span></div>
+    <p class="first">A rebuttal published on honnibal.dev takes the weights post apart experiment by experiment, using its own reported settings. The verdict: the "just by looking at the raw weights" condition — raw floats in context, no tools, the network never run — appears only in experiments 1, 2 and 4, on networks of 17,000 to 172,000 weights. Every experiment involving a real language model used Python, and the headline Qwen result also ran the model on up to 50 batches of practice problems. "If you read that, would you assume that the Qwen experiment worked 'just by looking at the raw weights'?" the author asks. "Well it doesn't."<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>Two further entries from the tabulated settings: the sycophancy-detection experiment on a 270M-parameter Gemma 3 failed on weights alone and only succeeded when shown attention patterns, and the weight fix that worked on Qwen failed entirely when retried on the same Gemma 3. The rebuttal's own thread was not one-sided — one reader called the author "equally disingenuous" for downplaying that raw-weight reading worked at all in three experiments, and others noted the original post had disclosed its methods in the body. The disagreement, precisely stated, is about what the abstract lets a reader assume.<sup class="cite"><a href="#src13">[13]</a></sup><sup class="cite"><a href="#src14">[14]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Hardware Desk · Europe</span>
+    <h2 class="headline">ERICI proposes an open European standard for industrial computers on RVA23 silicon</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score">★ <b>162 pts</b> · 87 cmts</span></div>
+    <figure>
+      <img src="images/erici.png" alt="ERICI card: RISC-V industrial computers, open, partitioned, built to last">
+      <figcaption>The initiative's own card: "Open, partitioned, built to last." <span class="cr">erici.eu</span></figcaption>
+    </figure>
+    <p class="first">The European RISC-V Industrial Computing Initiative, a non-commercial effort "based in Europe, open worldwide," is publishing a reference stack for industrial computers built on RISC-V's RVA23 profile — ratified October 2024, which made hypervisor and vector extensions mandatory. ERICI fixes the interfaces between firmware, real-time operating systems and general-purpose operating systems, and verifies that the layers boot together on real RVA23 hardware; "a box that boots it is ERICI-compatible." The first RVA23 SoCs and boards arrived in 2026 with eight 64-bit cores and an IOMMU, and a partitioning hypervisor is meant to run real-time control beside the operator's Linux on a single chip.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>The initiative's premise is supply-chain: today's industrial computers run x86 or Arm, "each owned and licensed by a single company," and "a machine expected to run for 15 years should not depend on one company's roadmap, or one government's decisions." The thread pressed on execution: one reader recalled the European Processor Initiative that "went precisely nowhere"; another asked who is actually manufacturing and selling European CPUs while Chinese RISC-V boards sell for about $2.30 apiece; a third noted that 15-year software maintenance, not silicon longevity, is the real industrial problem.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+  </div>
+
+</div>
+
+<!-- 6. SECURITY & PRACTICAL -->
+<div class="sec2">
+
+  <div class="cell">
+    <div class="section-label"><span>Security Briefing</span></div>
+
+    <span class="kicker">Security Desk · Small Business</span>
+    <h2 class="headline">NIST publishes a cybersecurity white paper for one-person businesses</h2>
+    <div class="byline"><span>Security Desk</span><span class="score">★ <b>278 pts</b> · 82 cmts</span></div>
+    <p class="first">NIST has released "Small Business Cybersecurity: Non-Employer Firms" (Cybersecurity White Paper 50), aimed at the more than 28 million U.S. businesses whose only paid employee is the owner. Written in lay language and assuming no prior knowledge, it walks a selection of actions from the NIST Cybersecurity Framework — regular backups, kept-updated software, changing manufacturer default passwords on routers and other networked devices, since criminals can find those defaults easily — each with a rationale, a way to start, and worksheets covering asset inventory and progress tracking. Three use cases (a lawyer, an artisan, a business consultant) run the actions end to end.<sup class="cite"><a href="#src9">[9]</a></sup><sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <p>The thread's security practitioners were split on the landing. One asked fellow experts directly whether the guide was any good and got arguments both ways: a trainer by trade said it still "misses the mark" for genuinely non-technical readers, while others welcomed that the attempt exists at all. A separate objection targeted jargon: one reader wrote that the guide "loses all credibility" over its use of the term "Super Intelligence" — in a document that promises to avoid jargony terms.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+
+    <span class="kicker">Tools Desk · Agent Reliability</span>
+    <h2 class="headline">NVIDIA open-sources Auto Ontology to ground agent answers in enterprise metadata</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score">★ <b>177 pts</b> · 57 cmts</span></div>
+    <p class="first">NVIDIA has open-sourced Auto Ontology under Apache 2.0 (external contributions not accepted), a library that builds a context layer over enterprise data: where it lives, what it means, its lineage, and whether an agent may use it. The pitch begins from failure: "a revenue metric answered faster is worth nothing if the number is wrong." The system generates ontologies from existing metadata, reconciles inconsistent definitions across systems, checks generated queries against certified definitions, and serves any agent harness through MCP, a CLI and an API. The stack is Next.js and FastAPI over Postgres with pgvector, inference through NVIDIA NIM endpoints, and a Helm chart or Docker Compose for deployment.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>The thread questioned the cure as much as the disease. The top comment called it "fixing unreliable agents by adding more unreliable agents"; others asked how an ontology differs from a memory system plus API-collecting skills, lost interest at the NVIDIA API-key requirement, and suggested the open-sourcing that would actually matter is NVIDIA's CUDA user-space libraries.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Practical Tech Corner</span></div>
+
+    <span class="kicker">Practical Tech Corner · Open Source</span>
+    <h2 class="headline">DiscImageStudio burns visible artwork onto the data side of CDs, DVDs and Blu-rays</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score">★ <b>295 pts</b> · 58 cmts</span></div>
+    <figure>
+      <img src="images/discimagestudio.png" alt="DiscImageStudio banner showing discs with visible burned artwork">
+      <figcaption>The project banner: pattern in the medium itself. <span class="cr">github.com</span></figcaption>
+    </figure>
+    <p class="first">A GPL-3.0 C#/.NET 10 application converts a picture into data that satisfies the physical-layer constraints of CD, DVD and single-layer BD-R media, so that burning it leaves a pattern visible to the eye on the disc's surface. The Windows desktop app handles design and burning; Linux and macOS get an experimental command-line generator that builds images offline. The design page layers the artwork with controls for dithering, gamma, brightness and grayscale steps; output goes to ISO, RAW or WAV+CUE, or straight to a burner — direct burning is flagged experimental, "use only disposable test media."<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>The thread reached for its CD binders. Readers recalled LightScribe and the Neato label system, noted that Windows 2000 and XP discs carried something similar on the label side, and one explained the underlying trick: the data goes "into" the label through the clear plastic. Another wondered whether the technique could make 3-D holograms.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+
+    <span class="kicker">Practical Tech Corner · Language</span>
+    <h2 class="headline">Toit reaches 2.0.0 after four years of alpha and the shutdown of its maker</h2>
+    <div class="byline"><span>Language Desk</span><span class="score">★ <b>159 pts</b> · 49 cmts</span></div>
+    <p class="first">Toit, a language for scripting computers and programming ESP32-family devices, has shipped v2.0.0: more than four years of alpha, 2,000-plus commits, 500,000-plus lines changed, 200-plus alpha releases. The project began as closed-source software at Toitware, was opened, and is now maintained by volunteers after Toitware shut down in 2024. The final breaking change — peripheral APIs accepting pin numbers directly instead of requiring gpio.Pin objects — cleared the way for the version number, along with a decision to stop waiting for "all the important features": open pull requests for a formatter and more architectures will simply follow in later releases.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>Since open-sourcing, Toit has gained support for the Arm-based EC618 and nearly all ESP32 variants, a rewritten package manager, mixins, and firmware "envelopes" that customize firmware without rebuilding the SDK. The thread supplied pedigree and doubt in equal measure: the people behind Toit are the original people behind Chrome's V8 VM, one reader noted — while another asked plainly who is using it now that the company is gone.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Quote of the Day</span></div>
+    <div class="pullquote" style="font-size:17px">"Yup, looks good to me!" said the human reviewing thousands of lines of generated code everyday.<span class="attr">— a reader, on the "Resisting Cognitive Surrender" thread</span></div>
+
+    <div class="statbox"><div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories typeset</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>8</td></tr>
+        <tr><td>Follow-ups</td><td>2</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined score</td><td>5,497 pts</td></tr>
+        <tr><td>Combined comments</td><td>1,819</td></tr>
+        <tr><td>Most-discussed thread</td><td>Astra, 861 cmts</td></tr>
+        <tr><td>Top mover since last edition</td><td>+1,541 pts</td></tr>
+        <tr><td>Follow-up qualifiers held back</td><td>2</td></tr>
+        <tr><td>Stories on the page at snapshot</td><td>30</td></tr>
+      </table>
+    </div>
+
+    <div class="classifieds">
+      <div class="t">Classifieds — Rates: 1 Karma per line</div>
+      <p>SMART GLASSES, silent-speech model. Radio reads inside the mouth; lips optional. Georgia Tech founders, YC F26; first shipment early 2027.</p>
+      <p>DISC DECORATION, burned into the data itself. CD, DVD, single-layer BD-R. Windows app, experimental CLI; test media only.</p>
+      <p>WANTED: industrial computer, 15-year horizon, no single company's roadmap. Must boot RVA23 silicon. Europe, open worldwide.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Day's Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" style="width:100%; height:auto; display:block" role="img" aria-label="Bar chart of the ten chosen stories by points">
+      <defs>
+        <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="1.7"/>
+        </pattern>
+        <pattern id="hatchred" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="1.7"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <g>
+        <line class="grid" x1="36"  y1="6" x2="36"  y2="344"/><line class="grid" x1="72"  y1="6" x2="72"  y2="344"/>
+        <line class="grid" x1="108" y1="6" x2="108" y2="344"/><line class="grid" x1="143" y1="6" x2="143" y2="344"/>
+        <line class="grid" x1="179" y1="6" x2="179" y2="344"/><line class="grid" x1="215" y1="6" x2="215" y2="344"/>
+        <line class="grid" x1="251" y1="6" x2="251" y2="344"/><line class="grid" x1="287" y1="6" x2="287" y2="344"/>
+        <line class="grid" x1="323" y1="6" x2="323" y2="344"/><line class="grid" x1="359" y1="6" x2="359" y2="344"/>
+        <line class="grid" x1="394" y1="6" x2="394" y2="344"/><line class="grid" x1="430" y1="6" x2="430" y2="344"/>
+        <line class="grid" x1="466" y1="6" x2="466" y2="344"/><line class="grid" x1="502" y1="6" x2="502" y2="344"/>
+      </g>
+      <!-- bars -->
+      <rect x="0.5" y="22"  width="511" height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="56"  width="135" height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="90"  width="64"  height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="124" width="53"  height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="158" width="50"  height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="192" width="43"  height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="226" width="41"  height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="260" width="32"  height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="294" width="29"  height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="328" width="29"  height="15" fill="url(#hatch)" stroke="#191510"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0.5" y1="352" x2="520" y2="352"/>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18">Astra weight edits &#8224;</text>
+      <text class="barlabel" x="0" y="52">Subvocal silent-speech glasses</text>
+      <text class="barlabel" x="0" y="86">Hacker Times</text>
+      <text class="barlabel" x="0" y="120">DiscImageStudio</text>
+      <text class="barlabel" x="0" y="154">NIST solopreneur guide</text>
+      <text class="barlabel" x="0" y="188">Resisting Cognitive Surrender</text>
+      <text class="barlabel" x="0" y="222">Astra rebuttal (honnibal.dev)</text>
+      <text class="barlabel" x="0" y="256">NVIDIA Auto Ontology</text>
+      <text class="barlabel" x="0" y="290">ERICI RISC-V industrial</text>
+      <text class="barlabel" x="0" y="324">Toit v2.0.0</text>
+      <!-- values -->
+      <text class="barval" x="518" y="34" font-weight="700">2849 &#9733; &#183; 861 cmts</text>
+      <text class="barval" x="142" y="68">754 &#183; 355</text>
+      <text class="barval" x="71"  y="102">356 &#183; 111</text>
+      <text class="barval" x="60"  y="136">295 &#183; 58</text>
+      <text class="barval" x="57"  y="170">278 &#183; 82</text>
+      <text class="barval" x="50"  y="204">239 &#183; 115</text>
+      <text class="barval" x="48"  y="238">228 &#183; 44</text>
+      <text class="barval" x="39"  y="272">177 &#183; 57</text>
+      <text class="barval" x="36"  y="306">162 &#183; 87</text>
+      <text class="barval" x="36"  y="340">159 &#183; 49</text>
+      <!-- tick labels -->
+      <g fill="#3d352a" font-size="11">
+        <text x="0"   y="366" text-anchor="start">0</text>
+        <text x="36"  y="366" text-anchor="middle">200</text>
+        <text x="72"  y="366" text-anchor="middle">400</text>
+        <text x="108" y="366" text-anchor="middle">600</text>
+        <text x="143" y="366" text-anchor="middle">800</text>
+        <text x="179" y="366" text-anchor="middle">1000</text>
+        <text x="215" y="366" text-anchor="middle">1200</text>
+        <text x="251" y="366" text-anchor="middle">1400</text>
+        <text x="287" y="366" text-anchor="middle">1600</text>
+        <text x="323" y="366" text-anchor="middle">1800</text>
+        <text x="359" y="366" text-anchor="middle">2000</text>
+        <text x="394" y="366" text-anchor="middle">2200</text>
+        <text x="430" y="366" text-anchor="middle">2400</text>
+        <text x="466" y="366" text-anchor="middle">2600</text>
+        <text x="502" y="366" text-anchor="middle">2800</text>
+      </g>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">&#9733; = points &#183; cmts = comments &#183; &#8224; most-discussed story of the day &#183; red hatch marks Apple coverage (none on today's page)</text>
+    </svg>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>The Day in One Line</span></div>
+    <p class="first">The front page's runaway story more than doubled overnight to 2,849 points — and picked up a 228-point rebuttal arguing that its headline claim of reading "raw weights" held only for its smallest experiments.</p>
+
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>On "just by looking at the raw weights."</b> The weights post's abstract pairs the phrase with its Qwen result. The post's own experiment settings, as tabulated by the honnibal.dev rebuttal, apply the raw-floats-only condition to experiments 1, 2 and 4 (17K–172K weights); the Qwen experiment used Python and up to 50 batches of practice problems. The claim describes the small-network results, not the headline one.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+      <p><b>On "without any environment feedback."</b> True of the from-scratch MinAtar networks, which were never run before evaluation. The 9×9 Go network was allowed 0–50 forward passes and the Qwen fix 50 practice batches, per the same table.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+      <p><b>On the NIST guide's scope.</b> Headline shorthand calls it a guide for the self-employed; the document itself is "Small Business Cybersecurity: Non-Employer Firms," a replacement for NISTIR 7621 that narrows the earlier document's scope from information security generally to protecting digital systems — and it is addressed to firms with no employees, not small businesses at large.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+      <p><b>On "at the speed of speech."</b> Subvocal's launch post asserts the decoding speed but publishes no accuracy or words-per-minute figures; the demonstration is a video, and the glasses are a prototype with first shipment planned for early 2027.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher's Note</div>
+  <p>The weights story returns as our lead, more than doubled since yesterday afternoon's edition and now carrying a rebuttal of its own two columns down; Subvocal comes back as the second follow-up, and eight fresh stories fill out the sheet, from a European RISC-V reference stack to art burned into the data side of a compact disc. All ten stories were sourced from their primary links and threads; two follow-up qualifiers — the website-backup essay and the name-history interactive — were held back under the two-follow-up rule.</p>
+  <div class="sig">— The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="section-label"><span>Sources</span></div>
+<div class="sources">
+  <ol>
+    <li id="src1" data-n="[1]">"Sparks of Weight-Space Programming: LLMs can natively read &amp; write neural network weights" — R. Takehi, J. Teoh, A. Zhang, O. Khattab, MIT CSAIL, Nov 2, 2026. <a href="https://rikiyat.github.io/blog/weight-space-programming/">rikiyat.github.io/blog/weight-space-programming</a></li>
+    <li id="src2" data-n="[2]">Hacker News thread, "Astra can read and write weights to improve Qwen" (861 comments). <a href="https://news.ycombinator.com/item?id=50341174">news.ycombinator.com/item?id=50341174</a></li>
+    <li id="src3" data-n="[3]">Show HN launch post, The Subvocal Company (YC F26). <a href="https://news.ycombinator.com/item?id=50340088">news.ycombinator.com/item?id=50340088</a></li>
+    <li id="src4" data-n="[4]">The Subvocal Company. <a href="https://subvocal.company/">subvocal.company</a></li>
+    <li id="src5" data-n="[5]">Hacker Times, saved edition, Nov 3, 2026. <a href="https://hackertimes.ca/">hackertimes.ca</a></li>
+    <li id="src6" data-n="[6]">Hacker News thread, "Show HN: Hacker Times" (111 comments). <a href="https://news.ycombinator.com/item?id=50346981">news.ycombinator.com/item?id=50346981</a></li>
+    <li id="src7" data-n="[7]">DiscImageStudio repository and README. <a href="https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio">github.com/JiaFeiMiao-K-Cat/DiscImageStudio</a></li>
+    <li id="src8" data-n="[8]">Hacker News thread, DiscImageStudio (58 comments). <a href="https://news.ycombinator.com/item?id=50346849">news.ycombinator.com/item?id=50346849</a></li>
+    <li id="src9" data-n="[9]">"Self-Employed? Solopreneur? NIST Has a Cybersecurity Guide Just for You," NIST, Nov 2026. <a href="https://www.nist.gov/news-events/news/2026/11/self-employed-solopreneur-nist-has-cybersecurity-guide-just-you">nist.gov</a></li>
+    <li id="src10" data-n="[10]">Hacker News thread, NIST guide (82 comments). <a href="https://news.ycombinator.com/item?id=50340619">news.ycombinator.com/item?id=50340619</a></li>
+    <li id="src11" data-n="[11]">"Resisting Cognitive Surrender," knlb.dev. <a href="https://knlb.dev/essays/surrender">knlb.dev/essays/surrender</a></li>
+    <li id="src12" data-n="[12]">Hacker News thread, Resisting Cognitive Surrender (115 comments). <a href="https://news.ycombinator.com/item?id=50323123">news.ycombinator.com/item?id=50323123</a></li>
+    <li id="src13" data-n="[13]">"The 'Astra can read and write weights to improve Qwen' post is massively misleading," honnibal.dev. <a href="https://honnibal.dev/blog/astra-read-write-misleading">honnibal.dev/blog/astra-read-write-misleading</a></li>
+    <li id="src14" data-n="[14]">Hacker News thread, the rebuttal (44 comments). <a href="https://news.ycombinator.com/item?id=50351111">news.ycombinator.com/item?id=50351111</a></li>
+    <li id="src15" data-n="[15]">NVIDIA Auto Ontology repository and README (Apache 2.0). <a href="https://github.com/NVIDIA/auto-ontology">github.com/NVIDIA/auto-ontology</a></li>
+    <li id="src16" data-n="[16]">Hacker News thread, Auto Ontology (57 comments). <a href="https://news.ycombinator.com/item?id=50348962">news.ycombinator.com/item?id=50348962</a></li>
+    <li id="src17" data-n="[17]">European RISC-V Industrial Computing Initiative. <a href="https://erici.eu">erici.eu</a></li>
+    <li id="src18" data-n="[18]">Hacker News thread, ERICI (87 comments). <a href="https://news.ycombinator.com/item?id=50334523">news.ycombinator.com/item?id=50334523</a></li>
+    <li id="src19" data-n="[19]">"Toit v2.0.0," toit.io. <a href="https://toit.io/blog/toit-v2-0-0/">toit.io/blog/toit-v2-0-0</a></li>
+    <li id="src20" data-n="[20]">Hacker News thread, Toit v2.0.0 (49 comments). <a href="https://news.ycombinator.com/item?id=50321605">news.ycombinator.com/item?id=50321605</a></li>
+  </ol>
+  <p class="method">Methodology — Snapshot of the Hacker News front page taken at 14:00 UTC, November 3, 2026 (08:00 US Central), via the Algolia HN Search API, which listed 30 stories on the page. Candidates were deduplicated against the previous four editions; two stories returned as follow-ups after clearing both the +40 percent and +150-point bars, and two further qualifiers were held back under the two-follow-up limit. Article text was fetched from primary sources; comments from the Algolia items API. Points and comment counts are as of the snapshot. The ledger and top bar sum the ten chosen stories exactly: 5,497 points across 1,819 comments.</p>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <span>The Hacker Herald — Typeset from the Hacker News front page</span>
+  <span>❧ Printed on 100% recycled bandwidth ❧</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</span>
+</footer>
+
+</body>
+</html>
