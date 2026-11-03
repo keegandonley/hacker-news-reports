@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-03-afternoon",
+      "date": "2026-11-03",
+      "label": "Afternoon",
+      "snapshot_utc": "22:00",
+      "items": [
+        {
+          "id": 50354960,
+          "title": "Postman silently auto-installs AI plugins and attempts to share all API data",
+          "score": 831,
+          "comments": 271
+        },
+        {
+          "id": 50351111,
+          "title": "The 'Astra can read and write weights to improve Qwen' post is misleading",
+          "score": 827,
+          "comments": 187
+        },
+        {
+          "id": 50339288,
+          "title": "Jailbreaking my car's navigation system just so I can change the time",
+          "score": 513,
+          "comments": 202
+        },
+        {
+          "id": 50353192,
+          "title": "Google will turn off search for schools that reject AI",
+          "score": 464,
+          "comments": 347
+        },
+        {
+          "id": 50349276,
+          "title": "Could a modern chess engine on a Pentium have defeated Kasparov in 1996?",
+          "score": 410,
+          "comments": 182
+        },
+        {
+          "id": 50353229,
+          "title": "Kalshi and its co-founders face felony charges for violating Utah gambling laws",
+          "score": 392,
+          "comments": 311
+        },
+        {
+          "id": 50355251,
+          "title": "Qwen 3.8 27B on my laptop can interpret model weights, too",
+          "score": 388,
+          "comments": 131
+        },
+        {
+          "id": 50336918,
+          "title": "Fujifilm to boost tape production 5x as AI fuels archiving demand",
+          "score": 327,
+          "comments": 132
+        },
+        {
+          "id": 50352758,
+          "title": "Mac at Any Scale",
+          "score": 265,
+          "comments": 157
+        },
+        {
+          "id": 50354358,
+          "title": "Stringman, an $800 open-source room scale gripper robot",
+          "score": 228,
+          "comments": 95
+        }
+      ]
+    },
+    {
       "folder": "2026-11-03-morning",
       "date": "2026-11-03",
       "label": "Morning",
@@ -15,7 +83,7 @@
         },
         {
           "id": 50340088,
-          "title": "Show HN: Subvocal – Talk to your computer without making noise",
+          "title": "Show HN: Subvocal \u2013 Talk to your computer without making noise",
           "score": 754,
           "comments": 355
         },
@@ -51,7 +119,7 @@
         },
         {
           "id": 50348962,
-          "title": "Nvidia – open-source auto-ontology",
+          "title": "Nvidia \u2013 open-source auto-ontology",
           "score": 177,
           "comments": 57
         },
@@ -89,7 +157,7 @@
         },
         {
           "id": 50340088,
-          "title": "Show HN: Subvocal – Talk to your computer without making noise",
+          "title": "Show HN: Subvocal \u2013 Talk to your computer without making noise",
           "score": 412,
           "comments": 237
         },
@@ -125,7 +193,7 @@
         },
         {
           "id": 50339221,
-          "title": "Show HN: Warsaw in voxels – An interactive 3D map of the city centre",
+          "title": "Show HN: Warsaw in voxels \u2013 An interactive 3D map of the city centre",
           "score": 171,
           "comments": 31
         },
@@ -151,7 +219,7 @@
         },
         {
           "id": 50326821,
-          "title": "Show HN: HackerBooks – HackerTube, but for books mentioned on HN",
+          "title": "Show HN: HackerBooks \u2013 HackerTube, but for books mentioned on HN",
           "score": 1610,
           "comments": 265
         },
@@ -181,13 +249,13 @@
         },
         {
           "id": 50333339,
-          "title": "Show HN: Wikihack – HackerTube, but for Wikipedia articles mentioned on HN",
+          "title": "Show HN: Wikihack \u2013 HackerTube, but for Wikipedia articles mentioned on HN",
           "score": 293,
           "comments": 89
         },
         {
           "id": 50325253,
-          "title": "Show HN: OmniDiff – Opensource, super fast, content aware Git difftool, in Rust",
+          "title": "Show HN: OmniDiff \u2013 Opensource, super fast, content aware Git difftool, in Rust",
           "score": 274,
           "comments": 81
         },
@@ -231,7 +299,7 @@
         },
         {
           "id": 50301854,
-          "title": "Azure's Weakest Link – Five Full Cross-Tenant Compromises",
+          "title": "Azure's Weakest Link \u2013 Five Full Cross-Tenant Compromises",
           "score": 231,
           "comments": 40
         },
@@ -287,7 +355,7 @@
         },
         {
           "id": 50296470,
-          "title": "Binance-hacker-1029 – $5.6B stolen from Binance",
+          "title": "Binance-hacker-1029 \u2013 $5.6B stolen from Binance",
           "score": 1522,
           "comments": 991
         },
@@ -441,7 +509,7 @@
         },
         {
           "id": 50284255,
-          "title": "Claude Code regularly sends each background agent’s transcript to its model",
+          "title": "Claude Code regularly sends each background agent\u2019s transcript to its model",
           "score": 449,
           "comments": 183
         },
@@ -613,7 +681,7 @@
         },
         {
           "id": 50261352,
-          "title": "New 14‑inch MacBook Pro with M6",
+          "title": "New 14\u2011inch MacBook Pro with M6",
           "score": 388,
           "comments": 535
         },

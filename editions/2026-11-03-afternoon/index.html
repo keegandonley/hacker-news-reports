@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 3, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <span>Hacker News Front Page · Snapshot 22:00 UTC</span>
+  <span class="mid">Afternoon Edition · November 3, 2026</span>
+  <span>10 Stories · 4,645 Points · 2,015 Comments</span>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type — a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <span class="l">Compiled from news.ycombinator.com</span>
+  <span class="c">Tuesday, November 3, 2026</span>
+  <span class="r">Every fact checked; every joke earned</span>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Security Desk</span><b>Plugins Nobody Ordered</b>
+    A GitHub issue titled "[SEVERE]" reports that Postman's desktop app installed itself into Codex and Claude Code unasked — 831 points, the day's top story, with 271 comments.</div>
+  <div class="cell"><span class="tag">AI · Follow-Up</span><b>The Rebuttal Quadruples</b>
+    Matthew Honnibal's rebuttal of the weights paper, typeset this morning at 228 points, ends the day at 827 — up 599 — while its own thread argues he was "equally disingenuous."</div>
+  <div class="cell"><span class="tag">Education Desk</span><b>Search Goes Dark With AI</b>
+    Google's own announcement confirms Search will be off by default for K-12 accounts that keep AI disabled — 347 comments, the most-discussed thread of the day.</div>
+  <div class="cell"><span class="tag">Field Desk</span><b>The Clock Won a Kernel Fight</b>
+    A 2014 Renault Latitude's navigation unit kept the clock hostage; its owner got root by overwriting the kernel's core_pattern — a fix measured in minutes of offset, 180 to 120.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+
+  <div class="cell main">
+    <span class="kicker">Security Desk · Consent</span>
+    <h2 class="headline">Postman's desktop app installed itself into Codex and Claude Code without asking, developer's GitHub issue reports</h2>
+    <h3 class="deck">Postman's own log records "claude-code:installed, codex:installed"; the installer's source code then marks its own session-start hook as trusted</h3>
+    <div class="byline"><span>Security Desk</span><span class="score">★ <b>831 pts</b> · 271 comments</span></div>
+    <figure>
+      <img src="images/postman-issue.png" alt="Link-preview card for the Postman GitHub issue, showing its title">
+      <figcaption>The issue's link-preview card, as it spreads beyond the tracker. <span class="cr">github.com</span></figcaption>
+    </figure>
+    <p class="first">JERUSALEM — A severity report filed on Postman's public tracker, issue #14370 on postmanlabs/postman-app-support, documents an installation nobody asked for: opening the Postman desktop app, version 12.33.4, was followed by a user-wide Postman plugin in Codex, a remote MCP connection to mcp.postman.com, a Claude Code plugin, and a separately installed Postman command-line tool. The reporter's evidence is Postman's own log — main.log, timestamped 2026-10-24T09:34:14Z, 12:34 local — reading "auto-existing-upgrade… claude-code:installed, codex:installed." The installed hook instructs agents that "before responding to any non-trivial API engineering task — designing, implementing, mocking, testing, monitoring, documenting, or deploying an API or Postman Flow — load the postman:api-engineer skill and follow it."<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The sharpest finding is in the installer's source: after installing the plugin, it calls a routine that upserts the hook's <i>trusted_hash</i> into Codex's configuration — approving its own startup hook on the user's behalf, rather than leaving that decision to the user in the agent host. The remote MCP connection was enabled despite failing authentication at startup. The report is carefully bounded: it "does not claim to establish data exfiltration," only that an API client made itself the default workflow in unrelated coding tools. The reporter asks Postman to stop automatic agent-plugin installation pending explicit opt-in, remove installer-side self-approval of hooks, and identify the release or feature flag behind "auto-existing-upgrade."<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The thread, 60 top-level comments deep at snapshot, is largely an exodus. The most-replied comment counts Postman's $400 million-plus raised and 1,500-plus employees against what "should have been a tiny OSS/passion project," and says the company must now justify its valuation with "forcing logins, collecting data, monthly subscriptions, AI features." Reader after reader reports migrating to Bruno, Insomnia, or plain HTTP files in an editor — though one, noting that skills are just markdown files, asked who needed any of it installed at all.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+  </div>
+
+  <div class="cell side">
+    <span class="kicker">AI Desk · Follow-Up</span>
+    <h2 class="headline">The weights-paper rebuttal nearly matches the day's top story, quadrupling since the morning edition</h2>
+    <div class="byline"><span>AI Desk</span><span class="score">★ <b>827 pts</b> · 187 cmts · ▲ +599 since the last edition</span></div>
+    <figure>
+      <img src="images/honnibal.png" alt="Preview card for the honnibal.dev rebuttal">
+      <figcaption>The rebuttal's preview card. <span class="cr">honnibal.dev</span></figcaption>
+    </figure>
+    <p class="first">Matthew Honnibal's rebuttal of the MIT CSAIL weights paper — typeset in this morning's edition at 228 points — closed the afternoon at 827, a 262.7 percent gain that cleared both follow-up bars. The argument stands: the abstract's phrase "just by looking at the raw weights" describes only the small-network experiments on 17,000 to 172,000 weights, while the experiments that improve game-playing networks and Qwen "write Python programs." His framing is a stage magician's — three ways of doing the same trick, so each performance debunks your theory about the last.<sup class="cite"><a href="#src3">[3]</a></sup><sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <p>The rebuttal's own thread pushed back hard. One reader said the original post "explains what they did and why better than this post"; another called Honnibal "equally disingenuous," since raw-weight reading held in three experiments at all; a third pointed out the whole dispute is about what the abstract lets a skimmer assume. A fourth saw bigger stakes: recursive self-improvement talk may mean "LLMs modifying their own weights through tooling directly."<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <div class="pullquote">"If you read that, would you assume that the Qwen experiment worked 'just by looking at the raw weights'? Well it doesn't."<span class="attr">— Matthew Honnibal, honnibal.dev</span></div>
+  </div>
+
+  <div class="cell side">
+    <span class="kicker">Education Desk · Access</span>
+    <h2 class="headline">Google confirms Search will be off by default for school accounts that keep AI disabled</h2>
+    <div class="byline"><span>Education Desk</span><span class="score">★ <b>464 pts</b> · 347 cmts †</span></div>
+    <p class="first">The New York Times reports — its page sat behind a bot wall at press time — that Google will cut off Search for schools that ban AI tools: "If a school has banned A.I., students will not have access to search, and they'll see a message from their school that indicates it's not available," Chris Phillips, Google's vice president for education, told the paper. Google's own announcement, published today, puts the mechanism plainly: "Access to these products will be entirely off for K-12 student accounts until school administrators explicitly turn them on" — with the products listed as Gemini, Gemini Notebook, Gemini in Classroom, and Google Search.<sup class="cite"><a href="#src7">[7]</a></sup><sup class="cite"><a href="#src8">[8]</a></sup><sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>Search is being bundled because it is gaining the AI feature: Guided Learning, which walks students through problems "without going directly to the answer," piloting in select U.S. schools this month. The thread's 347 comments — the day's most-discussed — split on whether off-by-default bundling is school control or coercion: one reader called it "comically evil" given that disabling AI summaries alone would be trivial; another countered the Times headline was "less clickbaity" than it looked, since administrators opt in; a third hoped the whole affair ends with students learning other search engines.<sup class="cite"><a href="#src8">[8]</a></sup><sup class="cite"><a href="#src9">[9]</a></sup></p>
+  </div>
+
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="row3">
+
+  <div class="cell">
+    <span class="kicker">Field Desk · Reverse Engineering</span>
+    <h2 class="headline">To change his car's clock, an owner overwrote the navigation unit's core_pattern and edited the GPS offset</h2>
+    <div class="byline"><span>Field Desk</span><span class="score">★ <b>513 pts</b> · 202 cmts</span></div>
+    <p class="first">Rasmus Moorats's 2014 Renault Latitude would not adjust its clock without a navigation SD card the previous owner had offered him and he had declined. The unit's maps were outdated anyway, so on blog.nns.ee he documents the long way around: the SD card is locked by DRM keyed to the card's burned-in CID, the root filesystem is read-only, and the unit has no concept of time zones at all — it takes time from GPS and stores the local offset in minutes. His was set to 180. He changed it to 120.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>Getting there meant emulating the whole unit in QEMU with a custom 2.6-era kernel and a CAN-bus emulator, then borrowing a trick from kernel exploits: overwriting <i>/proc/sys/kernel/core_pattern</i> — normally the crash-dump setting — with the pipe syntax that executes a program instead, which ran his script from the SD card. The thread supplied the genre's hall of variants: a Honda CR-V in Arizona off by an hour half the year, Canadian head units about to miss next spring's daylight-saving change, a 2001 luxury car that demanded country and zone despite having GPS — and a pointer to grey-market SD cards sold with custom CIDs for exactly this kind of copy protection.<sup class="cite"><a href="#src5">[5]</a></sup><sup class="cite"><a href="#src6">[6]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Science Desk · Retrospective</span>
+    <h2 class="headline">A chess engine ported to a 1996 Pentium Pro plays at an estimated 3300 Elo — 500 above Kasparov's best</h2>
+    <div class="byline"><span>Science Desk</span><span class="score">★ <b>410 pts</b> · 182 cmts</span></div>
+    <figure>
+      <img src="images/chess.png" alt="A figure from the article showing the Pentium Pro setup's screen">
+      <figcaption>A figure from the article: the 200 MHz Pentium Pro's screen. <span class="cr">nicholas.carlini.com</span></figcaption>
+    </figure>
+    <p class="first">Nicholas Carlini, writing November 1, answers the question in his title with a machine on his desk: a 200 MHz Pentium Pro — released 31 years to the day before the article — with 64 MB of RAM, running a custom port of Stockfish tuned for 32-bit arithmetic and a small memory budget. Its estimated classical-time-control rating is 3300 Elo, against Garry Kasparov's just under 2800. Deep Blue, for comparison, used 30 processors and 480 custom chess co-processors to analyze 200 million positions per second and was the 259th most powerful supercomputer in the world.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <p>The experiment's core number: of the roughly 1,335 Elo that separate 1996's best commodity engines from modern Stockfish, Carlini attributes +720 to better programming, not better hardware — and in a 100-game match, the modern engine on the 1996 Pentium Pro beat 1996's Crafty running on a modern Ryzen, 78 wins to 5 with 17 draws. The thread did the checking: one reader noted much of that "programming" — NNUE evaluation, distributed Fishtest tuning — is itself a product of modern hardware; another disputed the article's aside about grandmasters examining as few branches as amateurs.<sup class="cite"><a href="#src10">[10]</a></sup><sup class="cite"><a href="#src11">[11]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <span class="kicker">Policy Desk · Prediction Markets</span>
+    <h2 class="headline">Utah files 13 felony counts each against Kalshi and its two co-founders; the CFTC sues Utah</h2>
+    <div class="byline"><span>Policy Desk</span><span class="score">★ <b>392 pts</b> · 311 cmts</span></div>
+    <figure>
+      <img src="images/kalshi.jpg" alt="Illustration accompanying the prediction-market report">
+      <figcaption>Illustration accompanying the report. <span class="cr">arstechnica.com</span></figcaption>
+    </figure>
+    <p class="first">KalshiEX, LLC, co-founder and chief executive Tarek Mansour, and co-founder and chief operating officer Luana Lopes Lara each face 13 felony charges and one misdemeanor for violating Utah's gambling laws, based on sports bets offered September 13–24; the pair were issued summonses rather than arrest warrants, for Third District Court in Salt Lake County. Kalshi's response: "This is a crazy overreach; Utah is clearly playing politics. We look forward to putting a stop to this in court, just like we did in Arizona" — where the company beat similar charges in May.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <p>The same week, the Commodity Futures Trading Commission sued Utah — the tenth state it has taken to court — claiming federal law preempts state gambling regulation of its registered contract markets. Utah already beat Kalshi once: in August, Judge Robert Shelby ruled the federal law Kalshi cited "does not preempt Utah's ability to enforce its anti-gambling laws." With the Third Circuit siding with the markets and the Sixth and Ninth against them, New Jersey has petitioned the Supreme Court, backed by 39 other states. The thread's most-upvoted readings: prediction markets on sports "strains credulity" as anything but betting, and nobody should face prison over a jurisdictional dispute.<sup class="cite"><a href="#src12">[12]</a></sup><sup class="cite"><a href="#src13">[13]</a></sup></p>
+  </div>
+
+</div>
+
+<!-- 6. SECURITY & PRACTICAL -->
+<div class="sec2">
+
+  <div class="cell">
+    <div class="section-label"><span>AI Desk, Continued</span></div>
+
+    <span class="kicker">AI Desk · Replication</span>
+    <h2 class="headline">Qwen 3.8 27B, on a laptop, names Pac-Man from raw weights after 46 minutes of reasoning</h2>
+    <div class="byline"><span>AI Desk</span><span class="score">★ <b>388 pts</b> · 131 cmts</span></div>
+    <p class="first">Simon Willison ran one of the weights paper's no-tools experiments against a model anyone can run: Qwen 3.8 27B, a 17 GB download, loaded in LM Studio on his own laptop. Fed the paper's published Pac-Man prompt — raw floating-point weights and the instruction "You have no tools: no code execution, no calculator, nothing to run" — the local model worked for 46 minutes 12 seconds and 43,506 reasoning tokens, then answered: "A simplified Pac-Man-style gridworld: an agent moves through a fixed 8x8 maze with central and corner wall blocks, moving objects/ghosts, and reward targets/pellets." Kimi K3.1 Pro, on the same task family, needed 9 minutes 41 seconds for Breakout.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <p>Willison frames the result inside the week's dispute: the no-tools question — what models can do with raw weights alone — is separable from the with-code experiments Honnibal rebutted, and it is the one he finds more interesting. His thread drew a replication of its own: one reader fed the same model the weights of a simple upscaler network he wrote years ago and got a correct description of its architecture. The most-shared reply reached for Shakespeare — Glendower's "I can call spirits from the vasty deep," Hotspur's "but will they come when you do call for them?" — and a complaint that a blog post keeps being called a paper.<sup class="cite"><a href="#src14">[14]</a></sup><sup class="cite"><a href="#src15">[15]</a></sup></p>
+
+    <span class="kicker">Field Desk · Robotics</span>
+    <h2 class="headline">Stringman lifts 2.2 kilograms with four motors and ceiling-anchored lines, open source at $795</h2>
+    <div class="byline"><span>Field Desk</span><span class="score">★ <b>228 pts</b> · 95 cmts</span></div>
+    <p class="first">Stringman, published at neufangled.com, is a room-scale cable robot that hangs its gripper from lines anchored in ceiling corners. In robotics, the page argues, "price is basically actuator count" — four direct-drive motors reach a whole room, working from above floors too cluttered for wheeled or legged robots, and payload scales with the motors' combined torque rather than any single actuator's: up to 2.2 kg near the floor, 1.9 kg on average, in rooms of 3 to 10 meters. It moves at about 0.4 meters per second, has roughly 1,000 hours of testing in real homes, and is open source and OSHWA-certified — the mechanical CAD, PCBs and control software are published. A $795 kit is listed, which the page prices against a comparable serial arm at "roughly 500× the work area volume per dollar."<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <p>The thread's consensus was that the idea is cleverer than the first video suggests — one reader reported that the blanket-pickup clip, not the clothes clip, is the convincing one — with the standing worry that lines strung across a living room suit a warehouse better than a household. A few wanted the three-cable version; one expected a funded company to polish the idea and outship the original.<sup class="cite"><a href="#src21">[21]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Practical Tech Corner</span></div>
+
+    <span class="kicker">Practical Tech Corner · Storage</span>
+    <h2 class="headline">Fujifilm will multiply magnetic-tape capacity fivefold, its largest LTO investment ever, on AI archiving demand</h2>
+    <div class="byline"><span>Storage Desk</span><span class="score">★ <b>327 pts</b> · 132 cmts</span></div>
+    <figure>
+      <img src="images/fujifilm-tape.jpg" alt="Illustration photograph accompanying the tape-storage report">
+      <figcaption>Illustration photograph accompanying the report. <span class="cr">arstechnica.com</span></figcaption>
+    </figure>
+    <p class="first">Fujifilm will invest roughly 10 billion yen — about $63 million — at its Kanagawa factory in Odawara to increase production capacity fivefold against fiscal-2025 levels, across fiscal 2026 through 2028, primarily for LTO Ultrium 10 tape. The company attributes the demand to generative AI's "exponential growth" in data, and calls it the largest investment it has made in dedicated LTO facilities. Its tape lineage runs from the 1950s; Ultrium 10, debuted in 2025, was the first generation to use "fine hybrid magnetic particles," combining barium ferrite with strontium ferrite.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <p>Fujifilm's pitch leans on ransomware: tape can be air-gapped — disconnected and stored in a vault — "as a last defense for user data." The thread priced the medium itself (LTO-10 at roughly $8.60–$10 per terabyte, per a reader's reference site), and a tape veteran contributed the operational warning: verify archives by actually restoring from them, since a write-side confirmation is not proof the data comes back. One reader offered an alternate demand driver: harvest-now-decrypt-later attackers need storage too.<sup class="cite"><a href="#src16">[16]</a></sup><sup class="cite"><a href="#src17">[17]</a></sup></p>
+
+    <span class="kicker">Practical Tech Corner · Infrastructure</span>
+    <h2 class="headline">Namespace racks MacBook Pros by the hundreds because Minis could not be had, and Apple left no other way</h2>
+    <div class="byline"><span>Infrastructure Desk</span><span class="score">★ <b>265 pts</b> · 157 cmts</span></div>
+    <figure>
+      <img src="images/mac-racks.png" alt="The post's banner image of rack-mounted MacBooks">
+      <figcaption>The post's banner: the racks themselves. <span class="cr">namespace.so</span></figcaption>
+    </figure>
+    <p class="first">Namespace, which rents Mac hardware by the minute for iOS builds, explains why its new racks hold MacBook Pros: customers cannot build or release iOS apps without a Mac and a current Xcode, and the Mac Mini order it placed in January arrived in July. Each laptop in the rack gets four cables — power, 10-gigabit Ethernet, IP-KVM for the firmware screens that only accept mouse clicks, and video — forty-eight per shelf. The surprises were not the expected ones: MagSafe connectors held fine, while HDMI was the least reliable cable in the rack, and FileVault's unlock prompt expires from an external screen after five minutes — the SSH unlock path expires on laptops too, leaving a physical-button reboot and a race.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <p>The post closes with the workaround that works: <i>fdesetup authrestart</i> reboots a Mac while keeping the disk unlocked. The thread's arithmetic was blunter than the post's: cloud-Mac minutes at $0.06 and up mean a one-hour UI-test suite can cost more than the service it tests; one reader guessed an Xserve at twice a Mini's price would still sell out, and another questioned whether Apple's two-virtual-machines-per-machine rule pays for the hardware it forces onto developers.<sup class="cite"><a href="#src18">[18]</a></sup><sup class="cite"><a href="#src19">[19]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Quote of the Day</span></div>
+    <div class="pullquote" style="font-size:17px">"I can interpret weights too, but will that interpretation be correct?"<span class="attr">— a reader on the Qwen-on-a-laptop thread, borrowing Hotspur's answer from Henry IV</span></div>
+
+    <div class="statbox"><div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories typeset</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>9</td></tr>
+        <tr><td>Follow-ups</td><td>1</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined score</td><td>4,645 pts</td></tr>
+        <tr><td>Combined comments</td><td>2,015</td></tr>
+        <tr><td>Most-discussed thread</td><td>Google schools, 347 cmts</td></tr>
+        <tr><td>Top mover since last edition</td><td>+599 pts</td></tr>
+        <tr><td>Stories on the page at snapshot</td><td>31</td></tr>
+      </table>
+    </div>
+
+    <div class="classifieds">
+      <div class="t">Classifieds — Rates: 1 Karma per line</div>
+      <p>ROOM-SIZED ROBOT, four motors, ceiling lines. Lifts 2.2 kg near the floor; CAD, PCBs and control software published. $795; about 1,000 hours tested in real homes.</p>
+      <p>CLOCK REPAIR, one Renault Latitude, 2014. GPS sets the time; offset stored in minutes; card keyed by CID. Successful applicants will know core_pattern pipe syntax.</p>
+      <p>MACBOOK PROS, rack-mounted, four cables each. HDMI proves least reliable; FileVault prompts expire in five minutes. Enquire within, Namespace.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Day's Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" style="width:100%; height:auto; display:block" role="img" aria-label="Bar chart of the ten chosen stories by points">
+      <defs>
+        <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="1.7"/>
+        </pattern>
+        <pattern id="hatchred" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="1.7"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <g>
+        <line class="grid" x1="58"  y1="6" x2="58"  y2="344"/><line class="grid" x1="116" y1="6" x2="116" y2="344"/>
+        <line class="grid" x1="173" y1="6" x2="173" y2="344"/><line class="grid" x1="231" y1="6" x2="231" y2="344"/>
+        <line class="grid" x1="289" y1="6" x2="289" y2="344"/><line class="grid" x1="347" y1="6" x2="347" y2="344"/>
+        <line class="grid" x1="404" y1="6" x2="404" y2="344"/><line class="grid" x1="462" y1="6" x2="462" y2="344"/>
+      </g>
+      <!-- bars -->
+      <rect x="0.5" y="22"  width="480" height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="56"  width="478" height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="90"  width="296" height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="124" width="268" height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="158" width="237" height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="192" width="226" height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="226" width="224" height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="260" width="189" height="15" fill="url(#hatch)" stroke="#191510"/>
+      <rect x="0.5" y="294" width="153" height="15" fill="url(#hatchred)" stroke="#7a1f1f"/>
+      <rect x="0.5" y="328" width="132" height="15" fill="url(#hatch)" stroke="#191510"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0.5" y1="352" x2="520" y2="352"/>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18">Postman agent installs</text>
+      <text class="barlabel" x="0" y="52">Astra rebuttal &#183; Follow-Up</text>
+      <text class="barlabel" x="0" y="86">Renault clock jailbreak</text>
+      <text class="barlabel" x="0" y="120">Google Search in schools &#8224;</text>
+      <text class="barlabel" x="0" y="154">Chess on a Pentium Pro</text>
+      <text class="barlabel" x="0" y="188">Kalshi felony charges</text>
+      <text class="barlabel" x="0" y="222">Qwen on a laptop</text>
+      <text class="barlabel" x="0" y="256">Fujifilm tape 5x</text>
+      <text class="barlabel" x="0" y="290">Mac at Any Scale</text>
+      <text class="barlabel" x="0" y="324">Stringman gripper</text>
+      <!-- values -->
+      <text class="barval" x="487" y="34" font-weight="700">831 &#9733; &#183; 271 cmts</text>
+      <text class="barval" x="485" y="68">827 &#183; 187</text>
+      <text class="barval" x="303" y="102">513 &#183; 202</text>
+      <text class="barval" x="275" y="136">464 &#183; 347</text>
+      <text class="barval" x="244" y="170">410 &#183; 182</text>
+      <text class="barval" x="233" y="204">392 &#183; 311</text>
+      <text class="barval" x="231" y="238">388 &#183; 131</text>
+      <text class="barval" x="196" y="272">327 &#183; 132</text>
+      <text class="barval" x="160" y="306">265 &#183; 157</text>
+      <text class="barval" x="139" y="340">228 &#183; 95</text>
+      <!-- tick labels -->
+      <g fill="#3d352a" font-size="11">
+        <text x="0"   y="366" text-anchor="start">0</text>
+        <text x="58"  y="366" text-anchor="middle">100</text>
+        <text x="116" y="366" text-anchor="middle">200</text>
+        <text x="173" y="366" text-anchor="middle">300</text>
+        <text x="231" y="366" text-anchor="middle">400</text>
+        <text x="289" y="366" text-anchor="middle">500</text>
+        <text x="347" y="366" text-anchor="middle">600</text>
+        <text x="404" y="366" text-anchor="middle">700</text>
+        <text x="462" y="366" text-anchor="middle">800</text>
+        <text x="520" y="366" text-anchor="middle">900</text>
+      </g>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">&#9733; = points &#183; cmts = comments &#183; &#8224; most-discussed story of the day &#183; red hatch marks Apple coverage (the Mac-at-scale story)</text>
+    </svg>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>The Day in One Line</span></div>
+    <p class="first">Postman's silent installs of itself into coding agents lead the page at 831 points; the weights-paper rebuttal nearly matches it at 827, up 599 since the morning edition; and Google confirmed Search itself goes dark for school accounts that keep AI off.</p>
+
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>On "attempts to share all API data."</b> The link's headline phrase goes beyond the report it points at. Issue #14370 states plainly: "This report establishes unwanted integration and instruction changes; it does not claim to establish data exfiltration" — and the MCP connection it installed failed authentication at startup. What is documented is self-approval of hooks and a routing instruction, not data sharing.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+      <p><b>On "Google will turn off search for schools that reject AI."</b> The Times headline casts the cutoff as Google's act against objecting schools. Google's announcement describes off-by-default access for all K-12 student accounts across Gemini, Gemini Notebook, Gemini in Classroom and Search, enabled only when administrators opt in — schools that leave AI off do lose Search, but as the default state of a bundle rather than a targeted penalty.<sup class="cite"><a href="#src7">[7]</a></sup><sup class="cite"><a href="#src9">[9]</a></sup></p>
+      <p><b>On the Pentium's 3300 Elo.</b> The figure is the author's extrapolation: measured at 3180 ± 80 at 30 seconds per move, plus an assumed +70 Elo per tripling of thinking time, "allowing for some diminishing returns." It is also not unmodified modern Stockfish — the port was rewritten for 32-bit arithmetic and 64 MB of memory and tuned for the chip.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+      <p><b>On the $800 robot.</b> The thread's title prices Stringman at $800; the product page lists the kit at $795.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher's Note</div>
+  <p>Nine fresh stories and one follow-up make today's sheet: Postman's agent installs lead, Honnibal's rebuttal returns nearly quadrupled at 827 points, and the school-search story is reported from its thread and Google's own announcement because the Times would not open its doors to this press. No story needed the digest, and no slot needed padding; all ten were sourced from their primary links and threads.</p>
+  <div class="sig">— The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="section-label"><span>Sources</span></div>
+<div class="sources">
+  <ol>
+    <li id="src1" data-n="[1]">"[SEVERE] Desktop auto-installs Codex/Claude plugins; installer attempts to trust its own startup hook," issue #14370, postmanlabs/postman-app-support, GitHub. <a href="https://github.com/postmanlabs/postman-app-support/issues/14370">github.com/postmanlabs/postman-app-support/issues/14370</a></li>
+    <li id="src2" data-n="[2]">Hacker News thread, "Postman silently auto-installs AI plugins…" (271 comments). <a href="https://news.ycombinator.com/item?id=50354960">news.ycombinator.com/item?id=50354960</a></li>
+    <li id="src3" data-n="[3]">"The 'Astra can read and write weights to improve Qwen' post is misleading," Matthew Honnibal, honnibal.dev. <a href="https://honnibal.dev/blog/astra-read-write-misleading">honnibal.dev/blog/astra-read-write-misleading</a></li>
+    <li id="src4" data-n="[4]">Hacker News thread, the rebuttal (187 comments). <a href="https://news.ycombinator.com/item?id=50351111">news.ycombinator.com/item?id=50351111</a></li>
+    <li id="src5" data-n="[5]">"Jailbreaking my car's navigation system just so I can change the time," Rasmus Moorats, blog.nns.ee, Nov 2, 2026. <a href="https://blog.nns.ee/2026/11/02/renault-hack/">blog.nns.ee/2026/11/02/renault-hack</a></li>
+    <li id="src6" data-n="[6]">Hacker News thread, the Renault clock (202 comments). <a href="https://news.ycombinator.com/item?id=50339288">news.ycombinator.com/item?id=50339288</a></li>
+    <li id="src7" data-n="[7]">"Google will turn off search for schools that reject AI," The New York Times, Nov 3, 2026 (article behind an automated-access wall at press time; quoted via its thread). <a href="https://www.nytimes.com/2026/11/03/us/google-search-schools-restrict-ai.html">nytimes.com</a></li>
+    <li id="src8" data-n="[8]">Hacker News thread, Google Search in schools (347 comments). <a href="https://news.ycombinator.com/item?id=50353192">news.ycombinator.com/item?id=50353192</a></li>
+    <li id="src9" data-n="[9]">"Designing responsible AI for learning," Chris Phillips, VP &amp; GM of Education, Google, Nov 3, 2026. <a href="https://blog.google/products-and-platforms/products/education/ai-learning-era-updates-2026/">blog.google</a></li>
+    <li id="src10" data-n="[10]">"Could a modern chess engine on a Pentium have defeated Kasparov in 1996?" Nicholas Carlini, Nov 1, 2026. <a href="https://nicholas.carlini.com/writing/2026/algorithmic-improvements-chess.html">nicholas.carlini.com</a></li>
+    <li id="src11" data-n="[11]">Hacker News thread, chess on a Pentium (182 comments). <a href="https://news.ycombinator.com/item?id=50349276">news.ycombinator.com/item?id=50349276</a></li>
+    <li id="src12" data-n="[12]">"Trump admin sues Utah to save Kalshi from the state's total ban on gambling," Ars Technica, Oct 28, updated Oct 29, 2026. <a href="https://arstechnica.com/tech-policy/2026/10/trump-admin-sues-utah-to-save-kalshi-from-the-states-total-ban-on-gambling/">arstechnica.com</a></li>
+    <li id="src13" data-n="[13]">Hacker News thread, Kalshi felony charges (311 comments). <a href="https://news.ycombinator.com/item?id=50353229">news.ycombinator.com/item?id=50353229</a></li>
+    <li id="src14" data-n="[14]">"Qwen 3.8 27B on my laptop can interpret model weights, too," Simon Willison, Nov 3, 2026. <a href="https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/">simonwillison.net</a></li>
+    <li id="src15" data-n="[15]">Hacker News thread, Qwen on a laptop (131 comments). <a href="https://news.ycombinator.com/item?id=50355251">news.ycombinator.com/item?id=50355251</a></li>
+    <li id="src16" data-n="[16]">"Fujifilm to boost tape production 5x as AI fuels archiving demand," Ars Technica, Oct 2026. <a href="https://arstechnica.com/gadgets/2026/10/fujifilm-to-boost-tape-production-5x-as-ai-fuels-archiving-demand/">arstechnica.com</a></li>
+    <li id="src17" data-n="[17]">Hacker News thread, Fujifilm tape (132 comments). <a href="https://news.ycombinator.com/item?id=50336918">news.ycombinator.com/item?id=50336918</a></li>
+    <li id="src18" data-n="[18]">"Mac at Any Scale," Namespace. <a href="https://namespace.so/blog/mac-at-any-scale">namespace.so/blog/mac-at-any-scale</a></li>
+    <li id="src19" data-n="[19]">Hacker News thread, Mac at Any Scale (157 comments). <a href="https://news.ycombinator.com/item?id=50352758">news.ycombinator.com/item?id=50352758</a></li>
+    <li id="src20" data-n="[20]">"Stringman, an $800 open-source room scale gripper robot," neufangled.com. <a href="https://neufangled.com/">neufangled.com</a></li>
+    <li id="src21" data-n="[21]">Hacker News thread, Stringman (95 comments). <a href="https://news.ycombinator.com/item?id=50354358">news.ycombinator.com/item?id=50354358</a></li>
+  </ol>
+  <p class="method">Methodology — Snapshot of the Hacker News front page taken at 22:00 UTC, November 3, 2026 (16:00 US Central), via the Algolia HN Search API, which listed 31 stories on the page. Candidates were deduplicated against the previous four editions; one story returned as a follow-up after clearing both the +40 percent and +150-point bars (+262.7 percent, +599 points), and no digest was needed. Article text was fetched from primary sources, with two exceptions stated where they occur: the Times article declined automated access and is reported from its thread and the company's own announcement. Images are each page's own published preview art; comments come from the Algolia items API. Points and comment counts are as of the snapshot. The ledger and top bar sum the ten chosen stories exactly: 4,645 points across 2,015 comments.</p>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <span>The Hacker Herald — Typeset from the Hacker News front page</span>
+  <span>❧ Printed on 100% recycled bandwidth ❧</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</span>
+</footer>
+
+</body>
+</html>
