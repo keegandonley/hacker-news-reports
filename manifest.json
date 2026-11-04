@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-04-morning",
+      "date": "2026-11-04",
+      "label": "Morning",
+      "snapshot_utc": "14:00",
+      "items": [
+        {
+          "id": 50354960,
+          "title": "Postman silently auto-installs AI plugins and attempts to share all API data",
+          "score": 1384,
+          "comments": 458
+        },
+        {
+          "id": 50339288,
+          "title": "Jailbreaking my car's navigation system just so I can change the time",
+          "score": 878,
+          "comments": 332
+        },
+        {
+          "id": 50358562,
+          "title": "Safari introduces Adaptive Dark Mode in 27.3",
+          "score": 464,
+          "comments": 241
+        },
+        {
+          "id": 50346755,
+          "title": "Show HN: HackerTV \u2013 HN's most-recommended Youtube videos as 24/7 TV channels",
+          "score": 374,
+          "comments": 71
+        },
+        {
+          "id": 50360164,
+          "title": "C++26 Disapproved",
+          "score": 357,
+          "comments": 249
+        },
+        {
+          "id": 50361268,
+          "title": "Jelly Sheet",
+          "score": 321,
+          "comments": 81
+        },
+        {
+          "id": 50358702,
+          "title": "The Internals of PostgreSQL",
+          "score": 314,
+          "comments": 23
+        },
+        {
+          "id": 50364336,
+          "title": "AI is forcing us to pay off 40 years of technical debt",
+          "score": 257,
+          "comments": 141
+        },
+        {
+          "id": 50362905,
+          "title": "Nvidia RTX Spark encrypted firmware slows inference speed to 35% on Linux",
+          "score": 238,
+          "comments": 137
+        },
+        {
+          "id": 50362980,
+          "title": "Kitty 0.50",
+          "score": 230,
+          "comments": 142
+        }
+      ]
+    },
+    {
       "folder": "2026-11-03-afternoon",
       "date": "2026-11-03",
       "label": "Afternoon",

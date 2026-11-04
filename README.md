@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-11-04 · Morning | 2026-11-04 ≈14:00 | Postman answers for its self-installing plugins; opt-in to be made clearer | 1,384 | 458 | [editions/2026-11-04-morning/](editions/2026-11-04-morning/) |
 | 2026-11-03 · Afternoon | 2026-11-03 ≈22:00 | Postman's desktop app installs itself into Codex and Claude Code without asking | 831 | 271 | [editions/2026-11-03-afternoon/](editions/2026-11-03-afternoon/) |
 | 2026-11-03 · Morning | 2026-11-03 ≈14:00 | Astra edits 0.016% of a small Qwen's weights and lifts its math score to 48.1% | 2,849 | 861 | [editions/2026-11-03-morning/](editions/2026-11-03-morning/) |
 | 2026-11-02 · Afternoon | 2026-11-02 ≈22:01 | GPT-6 Astra edits a small Qwen's weights directly and lifts its math score sixfold | 1,308 | 412 | [editions/2026-11-02-afternoon/](editions/2026-11-02-afternoon/) |
