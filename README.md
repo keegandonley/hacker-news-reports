@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-11-05 · Afternoon | 2026-11-05 ≈22:00 | Alpine warns every sshd host to patch as the asterisk-login thread quadruples | 2,114 | 529 | [editions/2026-11-05-afternoon/](editions/2026-11-05-afternoon/) |
 | 2026-11-05 · Morning | 2026-11-05 ≈14:01 | The PHP2Shell audit returns: finding bugs got cheap, fixing them did not | 1,222 | 714 | [editions/2026-11-05-morning/](editions/2026-11-05-morning/) |
 | 2026-11-04 · Afternoon | 2026-11-04 ≈22:01 | AI-assisted audit turns a PHP crash into a server takeover risk | 957 | 585 | [editions/2026-11-04-afternoon/](editions/2026-11-04-afternoon/) |
 | 2026-11-04 · Morning | 2026-11-04 ≈14:00 | Postman answers for its self-installing plugins; opt-in to be made clearer | 1,384 | 458 | [editions/2026-11-04-morning/](editions/2026-11-04-morning/) |

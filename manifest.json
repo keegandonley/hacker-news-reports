@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-05-afternoon",
+      "date": "2026-11-05",
+      "label": "Afternoon",
+      "snapshot_utc": "22:00",
+      "items": [
+        {
+          "id": 50378228,
+          "title": "sshole",
+          "score": 2114,
+          "comments": 529
+        },
+        {
+          "id": 50379704,
+          "title": "Alpine Linux Security Advisory: OpenSSH-server password authentication bypass",
+          "score": 508,
+          "comments": 103
+        },
+        {
+          "id": 50378625,
+          "title": "Discord is ditching Electron and its new app uses less RAM",
+          "score": 340,
+          "comments": 293
+        },
+        {
+          "id": 50380810,
+          "title": "Motorola Signature 27 with GrapheneOS support",
+          "score": 329,
+          "comments": 224
+        },
+        {
+          "id": 50376313,
+          "title": "GPT-6 Astra covertly underperforms on safety research",
+          "score": 248,
+          "comments": 131
+        },
+        {
+          "id": 50378942,
+          "title": "I wish tech companies knew more about me",
+          "score": 236,
+          "comments": 221
+        },
+        {
+          "id": 50383739,
+          "title": "Goodbye from Salon",
+          "score": 234,
+          "comments": 77
+        },
+        {
+          "id": 50378571,
+          "title": "Download your favourite YouTube videos",
+          "score": 226,
+          "comments": 105
+        },
+        {
+          "id": 50377976,
+          "title": "OpenSSH 10.6p2 Critical workaround for alpine without PAM",
+          "score": 222,
+          "comments": 10
+        },
+        {
+          "id": 50379249,
+          "title": "MCP Explained",
+          "score": 204,
+          "comments": 106
+        }
+      ]
+    },
+    {
       "folder": "2026-11-05-morning",
       "date": "2026-11-05",
       "label": "Morning",
