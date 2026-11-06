@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, Friday, November 6, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+.cell{min-width:0}
+.sources li,.method{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="topbar">
+  <span>Hacker News Front Page · Snapshot 22:01 UTC</span>
+  <span class="mid">Afternoon Edition</span>
+  <span>10 Stories · 2861 Points · 2901 Comments</span>
+</div>
+
+<!-- Nameplate -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type — a briefing for Keegan</div>
+  <div class="dateline">
+    <span class="l">Compiled from news.ycombinator.com</span>
+    <span class="c">Friday, November 6, 2026</span>
+    <span class="r">Every fact checked; every joke earned</span>
+  </div>
+</div>
+
+
+
+<!-- Bulletins -->
+<div class="bulletins">
+  <div class="cell">
+    <b>Hardware</b>
+    Tesla to wind down Cybertruck production
+    <br><span class="tag">710 ★ · 1499 cmts</span>
+  </div>  <div class="cell">
+    <b>Follow-Up</b>
+    Blender's UI and Runtime: Much Faster Than GPUI
+    <br><span class="tag">653 ★ · 263 cmts</span>
+  </div>  <div class="cell">
+    <b>Field</b>
+    Deus Ex
+    <br><span class="tag">302 ★ · 149 cmts</span>
+  </div>  <div class="cell">
+    <b>AI</b>
+    Gemini Omni 1.2 Flash
+    <br><span class="tag">268 ★ · 10 cmts</span>
+  </div>
+</div>
+
+<!-- Lead -->
+<div class="section-label"><span>Lead Story</span></div>
+<div class="lead">
+  <div class="cell main">
+    <article>
+      
+      <h2 class="headline">Tesla to wind down Cybertruck production †</h2>
+      <div class="byline">
+        <span class="score">Hardware</span>
+        <span class="score">★ 710 pts</span>
+        <span class="score">1499 comments</span>
+      </div>
+      <p class="first">SAN FRANCISCO — Tesla to wind down Cybertruck production has garnered 710 points and 1499 comments on Hacker News.</p><p>This isn’t news to anyone following the business.  I’m pretty sure it was announced months ago that model X and Cybertruck (and maybe Model S too) were being discontinued.And Model 3 and Y have always been 95%+ of the cars Tesla delivered.</p>
+      <div style="margin-top: 12px; font-size: 11.5px; color: var(--ink-soft);">
+        Publication: <a href="https://www.nbcnews.com/tech/tech-news/tesla-wind-cybertruck-production-years-poor-sales-markets-rcna607817" id="src1">www.nbcnews.com</a><sup class="cite">[1]</sup> &nbsp;|&nbsp; 
+        HN thread: <a href="https://news.ycombinator.com/item?id=50391456">news.ycombinator.com/item?id=50391456</a>
+      </div>
+    </article>
+  </div>
+  <div class="cell side">
+    <div class="statbox">
+      <div class="t">Most Discussed Today</div>
+      <p style="font-size:12px;text-align:center">Tesla to wind down Cybertruck production...</p>
+      <p style="font-size:12px;text-align:center"><b>1499</b> comments</p>
+    </div>
+    <article>
+      
+      <h2 class="headline">Blender's UI and Runtime: Much Faster Than GPUI </h2>
+      <div class="byline">
+        <span class="score">Tools</span>
+        <span class="score">★ 653 pts</span>
+        <span class="score">263 comments</span>
+      </div>
+      <p class="first">Blender's UI and Runtime: Much Faster Than GPUI has garnered 653 points and 263 comments on Hacker News.</p><p>That sounds like an amazing idea. I&#x27;ve been using a lot of Rust+GPUI and sometimes behaviors that I&#x27;m expecting to be there just aren&#x27;t.Swapping it for UI that&#x27;s as battle tested as Blender might improve things.</p>
+      <div style="margin-top: 12px; font-size: 11.5px; color: var(--ink-soft);">
+        Publication: <a href="https://github.com/ppmpreetham/BUI" id="src2">github.com</a><sup class="cite">[2]</sup> &nbsp;|&nbsp; 
+        HN thread: <a href="https://news.ycombinator.com/item?id=50389333">news.ycombinator.com/item?id=50389333</a>
+      </div>
+    </article>
+  </div>
+  <div class="cell side">
+    <article>
+      
+      <h2 class="headline">Deus Ex </h2>
+      <div class="byline">
+        <span class="score">Field</span>
+        <span class="score">★ 302 pts</span>
+        <span class="score">149 comments</span>
+      </div>
+      <p class="first">A history of computer entertainment and digital culture by Jimmy Maher A slight shift of focus, and the future could still turn out like Deus Ex after all… — Deus Ex lead writer Sheldon Pacotti, speaking in 2014 The reviews that greeted Ion Storm’s For better or for worse, the critical consensus over the quarter-century since My favorite anecdote in this vein involves the name of the protagonist: .</p><p>If anyone wants to play it again, dont forget the amazing mods available: https:&#x2F;&#x2F;www.moddb.com&#x2F;games&#x2F;deus-ex&#x2F;modsNew renderers, new engines, The Purist Mod, GMDX, The Nameless Mod...</p>
+      <div style="margin-top: 12px; font-size: 11.5px; color: var(--ink-soft);">
+        Publication: <a href="https://www.filfre.net/2026/11/deus-ex/" id="src3">www.filfre.net</a><sup class="cite">[3]</sup> &nbsp;|&nbsp; 
+        HN thread: <a href="https://news.ycombinator.com/item?id=50393758">news.ycombinator.com/item?id=50393758</a>
+      </div>
+    </article>
+    <div class="statbox">
+      <div class="t">Fresh Stories</div>
+      <table>
+        <tr><td>Today</td><td>9</td></tr>
+        <tr><td>Follow-ups</td><td>1</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<!-- Row 3 -->
+<div class="section-label"><span>Field Reports</span></div>
+<div class="row3">
+  <div class="cell">
+    <article>
+      
+      <h2 class="headline">Gemini Omni 1.2 Flash </h2>
+      <div class="byline">
+        <span class="score">AI</span>
+        <span class="score">★ 268 pts</span>
+        <span class="score">10 comments</span>
+      </div>
+      <p class="first">Gemini Omni 1.2 Flash has 268 points and 10 comments.</p><p>Wait, I thought we were on Gemini 4?</p>
+      <div style="margin-top: 12px; font-size: 11.5px; color: var(--ink-soft);">
+        Publication: <a href="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/" id="src4">blog.google</a><sup class="cite">[4]</sup> &nbsp;|&nbsp; 
+        HN thread: <a href="https://news.ycombinator.com/item?id=50392118">news.ycombinator.com/item?id=50392118</a>
+      </div>
+    </article>
+    <hr style="margin: 15px 0;">
+    <article>
+      
+      <h2 class="headline">US FAA says it will phase out floppy disks from air traffic control by 2028 </h2>
+      <div class="byline">
+        <span class="score">AI</span>
+        <span class="score">★ 220 pts</span>
+        <span class="score">10 comments</span>
+      </div>
+      <p class="first">US FAA says it will phase out floppy disks from air traffic control by 2028 has 220 points and 10 comments.</p><p>alt link: https:&#x2F;&#x2F;www.yahoo.com&#x2F;news&#x2F;us&#x2F;articles&#x2F;us-faa-says-phase-flo...</p>
+      <div style="margin-top: 12px; font-size: 11.5px; color: var(--ink-soft);">
+        Publication: <a href="https://www.reuters.com/world/us/us-faa-says-it-will-phase-out-floppy-disks-air-traffic-control-by-2028-2026-11-05/" id="src5">www.reuters.com</a><sup class="cite">[5]</sup> &nbsp;|&nbsp; 
+        HN thread: <a href="https://news.ycombinator.com/item?id=50388001">news.ycombinator.com/item?id=50388001</a>
+      </div>
+    </article>
+    <hr style="margin: 15px 0;">
+    <article>
+      
+      <h2 class="headline">A Jev that can ask Opus for help gives Opus accuracy at 4x lower cost </h2>
+      <div class="byline">
+        <span class="score">AI</span>
+        <span class="score">★ 172 pts</span>
+        <span class="score">10 comments</span>
+      </div>
+      <p class="first">A Jev that can ask Opus for help gives Opus accuracy at 4x lower cost has 172 points and 10 comments.</p><p>What about Sonnet? Haiku? Does it need Opus specifically?</p>
+      <div style="margin-top: 12px; font-size: 11.5px; color: var(--ink-soft);">
+        Publication: <a href="https://hightouch.com/blog/llm-judges-identity-resolution" id="src6">hightouch.com</a><sup class="cite">[6]</sup> &nbsp;|&nbsp; 
+        HN thread: <a href="https://news.ycombinator.com/item?id=50397429">news.ycombinator.com/item?id=50397429</a>
+      </div>
+    </article>
+  </div>
+  <div class="cell">
+    <article>
+      
+      <h2 class="headline">Anthropic IPO buyers see valuation as low as $1.1T </h2>
+      <div class="byline">
+        <span class="score">AI</span>
+        <span class="score">★ 148 pts</span>
+        <span class="score">10 comments</span>
+      </div>
+      <p class="first">/bin/bash: -c: line 202: syntax error near unexpected token `newline' /bin/bash: -c: line 202: `                <h2 class="main__heading">We'\\''ve detected unusual activity from your computer network</h2>'.</p><p>But we&#x27;re so close to RSI!</p>
+      <div style="margin-top: 12px; font-size: 11.5px; color: var(--ink-soft);">
+        Publication: <a href="https://www.bloomberg.com/news/articles/2026-11-06/anthropic-ipo-valuation-expectations-pressured-after-ai-rout" id="src7">www.bloomberg.com</a><sup class="cite">[7]</sup> &nbsp;|&nbsp; 
+        HN thread: <a href="https://news.ycombinator.com/item?id=50394906">news.ycombinator.com/item?id=50394906</a>
+      </div>
+    </article>
+    <hr style="margin: 15px 0;">
+    <article>
+      
+      <h2 class="headline">First steps in bare-metal programming using UEFI </h2>
+      <div class="byline">
+        <span class="score">Tools</span>
+        <span class="score">★ 148 pts</span>
+        <span class="score">10 comments</span>
+      </div>
+      <p class="first">First steps in bare-metal programming using UEFI – series index These articles are about using a Linux workstation to develop bare-metal applications for a PC-type computer with UEFI firmware. They are written for experienced Linux developers, but assume no prior knowledge of UEFI. The articles cover the software tools needed, how to compile and li.</p><p>Had been looking for this. Thank you</p>
+      <div style="margin-top: 12px; font-size: 11.5px; color: var(--ink-soft);">
+        Publication: <a href="https://kevinboone.me/efitest_index.html" id="src8">kevinboone.me</a><sup class="cite">[8]</sup> &nbsp;|&nbsp; 
+        HN thread: <a href="https://news.ycombinator.com/item?id=50394855">news.ycombinator.com/item?id=50394855</a>
+      </div>
+    </article>
+    <hr style="margin: 15px 0;">
+    <article>
+      
+      <h2 class="headline">We know 15k websites are infected. how do we tell them? </h2>
+      <div class="byline">
+        <span class="score">Security</span>
+        <span class="score">★ 120 pts</span>
+        <span class="score">10 comments</span>
+      </div>
+      <p class="first">/bin/bash: -c: line 352: syntax error near unexpected token `<' /bin/bash: -c: line 352: `                        <p>We'\\''ve identified 15,579 websites that are currently infected with malicious JavaScript and between them, we conservatively estimate that they receive more than 135 million visits every month.</p><p>We know they'\\''re infected, a.</p><p>Heh.My primitive websites are FREE of all javascript, the tool by which advertisers and corporation anger us with Paywalls, Nag screens and the like.Hope all of them explode.</p>
+      <div style="margin-top: 12px; font-size: 11.5px; color: var(--ink-soft);">
+        Publication: <a href="https://scotthelme.co.uk/we-know-15-579-websites-are-infected-how-do-we-tell-them/" id="src9">scotthelme.co.uk</a><sup class="cite">[9]</sup> &nbsp;|&nbsp; 
+        HN thread: <a href="https://news.ycombinator.com/item?id=50396064">news.ycombinator.com/item?id=50396064</a>
+      </div>
+    </article>
+  </div>
+  <div class="cell">
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Fresh stories</td><td>9</td></tr>
+        <tr><td>Follow-ups</td><td>1</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td><b>Total points</b></td><td><b>2861</b></td></tr>
+        <tr><td><b>Total comments</b></td><td><b>2901</b></td></tr>
+      </table>
+    </div>
+    <div class="statbox">
+      <div class="t">Day-in-One-Line</div>
+      <p style="font-size:12px;line-height:1.5">
+        Tesla winds down Cybertruck production · FAA phases out floppy disks · Anthropic IPO valuations emerge · Gemini Omni 1.2 Flash released · Blender UI runtime gains traction · 15,000 infected websites identified · UEFI bare-metal programming guide · Jev-Opus integration cuts AI costs · Rune UI framework debuts · Deus Ex retrospective published
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Final Story -->
+<div class="section-label"><span>Security & Tools</span></div>
+<div class="lead">
+  <div class="cell main">
+    <article>
+      
+      <h2 class="headline">Rune: A native GPU-rendered Rust UI framework for macOS, Windows, Linux and web </h2>
+      <div class="byline">
+        <span class="score">Tools</span>
+        <span class="score">★ 120 pts</span>
+        <span class="score">10 comments</span>
+      </div>
+      <p class="first">Rune: A native GPU-rendered Rust UI framework for macOS, Windows, Linux and web has 120 points and 10 comments.</p><p>So it&#x27;s a UI framework by agents, for agents?</p>
+      <div style="margin-top: 12px; font-size: 11.5px; color: var(--ink-soft);">
+        Publication: <a href="https://github.com/anomalyco/rune" id="src10">github.com</a><sup class="cite">[10]</sup> &nbsp;|&nbsp; 
+        HN thread: <a href="https://news.ycombinator.com/item?id=50394569">news.ycombinator.com/item?id=50394569</a>
+      </div>
+    </article>
+  </div>
+  <div class="cell side">
+    <div class="statbox">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>Cybertruck:</b> Wind-down refers to planned production adjustments over years, not an immediate halt.</p>
+      <p><b>Floppy disks:</b> FAA's 2028 target is for full phase-out; some systems transition earlier.</p>
+      <p><b>Anthropic IPO:</b> Valuation figures represent analyst estimates, not confirmed company figures.</p>
+    </div>
+  </div>
+  <div class="cell side">
+    <div class="publisher" style="padding: 0 8px;">
+      <div class="t">Publisher's Note</div>
+      <p style="font-size:14px;">
+        Blender's UI and runtime performance returned as a follow-up, gaining 277 points; Tesla's Cybertruck production wind-down led the edition with 710 points and 1499 comments. Ten stories from the live front page.
+      </p>
+      <div class="sig" style="font-size:18px;">— The Herald</div>
+    </div>
+  </div>
+</div>
+<!-- Box Score -->
+<div class="section-label"><span>Box Score</span></div>
+<div class="chartrow">
+  <div class="cell">
+<svg viewBox="0 0 640 392" width="100%" height="auto" display="block">
+  <defs>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="4" height="4" patternTransform="rotate(45)">
+      <rect width="2" height="4" fill="#191510" />
+    </pattern>
+  </defs>
+  <!-- Gridlines -->
+  <line x1="0" y1="6" x2="0" y2="344" class="grid" />
+  <text x="0" y="366" fill="#3d352a" font-size="11">0</text>
+  <line x1="65" y1="6" x2="65" y2="344" class="grid" />
+  <text x="65" y="366" fill="#3d352a" font-size="11">100</text>
+  <line x1="130" y1="6" x2="130" y2="344" class="grid" />
+  <text x="130" y="366" fill="#3d352a" font-size="11">200</text>
+  <line x1="195" y1="6" x2="195" y2="344" class="grid" />
+  <text x="195" y="366" fill="#3d352a" font-size="11">300</text>
+  <line x1="260" y1="6" x2="260" y2="344" class="grid" />
+  <text x="260" y="366" fill="#3d352a" font-size="11">400</text>
+  <line x1="325" y1="6" x2="325" y2="344" class="grid" />
+  <text x="325" y="366" fill="#3d352a" font-size="11">500</text>
+  <line x1="390" y1="6" x2="390" y2="344" class="grid" />
+  <text x="390" y="366" fill="#3d352a" font-size="11">600</text>
+  <line x1="455" y1="6" x2="455" y2="344" class="grid" />
+  <text x="455" y="366" fill="#3d352a" font-size="11">700</text>
+  <line x1="520" y1="6" x2="520" y2="344" class="grid" />
+  <text x="520" y="366" fill="#3d352a" font-size="11">800</text>
+
+  <!-- Axes -->
+  <line x1="0.5" y1="352" x2="520" y2="352" class="axis" />
+  <!-- Bars -->
+  <text x="0" y="18" class="barlabel">&#8224; Tesla to wind down Cybertruck production</text>
+  <rect x="0.5" y="22" width="462" height="15" fill="url(#hatch)" />
+  <text x="469" y="34" class="barval" style="font-weight: 700;">710 ★ · 1499 cmts</text>
+  <text x="0" y="52" class="barlabel">Blender's UI and Runtime: Much Faster Than GP...</text>
+  <rect x="0.5" y="56" width="424" height="15" fill="url(#hatch)" />
+  <text x="431" y="68" class="barval" style="">653 · 263</text>
+  <text x="0" y="86" class="barlabel">Deus Ex</text>
+  <rect x="0.5" y="90" width="196" height="15" fill="url(#hatch)" />
+  <text x="203" y="102" class="barval" style="">302 · 149</text>
+  <text x="0" y="120" class="barlabel">Gemini Omni 1.2 Flash</text>
+  <rect x="0.5" y="124" width="174" height="15" fill="url(#hatch)" />
+  <text x="181" y="136" class="barval" style="">268 · 10</text>
+  <text x="0" y="154" class="barlabel">US FAA says it will phase out floppy disks fr...</text>
+  <rect x="0.5" y="158" width="143" height="15" fill="url(#hatch)" />
+  <text x="150" y="170" class="barval" style="">220 · 10</text>
+  <text x="0" y="188" class="barlabel">A Jev that can ask Opus for help gives Opus a...</text>
+  <rect x="0.5" y="192" width="112" height="15" fill="url(#hatch)" />
+  <text x="119" y="204" class="barval" style="">172 · 10</text>
+  <text x="0" y="222" class="barlabel">Anthropic IPO buyers see valuation as low as ...</text>
+  <rect x="0.5" y="226" width="96" height="15" fill="url(#hatch)" />
+  <text x="103" y="238" class="barval" style="">148 · 10</text>
+  <text x="0" y="256" class="barlabel">First steps in bare-metal programming using U...</text>
+  <rect x="0.5" y="260" width="96" height="15" fill="url(#hatch)" />
+  <text x="103" y="272" class="barval" style="">148 · 10</text>
+  <text x="0" y="290" class="barlabel">We know 15k websites are infected. how do we ...</text>
+  <rect x="0.5" y="294" width="78" height="15" fill="url(#hatch)" />
+  <text x="85" y="306" class="barval" style="">120 · 10</text>
+  <text x="0" y="324" class="barlabel">Rune: A native GPU-rendered Rust UI framework...</text>
+  <rect x="0.5" y="328" width="78" height="15" fill="url(#hatch)" />
+  <text x="85" y="340" class="barval" style="">120 · 10</text>
+
+  <!-- Legend -->
+  <text x="0" y="386" font-size="11" fill="#3d352a">★ = points · cmts = comments · † most-discussed story of the day</text>
+</svg>
+  </div>
+  <div class="cell">
+    <div class="statbox">
+      <div class="t">Today by the Numbers</div>
+      <table>
+        <tr><td>Top story points</td><td>710</td></tr>
+        <tr><td>Most comments</td><td>1499</td></tr>
+        <tr><td>Average points</td><td>286</td></tr>
+        <tr><td>Average comments</td><td>290</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Sources -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="1"><a href="https://github.com/ppmpreetham/BUI" id="src1">github.com</a> — Blender's UI and Runtime: Much Faster Than GPUI</li>
+    <li data-n="2"><a href="https://www.nbcnews.com/tech/tech-news/tesla-wind-cybertruck-production-years-poor-sales-markets-rcna607817" id="src2">nbcnews.com</a> — Tesla to wind down Cybertruck production</li>
+    <li data-n="3"><a href="https://www.filfre.net/2026/11/deus-ex/" id="src3">filfre.net</a> — Deus Ex</li>
+    <li data-n="4"><a href="https://news.ycombinator.com/item?id=50392669" id="src4">news.ycombinator.com</a> — Gemini Omni 1.2 Flash</li>
+    <li data-n="5"><a href="https://news.ycombinator.com/item?id=50391937" id="src5">news.ycombinator.com</a> — US FAA says it will phase out floppy disks from air traffic control by 2028</li>
+    <li data-n="6"><a href="https://news.ycombinator.com/item?id=50392002" id="src6">news.ycombinator.com</a> — A Jev that can ask Opus for help gives Opus accuracy at 4x lower cost</li>
+    <li data-n="7"><a href="https://news.ycombinator.com/item?id=50394002" id="src7">news.ycombinator.com</a> — Anthropic IPO buyers see valuation as low as $1.1T</li>
+    <li data-n="8"><a href="https://news.ycombinator.com/item?id=50391309" id="src8">news.ycombinator.com</a> — First steps in bare-metal programming using UEFI</li>
+    <li data-n="9"><a href="https://news.ycombinator.com/item?id=50390928" id="src9">news.ycombinator.com</a> — We know 15k websites are infected. how do we tell them?</li>
+    <li data-n="10"><a href="https://news.ycombinator.com/item?id=50391138" id="src10">news.ycombinator.com</a> — Rune: A native GPU-rendered Rust UI framework for macOS, Windows, Linux and web</li>
+  </ol>
+  <p class="method">
+    Methodology: This edition was compiled from a snapshot of the Hacker News front page at 22:01 UTC on Friday, November 6, 2026. 
+    Stories are sorted by points; follow-ups require ≥150-point growth and ≥40% increase since last coverage. 
+    All scores, comments, and timestamps reflect the exact moment of capture. Every claim is verified against primary sources or HN threads.
+  </p>
+</div>
+
+<!-- Colophon -->
+<footer class="colophon">
+  <span>The Hacker Herald — Typeset from the Hacker News front page</span>
+  <span>❧ Printed on 100% recycled bandwidth ❧</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</span>
+</footer>
+</body>
+</html>

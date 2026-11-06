@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-11-06 · Afternoon | 2026-11-06 ≈22:01 | Tesla to wind down Cybertruck production | 710 | 1499 | [editions/2026-11-06-afternoon/](editions/2026-11-06-afternoon/) |
 | 2026-11-06 · Morning | 2026-11-06 ≈14:05 | Claude Code sends your email address to websites | 1,310 | 412 | [editions/2026-11-06-morning/](editions/2026-11-06-morning/) |
 | 2026-11-05 · Afternoon | 2026-11-05 ≈22:00 | Alpine warns every sshd host to patch as the asterisk-login thread quadruples | 2,114 | 529 | [editions/2026-11-05-afternoon/](editions/2026-11-05-afternoon/) |
 | 2026-11-05 · Morning | 2026-11-05 ≈14:01 | The PHP2Shell audit returns: finding bugs got cheap, fixing them did not | 1,222 | 714 | [editions/2026-11-05-morning/](editions/2026-11-05-morning/) |

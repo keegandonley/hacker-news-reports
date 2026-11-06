@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-06-afternoon",
+      "date": "2026-11-06",
+      "label": "Afternoon",
+      "snapshot_utc": "22:01",
+      "items": [
+        {
+          "id": 50391456,
+          "title": "Tesla to wind down Cybertruck production",
+          "score": 710,
+          "comments": 1499
+        },
+        {
+          "id": 50389333,
+          "title": "Blender's UI and Runtime: Much Faster Than GPUI",
+          "score": 653,
+          "comments": 263
+        },
+        {
+          "id": 50393758,
+          "title": "Deus Ex",
+          "score": 302,
+          "comments": 149
+        },
+        {
+          "id": 50392669,
+          "title": "Gemini Omni 1.2 Flash",
+          "score": 268,
+          "comments": 206
+        },
+        {
+          "id": 50391937,
+          "title": "US FAA says it will phase out floppy disks from air traffic control by 2028",
+          "score": 220,
+          "comments": 149
+        },
+        {
+          "id": 50392002,
+          "title": "A Jev that can ask Opus for help gives Opus accuracy at 4x lower cost",
+          "score": 172,
+          "comments": 40
+        },
+        {
+          "id": 50394002,
+          "title": "Anthropic IPO buyers see valuation as low as $1.1T",
+          "score": 148,
+          "comments": 352
+        },
+        {
+          "id": 50391309,
+          "title": "First steps in bare-metal programming using UEFI",
+          "score": 148,
+          "comments": 25
+        },
+        {
+          "id": 50390928,
+          "title": "We know 15k websites are infected. how do we tell them?",
+          "score": 120,
+          "comments": 96
+        },
+        {
+          "id": 50391138,
+          "title": "Rune: A native GPU-rendered Rust UI framework for macOS, Windows, Linux and web",
+          "score": 120,
+          "comments": 94
+        }
+      ]
+    },
+    {
       "folder": "2026-11-06-morning",
       "date": "2026-11-06",
       "label": "Morning",
