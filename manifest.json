@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-06-morning",
+      "date": "2026-11-06",
+      "label": "Morning",
+      "snapshot_utc": "14:05",
+      "items": [
+        {
+          "id": 50380810,
+          "title": "Motorola Signature 27 with GrapheneOS support",
+          "score": 522,
+          "comments": 377
+        },
+        {
+          "id": 50378942,
+          "title": "I wish tech companies knew more about me",
+          "score": 482,
+          "comments": 381
+        },
+        {
+          "id": 50385272,
+          "title": "Claude Code sends your email address to websites",
+          "score": 1310,
+          "comments": 412
+        },
+        {
+          "id": 50384233,
+          "title": "MS Paint Remote Code Execution Vulnerability",
+          "score": 604,
+          "comments": 224
+        },
+        {
+          "id": 50385870,
+          "title": "Cuban: Facebook knowingly runs AI deepfake scam ads; docs say $16B fraud revenue",
+          "score": 422,
+          "comments": 192
+        },
+        {
+          "id": 50381383,
+          "title": "Window Sweaters",
+          "score": 388,
+          "comments": 115
+        },
+        {
+          "id": 50389333,
+          "title": "Blender's UI and Runtime: Much Faster Than GPUI",
+          "score": 376,
+          "comments": 152
+        },
+        {
+          "id": 50389222,
+          "title": "Britain to make salary disclosure in job ads mandatory",
+          "score": 349,
+          "comments": 291
+        },
+        {
+          "id": 50383057,
+          "title": "The Hackintosh Reborn",
+          "score": 348,
+          "comments": 196
+        },
+        {
+          "id": 50390124,
+          "title": "Dutch 'idealist' bank ASN blocks non-Google Android, including GrapheneOS",
+          "score": 321,
+          "comments": 204
+        }
+      ]
+    },
+    {
       "folder": "2026-11-05-afternoon",
       "date": "2026-11-05",
       "label": "Afternoon",
@@ -231,7 +299,7 @@
         },
         {
           "id": 50346755,
-          "title": "Show HN: HackerTV – HN's most-recommended Youtube videos as 24/7 TV channels",
+          "title": "Show HN: HackerTV \u2013 HN's most-recommended Youtube videos as 24/7 TV channels",
           "score": 374,
           "comments": 71
         },
@@ -355,7 +423,7 @@
         },
         {
           "id": 50340088,
-          "title": "Show HN: Subvocal – Talk to your computer without making noise",
+          "title": "Show HN: Subvocal \u2013 Talk to your computer without making noise",
           "score": 754,
           "comments": 355
         },
@@ -391,7 +459,7 @@
         },
         {
           "id": 50348962,
-          "title": "Nvidia – open-source auto-ontology",
+          "title": "Nvidia \u2013 open-source auto-ontology",
           "score": 177,
           "comments": 57
         },
@@ -429,7 +497,7 @@
         },
         {
           "id": 50340088,
-          "title": "Show HN: Subvocal – Talk to your computer without making noise",
+          "title": "Show HN: Subvocal \u2013 Talk to your computer without making noise",
           "score": 412,
           "comments": 237
         },
@@ -465,7 +533,7 @@
         },
         {
           "id": 50339221,
-          "title": "Show HN: Warsaw in voxels – An interactive 3D map of the city centre",
+          "title": "Show HN: Warsaw in voxels \u2013 An interactive 3D map of the city centre",
           "score": 171,
           "comments": 31
         },
@@ -491,7 +559,7 @@
         },
         {
           "id": 50326821,
-          "title": "Show HN: HackerBooks – HackerTube, but for books mentioned on HN",
+          "title": "Show HN: HackerBooks \u2013 HackerTube, but for books mentioned on HN",
           "score": 1610,
           "comments": 265
         },
@@ -521,13 +589,13 @@
         },
         {
           "id": 50333339,
-          "title": "Show HN: Wikihack – HackerTube, but for Wikipedia articles mentioned on HN",
+          "title": "Show HN: Wikihack \u2013 HackerTube, but for Wikipedia articles mentioned on HN",
           "score": 293,
           "comments": 89
         },
         {
           "id": 50325253,
-          "title": "Show HN: OmniDiff – Opensource, super fast, content aware Git difftool, in Rust",
+          "title": "Show HN: OmniDiff \u2013 Opensource, super fast, content aware Git difftool, in Rust",
           "score": 274,
           "comments": 81
         },
@@ -571,7 +639,7 @@
         },
         {
           "id": 50301854,
-          "title": "Azure's Weakest Link – Five Full Cross-Tenant Compromises",
+          "title": "Azure's Weakest Link \u2013 Five Full Cross-Tenant Compromises",
           "score": 231,
           "comments": 40
         },
@@ -627,7 +695,7 @@
         },
         {
           "id": 50296470,
-          "title": "Binance-hacker-1029 – $5.6B stolen from Binance",
+          "title": "Binance-hacker-1029 \u2013 $5.6B stolen from Binance",
           "score": 1522,
           "comments": 991
         },
@@ -781,7 +849,7 @@
         },
         {
           "id": 50284255,
-          "title": "Claude Code regularly sends each background agent’s transcript to its model",
+          "title": "Claude Code regularly sends each background agent\u2019s transcript to its model",
           "score": 449,
           "comments": 183
         },
@@ -953,7 +1021,7 @@
         },
         {
           "id": 50261352,
-          "title": "New 14‑inch MacBook Pro with M6",
+          "title": "New 14\u2011inch MacBook Pro with M6",
           "score": 388,
           "comments": 535
         },
