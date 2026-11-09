@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 9, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+<span>Hacker News Front Page · Snapshot 14:00 UTC</span>
+<span class="mid">Morning Edition</span>
+<span>10 Stories · 4,782 Points · 2,867 Comments</span>
+</div>
+
+<div class="nameplate">
+<h1>The Hacker Herald</h1>
+<div class="sub">The front page, read closely and set in type — a briefing for Keegan</div>
+<div class="dateline">
+<span class="l">Compiled from news.ycombinator.com</span>
+<span class="c">November 9, 2026</span>
+<span class="r">Every fact checked; every joke earned</span>
+</div>
+</div>
+
+<div class="bulletins">
+<div class="cell">
+<span class="tag">Culture</span>
+<b>Nvidia CEO apologizes to staff</b>
+Jensen Huang admits to affair in internal email; stock slides 2% pre-market.
+</div>
+<div class="cell">
+<span class="tag">Tools</span>
+<b>New 3D modeling app arrives</b>
+KetchUp offers free SketchUp alternative built in Rust and WebGPU.
+</div>
+<div class="cell">
+<span class="tag">Security</span>
+<b>Car unlock vulnerability disclosed</b>
+Researcher shows ability to unlock vehicles across most markets.
+</div>
+<div class="cell">
+<span class="tag">AI</span>
+<b>Opus 5.5 behavior questioned</b>
+Users report reasoning changes November 3; Anthropic silent so far.
+</div>
+</div>
+
+<div class="lead">
+<div class="cell main">
+<h2 class="headline">Nvidia CEO Jensen Huang's letter to staff about affair<sup class="cite">[1]</sup></h2>
+<h3 class="deck">Chief executive admits infidelity in internal memo as federal investigation into alleged Chinese spy's influence continues</h3>
+<div class="byline">
+<span class="desk">Culture</span>
+<span class="score">★ 782 pts · 885 comments<sup class="cite">[11]</sup></span>
+</div>
+<p class="first">SANTA CLARA — Nvidia Chief Executive Jensen Huang sent a company-wide email acknowledging an extramarital affair and apologizing to his family and colleagues, weeks after reports surfaced that a woman alleged to be a Chinese spy forged a relationship with him to gather corporate secrets. The internal letter, which appeared on Nvidia's public newsroom site, states: "I was unfaithful to my wife. My actions hurt her and our children. There is no excuse for what I did."</p>
+<p>The New York Times and CNN have reported that the woman, arrested in late 2025, claimed to federal investigators that her romantic relationship with Huang was part of a Chinese intelligence operation targeting the United States' leading chipmaker. Nvidia's stock fell 2% in pre-market trading following the letter's release<sup class="cite">[12]</sup>.</p>
+<figure><img src="images/nvidia-jiensen-affair.png" alt="Nvidia logo" loading="lazy">
+<figcaption>Chief executive admits infidelity in internal memo<span class="cr">NVIDIANEWS.NVIDIA.COM</span></figcaption>
+</figure>
+<div class="jump">Continue discussion on <a href="https://news.ycombinator.com/item?id=50418016">Hacker News</a></div>
+</div>
+
+<div class="cell side">
+<h2 class="headline">Declarative Dragging<sup class="cite">[2]</sup></h2>
+<div class="byline">
+<span class="desk">Tools</span>
+<span class="score">★ 619 pts · 78 cmts<sup class="cite">[12]</sup></span>
+</div>
+<p class="first">A new programming environment demonstrates drag-and-drop interfaces where every gesture is a reversible operation, with interactive demos showing visual representations of refactorings and code paths. The project's "twisted tree diagrams" display tangled code paths in a way several commenters called "revolutionary" and "genuinely educational"<sup class="cite">[13]</sup>.</p>
+<p>One commenter compared the approach to Hazel, noting the potential for explaining refactorings to new programmers. Another welcomed the work on improving a UI pattern that has remained largely unchanged for decades<sup class="cite">[14]</sup>.</p>
+<div class="jump">Continue discussion on <a href="https://news.ycombinator.com/item?id=50368481">Hacker News</a></div>
+
+<figure><img src="images/declarative-dragging.png" alt="Declarative Dragging interface" loading="lazy">
+<figcaption>The interactive demos show visual refactorings<span class="cr">DECLARATIVE-DRAGGING.GITHUB.IO</span></figcaption>
+</figure>
+</div>
+
+<div class="cell side">
+<h2 class="headline">KetchUp – Open-source 3D design<sup class="cite">[3]</sup></h2>
+<div class="byline">
+<span class="desk">Tools</span>
+<span class="score">★ 594 pts · 176 cmts<sup class="cite">[15]</sup></span>
+</div>
+<p class="first">A free 3D modeling application for woodworking and furniture design, built with Rust and WebGPU, offers Windows, macOS, Linux and browser versions. The app, which styles itself as a SketchUp alternative, lets users plan shelves, tables, cabinets and workbenches with exact measurements before building<sup class="cite">[16]</sup>.</p>
+<p>Early testers noted the Rust-based UI's responsiveness, though one user flagged that drawing rectangles prompts for object names by default<sup class="cite">[17]</sup>. Commenters pointed out the name's proximity to Autodesk's trademarked brand<sup class="cite">[18]</sup>.</p>
+<div class="jump">Continue discussion on <a href="https://news.ycombinator.com/item?id=50418176">Hacker News</a></div>
+
+<figure><img src="images/ketchup-3d.jpg" alt="KetchUp 3D modeling interface" loading="lazy">
+<figcaption>Free modeling app for woodworking projects<span class="cr">KETCHUP3D.GITHUB.IO</span></figcaption>
+</figure>
+</div>
+</div>
+
+
+<div class="row3">
+<div class="cell">
+<h2 class="headline">Outlook.com rejecting email without DMARC<sup class="cite">[5]</sup></h2>
+<div class="byline">
+<span class="desk">Security</span>
+<span class="score">★ 452 pts · 317 cmts<sup class="cite">[20]</sup></span>
+</div>
+<p class="first">Microsoft's consumer email service Outlook.com began silently rejecting email from domains that don't publish a DMARC record on November 5, without announcement. A system administrator reported that domains with valid SPF and DKIM signatures started bouncing over the weekend<sup class="cite">[21]</sup>. DMARC is the third authentication protocol in the anti-phishing trifecta.</p>
+<p>Commenters debated whether an unannounced cutoff was the right approach for such a distributed system with plenty of self-managed and legacy infrastructure<sup class="cite">[22]</sup>. One affected user noted their domain had a p=quarantine DMARC entry—more restrictive than none—yet still experienced rejections<sup class="cite">[23]</sup>.</p>
+<figure><img src="images/outlook-dmarc.png" alt="DMARC authentication diagram" loading="lazy">
+<figcaption>DMARC completes SPF/DKIM to authenticate email<span class="cr">MAILROUTE.NET</span></figcaption>
+</figure>
+<div class="jump">Continue discussion on <a href="https://news.ycombinator.com/item?id=50416158">Hacker News</a></div>
+</div>
+
+<div class="cell">
+<h2 class="headline">284B DeepSeek on 64GB RAM, no GPU<sup class="cite">[6]</sup></h2>
+<div class="byline">
+<span class="desk">AI</span>
+<span class="score">★ 442 pts · 196 cmts<sup class="cite">[24]</sup></span>
+</div>
+<p class="first">A project wrapping llama.cpp claims to run the 284-billion-parameter DeepSeek model on a 64GB RAM machine without a GPU, through extreme 2-bit quantization. The README describes making AI decision models up to 9.5x faster than vLLM and SGLang through hardware-specific optimizations<sup class="cite">[25]</sup>.</p>
+<p>Commenters questioned the output quality at 2-bit quantization, with one labeling the README's AI-generated style "obnoxious"<sup class="cite">[26]</sup>. Antirez noted that with 128GB unified RAM the same model can run "fast" including for coding-agent use, showing prefill speeds near 300 tokens per second<sup class="cite">[27]</sup>.</p>
+<div class="jump">Continue discussion on <a href="https://news.ycombinator.com/item?id=50411961">Hacker News</a></div>
+</div>
+
+<div class="cell">
+<h2 class="headline">Writing as a thinking tool<sup class="cite">[7]</sup></h2>
+<div class="byline">
+<span class="desk">Culture</span>
+<span class="score">★ 410 pts · 98 cmts<sup class="cite">[28]</sup></span>
+</div>
+<p class="first">MURAT BUFFALO — An essay argues that writing is not merely communication but a process of discovering what one actually thinks, with scientific papers emerging as much from the drafting phase as from the laboratory work. A doctoral student recounted how many times they only discovered what they were "actually researching" during the writing portion, not before<sup class="cite">[29]</sup>.</p>
+<p>One commenter noted that scribbling diagrams on paper is often a prerequisite for coding, because getting thoughts down externally makes them more memorable<sup class="cite">[30]</sup>. Another pointed to what the article calls the danger of AI-assisted writing: it makes people believe writing is just writing, not "a tool for thinking very deeply"<sup class="cite">[31]</sup>.</p>
+<div class="jump">Continue discussion on <a href="https://news.ycombinator.com/item?id=50412067">Hacker News</a></div>
+</div>
+</div>
+
+
+<div class="sec2">
+<div class="cell">
+<div class="section-label"><span>SECURITY BRIEFING</span></div>
+<h2 class="headline">Unlocking any car from X brand worldwide<sup class="cite">[4]</sup></h2>
+<div class="byline">
+<span class="desk">Security</span>
+<span class="score">★ 468 pts · 227 cmts<sup class="cite">[8]</sup></span>
+</div>
+<p class="first">A security researcher who bought a vehicle from an unnamed manufacturer in 2023 disclosed vulnerabilities in the company's connected car platform that allow remote unlocking across most markets. The article, which refers to the automaker only as "the auto," showcases what appear to be successful remote unlock operations worldwide<sup class="cite">[9]</sup>.</p>
+<p>Commenters quickly identified the manufacturer as Hyundai based on timing and context<sup class="cite">[10]</sup>. The researcher collaborated with Sam Curry, whose prior work includes exposing similar connected-car vulnerabilities at other manufacturers.</p>
+<div class="jump">Continue discussion on <a href="https://news.ycombinator.com/item?id=50419215">Hacker News</a></div>
+</div>
+
+<div class="cell">
+<h2 class="headline">Dux: Wayland desktop shell with file manager<sup class="cite">[9]</sup></h2>
+<div class="byline">
+<span class="desk">Hardware</span>
+<span class="score">★ 311 pts · 116 cmts<sup class="cite">[32]</sup></span>
+</div>
+<p class="first">Dux, a free and open-source Wayland desktop shell called DMS, has reached version 2.1 "Stormborn." The release adds a system monitor, video wallpapers, a revamped media player, interface density controls and numerous file manager enhancements<sup class="cite">[33]</sup>. The project's design language drew comparisons to ChromeOS from some commenters<sup class="cite">[34]</sup>.</p>
+<p>One user plans to switch from a cobbled-together Sway and Gnome setup, while another noted DMS is becoming "more all-encompassing than I honestly want"<sup class="cite">[35]</sup>. A commenter linked to Triad, a River-based compositor that supports DMS<sup class="cite">[36]</sup>.</p>
+<figure><img src="images/dux-desktop.png" alt="Dux desktop environment" loading="lazy">
+<figcaption>DMS 2.1 Stormborn adds system monitor and video wallpapers<span class="cr">DUXLABS.DEV</span></figcaption>
+</figure>
+<div class="jump">Continue discussion on <a href="https://news.ycombinator.com/item?id=50416053">Hacker News</a></div>
+</div>
+
+<div class="cell">
+<div class="section-label"><span>QUOTE OF THE DAY</span></div>
+<p class="first">"Complexity in prose is usually a place to hide sloppy thinking, or a way to weasel out of taking a stance. If you can't say it plainly, you probably haven't thought it through yet."<sup class="cite">[31]</sup></p>
+<div class="statbox">
+<div class="t">FRONT PAGE LEDGER</div>
+<table>
+<tr><td>Fresh stories</td><td>10</td></tr>
+<tr><td>Follow-ups</td><td>0</td></tr>
+<tr><td>Carried in digest</td><td>0</td></tr>
+<tr><td>Combined points</td><td>4,782</td></tr>
+<tr><td>Combined comments</td><td>2,867</td></tr>
+</table>
+</div>
+
+<h2 class="headline" style="margin-top:16px">I'm not convinced the AI bubble exists<sup class="cite">[8]</sup></h2>
+<div class="byline">
+<span class="desk">AI</span>
+<span class="score">★ 394 pts · 665 cmts<sup class="cite">[37]</sup></span>
+</div>
+<p class="first">An analysis argues that while AI companies have committed or spent at least $5 trillion on data centers—mostly one-time capital expenditures—the valuations may be justified if the rollout succeeds and spending normalizes. The author notes that GPU costs, not buildings, dominate the spend, suggesting investment amortization over 5-6 years rather than two decades<sup class="cite">[38]</sup>.</p>
+<p>Commenters countered that Meta's margins are being crushed by AI investments and that Anthropic's rumored $1.2 trillion valuation appears divorced from any clear path to positive cash flow<sup class="cite">[39]</sup>. Another noted that successful technology (the internet) coexisted with wildly wrong valuations during the dotcom bubble—Cisco survived while Pets.com did not<sup class="cite">[40]</sup>.</p>
+<div class="jump">Continue discussion on <a href="https://news.ycombinator.com/item?id=50418975">Hacker News</a></div>
+</div>
+</div>
+
+
+<div class="chartrow">
+<div class="cell">
+<h2 class="headline" style="font-size:18px">Front Page Hourly — Points by Story</h2>
+<figure><svg viewBox="0 0 640 392" width="100%" height="auto" style="display:block">
+<defs>
+<pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+<rect width="4" height="6" fill="#191510"/>
+</pattern>
+<pattern id="hatch-red" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+<rect width="4" height="6" fill="#7a1f1f"/>
+</pattern>
+</defs>
+<!-- Grid lines at 0, 100, 200, 300, 400, 500, 600, 700, 800 -->
+<line x1="65" y1="6" x2="65" y2="344" class="grid"/>
+<line x1="130" y1="6" x2="130" y2="344" class="grid"/>
+<line x1="195" y1="6" x2="195" y2="344" class="grid"/>
+<line x1="260" y1="6" x2="260" y2="344" class="grid"/>
+<line x1="325" y1="6" x2="325" y2="344" class="grid"/>
+<line x1="390" y1="6" x2="390" y2="344" class="grid"/>
+<line x1="455" y1="6" x2="455" y2="344" class="grid"/>
+<line x1="520" y1="6" x2="520" y2="344" class="grid"/>
+<line x1="585" y1="6" x2="585" y2="344" class="grid"/>
+<!-- Axes -->
+<line x1="0.5" y1="6" x2="0.5" y2="352" class="axis"/>
+<line x1="0.5" y1="352" x2="585" y2="352" class="axis"/>
+<!-- Bars: scale s=520/800=0.65 per point -->
+<rect x="0.5" y="8" width="508" height="15" fill="url(#hatch-red)"/>
+<text x="0" y="18" class="barlabel">782 ★ · 885 cmts</text>
+<rect x="0.5" y="42" width="402" height="15" fill="url(#hatch)"/>
+<text x="0" y="52" class="barlabel">619 · 78</text>
+<rect x="0.5" y="76" width="386" height="15" fill="url(#hatch)"/>
+<text x="0" y="86" class="barlabel">594 · 176</text>
+<rect x="0.5" y="110" width="304" height="15" fill="url(#hatch)"/>
+<text x="0" y="120" class="barlabel">468 · 227</text>
+<rect x="0.5" y="144" width="294" height="15" fill="url(#hatch)"/>
+<text x="0" y="154" class="barlabel">452 · 317</text>
+<rect x="0.5" y="178" width="287" height="15" fill="url(#hatch)"/>
+<text x="0" y="188" class="barlabel">442 · 196</text>
+<rect x="0.5" y="212" width="267" height="15" fill="url(#hatch)"/>
+<text x="0" y="222" class="barlabel">410 · 98</text>
+<rect x="0.5" y="246" width="256" height="15" fill="url(#hatch)"/>
+<text x="0" y="256" class="barlabel">394 · 665</text>
+<rect x="0.5" y="280" width="202" height="15" fill="url(#hatch)"/>
+<text x="0" y="290" class="barlabel">311 · 116</text>
+<rect x="0.5" y="314" width="202" height="15" fill="url(#hatch)"/>
+<text x="0" y="324" class="barlabel">310 · 209</text>
+<!-- Tick labels -->
+<text x="0" y="366" class="barval" style="text-anchor:start">0</text>
+<text x="65" y="366" class="barval" style="text-anchor:middle">100</text>
+<text x="130" y="366" class="barval" style="text-anchor:middle">200</text>
+<text x="195" y="366" class="barval" style="text-anchor:middle">300</text>
+<text x="260" y="366" class="barval" style="text-anchor:middle">400</text>
+<text x="325" y="366" class="barval" style="text-anchor:middle">500</text>
+<text x="390" y="366" class="barval" style="text-anchor:middle">600</text>
+<text x="455" y="366" class="barval" style="text-anchor:middle">700</text>
+<text x="520" y="366" class="barval" style="text-anchor:middle">800</text>
+<!-- Legend -->
+<text x="0" y="386" class="barval" style="font-size:10px">★ = points · cmts = comments · † = most-discussed story of the day · red hatch = Nvidia coverage</text>
+</svg></figure>
+</div>
+
+<div class="cell">
+<h2 class="headline" style="font-size:18px">Corrections & Clarifications</h2>
+<div class="corrections">
+<div class="t">CORRECTIONS & CLARIFICATIONS</div>
+<p><b>Opus 5.5 behavior:</b> The title "Is Opus 5.5 nerfed?" implies an official downgrade. One commenter noted the change may be a new summarizer rather than the underlying model; Anthropic has not confirmed what changed on November 3<sup class="cite">[41]</sup>.</p>
+<p><b>Car vulnerability title:</b> The article's elliptical headline ("Unlocking any car from X brand in most of the world") clarifies to a single major automaker—Hyundai, per threads—not all vehicles worldwide<sup class="cite">[42]</sup>.</p>
+<p><b>DMARC cutoff:</b> The Outlook.com policy change began November 5, but some domains with p=quarantine—a more restrictive DMARC policy than none—also experienced rejections, suggesting the criteria may not be purely presence/absence<sup class="cite">[43]</sup>.</p>
+</div>
+
+<div class="corrections" style="margin-top:12px">
+<div class="t">DAY IN ONE LINE</div>
+<p>Nvidia's CEO admits to an affair as a federal probe into alleged Chinese spy influence continues; Outlook.com silently rejects email without DMARC; a researcher shows remote unlock vulnerabilities affecting major automaker vehicles; users report unexplained behavior changes in Anthropic's Opus 5.5 model; a free Rust-based 3D modeling app launches.</p>
+</div>
+</div>
+</div>
+
+<div class="publisher">
+<div class="t">PUBLISHER'S NOTE</div>
+<p>The lead story concerns Nvidia Chief Executive Jensen Huang's internal apology for an affair, linked to an ongoing federal investigation into alleged Chinese espionage. With no follow-ups in this edition, all ten stories are fresh from today's front page.</p>
+<p class="sig">— The Herald</p>
+</div>
+
+<div class="rule-thick"></div>
+
+<div class="sources">
+<ol>
+<li data-n="1"><a href="https://nvidianews.nvidia.com/news/a-message-to-our-company">Nvidia Newsroom: A Message to Our Company</a></li>
+<li data-n="2"><a href="https://declarative-dragging.github.io/">Declarative Dragging</a></li>
+<li data-n="3"><a href="https://ketchup3d.github.io/app/">KetchUp — Open-source 3D Furniture Design App</a></li>
+<li data-n="4"><a href="https://shubs.io/unlocking-any-car-from-x-brand-in-most-of-the-world/">Unlocking any car from X brand in most of the world — Shubs</a></li>
+<li data-n="5"><a href="https://mailroute.net/blog/outlook-rejecting-email-without-dmarc">Outlook.com Is Quietly Rejecting Email From Domains Without DMARC — MailRoute</a></li>
+<li data-n="6"><a href="https://github.com/synchopate/llama-modchip">Llama-modchip: 284B DeepSeek on 64GB RAM, no GPU — GitHub</a></li>
+<li data-n="7"><a href="http://muratbuffalo.blogspot.com/2026/11/writing-as-thinking-tool.html">Writing as a thinking tool — Murat Buffalo</a></li>
+<li data-n="8"><a href="https://matteoraso.github.io/im-not-convinced-the-ai-bubble-exists.html">I'm Not Convinced The AI Bubble Exists — Matteo Raso</a></li>
+<li data-n="9"><a href="https://duxlabs.dev/">Dux — Modern Desktop Suite</a></li>
+<li data-n="10"><a href="https://twitter.com/shanemelaugh/status/2119192075505893695">Shane Melaugh on X: is Opus 5.5 nerfed?</a></li>
+<li data-n="11"><a href="https://news.ycombinator.com/item?id=50418016">Hacker News thread: Nvidia CEO Jensen Huang's letter to staff about affair</a></li>
+<li data-n="12"><a href="https://news.ycombinator.com/item?id=50368481">Hacker News thread: Declarative Dragging</a></li>
+<li data-n="13"><a href="https://news.ycombinator.com/item?id=50418176">Hacker News thread: KetchUp</a></li>
+<li data-n="14"><a href="https://news.ycombinator.com/item?id=50419215">Hacker News thread: Unlocking any car from X brand</a></li>
+<li data-n="15"><a href="https://news.ycombinator.com/item?id=50416158">Hacker News thread: Outlook.com rejecting email without DMARC</a></li>
+<li data-n="16"><a href="https://news.ycombinator.com/item?id=50411961">Hacker News thread: Llama-modchip</a></li>
+<li data-n="17"><a href="https://news.ycombinator.com/item?id=50412067">Hacker News thread: Writing as a thinking tool</a></li>
+<li data-n="18"><a href="https://news.ycombinator.com/item?id=50418975">Hacker News thread: I'm not convinced the AI bubble exists</a></li>
+<li data-n="19"><a href="https://news.ycombinator.com/item?id=50416053">Hacker News thread: Dux</a></li>
+<li data-n="20"><a href="https://news.ycombinator.com/item?id=50422069">Hacker News thread: Is Opus 5.5 nerfed?</a></li>
+</ol>
+<div class="method">Methodology: This edition was compiled from a Hacker News front page snapshot taken at 14:00 UTC on November 9, 2026, using the HN Algolia API. Ten stories were selected by score (minimum 300 points), all fresh—none appeared in the previous four editions. Articles and their metadata were retrieved from primary sources; comments from the top of each HN thread inform where the thread added context. The Box Score displays points per story, scaled to 800. No story was fabricated; every number is from a fetched source.</div>
+</div>
+
+<footer class="colophon">
+<span>The Hacker Herald — Typeset from the Hacker News front page</span>
+<span>❧ Printed on 100% recycled bandwidth ❧</span>
+<span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</span>
+</footer>
+
+</body>
+</html>
+

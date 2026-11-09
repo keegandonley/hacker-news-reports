@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-09-morning",
+      "date": "2026-11-09",
+      "label": "Morning",
+      "snapshot_utc": "14:00",
+      "items": [
+        {
+          "id": 50418016,
+          "title": "Nvidia CEO Jensen Huang's letter to staff about affair",
+          "score": 782,
+          "comments": 885
+        },
+        {
+          "id": 50368481,
+          "title": "Declarative Dragging",
+          "score": 619,
+          "comments": 78
+        },
+        {
+          "id": 50418176,
+          "title": "KetchUp \u2013 Open-source SketchUp alternative built with Rust and WebGPU",
+          "score": 594,
+          "comments": 176
+        },
+        {
+          "id": 50419215,
+          "title": "Unlocking any car from X brand in most of the world",
+          "score": 468,
+          "comments": 227
+        },
+        {
+          "id": 50416158,
+          "title": "Outlook.com is rejecting email from domains without DMARC",
+          "score": 452,
+          "comments": 317
+        },
+        {
+          "id": 50411961,
+          "title": "Llama-modchip: 284B DeepSeek on 64GB RAM, no GPU",
+          "score": 442,
+          "comments": 196
+        },
+        {
+          "id": 50412067,
+          "title": "Writing as a thinking tool",
+          "score": 410,
+          "comments": 98
+        },
+        {
+          "id": 50418975,
+          "title": "I'm not convinced the AI bubble exists",
+          "score": 394,
+          "comments": 665
+        },
+        {
+          "id": 50416053,
+          "title": "Dux: Free, open-source Wayland desktop shell with file manager and theming",
+          "score": 311,
+          "comments": 116
+        },
+        {
+          "id": 50422069,
+          "title": "Is Opus 5.5 nerfed? Thinking patterns changed on November 3",
+          "score": 310,
+          "comments": 209
+        }
+      ]
+    },
+    {
       "folder": "2026-11-06-afternoon",
       "date": "2026-11-06",
       "label": "Afternoon",

@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-11-09 · Morning | 2026-11-09 ≈14:00 | Nvidia CEO Jensen Huang's letter to staff about affair | 782 | 885 | [editions/2026-11-09-morning/](editions/2026-11-09-morning/) |
 | 2026-11-06 · Afternoon | 2026-11-06 ≈22:01 | Tesla to wind down Cybertruck production | 710 | 1499 | [editions/2026-11-06-afternoon/](editions/2026-11-06-afternoon/) |
 | 2026-11-06 · Morning | 2026-11-06 ≈14:05 | Claude Code sends your email address to websites | 1,310 | 412 | [editions/2026-11-06-morning/](editions/2026-11-06-morning/) |
 | 2026-11-05 · Afternoon | 2026-11-05 ≈22:00 | Alpine warns every sshd host to patch as the asterisk-login thread quadruples | 2,114 | 529 | [editions/2026-11-05-afternoon/](editions/2026-11-05-afternoon/) |
@@ -25,7 +26,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 | 2026-10-30 · Afternoon | 2026-10-30 ≈21:00 | The Claude Code Backdoor, in Full | 625 | 415 | [editions/2026-10-30-afternoon/](editions/2026-10-30-afternoon/) |
 | 2026-10-30 · Morning | 2026-10-30 ≈13:01 | We're releasing the weights of Mistral Large 4 | 1,556 | 408 | [editions/2026-10-30-morning/](editions/2026-10-30-morning/) |
 | 2026-10-29 · Afternoon | 2026-10-29 ≈21:01 | Patrick Stewart Has Died | 1,159 | 211 | [editions/2026-10-29-afternoon/](editions/2026-10-29-afternoon/) |
-| 2026-10-29 · Morning | 2026-10-29 ≈13:01 | The Fingerprinter That Cries “Ricin” | 1,359 | 250 | [editions/2026-10-29-morning/](editions/2026-10-29-morning/) |
+| 2026-10-29 · Morning | 2026-10-29 ≈13:01 | The Fingerprinter That Cries "Ricin" | 1,359 | 250 | [editions/2026-10-29-morning/](editions/2026-10-29-morning/) |
 | 2026-10-28 · Afternoon | 2026-10-28 ≈21:00 | Apple's git still trusts the compromised eMudhra certificates | 947 | 359 | [editions/2026-10-28-afternoon-2/](editions/2026-10-28-afternoon-2/) |
 | 2026-10-28 · Afternoon | 2026-10-28 ≈13:01 | Ghostty 1.4 | 1,108 | 353 | [editions/2026-10-28-afternoon/](editions/2026-10-28-afternoon/) |
 | Inaugural · Evening | 2026-10-27 ≈20:40 | Genie 4: DeepMind's World Simulator Learns to Talk Back | 495 | 296 | [editions/2026-10-27-evening/](editions/2026-10-27-evening/) |
