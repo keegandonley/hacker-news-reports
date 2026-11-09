@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 9, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+
+.byline{flex-wrap:wrap}.byline span{overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<div class="topbar"><span>Hacker News Front Page · Snapshot 22:00 UTC</span><span class="mid">Afternoon Edition</span><span>10 Stories · 3,802 Points · 1,927 Comments</span></div>
+<div class="nameplate"><h1>The Hacker Herald</h1><div class="sub">The front page, read closely and set in type — a briefing for Keegan</div><div class="dateline"><span class="l">Compiled from news.ycombinator.com</span><span class="c">November 9, 2026</span><span class="r">Front page briefing</span></div></div>
+<div class="bulletins"><div class="cell"><b>AI</b>Anthropic introduces Fable 5.2 and Mythos 5.2.</div><div class="cell"><b>Culture</b>A catalogue lists 109 paper-airplane designs.</div><div class="cell"><b>Follow-Up</b>Opus 5.5 reasoning-change claims rise by 345 points.</div><div class="cell"><b>Field</b>Canada launches Real-Time Rail with eight initial participants.</div></div>
+<div class="lead"><article class="cell main"><div class="kicker">AI Desk</div><h2 class="headline">Anthropic releases Claude Fable 5.2 and Mythos 5.2<sup class="cite"><a href="#src1">[1]</a></sup></h2><h3 class="deck">The models share underlying technology but have different access and safeguards.</h3><div class="byline"><span>AI Desk</span><span>★ 751 pts · 421 cmts</span></div><p class="first">SAN FRANCISCO — Anthropic released Claude Fable 5.2 and Mythos 5.2, charging $8 per million input tokens and $40 per million output tokens. The company says the models generate output up to 30% faster than their predecessors and share the same underlying model; Mythos access is restricted to verified cybersecurity and biomedical organizations.<sup class="cite"><a href="#src1">[1]</a></sup></p><p>Anthropic reports a 49.1% FrontierCode 2.0 result at Fable’s Xhigh effort, and says an earlier version helped migrate a production service from Python to Rust. These are company-reported results, not independent guarantees. In the HN discussion, readers questioned the pricing and the comparison with Opus 5.5.<sup class="cite"><a href="#src11">[11]</a></sup></p><figure><img src="images/50429906.jpg" alt="Illustration accompanying Anthropic’s model announcement." loading="lazy"><figcaption>Illustration accompanying Anthropic’s model announcement. <span class="cr">www.anthropic.com</span></figcaption></figure></article><article class="cell side"><div class="kicker">Culture Desk</div><h2 class="headline">Paper-airplane catalogue lists 109 designs<sup class="cite"><a href="#src2">[2]</a></sup></h2><h3 class="deck">Foldable Flight rates models by difficulty and flight characteristics.</h3><div class="byline"><span>Culture Desk</span><span>★ 742 pts · 128 cmts</span></div><p class="first">Foldable Flight lists 109 paper-airplane designs, with difficulty and speed, glide and accuracy ratings. Its Unite design holds a 31.2-second time-aloft record, according to the site; it describes Firefly 5 as a record prototype that can fly over 300 feet.<sup class="cite"><a href="#src2">[2]</a></sup></p><p>Designs range from very easy to expert. One HN reader noted that some folding instructions are long videos; another pointed out a duplicated intermediate filter.<sup class="cite"><a href="#src12">[12]</a></sup></p><figure><img src="images/50424581.jpg" alt="Image from Foldable Flight’s paper-airplane catalogue." loading="lazy"><figcaption>Image from Foldable Flight’s paper-airplane catalogue. <span class="cr">www.foldableflight.com</span></figcaption></figure></article><article class="cell side"><div class="kicker">Follow-Up</div><h2 class="headline">Opus 5.5 reasoning-change claim gains 345 points<sup class="cite"><a href="#src3">[3]</a></sup></h2><h3 class="deck">The original analysis is not a controlled benchmark.</h3><div class="byline"><span>AI Desk</span><span>★ 655 pts · 429 cmts · ▲ +345 since the last edition</span></div><p class="first">Shane Melaugh says a Gemini 4 Argon analysis of 1,400 Claude Code sessions found a sharp change in Opus 5.5 reasoning patterns on November 3, despite an unchanged model name. He reported that a high-effort run failed to fix a bug in three hours while an Xhigh run found a fix in minutes.<sup class="cite"><a href="#src3">[3]</a></sup></p><p>Melaugh later cautioned that his analysis was not a scientifically bulletproof benchmark. HN readers reported mixed experiences, and one suggested a changed summarizer as an alternative explanation; that claim is not independently established. The thread rose from 310 points in the morning edition to 655 at this snapshot.<sup class="cite"><a href="#src13">[13]</a></sup></p></article></div>
+<div class="row3"><article class="cell "><div class="kicker">Field Desk</div><h2 class="headline">Canada launches its Real-Time Rail payment system<sup class="cite"><a href="#src4">[4]</a></sup></h2><h3 class="deck">The first cohort is limited; major banks are expected to join later.</h3><div class="byline"><span>Field Desk</span><span>★ 415 pts · 226 cmts</span></div><p class="first">Payments Canada launched the Real-Time Rail on November 9, enabling participating providers to clear and settle payments around the clock using ISO 20022 messaging. The initial eight participants include Wealthsimple, Questbank and Bank of America.<sup class="cite"><a href="#src4">[4]</a></sup></p><p>The operator says confirmation of payee for consumer accounts, transaction risk scoring and centralized fraud services are part of the launch. It expects coverage of more than nine in 10 Canadians within the first year, not on day one. HN readers asked how the infrastructure differs from existing Interac transfers.<sup class="cite"><a href="#src14">[14]</a></sup></p></article><article class="cell "><div class="kicker">Hardware Desk</div><h2 class="headline">Raspberry Pi 5 with 16GB rises to $385<sup class="cite"><a href="#src5">[5]</a></sup></h2><h3 class="deck">The latest increase is $80 above the April price.</h3><div class="byline"><span>Hardware Desk</span><span>★ 238 pts · 199 cmts</span></div><p class="first">CNX Software reports that the Raspberry Pi 5 with 16GB of RAM now costs $385, an $80 increase from the previous April price. The 16GB Compute Module 5 Lite starts at $375, while the Raspberry Pi 500+ remains at $410.<sup class="cite"><a href="#src5">[5]</a></sup></p><p>The report notes that the 16GB Pi 5 launched at $120 less than two years earlier and attributes the wider pressure to high memory prices. HN readers debated the duration of the shortage and whether high prices would change software memory use.<sup class="cite"><a href="#src15">[15]</a></sup></p><figure><img src="images/50428801.jpg" alt="Raspberry Pi 5 16GB pictured with its reported price." loading="lazy"><figcaption>Raspberry Pi 5 16GB pictured with its reported price. <span class="cr">www.cnx-software.com</span></figcaption></figure></article><article class="cell "><div class="kicker">Field Desk</div><h2 class="headline">USPS offers ZIP Code boundary data with quarterly updates<sup class="cite"><a href="#src6">[6]</a></sup></h2><h3 class="deck">Postal delivery groupings are not the same thing as guaranteed address boundaries.</h3><div class="byline"><span>Field Desk</span><span>★ 231 pts · 111 cmts</span></div><p class="first">The U.S. Postal Service offers national ZIP Code boundary polygons derived from delivery address and location information. Its product page lists internal, enterprise and publication versions, each with four quarterly updates; enterprise and publication licenses limit distribution or publication.<sup class="cite"><a href="#src6">[6]</a></sup></p><p>In the HN discussion, one geospatial practitioner cautioned that being inside a polygon does not guarantee an address has that ZIP Code. Another reader pointed to free Census ZCTA files as an approximate alternative.<sup class="cite"><a href="#src16">[16]</a></sup></p></article></div>
+<div class="sec2"><div class="cell"><article class="cell "><div class="kicker">Science Desk</div><h2 class="headline">Magenta solar panels preserve broccoli yield in preliminary trial<sup class="cite"><a href="#src7">[7]</a></sup></h2><h3 class="deck">The shaded crop took 25 additional days to reach harvest.</h3><div class="byline"><span>Science Desk</span><span>★ 223 pts · 127 cmts</span></div><p class="first">A preliminary study reported by Anthropocene found that broccoli under semi-transparent magenta solar panels produced roughly the same yield as unshaded plants, but needed 25 extra days before harvest. The panels transmit most red and some blue wavelengths while converting much of the rest into electricity.<sup class="cite"><a href="#src7">[7]</a></sup></p><p>The article reports a 2.8- to 4.5-fold increase in efficiency converting light into plant biomass, and says larger plots across seasons and climates are needed. One HN reader questioned whether conventional panels plus LED lighting might be cheaper; that is a hypothesis, not a result of the trial.<sup class="cite"><a href="#src17">[17]</a></sup></p><figure><img src="images/50426175.jpg" alt="Broccoli growing beneath colored solar panels in Sweden." loading="lazy"><figcaption>Broccoli growing beneath colored solar panels in Sweden. <span class="cr">www.anthropocenemagazine.org</span></figcaption></figure></article><article class="cell "><div class="kicker">Culture Desk</div><h2 class="headline">Former Ethereum Foundation employee alleges retaliation<sup class="cite"><a href="#src10">[10]</a></sup></h2><h3 class="deck">The lawsuit concerns a mandate and a suicide-pledge illustration.</h3><div class="byline"><span>Culture Desk</span><span>★ 170 pts · 160 cmts</span></div><p class="first">A Colorado lawsuit by former Ethereum Foundation employee Kayleen Fulton alleges she was fired after organizing resistance to an employee mandate containing an illustrated suicide pledge, The Denver Post reports. Fulton alleges disability discrimination and retaliation among other claims.<sup class="cite"><a href="#src10">[10]</a></sup></p><p>The report says a foundation leader told staff the pledge was not meant literally and that the commitment form was later clarified. The foundation had not immediately responded to the newspaper’s request for comment. An HN reader linked to the foundation’s mandate; the allegations remain claims in a lawsuit.<sup class="cite"><a href="#src20">[20]</a></sup></p></article></div><div class="cell"><article class="cell "><div class="kicker">Tools Desk</div><h2 class="headline">A malloc walkthrough shows how allocators reuse memory<sup class="cite"><a href="#src8">[8]</a></sup></h2><h3 class="deck">A glibc example serves 1,000 small allocations with two brk system calls.</h3><div class="byline"><span>Tools Desk</span><span>★ 192 pts · 50 cmts</span></div><p class="first">Ben Mandrew demonstrates that 1,000 calls to malloc(16) in his glibc example trigger just two brk system calls: one queries the program break and another grows the heap by 132 KiB. The remaining allocations draw on that space rather than each making a system call.<sup class="cite"><a href="#src8">[8]</a></sup></p><p>The walkthrough builds a toy allocator with free lists, splitting and coalescing, and explains why fragmentation can retain resident memory. It contrasts heap trimming with separate mmap allocations that can be unmapped independently. A reader noted that the article’s code fragments are not presented as complete compilable programs.<sup class="cite"><a href="#src18">[18]</a></sup></p></article><article class="cell "><div class="kicker">AI Desk</div><h2 class="headline">Meta introduces Muse Ember for lower-cost agent tasks<sup class="cite"><a href="#src9">[9]</a></sup></h2><h3 class="deck">The model is available through the Meta Model API.</h3><div class="byline"><span>AI Desk</span><span>★ 185 pts · 76 cmts</span></div><p class="first">Meta introduced Muse Ember at $0.10 per million input tokens and $0.50 per million output tokens, positioning it for tool calls, coding subtasks and document parsing. It lists a 1-million-token context window and up to 512,000 output tokens.<sup class="cite"><a href="#src9">[9]</a></sup></p><p>Meta says Ember matches Claude Haiku 5.5’s best Artificial Analysis score at roughly a third of the cost; the comparison uses proposed pricing and the cited evaluation settings. One HN reader tested its six reasoning levels and found that a higher setting did not consistently improve a drawing task.<sup class="cite"><a href="#src19">[19]</a></sup></p></article></div><div class="cell"><div class="kicker">Quote of the Day</div><div class="pullquote">“this isn't a scientifically bulletproof benchmark”<span class="attr">Shane Melaugh, on his Opus 5.5 analysis <sup class="cite"><a href="#src3">[3]</a></sup></span></div><p>His clarification qualifies a claim drawn from analysis of 1,400 sessions; it does not establish why the patterns changed.</p></div></div>
+<div class="chartrow"><div class="cell"><div class="section-label"><span>Box Score</span></div><svg viewBox="0 0 640 392" role="img" aria-label="Stories ranked by points" style="width:100%;height:auto;display:block"><defs><pattern id="ink" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#f3ecdd"/><rect width="3" height="6" fill="#191510"/></pattern><pattern id="red" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#f3ecdd"/><rect width="3" height="6" fill="#7a1f1f"/></pattern></defs><line class="grid" x1="0" y1="6" x2="0" y2="344"/><text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text><line class="grid" x1="65" y1="6" x2="65" y2="344"/><text x="65" y="366" font-size="11" fill="#3d352a" text-anchor="middle">100</text><line class="grid" x1="130" y1="6" x2="130" y2="344"/><text x="130" y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text><line class="grid" x1="195" y1="6" x2="195" y2="344"/><text x="195" y="366" font-size="11" fill="#3d352a" text-anchor="middle">300</text><line class="grid" x1="260" y1="6" x2="260" y2="344"/><text x="260" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text><line class="grid" x1="325" y1="6" x2="325" y2="344"/><text x="325" y="366" font-size="11" fill="#3d352a" text-anchor="middle">500</text><line class="grid" x1="390" y1="6" x2="390" y2="344"/><text x="390" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text><line class="grid" x1="455" y1="6" x2="455" y2="344"/><text x="455" y="366" font-size="11" fill="#3d352a" text-anchor="middle">700</text><line class="grid" x1="520" y1="6" x2="520" y2="344"/><text x="520" y="366" font-size="11" fill="#3d352a" text-anchor="middle">800</text><line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/><line class="axis" x1="0.5" y1="352" x2="520" y2="352"/><text class="barlabel" x="0" y="18">Claude Fable / Mythos</text><rect x="0.5" y="22" width="488" height="15" fill="url(#ink)"/><text class="barval" x="495" y="34" font-weight="700">751 ★ · 421 cmts</text><text class="barlabel" x="0" y="52">Paper airplanes</text><rect x="0.5" y="56" width="482" height="15" fill="url(#ink)"/><text class="barval" x="489" y="68">742 · 128</text><text class="barlabel" x="0" y="86">Opus 5.5 follow-up &#8224;</text><rect x="0.5" y="90" width="426" height="15" fill="url(#ink)"/><text class="barval" x="433" y="102">655 · 429</text><text class="barlabel" x="0" y="120">Canada Real-Time Rail</text><rect x="0.5" y="124" width="270" height="15" fill="url(#ink)"/><text class="barval" x="277" y="136">415 · 226</text><text class="barlabel" x="0" y="154">Raspberry Pi 5</text><rect x="0.5" y="158" width="155" height="15" fill="url(#ink)"/><text class="barval" x="162" y="170">238 · 199</text><text class="barlabel" x="0" y="188">USPS ZIP boundaries</text><rect x="0.5" y="192" width="150" height="15" fill="url(#ink)"/><text class="barval" x="157" y="204">231 · 111</text><text class="barlabel" x="0" y="222">Magenta solar panels</text><rect x="0.5" y="226" width="145" height="15" fill="url(#ink)"/><text class="barval" x="152" y="238">223 · 127</text><text class="barlabel" x="0" y="256">How malloc works</text><rect x="0.5" y="260" width="125" height="15" fill="url(#ink)"/><text class="barval" x="132" y="272">192 · 50</text><text class="barlabel" x="0" y="290">Meta Muse Ember</text><rect x="0.5" y="294" width="120" height="15" fill="url(#ink)"/><text class="barval" x="127" y="306">185 · 76</text><text class="barlabel" x="0" y="324">Ethereum lawsuit</text><rect x="0.5" y="328" width="110" height="15" fill="url(#ink)"/><text class="barval" x="117" y="340">170 · 160</text><text x="0" y="386" font-size="11">★ = points · cmts = comments · † most-discussed story of the day · red hatch = Apple coverage (none)</text></svg><p class="method">Points and comments are the front-page snapshot, not a later live count.</p></div><div class="cell"><div class="section-label"><span>Front Page Ledger</span></div><p>Anthropic’s model launch led by points; the Opus reasoning debate drew the most comments.</p><div class="statbox"><div class="t">Front Page Ledger</div><table><tr><td>Fresh stories</td><td>9</td></tr><tr><td>Follow-ups</td><td>1</td></tr><tr><td>Carried in digest</td><td>0</td></tr><tr><td>Wire stories</td><td>0</td></tr><tr><td>Combined points</td><td>3,802</td></tr><tr><td>Combined comments</td><td>1,927</td></tr></table></div>
+<div class="corrections"><div class="t">Corrections &amp; Clarifications</div><p><b>Model change.</b> Melaugh reports a change in reasoning patterns, not proof of a model downgrade; he says the analysis is not a rigorous benchmark. <sup class="cite"><a href="#src3">[3]</a></sup></p><p><b>Canadian payments.</b> The rail has launched, but the operator expects more than 90% reach within a year, not immediately. <sup class="cite"><a href="#src4">[4]</a></sup></p><p><b>Broccoli yield.</b> Roughly equal harvests under magenta panels required 25 more days; this was a preliminary study. <sup class="cite"><a href="#src7">[7]</a></sup></p><p><b>ZIP boundaries.</b> USPS polygons represent delivery groupings; a reader notes that a position inside the shape does not guarantee the address’s ZIP. <sup class="cite"><a href="#src6">[6]</a></sup><sup class="cite"><a href="#src16">[16]</a></sup></p></div></div></div>
+<div class="publisher"><div class="t">Publisher’s Note</div><p>Anthropic’s release leads this edition; the Opus 5.5 reasoning debate returns as a follow-up after gaining 345 points. The USPS source offered no image. The Ethereum report describes allegations, not findings of liability.</p><div class="sig">— The Herald</div></div>
+<div class="rule-thick"></div><div class="section-label"><span>Sources</span></div><div class="sources"><ol><li id="src1" data-n="[1]"><a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">Claude Fable 5.2 and Mythos 5.2</a> · www.anthropic.com</li><li id="src2" data-n="[2]"><a href="https://www.foldableflight.com">Fold Epic Paper Airplanes</a> · www.foldableflight.com</li><li id="src3" data-n="[3]"><a href="https://twitter.com/shanemelaugh/status/2119192075505893695">Is Opus 5.5 nerfed? Thinking patterns changed on November 3</a> · twitter.com</li><li id="src4" data-n="[4]"><a href="https://www.payments.ca/canada-launches-real-time-rail-bringing-247-payment-infrastructure-national-economy">Payments Canada announces launch of Canada&#x27;s Real-Time Rail (RTR) payment system</a> · www.payments.ca</li><li id="src5" data-n="[5]"><a href="https://www.cnx-software.com/2026/11/03/when-will-this-stop-the-raspberry-pi-5-16gb-sbc-now-sells-for-385/">When will this stop? The Raspberry Pi 5 16GB SBC now sells for $385</a> · www.cnx-software.com</li><li id="src6" data-n="[6]"><a href="https://postalpro.usps.com/zcb">USPS now offers official ZIP Code boundary polygons</a> · postalpro.usps.com</li><li id="src7" data-n="[7]"><a href="https://www.anthropocenemagazine.org/2026/10/magenta-solar-panels-may-be-agrivoltaics-cleverest-trick-yet/">Magenta solar panels may be agrivoltaics&#x27; cleverest trick yet</a> · www.anthropocenemagazine.org</li><li id="src8" data-n="[8]"><a href="https://benmandrew.com/articles/what-is-malloc-doing-anyway">What is malloc doing, anyway?</a> · benmandrew.com</li><li id="src9" data-n="[9]"><a href="https://research.meta.ai/blog/muse-ember">Our Smallest, Most Efficient Model: Muse Ember</a> · research.meta.ai</li><li id="src10" data-n="[10]"><a href="https://www.denverpost.com/2026/11/06/ethereum-suicide-pledge-lawsuit-mandate-boulder-crypto/">Cryptocurrency lawsuit: Ethereum Foundation required &quot;suicide pledge&quot;</a> · www.denverpost.com</li><li id="src11" data-n="[11]"><a href="https://news.ycombinator.com/item?id=50429906">Hacker News discussion: Claude Fable 5.2 and Mythos 5.2</a></li><li id="src12" data-n="[12]"><a href="https://news.ycombinator.com/item?id=50424581">Hacker News discussion: Fold Epic Paper Airplanes</a></li><li id="src13" data-n="[13]"><a href="https://news.ycombinator.com/item?id=50422069">Hacker News discussion: Is Opus 5.5 nerfed? Thinking patterns changed on November 3</a></li><li id="src14" data-n="[14]"><a href="https://news.ycombinator.com/item?id=50427362">Hacker News discussion: Payments Canada announces launch of Canada&#x27;s Real-Time Rail (RTR) payment system</a></li><li id="src15" data-n="[15]"><a href="https://news.ycombinator.com/item?id=50428801">Hacker News discussion: When will this stop? The Raspberry Pi 5 16GB SBC now sells for $385</a></li><li id="src16" data-n="[16]"><a href="https://news.ycombinator.com/item?id=50431058">Hacker News discussion: USPS now offers official ZIP Code boundary polygons</a></li><li id="src17" data-n="[17]"><a href="https://news.ycombinator.com/item?id=50426175">Hacker News discussion: Magenta solar panels may be agrivoltaics&#x27; cleverest trick yet</a></li><li id="src18" data-n="[18]"><a href="https://news.ycombinator.com/item?id=50424157">Hacker News discussion: What is malloc doing, anyway?</a></li><li id="src19" data-n="[19]"><a href="https://news.ycombinator.com/item?id=50429024">Hacker News discussion: Our Smallest, Most Efficient Model: Muse Ember</a></li><li id="src20" data-n="[20]"><a href="https://news.ycombinator.com/item?id=50426899">Hacker News discussion: Cryptocurrency lawsuit: Ethereum Foundation required &quot;suicide pledge&quot;</a></li></ol></div><div class="method">Hacker News front-page candidate snapshot: November 9, 2026, 22:00 UTC. Scores and comment counts are from the fetched Algolia front-page response. Selection compares the previous four archived editions; the follow-up rose from 310 to 655 points. Article pages and discussion threads were retrieved for this edition. Anthropic lists a San Francisco office on its <a href="https://www.anthropic.com/news">news page</a>.</div><footer class="colophon"><span>The Hacker Herald — Typeset from the Hacker News front page</span><span>Front page briefing</span><span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</span></footer></body></html>
