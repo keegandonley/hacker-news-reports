@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-10-afternoon",
+      "date": "2026-11-10",
+      "label": "Afternoon",
+      "snapshot_utc": "22:00",
+      "items": [
+        {
+          "id": 50442736,
+          "title": ".name Grandfathered",
+          "score": 555,
+          "comments": 118
+        },
+        {
+          "id": 50441707,
+          "title": "Smart home devices should work without the internet",
+          "score": 541,
+          "comments": 190
+        },
+        {
+          "id": 50439193,
+          "title": "AlphaProof Code",
+          "score": 535,
+          "comments": 169
+        },
+        {
+          "id": 50442426,
+          "title": "Blender 5.3 released with Gaussian Splat support",
+          "score": 367,
+          "comments": 52
+        },
+        {
+          "id": 50438318,
+          "title": "AI usage generates a fragile codebase",
+          "score": 288,
+          "comments": 354
+        },
+        {
+          "id": 50439695,
+          "title": "Ableton Live 13",
+          "score": 236,
+          "comments": 255
+        },
+        {
+          "id": 50443427,
+          "title": "Val Town is winding down",
+          "score": 235,
+          "comments": 58
+        },
+        {
+          "id": 50443824,
+          "title": "Synaptics patent claims stop work on DisplayLink drivers",
+          "score": 206,
+          "comments": 89
+        },
+        {
+          "id": 50439284,
+          "title": "What's new in the .NET 11 runtime",
+          "score": 205,
+          "comments": 145
+        },
+        {
+          "id": 50382401,
+          "title": "I deleted all my SSH keys",
+          "score": 197,
+          "comments": 92
+        }
+      ]
+    },
+    {
       "folder": "2026-11-10-morning",
       "date": "2026-11-10",
       "label": "Morning",

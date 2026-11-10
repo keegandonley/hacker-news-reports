@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 10, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+
+@media (max-width:980px){.byline{flex-wrap:wrap}.score{white-space:normal}}
+</style>
+</head>
+<body><div class="topbar"><span>Hacker News Front Page · Snapshot 22:00 UTC</span><span class="mid">Afternoon Edition</span><span>10 Stories · 3,365 Points · 1,522 Comments</span></div><header class="nameplate"><h1>The Hacker Herald</h1><div class="sub">The front page, read closely and set in type — a briefing for Keegan</div></header><div class="dateline"><span class="l">Compiled from news.ycombinator.com</span><span class="c">November 10, 2026</span><span class="r">Front Page Briefing</span></div><div class="bulletins"><div class="cell"><b>.name</b>Verisign reverses a planned termination of existing domains and redirects.</div><div class="cell"><b>Security</b>DeepMind reports proofs of specified Signal cryptographic properties.</div><div class="cell"><b>Tools</b>Val Town sets dates for its service wind-down.</div><div class="cell"><b>Culture</b>Ableton says Live 13 is coming in early 2027.</div></div><section class="lead"><article class="cell main"><div class="kicker">Field Desk</div><h2 class="headline">Verisign reverses plan to end existing .name domains</h2><h3 class="deck">Registrations already in use and email redirects will remain, Neil Fraser reports.</h3><div class="byline"><span>Field Desk</span><span class="score">★ 555 pts · 118 comments</span></div><p class="first">BALI — After an advocate traveled to Bali to make the case to ICANN, Verisign reversed its plan to terminate 22,000 third-level .name domains and email redirects, according to site owner Neil Fraser. Existing domains and redirects will remain indefinitely, he writes; new third-level registrations will close.<sup class="cite"><a href="#src1">[1]</a></sup></p><p>Fraser credits a group of domain holders, lawyers and supporters who filed reconsideration requests and letters. In the Hacker News discussion, a reader pointed to an earlier thread about the proposed termination; another said they had held a .name domain for almost a decade without knowing its history.<sup class="cite"><a href="#src2">[2]</a></sup></p></article><article class="cell side"><div class="kicker">Hardware Desk</div><h2 class="headline">A smart home designed to keep working offline</h2><div class="byline"><span>Hardware Desk</span><span class="score">★ 541 pts · 190 comments</span></div><figure><img src="images/50441707.webp" alt="" loading="lazy"><figcaption>Image accompanying the source article. <span class="cr">docodethatmatters.com</span></figcaption></figure><p class="first">A home-automation builder describes a system whose core functions do not depend on vendor servers: Tasmota devices, an MQTT broker and Node-RED running on a Raspberry Pi. The author says a broken Nest API helped shape the rule that lights and other essentials must work without internet service.<sup class="cite"><a href="#src3">[3]</a></sup></p><p>Alexa and some cloud services remain optional interfaces; wall switches and a dashboard still work when they are down. On Hacker News, the author said the setup reflects ten years of rules and asked readers for examples of unnecessary internet dependencies.<sup class="cite"><a href="#src4">[4]</a></sup></p></article><article class="cell side"><div class="kicker">Security Desk</div><h2 class="headline">DeepMind reports formal verification of Signal cryptographic code</h2><div class="byline"><span>Security Desk</span><span class="score">★ 535 pts · 169 comments</span></div><figure><img src="images/50439193.webp" alt="" loading="lazy"><figcaption>Image accompanying the source article. <span class="cr">deepmind.google</span></figcaption></figure><p class="first">Google DeepMind says its AlphaProof Code system used human-reviewed specifications and AI agents to formally verify key security properties of Signal’s core cryptographic implementation. The team says the work took four weeks and generated more than six million lines of Lean proof code.<sup class="cite"><a href="#src5">[5]</a></sup></p><p>The researchers say they reintroduced two previously fixed bugs into an isolated version and obtained proofs that the buggy versions were insecure. A reader praised the Signal engineers; the company’s claim concerns specified properties of the protocol implementation, rather than a guarantee that every component of Signal is flawless.<sup class="cite"><a href="#src6">[6]</a></sup></p></article></section><section class="row3"><article class="cell "><div class="kicker">Tools Desk</div><h2 class="headline">Blender 5.3 adds native Gaussian splat support</h2><div class="byline"><span>Tools Desk</span><span class="score">★ 367 pts · 52 comments</span></div><figure><img src="images/50442426.webp" alt="" loading="lazy"><figcaption>Image accompanying the source article. <span class="cr">www.blender.org</span></figcaption></figure><p class="first">Blender 5.3 can import 3D Gaussian splats from PLY, SPZ and glTF files, store them as point clouds and render them in EEVEE, Cycles or Workbench. The technique reconstructs scenes from photographs or video using many soft, transparent elements.<sup class="cite"><a href="#src7">[7]</a></sup></p><p>The release notes say performance is still being optimized and color-space differences can cause rendering inaccuracies. One HN reader highlighted the separate addition of bundle support in geometry nodes for complex workflows.<sup class="cite"><a href="#src8">[8]</a></sup></p></article><article class="cell "><div class="kicker">AI Desk</div><h2 class="headline">Developer warns AI-generated code can become fragile</h2><div class="byline"><span>AI Desk</span><span class="score">★ 288 pts · 354 comments</span></div><p class="first">A developer who says he generated at least 90% of his code with AI during his final months at Meta argues that heavy reliance on coding agents can leave shallow tests, unnecessary abstractions and gaps in human understanding. He says the output did not double his own coding rate.<sup class="cite"><a href="#src9">[9]</a></sup></p><p>The author attributes rising incidents and slower mitigation to these weaknesses, but presents observations rather than a controlled causal measurement. A commenter disagreed that fragility is inevitable, arguing that good patterns and oversight can produce robust code.<sup class="cite"><a href="#src10">[10]</a></sup></p></article><article class="cell "><div class="kicker">Culture Desk</div><h2 class="headline">Ableton announces Live 13 for early 2027</h2><div class="byline"><span>Culture Desk</span><span class="score">★ 236 pts · 255 comments</span></div><figure><img src="images/50439695.jpg" alt="" loading="lazy"><figcaption>Image accompanying the source article. <span class="cr">www.ableton.com</span></figcaption></figure><p class="first">Ableton says Live 13 is due in early 2027, with a built-in step sequencer, ARA 2 support for compatible audio editors, Capture Automation and a Drum Synth with more than 20 engines. The company is offering a free upgrade to the corresponding Live 13 edition to buyers of Live 12 during its announcement offer.<sup class="cite"><a href="#src11">[11]</a></sup></p><p>The Intro edition is limited to 16 tracks and scenes; Suite adds Melodyne essential and other effects. A daily user in the HN discussion singled out Capture Automation, the sequencer and multiband rack types.<sup class="cite"><a href="#src12">[12]</a></sup></p></article></section><div class="section-label"><span>Security &amp; Practical</span></div><section class="sec2"><div class="cell"><article class="article"><div class="kicker">Security Desk</div><h2 class="headline">Synaptics patent claims halt work on DisplayLink drivers</h2><div class="byline"><span>Security Desk</span><span class="score">★ 206 pts · 89 comments</span></div><p class="first">LWN reports that Synaptics patent claims have stopped work on DisplayLink drivers. The article body was subscriber-only when fetched, so details beyond its headline could not be independently checked from that page.<sup class="cite"><a href="#src15">[15]</a></sup></p><p>In the HN thread, one reader linked a cease-and-desist notice and quoted a claim that the work risked tens of millions of dollars in annual corporate revenue. Another disputed the strength of a particular patent; that is a commenter’s assessment, not a court finding.<sup class="cite"><a href="#src16">[16]</a></sup></p></article><article class="article"><div class="kicker">Security Desk</div><h2 class="headline">A guide replaces ordinary SSH keys with hardware-backed credentials</h2><div class="byline"><span>Security Desk</span><span class="score">★ 197 pts · 92 comments</span></div><p class="first">A security practitioner documents moving SSH authentication to YubiKey, TPM and Apple Secure Enclave-backed credentials. A YubiKey can hold an ed25519-sk credential, while OpenSSH keeps a handle on disk; by default the user must touch the device to authenticate.<sup class="cite"><a href="#src19">[19]</a></sup></p><p>The TPM method differs: encrypted private-key material remains on disk and the TPM decrypts it. The author cautions that unattended, no-touch or PIN-free configurations trade away a user-presence check. One reader asked about using a YubiKey across a jump host, a case the post does not address.<sup class="cite"><a href="#src20">[20]</a></sup></p></article></div><article class="cell "><div class="kicker">Tools Desk</div><h2 class="headline">Val Town will wind down its cloud service</h2><div class="byline"><span>Tools Desk</span><span class="score">★ 235 pts · 58 comments</span></div><p class="first">Val Town is winding down after saying it could not compete in cloud computing. In a November 10 notice, founder Steve Krouse says billing is paused, existing subscriptions will be serviced free and annual prepayments will receive partial refunds.<sup class="cite"><a href="#src13">[13]</a></sup></p><p>New signups and upgrades end November 10; read-only mode begins December 10, excluding SQLite and blob storage; other services end January 10, 2027. The company lists February 1, 2027 for open-sourcing Val Town. A reader asked whether the service would be open sourced.<sup class="cite"><a href="#src14">[14]</a></sup></p></article><div class="cell"><article class="article"><div class="kicker">Tools Desk</div><h2 class="headline">.NET 11 raises the x86 hardware baseline</h2><div class="byline"><span>Tools Desk</span><span class="score">★ 205 pts · 145 comments</span></div><p class="first">Microsoft’s .NET 11 runtime notes, updated for release candidate 2, raise the x86 and x64 minimum from x86-64-v1 to v2 on Windows, Linux and Apple systems. The change adds requirements including SSE4.1, SSE4.2 and POPCNT; the documentation says older machines will no longer run .NET 11.<sup class="cite"><a href="#src17">[17]</a></sup></p><p>Linux Arm64’s minimum remains unchanged, although its ReadyToRun target adds LSE and can incur extra just-in-time compilation on older hardware. Runtime-native async is a preview feature; one HN reader welcomed the more legible live stack traces.<sup class="cite"><a href="#src18">[18]</a></sup></p></article><div class="pullquote">“Rule one: if the internet goes down, my lights still turn on.”<sup class="cite"><a href="#src3">[3]</a></sup><span class="attr">Home-automation author</span></div></div></section><div class="section-label"><span>Front Page Box Score</span></div><section class="chartrow"><div class="cell"><figure><svg viewBox="0 0 640 392" role="img" aria-label="Story points and comments" style="width:100%;height:auto;display:block"><defs><pattern id="ink" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#f3ecdd"/><rect width="3" height="6" fill="#191510"/></pattern><pattern id="red" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#f3ecdd"/><rect width="3" height="6" fill="#7a1f1f"/></pattern></defs><line x1="0" y1="6" x2="0" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/><text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text><line x1="87" y1="6" x2="87" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/><text x="87" y="366" font-size="11" fill="#3d352a" text-anchor="middle">100</text><line x1="173" y1="6" x2="173" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/><text x="173" y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text><line x1="260" y1="6" x2="260" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/><text x="260" y="366" font-size="11" fill="#3d352a" text-anchor="middle">300</text><line x1="347" y1="6" x2="347" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/><text x="347" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text><line x1="433" y1="6" x2="433" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/><text x="433" y="366" font-size="11" fill="#3d352a" text-anchor="middle">500</text><line x1="520" y1="6" x2="520" y2="344" stroke="#b7ab93" stroke-width="0.6" stroke-dasharray="2 3"/><text x="520" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text><text x="0" y="18" font-size="12" font-weight="600">.name domains</text><rect x="0.5" y="22" width="481" height="15" fill="url(#ink)"/><text x="488" y="34" font-size="11" font-weight="700">555 ★ · 118 cmts</text><text x="0" y="52" font-size="12" font-weight="600">Offline smart home</text><rect x="0.5" y="56" width="469" height="15" fill="url(#ink)"/><text x="476" y="68" font-size="11" >541 · 190</text><text x="0" y="86" font-size="12" font-weight="600">Signal proof</text><rect x="0.5" y="90" width="464" height="15" fill="url(#ink)"/><text x="471" y="102" font-size="11" >535 · 169</text><text x="0" y="120" font-size="12" font-weight="600">Blender 5.3</text><rect x="0.5" y="124" width="318" height="15" fill="url(#ink)"/><text x="325" y="136" font-size="11" >367 · 52</text><text x="0" y="154" font-size="12" font-weight="600">AI code fragility &#8224;</text><rect x="0.5" y="158" width="250" height="15" fill="url(#ink)"/><text x="257" y="170" font-size="11" >288 · 354</text><text x="0" y="188" font-size="12" font-weight="600">Ableton Live 13</text><rect x="0.5" y="192" width="205" height="15" fill="url(#ink)"/><text x="212" y="204" font-size="11" >236 · 255</text><text x="0" y="222" font-size="12" font-weight="600">Val Town closure</text><rect x="0.5" y="226" width="204" height="15" fill="url(#ink)"/><text x="211" y="238" font-size="11" >235 · 58</text><text x="0" y="256" font-size="12" font-weight="600">DisplayLink drivers</text><rect x="0.5" y="260" width="179" height="15" fill="url(#ink)"/><text x="186" y="272" font-size="11" >206 · 89</text><text x="0" y="290" font-size="12" font-weight="600">.NET 11 runtime</text><rect x="0.5" y="294" width="178" height="15" fill="url(#ink)"/><text x="185" y="306" font-size="11" >205 · 145</text><text x="0" y="324" font-size="12" font-weight="600">Hardware SSH keys</text><rect x="0.5" y="328" width="171" height="15" fill="url(#ink)"/><text x="178" y="340" font-size="11" >197 · 92</text><line x1="0.5" y1="6" x2="0.5" y2="352" stroke="#191510" stroke-width="1"/><line x1="0.5" y1="352" x2="520" y2="352" stroke="#191510" stroke-width="1"/><text x="0" y="386" font-size="11">★ = points · cmts = comments · &#8224; most-discussed story of the day · red hatch = Apple coverage (none)</text></svg></figure><p>Stories are ranked by snapshot points; the dagger marks the most-discussed of these ten.</p></div><div class="cell"><div class="statbox"><div class="t">Front Page Ledger</div><table><tr><td>Fresh stories</td><td>10</td></tr><tr><td>Follow-ups</td><td>0</td></tr><tr><td>Carried in digest</td><td>0</td></tr><tr><td>Wire stories</td><td>0</td></tr><tr><td>Combined points</td><td>3,365</td></tr><tr><td>Combined comments</td><td>1,522</td></tr></table></div><div class="statbox"><div class="t">The day in one line</div><p>Domain holders won a reprieve, while a cloud platform set its shutdown timetable.</p></div><div class="corrections"><div class="t">Corrections &amp; Clarifications</div><p><b>Signal proof.</b> DeepMind verified specified properties of core cryptographic code, not every security property of the entire app.<sup class="cite"><a href="#src5">[5]</a></sup></p><p><b>Live 13.</b> Announced now, it is scheduled for early 2027; it is not yet generally released.<sup class="cite"><a href="#src11">[11]</a></sup></p><p><b>SSH keys.</b> The TPM approach still stores encrypted private-key material on disk, even though the key is hardware-bound.<sup class="cite"><a href="#src19">[19]</a></sup></p><p><b>AI code.</b> The author attributes incidents to AI-generated code, but the article offers workplace observations, not a controlled study establishing causation.<sup class="cite"><a href="#src9">[9]</a></sup></p></div></div></section><section class="publisher"><div class="t">Publisher’s Note</div><p>Existing .name domains lead this edition. All ten stories are fresh against the previous four editions; no follow-up or digest was needed. The LWN article was subscriber-only in our fetch, so that report relies on its headline and the discussion.</p><div class="sig">— The Herald</div></section><div class="rule-thick"></div><div class="section-label"><span>Sources</span></div><div class="sources"><ol><li id="src1" data-n="[1]"><a href="https://neil.fraser.name/news/2026/11/10/">Verisign reverses plan to end existing .name domains — primary source</a></li><li id="src2" data-n="[2]"><a href="https://news.ycombinator.com/item?id=50442736">Hacker News discussion</a></li><li id="src3" data-n="[3]"><a href="https://docodethatmatters.com/home-automation-overnight-success/">A smart home designed to keep working offline — primary source</a></li><li id="src4" data-n="[4]"><a href="https://news.ycombinator.com/item?id=50441707">Hacker News discussion</a></li><li id="src5" data-n="[5]"><a href="https://deepmind.google/blog/introducing-alphaproof-code/">DeepMind reports formal verification of Signal cryptographic code — primary source</a></li><li id="src6" data-n="[6]"><a href="https://news.ycombinator.com/item?id=50439193">Hacker News discussion</a></li><li id="src7" data-n="[7]"><a href="https://www.blender.org/download/releases/5-3/">Blender 5.3 adds native Gaussian splat support — primary source</a></li><li id="src8" data-n="[8]"><a href="https://news.ycombinator.com/item?id=50442426">Hacker News discussion</a></li><li id="src9" data-n="[9]"><a href="https://evanxmerz.com/post/ai-usage-generates-a-fragile-codebase/">Developer warns AI-generated code can become fragile — primary source</a></li><li id="src10" data-n="[10]"><a href="https://news.ycombinator.com/item?id=50438318">Hacker News discussion</a></li><li id="src11" data-n="[11]"><a href="https://www.ableton.com/en/live/">Ableton announces Live 13 for early 2027 — primary source</a></li><li id="src12" data-n="[12]"><a href="https://news.ycombinator.com/item?id=50439695">Hacker News discussion</a></li><li id="src13" data-n="[13]"><a href="https://blog.val.town/winding-down">Val Town will wind down its cloud service — primary source</a></li><li id="src14" data-n="[14]"><a href="https://news.ycombinator.com/item?id=50443427">Hacker News discussion</a></li><li id="src15" data-n="[15]"><a href="https://lwn.net/SubscriberLink/1102549/acbc92e00cee3a3f/">Synaptics patent claims halt work on DisplayLink drivers — primary source</a></li><li id="src16" data-n="[16]"><a href="https://news.ycombinator.com/item?id=50443824">Hacker News discussion</a></li><li id="src17" data-n="[17]"><a href="https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-11/runtime">.NET 11 raises the x86 hardware baseline — primary source</a></li><li id="src18" data-n="[18]"><a href="https://news.ycombinator.com/item?id=50439284">Hacker News discussion</a></li><li id="src19" data-n="[19]"><a href="https://blog.infected.systems/posts/2026-11-03-i-deleted-all-my-ssh-keys/">A guide replaces ordinary SSH keys with hardware-backed credentials — primary source</a></li><li id="src20" data-n="[20]"><a href="https://news.ycombinator.com/item?id=50382401">Hacker News discussion</a></li></ol></div><div class="method">Methodology: Hacker News front-page candidates were captured November 10, 2026 at 22:00 UTC through the Algolia API; scores and comment counts are the snapshot values, not live totals. The ten highest-scoring fresh stories were selected after comparison with the previous four editions. Articles and threads were fetched for context.</div><footer class="colophon"><span>The Hacker Herald — Typeset from the Hacker News front page</span><span>Front Page Briefing</span><span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan</span></footer></body></html>
