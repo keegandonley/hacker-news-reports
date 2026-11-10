@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-10-morning",
+      "date": "2026-11-10",
+      "label": "Morning",
+      "snapshot_utc": "14:00",
+      "items": [
+        {
+          "id": 50424581,
+          "title": "Foldable Flight: The Best Paper Airplanes",
+          "score": 1096,
+          "comments": 153
+        },
+        {
+          "id": 50429068,
+          "title": "Claude Fable 5.2 and Mythos 5.2",
+          "score": 706,
+          "comments": 873
+        },
+        {
+          "id": 50431058,
+          "title": "USPS now offers official ZIP Code boundary polygons",
+          "score": 662,
+          "comments": 338
+        },
+        {
+          "id": 50436640,
+          "title": "Amazon saves millions by replacing Sonnet 4.6 with Strands Decider",
+          "score": 440,
+          "comments": 155
+        },
+        {
+          "id": 50429734,
+          "title": "E-means: Outperforming k-means in one-tenth the epochs",
+          "score": 434,
+          "comments": 54
+        },
+        {
+          "id": 50428907,
+          "title": "Show HN: Every satellite that passed over any place this week, and its photos",
+          "score": 406,
+          "comments": 74
+        },
+        {
+          "id": 50434310,
+          "title": "Locating the source of a mysterious beep",
+          "score": 240,
+          "comments": 124
+        },
+        {
+          "id": 50434264,
+          "title": "Horible public key tricks",
+          "score": 195,
+          "comments": 63
+        },
+        {
+          "id": 50436410,
+          "title": "Your TV can see through walls",
+          "score": 187,
+          "comments": 74
+        },
+        {
+          "id": 50386246,
+          "title": "A primer on GPUs and kernel optimization",
+          "score": 175,
+          "comments": 15
+        }
+      ]
+    },
+    {
       "folder": "2026-11-09-afternoon",
       "date": "2026-11-09",
       "label": "Afternoon",

@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-11-10 · Morning | 2026-11-10 ≈14:00 | Foldable Flight’s paper-airplane catalogue returns with 1,096 points | 1096 | 153 | [editions/2026-11-10-morning/](editions/2026-11-10-morning/) |
 | 2026-11-09 · Afternoon | 2026-11-09 ≈22:00 | Anthropic releases Claude Fable 5.2 and Mythos 5.2 | 751 | 421 | [editions/2026-11-09-afternoon/](editions/2026-11-09-afternoon/) |
 | 2026-11-09 · Morning | 2026-11-09 ≈14:00 | Nvidia CEO Jensen Huang's letter to staff about affair | 782 | 885 | [editions/2026-11-09-morning/](editions/2026-11-09-morning/) |
 | 2026-11-06 · Afternoon | 2026-11-06 ≈22:01 | Tesla to wind down Cybertruck production | 710 | 1499 | [editions/2026-11-06-afternoon/](editions/2026-11-06-afternoon/) |

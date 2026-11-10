@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 10, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+
+</style>
+</head>
+<body>
+<div class="topbar"><span>Hacker News Front Page · Snapshot 14:00 UTC</span><span class="mid">Morning Edition</span><span>10 Stories · 4,541 Points · 1,923 Comments</span></div>
+<div class="nameplate"><h1>The Hacker Herald</h1><div class="sub">The front page, read closely and set in type — a briefing for Keegan</div><div class="dateline"><span class="l">Compiled from news.ycombinator.com</span><span class="c">November 10, 2026</span><span class="r">Front page briefing</span></div></div>
+<div class="bulletins"><div class="cell"><b>Follow-Up</b>Foldable Flight’s paper-airplane catalogue gains 354 points.</div><div class="cell"><b>AI</b>Anthropic releases Fable 5.2 and Mythos 5.2.</div><div class="cell"><b>Field</b>USPS boundary data returns after gaining 431 points.</div><div class="cell"><b>Tools</b>A listener locates a beeping carbon monoxide detector.</div></div>
+<div class="lead"><article class="cell main"><div class="kicker">Follow-Up</div><h2 class="headline">Foldable Flight’s paper-airplane catalogue returns with 1,096 points<sup class="cite"><a href="#src1">[1]</a></sup></h2><h3 class="deck">The catalogue’s Unite design is described as a time-aloft record holder.</h3><div class="byline"><span>Culture Desk</span><span>★ 1,096 pts · 153 comments · ▲ +354 since the last edition</span></div><p class="first">CHICAGO — Foldable Flight lists paper-airplane designs including Unite, which the site says holds a 31.2-second time-aloft record, and a prototype it says can fly over 300 feet. The catalogue includes designs by multiple named creators.<sup class="cite"><a href="#src1">[1]</a></sup></p><p>The story has gained 354 points since the previous edition, rising from 742 to 1,096. Readers noted that some instructions are delivered as videos; one cited a 40-minute tutorial for Lancer.<sup class="cite"><a href="#src11">[11]</a></sup></p><figure><img src="images/50424581.jpg" alt="Image accompanying Foldable Flight’s paper-airplane catalogue returns with 1,096 points" loading="lazy"><figcaption>Image accompanying the source. <span class="cr">www.foldableflight.com</span></figcaption></figure></article><article class="cell side"><div class="kicker">AI Desk</div><h2 class="headline">Anthropic releases Claude Fable 5.2 and Mythos 5.2<sup class="cite"><a href="#src2">[2]</a></sup></h2><h3 class="deck">The two offerings share a model but differ in safeguards and access.</h3><div class="byline"><span>AI Desk</span><span>★ 706 pts · 873 comments</span></div><p class="first">Anthropic released Claude Fable 5.2 and Mythos 5.2 at $8 per million input tokens and $40 per million output tokens. It says outputs are up to 30% faster than their predecessors and that both offerings use the same underlying model.<sup class="cite"><a href="#src2">[2]</a></sup></p><p>Fable has cybersecurity and biology safeguards; organizations seeking beneficial cyber or biomedical applications can apply for Mythos access. Anthropic reports 49.1% on FrontierCode 2.0 at Xhigh effort, a company-reported evaluation. Readers questioned pricing and the model naming.<sup class="cite"><a href="#src12">[12]</a></sup></p><figure><img src="images/50429068.jpg" alt="Image accompanying Anthropic releases Claude Fable 5.2 and Mythos 5.2" loading="lazy"><figcaption>Image accompanying the source. <span class="cr">www.anthropic.com</span></figcaption></figure></article><article class="cell side"><div class="kicker">Follow-Up</div><h2 class="headline">USPS ZIP Code boundary product gains 431 points<sup class="cite"><a href="#src3">[3]</a></sup></h2><h3 class="deck">Quarterly updates are offered under licenses with distribution limits.</h3><div class="byline"><span>Field Desk</span><span>★ 662 pts · 338 comments · ▲ +431 since the last edition</span></div><p class="first">The U.S. Postal Service offers national ZIP Code boundary polygons based on delivery addresses and locations. Its enterprise and publication products include four quarterly updates, with limits on distribution or publication.<sup class="cite"><a href="#src3">[3]</a></sup></p><p>The thread rose from 231 points in the last edition to 662. A geospatial practitioner cautioned that an address inside a polygon does not necessarily have that ZIP Code; another reader pointed to free Census ZCTA files as an approximate alternative.<sup class="cite"><a href="#src13">[13]</a></sup></p></article></div>
+<div class="row3"><article class="cell "><div class="kicker">AI Desk</div><h2 class="headline">Amazon reports 98% lower ticket-labeling cost with Strands Decider<sup class="cite"><a href="#src4">[4]</a></sup></h2><h3 class="deck">The decision model selects among fixed labels rather than generating an explanation.</h3><div class="byline"><span>AI Desk</span><span>★ 440 pts · 155 comments</span></div><p class="first">Amazon engineers say replacing Claude Sonnet 4.6 with Strands Decider for internal ticket labeling cut model cost by 98%, saving millions of dollars annually. The company’s account puts its practical cost at about $500 per million tickets.<sup class="cite"><a href="#src4">[4]</a></sup></p><p>The system chooses among 20 categories and a none option; longer tickets lose their oldest comments to fit the model’s context. The team tested both models in parallel and says JSON key order changed probabilities by up to 0.19. An HN reader described an earlier support-ticket classifier based on SVMs.<sup class="cite"><a href="#src14">[14]</a></sup></p><figure><img src="images/50436640.png" alt="Image accompanying Amazon reports 98% lower ticket-labeling cost with Strands Decider" loading="lazy"><figcaption>Image accompanying the source. <span class="cr">strandsagents.com</span></figcaption></figure></article><article class="cell "><div class="kicker">Science Desk</div><h2 class="headline">E-means researchers report faster k-means clustering<sup class="cite"><a href="#src5">[5]</a></sup></h2><h3 class="deck">Mini-batch updates use exponential moving averages and automatic scaling rules.</h3><div class="byline"><span>Science Desk</span><span>★ 434 pts · 54 comments</span></div><p class="first">The e-means researchers report reaching a lower test loss than 25 epochs of Lloyd’s algorithm in 1.2 to 3 epochs across their tested datasets. They report 10–45 times lower GPU wall-clock time against Flash-KMeans and 8–15 times lower CPU time against Faiss.<sup class="cite"><a href="#src5">[5]</a></sup></p><p>The method updates clusters with exponential moving averages and revives small clusters by splitting larger ones. Its authors validated 24 dataset configurations. One reader reported an unsuccessful attempt to adapt the method to spherical mesh relaxation, a different use case.<sup class="cite"><a href="#src15">[15]</a></sup></p><figure><img src="images/50429734.png" alt="Image accompanying E-means researchers report faster k-means clustering" loading="lazy"><figcaption>Image accompanying the source. <span class="cr">e-means.github.io</span></figcaption></figure></article><article class="cell "><div class="kicker">Tools Desk</div><h2 class="headline">Watched maps satellite passes and associated imagery<sup class="cite"><a href="#src6">[6]</a></sup></h2><h3 class="deck">The browser application requires JavaScript and WebGL.</h3><div class="byline"><span>Tools Desk</span><span>★ 406 pts · 74 comments</span></div><p class="first">Watched presents satellite passes over a selected place and associated photographs, according to its Hacker News submission. The application says it needs JavaScript and WebGL to compute passes in the browser.<sup class="cite"><a href="#src6">[6]</a></sup></p><p>A reader identifying as a geospatial worker praised the ability to see images taken by a satellite; another highlighted the view of its path and scanned area. The accessible page did not provide additional details about coverage or imagery sources.<sup class="cite"><a href="#src16">[16]</a></sup></p><figure><img src="images/50428907.png" alt="Image accompanying Watched maps satellite passes and associated imagery" loading="lazy"><figcaption>Image accompanying the source. <span class="cr">www.watched.earth</span></figcaption></figure></article></div>
+<div class="sec2"><div class="cell"><article class="cell "><div class="kicker">Security Desk</div><h2 class="headline">A crafted RSA key embeds a message in a certificate<sup class="cite"><a href="#src8">[8]</a></sup></h2><h3 class="deck">The author describes controlling part of the public modulus.</h3><div class="byline"><span>Security Desk</span><span>★ 195 pts · 63 comments</span></div><p class="first">A security experiment embeds a readable message in the base64 representation of an RSA public key by modifying the modulus and finding a suitable second prime. The author says a certificate authority signed the resulting public key.<sup class="cite"><a href="#src8">[8]</a></sup></p><p>The author cautions that the script does not check for insecure values, including primes that are too close together. A commenter warned that unauthenticated TLS cannot be called secure against active attackers; forward secrecy does not prevent an attacker from impersonating a server with a compromised key.<sup class="cite"><a href="#src18">[18]</a></sup></p></article><article class="cell "><div class="kicker">Hardware Desk</div><h2 class="headline">Radio-signal fading reveals movement in a neighboring room<sup class="cite"><a href="#src9">[9]</a></sup></h2><h3 class="deck">A demonstration uses a local digital television signal and a radio receiver.</h3><div class="byline"><span>Hardware Desk</span><span>★ 187 pts · 74 comments</span></div><p class="first">A radio experiment detected movement in a neighboring room by observing selective fading in a local ATSC television signal. Reflections cancel the direct signal at some frequencies, making the received pattern sensitive to nearby movement.<sup class="cite"><a href="#src9">[9]</a></sup></p><p>From a 490 MHz signal and the timing between observed stripes, the author estimated a walking speed of 1.3 meters per second. The article says Wi-Fi and LTE signals can also be used in principle; this demonstration used a radio receiver, not a television camera.<sup class="cite"><a href="#src19">[19]</a></sup></p></article></div><div class="cell"><article class="cell "><div class="kicker">Tools Desk</div><h2 class="headline">A multi-device listener locates a beeping detector<sup class="cite"><a href="#src7">[7]</a></sup></h2><h3 class="deck">Simon Willison used phones and computers to triangulate the sound.</h3><div class="byline"><span>Tools Desk</span><span>★ 240 pts · 124 comments</span></div><p class="first">Simon Willison says a system built with Claude Code located an intermittent beep to within about 40 centimeters. The source was an old carbon monoxide detector in a pile of boxes that needed replacement batteries.<sup class="cite"><a href="#src7">[7]</a></sup></p><p>A Python server coordinates browser microphones via WebSockets; a shared chirp aligns recordings before the system estimates the sound location. Automatic device positioning worked poorly, so Willison added a rough manual placement mode. One reader suggested dividing the boxes between rooms as an alternative search.<sup class="cite"><a href="#src17">[17]</a></sup></p><figure><img src="images/50434310.jpg" alt="Image accompanying A multi-device listener locates a beeping detector" loading="lazy"><figcaption>Image accompanying the source. <span class="cr">simonwillison.net</span></figcaption></figure></article><article class="cell "><div class="kicker">Hardware Desk</div><h2 class="headline">A GPU kernel primer prompts questions about benchmarks<sup class="cite"><a href="#src10">[10]</a></sup></h2><h3 class="deck">Readers discuss memory placement and measurement practices.</h3><div class="byline"><span>Hardware Desk</span><span>★ 175 pts · 15 comments</span></div><p class="first">A GPU and kernel-optimization primer reached the front page with 175 points and 15 comments. The fetched article page returned no readable body text, so its technical claims could not be independently reviewed for this edition.<sup class="cite"><a href="#src10">[10]</a></sup></p><p>In the discussion, one reader distinguished H200 high-bandwidth memory from on-chip shared memory and registers. Another emphasized measurement conditions including cache state, numerical error, thermal effects and repeated runs. These are reader observations, not results verified by the article fetch.<sup class="cite"><a href="#src20">[20]</a></sup></p><figure><img src="images/50386246.png" alt="Image accompanying A GPU kernel primer prompts questions about benchmarks" loading="lazy"><figcaption>Image accompanying the source. <span class="cr">www.nabo.dev</span></figcaption></figure></article></div><div class="cell"><div class="kicker">Quote of the Day</div><div class="pullquote">“Being ‘inside’ a boundary does not guarantee you have that ZIP code”<span class="attr">An HN reader on the USPS polygons <sup class="cite"><a href="#src13">[13]</a></sup></span></div><p>The comment distinguishes mapped areas from the postal delivery addresses the ZIP Codes organize.</p></div></div>
+<div class="chartrow"><div class="cell"><div class="section-label"><span>Box Score</span></div><svg viewBox="0 0 640 392" role="img" aria-label="Stories ranked by points" style="width:100%;height:auto;display:block"><defs><pattern id="ink" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#f3ecdd"/><rect width="3" height="6" fill="#191510"/></pattern><pattern id="red" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#f3ecdd"/><rect width="3" height="6" fill="#7a1f1f"/></pattern></defs><line class="grid" x1="0" y1="6" x2="0" y2="344"/><text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text><line class="grid" x1="95" y1="6" x2="95" y2="344"/><text x="95" y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text><line class="grid" x1="189" y1="6" x2="189" y2="344"/><text x="189" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text><line class="grid" x1="284" y1="6" x2="284" y2="344"/><text x="284" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text><line class="grid" x1="378" y1="6" x2="378" y2="344"/><text x="378" y="366" font-size="11" fill="#3d352a" text-anchor="middle">800</text><line class="grid" x1="473" y1="6" x2="473" y2="344"/><text x="473" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1000</text><line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/><line class="axis" x1="0.5" y1="352" x2="520" y2="352"/><text class="barlabel" x="0" y="18">Paper airplanes</text><rect x="0.5" y="22" width="518" height="15" fill="url(#ink)"/><text class="barval" x="525" y="34" font-weight="700">1096 ★ · 153 cmts</text><text class="barlabel" x="0" y="52">Claude Fable and Mythos &#8224;</text><rect x="0.5" y="56" width="334" height="15" fill="url(#ink)"/><text class="barval" x="341" y="68">706 · 873</text><text class="barlabel" x="0" y="86">USPS ZIP boundaries</text><rect x="0.5" y="90" width="313" height="15" fill="url(#ink)"/><text class="barval" x="320" y="102">662 · 338</text><text class="barlabel" x="0" y="120">Amazon ticket labeling</text><rect x="0.5" y="124" width="208" height="15" fill="url(#ink)"/><text class="barval" x="215" y="136">440 · 155</text><text class="barlabel" x="0" y="154">E-means clustering</text><rect x="0.5" y="158" width="205" height="15" fill="url(#ink)"/><text class="barval" x="212" y="170">434 · 54</text><text class="barlabel" x="0" y="188">Satellite passes</text><rect x="0.5" y="192" width="192" height="15" fill="url(#ink)"/><text class="barval" x="199" y="204">406 · 74</text><text class="barlabel" x="0" y="222">Beep locator</text><rect x="0.5" y="226" width="113" height="15" fill="url(#ink)"/><text class="barval" x="120" y="238">240 · 124</text><text class="barlabel" x="0" y="256">RSA certificate</text><rect x="0.5" y="260" width="92" height="15" fill="url(#ink)"/><text class="barval" x="99" y="272">195 · 63</text><text class="barlabel" x="0" y="290">Radio fading</text><rect x="0.5" y="294" width="88" height="15" fill="url(#ink)"/><text class="barval" x="95" y="306">187 · 74</text><text class="barlabel" x="0" y="324">GPU kernel primer</text><rect x="0.5" y="328" width="83" height="15" fill="url(#ink)"/><text class="barval" x="90" y="340">175 · 15</text><text x="0" y="386" font-size="11">★ = points · cmts = comments · † most-discussed story of the day · red hatch = Apple coverage (none)</text></svg><p class="method">Points and comments are from the front-page snapshot, not later live counts.</p></div><div class="cell"><div class="section-label"><span>Front Page Ledger</span></div><p>Paper airplanes led by points; Anthropic’s model launch drew the most comments.</p><div class="statbox"><div class="t">Front Page Ledger</div><table><tr><td>Fresh stories</td><td>8</td></tr><tr><td>Follow-ups</td><td>2</td></tr><tr><td>Carried in digest</td><td>0</td></tr><tr><td>Wire stories</td><td>0</td></tr><tr><td>Combined points</td><td>4,541</td></tr><tr><td>Combined comments</td><td>1,923</td></tr></table></div>
+<div class="corrections"><div class="t">Corrections &amp; Clarifications</div><p><b>ZIP boundaries.</b> USPS calls its map ground truth, but a geospatial reader says a location within a polygon does not guarantee an address’s ZIP. <sup class="cite"><a href="#src3">[3]</a></sup> <sup class="cite"><a href="#src13">[13]</a></sup></p><p><b>Model access.</b> Fable and Mythos are not separate underlying models; Anthropic says their safeguards and access differ. <sup class="cite"><a href="#src2">[2]</a></sup></p><p><b>TV detection.</b> The radio demonstration observes signal fading using a receiver; it does not show a television camera looking through a wall. <sup class="cite"><a href="#src9">[9]</a></sup></p><p><b>Cost comparison.</b> Amazon’s 98% reduction compares a fixed-label decision model with its previous generative ticket-labeling workflow, not all uses of Sonnet. <sup class="cite"><a href="#src4">[4]</a></sup></p></div></div></div>
+<div class="publisher"><div class="t">Publisher’s Note</div><p>Foldable Flight leads this morning. Its catalogue and the USPS boundary product return as follow-ups. The satellite page provided little accessible text, and the GPU primer’s body could not be extracted; both reports rely in part on their discussion threads.</p><div class="sig">— The Herald</div></div>
+<div class="rule-thick"></div><div class="section-label"><span>Sources</span></div><div class="sources"><ol><li id="src1" data-n="[1]"><a href="https://www.foldableflight.com">Foldable Flight: The Best Paper Airplanes</a> · www.foldableflight.com</li><li id="src2" data-n="[2]"><a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">Claude Fable 5.2 and Mythos 5.2</a> · www.anthropic.com</li><li id="src3" data-n="[3]"><a href="https://postalpro.usps.com/zcb">USPS now offers official ZIP Code boundary polygons</a> · postalpro.usps.com</li><li id="src4" data-n="[4]"><a href="https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider/">Amazon saves millions by replacing Sonnet 4.6 with Strands Decider</a> · strandsagents.com</li><li id="src5" data-n="[5]"><a href="https://e-means.github.io/">E-means: Outperforming k-means in one-tenth the epochs</a> · e-means.github.io</li><li id="src6" data-n="[6]"><a href="https://www.watched.earth">Show HN: Every satellite that passed over any place this week, and its photos</a> · www.watched.earth</li><li id="src7" data-n="[7]"><a href="https://simonwillison.net/2026/Nov/9/mysterious-beeps/">Locating the source of a mysterious beep</a> · simonwillison.net</li><li id="src8" data-n="[8]"><a href="https://maurycyz.com/projects/badcert/">Horible public key tricks</a> · maurycyz.com</li><li id="src9" data-n="[9]"><a href="https://maurycyz.com/projects/fading/">Your TV can see through walls</a> · maurycyz.com</li><li id="src10" data-n="[10]"><a href="https://www.nabo.dev/blogs/kernel-primer">A primer on GPUs and kernel optimization</a> · www.nabo.dev</li><li id="src11" data-n="[11]"><a href="https://news.ycombinator.com/item?id=50424581">Hacker News discussion: Foldable Flight: The Best Paper Airplanes</a></li><li id="src12" data-n="[12]"><a href="https://news.ycombinator.com/item?id=50429068">Hacker News discussion: Claude Fable 5.2 and Mythos 5.2</a></li><li id="src13" data-n="[13]"><a href="https://news.ycombinator.com/item?id=50431058">Hacker News discussion: USPS now offers official ZIP Code boundary polygons</a></li><li id="src14" data-n="[14]"><a href="https://news.ycombinator.com/item?id=50436640">Hacker News discussion: Amazon saves millions by replacing Sonnet 4.6 with Strands Decider</a></li><li id="src15" data-n="[15]"><a href="https://news.ycombinator.com/item?id=50429734">Hacker News discussion: E-means: Outperforming k-means in one-tenth the epochs</a></li><li id="src16" data-n="[16]"><a href="https://news.ycombinator.com/item?id=50428907">Hacker News discussion: Show HN: Every satellite that passed over any place this week, and its photos</a></li><li id="src17" data-n="[17]"><a href="https://news.ycombinator.com/item?id=50434310">Hacker News discussion: Locating the source of a mysterious beep</a></li><li id="src18" data-n="[18]"><a href="https://news.ycombinator.com/item?id=50434264">Hacker News discussion: Horible public key tricks</a></li><li id="src19" data-n="[19]"><a href="https://news.ycombinator.com/item?id=50436410">Hacker News discussion: Your TV can see through walls</a></li><li id="src20" data-n="[20]"><a href="https://news.ycombinator.com/item?id=50386246">Hacker News discussion: A primer on GPUs and kernel optimization</a></li></ol></div><div class="method">Hacker News front-page candidate snapshot: November 10, 2026, 14:00:17 UTC. Scores and comment counts are from the fetched Algolia response. Selection compares the previous four archived editions; follow-up changes compare their most recent coverage. Article pages and discussions were retrieved for this edition.</div><footer class="colophon"><span>The Hacker Herald — Typeset from the Hacker News front page</span><span>Front page briefing</span><span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</span></footer></body></html>
