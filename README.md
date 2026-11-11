@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-11-11 · Morning | 2026-11-11 ≈14:00 | Smart-home essentials should work without the internet | 1070 | 380 | [editions/2026-11-11-morning/](editions/2026-11-11-morning/) |
 | 2026-11-10 · Afternoon | 2026-11-10 ≈22:00 | Verisign reverses plan to end existing .name domains | 555 | 118 | [editions/2026-11-10-afternoon/](editions/2026-11-10-afternoon/) |
 | 2026-11-10 · Morning | 2026-11-10 ≈14:00 | Foldable Flight’s paper-airplane catalogue returns with 1,096 points | 1096 | 153 | [editions/2026-11-10-morning/](editions/2026-11-10-morning/) |
 | 2026-11-09 · Afternoon | 2026-11-09 ≈22:00 | Anthropic releases Claude Fable 5.2 and Mythos 5.2 | 751 | 421 | [editions/2026-11-09-afternoon/](editions/2026-11-09-afternoon/) |
