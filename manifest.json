@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-11-afternoon",
+      "date": "2026-11-11",
+      "label": "Afternoon",
+      "snapshot_utc": "22:00",
+      "items": [
+        {
+          "id": 50452455,
+          "title": "My AI agents found an unmapped Maya site",
+          "score": 880,
+          "comments": 318
+        },
+        {
+          "id": 50450488,
+          "title": "Tim Peters has died",
+          "score": 653,
+          "comments": 64
+        },
+        {
+          "id": 50456631,
+          "title": "AWS emulator",
+          "score": 480,
+          "comments": 162
+        },
+        {
+          "id": 50455394,
+          "title": "A false smoke alarm almost drowned Jane Street's only NYC datacenter",
+          "score": 334,
+          "comments": 166
+        },
+        {
+          "id": 50453288,
+          "title": "Hyper-Realistic Sand with WebGL2",
+          "score": 255,
+          "comments": 57
+        },
+        {
+          "id": 50451903,
+          "title": "Using voltage glitching to unleash the A100 in my mining card",
+          "score": 238,
+          "comments": 98
+        },
+        {
+          "id": 50452655,
+          "title": "Can a Linear Program Do Weight-Space Programming?",
+          "score": 219,
+          "comments": 33
+        },
+        {
+          "id": 50452652,
+          "title": "We need more goat sacrifices",
+          "score": 168,
+          "comments": 99
+        },
+        {
+          "id": 50453637,
+          "title": "Atuin Threads: All your agent sessions on every machine",
+          "score": 168,
+          "comments": 62
+        },
+        {
+          "id": 50456791,
+          "title": "Gemini Decisions API",
+          "score": 141,
+          "comments": 45
+        }
+      ]
+    },
+    {
       "folder": "2026-11-11-morning",
       "date": "2026-11-11",
       "label": "Morning",

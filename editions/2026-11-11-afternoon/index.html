@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 11, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page · Snapshot 22:00 UTC</div>
+  <div class="mid">Afternoon Edition</div>
+  <div class="r">10 Stories · 3,536 Points · 1,104 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type — a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Wednesday, November 11, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">AI · Archaeology</span><b>Agents Find, Then Re-Find, a Maya Site</b>
+    Forty-eight agents scan 1,200&nbsp;km² of public lidar and flag a hilltop complex absent from Mexico's register — which the 2025 literature had already mapped.</div>
+  <div class="cell"><span class="tag">Language</span><b>Tim Peters, 1952–2026</b>
+    Guido van Rossum announces the author of the Zen of Python and Timsort died on July 15; the memorial thread posts <i>import this</i> in full.</div>
+  <div class="cell"><span class="tag">Cloud</span><b>Amazon Open-Sources an Agent-Written Emulator</b>
+    AWS Emulator serves local stand-ins for AWS APIs for testing; Amazon says autonomous agents wrote every line, and the thread measures the 2.2&nbsp;GB result.</div>
+  <div class="cell"><span class="tag">Infrastructure</span><b>143.6°F and Holding</b>
+    Dust trips a smoke alarm wired to kill cooling at Jane Street's only NYC datacenter; the room peaks below the roughly-150°F sprinkler trigger.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+
+  <div class="cell main">
+    <div class="kicker">AI Desk · Field Report</div>
+    <h2 class="headline">AI agents find a Maya site in 72 hours — and miss that archaeologists mapped it in 2025</h2>
+    <h3 class="deck">Forty-eight agents working public NASA lidar flagged a hilltop complex Mexico's register did not hold; the published literature did</h3>
+    <div class="byline"><span>From the AI Desk</span><span class="score">★ 880 pts · 318 comments</span></div>
+    <p class="first">MAYA LOWLANDS, MEXICO — A developer who set 48 AI agents loose on roughly 1,200 square kilometres of public NASA lidar strips reports that, in under 72 hours, they flagged an unregistered hilltop site — a levelled plaza, an oval pyramid at least 8–12 metres tall, a raised courtyard, and a flat-bottomed hollow that may be a reservoir — and prepared the paperwork: a report, translated into Spanish by the agents, sent to Mexico's National Institute of Anthropology and History (INAH).<sup class="cite"><a href="#src1">[1]</a></sup> INAH replied the next day that its records held no registered archaeological site at that location, according to a diary of the run that begins 18 October, while the author was travelling in Peru, and ends with the government reply on 21 October.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <figure>
+      <img src="images/maya-site.jpg" alt="A jungle hillside shown as photographed canopy and as bare lidar-measured terrain, side by side" loading="lazy">
+      <figcaption>Forest versus lidar: the post's comparison of the same terrain as canopy and as laser-measured bare earth. <span class="cr">pietromiotti.com</span></figcaption>
+    </figure>
+    <p>The method had no classifier behind it. The agents converted lidar strips into images and reviewed them, in the author's phrase, "like very patient archaeologists," filtering out natural hills, sinkholes and roads while hunting for pyramids, platforms and plazas; they then re-checked the raw point cloud to confirm the shapes sat on the ground rather than in the canopy.<sup class="cite"><a href="#src1">[1]</a></sup> The speculation, flagged as such in the post, is a small Classic-period civic centre (roughly AD 250–900).<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The correction arrived on 11 November, in an update to the post itself: the site was already mapped in Estrada-Belli et al. 2025, and the agents missed it while searching the literature. What the run actually found was a site absent from INAH's register, not from archaeology — "still work to do then!" the author wrote.<sup class="cite"><a href="#src1">[1]</a></sup> The thread had been pushing on exactly that seam: one reader waited for "an expert archaeologist's verification," having watched agents produce findings that "completely falters on further review," while another noted the real test is whether any of the structure identifications survive ground work.<sup class="cite"><a href="#src2">[2]</a></sup> The author's own takeaway: "You can just do things. I'm not an archaeologist, so I didn't know this was supposed to be hard."<sup class="cite"><a href="#src1">[1]</a></sup></p>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Language Desk</div>
+    <h2 class="headline">Python mourns Tim Peters, author of the Zen of Python and Timsort</h2>
+    <div class="byline"><span>Language Desk</span><span class="score">★ 653 pts · 64 cmts</span></div>
+    <p class="first">Guido van Rossum announced on the Python Discourse that Tim Peters died earlier this year, on 15 July.<sup class="cite"><a href="#src3">[3]</a></sup> The memorial post credits Peters with the Zen of Python (PEP 20), still printed by <i>import this</i>, and with Timsort, the list-sorting algorithm he designed for Python in 2002 that Java and Android later adopted.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>Peters found Python soon after its first release; his first contribution, van Rossum writes, was arguing that the language should support mixed arithmetic between ints and floats because users would expect it. On the early mailing lists he answered so many questions, so carefully, that he earned the nickname "Timbot" — replies marked with &lt;wink&gt;, and sometimes described as "channeling Guido." Before Python, he wrote compilers for Cray Research and speech-to-text software at Dragon Systems.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>Van Rossum's sign-off: "Python-would-not-be-what-it-is-today-without-Tim-ly y'rs."<sup class="cite"><a href="#src3">[3]</a></sup> On the Hacker News thread, readers introduced him the shortest way available — "The Tim of Tim Sort" — and posted the full Zen in his memory; one wrote of hoping newer Python users keep it alive "in an agentic era."<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <div class="pullquote">"He never treated you like an idiot, never dismissed your concerns out of hand, always answered and explained."<span class="attr">— a reply in the Python memorial thread</span></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Cloud Desk</div>
+    <h2 class="headline">Amazon open-sources an AWS API emulator it says agents wrote entirely</h2>
+    <div class="byline"><span>Cloud Desk</span><span class="score">★ 480 pts · 162 cmts</span></div>
+    <p class="first">Amazon has open-sourced AWS Emulator, a local program that serves AWS API endpoints so software can be built and tested without calling AWS or holding an AWS account; it ships with no additional service fee, and Amazon's announcement describes the code as "100% written by autonomous AI agents," thousands of them, writing tests and fixing code without human review.<sup class="cite"><a href="#src5">[5]</a></sup><sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <p>It runs in server mode — point an SDK or the CLI at localhost:9297 over a self-signed certificate — or in embedded mode as a Rust dev-dependency spun up per test, and an agent skill installs it via the AWS CLI. Fidelity varies by service: scores ship with each release, and gaps are tracked in an <i>issues/</i> directory split between "things that do not work" and "things that now work."<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <figure>
+      <img src="images/aws-emulator.png" alt="GitHub repository card for aws/aws-emulator" loading="lazy">
+      <figcaption>The repository's share card. <span class="cr">github.com</span></figcaption>
+    </figure>
+    <p>The thread took the announcement's provenance seriously and skeptically: one reader measured the checkout at 2.2&nbsp;GB — 1.3&nbsp;GB of it <i>.git</i> — and asked whether the agent-built method "is more of a sly marketing stunt or a real indication that this methodology is practical and economical."<sup class="cite"><a href="#src7">[7]</a></sup> Others said they would wait to see whether Amazon maintains it before building on it, pointing at Testcontainers-based alternatives.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+  </div>
+
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="row3">
+
+  <div class="cell">
+    <div class="kicker">Field Desk</div>
+    <h2 class="headline">A false smoke alarm nearly drowned Jane Street's only NYC datacenter</h2>
+    <div class="byline"><span>Field Desk</span><span class="score">★ 334 pts · 166 cmts</span></div>
+    <p class="first">A systems engineer's firsthand account details the night construction dust tripped the smoke detector in Jane Street's New York datacenter — a machine room the trading firm kept on the 33rd floor of 1 New York Plaza, across the hall from its trading floor, so that out-of-control systems could always be stopped by pulling power cables.<sup class="cite"><a href="#src8">[8]</a></sup> The alarm was wired to shut down the CRAC cooling units, to keep air from feeding any fire — which left a room full of racks climbing in temperature while the sprinkler lines above them pressurized.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <p>The author, who lived a nine-minute walk away, ran in and pulled the power on every device, cabinet by cabinet, watching the monitor climb: 141°F, 143, 143.5, 143.6 — then stop, short of the roughly-150°F heat plugs that would have opened the sprinklers onto the floor.<sup class="cite"><a href="#src8">[8]</a></sup> New York's markets were closed for the day; the firm was trading again the next morning.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <p>The post's institutional punchline is an OCaml daemon that asks every Linux server for its onboard temperature each minute and alarms on the fleet-wide mean — chosen because per-server heat is routine and CRAC telemetry proved less trustworthy than the machines themselves.<sup class="cite"><a href="#src8">[8]</a></sup> The office datacenter survived the review that followed; Hurricane Sandy ended it.<sup class="cite"><a href="#src8">[8]</a></sup> The thread contributed its own proximity-to-work war stories, and one reader's question about why a machine room had sprinklers at all rather than gas suppression drew the author's reply that other Jane Street rooms had it.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Hardware Desk</div>
+    <h2 class="headline">Voltage glitching turns a mining card into an A100 by blowing fuses</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score">★ 238 pts · 98 cmts</span></div>
+    <p class="first">A researcher reports a voltage-fault-injection vulnerability on NVIDIA's GA100 die that allows an operator to blow arbitrary fuses — and used it to convert a CMP 170HX 8&nbsp;GB mining card into what the post calls "effectively an A100-80G": 81,920&nbsp;MiB reported, 124 compute units at 1410&nbsp;MHz, and roughly 1.2× the throughput of a retail A100, whose yield-safe configuration ships with 108 SMs.<sup class="cite"><a href="#src10">[10]</a></sup> The trick works because several GA100 restrictions relax, rather than tighten, when more fuses are blown — the inverse of the usual assumption that a blown fuse only removes capability.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <p>The disclosure was coordinated: the findings went to NVIDIA's product security team ahead of publication, and the post went out after an independent researcher found the same vulnerability.<sup class="cite"><a href="#src10">[10]</a></sup> CMP-disabled features including NVLink and PCIe Gen4 are unlockable by the same route; NVJPG, NVDEC and MIG were not tested.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <p>The thread's sharpest objection is yield: many cut-down GA100 parts are cut down because fabrication faults disabled silicon, so a re-fused die may carry defects NVIDIA's own testing caught — though several readers countered that late-run yields are often good enough that segmentation, not salvage, decides the SKU.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Graphics Desk</div>
+    <h2 class="headline">Hyper-realistic sand runs grain by grain in the browser</h2>
+    <div class="byline"><span>Graphics Desk</span><span class="score">★ 255 pts · 57 cmts</span></div>
+    <p class="first">A WebGL2 and JavaScript sand simulator runs in the browser on phones, tablets and desktops: drag to push grains, tilt the phone to slide them, shake to scatter them, per the project page.<sup class="cite"><a href="#src12">[12]</a></sup> The page is otherwise nearly wordless — the toy is the documentation — and it topped 255 points on a day of heavyweight competition.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <p>The thread's practical findings: it works best with the phone lying flat, screen up, with orientation locked — otherwise every tilt resets the layout — and it is a sandbox, not a falling-sand game. "It took me a while to realize this isn't a falling sand (Powder Toy) type game," one reader wrote; several reported the pour simply looked wrong until the device was flat.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+  </div>
+
+</div>
+
+<!-- 6. SECURITY & PRACTICAL -->
+<div class="sec2">
+
+  <div class="cell">
+    <div class="section-label"><span>The Science Desk</span></div>
+
+    <div class="kicker">Research · Model Internals</div>
+    <h2 class="headline">An eight-hour LLM weight edit turns out to be a linear program</h2>
+    <div class="byline"><span>Science Desk</span><span class="score">★ 219 pts · 33 cmts</span></div>
+    <p class="first">A new analysis of MIT CSAIL's "Sparks of Weight-Space Programming" — in which GPT-6 Astra edited 0.016% of Qwen3.5-0.8B's weights and lifted MATH-500 accuracy from 7.9% to 48.1% — finds the celebrated edit is mechanically a rank-1 push against the residual stream's "loop direction": Astra spent about 8 hours and 28 forward passes finding what two linear-program solves of roughly a minute each reproduce with 8× fewer changed weights.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <p>The post works the mechanism: Qwen3.5-0.8B loops, 93% of its base MATH-500 answers hitting the 32,768-token limit; the edit subtracts each column's component along the loop direction in two layers, and choosing which columns and how hard is exactly a sparse LP.<sup class="cite"><a href="#src14">[14]</a></sup> A plain inference-time steering vector at the right strength recovers "essentially the whole fix" — 57.8 on the dev set against the LP edit's 62.5 and the base model's 10.9 — with a narrow window: half strength and the loops return, double and reasoning collapses.<sup class="cite"><a href="#src14">[14]</a></sup> The thread's shortest gloss: what took a frontier model 20.3 hours is "a linear optimization algorithm from the 01940s editing a Qwen model with billions of parameters."<sup class="cite"><a href="#src15">[15]</a></sup></p>
+
+    <div class="kicker" style="margin-top:14px">Research · Policy</div>
+    <h2 class="headline" style="font-size:20px">Essay: the null results pile argues for institutionalized humility</h2>
+    <div class="byline"><span>Science Desk</span><span class="score">★ 168 pts · 99 cmts</span></div>
+    <p class="first">Experimental History's latest essay proposes — with a straight face carried mostly by the title — that policy makers sacrifice a goat before launching major programs, the point being "procedurally-induced humility": a ritual reminder that we know nothing, because an alarming share of well-intentioned interventions do not work.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <p>The evidence table is the substance: $3 billion in 2009 School Improvement Grants with no detectable effect; chief diversity officers hired 2001–2019 with no measured diversity change; a $280 million Afghan jobs program whose results cannot be stated; a 10-year RCT across 531 Peruvian schools finding zero academic effect of One Laptop Per Child; and one of four pro-vaccine messages that accidentally increased parents' belief vaccines cause autism.<sup class="cite"><a href="#src16">[16]</a></sup> The essay's frame is sociologist Peter Rossi's 1987 "Iron Law of Evaluation" — the net expected impact of a large social program is zero — and the thread argued over whether such programs exist to work or to be seen working.<sup class="cite"><a href="#src16">[16]</a></sup><sup class="cite"><a href="#src17">[17]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Practical Tech Corner</span></div>
+
+    <div class="kicker">Tools · Agents</div>
+    <h2 class="headline">Atuin syncs agent sessions across machines and harnesses</h2>
+    <div class="byline"><span>Practical Tech Corner</span><span class="score">★ 168 pts · 62 cmts</span></div>
+    <p class="first">Atuin 18.24 adds Threads: one searchable, synchronized history for agent sessions across machines — start a task in Claude Code on a dev server, resume it in Codex on a laptop, with the full transcript attached.<sup class="cite"><a href="#src18">[18]</a></sup> Sync is end-to-end encrypted when enabled, over a hosted server, a self-hosted one, or fully local; capturing agent sessions is opt-in, and supported harnesses are Claude Code, Codex, Pi, omp and OpenCode.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <p>An MCP server, installed as <i>atuin mcp</i>, lets later agents search those sessions themselves — the post's worked example is a triage agent that finds a prior investigation of a misconfigured object-store key and fixes it without redoing the diagnosis.<sup class="cite"><a href="#src18">[18]</a></sup> The thread split on the risk model: one reader has spent months sandboxing agents from each other and scanning transcripts for leaked credentials, so a unified session store is precisely what he avoids; another answered that the self-hosted backend removes the need to trust anyone.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+
+    <div class="kicker" style="margin-top:14px">AI · APIs</div>
+    <h2 class="headline" style="font-size:20px">Google's Decisions API scores 1,000 questions in one pass</h2>
+    <div class="byline"><span>Practical Tech Corner</span><span class="score">★ 141 pts · 45 cmts</span></div>
+    <p class="first">Google DeepMind introduced the Gemini Decisions API with a new model, gemini-decision-1: pass one multimodal input — text, images, audio, video or PDFs, up to 256K tokens — plus up to 1,000 independent yes/no, multiple-choice (2–255 options) or ordered-rubric questions, and receive probabilities and confidence scores in a single forward pass rather than token-by-token text.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <figure>
+      <img src="images/gemini-decisions.png" alt="Google blog header image for the Gemini Decisions API announcement" loading="lazy">
+      <figcaption>The announcement's header image. <span class="cr">blog.google</span></figcaption>
+    </figure>
+    <p>Quoted numbers: 150–250&nbsp;ms end-to-end latency, $0.10 per million input tokens, zero output tokens billed, and — on Google's own benchmark suite — nearly 5× cheaper than Gemini 3.5 Flash-Lite on the Interactions API.<sup class="cite"><a href="#src20">[20]</a></sup> The thread read it as Google shipping its own decision-model API and noted audio and video input as the differentiator, alongside the usual wariness about how long any given Google endpoint stays alive.<sup class="cite"><a href="#src21">[21]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="pullquote" style="font-size:17px">"You can just do things. I'm not an archaeologist, so I didn't know this was supposed to be hard."
+      <span class="attr">— Pietro Miotti, on the agent-led Maya survey<sup class="cite"><a href="#src1">[1]</a></sup></span></div>
+
+    <div class="statbox">
+      <div class="t">The Day in One Line</div>
+      <table>
+        <tr><td>Ten fresh stories, 3,536 points: agents found — and re-found — a Maya site, Python marked the death of Tim Peters, and a sprinkler head never fired over Jane Street's racks.</td></tr>
+      </table>
+    </div>
+
+    <div class="classifieds">
+      <div class="t">Classifieds — Rates: 1 Karma per line</div>
+      <p>FOUND: one Maya civic centre, already mapped in Estrada-Belli et al. 2025. Waiting at INAH for any further claims.</p>
+      <p>WANTED: mean temperature, one Linux fleet, once a minute. Must be computable in OCaml.</p>
+      <p>ANSWERS: up to 1,000 yes/no, choice and rubric questions per input. $0.10 per million input tokens; output tokens free.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" role="img" aria-label="Points per story at snapshot 22:00 UTC, November 11, 2026" style="width:100%; height:auto; display:block">
+      <title>Points per story, snapshot 22:00 UTC</title>
+      <defs>
+        <pattern id="hatchInk" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f3ecdd"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+        <pattern id="hatchRed" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f3ecdd"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <line class="grid" x1="58"  y1="6" x2="58"  y2="344"/>
+      <line class="grid" x1="116" y1="6" x2="116" y2="344"/>
+      <line class="grid" x1="173" y1="6" x2="173" y2="344"/>
+      <line class="grid" x1="231" y1="6" x2="231" y2="344"/>
+      <line class="grid" x1="289" y1="6" x2="289" y2="344"/>
+      <line class="grid" x1="347" y1="6" x2="347" y2="344"/>
+      <line class="grid" x1="404" y1="6" x2="404" y2="344"/>
+      <line class="grid" x1="462" y1="6" x2="462" y2="344"/>
+      <line class="grid" x1="520" y1="6" x2="520" y2="344"/>
+      <!-- bars -->
+      <rect x="0.5" y="22"  width="508" height="15" fill="url(#hatchInk)"/>
+      <rect x="0.5" y="56"  width="377" height="15" fill="url(#hatchInk)"/>
+      <rect x="0.5" y="90"  width="277" height="15" fill="url(#hatchInk)"/>
+      <rect x="0.5" y="124" width="193" height="15" fill="url(#hatchInk)"/>
+      <rect x="0.5" y="158" width="147" height="15" fill="url(#hatchInk)"/>
+      <rect x="0.5" y="192" width="138" height="15" fill="url(#hatchInk)"/>
+      <rect x="0.5" y="226" width="127" height="15" fill="url(#hatchInk)"/>
+      <rect x="0.5" y="260" width="97"  height="15" fill="url(#hatchInk)"/>
+      <rect x="0.5" y="294" width="97"  height="15" fill="url(#hatchInk)"/>
+      <rect x="0.5" y="328" width="81"  height="15" fill="url(#hatchInk)"/>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18">Maya site (agents) &#8224;</text>
+      <text class="barlabel" x="0" y="52">Tim Peters 1952&#8211;2026</text>
+      <text class="barlabel" x="0" y="86">AWS emulator</text>
+      <text class="barlabel" x="0" y="120">Jane Street datacenter</text>
+      <text class="barlabel" x="0" y="154">WebGL2 sand</text>
+      <text class="barlabel" x="0" y="188">A100 mining card</text>
+      <text class="barlabel" x="0" y="222">Weight-space LP</text>
+      <text class="barlabel" x="0" y="256">Goat sacrifices</text>
+      <text class="barlabel" x="0" y="290">Atuin Threads</text>
+      <text class="barlabel" x="0" y="324">Gemini Decisions</text>
+      <!-- values -->
+      <text class="barval" x="515" y="34" font-weight="700">880 &#9733; &#183; 318 cmts</text>
+      <text class="barval" x="384" y="68">653 &#183; 64</text>
+      <text class="barval" x="284" y="102">480 &#183; 162</text>
+      <text class="barval" x="200" y="136">334 &#183; 166</text>
+      <text class="barval" x="154" y="170">255 &#183; 57</text>
+      <text class="barval" x="145" y="204">238 &#183; 98</text>
+      <text class="barval" x="134" y="238">219 &#183; 33</text>
+      <text class="barval" x="104" y="272">168 &#183; 99</text>
+      <text class="barval" x="104" y="306">168 &#183; 62</text>
+      <text class="barval" x="88"  y="340">141 &#183; 45</text>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0.5" y1="352" x2="520" y2="352"/>
+      <!-- tick labels -->
+      <text class="barval" x="0" y="366" fill="#3d352a" text-anchor="start">0</text>
+      <text class="barval" x="58" y="366" fill="#3d352a" text-anchor="middle">100</text>
+      <text class="barval" x="116" y="366" fill="#3d352a" text-anchor="middle">200</text>
+      <text class="barval" x="173" y="366" fill="#3d352a" text-anchor="middle">300</text>
+      <text class="barval" x="231" y="366" fill="#3d352a" text-anchor="middle">400</text>
+      <text class="barval" x="289" y="366" fill="#3d352a" text-anchor="middle">500</text>
+      <text class="barval" x="347" y="366" fill="#3d352a" text-anchor="middle">600</text>
+      <text class="barval" x="404" y="366" fill="#3d352a" text-anchor="middle">700</text>
+      <text class="barval" x="462" y="366" fill="#3d352a" text-anchor="middle">800</text>
+      <text class="barval" x="520" y="366" fill="#3d352a" text-anchor="middle">900</text>
+      <!-- legend -->
+      <text class="barval" x="0" y="386" fill="#3d352a">&#9733; = points &#183; cmts = comments &#183; &#8224; most-discussed story of the day &#183; red hatch (unused today) marks Apple coverage</text>
+    </svg>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories typeset</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>10</td></tr>
+        <tr><td>Follow-ups</td><td>0</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>3,536</td></tr>
+        <tr><td>Combined comments</td><td>1,104</td></tr>
+        <tr><td>Most-discussed</td><td>Maya site · 318</td></tr>
+        <tr><td>Snapshot</td><td>22:00 UTC</td></tr>
+      </table>
+    </div>
+
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>Unmapped, unregistered.</b> The Maya post's headline says the agents found an "unmapped" site; the author's own 11 November update states the site was mapped in Estrada-Belli et al. 2025 and that his agents missed it in the literature search. What was missing was the INAH register entry, not the mapping.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+      <p><b>"Effectively an A100-80G."</b> The glitched CMP 170HX reports 124 compute units against a retail A100's yield-safe 108, and its NVJPG, NVDEC and MIG unlocks were not tested — the equivalence claim rests on nvidia-smi output and benchmarks the author ran, on a die re-fused outside NVIDIA's test coverage.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+      <p><b>Nearly 5× cheaper, by one comparison.</b> Google's Decisions API pricing claim is measured against Gemini 3.5 Flash-Lite on the Interactions API, on Google's own benchmark suite, and counts zero billed output tokens; it is not a general cheaper-than-Gemini claim.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+      <p><b>"100% written by autonomous AI agents."</b> Amazon's phrase describes authorship of AWS Emulator's code; the emulator's fidelity to AWS APIs varies by service, per the repository's own fidelity scores and issues tracker, and the README bars production workloads and security testing outright.<sup class="cite"><a href="#src5">[5]</a></sup><sup class="cite"><a href="#src6">[6]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher's Note</div>
+  <p>The Afternoon Edition leads with the Maya rediscovery — a site the register lacked and the literature already held — and carries a front page that turned over completely since the morning run: ten fresh stories, no follow-ups, nothing carried in the digest. The Language Desk marks the death of Tim Peters; the Cloud Desk weighs an emulator its maker says agents wrote; three stories ran without art for want of any. — <span class="sig">The Herald</span></p>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="section-label"><span>Sources</span></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]">Pietro Miotti, "My AI Agents (Re)discovered a Maya Site in 72 Hours," pietromiotti.com — <a href="https://pietromiotti.com/latest/maya-site/">pietromiotti.com/latest/maya-site</a></li>
+    <li data-n="[2]">Hacker News thread 50452455 — <a href="https://news.ycombinator.com/item?id=50452455">news.ycombinator.com/item?id=50452455</a></li>
+    <li data-n="[3]">Guido van Rossum, "In Memoriam: Tim Peters 1952–2026," Python Discourse — <a href="https://discuss.python.org/t/in-memoriam-tim-peters-1952-2026/110028">discuss.python.org</a></li>
+    <li data-n="[4]">Hacker News thread 50450488 — <a href="https://news.ycombinator.com/item?id=50450488">news.ycombinator.com/item?id=50450488</a></li>
+    <li data-n="[5]">"AWS Emulator README," aws/aws-emulator, GitHub — <a href="https://github.com/aws/aws-emulator">github.com/aws/aws-emulator</a></li>
+    <li data-n="[6]">Matthew Goldberg, "How we built the agents that built AWS Emulator," About Amazon, Nov 11, 2026 — <a href="https://www.aboutamazon.com/news/aws/how-autonomous-ai-agents-built-aws-emulator">aboutamazon.com</a></li>
+    <li data-n="[7]">Hacker News thread 50456631 — <a href="https://news.ycombinator.com/item?id=50456631">news.ycombinator.com/item?id=50456631</a></li>
+    <li data-n="[8]">Michael Bacarella, "How a false smoke alarm almost drowned Jane Street's only NYC datacenter," Nov 10, 2026 — <a href="https://michael.bacarella.com/2026/11/10/false-smoke-alarm-jane-street-datacenter/">michael.bacarella.com</a></li>
+    <li data-n="[9]">Hacker News thread 50455394 — <a href="https://news.ycombinator.com/item?id=50455394">news.ycombinator.com/item?id=50455394</a></li>
+    <li data-n="[10]">"Using voltage glitching to unleash the A100 in my mining card," Kate's blog, Nov 10, 2026 — <a href="https://blog.kate.land/posts/using-voltage-glitching-to-unlock-the-a100/">blog.kate.land</a></li>
+    <li data-n="[11]">Hacker News thread 50451903 — <a href="https://news.ycombinator.com/item?id=50451903">news.ycombinator.com/item?id=50451903</a></li>
+    <li data-n="[12]">"Sand — Hyper-Realistic Sand Simulator in Your Browser" — <a href="https://av.github.io/safe-sand/">av.github.io/safe-sand</a></li>
+    <li data-n="[13]">Hacker News thread 50453288 — <a href="https://news.ycombinator.com/item?id=50453288">news.ycombinator.com/item?id=50453288</a></li>
+    <li data-n="[14]">Nathan Barry, "Can a Linear Program Do Weight-Space Programming?" nathan.rs, Nov 2026 — <a href="https://nathan.rs/posts/weight-space-lp/">nathan.rs</a></li>
+    <li data-n="[15]">Hacker News thread 50452655 — <a href="https://news.ycombinator.com/item?id=50452655">news.ycombinator.com/item?id=50452655</a></li>
+    <li data-n="[16]">Adam Mastroianni, "We need more goat sacrifices," Experimental History — <a href="https://www.experimental-history.com/p/we-need-more-goat-sacrifices">experimental-history.com</a></li>
+    <li data-n="[17]">Hacker News thread 50452652 — <a href="https://news.ycombinator.com/item?id=50452652">news.ycombinator.com/item?id=50452652</a></li>
+    <li data-n="[18]">"Atuin Threads: All your agent sessions on every machine," The Atuin Blog — <a href="https://blog.atuin.sh/threads-agent-sessions/">blog.atuin.sh</a></li>
+    <li data-n="[19]">Hacker News thread 50453637 — <a href="https://news.ycombinator.com/item?id=50453637">news.ycombinator.com/item?id=50453637</a></li>
+    <li data-n="[20]">Min Choi &amp; Felix Yu, "Gemini Decisions API: Fast, calibrated multimodal decisions," Google blog, Nov 11, 2026 — <a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/">blog.google</a></li>
+    <li data-n="[21]">Hacker News thread 50456791 — <a href="https://news.ycombinator.com/item?id=50456791">news.ycombinator.com/item?id=50456791</a></li>
+  </ol>
+  <p class="method">Methodology — Snapshot taken 2026-11-11 at 22:00 UTC from the Algolia front-page API (30 candidates). Story ids were checked against the previous four editions in this archive's manifest; all ten chosen stories were fresh (no follow-ups, no digest, no second wire). Every article, thread, image and number above was fetched during this run; comments are quoted or closely paraphrased from the Algolia items API. Figures are each story's declared og:image, saved locally. Totals: 3,536 points and 1,104 comments across the ten stories.</p>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <div>The Hacker Herald — Typeset from the Hacker News front page</div>
+  <div>&#10087; Printed on 100% recycled bandwidth &#10087;</div>
+  <div><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</div>
+</footer>
+
+</body>
+</html>
