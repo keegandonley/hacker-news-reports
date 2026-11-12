@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 12, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page · Snapshot 22:00 UTC</div>
+  <div class="mid">Afternoon Edition</div>
+  <div class="r">10 Stories · 5,869 Points · 4,449 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type — a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Thursday, November 12, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Industry</span><b>Huang Resigns From Nvidia</b>
+    The board says Jensen Huang quit as president, CEO and director effective immediately amid a spying scandal; CFO Colette Kress is interim chief and the stock closed down 4.3 percent.</div>
+  <div class="cell"><span class="tag">AI · Markets</span><b>Anthropic Files Its IPO Roadshow</b>
+    The public-benefit-corporation filing page shows $17.0B Q3 revenue, up more than 12x year over year, against a $23.3B net loss that is mostly a $21.9B non-cash charge.</div>
+  <div class="cell"><span class="tag">AI · Models</span><b>Gemini 4 Hydrogen Ships</b>
+    Google's new execution model undercuts its own Argon on one intelligence index, is priced flat at $1.50/$7.50 per million tokens over a one-million-token context, and lands in Search today.</div>
+  <div class="cell"><span class="tag">Cloud</span><b>Exchange Online Degrades in the Americas</b>
+    Microsoft pauses all deployments while users across the Americas cannot reach mailboxes; the status page itself served errors behind Azure Front Door.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+
+  <div class="cell main">
+    <div class="kicker">AI Desk · Industry</div>
+    <h2 class="headline">Jensen Huang has resigned as Nvidia's chief executive, the board says, effective immediately</h2>
+    <h3 class="deck">CFO Colette Kress takes over as interim chief while the company's retained investigators probe Huang's affair with a woman U.S. intelligence suspects spied for China</h3>
+    <div class="byline"><span>From the AI Desk</span><span class="score">★ 2488 pts · 2410 comments</span></div>
+    <p class="first">SANTA CLARA, CALIFORNIA — Nvidia's board of directors announced Thursday that Jensen Huang, 63, has resigned as president, chief executive officer and member of the board, effective immediately, ending a 33-year run as the only CEO of the company he co-founded in 1993.<sup class="cite"><a href="#src1">[1]</a></sup> Colette Kress, chief financial officer since 2013, becomes interim CEO while keeping the CFO title; the board has opened a permanent-successor search covering internal and external candidates.<sup class="cite"><a href="#src1">[1]</a></sup> The decision came amid an investigation into Huang's affair with Alice Huang (no relation), a Singapore-based Megaspeed International executive whom U.S. intelligence agencies suspect was spying for China; the board had been preparing to oust him, two sources confirmed to CBS News on Wednesday night.<sup class="cite"><a href="#src1">[1]</a></sup> The Associated Press article behind the thread's link met this paper's bot wall; the account above is sourced from CBS News and CNET reporting and the announcement quoted in the thread.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup><sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The reporting around the resignation is layered. The New York Times reported Wednesday that five employees alleged Huang was also romantically involved with a subordinate, vice president of healthcare Kimberly Powell; Reuters, after the announcement, reported a second employee relationship; and The Information tied Alice Huang to a network that facilitated $7.5 billion in chip sales to China, with U.S. investigators saying she gained access to 240,000 export-banned chips. Megaspeed is under investigation in the U.S. and Singapore for allegedly smuggling them into China. The board has retained Joon H. Kim, a former acting U.S. attorney for the Southern District of New York, and Wachtell, Lipton, Rosen &amp; Katz to run an independent investigation; a proposed class action was filed Monday.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <p>Nvidia shed almost $500 billion in value as the news broke and closed Thursday down 4.3 percent at $166.19, down from above $240 in October.<sup class="cite"><a href="#src1">[1]</a></sup> Sen. Elizabeth Warren said the departure "doesn't absolve" the company: "NVIDIA executives and NVIDIA's board of directors still owe Congress answers about the company's compliance with U.S. export controls."<sup class="cite"><a href="#src1">[1]</a></sup> The thread — at 2,410 comments the most-discussed of the day — argued over who arranged the exit and what the chip-smuggling investigation will find; this morning's paper reported the ouster preparation, and the afternoon thread carries the resignation itself.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <div class="pullquote" style="font-size:17px">"The sudden resignation of Jensen Huang is about more than succession at the world's most important AI chipmaker. Nvidia's leadership crisis is a stress test for the AI boom."<span class="attr">— Stephanie Balaouras, Forrester, to CNET<sup class="cite"><a href="#src2">[2]</a></sup></span></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">AI Desk · Markets</div>
+    <h2 class="headline">Anthropic publishes its IPO roadshow, with $17 billion of quarterly revenue in the frame</h2>
+    <div class="byline"><span>From the AI Desk</span><span class="score">★ 735 pts · 745 cmts</span></div>
+    <p class="first">Anthropic has put up its initial-public-offering roadshow page, presenting Q3 2026 revenue of $17.0 billion — up more than 12 times year over year — with more than 11,900 customers at or above $100,000 in trailing-twelve-month revenue, a more-than-fourfold compute-efficiency gain since Q1 2025, and a 15 percent adjusted operating margin.<sup class="cite"><a href="#src4">[4]</a></sup> The headline net loss of $23.3 billion carries a footnote: $21.9 billion of it is a non-cash charge from the increase in the fair value of convertible notes, derivatives and SAFEs as the company's own valuation rose.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <p>The page leans on named customers — Bristol Myers Squibb, Accenture, AIG — with figures like 50,000-plus employees holding Claude access and one legal-software firm recapturing 4.3 non-billable hours per lawyer weekly across a 31-firm study.<sup class="cite"><a href="#src4">[4]</a></sup> The company frames the offering as a public benefit corporation "dedicated to securing [AI's] benefits and mitigating its risks."<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <p>The thread's top comment was one word long — "enshittification" — and the replies took it seriously, trading local-LLM setups as the hedge against a public-company Anthropic; one reader's answer was simply a capable laptop, llama.cpp or Ollama, and a harness.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <figure>
+      <img src="images/anthropic-ipo.jpg" alt="Anthropic IPO roadshow share card" loading="lazy">
+      <figcaption>The roadshow page's share card. <span class="cr">ipo.anthropic.com</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">AI Desk · Models</div>
+    <h2 class="headline">Google ships Gemini 4 Hydrogen, a fast execution model priced under its own frontier tier</h2>
+    <div class="byline"><span>From the AI Desk</span><span class="score">★ 385 pts · 251 cmts</span></div>
+    <p class="first">Google introduced Gemini 4 Hydrogen on 12 November, an execution model for "everyday coding and agentic workflows" that sits below the frontier Carbon and Argon tiers but beats Argon on the Artificial Analysis Intelligence Index at its default thinking level — 51 to 50, reaching 54 at a new xhigh setting.<sup class="cite"><a href="#src7">[7]</a></sup> Pricing is flat across the entire one-million-token context window: $1.50 per million input tokens, $7.50 per million output.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>Against Gemini 3.8 Flash, Google says Hydrogen finishes tasks 2.5 times faster at the high default setting, more than triples Terminal-Bench 4.1 scores (57 percent versus 18.2), and cuts fabricated claims by more than five times; it ranks fifth on Agent Arena and leads its class on HLE-Diamond at 58.8 percent.<sup class="cite"><a href="#src7">[7]</a></sup> It rolls out today across Search for all users, the Gemini app, AI Studio, Sheets, and Antigravity for paid subscribers, with four thinking levels from low to xhigh.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>The thread argued about which tier actually does the world's work — one reader called this class "the workhorses" of everyday use, another countered that frontier-tier models on a subscription get more done, and a third noted enterprises past 150 seats are still on API pricing.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <figure>
+      <img src="images/gemini4.jpg" alt="Gemini 4 Hydrogen key art lockup" loading="lazy">
+      <figcaption>The announcement's key art. <span class="cr">blog.google</span></figcaption>
+    </figure>
+  </div>
+
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="row3">
+
+  <div class="cell">
+    <div class="kicker">Follow-Up · Language Desk</div>
+    <h2 class="headline">Jane Street's Socratic-tutor skill keeps climbing, and the thread turns on its novelty</h2>
+    <div class="byline"><span>Language Desk</span><span class="score">★ 635 pts · ▲ +223 since the last edition</span></div>
+    <p class="first">Jane Street's <i>socratic-tutor</i> agent skill, covered in this morning's edition at 412 points, has grown 54 percent to 635 — one day after landing on the repository's front page. The skill itself is unchanged: a roughly 100-line prompt that diagnoses a learner with 3–5 questions, tracks subskills at levels 0–5, and teaches "primarily by asking questions."<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <p>What changed is the argument underneath it. A reader pointed at <i>bevibing/socrates-skill</i>, a similar skill that predates Jane Street's release; the reply: a GitHub search returns 92 repositories for "socratic tutor skill," and Socratic questioning is a well-known technique independently attached to LLM tools many times over. One commenter's own first socratic-tutor skill is dated 2 December 2024.<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <p>The rest of the thread split on why the repository carries 6.3 thousand stars and 434 forks at all. "It's really just because it's Jane Street," one reader offered; another noted that many of those forks are bookmarks, and that pure-markdown skills are "trivially recreatable — the value is the idea, not the artifact."<sup class="cite"><a href="#src6">[6]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Language Desk · Essay</div>
+    <h2 class="headline">A formal-methods essay works through why correct software resists being proved correct</h2>
+    <div class="byline"><span>Language Desk</span><span class="score">★ 336 pts · 150 cmts</span></div>
+    <p class="first">An extended talk transcript, "Why Writing Correct Software Is Hard — and why math (alone) won't help us," walks from Hilbert's program through Gödel, Church and Turing to a quantified claim: the function tying a program's size to the difficulty of proving anything about it outgrows every computable function. The Busy Beaver bound for six-state machines already exceeds 7.4 × 10<sup>36534</sup>, and a 1,919-state Turing machine exists whose termination is independent of ZFC — a program comparable to 100–200 lines of Python that mathematics cannot settle even in principle.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>The essay's second half moves from impossibility to cost: verification is not just undecidable in general but infeasibly expensive in the finite cases that matter, which is why "CS is not math" — mathematics studies the small circle of fully provable objects, and computer science largely lives outside it.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>The thread's best-remembered line was borrowed, not new: "a computer scientist has as much to do with computers as an astronomer has to do with telescopes" — which astronomers in the thread promptly disputed. More substantively, readers welcomed a treatment of verification that does not assume AI will simply make proving easy: building programs that can be verified at all remains a hard design problem.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Tools Desk · Linux</div>
+    <h2 class="headline">bootvine replaces the boot log's wall of text with a live tree of systemd jobs</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score">★ 336 pts · 129 cmts</span></div>
+    <p class="first">bootvine, a new Rust tool (85 percent of its codebase) published on Codeberg, draws the units still pending during boot as a live tree on the console — in the spirit of nix-output-monitor — and uses the space the tree leaves for a timeline of the slowest units that already ran. It replaces scrolling kernel and systemd lines, follows shutdowns, answers LUKS passphrase prompts in place, and shows why a unit failed with its last journal lines.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>It needs systemd 246 or newer as PID 1 and a systemd initrd to show the full boot; a Nix flake boots a sample NixOS machine with slow and failing units in QEMU without touching the host. The guide documents the screen, per-distribution installs, and the architecture. License: GPL-3.0-or-later.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The thread's Gentoo wing asked what the OpenRC equivalent looks like and found the answer reflective: on minimal systems the kernel boot is already faster than the BIOS work that precedes it. One longtime systemd opponent conceded the point of the exercise: "I hate systemd with a burning passion, but this is the first time I ever thought it might be slightly redeemed."<sup class="cite"><a href="#src12">[12]</a></sup></p>
+  </div>
+
+</div>
+
+<!-- 6. CLOUD, PRACTICAL, CULTURE -->
+<div class="sec2">
+
+  <div class="cell">
+    <div class="section-label"><span>The Cloud Desk</span></div>
+
+    <div class="kicker">Cloud · Outage</div>
+    <h2 class="headline">Microsoft 365 runs a "service degradation" as Exchange Online mailboxes go unreachable</h2>
+    <div class="byline"><span>Cloud Desk</span><span class="score">★ 285 pts · 311 cmts</span></div>
+    <p class="first">Microsoft is investigating reports of users unable to access Exchange Online mailboxes "through multiple connection methods in the Americas," tracked as EX1550543 with a "Service Degradation" banner on Microsoft 365 for business and enterprise. The 7:30 p.m. UTC update, quoted in the thread: "We're aggressively pursuing all pathways to reduce impact. As a precaution, we've paused all deployments and configuration changes within the affected environment."<sup class="cite"><a href="#src13">[13]</a></sup><sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <p>The status page itself did not inspire confidence: readers reported it loading very slowly and, at times, returning a 502 from the Azure Front Door service in front of it — so the primary public signal of the outage was itself intermittently down.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <p>The thread re-ran the on-premises argument with numbers attached. One operator wrote that the largest site he works with, which moved to M365 hybrid last year, "has incurred more Exchange downtime today than they had all of last year with their on-prem Exchange servers"; the rejoinder, from another reader, was that redundancy inside the service was never the same as redundancy of the service — "from the customer standpoint, the service as a whole is a single point of failure: it either works or it doesn't."<sup class="cite"><a href="#src14">[14]</a></sup></p>
+
+    <div class="pullquote" style="font-size:16px">"I was assured that with cloud we wouldn't have a single point of failure like we did on-premise. I must have fallen asleep at my desk."<span class="attr">— a reader on the Exchange outage thread<sup class="cite"><a href="#src14">[14]</a></sup></span></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Practical Tech Corner</span></div>
+
+    <div class="kicker">Field · On-Device AI</div>
+    <h2 class="headline">smolmaxxing runs 16-billion-parameter models on a TV box with one gigabyte of RAM</h2>
+    <div class="byline"><span>Practical Tech Corner</span><span class="score">★ 229 pts · 80 cmts</span></div>
+    <p class="first">The smolmaxxing project publishes llama.cpp patches that run 8B and 16B mixture-of-experts models on devices with about one gigabyte of usable memory — so far a Xiaomi TV box and a jailbroken first-generation iPad Air on iOS 12 — by keeping only part of the model in RAM and streaming the rest from flash. "Every number in this repo was measured on the device itself," the README states.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>The mechanisms are concrete: a 1-bit lookup-table kernel written for the Cortex-A55 and repacked 2-bit and ternary formats for the A7, which lacks dot-product instructions; output-vocabulary rows dropped for words a small model rarely emits; hot experts kept in RAM while cold ones are paged from flash with the next layer prefetched; and, on the TV, a headless mode that stops the launcher and Google services while a model runs.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>The author, posting to the thread as the project's developer, said phones, single-board computers and routers are next, and accepted a reader's suggestion for the hardest target on offer — a vape with a screen on it.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <figure>
+      <img src="images/smolmaxxing.png" alt="smolmaxxing repository card with pinching-hand logo" loading="lazy">
+      <figcaption>The repository's card image. <span class="cr">opengraph.githubassets.com</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>The Culture Desk</span></div>
+
+    <div class="kicker">Culture · Legal</div>
+    <h2 class="headline">Nintendo's DMCA notices remove 144 repositories of Switch mod-chip firmware from GitHub</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score">★ 226 pts · 151 cmts</span></div>
+    <p class="first">Four DMCA takedown notices from Nintendo, including one dated 6 November now posted by GitHub, targeted two Switch emulators — Yuzu and Citron Neo — and the firmware for mod chips such as Picofly, which can be soldered to a Switch mainboard to circumvent copy protection. The firmware's 144 repositories were removed in a single sweep; Nintendo's notice says the Switch's technological protection measures "permit the Nintendo Switch console to interact only with legitimate Nintendo video game files."<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>The sweep arrives days after emulators ran the remake of The Legend of Zelda: Ocarina of Time on PC, and TorrentFreak reports copies of the firmware remain hosted elsewhere on GitHub — in 2024, a single Nintendo takedown removed 8,500 copies of Yuzu across 12 mirrors.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>The thread's practical question was where such projects can live at all: self-hosted GitLab or Forgejo instances, providers in jurisdictions where emulators are legal, or a Radicle node over Tor. One reader's legal question went unanswered: backing up a game he owns and running it in an emulator with firmware extracted from his own device — "what law am I breaking?"<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <figure>
+      <img src="images/nintendo.jpg" alt="Nintendo logo artwork" loading="lazy">
+      <figcaption>The article's header image. <span class="cr">ignimgs.com</span></figcaption>
+    </figure>
+
+    <div class="kicker" style="margin-top:14px">Culture · Games</div>
+    <h2 class="headline" style="font-size:20px">The unreleased Quake 4 expansion is playable at last, via openQ4's Awakening Edition</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score">★ 214 pts · 76 cmts</span></div>
+    <p class="first">openQ4 0.14.1, a free open-source engine and game-code replacement for Quake 4, ships the expansion that Raven Software and Ritual Entertainment built but never released: all 13 maps of The Awakening run on openQ4's own code, with the alpha's unfinished pieces — the Valkaryne finale, the beach death-ray turret, the Pain Lord's weak spot — completed where the original content stopped working as designed. Justin Marshall recovered and published the material; openQ4 itself ships none of it, requiring the user's own files.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>The release also brings stable shadow mapping, Vulkan on Windows as the default for new installs, smarter bots that take orders, and experimental Android and OpenXR VR builds — the latter qualified on a single phone and no headset hardware, the project warns. The thread, meanwhile, argued over how much of the write-up was machine-written: "finished by AI," one reader said of the description, to which another replied that a tool with no agency deserves no more credit than a hammer.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <figure>
+      <img src="images/quake4.jpg" alt="openQ4 0.14.1 Awakening Edition release screenshot" loading="lazy">
+      <figcaption>The 0.14.1 release image. <span class="cr">moddb.com</span></figcaption>
+    </figure>
+
+    <div class="classifieds">
+      <div class="t">Classifieds — Rates: 1 Karma per line</div>
+      <p>WANTED: smaller device. 16-billion-parameter models now run on a TV box with 1 GB of RAM; owner has accepted a vape with a screen as the next target.</p>
+      <p>LOST: 144 repositories of Switch mod-chip firmware, last seen behind a DMCA notice; reportedly still on the premises.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+
+  <div class="cell">
+    <div class="section-label"><span>The Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" style="width:100%; height:auto; display:block" role="img" aria-label="Bar chart of the ten stories' points">
+      <defs>
+        <pattern id="hatchInk" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f3ecdd"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+        <pattern id="hatchRed" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f3ecdd"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <line class="grid" x1="42"  y1="6" x2="42"  y2="344"/>
+      <line class="grid" x1="83"  y1="6" x2="83"  y2="344"/>
+      <line class="grid" x1="125" y1="6" x2="125" y2="344"/>
+      <line class="grid" x1="166" y1="6" x2="166" y2="344"/>
+      <line class="grid" x1="208" y1="6" x2="208" y2="344"/>
+      <line class="grid" x1="250" y1="6" x2="250" y2="344"/>
+      <line class="grid" x1="291" y1="6" x2="291" y2="344"/>
+      <line class="grid" x1="333" y1="6" x2="333" y2="344"/>
+      <line class="grid" x1="374" y1="6" x2="374" y2="344"/>
+      <line class="grid" x1="416" y1="6" x2="416" y2="344"/>
+      <line class="grid" x1="458" y1="6" x2="458" y2="344"/>
+      <line class="grid" x1="499" y1="6" x2="499" y2="344"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0.5" y1="352.5" x2="520.5" y2="352.5"/>
+      <!-- tick labels -->
+      <text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text>
+      <text x="42" y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="83" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="125" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text>
+      <text x="166" y="366" font-size="11" fill="#3d352a" text-anchor="middle">800</text>
+      <text x="208" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1000</text>
+      <text x="250" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1200</text>
+      <text x="291" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1400</text>
+      <text x="333" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1600</text>
+      <text x="374" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1800</text>
+      <text x="416" y="366" font-size="11" fill="#3d352a" text-anchor="middle">2000</text>
+      <text x="458" y="366" font-size="11" fill="#3d352a" text-anchor="middle">2200</text>
+      <text x="499" y="366" font-size="11" fill="#3d352a" text-anchor="middle">2400</text>
+      <!-- rows: top = 8 + 34i ; label y=top+10 ; bar y=top+14 h=15 ; value y=top+26 -->
+      <text class="barlabel" x="0" y="18">Huang resigns &#8224;</text>
+      <rect x="0.5" y="22" width="517" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="524" y="34" font-weight="700" fill="#191510">2488 &#9733; · 2410 cmts</text>
+      <text class="barlabel" x="0" y="52">Anthropic IPO</text>
+      <rect x="0.5" y="56" width="153" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="160" y="68" fill="#3d352a">735 · 745</text>
+      <text class="barlabel" x="0" y="86">Socratic Tutor</text>
+      <rect x="0.5" y="90" width="132" height="15" fill="url(#hatchRed)" stroke="#7a1f1f" stroke-width="0.8"/>
+      <text class="barval" x="139" y="102" fill="#3d352a">635 · 146</text>
+      <text class="barlabel" x="0" y="120">Gemini 4 Hydrogen</text>
+      <rect x="0.5" y="124" width="80" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="87" y="136" fill="#3d352a">385 · 251</text>
+      <text class="barlabel" x="0" y="154">Correct software</text>
+      <rect x="0.5" y="158" width="70" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="77" y="170" fill="#3d352a">336 · 150</text>
+      <text class="barlabel" x="0" y="188">bootvine</text>
+      <rect x="0.5" y="192" width="70" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="77" y="204" fill="#3d352a">336 · 129</text>
+      <text class="barlabel" x="0" y="222">Microsoft 365 outage</text>
+      <rect x="0.5" y="226" width="59" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="66" y="238" fill="#3d352a">285 · 311</text>
+      <text class="barlabel" x="0" y="256">smolmaxxing</text>
+      <rect x="0.5" y="260" width="48" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="55" y="272" fill="#3d352a">229 · 80</text>
+      <text class="barlabel" x="0" y="290">Nintendo DMCA sweep</text>
+      <rect x="0.5" y="294" width="47" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="54" y="306" fill="#3d352a">226 · 151</text>
+      <text class="barlabel" x="0" y="324">openQ4 Awakening</text>
+      <rect x="0.5" y="328" width="45" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="52" y="340" fill="#3d352a">214 · 76</text>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">&#9733; = points · cmts = comments · &#8224; most-discussed story of the day · red hatch marks a follow-up from a previous edition</text>
+    </svg>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="statbox">
+      <div class="t">The Day in One Line</div>
+      <table>
+        <tr><td>Nvidia says Jensen Huang has resigned as president, CEO and director, effective immediately, amid the board's investigation of his affair with a suspected Chinese spy; CFO Colette Kress is interim chief, and the stock closed down 4.3 percent at $166.19.</td></tr>
+      </table>
+    </div>
+
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Fresh stories</td><td>9</td></tr>
+        <tr><td>Follow-ups</td><td>1</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>5,869</td></tr>
+        <tr><td>Combined comments</td><td>4,449</td></tr>
+        <tr><td>Top score</td><td>2,488</td></tr>
+        <tr><td>Most-discussed</td><td>2,410 cmts</td></tr>
+      </table>
+    </div>
+
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>"Surpasses Argon."</b> Google's post says Hydrogen beats Argon on the Artificial Analysis Intelligence Index at default settings; the cited margin is 51 to 50, and the higher 54 arrives only at the new xhigh tier. Hydrogen's Agent Arena rank is fifth, which the post also states.</p>
+      <p><b>A $23.3 billion loss, mostly on paper.</b> The IPO page's headline net loss includes a $21.9 billion non-cash charge triggered by Anthropic's own rising valuation; the operating figure Anthropic highlights is a 15 percent adjusted operating margin. The loss is real accounting, but it is not cash burn.</p>
+      <p><b>"Massive" sweep.</b> Of the takedowns IGN reports, the 144 removed repositories were all one project — mod-chip firmware. The two emulators named include Yuzu, which Nintendo effectively took down in 2024; TorrentFreak finds the firmware still hosted elsewhere on GitHub.</p>
+      <p><b>"Finished by modders."</b> openQ4's Awakening runs an unfinished alpha recovered by a collector, with openQ4's own code filling in what never worked — the project says it ships none of the expansion's content. The Android and VR builds are qualified on one phone and no headset respectively.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher's Note</div>
+  <p>The afternoon paper leads with the Nvidia resignation, which this morning's edition last saw as a board preparing to act; the company's own release is quoted through wire reporting because the linked article met our bot wall. Anthropic's IPO roadshow and Google's Gemini 4 Hydrogen fill the front page's AI columns, one follow-up returns — Jane Street's Socratic tutor, up 223 points — and Microsoft's Exchange degradation is covered from the admin-center text and thread, the status page having partly declined to load. Nine stories are fresh; every number is from the 22:00&nbsp;UTC snapshot.</p>
+  <div class="sig">— The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]">CBS News, "Jensen Huang resigns as Nvidia CEO," 12 Nov 2026 — <a href="https://www.cbsnews.com/news/nvidia-ceo-jensen-huang-resigns/">cbsnews.com</a></li>
+    <li data-n="[2]">CNET, "Nvidia CEO Jensen Huang Resigns, Creating a 'Stress Test for the AI Boom'," 12 Nov 2026 — <a href="https://www.cnet.com/tech/services-and-software/nvidia-ceo-jensen-huang-resigns/">cnet.com</a></li>
+    <li data-n="[3]">Hacker News thread 50467087 — <a href="https://news.ycombinator.com/item?id=50467087">news.ycombinator.com</a></li>
+    <li data-n="[4]">Anthropic, Initial Public Offering roadshow page — <a href="https://ipo.anthropic.com/us/">ipo.anthropic.com</a></li>
+    <li data-n="[5]">Hacker News thread 50465829 — <a href="https://news.ycombinator.com/item?id=50465829">news.ycombinator.com</a></li>
+    <li data-n="[6]">Hacker News thread 50438261 — <a href="https://news.ycombinator.com/item?id=50438261">news.ycombinator.com</a></li>
+    <li data-n="[7]">Koray Kavukcuoglu, "Introducing Gemini 4 Hydrogen," Google blog, 12 Nov 2026 — <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/">blog.google</a></li>
+    <li data-n="[8]">Hacker News thread 50471431 — <a href="https://news.ycombinator.com/item?id=50471431">news.ycombinator.com</a></li>
+    <li data-n="[9]">"Why Writing Correct Software Is Hard" — <a href="https://pron.github.io/posts/correctness-and-complexity">pron.github.io</a></li>
+    <li data-n="[10]">Hacker News thread 50465352 — <a href="https://news.ycombinator.com/item?id=50465352">news.ycombinator.com</a></li>
+    <li data-n="[11]">wvhulle/bootvine, Codeberg — <a href="https://codeberg.org/wvhulle/bootvine">codeberg.org</a></li>
+    <li data-n="[12]">Hacker News thread 50425017 — <a href="https://news.ycombinator.com/item?id=50425017">news.ycombinator.com</a></li>
+    <li data-n="[13]">Microsoft 365 Status (X) and admin-center alert EX1550543, quoted in thread — <a href="https://status.cloud.microsoft/">status.cloud.microsoft</a></li>
+    <li data-n="[14]">Hacker News thread 50471731 — <a href="https://news.ycombinator.com/item?id=50471731">news.ycombinator.com</a></li>
+    <li data-n="[15]">hyperionaidev/smolmaxxing, GitHub — <a href="https://github.com/hyperionaidev/smolmaxxing/">github.com</a></li>
+    <li data-n="[16]">Hacker News thread 50468888 — <a href="https://news.ycombinator.com/item?id=50468888">news.ycombinator.com</a></li>
+    <li data-n="[17]">IGN, "Nintendo Takes Down Switch Emulators and Mod Chip Firmware in Massive GitHub DMCA Sweep," 12 Nov 2026 — <a href="https://www.ign.com/articles/nintendo-takes-down-switch-emulators-and-mod-chip-firmware-in-massive-github-dmca-sweep">ign.com</a></li>
+    <li data-n="[18]">Hacker News thread 50469994 — <a href="https://news.ycombinator.com/item?id=50469994">news.ycombinator.com</a></li>
+    <li data-n="[19]">openQ4 0.14.1 "Awakening Edition" release, ModDB — <a href="https://www.moddb.com/mods/openq4/downloads/openq4-0141-windows-x64">moddb.com</a></li>
+    <li data-n="[20]">Hacker News thread 50467618 — <a href="https://news.ycombinator.com/item?id=50467618">news.ycombinator.com</a></li>
+  </ol>
+  <p class="method">Methodology: snapshot of the Hacker News front page taken 12 November 2026 at 22:00&nbsp;UTC (16:00&nbsp;US Central) via the Algolia HN Search API; scores and comment counts are as of that moment. Candidate pool of 50 front-page items, deduplicated against this paper's previous four editions; one follow-up admitted at ≥+40% and ≥+150 points since coverage (+54%, +223). The Associated Press article on the Nvidia resignation and Microsoft's status page both resisted fetching; the first is covered from CBS News and CNET reporting and the announcement quoted in the thread, the second from admin-center text quoted in the thread. Images are each story's own published card or article image, credited by hostname.</p>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <span>The Hacker Herald — Typeset from the Hacker News front page</span>
+  <span>&#10087; Printed on 100% recycled bandwidth &#10087;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</span>
+</footer>
+
+</body>
+</html>
