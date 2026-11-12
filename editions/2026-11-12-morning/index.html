@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 12, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page · Snapshot 14:00 UTC</div>
+  <div class="mid">Morning Edition</div>
+  <div class="r">10 Stories · 5,915 Points · 3,075 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type — a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Thursday, November 12, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Industry</span><b>Huang Out at Nvidia</b>
+    The company says Jensen Huang resigned as president, CEO and director effective immediately; CFO Colette Kress is interim chief, five days before earnings.</div>
+  <div class="cell"><span class="tag">Language · Follow-Up</span><b>Tim Peters, 1952–2026</b>
+    The memorial thread for the author of the Zen of Python and Timsort is the day's top score at 1,300 points, up 647 since yesterday's paper.</div>
+  <div class="cell"><span class="tag">Field</span><b>United Bars Booking Agents</b>
+    United restricts third-party personal AI assistants from making reservations, citing credential sharing and federal check-in rules.</div>
+  <div class="cell"><span class="tag">Security</span><b>Patch Apache to 2.4.71</b>
+    An HTTP/2 race condition rated critical by Red Hat at CVSS 9.8 affects versions 2.4.55–2.4.70; disabling h2 is the stopgap.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+
+  <div class="cell main">
+    <div class="kicker">AI Desk · Industry</div>
+    <h2 class="headline">Nvidia says Jensen Huang has resigned as chief executive, effective immediately</h2>
+    <h3 class="deck">CFO Colette Kress becomes interim CEO and Harvey C. Jones the board's first-ever chair, five days before quarterly earnings</h3>
+    <div class="byline"><span>From the AI Desk</span><span class="score">★ 1153 pts · 1541 comments</span></div>
+    <p class="first">SANTA CLARA, CALIFORNIA — Nvidia's board announced on 12 November that Jensen Huang has resigned as president, chief executive officer and member of the board, effective immediately, ending a 33-year run as the company's only CEO.<sup class="cite"><a href="#src1">[1]</a></sup> The announcement followed a Wall Street Journal report that the board was preparing to oust him; the Journal's article is behind a paywall, so this paper cites it by headline only.<sup class="cite"><a href="#src2">[2]</a></sup> Colette Kress, executive vice president and chief financial officer since September 2013, takes over as interim CEO while keeping the CFO title; the board has opened a search for a permanent successor, considering internal and external candidates.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <figure>
+      <img src="images/nvidia.jpg" alt="Nvidia newsroom social card for the CEO transition announcement" loading="lazy">
+      <figcaption>The newsroom card for the transition announcement. <span class="cr">nvidianews.nvidia.com</span></figcaption>
+    </figure>
+    <p>The board also named Harvey C. Jones — a former CEO and executive chairman of Synopsys — as Nvidia's first-ever chair of the board. "The Board has full confidence in Colette and the leadership team, and we expect the company's operations, customer commitments and product roadmap to continue without interruption," Jones said in the release; Kress committed to "building on the extraordinary foundation Jensen created over the last 33 years." Third-quarter fiscal 2027 results are still scheduled for 17 November at 1:20&nbsp;p.m. PT.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The thread — the day's most-discussed at 1,541 comments — tracked the fallout: NVDA fell almost 8 percent in after-hours trading, per one reader's live quote, while AMD rose; others noted the five-day gap to earnings and the difficulty of replacing a founder who has run the company since 1993.<sup class="cite"><a href="#src3">[3]</a></sup> The timing, several readers observed, follows press reporting on a second affair and earlier reporting that tied Huang to export-control questions — allegations the thread picked over without new facts.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Follow-Up · Language Desk</div>
+    <h2 class="headline">The Tim Peters memorial is now the front page's top score</h2>
+    <div class="byline"><span>Language Desk</span><span class="score">★ 1300 pts · ▲ +647 since the last edition</span></div>
+    <p class="first">The memorial thread for Tim Peters, which this paper covered in yesterday afternoon's edition at 653 points, has since more than doubled — 1,300 points at snapshot, the highest score of the day. Guido van Rossum's announcement on the Python Discourse, posted 11 November, remains the underlying news: Peters, author of the Zen of Python and Timsort, died on 15 July.<sup class="cite"><a href="#src4">[4]</a></sup><sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>The thread has filled with firsthand recollections. A reader from the comp.lang.python era recalled Peters as "Uncle Timmy," whose careful answers taught a generation to write better code; Gary Robinson, Peters's collaborator on the SpamBayes spam filter, noted that an AI assistant recently reproduced a piece of Peters's 2000s-era Bayesian classification code essentially verbatim — ideas that predate current language models by two decades.<sup class="cite"><a href="#src5">[5]</a></sup> Others rounded out the obituary: much of Peters's core-CPython work beyond Timsort concerned large-integer and Decimal arithmetic.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>The thread also re-litigated his temporary suspension from Python's community spaces, an episode Peters himself wrote about at length before returning to work on the language — a dispute several mourners asked be set aside for the day.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <div class="pullquote" style="font-size:16px">"Before I clicked into the link I mentally thought: wait, I hope it's not the guy who invented Tim Sort."<span class="attr">— a reader on the memorial thread<sup class="cite"><a href="#src5">[5]</a></sup></span></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Field Desk</div>
+    <h2 class="headline">United Airlines bans AI agents from booking flights for travelers</h2>
+    <div class="byline"><span>Field Desk</span><span class="score">★ 594 pts · 617 cmts</span></div>
+    <p class="first">United said on Wednesday it is barring AI agents from making flight reservations on behalf of travelers, citing security risks and the possibility that agent-made bookings could violate federal rules. The airline's statement: "sharing account credentials with personal, third-party, AI assistants can expose sensitive information, and actions taken by these tools may result in unintended purchases, account changes, or use of MileagePlus miles."<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <p>United also argued that agent-assisted check-in could breach regulations requiring travelers to verify in person that their luggage contains no banned substances, and said it will restrict agents "directly within our digital platforms and indirectly via travel agencies and aggregators."<sup class="cite"><a href="#src8">[8]</a></sup> Analyst Henry Harteveldt read the move as control of the booking funnel: flight searches cost airlines money, and United "doesn't want to add yet another — and potentially even more powerful — intermediary" than search engines and online agencies. Fares stay on Kayak, Hopper and Google Flights; Southwest, by contrast, has made its inventory viewable to ChatGPT users.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <p>The thread priced the objections: one reader put a search at about a cent once global-distribution-system "look-to-book" limits bite, another at a few cents per Sabre call — against thin margins and lost checkout upsells. On enforcement, several readers doubted an airline site can tell a computer-use agent from a human; one e-signature vendor reported going the opposite way, shipping an MCP server so "an agent is a customer."<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <figure>
+      <img src="images/united.jpg" alt="A United Airlines aircraft at a gate" loading="lazy">
+      <figcaption>United's booking channels now carry the new restriction. <span class="cr">cbsnewsstatic.com</span></figcaption>
+    </figure>
+  </div>
+
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="row3">
+
+  <div class="cell">
+    <div class="kicker">Follow-Up · Cloud Desk</div>
+    <h2 class="headline">AWS Emulator gains 419 points — and an answer: it's a maintained product</h2>
+    <div class="byline"><span>Cloud Desk</span><span class="score">★ 899 pts · ▲ +419 since the last edition</span></div>
+    <p class="first">Since yesterday afternoon's edition, Amazon's agent-written local emulator of AWS APIs has climbed from 480 to 899 points, and the thread's central question — publicity exercise or real product? — was answered inside the thread itself. An AWS engineer posted that "it's a real product that we plan to maintain," and readers located official documentation at docs.aws.amazon.com/emulator/.<sup class="cite"><a href="#src6">[6]</a></sup><sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>The scale of the agent-written codebase became the thread's unit of measurement: roughly 29,000–30,000 commits — 29,684 by one reader's count, enough that GitHub's code-frequency chart reports "too many commits to generate this graph" — against about 6,500 unsorted issues and 12,700 entries in the repository's "things that now-work" ledger.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>Practical caveats emerged too: as of v1.0.322 the emulator exposes no CORS headers, defeating browser-based consoles; the MiniStack project's maintainers said they will keep operating until the emulator matches multi-account, multi-region and IAM coverage; and one reader warned that emulated services skip much of AWS's undocumented business logic, so validation errors that production throws will never surface locally.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Culture Desk</div>
+    <h2 class="headline">A 2019 SIGBOVIK paper measures how many paint splatters parse as Perl: 93%</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score">★ 496 pts · 64 cmts</span></div>
+    <p class="first">Colin McMillen's paper for SIGBOVIK 2019 — the Carnegie Mellon satirical-computing conference held each 1 April — answered what it calls "a long-standing open problem in the programming languages community: is it possible to smear paint on the wall without creating valid Perl?" Using OCR on a dataset of 100 paint-splatter images, it found that merely 93 percent parsed as valid Perl programs, and presents seven splatters that do not. It won an "Unwitting Participation Ribbon."<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <p>The mechanism is Perl's bareword "unquoted strings": an OCR transcription of one splatter reads <i>lerzfijglpFiji-j</i>, which evaluates to the number 0; another reads <i>;E,'__',</i>, which evaluates to the string <i>E__</i>.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <p>The thread, on the paper's fourth front-page run since August 2019, supplied the annotations: the splatters are not Perl-specific — one failure transcribes to an expression that also evaluates to −3 in Python — and a footnote reveals a Perl error quine: write <i>Illegal division by zero at /tmp/quine.pl line 1.</i> to the right file and it errors into existence.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Security Desk</div>
+    <h2 class="headline">Race condition in Apache's HTTP/2 module prompts upgrade to 2.4.71</h2>
+    <div class="byline"><span>Security Desk</span><span class="score">★ 280 pts · 136 cmts</span></div>
+    <p class="first">CVE-2026-119618 is a concurrent-execution race in the <i>assign_headers()</i> function of Apache HTTP Server's HTTP/2 module, mod_http2: improper synchronization over shared resources lets a remote, unauthenticated attacker corrupt heap memory, which Wiz — which disclosed details — says can be leveraged into code execution with the web server's privileges. Versions 2.4.55 through 2.4.70 are affected; 2.4.71 patches it, and restricting protocols to http/1.1 is the interim mitigation. Wiz puts vulnerable resources in 64 percent of cloud environments it measures, with 51 percent running publicly exposed instances.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <p>Wiz's own text concedes no exploit was available and no exploitation had been reported at publication; the thread countered with Red Hat's advisory, which rates the flaw 9.8 and states that public research has demonstrated a reliable exploit against a default-configured server. The flaw was found independently by Anthropic and Google Cloud's vulnerability research team.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>One reader reproduced an HTTP/2 race against a vulnerable build in seven minutes and about $0.02 of model spend, and verified the patched version did not fail the same way. Others flagged copy errors in Wiz's post, which at one point names the wrong CVE.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <figure>
+      <img src="images/apache.webp" alt="Wiz threat-update card for the Apache HTTP Server vulnerability" loading="lazy">
+      <figcaption>The disclosure's card image. <span class="cr">wiz.io</span></figcaption>
+    </figure>
+  </div>
+
+</div>
+
+<!-- 6. SECURITY & PRACTICAL -->
+<div class="sec2">
+
+  <div class="cell">
+    <div class="section-label"><span>The Security Desk</span></div>
+
+    <div class="kicker">Tools · Supply Chain</div>
+    <h2 class="headline">GitHub Actions gains first-party workflow lockfiles</h2>
+    <div class="byline"><span>Security Desk</span><span class="score">★ 293 pts · 59 cmts</span></div>
+    <p class="first">GitHub Actions now supports workflow lockfiles, and Hugo van Kemenade's walkthrough shows the mechanics: install the <i>gh-actions-lock</i> extension for the GitHub CLI, run <i>gh actions-lock</i>, and the tool rewrites full-SHA action pins back to readable tags while emitting a machine-generated <i>actions.lock</i> file that fixes the exact commits behind them.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <p>The point, readers explained, is transitive dependencies: pinning action X to a SHA never guaranteed that X itself pinned action Y, so a moved tag on a dependency-of-a-dependency still reached your runner. The lockfile pins direct and indirect action calls together.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>The caveats came from the maintainer of the auditing tool zizmor: lockfiles currently cover only normal action calls — reusable workflows still need manual hash-pinning, composite actions are locked only transitively — and <i>runs-on: ubuntu-latest</i> remains a mutable runner image nobody can pin by digest.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <figure>
+      <img src="images/ghactions.jpg" alt="Feature image for the lock-github-actions blog post" loading="lazy">
+      <figcaption>The post's feature image. <span class="cr">hugovk.dev</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Practical Tech Corner</span></div>
+
+    <div class="kicker">AI · Skills</div>
+    <h2 class="headline">Jane Street open-sources a Socratic-tutor skill for agents</h2>
+    <div class="byline"><span>Practical Tech Corner</span><span class="score">★ 412 pts · 96 cmts</span></div>
+    <p class="first">Jane Street has published <i>socratic-tutor</i>, a 102-line agent skill in its open <i>agent_skills</i> repository: when a user asks to be taught, quizzed or "drilled to mastery," the agent runs a 3–5 question diagnostic, breaks the topic into 4–10 subskills tracked at levels 0–5, and then teaches "primarily by asking questions that force the user to reason, predict, and explain — not by lecturing," with spaced review and a final assessment.<sup class="cite"><a href="#src12">[12]</a></sup> A guard clause keeps it out of one-off "explain X" questions.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <p>The thread's verdict was mixed. A user of a week's standing said it works — "it stops the model from the usual handholding" — while allowing "most of the effect can be replicated with this line: 'When the user is wrong, do not give the answer.'" Others noted a GitHub search returns 92 repositories for "socratic tutor skill," and dismissed skills generally as "just a prompt."<sup class="cite"><a href="#src13">[13]</a></sup></p>
+
+    <div class="kicker" style="margin-top:14px">Culture Desk · Essay</div>
+    <h2 class="headline" style="font-size:20px">An Emacs user asks what the editor is for when agents write the code</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score">★ 267 pts · 122 cmts</span></div>
+    <p class="first">A long essay posted as a plain-text file recounts a year of Claude Code from the perspective of a decades-long Emacs user: the magit keychords he polished — <i>C-x g</i>, stage, commit — reduced to a grayed-out "commit" prompt answered with tab-return, and every advantage he claimed for the editor, from speed to the expressiveness of Lisp, "vanished the moment we stopped typing and started telling the AI what we wanted."<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <p>The thread took both exits. One reader now runs Claude Code inside Emacs and predicts "a new golden era," since the editor's benefits arrive "without having to learn elisp"; others contested the essay's claim that a full terminal emulator was replicated "over a coffee break," and argued the freedom on offer — software that does whatever you imagine, that no one understands — inverts rather than extends Stallman's.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>The Science Desk</span></div>
+
+    <div class="kicker">AI · Machine Learning Research</div>
+    <h2 class="headline">Apple trains small networks to speed up vector retrieval for RAG</h2>
+    <div class="byline"><span>Science Desk</span><span class="score">★ 221 pts · 38 cmts</span></div>
+    <p class="first">Apple Machine Learning Research presents work from ICML 2026, "Amortizing Maximum Inner Product Search with Learned Support Functions": instead of clustering keys and routing queries to the nearest centroid — the standard approximate-search shortcut, which can miss a nearest neighbor sitting far from its cluster's center — Apple trains small neural networks offline, once per database, to approximate the set's support function, whose gradient returns the best-matching key.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <p>Two architectures split the work: SupportNet, an input-convex network that learns the support function per cluster for exact routing, and KeyNet, which directly outputs the best-matching key vector, kept geometrically grounded by a consistency loss from Euler's theorem.<sup class="cite"><a href="#src20">[20]</a></sup> The thread was skeptical of retrieval generally — "RAG can take the intelligence of an LLM and dumb it down to old school Google search results," one reader wrote — with several reporting that a plain BM25 index plus an LLM-driven search tool beats learned methods at small scale.<sup class="cite"><a href="#src21">[21]</a></sup></p>
+    <figure>
+      <img src="images/apple.png" alt="Apple Machine Learning Research header image for the faster-retrieval post" loading="lazy">
+      <figcaption>The research post's header image. <span class="cr">machinelearning.apple.com</span></figcaption>
+    </figure>
+
+    <div class="pullquote" style="font-size:17px">"We may have felt safe bringing a gun to a knife fight, but now everyone's just sending a drone."<span class="attr">— "Emacs in the Age of Magic," on coding skill vs. agents<sup class="cite"><a href="#src18">[18]</a></sup></span></div>
+
+    <div class="classifieds">
+      <div class="t">Classifieds — Rates: 1 Karma per line</div>
+      <p>HELP WANTED: permanent chief executive, Nvidia. Interim holder keeps the CFO chair; internal and external candidates considered.</p>
+      <p>NOTICE: 7 of 100 paint splatters refuse to parse as Perl. Gallery of the holdouts open for inspection.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+
+  <div class="cell">
+    <div class="section-label"><span>The Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" style="width:100%; height:auto; display:block" role="img" aria-label="Bar chart of the ten stories' points">
+      <defs>
+        <pattern id="hatchInk" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f3ecdd"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+        <pattern id="hatchRed" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f3ecdd"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <line class="grid" x1="80"  y1="6" x2="80"  y2="344"/>
+      <line class="grid" x1="160" y1="6" x2="160" y2="344"/>
+      <line class="grid" x1="240" y1="6" x2="240" y2="344"/>
+      <line class="grid" x1="320" y1="6" x2="320" y2="344"/>
+      <line class="grid" x1="400" y1="6" x2="400" y2="344"/>
+      <line class="grid" x1="480" y1="6" x2="480" y2="344"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0.5" y1="352.5" x2="520.5" y2="352.5"/>
+      <!-- tick labels -->
+      <text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text>
+      <text x="80" y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="160" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="240" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text>
+      <text x="320" y="366" font-size="11" fill="#3d352a" text-anchor="middle">800</text>
+      <text x="400" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1000</text>
+      <text x="480" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1200</text>
+      <!-- rows: top = 8 + 34i ; label y=top+10 ; bar y=top+14 h=15 ; value y=top+26 -->
+      <text class="barlabel" x="0" y="18">Tim Peters memorial</text>
+      <rect x="0.5" y="22" width="520" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="527" y="34" font-weight="700" fill="#191510">1300 ★ · 153 cmts</text>
+      <text class="barlabel" x="0" y="52">Nvidia CEO exit &#8224;</text>
+      <rect x="0.5" y="56" width="461" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="468" y="68" fill="#3d352a">1153 · 1541</text>
+      <text class="barlabel" x="0" y="86">AWS Emulator</text>
+      <rect x="0.5" y="90" width="360" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="367" y="102" fill="#3d352a">899 · 249</text>
+      <text class="barlabel" x="0" y="120">United bans AI agents</text>
+      <rect x="0.5" y="124" width="238" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="245" y="136" fill="#3d352a">594 · 617</text>
+      <text class="barlabel" x="0" y="154">Perl paint splatters</text>
+      <rect x="0.5" y="158" width="198" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="205" y="170" fill="#3d352a">496 · 64</text>
+      <text class="barlabel" x="0" y="188">Jane Street Socratic Tutor</text>
+      <rect x="0.5" y="192" width="165" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="172" y="204" fill="#3d352a">412 · 96</text>
+      <text class="barlabel" x="0" y="222">GitHub Actions lockfiles</text>
+      <rect x="0.5" y="226" width="117" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="124" y="238" fill="#3d352a">293 · 59</text>
+      <text class="barlabel" x="0" y="256">Apache mod_http2 CVE</text>
+      <rect x="0.5" y="260" width="112" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="119" y="272" fill="#3d352a">280 · 136</text>
+      <text class="barlabel" x="0" y="290">Emacs in the Age of Magic</text>
+      <rect x="0.5" y="294" width="107" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="114" y="306" fill="#3d352a">267 · 122</text>
+      <text class="barlabel" x="0" y="324">Apple faster RAG retrieval</text>
+      <rect x="0.5" y="328" width="88" height="15" fill="url(#hatchRed)" stroke="#7a1f1f" stroke-width="0.8"/>
+      <text class="barval" x="95" y="340" fill="#3d352a">221 · 38</text>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">★ = points · cmts = comments · &#8224; most-discussed story of the day · red hatch marks Apple machine-learning research</text>
+    </svg>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="statbox">
+      <div class="t">The Day in One Line</div>
+      <table>
+        <tr><td>Jensen Huang resigns as Nvidia's CEO effective immediately — hours after the Journal reported the board preparing to oust him — with CFO Colette Kress as interim chief and earnings five days out.</td></tr>
+      </table>
+    </div>
+
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Fresh stories</td><td>8</td></tr>
+        <tr><td>Follow-ups</td><td>2</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>5,915</td></tr>
+        <tr><td>Combined comments</td><td>3,075</td></tr>
+        <tr><td>Top score</td><td>1,300</td></tr>
+        <tr><td>Most-discussed</td><td>1,541 cmts</td></tr>
+      </table>
+    </div>
+
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>RCE, demonstrated?</b> Wiz's headline calls CVE-2026-119618 a "critical RCE"; its own text says no exploit was available and none had been seen in the wild. The code-execution claim comes from the exploitability of the heap corruption — which Red Hat, per the thread, rates 9.8 — not from a published exploit.</p>
+      <p><b>93 percent of what?</b> The claim is not that splatters are programs but that OCR transcriptions of them parse: 93 of 100 transcribed images produced valid Perl, chiefly via bareword strings. One "failure" also evaluates to −3 in Python, so even the failures are language-dependent.</p>
+      <p><b>Ouster or resignation.</b> The Journal's headline: Nvidia "is preparing to oust" Huang. Nvidia's release, hours later: he "has resigned." The release's verbs leave the board's role unstated; readers can weigh the appointment of a first-ever chair accordingly.</p>
+      <p><b>"United bans AI agents."</b> The policy targets "unauthorized, third-party personal AI agents," applied through United's platforms, agencies and aggregators. Bookings through Kayak, Hopper and Google Flights are unaffected, and United does not describe how it will detect an agent.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher's Note</div>
+  <p>This morning's paper leads with the Nvidia transition, sourced to the company's own release after the Journal's report met our bot wall, and carries two follow-ups: the Tim Peters memorial, now the day's top score, and Amazon's emulator, now confirmed a maintained product. Eight fresh stories fill out the page; every number is from the 14:00&nbsp;UTC snapshot.</p>
+  <div class="sig">— The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]">NVIDIA Newsroom, "NVIDIA Announces CEO Transition," 12 Nov 2026 — <a href="https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition">nvidianews.nvidia.com</a></li>
+    <li data-n="[2]">Wall Street Journal, "Nvidia Is Preparing to Oust Nvidia CEO Jensen Huang" (paywalled; cited by headline) — <a href="https://www.wsj.com/business/nvidia-is-preparing-to-oust-nvidia-ceo-jensen-huang-30f421ad">wsj.com</a></li>
+    <li data-n="[3]">Hacker News thread 50459703 — <a href="https://news.ycombinator.com/item?id=50459703">news.ycombinator.com</a></li>
+    <li data-n="[4]">Guido van Rossum, "In Memoriam: Tim Peters, 1952–2026," Python Discourse — <a href="https://discuss.python.org/t/in-memoriam-tim-peters-1952-2026/110028">discuss.python.org</a></li>
+    <li data-n="[5]">Hacker News thread 50450488 — <a href="https://news.ycombinator.com/item?id=50450488">news.ycombinator.com</a></li>
+    <li data-n="[6]">aws/aws-emulator, GitHub — <a href="https://github.com/aws/aws-emulator">github.com</a>; AWS documentation, <a href="https://docs.aws.amazon.com/emulator/">docs.aws.amazon.com/emulator</a></li>
+    <li data-n="[7]">Hacker News thread 50456631 — <a href="https://news.ycombinator.com/item?id=50456631">news.ycombinator.com</a></li>
+    <li data-n="[8]">CBS News, "United Airlines bans AI agents from booking flights on behalf of travelers," 11 Nov 2026 — <a href="https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/">cbsnews.com</a></li>
+    <li data-n="[9]">Hacker News thread 50458900 — <a href="https://news.ycombinator.com/item?id=50458900">news.ycombinator.com</a></li>
+    <li data-n="[10]">Colin McMillen, "93% of Paint Splatters are Valid Perl Programs," SIGBOVIK 2019 — <a href="https://www.mcmillen.dev/sigbovik/">mcmillen.dev</a></li>
+    <li data-n="[11]">Hacker News thread 50459745 — <a href="https://news.ycombinator.com/item?id=50459745">news.ycombinator.com</a></li>
+    <li data-n="[12]">janestreet/agent_skills, socratic-tutor SKILL.md — <a href="https://github.com/janestreet/agent_skills/blob/master/socratic-tutor/SKILL.md">github.com</a></li>
+    <li data-n="[13]">Hacker News thread 50438261 — <a href="https://news.ycombinator.com/item?id=50438261">news.ycombinator.com</a></li>
+    <li data-n="[14]">Hugo van Kemenade, "Lock your GitHub Actions" — <a href="https://hugovk.dev/blog/2026/lock-github-actions/">hugovk.dev</a></li>
+    <li data-n="[15]">Hacker News thread 50459485 — <a href="https://news.ycombinator.com/item?id=50459485">news.ycombinator.com</a></li>
+    <li data-n="[16]">Wiz, "Critical RCE Vulnerability in Apache HTTP Server" — <a href="https://www.wiz.io/blog/cve-2026-119618-rce-apache-http-server-vulnerability">wiz.io</a></li>
+    <li data-n="[17]">Hacker News thread 50462177 — <a href="https://news.ycombinator.com/item?id=50462177">news.ycombinator.com</a></li>
+    <li data-n="[18]">"Emacs In the Age Of Magic," Command Line Systems — <a href="https://commandlinesystems.com/magic.txt">commandlinesystems.com</a></li>
+    <li data-n="[19]">Hacker News thread 50458208 — <a href="https://news.ycombinator.com/item?id=50458208">news.ycombinator.com</a></li>
+    <li data-n="[20]">Apple Machine Learning Research, "Faster Retrieval for Better, More Efficient RAG" — <a href="https://machinelearning.apple.com/research/faster-retrieval">machinelearning.apple.com</a></li>
+    <li data-n="[21]">Hacker News thread 50455633 — <a href="https://news.ycombinator.com/item?id=50455633">news.ycombinator.com</a></li>
+  </ol>
+  <p class="method">Methodology: snapshot of the Hacker News front page taken 12 November 2026 at 14:00&nbsp;UTC (08:00&nbsp;US Central) via the Algolia HN Search API; scores and comment counts are as of that moment. Candidate pool of 50 front-page items, deduplicated against this paper's previous four editions; follow-ups admitted only at ≥+40% and ≥+150 points since coverage (two qualified, no story required the digest). Articles were fetched and read this run; the Wall Street Journal piece is cited by headline only, its text being behind a paywall. Images are each story's own published card or article image, credited by hostname.</p>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <span>The Hacker Herald — Typeset from the Hacker News front page</span>
+  <span>&#10087; Printed on 100% recycled bandwidth &#10087;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</span>
+</footer>
+
+</body>
+</html>
