@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 13, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page · Snapshot 22:00 UTC</div>
+  <div class="mid">Afternoon Edition</div>
+  <div class="r">10 Stories · 3,296 Points · 1,354 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type — a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Friday, November 13, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Aviation</span><b>FAA Ground-Stops All U.S. Departures</b>
+    Advisory 111, effective 20:54 UTC, cites "extraordinary circumstances" and safety; the cause — impacts to ATC frequencies and/or radar, per one report — is not yet stated, and inbound international flights are handled case by case.</div>
+  <div class="cell"><span class="tag">Culture</span><b>LibreOffice's Four-Word Tweet Leads the Page</b>
+    "LibreOffice actually works 365 days a year. Just saying." — posted as the Microsoft 365 outage ran into a second day; 1.1 million views and 752 points by snapshot.</div>
+  <div class="cell"><span class="tag">Security</span><b>$11.4M in Hardware Missing Since August</b>
+    Six pallets picked up in Oakland on Aug. 29 for Fort Worth vanished in San Bernardino County; Oakland police are investigating a grand theft, and have not confirmed the valuation.</div>
+  <div class="cell"><span class="tag">Science · AI</span><b>663 Theorems Pulled From Gödel's Shorthand</b>
+    Of the theorems Claude extracted from 1,009 notebook pages, about 400 verified in Coq as stated, roughly 200 needed repair, and about 50 were false — some already flagged "falsch" in Gödel's own margins.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+
+  <div class="cell main">
+    <div class="kicker">Field Desk · Aviation</div>
+    <h2 class="headline">FAA orders a national ground stop of every U.S. airport, and says only that circumstances were "extraordinary"</h2>
+    <h3 class="deck">Advisory 111, still posted at this paper's 22:00 UTC snapshot, halts all departing traffic from 20:54 UTC; the command center reports no information yet on the timing or cause of the outage behind it</h3>
+    <div class="byline"><span>Field Desk</span><span class="score">★ 453 pts · 182 comments</span></div>
+    <p class="first">WARRENTON, VIRGINIA — The Federal Aviation Administration's Air Traffic Control System Command Center issued a national ground stop on Friday evening, ordering every U.S. airport to hold all departing traffic in an event window running from 20:53 UTC on Nov. 13 to 04:00 UTC on Nov. 14.<sup class="cite"><a href="#src1">[1]</a></sup> The advisory's stated grounds are nine words long: "DUE TO EXTRAORDINARY CIRCUMSTANCES AND FOR REASONS OF SAFETY," with all departing aircraft instructed to remain stopped "until further notice" and inbound international flights "managed on a case by case basis."<sup class="cite"><a href="#src1">[1]</a></sup> At this paper's snapshot, taken three minutes before 22:00 UTC, the advisory was still live on the FAA's operations page.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>What failed is not yet official. Transport Secretary Sean Duffy, quoted by the BBC's live page from the thread, said the stop followed "a communication issue impacting all Air Route Traffic Control Centers."<sup class="cite"><a href="#src2">[2]</a></sup> The Air Current, quoting the FAA command center via Bloomberg, reported the stop was "due to several impacts to ATC Frequencies and/or Radar capabilities" — and that the command center "does not have further information on the 'timing or cause of this outage.'"<sup class="cite"><a href="#src2">[2]</a></sup> A pilot in the thread reported his captain "very confused" at the hold; another reader, watching final approach into Boston Logan on a flight tracker, counted arrivals still landing — consistent with an advisory that stops departures while managing arrivals case by case.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <p>The thread's licensed wing supplied the plumbing: controller microphones no longer run on a long cord to the antenna, one reader noted — centers reach remote transmitters through third-party telecom relays, a chain with outages before, most recently in September.<sup class="cite"><a href="#src2">[2]</a></sup> Another put the stakes plainly: this is "a system that's supposed to have its own built in redundancy and must not go down."<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="pullquote" style="font-size:17px">"ALL DEPARTING TRAFFIC SHOULD REMAIN GROUND STOPPED UNTIL FURTHER NOTICE."<span class="attr">— ATCSCC Advisory 111, Nov. 13, 2026<sup class="cite"><a href="#src1">[1]</a></sup></span></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Culture Desk</div>
+    <h2 class="headline">LibreOffice posts "actually works 365 days a year," and the front page makes it 752 points</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score">★ 752 pts · 237 cmts</span></div>
+    <p class="first">The Document Foundation's LibreOffice account posted four words to X at 11:35 a.m. Friday — "LibreOffice actually works 365 days a year. Just saying" — into the second day of the Microsoft 365 outage this paper has covered since Thursday.<sup class="cite"><a href="#src3">[3]</a></sup> The post drew 1.1 million views and 64,000 likes by evening, and its Hacker News thread finished the day as the highest-scoring story on the page.<sup class="cite"><a href="#src3">[3]</a></sup><sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <p>The thread's most-replied comment took the other side: "If LibreOffice were good enough already, it would already be popular," arguing the project needs a Blender-style interface overhaul rather than a victory lap.<sup class="cite"><a href="#src4">[4]</a></sup> Others logged the costs the tweet leaves out — a four-to-five-second cold start on Windows, an Arch upgrade that left the suite unlaunchable for three days — while one reader recalled OpenOffice refusing to print on Tuesdays, a bug traced to a "Tue" string in its PostScript header.<sup class="cite"><a href="#src4">[4]</a></sup> A dissenting note: offline Microsoft Office "is and has been just fine," including a 2024 release updated this week.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Hardware Desk · Reverse Engineering</div>
+    <h2 class="headline">A Wi-Fi air purifier gives up its cloud: the root certificate arrives over plain HTTP</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score">★ 615 pts · 182 cmts</span></div>
+    <p class="first">Scott, posting as scottjg, wanted his discontinued Coway Airmega IconS purifier on his Apple Home "Good Night" button without a round trip through Seoul — the existing Home Assistant integration polls Coway's IoCare cloud, which broke at least twice a year, banned his account once, and rebranded itself from IoCare to IoCare+.<sup class="cite"><a href="#src5">[5]</a></sup> Two things changed, he writes: October's eMudhra certificate-authority incident left "anyone" holding a root CA — and mitmproxy now ships a flag for exactly that — and a language model would configure the whole man-in-the-middle rig, nftables and all, in minutes.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>The interception found the fan bootstrapping trust in the open: it fetches Amazon's Root CA 1 from an S3 bucket over plain HTTP, keeps no roots of its own, and pins nothing — so the eMudhra shortcut was never needed. "It was always MitM-able," Scott writes.<sup class="cite"><a href="#src5">[5]</a></sup> Control rides MQTT over TLS on port 8883 to AWS IoT in ap-northeast-2, and a single provisioning response hands the device its keys and its broker — control that response and the fan will talk to your server instead.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>The thread split three ways: one reader watching "this wave of LLM reverse engineering" marvel that the plain-HTTP bootstrap "was lying in plain sight" for anyone with the patience; a second asking why an air purifier needs Wi-Fi at all ("why allow it to occupy this much mental space for you?"); and a third arguing the purifier market is designed wrong way round, custom HEPA filters and all — a Corsi-Rosenthal box fan does more for less.<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <figure>
+      <img src="images/coway.jpg" alt="Coway Airmega IconS air purifier" loading="lazy">
+      <figcaption>The Coway Airmega IconS, the device at the center of the post. <span class="cr">scottjg.com</span></figcaption>
+    </figure>
+  </div>
+
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="row3">
+
+  <div class="cell">
+    <div class="kicker">Science Desk · From the Archive</div>
+    <h2 class="headline">The 1960 paper that set doomsday for today — by fitting a curve to population</h2>
+    <div class="byline"><span>Science Desk</span><span class="score">★ 407 pts · 283 cmts</span></div>
+    <p class="first">Sixty-six years ago this week, Science published "Doomsday: Friday, 13 November, A.D. 2026" — Heinz von Foerster, Patricia M. Mora and Lawrence W. Amiot, Nov. 4, 1960, volume 132, pages 1291–1295 — which fit the available population series and carried it toward infinity on a date the arithmetic fixed: today.<sup class="cite"><a href="#src7">[7]</a></sup> The paper's point was the fit, not the forecast: a smoothly growing curve carried forward will blow up on a fixed date, and the date simply falls where the arithmetic puts it.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <p>The article itself sits behind Science's bot wall; this account is set from the journal's own bibliographic record and the thread, which spent its 283 comments — the most discussion on today's page — exactly where the paper points.<sup class="cite"><a href="#src7">[7]</a></sup> "Beautifully shows how most predictions that extrapolate from past data are too simplistic," wrote the most-replied comment, noting industrialized nations now fear decline more than growth.<sup class="cite"><a href="#src8">[8]</a></sup> One reply turned the lesson on the reply itself — don't extrapolate to superintelligence from this either — and another compressed the whole file: "People don't understand that a sigmoid looks like an exponential growth to infinity until it doesn't."<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <p>One reader pointed to the paper's long afterlife in Adam Becker's book on Silicon Valley's apocalyptic extrapolations, "More Everything Forever"; another filed the date itself — a Friday the 13th in A.D. 2026, computed in 1960.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Field Desk · Education</div>
+    <h2 class="headline">Sixteen steps to open a slide deck, counted by a teacher</h2>
+    <div class="byline"><span>Field Desk</span><span class="score">★ 188 pts · 94 cmts</span></div>
+    <p class="first">A teacher on r/Teachers counted what it takes a student to open one PowerPoint on a school iPad: log in to Clever, pick a Google profile, type a district email in the form "32lastnamefirstinitial@schoolname.k12.state.us" and its password, open Canvas, log in via Google again, pick the same profile again, open the class, open Modules, scroll past roughly 40 similarly named links, download the file, hand it to Keynote because PowerPoint isn't installed, turn the iPad vertically to reveal the Open button, unlock the screen, press Open, press Play, and finally "present on this device." Then, the post ends: "Take notes."<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>Reddit blocked this paper's fetch; the steps are set from the full list quoted in the thread, where the top corrections went to the headline's attribution: on a stock iPad, tapping a .ppt file opens it — the sixteen steps belong to the school's stack, chiefly Clever's single sign-on sitting in front of Google, and Canvas on top of both.<sup class="cite"><a href="#src9">[9]</a></sup><sup class="cite"><a href="#src10">[10]</a></sup> Parents and teachers piled on with their own districts' versions — dropped keyboard cases, assignments scattered across Classroom and paper — and one reader noted Clever's "free for schools" model charges vendors for connections, with contract terms barring them from saying so.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Culture Desk · Comment</div>
+    <h2 class="headline">A blogger counts the cost of a two-day outage, and the thread declines to blame the vibes</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score">★ 128 pts · 100 cmts</span></div>
+    <p class="first">"Big tech is here to let us down," James Sweeting wrote Friday, taking the Microsoft 365 outage as the text: workers celebrating a "snow day for adults," schools, courts and support desks dark, and no compensation expected — from a company, he argues, that fired tens of thousands including many engineers, and so made both the failure and the fix slower.<sup class="cite"><a href="#src11">[11]</a></sup> His prescription is structural: European state institutions are already moving off Microsoft, and the Global North's dependence is the vulnerability.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The thread's most-replied comment ran past the essay's sharpest jab — that the outage might be "someone vibecoding their way via Copilot" — to call that habit itself lazy: "Blaming every downtime on 'vibecoding, probably' is so weird and lazy. As if these places never had downtime previously."<sup class="cite"><a href="#src12">[12]</a></sup> Others filed the week's other outages — an Amazon availability zone, a Google zone whose redundancies failed to start — against the "too big to go down" reasoning that skipped redundancy, and one reader noted the EternalBlue precedent for expecting no compensation at all.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+  </div>
+
+</div>
+
+<!-- 6. SECURITY, SCIENCE & LANGUAGE -->
+<div class="sec2">
+
+  <div class="cell">
+    <div class="section-label"><span>The Security Desk</span></div>
+
+    <div class="kicker">Security Desk · Cargo</div>
+    <h2 class="headline">$11.4 million in hardware left Oakland in August and never reached Texas</h2>
+    <div class="byline"><span>Security Desk</span><span class="score">★ 173 pts · 98 cmts</span></div>
+    <p class="first">Six pallets of computer hardware with a reported value of $11.4 million were collected in Oakland on Aug. 29 for delivery to Fort Worth, on a truck displaying a food-transport company's logo; after several multi-hour stops, investigators lost its trail in San Bernardino County, FreightWaves reports from Mercury News reporting.<sup class="cite"><a href="#src13">[13]</a></sup> The Oakland Police Department confirmed an ongoing grand-theft investigation opened on a complaint filed Sept. 13, 2026.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The wire's own caveats are the story's fine print: police have not confirmed the $11.4 million figure, identified the merchandise, the owner, the shipper, the carrier or the driver, made arrests, or announced any recovery — and the Sept. 13 complaint date does not establish when the theft occurred.<sup class="cite"><a href="#src13">[13]</a></sup> The report places the loss amid what it counts as nearly $111 million in stolen data-center freight, and follows more than $7.5 million in Nvidia-product burglaries investigated in Fremont and Union City during 2025; a separate September case saw two PlusAI trailers stolen in Fremont, one branded Nvidia, containing about 40,000 pounds of sand.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The thread asked the basic questions: whether $11.4 million is even a lot ("I have no clue how much stuff 'vanishes' regularly," one reader admitted), why hardware of this value moves on ordinary couriers rather than secure logistics, and where the enforcement is — one reader linking coverage of gear "often ending up in China" and asking, flatly, "Hello, where is the FBI?"<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <figure>
+      <img src="images/nvidia-heist.jpg" alt="FreightWaves report card image showing trucks and hardware" loading="lazy">
+      <figcaption>The image published with the FreightWaves report. <span class="cr">freightwaves.com</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>The Science Desk</span></div>
+
+    <div class="kicker">Science Desk · AI &amp; Archives</div>
+    <h2 class="headline">Claude reads Gödel's 1,009 shorthand pages and finds 663 theorems nobody knew</h2>
+    <div class="byline"><span>Science Desk</span><span class="score">★ 258 pts · 75 cmts</span></div>
+    <p class="first">Kurt Gödel's workbooks — 16 notebooks, 1,009 pages from the early 1940s, much of it in Gabelsberger shorthand obsolete even then — yielded to a language model in September, The Guardian reports. Jan von Plato of the University of Helsinki had been reading them since 2017, at roughly a page a week; within days of showing Claude his transcriptions and six books of prior scholarship, he had "a 650-page explanation of the workbooks."<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>Asked to extract every theorem Gödel had proved, sketched or gestured at, Claude found 663. Run through the Coq proof assistant: about 400 verified as stated, roughly 200 were repaired — a statement sharpened, an assumption added — and about 50 were false, which the marginalia anticipated; Gödel himself re-read his notes and marked them "falsch!" or "schlecht!"<sup class="cite"><a href="#src15">[15]</a></sup> The prize find is a near-complete proof of the independence of the axiom of choice — Gödel claimed it in 1966, when Paul Cohen won the Fields Medal for it, but never reconstructed it. Claude's version came within one wrong definition; von Plato ran it through Coq and it passed.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>Notre Dame logician Joel David Hamkins, who has not seen the reconstruction, supplied the discipline's ledger: "it is remarkable and historically interesting. Although how much is Claude and how much is Gödel is a job for the historians... You don't get credit for work you don't tell anyone about."<sup class="cite"><a href="#src15">[15]</a></sup> The thread noted the paper's own irony — von Plato learned one of the world's six readable shorthands to make himself indispensable, then made the reading machine-replaceable — and one historian's caution that Gödel published only bulletproof work.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <figure>
+      <img src="images/godel.jpg" alt="Photograph published with the Guardian report on Kurt Gödel's notebooks" loading="lazy">
+      <figcaption>The photograph running with the Guardian report. <span class="cr">i.guim.co.uk</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>The Language &amp; AI Desks</span></div>
+
+    <div class="kicker">Language Desk · Ecosystem</div>
+    <h2 class="headline">Haskell's foundation ships a technical vision: builds from six hours to two</h2>
+    <div class="byline"><span>Language Desk</span><span class="score">★ 153 pts · 73 cmts</span></div>
+    <p class="first">The Haskell Foundation's new technical leadership committee, bootstrapped after weeks of closed discussion, published its vision Thursday: "Imagine Haskell had the iteration speed of golang, the debugging capabilities of C# and the onboarding experience of rust. And all that while providing stronger guarantees and better performance!"<sup class="cite"><a href="#src17">[17]</a></sup> The concrete benchmark is build time — GHC's own CI turnaround runs six hours, and the committee wants it at two — alongside deterministic debugging "instead of helplessly dumping logs and binaries into LLM chats," the fastest incident response of any language ecosystem, regular penetration tests, and a stability target of compiling ten-year-old code on the latest GHC without source changes.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>The thread tested the pitch where it lives. One reader asked why a terse, strict, token-efficient language isn't more popular with AI agents — a question the vision itself half-answers by claiming Haskell as "where we maintain control of our work," the human-in-the-loop language.<sup class="cite"><a href="#src18">[18]</a></sup> Another pasted a five-argument Haskell type signature from Gemini and reported where onboarding really fails: "My brain just crashes after the '::'."<sup class="cite"><a href="#src18">[18]</a></sup> A third argued the Rust comparison cuts the other way — Cargo succeeds precisely because it does not do one thing.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+
+    <div class="kicker" style="margin-top:14px">AI Desk · Research</div>
+    <h2 class="headline" style="font-size:20px">Six hundred experiments on a world model, and the wins are in the planner, not the predictions</h2>
+    <div class="byline"><span>AI Desk · Research</span><span class="score">★ 169 pts · 30 cmts</span></div>
+    <p class="first">Haddy Alchaer ran 600 experiments on LeWM, the JEPA world model from a team including Yann LeCun, on the Push-T robot task — and reports that as published it solves 22 percent of long-horizon tasks (goal 75 steps away), while the same model given a subgoal every 25 steps solves 80 percent. Hierarchical planning was worth nearly 60 points; swapping in the simulator's perfect physics was worth 20.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>The post builds a memory graph from 460,000 embedded demonstration frames — a jump cost between demonstrations lifts it from 62 to 85 percent — then shows the standard benchmark flatters everyone: for 84 percent of its goals the graph already held a near-identical state, and 38 of 250 episodes flip on the planner's random seed alone. A last finding is the quiet one: scoring the robot pusher's position in the goal image, rather than only the block's, took exact-physics success from 39 of 50 tasks to 9. "A split like that happens by chance about twice in a billion," Alchaer writes — the 4x came from how the goal was made, not the model.<sup class="cite"><a href="#src19">[19]</a></sup> The thread's sharpest reply asked for less "discovering" and more citation — hierarchical planning and sub-goals "are well understood... this is more of a transcript of your personal learning journey" — and the author answered questions in-thread.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <figure>
+      <img src="images/jepa.png" alt="Illustration from the JEPA post showing planning trajectories" loading="lazy">
+      <figcaption>A planning figure from the post. <span class="cr">haddyalchaer.com</span></figcaption>
+    </figure>
+
+    <div class="pullquote" style="font-size:16px">"The AI can connect all the pieces in a thousand pages. It can see all of Gödel's writings as one piece."<span class="attr">— Jan von Plato, University of Helsinki, to the Guardian<sup class="cite"><a href="#src15">[15]</a></sup></span></div>
+    <p style="font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:center; color:#3d352a; margin-bottom:4px">Quote of the Day</p>
+
+    <div class="classifieds">
+      <div class="t">Classifieds — Rates: 1 Karma per line</div>
+      <p>FOUND: 663 theorems in 1,009 pages of obsolete shorthand; about 400 verified, some 50 returned marked falsch.</p>
+      <p>FOR SALE: one Wi-Fi air purifier; root certificate delivered over plain HTTP at no extra charge.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+
+  <div class="cell">
+    <div class="section-label"><span>The Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" style="width:100%; height:auto; display:block" role="img" aria-label="Bar chart of the ten stories' points">
+      <defs>
+        <pattern id="hatchInk" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f3ecdd"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines (tick step 100; axisMax 800) -->
+      <line class="grid" x1="65"  y1="6" x2="65"  y2="344"/>
+      <line class="grid" x1="130" y1="6" x2="130" y2="344"/>
+      <line class="grid" x1="195" y1="6" x2="195" y2="344"/>
+      <line class="grid" x1="260" y1="6" x2="260" y2="344"/>
+      <line class="grid" x1="325" y1="6" x2="325" y2="344"/>
+      <line class="grid" x1="390" y1="6" x2="390" y2="344"/>
+      <line class="grid" x1="455" y1="6" x2="455" y2="344"/>
+      <line class="grid" x1="520" y1="6" x2="520" y2="344"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0.5" y1="352.5" x2="520.5" y2="352.5"/>
+      <!-- tick labels -->
+      <text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text>
+      <text x="65" y="366" font-size="11" fill="#3d352a" text-anchor="middle">100</text>
+      <text x="130" y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="195" y="366" font-size="11" fill="#3d352a" text-anchor="middle">300</text>
+      <text x="260" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="325" y="366" font-size="11" fill="#3d352a" text-anchor="middle">500</text>
+      <text x="390" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text>
+      <text x="455" y="366" font-size="11" fill="#3d352a" text-anchor="middle">700</text>
+      <text x="520" y="366" font-size="11" fill="#3d352a" text-anchor="middle">800</text>
+      <!-- rows: label 12px/600, bar h=15 ink hatch, value 11px -->
+      <text class="barlabel" x="0" y="18" font-size="12" font-weight="600">LibreOffice's tweet</text>
+      <rect x="0.5" y="22" width="489" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/>
+      <text class="barval" x="496" y="34" font-size="11" font-weight="700">752 ★ · 237 cmts</text>
+
+      <text class="barlabel" x="0" y="52" font-size="12" font-weight="600">Coway purifier</text>
+      <rect x="0.5" y="56" width="400" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/>
+      <text class="barval" x="407" y="68" font-size="11">615 · 182</text>
+
+      <text class="barlabel" x="0" y="86" font-size="12" font-weight="600">FAA ground stop</text>
+      <rect x="0.5" y="90" width="294" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/>
+      <text class="barval" x="301" y="102" font-size="11">453 · 182</text>
+
+      <text class="barlabel" x="0" y="120" font-size="12" font-weight="600">Doomsday (1960) &#8224;</text>
+      <rect x="0.5" y="124" width="265" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/>
+      <text class="barval" x="272" y="136" font-size="11">407 · 283</text>
+
+      <text class="barlabel" x="0" y="154" font-size="12" font-weight="600">Gödel notebooks</text>
+      <rect x="0.5" y="158" width="168" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/>
+      <text class="barval" x="175" y="170" font-size="11">258 · 75</text>
+
+      <text class="barlabel" x="0" y="188" font-size="12" font-weight="600">16 clicks, 1 deck</text>
+      <rect x="0.5" y="192" width="122" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/>
+      <text class="barval" x="129" y="204" font-size="11">188 · 94</text>
+
+      <text class="barlabel" x="0" y="222" font-size="12" font-weight="600">$11.4M hardware</text>
+      <rect x="0.5" y="226" width="112" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/>
+      <text class="barval" x="119" y="238" font-size="11">173 · 98</text>
+
+      <text class="barlabel" x="0" y="256" font-size="12" font-weight="600">JEPA, 600 runs</text>
+      <rect x="0.5" y="260" width="110" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/>
+      <text class="barval" x="117" y="272" font-size="11">169 · 30</text>
+
+      <text class="barlabel" x="0" y="290" font-size="12" font-weight="600">Haskell vision</text>
+      <rect x="0.5" y="294" width="99" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/>
+      <text class="barval" x="106" y="306" font-size="11">153 · 73</text>
+
+      <text class="barlabel" x="0" y="324" font-size="12" font-weight="600">Big tech's letdown</text>
+      <rect x="0.5" y="328" width="83" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/>
+      <text class="barval" x="90" y="340" font-size="11">128 · 100</text>
+
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">★ = points · cmts = comments · &#8224; most-discussed story of the day · red hatch would mark Apple coverage (none on today's page)</text>
+    </svg>
+    <figcaption>The day's ten stories by front-page points at the 22:00 UTC snapshot. <span class="cr">Compiled from news.ycombinator.com</span></figcaption>
+    </figure>
+
+    <p style="text-align:left; font-size:13px; border-top:2.5px solid #191510; border-bottom:2.5px solid #191510; padding:8px 2px; margin:10px 0"><b>The day in one line.</b> A national ground stop with no stated cause, 663 theorems out of a thousand pages of shorthand, and a four-word tweet about office software that outpointed them both.</p>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>The Front Page Ledger</span></div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger — Nov. 13, 2026, Afternoon</div>
+      <table>
+        <tr><td>Fresh stories</td><td>10</td></tr>
+        <tr><td>Follow-ups</td><td>0</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>3,296</td></tr>
+        <tr><td>Combined comments</td><td>1,354</td></tr>
+        <tr><td>Top by points — LibreOffice's tweet</td><td>752</td></tr>
+        <tr><td>Most-discussed — Doomsday (1960) &#8224;</td><td>283 cmts</td></tr>
+        <tr><td>Front-page candidates at snapshot</td><td>30</td></tr>
+      </table>
+    </div>
+
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>"National ground stop" stops departures, not all flight.</b> The thread largely read as everything halted; Advisory 111 orders "ALL DEPARTING TRAFFIC" held, manages inbound international flights "on a case by case basis," and a reader watching Boston Logan counted arrivals still landing throughout.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup></p>
+      <p><b>The sixteen clicks are mostly not the iPad's.</b> On a stock iPad, tapping a PowerPoint file opens it, several readers with the hardware confirmed; the count belongs to the school's stack — Clever sign-on, Google login, Canvas, and a Keynote handoff because PowerPoint isn't installed.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+      <p><b>"Hundreds of proved theorems" includes the repaired.</b> Of 663 theorems Claude extracted, about 400 verified in Coq as stated, roughly 200 needed repair before proving, and about 50 were false — with the caveat, from Notre Dame's Hamkins, that "how much is Claude and how much is Gödel is a job for the historians."<sup class="cite"><a href="#src15">[15]</a></sup></p>
+      <p><b>The $11.4 million is a reported figure, not a finding.</b> Police have not confirmed the valuation or identified the merchandise; the complaint dates to Sept. 13 for an Aug. 29 pickup — the loss is ten weeks old and newly reported, not new.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    </div>
+  </div>
+
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher's Note</div>
+  <p>The Afternoon Edition is led by the FAA's national ground stop, still in force and still unexplained at press time. All ten stories are fresh — nothing returned as a follow-up, and nothing needed the digest. Two sources met bot walls (Science.org, Reddit) and are set from bibliographic records and their threads, plainly noted where it happened; the lead otherwise rests on the FAA's own advisory text.</p>
+  <div class="sig">— The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="section-label"><span>Sources</span></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]">FAA Air Traffic Control System Command Center, "ATCSCC Advisory 111 — National Ground Stop Message," Nov. 13, 2026. <a href="https://www.fly.faa.gov/ois/oisedit/adv_oisedit_dis?number=111&amp;day=11132026">fly.faa.gov</a></li>
+    <li data-n="[2]">Hacker News thread, "FAA Issues National Ground Stop" (453 points, 182 comments). <a href="https://news.ycombinator.com/item?id=50489641">news.ycombinator.com/item?id=50489641</a> — quoting the BBC's live page and The Air Current via Bloomberg.</li>
+    <li data-n="[3]">LibreOffice on X, "LibreOffice actually works 365 days a year. Just saying," 11:35 a.m., Nov. 13, 2026. <a href="https://twitter.com/LibreOffice/status/2121205272479998268">twitter.com/LibreOffice</a></li>
+    <li data-n="[4]">Hacker News thread, "LibreOffice actually works 365 days a year" (752 points, 237 comments). <a href="https://news.ycombinator.com/item?id=50486482">news.ycombinator.com/item?id=50486482</a></li>
+    <li data-n="[5]">scottjg, "Reverse Engineering My Coway Air Purifier to Ditch the Cloud," Nov. 11, 2026. <a href="https://scottjg.com/posts/2026-11-11-reverse-engineering-my-coway-air-purifier-to-ditch-the-cloud/">scottjg.com</a></li>
+    <li data-n="[6]">Hacker News thread, same title (615 points, 182 comments). <a href="https://news.ycombinator.com/item?id=50474959">news.ycombinator.com/item?id=50474959</a></li>
+    <li data-n="[7]">H. von Foerster, P. M. Mora, L. W. Amiot, "Doomsday: Friday, 13 November, A.D. 2026," <i>Science</i> 132(3436):1291–1295, Nov. 4, 1960; record verified via Crossref (article page behind a bot wall). <a href="https://doi.org/10.1126/science.132.3436.1291">doi.org/10.1126/science.132.3436.1291</a></li>
+    <li data-n="[8]">Hacker News thread, same title (407 points, 283 comments). <a href="https://news.ycombinator.com/item?id=50482379">news.ycombinator.com/item?id=50482379</a></li>
+    <li data-n="[9]">r/Teachers, "It Takes 16 Clicks for a Student to Open a PowerPoint on an iPad" (fetch blocked; set from the list quoted in the thread). <a href="https://www.reddit.com/r/Teachers/comments/1xuup7a/technology_sucks_it_literally/">reddit.com/r/Teachers</a></li>
+    <li data-n="[10]">Hacker News thread, same title (188 points, 94 comments). <a href="https://news.ycombinator.com/item?id=50487522">news.ycombinator.com/item?id=50487522</a></li>
+    <li data-n="[11]">James Sweeting, "Big tech is here to let us down," Nov. 13, 2026. <a href="https://blog.jsweeting.me/big-tech-is-here-to-let-us-down">blog.jsweeting.me</a></li>
+    <li data-n="[12]">Hacker News thread, same title (128 points, 100 comments). <a href="https://news.ycombinator.com/item?id=50489083">news.ycombinator.com/item?id=50489083</a></li>
+    <li data-n="[13]">FreightWaves, "$11.4 million in NVIDIA hardware vanishes during shipment from California to Texas." <a href="https://www.freightwaves.com/news/11-4-million-in-nvidia-hardware-vanishes-during-shipment-from-california-to-texas">freightwaves.com</a></li>
+    <li data-n="[14]">Hacker News thread, same title (173 points, 98 comments). <a href="https://news.ycombinator.com/item?id=50487864">news.ycombinator.com/item?id=50487864</a></li>
+    <li data-n="[15]">Alex Bellos, "'Ahead of his time': AI helps unlock discoveries hidden in notebooks of man who transformed maths," The Guardian, Nov. 13, 2026. <a href="https://www.theguardian.com/science/2026/nov/13/kurt-godel-notebooks-ai-helps-unlock-hidden-discoveries-man-who-transformed-maths">theguardian.com</a></li>
+    <li data-n="[16]">Hacker News thread, "AI unlocks Gödel's notebooks, said to contain hundreds of proved theorems" (258 points, 75 comments). <a href="https://news.ycombinator.com/item?id=50486748">news.ycombinator.com/item?id=50486748</a></li>
+    <li data-n="[17]">hasufell, Haskell Foundation technical leadership committee, "A technical vision for the Haskell ecosystem," Nov. 13, 2026. <a href="https://discourse.haskell.org/t/a-technical-vision-for-the-haskell-ecosystem/15078">discourse.haskell.org</a></li>
+    <li data-n="[18]">Hacker News thread, same title (153 points, 73 comments). <a href="https://news.ycombinator.com/item?id=50484235">news.ycombinator.com/item?id=50484235</a></li>
+    <li data-n="[19]">Haddy Alchaer, "After 600 experiments, here's what I discovered about JEPA world models." <a href="https://haddyalchaer.com/jepa">haddyalchaer.com</a></li>
+    <li data-n="[20]">Hacker News thread, same title (169 points, 30 comments). <a href="https://news.ycombinator.com/item?id=50487185">news.ycombinator.com/item?id=50487185</a></li>
+  </ol>
+  <div class="method">Methodology — Snapshot of the Hacker News front page taken Friday, Nov. 13, 2026, 22:00:13 UTC (4:00 p.m. CST, Afternoon Edition), via the Algolia HN search API (30 candidates). The ten stories were chosen by score, all fresh: none appeared in this paper's previous four editions (~48 hours), so no follow-ups or digest entries were required. Points and comments are the snapshot's, summed exactly. Articles were fetched and summarized the same run; where a source blocked the fetch, the account is set from its HN item and thread and marked so. Desks, headlines and the box score are this paper's own; every number above comes from the linked sources.</div>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <div>The Hacker Herald — Typeset from the Hacker News front page</div>
+  <div>❧ Printed on 100% recycled bandwidth ❧</div>
+  <div><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</div>
+</footer>
+
+</body>
+</html>
