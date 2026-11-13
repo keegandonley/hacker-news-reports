@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-11-13 · Morning | 2026-11-13 ≈14:00 | Nvidia settles in under Kress as the Huang resignation thread passes 3,700 points | 3,728 | 3,241 | [editions/2026-11-13-morning/](editions/2026-11-13-morning/) |
 | Afternoon | 2026-11-12 ≈22:00 | Nvidia says Jensen Huang has resigned as CEO | 2488 | 2410 | [editions/2026-11-12-afternoon/](editions/2026-11-12-afternoon/) |
 | 2026-11-12 · Morning | 2026-11-12 ≈14:00 | Nvidia says Jensen Huang has resigned as chief executive, effective immediately | 1153 | 1541 | [editions/2026-11-12-morning/](editions/2026-11-12-morning/) |
 | 2026-11-11 · Afternoon | 2026-11-11 ≈22:00 | AI agents find a Maya site — and miss that archaeologists mapped it in 2025 | 880 | 318 | [editions/2026-11-11-afternoon/](editions/2026-11-11-afternoon/) |

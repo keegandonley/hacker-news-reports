@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 13, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page · Snapshot 14:00 UTC</div>
+  <div class="mid">Morning Edition</div>
+  <div class="r">10 Stories · 8,578 Points · 6,160 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type — a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Friday, November 13, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Industry</span><b>Huang Thread Passes 3,700 Points</b>
+    The resignation story adds 1,240 points overnight; Kress holds the interim seat, WIRED counts $1 trillion of market value lost, and 1,600 internal comments ask the board to bring Huang back.</div>
+  <div class="cell"><span class="tag">Cloud</span><b>Microsoft Outage Runs Into Day Two</b>
+    Reports from 74 countries and territories within an hour; the email timeout window is extended to 48 hours, a House network is affected, and Microsoft says there is no sign of malicious activity.</div>
+  <div class="cell"><span class="tag">Language</span><b>Rust 1.100 Stabilizes the Never Type</b>
+    After ten years and five failed attempts the type of computations that never return a value is nameable anywhere; Cargo gains dependency cooldowns and unused-dependency reporting.</div>
+  <div class="cell"><span class="tag">AI · Models</span><b>Orchestrator Pairs Hydrogen With Carbon</b>
+    Google's new dropdown option hands work between the frontier planner and the fast executor mid-task, reaching near-Carbon success on Terminal-Bench 4.1 with 24 percent less quota.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+
+  <div class="cell main">
+    <div class="kicker">Follow-Up · Industry Desk</div>
+    <h2 class="headline">Nvidia settles in under Kress as the Huang resignation thread passes 3,700 points</h2>
+    <h3 class="deck">The board has its interim chief and a new chair; WIRED counts a $1 trillion market-value loss, FBI interest, and an internal petition with more than 1,600 comments</h3>
+    <div class="byline"><span>From the Industry Desk</span><span class="score">★ 3728 pts · ▲ +1240 since the last edition</span></div>
+    <p class="first">SANTA CLARA, CALIFORNIA — The board announced Jensen Huang's resignation as president, chief executive and director on Thursday morning, and by Friday's snapshot the thread underneath it had grown from 2,488 to 3,728 points and from 2,410 to 3,241 comments — again the most-discussed story on the page.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup> Chief financial officer Colette Kress, in the post since 2013, holds the interim chief-executive seat; former Synopsys chief Harvey Jones takes the board chair.<sup class="cite"><a href="#src1">[1]</a></sup> The crisis has cost the company $1 trillion in market value since the allegations surfaced, prompted investigations from U.S. lawmakers and the FBI, and raised the prospect of new export controls on chips, WIRED reports.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>Huang, 63, led Nvidia from its founding in 1993; his Sunday email to staff admitted being "unfaithful to [his] wife" and offered "no excuse."<sup class="cite"><a href="#src1">[1]</a></sup> The resignation followed reports of an alleged second affair, with a direct report, and Reuters has since reported another alleged relationship with an employee — an account WIRED files as "yet another." Huang has not commented beyond the Sunday email. In the hours after the announcement about two dozen employees posted support for him on LinkedIn; WIRED could identify no employee posts supporting the resignation.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The thread — the Associated Press link behind it met this paper's bot wall — split on what the departure was actually for. "The affairs are not the reason he is being fired — NVIDIA has supposedly been skirting the export ban," argued the most-replied comment; another reader answered that a chief executive's relationship with a subordinate is itself "a serious, fireable offense," and a third asked the thread's open question plainly: "why now?"<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="pullquote" style="font-size:17px">"I stand by Jensen… I refuse to believe that standing for fairness must mean standing at a distance from someone whose leadership has meant so much to us."<span class="attr">— an Nvidia employee's companywide email, to WIRED<sup class="cite"><a href="#src1">[1]</a></sup></span></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Follow-Up · Cloud Desk</div>
+    <h2 class="headline">Microsoft's 365 outage runs into a second day across 74 countries</h2>
+    <div class="byline"><span>Cloud Desk</span><span class="score">★ 1042 pts · ▲ +757 since the last edition</span></div>
+    <p class="first">The degradation this paper logged Thursday evening as an Americas mailbox problem, at 285 points, had grown to 1,042 points by Friday's snapshot as the outage closed its first full day. What began near noon ET Thursday left workers unable to reach Outlook mail, Teams meetings and Copilot chats; Downdetector logged reports from 74 countries and territories within about an hour, and Microsoft executive Charles Lamanna said there was no indication of "malicious or cyber activity."<sup class="cite"><a href="#src3">[3]</a></sup><sup class="cite"><a href="#src4">[4]</a></sup><sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>Microsoft extended its email timeout window to 48 hours "to help protect delayed messages while service recovery continues," and reported recovery by region — "broader improvements in North America, sustained improvements across much of Europe, and encouraging recovery signals in Asia Pacific."<sup class="cite"><a href="#src3">[3]</a></sup> The reach ran from the U.S. House of Representatives to Workhorse Group, which postponed its earnings call, to UK police forces asking the public to telephone; OpenAI said Microsoft-connector problems left some ChatGPT tools not working "as expected."<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The thread quoted the status feed directly — "elevated load across multiple regions," with infrastructure being restarted and repaired, and a 9:02 p.m. UTC update describing a validated "alternative health check method" returning a subset of servers to service — while one operator reported "hour 8 and my work email for 15k+ employees is still down," and a self-described former Microsoft engineer explained that M365's deployment pipelines take weeks to roll changes out.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Language Desk</div>
+    <h2 class="headline">Rust 1.100 stabilizes the never type after ten years and five failed attempts</h2>
+    <div class="byline"><span>Language Desk</span><span class="score">★ 761 pts · 280 cmts</span></div>
+    <p class="first">Rust 1.100.0, announced 12 November, makes the never type — written <i>!</i>, the type of computations that never resolve to a value — nameable anywhere in the language, after what the release notes call "10 years and 5 failed stabilization attempts"; <i>Infallible</i> becomes an alias for it.<sup class="cite"><a href="#src6">[6]</a></sup><sup class="cite"><a href="#src7">[7]</a></sup> The stabilization carries a stated break: never-type fallback switches from <i>()</i> to <i>!</i> in the 2015, 2018 and 2021 editions, a change the project says should be "largely unnoticeable" but can mark more code as unreachable.<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <p>The release also stabilizes the core Allocator API, bringing custom allocators to <i>Vec</i> and <i>Box</i>; adds <i>core::mem::DropGuard</i>, which runs a closure on every exit path and supports rollback-style APIs through a dismiss method; and makes <i>std::mem::conjure_zst</i> the sanctioned way to construct zero-sized types.<sup class="cite"><a href="#src6">[6]</a></sup> Cargo gains unused-dependency reporting under a new <i>[lints.cargo]</i> table, a cache-collision fix that consistently applies the build-configuration hash — unblocking cache garbage collection and cross-workspace de-duplication — and stabilized "dependency cooldowns" that skip package versions published more recently than a configured age.<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <p>The thread's top reply asked the perennial question — whether the compiler is any faster, one reader complaining of clearing 90 GB of temporary files with daily <i>cargo clean</i> runs — and the stable ABI kept its lobby; one reader counted the stabilized APIs the announcement doesn't list (<i>bool::toggle</i>, <i>Box::map</i>, <i>str::trim_prefix</i> and <i>trim_suffix</i> among them), and another closed the loop on the headline feature: "Finally, 'never' happened."<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <figure>
+      <img src="images/rust1100.jpg" alt="Rust project social card" loading="lazy">
+      <figcaption>The Rust project's release card. <span class="cr">rust-lang.org</span></figcaption>
+    </figure>
+  </div>
+
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="row3">
+
+  <div class="cell">
+    <div class="kicker">Industry Desk · Workforce</div>
+    <h2 class="headline">More than 1,600 internal comments ask Nvidia's board to bring Huang back</h2>
+    <div class="byline"><span>Industry Desk</span><span class="score">★ 704 pts · 555 cmts</span></div>
+    <p class="first">An internal "suggestion box" post submitted before the resignation by a longtime Nvidia engineer — urging the board to weigh employee sentiment before acting — has drawn more than 1,600 comments, several asking board members to find a way to reinstall Jensen Huang, WIRED reports from internal correspondence.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src8">[8]</a></sup> "If you believe in the mission, bring back THE boss," one anonymous commenter wrote; another: "We are all humans and can make mistakes." One staffer sent a companywide email demanding transparency into the exit.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The board, largely early investors and Huang confidants, had been expected by many employees to let its investigation conclude before any big change; instead Huang left as the inquiry began, and staffers are asking why.<sup class="cite"><a href="#src1">[1]</a></sup> One employee of two years, unauthorized to speak publicly, told WIRED the desire for reinstatement is widespread and put the board's choice plainly: "Nvidia is Nvidia because of Jensen."<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The thread's most-replied comment drew the line the internal comments mostly did not: "If it was one affair, this would hold. It is allegedly 3 and counting, and includes a likely spy from a rival nation."<sup class="cite"><a href="#src8">[8]</a></sup> Another reader argued the unwalkable part is the admitted relationship with the head of a company that "appears to exist only to evade ITAR restrictions" — impossible, he wrote, to believe Huang knew nothing of — and one commenter noted the workforce has also watched its holdings take "a pretty big pay cut this week."<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <figure>
+      <img src="images/nvidia-petition.jpg" alt="WIRED report illustration for the Nvidia petition story" loading="lazy">
+      <figcaption>The WIRED report's illustration. <span class="cr">media.wired.com</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Tools Desk · Show HN</div>
+    <h2 class="headline">A $300 embroidery machine's subscription wall meets a free Rust editor</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score">★ 603 pts · 203 cmts</span></div>
+    <p class="first">ZigZag, posted to Hacker News by its author as simpsoka, is a visual embroidery editor built in Rust, with Model Context Protocol support so AI agents can create and edit designs alongside the user: SVG artwork becomes stitches, is tuned in the editor, and exports as PES, DST, EXP, JEF or VP3 — or goes straight to a Brother Skitch (PP1) over Bluetooth.<sup class="cite"><a href="#src9">[9]</a></sup><sup class="cite"><a href="#src10">[10]</a></sup> The Mac build is signed and notarized; the Windows build ships as a zip that SmartScreen flags once.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>The planning engine carries the craft: satins wider than 7 millimeters auto-split into staggered stitches, fill hidden under later objects isn't sewn (keeping 0.5 mm of overlap), and travel stitches route out of sight — straight across, around an outline, or under what is sewn later — with thread trims only when nothing else works, up to 50 mm of travel.<sup class="cite"><a href="#src9">[9]</a></sup> Per-object sewing control sets where thread enters and leaves; a Connect bar converts would-be cuts into visible running stitches and counts the cuts saved as it is dragged.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>The thread supplied its own due diligence: one reader's deep dive found much of the machine communication rides on the open-source Respira library, and that the "$300" machine usually sells for $499 — the lower figure likely secondhand or on sale; others recommended Ink/Stitch as the incumbent and recalled paying over $1,000 for Hatch embroidery software.<sup class="cite"><a href="#src10">[10]</a></sup> The top comment, assuming a language model did the heavy lifting, called the project "one of the best examples" of such tools letting a user scratch his own itch.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <figure>
+      <img src="images/zigzag.png" alt="ZigZag repository card image" loading="lazy">
+      <figcaption>The repository's card image. <span class="cr">opengraph.githubassets.com</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">AI Desk · Models</div>
+    <h2 class="headline">Google's Orchestrator hands work between Carbon and Hydrogen mid-task</h2>
+    <div class="byline"><span>AI Desk · Models</span><span class="score">★ 451 pts · 137 cmts</span></div>
+    <p class="first">Google rolled Gemini 4 Hydrogen into its Antigravity coding environment alongside Orchestrator, a new dropdown option that pairs Hydrogen with the frontier Carbon for long-horizon work: Carbon opens read-only to explore dependencies and build a plan with explicit re-planning triggers, Hydrogen takes over to write edits and run tests, and friction hands control back.<sup class="cite"><a href="#src11">[11]</a></sup><sup class="cite"><a href="#src12">[12]</a></sup> On Terminal-Bench 4.1, Google says, the pairing reached near-Carbon success rates while consuming 24 percent less quota and completing 19 percent faster.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>Google positions Orchestrator against the static "model router" habit — guessing task difficulty from the first prompt and routing the whole task — which it says breaks down as agents run longer and need different capability at different stages.<sup class="cite"><a href="#src11">[11]</a></sup> Hydrogen standalone scores 51 on the Artificial Analysis Intelligence Index (Argon: 50, and 54 at the new xhigh setting) and 57 percent on Terminal-Bench 4.1 against 3.8 Flash's 18.2. Hydrogen reaches paid AI Pro and Ultra subscribers; Orchestrator (Carbon) is Ultra-only, with an Argon pairing for Pro.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The thread's most-replied comment noted the naming came full circle — "Gemini Hydrogen" was a meme after Carbon shipped, "and they actually released a model named Hydrogen" — while one reader was "honestly surprised they only see 25% savings," claiming 60 percent from his own setup bridging a frontier model to a cheaper one, and others asked what the element names are for.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <figure>
+      <img src="images/gemini4.png" alt="Gemini 4 Hydrogen announcement key art" loading="lazy">
+      <figcaption>The announcement's key art. <span class="cr">antigravity.google</span></figcaption>
+    </figure>
+  </div>
+
+</div>
+
+<!-- 6. INDUSTRY, SCIENCE, CLOUD & ON-DEVICE -->
+<div class="sec2">
+
+  <div class="cell">
+    <div class="section-label"><span>The Industry Desk</span></div>
+
+    <div class="kicker">Industry Desk · Reporting</div>
+    <h2 class="headline">Reuters reports another Huang relationship, and the thread asks who is sequencing the news</h2>
+    <div class="byline"><span>Industry Desk</span><span class="score">★ 339 pts · 372 cmts</span></div>
+    <p class="first">Reuters reported Thursday — headline: "Former Nvidia CEO Huang had a relationship with a second employee, sources say" — the latest in the series of relationship reports that followed Huang's Sunday email admitting infidelity; WIRED, counting the suspected-intelligence-asset report and the alleged affair with a direct report that preceded the resignation, files the Reuters account as "yet another."<sup class="cite"><a href="#src13">[13]</a></sup><sup class="cite"><a href="#src1">[1]</a></sup> Huang has not commented since the Sunday email.<sup class="cite"><a href="#src1">[1]</a></sup> The Reuters link met this paper's bot wall; this account is set from the wire's headline, WIRED's reporting, and the thread.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <p>The thread's dominant note was timing rather than the allegation itself. "This seems like a coordinated hit, slowly releasing more and more information. What's really going on?" asked the most-replied comment; others wondered whether the information had been long known and released now "for some nefarious business reason."<sup class="cite"><a href="#src14">[14]</a></sup> A quieter question — whether such relationships are common at the board level of major companies and merely uncommon to surface — drew no answer.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+
+    <div class="pullquote" style="font-size:16px">"We know that it's real. Every time you look at the predicted location, there it is."<span class="attr">— Matthew Holman, Smithsonian Astrophysical Observatory<sup class="cite"><a href="#src15">[15]</a></sup></span></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>The Science Desk</span></div>
+
+    <div class="kicker">Science Desk · Astronomy</div>
+    <h2 class="headline">A dwarf-planet candidate 46 times farther out than Earth turns up in Rubin Observatory data</h2>
+    <div class="byline"><span>Science Desk</span><span class="score">★ 339 pts · 145 cmts</span></div>
+    <p class="first">Sifting Vera C. Rubin Observatory data in Chile — in which he and colleague Kevin Napier had already catalogued more than 2,000 small bright objects — Smithsonian Astrophysical Observatory astrophysicist Matthew Holman flagged one dot that seemed big, then verified it with Rubin solar system lead scientist Mario Jurić across a decade of earlier images and photographic plates from 1937 in the Harvard plate stacks.<sup class="cite"><a href="#src15">[15]</a></sup><sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <p>The object, 2026 ED138, orbits 46 times farther from the sun than Earth and takes 281.1 years to complete a circuit.<sup class="cite"><a href="#src15">[15]</a></sup> Whether it joins the five recognized dwarf planets — Pluto, Eris, Makemake, Haumea and Ceres — turns on size, and brightness alone cannot settle it: estimates run 370 to 930 miles across, because a gleaming, icy, reflective body can look as bright as a much larger dull one.<sup class="cite"><a href="#src15">[15]</a></sup> Infrared measurement, with ALMA among the telescopes being lined up, or a stellar occultation can; "in the next few months it will be" easier to see, Holman says, "and people will try."<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>The thread's expert wing arrived on schedule: a former professional orbit-computer linked an interactive orbit visualization of ED138 ("This is a big boy"), and the Pluto demotion re-ran its standard edition — one reader calling the dwarf-planet class correct and Ceres the proof.<sup class="cite"><a href="#src16">[16]</a></sup> A reader asking "Is this Planet X?" received the distinction the article itself draws: ED138 is a candidate dwarf planet, not the hypothesized unseen giant.<sup class="cite"><a href="#src15">[15]</a></sup><sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <figure>
+      <img src="images/ed138.jpg" alt="Image published with the dwarf planet candidate report" loading="lazy">
+      <figcaption>The image published with the report (NOIRLab). <span class="cr">cdn-si-edu.com</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>The Cloud &amp; On-Device Desk</span></div>
+
+    <div class="kicker">Cloud Desk · Status</div>
+    <h2 class="headline">Claude's two-hour outage on Friday began as an authentication failure</h2>
+    <div class="byline"><span>Cloud Desk</span><span class="score">★ 321 pts · 271 cmts</span></div>
+    <p class="first">Anthropic's status page logged "Elevated errors on claude.ai, Claude Code, and platform.claude.com" from 09:58 UTC on Friday, rated major impact and touching Claude Cowork and the Claude Console as well; the initial note named user authentication as the fault, a fix was deployed at 11:05, and the incident was closed as resolved at 11:58.<sup class="cite"><a href="#src17">[17]</a></sup> CNN's outage coverage had noted thousands of Claude users reporting issues on Friday morning by Downdetector's count.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>Readers logged sessions forced to re-login and failing with OAuth errors, and several asked whether it was fallout from the Microsoft outage that had also disturbed OpenAI's connectors; no connection was established.<sup class="cite"><a href="#src18">[18]</a></sup> One commenter's ledger was blunt about the day's relativity: two hours to resolve, "compare to Outlook (down for a day)."<sup class="cite"><a href="#src18">[18]</a></sup></p>
+
+    <div class="kicker" style="margin-top:14px">AI Desk · On-Device</div>
+    <h2 class="headline" style="font-size:20px">Edge0-145B puts a 145-billion-parameter model on a laptop, on shared matrices and an SSD</h2>
+    <div class="byline"><span>AI Desk · On-Device</span><span class="score">★ 290 pts · 85 cmts</span></div>
+    <p class="first">Edge0 released Edge0-145B and Edge0-120B with their inference framework: of 145 billion parameters, about 10 billion compute on each step, with every group of 64 sparse experts sharing two large matrices.<sup class="cite"><a href="#src19">[19]</a></sup> The engine pipelines three storage tiers — hot experts in GPU memory, an expert library of roughly 40 GB in system memory, about 48 GB of vocabulary data on the SSD — and schedules CPU and GPU together under speculative decoding, reporting 80-plus tokens per second on a laptop at 28 GB peak memory in its performance section, and a 29 GB measured peak in its comparison table — figures the post itself notes come from different setups.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>Its benchmark table — all from Edge0's internal evaluations — reads 64.6 on DeepSWE 1.1 (Qwen3.8-Flash-Next: 58.7), 90.4 on GPQA-Diamond against Claude Opus 4.6's 91.3, and 80.6 on IFBench to Claude's 62.5, with demonstrations including an explainer video and a Blender-built Manhattan scene, each produced within an hour.<sup class="cite"><a href="#src19">[19]</a></sup> The thread went straight to the fine print: the release is open weights rather than open source, one reader corrected, and its NVFP4 format as shipped confines it to Nvidia Blackwell hardware until other quantizations and engines arrive, another noted — leaving "a decent spec MBP," in a third's words, as the qualifying computer.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <figure>
+      <img src="images/edge0.png" alt="Edge0-145B announcement cover image" loading="lazy">
+      <figcaption>The announcement's cover image. <span class="cr">cdn.hashnode.com</span></figcaption>
+    </figure>
+
+    <div class="classifieds">
+      <div class="t">Classifieds — Rates: 1 Karma per line</div>
+      <p>LOST: email, second day. Microsoft has extended its timeout window to 48 hours; several UK police forces ask the public to telephone.</p>
+      <p>FOUND: one dwarf-planet candidate, 2026 ED138, 46 AU out on a 281.1-year orbit; claimants must first measure its diameter.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+
+  <div class="cell">
+    <div class="section-label"><span>The Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" style="width:100%; height:auto; display:block" role="img" aria-label="Bar chart of the ten stories' points">
+      <defs>
+        <pattern id="hatchInk" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f3ecdd"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+        <pattern id="hatchRed" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f3ecdd"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines (tick step 200; axisMax 3800) -->
+      <line class="grid" x1="27"  y1="6" x2="27"  y2="344"/>
+      <line class="grid" x1="55"  y1="6" x2="55"  y2="344"/>
+      <line class="grid" x1="82"  y1="6" x2="82"  y2="344"/>
+      <line class="grid" x1="109" y1="6" x2="109" y2="344"/>
+      <line class="grid" x1="137" y1="6" x2="137" y2="344"/>
+      <line class="grid" x1="164" y1="6" x2="164" y2="344"/>
+      <line class="grid" x1="192" y1="6" x2="192" y2="344"/>
+      <line class="grid" x1="219" y1="6" x2="219" y2="344"/>
+      <line class="grid" x1="246" y1="6" x2="246" y2="344"/>
+      <line class="grid" x1="274" y1="6" x2="274" y2="344"/>
+      <line class="grid" x1="301" y1="6" x2="301" y2="344"/>
+      <line class="grid" x1="328" y1="6" x2="328" y2="344"/>
+      <line class="grid" x1="356" y1="6" x2="356" y2="344"/>
+      <line class="grid" x1="383" y1="6" x2="383" y2="344"/>
+      <line class="grid" x1="411" y1="6" x2="411" y2="344"/>
+      <line class="grid" x1="438" y1="6" x2="438" y2="344"/>
+      <line class="grid" x1="465" y1="6" x2="465" y2="344"/>
+      <line class="grid" x1="493" y1="6" x2="493" y2="344"/>
+      <line class="grid" x1="520" y1="6" x2="520" y2="344"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0.5" y1="352.5" x2="520.5" y2="352.5"/>
+      <!-- tick labels -->
+      <text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text>
+      <text x="27" y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="55" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="82" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text>
+      <text x="109" y="366" font-size="11" fill="#3d352a" text-anchor="middle">800</text>
+      <text x="137" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1000</text>
+      <text x="164" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1200</text>
+      <text x="192" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1400</text>
+      <text x="219" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1600</text>
+      <text x="246" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1800</text>
+      <text x="274" y="366" font-size="11" fill="#3d352a" text-anchor="middle">2000</text>
+      <text x="301" y="366" font-size="11" fill="#3d352a" text-anchor="middle">2200</text>
+      <text x="328" y="366" font-size="11" fill="#3d352a" text-anchor="middle">2400</text>
+      <text x="356" y="366" font-size="11" fill="#3d352a" text-anchor="middle">2600</text>
+      <text x="383" y="366" font-size="11" fill="#3d352a" text-anchor="middle">2800</text>
+      <text x="411" y="366" font-size="11" fill="#3d352a" text-anchor="middle">3000</text>
+      <text x="438" y="366" font-size="11" fill="#3d352a" text-anchor="middle">3200</text>
+      <text x="465" y="366" font-size="11" fill="#3d352a" text-anchor="middle">3400</text>
+      <text x="493" y="366" font-size="11" fill="#3d352a" text-anchor="middle">3600</text>
+      <text x="520" y="366" font-size="11" fill="#3d352a" text-anchor="middle">3800</text>
+      <!-- rows: top = 8 + 34i ; label y=top+10 ; bar y=top+14 h=15 ; value y=top+26 -->
+      <text class="barlabel" x="0" y="18">Huang resigns &#8224;</text>
+      <rect x="0.5" y="22" width="510" height="15" fill="url(#hatchRed)" stroke="#7a1f1f" stroke-width="0.8"/>
+      <text class="barval" x="517" y="34" font-weight="700" fill="#191510">3728 &#9733; · 3241 cmts</text>
+      <text class="barlabel" x="0" y="52">Microsoft 365 outage</text>
+      <rect x="0.5" y="56" width="143" height="15" fill="url(#hatchRed)" stroke="#7a1f1f" stroke-width="0.8"/>
+      <text class="barval" x="150" y="68" fill="#3d352a">1042 · 871</text>
+      <text class="barlabel" x="0" y="86">Rust 1.100</text>
+      <rect x="0.5" y="90" width="104" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="111" y="102" fill="#3d352a">761 · 280</text>
+      <text class="barlabel" x="0" y="120">Bring-back petition</text>
+      <rect x="0.5" y="124" width="96" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="103" y="136" fill="#3d352a">704 · 555</text>
+      <text class="barlabel" x="0" y="154">ZigZag embroidery</text>
+      <rect x="0.5" y="158" width="83" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="90" y="170" fill="#3d352a">603 · 203</text>
+      <text class="barlabel" x="0" y="188">Gemini 4 Hydrogen</text>
+      <rect x="0.5" y="192" width="62" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="69" y="204" fill="#3d352a">451 · 137</text>
+      <text class="barlabel" x="0" y="222">Another Huang relationship</text>
+      <rect x="0.5" y="226" width="46" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="53" y="238" fill="#3d352a">339 · 372</text>
+      <text class="barlabel" x="0" y="256">Dwarf planet ED138</text>
+      <rect x="0.5" y="260" width="46" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="53" y="272" fill="#3d352a">339 · 145</text>
+      <text class="barlabel" x="0" y="290">Claude outage</text>
+      <rect x="0.5" y="294" width="44" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="51" y="306" fill="#3d352a">321 · 271</text>
+      <text class="barlabel" x="0" y="324">Edge0-145B</text>
+      <rect x="0.5" y="328" width="40" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="0.8"/>
+      <text class="barval" x="47" y="340" fill="#3d352a">290 · 85</text>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">&#9733; = points · cmts = comments · &#8224; most-discussed story of the day · red hatch marks a follow-up carried from a previous edition</text>
+    </svg>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="statbox">
+      <div class="t">The Day in One Line</div>
+      <table>
+        <tr><td>Nvidia's resignation thread passes 3,700 points as 1,600 internal comments petition for Huang's return and Reuters logs another relationship; Microsoft's outage runs into day two across 74 countries; Rust stabilizes the never type; a dwarf-planet candidate surfaces 46 AU out.</td></tr>
+      </table>
+    </div>
+
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Fresh stories</td><td>8</td></tr>
+        <tr><td>Follow-ups</td><td>2</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>8,578</td></tr>
+        <tr><td>Combined comments</td><td>6,160</td></tr>
+        <tr><td>Top score</td><td>3,728</td></tr>
+        <tr><td>Most-discussed</td><td>3,241 cmts</td></tr>
+      </table>
+    </div>
+
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>"A second employee."</b> Reuters's headline counts a second employee; by WIRED's tally the report is the third allegation since Sunday — the suspected intelligence asset, the direct report whose reported affair preceded the resignation, and this one. Both counts appear in today's coverage; neither outlet reconciles them.</p>
+      <p><b>"In the Americas."</b> Thursday's tracking, and Microsoft's first framing, placed the failure in the Americas; within an hour Downdetector carried reports from 74 countries and territories, and by Friday Microsoft was describing recovery region by region. The company says there is no indication of malicious activity.</p>
+      <p><b>"Open-source," on your own computer.</b> Edge0's post says open-source; readers note the release is open weights, and that the NVFP4 format as shipped runs only on Nvidia Blackwell hardware. The post itself carries two peak-memory figures — 28 GB in its performance section, 29 GB in its comparison table.</p>
+      <p><b>"My $300 embroidery machine."</b> A thread deep-dive finds that machine usually sells for $499, with the $300 price likely secondhand or on sale, and that machine communication leans on the existing open-source Respira library — the editor is new; the protocol work is not.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher's Note</div>
+  <p>The morning paper leads with the aftermath of the Nvidia resignation — the thread has added 1,240 points since Thursday's evening edition — and carries one more follow-up: the Microsoft 365 degradation, up 757 points and now a two-day, 74-country outage. Eight stories are fresh, from Rust's never type to a dwarf-planet candidate beyond Pluto. The Associated Press and Reuters links met bot walls and the two status pages render only in a browser, so those accounts are set from WIRED and CNN reporting, the incident feeds' own data, and the threads. Every number is from the 14:00&nbsp;UTC snapshot.</p>
+  <div class="sig">— The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li id="src1" data-n="[1]">WIRED, "'Bring Back THE Boss': Nvidia Employees Petition for Jensen Huang's Return," 13 Nov 2026 — <a href="https://www.wired.com/story/nvidia-employees-petition-for-jensen-huangs-return/">wired.com</a></li>
+    <li id="src2" data-n="[2]">Hacker News thread 50467087 — <a href="https://news.ycombinator.com/item?id=50467087">news.ycombinator.com</a></li>
+    <li id="src3" data-n="[3]">CNN, "Global Microsoft Outage" live coverage, 12–13 Nov 2026 — <a href="https://www.cnn.com/2026/11/12/business/live-news/microsoft-global-outage-intl-hnk">cnn.com</a></li>
+    <li id="src4" data-n="[4]">Microsoft 365 service status — <a href="https://status.cloud.microsoft/">status.cloud.microsoft</a></li>
+    <li id="src5" data-n="[5]">Hacker News thread 50471731 — <a href="https://news.ycombinator.com/item?id=50471731">news.ycombinator.com</a></li>
+    <li id="src6" data-n="[6]">The Rust Team, "Announcing Rust 1.100.0," 12 Nov 2026 — <a href="https://blog.rust-lang.org/2026/11/12/Rust-1.100.0/">blog.rust-lang.org</a></li>
+    <li id="src7" data-n="[7]">Hacker News thread 50472038 — <a href="https://news.ycombinator.com/item?id=50472038">news.ycombinator.com</a></li>
+    <li id="src8" data-n="[8]">Hacker News thread 50477231 — <a href="https://news.ycombinator.com/item?id=50477231">news.ycombinator.com</a></li>
+    <li id="src9" data-n="[9]">simpsoka/zigzag, GitHub — <a href="https://github.com/simpsoka/zigzag">github.com</a></li>
+    <li id="src10" data-n="[10]">Hacker News thread 50470488 — <a href="https://news.ycombinator.com/item?id=50470488">news.ycombinator.com</a></li>
+    <li id="src11" data-n="[11]">Google Antigravity, "Gemini 4 Hydrogen and Orchestrator," 12 Nov 2026 — <a href="https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity/">antigravity.google</a></li>
+    <li id="src12" data-n="[12]">Hacker News thread 50472260 — <a href="https://news.ycombinator.com/item?id=50472260">news.ycombinator.com</a></li>
+    <li id="src13" data-n="[13]">Reuters, "Former Nvidia CEO Huang had a relationship with a second employee, sources say," 12 Nov 2026 — <a href="https://www.reuters.com/technology/former-nvidia-ceo-huang-had-relationship-with-second-employee-sources-say-2026-11-12/">reuters.com</a></li>
+    <li id="src14" data-n="[14]">Hacker News thread 50473190 — <a href="https://news.ycombinator.com/item?id=50473190">news.ycombinator.com</a></li>
+    <li id="src15" data-n="[15]">Smithsonian Magazine, "Astronomers Found a Mysterious Object Orbiting Far Beyond Pluto," 13 Nov 2026 — <a href="https://www.smithsonianmag.com/smart-news/astronomers-found-a-mysterious-object-orbiting-far-beyond-pluto-it-could-be-a-new-dwarf-planet-hidden-in-our-solar-system-180989857/">smithsonianmag.com</a></li>
+    <li id="src16" data-n="[16]">Hacker News thread 50472490 — <a href="https://news.ycombinator.com/item?id=50472490">news.ycombinator.com</a></li>
+    <li id="src17" data-n="[17]">Anthropic status, incident "Elevated errors on claude.ai, Claude Code, and platform.claude.com" — <a href="https://status.claude.com/incidents/nn11wk485zfn">status.claude.com</a></li>
+    <li id="src18" data-n="[18]">Hacker News thread 50481187 — <a href="https://news.ycombinator.com/item?id=50481187">news.ycombinator.com</a></li>
+    <li id="src19" data-n="[19]">edge0, "Edge0-145B: Frontier AI Capabilities on Your Own Computer," 12 Nov 2026 — <a href="https://edge0.ai/blog/introducing-edge0-145b-frontier-ai-capabilities-on-your-own-computer">edge0.ai</a></li>
+    <li id="src20" data-n="[20]">Hacker News thread 50475713 — <a href="https://news.ycombinator.com/item?id=50475713">news.ycombinator.com</a></li>
+  </ol>
+  <p class="method">Methodology: snapshot of the Hacker News front page taken 13 November 2026 at 14:00&nbsp;UTC (08:00&nbsp;US Central) via the Algolia HN Search API; scores and comment counts are as of that moment. Candidate pool of 30 front-page items, deduplicated against this paper's previous four editions; two follow-ups admitted at &#8805;+40% and &#8805;+150 points since coverage (+50%, +1,240; +266%, +757). The Associated Press and Reuters articles resisted fetching; both stories are set from WIRED and CNN reporting and their threads. Microsoft's and Anthropic's status pages are set from their incident feeds and thread-quoted updates. Images are each story's own published card or article image, credited by hostname.</p>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <span>The Hacker Herald — Typeset from the Hacker News front page</span>
+  <span>&#10087; Printed on 100% recycled bandwidth &#10087;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</span>
+</footer>
+
+</body>
+</html>
