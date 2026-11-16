@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 16, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+
+/* edition-specific additions */
+.lead .main figure img{max-height:430px; object-fit:cover}
+.statbox p.statnote{font-size:12.5px; line-height:1.45; text-align:left; hyphens:none; margin:0}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page · Snapshot 22:00 UTC</div>
+  <div class="mid">Afternoon Edition</div>
+  <div class="r">10 Stories · 3,710 Points · 1,948 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type — a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Monday, November 16, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">The Making Desk</span><b>Course Page Tops 800</b>
+    MIT’s “How To Make (almost) Anything” syllabus added 341 points since the morning edition to lead the day at 808 — the edition’s only follow-up.</div>
+  <div class="cell"><span class="tag">Commerce</span><b>One in Three “Deals” Weren’t</b>
+    Groundwork Collaborative price-checked 350-plus products on Amazon’s own deal pages: nearly 1 in 3 Black Friday and Cyber Monday “deals” offered no savings; nearly 1 in 10 cost more than before the sale.</div>
+  <div class="cell"><span class="tag">Systems</span><b>Five Banks, One Outage Window</b>
+    Bank of America, Chase, U.S. Bank, Wells Fargo and Zelle reported simultaneous outages; readers described declined cards, unresponsive branches and offline banking.</div>
+  <div class="cell"><span class="tag">Big Tech</span><b>Nvidia’s Margin Story</b>
+    Wired tallies the competition that predated Jensen Huang’s exit: AMD at 7–10 percent of AI accelerators, China down to 8 percent of revenue.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <div class="kicker">Commerce Desk · Lead Story</div>
+    <h2 class="headline">One in Three Amazon Black Friday “Deals” Offered No Savings, Audit Finds</h2>
+    <h3 class="deck">Groundwork Collaborative checked more than 350 products from Amazon’s own deal pages for 2024 and 2025; nearly one in ten “deals” cost more than the pre-sale price.</h3>
+    <div class="byline"><span>By the Commerce Desk</span><span class="score"><b>★ 744 pts · 460 comments</b></span></div>
+    <p class="first">WASHINGTON — Nearly one in three products that Amazon promoted as Black Friday and Cyber Monday “deals” sold for the same price or less in the month before the sale, and nearly one in ten cost more than the pre-sale price, according to an analysis released Monday by the Groundwork Collaborative, which examined the prices of more than 350 products on Amazon’s own deal pages for the 2024 and 2025 sale events.<sup class="cite"><a href="#src1">[1]</a></sup> The report, “Deal or Decoy? Amazon’s Deceptive Discounts,” is by Breyon Williams, Elizabeth Pancotti and Lindsay Owens.</p>
+    <p>The audit names its examples. On Black Friday 2025, a pair of yellow Hunter women’s short rain boots “on sale” for $126.99 had cost $79.97 nine days before the event began — 59 percent more for anyone who waited for the deal. On Cyber Monday 2025, men’s UGG Butte boots “on sale” at $179.98 had been $98.40 roughly four weeks earlier, an 83 percent premium.<sup class="cite"><a href="#src1">[1]</a></sup> Amazon’s 2025 deals page tells shoppers the company has “handpicked some of the best” discounts available.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>“Shoppers who wait for these major sale events may be playing rip-off roulette,” said Owens, the group’s president and co-author.<sup class="cite"><a href="#src1">[1]</a></sup> The thread — the day’s most-discussed at 460 comments — split between readers who called the practice false advertising and those who noted it long predates Amazon; the working defense offered most often was a price-history tracker, though one reader replied that tracker prices and checkout prices have lately stopped matching.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <figure>
+      <img src="images/amazon-deals.png" alt="Cover of the Groundwork Collaborative report on Amazon deal pricing" loading="lazy">
+      <figcaption>The cover of “Deal or Decoy? Amazon’s Deceptive Discounts,” which price-checked more than 350 products promoted on Amazon’s own deal pages.<span class="cr">Groundworkcollaborative.org</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Follow-Up · The Making Desk</div>
+    <h2 class="headline">MIT’s Make-Anything Course Page Clears 800 Points</h2>
+    <div class="byline"><span>The Making Desk</span><span class="score"><b>★ 808 pts · ▲ +341 since the morning edition</b></span></div>
+    <p class="first">CAMBRIDGE, MASS. — The syllabus page for MIT’s “How To Make (almost) Anything” — the Center for Bits and Atoms course MAS.863, taught Wednesdays from 1 to 4 in building E14-633 — added 341 points since the morning edition, the day’s fastest riser, now the top-scoring link on the front page.<sup class="cite"><a href="#src3">[3]</a></sup><sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <p>The semester runs one fabrication discipline per week: computer-aided design, computer-controlled cutting, embedded programming, 3-D scanning and printing, electronics design and production, machining, input and output devices, molding and casting, and networking, ending with final project presentations on December 15; recitations cover version control, parametric design and debugging.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The thread’s sharpest objection — that CAD alone is a career, so one lecture per tool can teach little — drew the most-repeated reply on the page: “Making things poorly is a lot more interesting than not making them at all. And then you know who to ask when you need part of it done well.”<sup class="cite"><a href="#src4">[4]</a></sup></p>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Systems Desk</div>
+    <h2 class="headline">Five Banks and Zelle Report Outages at Once</h2>
+    <div class="byline"><span>Systems Desk</span><span class="score"><b>★ 579 pts · 443 cmts</b></span></div>
+    <p class="first">Bank of America, Chase, U.S. Bank, Wells Fargo and the payment network Zelle all reported outages on Monday, in the day’s second-most-discussed thread.<sup class="cite"><a href="#src5">[5]</a></sup> Readers catalogued the failure modes — cards declined at terminals, physical branches closed or unresponsive, online banking down.<sup class="cite"><a href="#src6">[6]</a></sup> The Associated Press report sat behind an automated bot wall at press time, so this account is drawn from the thread and its title.</p>
+    <p>Two observations organized the 443 comments. First, that simultaneous multi-bank failure is a different order of event from the now-routine single-bank outage. Second, that the closest precedent is Revolut’s late-October outage in Europe, which the company traced to a Google Cloud failure and resolved in about 12 hours — putting the sector’s shared cloud dependencies at the center of the question.<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <div class="pullquote">“It’s wild that even our banks are now reliant on cloud providers.”<span class="attr">A reader, on the bank-outage thread</span></div>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="section-label"><span>Software · Hardware · Tools</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">Software Desk</div>
+    <h2 class="headline">Essay Argues Software Failure Is Now Systemic</h2>
+    <div class="byline"><span>Software Desk</span><span class="score"><b>★ 282 pts · 172 cmts</b></span></div>
+    <p class="first">An essay by developer Jimmy Breck-McKye argues that this month’s failures share no single cause but a common shape: a two-day global Microsoft outage, an FAA ground stop that halted all United States flights, the PHP2Shell vulnerability in a language powering an estimated 70 percent of the world’s websites, and the eMudhra certificate compromise each became cascading failures that complex systems could not recover from.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>Artificial intelligence is “both a cause and a symptom,” he writes — attackers can now find complicated exploits in hours, and companies do not divulge whether broken systems were built with AI.<sup class="cite"><a href="#src7">[7]</a></sup> The thread disputed particulars: the FAA ground stop followed a cable swap, one reader noted, and npm was hardly the first package manager. The most-upvoted worry likened software’s compounding interdependence to Kessler syndrome in orbit.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Hardware Desk</div>
+    <h2 class="headline">The Power-Button Ritual That Revives Dead ThinkPads</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>★ 278 pts · 110 cmts</b></span></div>
+    <p class="first">A 2007 post by Mike Masnick, resurfaced Monday, records the procedure an IBM support technician taught him for a completely dead ThinkPad: unplug the AC adapter, remove the battery, press the power button ten times at one-second intervals, then press and hold it for thirty seconds. Reinstall the battery, press once — “and she lives.”<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>The technician called the fault “static discharge”; the thread’s repair hands put the mechanism more exactly as draining residual charge from the capacitors, which is why variants of the ritual work on Dells, MSIs and Toshibas, including laptops with no removable battery.<sup class="cite"><a href="#src10">[10]</a></sup> One reader reports a washing machine that reboots the same way: unplug for thirty seconds, open and close the door ten times.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Tools Desk</div>
+    <h2 class="headline">Jiff 1.0 Puts a Datetime Library Into Rust’s Foundations</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>★ 250 pts · 54 cmts</b></span></div>
+    <p class="first">Jiff, a datetime library for Rust that places time-zone and daylight-saving handling at the center of its API, reached version 1.0 on Sunday, with author Andrew Gallant pledging to hold the major version “indefinitely” — a deliberate signal that the library is meant to appear in the public APIs of other libraries, where incompatible releases would hurt the ecosystem.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>It already ships inside uv, Cargo, Starship, fd, Nushell, mise, Jujutsu and uutils/coreutils, and underlies a Temporal implementation in AWS’s LLRT runtime.<sup class="cite"><a href="#src11">[11]</a></sup> The thread’s single controversy was orthographic: the announcement specifies Jiff is pronounced like “gem,” and a hard-g faction registered its dissent.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+  </div>
+</div>
+
+<!-- 6. SECOND ROW OF 3 -->
+<div class="section-label"><span>The Workshop · Big Tech · Science</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">The Workshop Desk</div>
+    <h2 class="headline">TRMNL Announces Frame, a 31.5-Inch Color ePaper Display</h2>
+    <div class="byline"><span>The Workshop Desk</span><span class="score"><b>★ 221 pts · 135 cmts</b></span></div>
+    <p class="first">TRMNL’s third hardware release is Frame: a 31.5-inch full-color ePaper display enclosed in a handmade wooden body, built in a woodworking shop the company opened a few miles from headquarters. The first batch is about 470 units, with a few shipping by the end of 2026 and most deliveries in early 2027.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>Frame adds clock-synchronized updates at fixed times of day instead of a fixed refresh interval — less flicker, longer battery life — plus a microSD offline mode, a rechargeable battery of 10,000 to 20,000 mAh, and an optional always-on USB-C port through the back panel.<sup class="cite"><a href="#src13">[13]</a></sup> The thread priced the neighborhood: Samsung’s same-panel EM32DX lists around $1,500, a similarly sized InkPoster around $1,700, and one reader put a 4K monitor plus a handmade frame at roughly a third of the cost.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <figure>
+      <img src="images/frame-epaper.jpg" alt="Frame, a 31.5-inch color ePaper display in a wooden frame" loading="lazy">
+      <figcaption>Frame in its handmade wooden body; the first production batch is about 470 units.<span class="cr">Trmnl.com</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Big-Tech Desk</div>
+    <h2 class="headline">Wired: Nvidia’s Competition Grew In While It Dominated</h2>
+    <div class="byline"><span>Big-Tech Desk</span><span class="score"><b>★ 211 pts · 205 cmts</b></span></div>
+    <p class="first">The pressures around Nvidia predate Jensen Huang’s exit, Wired reports: the company still holds about 80 percent of AI-accelerator sales, but AMD’s share has climbed from 2 percent in 2022 to between 7 and 10 percent in 2026, and Google, Amazon and Microsoft each design their own silicon to cut costs and dependence.<sup class="cite"><a href="#src15">[15]</a></sup> CFO Colette Kress holds the reins while revenue runs from $26.91 billion in January 2022 to $215.94 billion in January 2026.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>China supplies the harder margin: barred from selling its most powerful chips there, Nvidia has watched China fall from 20 percent of revenue in 2024 to 8 percent, while Chinese AI company Z.ai says it trained its open-weight models entirely on Huawei chips.<sup class="cite"><a href="#src15">[15]</a></sup> The thread doubted the framing — “post hoc rationalization; nothing in here was unknown on 10/29,” one reader wrote, and another noted the forward P/E had already traded below the market average.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <figure>
+      <img src="images/nvidia-trouble.jpg" alt="Illustration from Wired's report on Nvidia" loading="lazy">
+      <figcaption>Wired’s account of the competitive picture around Nvidia’s accelerator business.<span class="cr">Wired.com</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Science Desk</div>
+    <h2 class="headline">Coffeehouses Drove London’s Science, Economists Find</h2>
+    <div class="byline"><span>Science Desk</span><span class="score"><b>★ 171 pts · 98 cmts</b></span></div>
+    <p class="first">A working paper by Monir Bounadi and Jens Oehlen, dated October 31, tests the historians’ claim that coffeehouses fueled the Scientific Revolution. Using newly geocoded records and a staggered event study across seventeenth-century London parishes, it finds that a parish’s first coffeehouse is followed by a persistent rise in applied scientists and scientific-instrument shops, concentrated among scientists with weak family ties to Oxford and Cambridge.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>Across European cities of similar size and growth, applied-mathematics titles and instrument makers similarly rose after a city’s first coffeehouse. Calibrated to those estimates, coffeehouses account for 31 percent of London’s applied scientists in the half-century after the first one opened in 1652.<sup class="cite"><a href="#src17">[17]</a></sup> The thread reached for modern analogues — makerspaces, forums, this page among them — with the caveat that online spaces are easy to enter and hard to stumble into productively.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+  </div>
+</div>
+
+<!-- 7. FIELD DESK & THE DAY'S VERDICT -->
+<div class="sec2">
+  <div class="cell">
+    <div class="kicker">Field Desk</div>
+    <h2 class="headline">Grazing Sheep Raise Solar-Field Bees by 38 Percent</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>★ 166 pts · 135 cmts</b></span></div>
+    <p class="first">DRYDEN, N.Y. — Grazing sheep at two per hectare around solar arrays raised beneficial-insect abundance 38 percent versus mowed control plots, driven by an 83 percent increase in honey bees, Cornell researchers report in a paper published October 7 in Environmental Research Letters, based on three years of trials with the university’s teaching sheep at the Cascadilla Community Solar Farm.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>Stocking rate is the dial: at four sheep per hectare, insect abundance matched mowing while vegetation control improved; at eight, vegetation management was maximized and flock health held, but honey bees dropped 45 percent.<sup class="cite"><a href="#src19">[19]</a></sup> A companion paper describes a decision-support tool to help farmers grow solar-grazing herds profitably.<sup class="cite"><a href="#src19">[19]</a></sup> The thread’s agronomists added a caution about the control: flail mowing is far harder on invertebrates than a power scythe, so the mower matters too.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <figure>
+      <img src="images/sheep-solar.jpg" alt="A solar farm in Lansing, New York" loading="lazy">
+      <figcaption>A solar farm in Lansing, New York; Cornell’s grazing trials ran at the university-owned Cascadilla farm in nearby Dryden.<span class="cr">News.cornell.edu</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">The Day’s Verdict</div>
+    <h2 class="headline">Quote of the Day</h2>
+    <div class="byline"><span>Chosen for insight</span><span class="score">Thread-sourced</span></div>
+    <div class="pullquote" style="font-size:17px">“The increasing density of satellites in low Earth orbit increases the probability that a cascading failure occurs… The analogous situation is brewing.”<span class="attr">A reader, comparing software interdependence to Kessler syndrome, on the systemic-breakdown thread</span></div>
+    <div class="statbox">
+      <div class="t">The Day in One Line</div>
+      <p class="statnote">Amazon’s “deals” mostly weren’t, five banks went dark at once, and a nineteen-year-old ThinkPad revival trick still works.</p>
+    </div>
+  </div>
+
+  <div class="cell">
+    <div class="classifieds">
+      <div class="t">Classifieds — Rates: 1 Karma per line</div>
+      <p>WANTED: dead ThinkPads. Unplug, pull the battery, tap the power button ten times, hold thirty seconds. She lives.</p>
+      <p>FOR SALE: 31.5-inch color ePaper in handmade wood, first run of about 470 units, most shipping early 2027.</p>
+      <p>LOST: $47.02 — the extra paid for Hunter rain boots by waiting for the Black Friday “deal” ($126.99, against $79.97 nine days earlier).</p>
+    </div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Fresh stories</td><td>9</td></tr>
+        <tr><td>Follow-ups</td><td>1</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>3,710</td></tr>
+        <tr><td>Combined comments</td><td>1,948</td></tr>
+        <tr><td>Most-discussed thread</td><td>Amazon “deals” · 460</td></tr>
+        <tr><td>Fastest riser</td><td>MIT course · ▲ +341</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 8. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="kicker">The Box Score</div>
+    <h2 class="headline" style="font-size:22px">Points on the Day’s Ten</h2>
+    <figure>
+    <svg viewBox="0 0 640 392" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block" role="img" aria-label="Bar chart of points for the ten front-page stories">
+      <defs>
+        <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f3ecdd"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+        <pattern id="hatchR" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f3ecdd"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <g class="grid">
+        <line x1="0" y1="6" x2="0" y2="344"/>
+        <line x1="58" y1="6" x2="58" y2="344"/>
+        <line x1="116" y1="6" x2="116" y2="344"/>
+        <line x1="173" y1="6" x2="173" y2="344"/>
+        <line x1="231" y1="6" x2="231" y2="344"/>
+        <line x1="289" y1="6" x2="289" y2="344"/>
+        <line x1="347" y1="6" x2="347" y2="344"/>
+        <line x1="404" y1="6" x2="404" y2="344"/>
+        <line x1="462" y1="6" x2="462" y2="344"/>
+        <line x1="520" y1="6" x2="520" y2="344"/>
+      </g>
+      <!-- bars: top = 8 + 34*i -->
+      <rect x="0.5" y="22" width="467" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="56" width="430" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="90" width="335" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="124" width="163" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="158" width="161" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="192" width="144" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="226" width="128" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="260" width="122" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="294" width="99" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="328" width="96" height="15" fill="url(#hatch)"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0.5" y1="352" x2="520.5" y2="352"/>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18">MIT Make-Anything</text>
+      <text class="barlabel" x="0" y="52">Amazon “Deals” &#8224;</text>
+      <text class="barlabel" x="0" y="86">Bank Outages</text>
+      <text class="barlabel" x="0" y="120">Systemic Software</text>
+      <text class="barlabel" x="0" y="154">ThinkPad Trick</text>
+      <text class="barlabel" x="0" y="188">Jiff 1.0</text>
+      <text class="barlabel" x="0" y="222">TRMNL Frame</text>
+      <text class="barlabel" x="0" y="256">Nvidia’s Rivals</text>
+      <text class="barlabel" x="0" y="290">Coffeehouses</text>
+      <text class="barlabel" x="0" y="324">Sheep in Solar</text>
+      <!-- values -->
+      <text class="barval" x="474" y="34" font-weight="bold">808 ★ · 136 cmts</text>
+      <text class="barval" x="437" y="68">744 · 460</text>
+      <text class="barval" x="342" y="102">579 · 443</text>
+      <text class="barval" x="170" y="136">282 · 172</text>
+      <text class="barval" x="168" y="170">278 · 110</text>
+      <text class="barval" x="151" y="204">250 · 54</text>
+      <text class="barval" x="135" y="238">221 · 135</text>
+      <text class="barval" x="129" y="272">211 · 205</text>
+      <text class="barval" x="106" y="306">171 · 98</text>
+      <text class="barval" x="103" y="340">166 · 135</text>
+      <!-- tick labels -->
+      <g fill="#3d352a" font-size="11">
+        <text x="0" y="366" text-anchor="start">0</text>
+        <text x="58" y="366" text-anchor="middle">100</text>
+        <text x="116" y="366" text-anchor="middle">200</text>
+        <text x="173" y="366" text-anchor="middle">300</text>
+        <text x="231" y="366" text-anchor="middle">400</text>
+        <text x="289" y="366" text-anchor="middle">500</text>
+        <text x="347" y="366" text-anchor="middle">600</text>
+        <text x="404" y="366" text-anchor="middle">700</text>
+        <text x="462" y="366" text-anchor="middle">800</text>
+        <text x="520" y="366" text-anchor="middle">900</text>
+      </g>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">★ = points · cmts = comments · &#8224; most-discussed story of the day · red hatch = Apple coverage (none in today’s ten)</text>
+    </svg>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>“Handpicked,” audited.</b> Amazon’s deals page says the company “handpicked some of the best” discounts; Groundwork’s price check found nearly 1 in 3 of those deals offered no savings against the prior month, and nearly 1 in 10 cost more. The first sentence is marketing copy; the second is a measured result.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+      <p><b>“Static,” precisely.</b> The 2007 support call blamed “static discharge” for the dead ThinkPad; readers with repair experience describe the ritual’s actual mechanism as draining residual charge from the capacitors — related, but not what the phrase says.<sup class="cite"><a href="#src9">[9]</a></sup><sup class="cite"><a href="#src10">[10]</a></sup></p>
+      <p><b>2014 was not Year One.</b> The systemic-breakdown essay treats package management as arriving when “tools like NPM hit the scene in 2014”; the thread replies that Maven, RubyGems, apt and yum all managed packages years earlier.<sup class="cite"><a href="#src7">[7]</a></sup><sup class="cite"><a href="#src8">[8]</a></sup></p>
+      <p><b>“Already in trouble” is one reading.</b> Wired frames Nvidia’s competition as pre-existing trouble; thread respondents counter that nothing in the report was unknown on October 29, when the stock still traded durably — a framing dispute rather than a fact dispute.<sup class="cite"><a href="#src15">[15]</a></sup><sup class="cite"><a href="#src16">[16]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- 9. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher’s Note</div>
+  <p>This edition leads with Groundwork Collaborative’s price audit of Amazon’s sale pages, and MIT’s make-anything course page returns as the day’s only follow-up, up 341 points since the morning edition. The Associated Press bank-outage report sat behind a bot wall, so that story is set from its thread; nine of the ten stories are fresh, and none required the digest. The rest of the paper is as found.</p>
+  <div class="sig">— The Herald</div>
+</div>
+
+<!-- 10. SOURCES -->
+<div class="rule-thick"></div>
+<div class="kicker">Sources</div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]">Groundwork Collaborative, “Amazon’s Decoy Deals” — analysis of 350-plus products on Amazon’s 2024–2025 Black Friday and Cyber Monday deal pages. <a href="https://groundworkcollaborative.org/news/amazons-decoy-deals-groundwork-investigation-reveals-nearly-1-in-3-black-friday-and-cyber-monday-deals-advertised-by-amazon-offered-no-savings-to-shoppers-nearly-1-in-10-w/">groundworkcollaborative.org</a></li>
+    <li data-n="[2]">Hacker News thread, “Many of Amazon’s Black Friday and Cyber Monday ‘deals’ offered no savings.” <a href="https://news.ycombinator.com/item?id=50517488">news.ycombinator.com/item?id=50517488</a></li>
+    <li data-n="[3]">MIT Center for Bits and Atoms, “How To Make (almost) Anything” (MAS.863) course site. <a href="https://pub.cba.mit.edu/863.26/site/">pub.cba.mit.edu</a></li>
+    <li data-n="[4]">Hacker News thread, “How to make almost anything.” <a href="https://news.ycombinator.com/item?id=50514470">news.ycombinator.com/item?id=50514470</a></li>
+    <li data-n="[5]">Associated Press, “Outages reported at Bank of America, Chase, U.S. Bank, Wells Fargo and Zelle” (report behind an automated bot wall at press time). <a href="https://apnews.com/article/bank-outage-chase-wells-fargo-truist-50fee2693c22f597fa6ca51e97ef2cda">apnews.com</a></li>
+    <li data-n="[6]">Hacker News thread on the bank outages. <a href="https://news.ycombinator.com/item?id=50521045">news.ycombinator.com/item?id=50521045</a></li>
+    <li data-n="[7]">Jimmy Breck-McKye, “Software is breaking down at a systemic level.” <a href="https://www.breck-mckye.com/blog/2026/11/software-is-breaking-down-at-a-systemic-level/">breck-mckye.com</a></li>
+    <li data-n="[8]">Hacker News thread on the systemic-breakdown essay. <a href="https://news.ycombinator.com/item?id=50520866">news.ycombinator.com/item?id=50520866</a></li>
+    <li data-n="[9]">Mike Masnick, “The Secret Thinkpad Powerbutton Code To Bring Dead Laptops Back To Life” (September 2007). <a href="https://masnick.com/posts/the-secret-thinkpad-powerbutton-code-to-bring-dead-laptops-back-to-life/">masnick.com</a></li>
+    <li data-n="[10]">Hacker News thread on the ThinkPad power-button code. <a href="https://news.ycombinator.com/item?id=50516473">news.ycombinator.com/item?id=50516473</a></li>
+    <li data-n="[11]">Andrew Gallant, “A datetime library for Rust” — the Jiff 1.0 announcement. <a href="https://burntsushi.net/jiff/">burntsushi.net</a></li>
+    <li data-n="[12]">Hacker News thread, “Jiff 1.0: A datetime library for Rust.” <a href="https://news.ycombinator.com/item?id=50519744">news.ycombinator.com/item?id=50519744</a></li>
+    <li data-n="[13]">TRMNL, “Introducing Frame” — 31.5-inch color ePaper display announcement. <a href="https://trmnl.com/blog/introducing-frame">trmnl.com</a></li>
+    <li data-n="[14]">Hacker News thread, “Frame – 31.5&quot; color ePaper display.” <a href="https://news.ycombinator.com/item?id=50519354">news.ycombinator.com/item?id=50519354</a></li>
+    <li data-n="[15]">WIRED, “Nvidia Was Already in Trouble Before the Jensen Huang Mess” (November 16, 2026). <a href="https://www.wired.com/story/nvidia-was-already-in-trouble-before-the-jensen-huang-mess/">wired.com</a></li>
+    <li data-n="[16]">Hacker News thread on the Wired Nvidia report. <a href="https://news.ycombinator.com/item?id=50518567">news.ycombinator.com/item?id=50518567</a></li>
+    <li data-n="[17]">Monir Bounadi and Jens Oehlen, “Coffeehouses and the Rise of Science” (working paper, October 31, 2026). <a href="https://www.monirbounadi.com/Bounadi_JMP.pdf">monirbounadi.com</a></li>
+    <li data-n="[18]">Hacker News thread, “Coffeehouses and the Rise of Science.” <a href="https://news.ycombinator.com/item?id=50516245">news.ycombinator.com/item?id=50516245</a></li>
+    <li data-n="[19]">Cornell Chronicle, “Sheep grazing in solar fields offers farmers economic, ecological gains.” <a href="https://news.cornell.edu/stories/2026/10/sheep-grazing-solar-fields-offers-farmers-economic-ecological-gains">news.cornell.edu</a></li>
+    <li data-n="[20]">Hacker News thread, “Grazing sheep in fields with solar arrays.” <a href="https://news.ycombinator.com/item?id=50520182">news.ycombinator.com/item?id=50520182</a></li>
+  </ol>
+  <p class="method">Methodology: Snapshot taken at 22:00 UTC, Monday, November 16, 2026, from the Hacker News front page via the Algolia front-page API (50 candidates). Stories were deduplicated against the previous four editions in the archive manifest; nine stories are fresh, and one — MIT’s “How To Make (almost) Anything” course page — returned as a follow-up after rising from 467 to 808 points (+341, +73 percent) since the morning edition. Points and comment counts are as recorded at snapshot. The Associated Press report on bank outages was blocked by an automated bot wall at press time; that story is sourced from its Hacker News thread and is labeled as such. Images are the publishers’ own announcement or report artwork, fetched from the cited pages. The newsroom clock runs on US Central time: 16:00 in Chicago, the Afternoon Edition.</p>
+</div>
+
+<!-- COLOPHON -->
+<footer class="colophon">
+  <div>The Hacker Herald — Typeset from the Hacker News front page</div>
+  <div>❧ Printed on 100% recycled bandwidth ❧</div>
+  <div><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</div>
+</footer>
+
+</body>
+</html>

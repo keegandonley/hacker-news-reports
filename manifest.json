@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-16-afternoon",
+      "date": "2026-11-16",
+      "label": "Afternoon",
+      "snapshot_utc": "22:00",
+      "items": [
+        {
+          "id": 50514470,
+          "title": "How to make almost anything",
+          "score": 808,
+          "comments": 136
+        },
+        {
+          "id": 50517488,
+          "title": "Many of Amazon’s Black Friday and Cyber Monday “deals” offered no savings",
+          "score": 744,
+          "comments": 460
+        },
+        {
+          "id": 50521045,
+          "title": "Outages reported at Bank of America, Chase, U.S. Bank, Wells Fargo and Zelle",
+          "score": 579,
+          "comments": 443
+        },
+        {
+          "id": 50520866,
+          "title": "Software is breaking down at a systemic level",
+          "score": 282,
+          "comments": 172
+        },
+        {
+          "id": 50516473,
+          "title": "The Secret ThinkPad Powerbutton Code to Bring Dead Laptops Back to Life (2007)",
+          "score": 278,
+          "comments": 110
+        },
+        {
+          "id": 50519744,
+          "title": "Jiff 1.0: A datetime library for Rust",
+          "score": 250,
+          "comments": 54
+        },
+        {
+          "id": 50519354,
+          "title": "Frame – 31.5\" color ePaper display",
+          "score": 221,
+          "comments": 135
+        },
+        {
+          "id": 50518567,
+          "title": "Nvidia was in trouble before the Jensen Huang mess",
+          "score": 211,
+          "comments": 205
+        },
+        {
+          "id": 50516245,
+          "title": "Coffeehouses and the Rise of Science [pdf]",
+          "score": 171,
+          "comments": 98
+        },
+        {
+          "id": 50520182,
+          "title": "Grazing sheep in fields with solar arrays",
+          "score": 166,
+          "comments": 135
+        }
+      ]
+    },
+    {
       "folder": "2026-11-16-morning",
       "date": "2026-11-16",
       "label": "Morning",
