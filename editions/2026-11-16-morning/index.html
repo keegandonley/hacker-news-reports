@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 16, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <span class="l">Hacker News Front Page · Snapshot 14:00 UTC</span>
+  <span class="mid">Morning Edition</span>
+  <span class="r">10 Stories · 3,726 Points · 1,603 Comments</span>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type — a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <span class="l">Compiled from news.ycombinator.com</span>
+  <span class="c">Monday, November 16, 2026</span>
+  <span class="r">Every fact checked; every joke earned</span>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">The Day's Top Score</span><b>Qwen4-Max, 665 Points</b>Alibaba's new model, released Monday, carries a 984,000-token window and four reasoning efforts; the independent index reads 43.</div>
+  <div class="cell"><span class="tag">Security</span><b>uBlock Origin Fixes Universal XSS</b>One click on a hostile page could run script in the context of any site; the fixed builds are 1.75.4 and uBO Lite 2026.1110.1816.</div>
+  <div class="cell"><span class="tag">Cybercrime</span><b>2011 Bitly Links Repurposed</b>Burger King and McDonald's were not hacked — their lapsed short links were re-registered and pointed at Wikipedia articles.</div>
+  <div class="cell"><span class="tag">Science</span><b>Crows Decide in 235 Milliseconds</b>Twice the pace of humans and rhesus monkeys on similar tests, at no cost in accuracy, reports a new study in Science.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <div class="kicker">AI Desk · The Lead</div>
+    <h2 class="headline">Alibaba Releases Qwen4-Max; Independent Index Scores It 43</h2>
+    <h3 class="deck">The day's top story ships with a 984k-token window and four reasoning efforts — and a commentariat that spent the morning checking the math</h3>
+    <div class="byline"><span>AI Desk</span><span class="score">★ 665 pts · 310 comments</span></div>
+    <p class="first">HANGZHOU — Alibaba released Qwen4-Max on Monday, and by the 14:00 UTC snapshot it led the Hacker News front page with 665 points and 310 comments — the day's largest story by both measures, posted at 02:14 UTC.<sup class="cite"><a href="#src3">[3]</a></sup> The model takes text and image input, returns text, and carries a 984,000-token context window; the release exposes four configurable reasoning efforts, none through extra-high, which testers put to work within hours.<sup class="cite"><a href="#src2">[2]</a></sup><sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The independent tracker Artificial Analysis scores the model 43 on its Intelligence Index and puts its weighted cost at $3.27 per task, describing it as "above average in intelligence and reasonably priced when comparing to other models of similar price."<sup class="cite"><a href="#src2">[2]</a></sup> Readers ran the comparison the other way: one posted that GPT-6.1 Sol at medium effort scores 46 on the same index at an average cost of $0.36, and another noted the score does not surpass Kimi 3.1.<sup class="cite"><a href="#src3">[3]</a></sup> The thread's recurring question, in one reader's words: "is the open weights lag widening?"<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>Simon Willison tested the model's pelican-drawing reliability across all four reasoning efforts and posted the results side by side — a habit that has made his runs a rough release-day acceptance test.<sup class="cite"><a href="#src3">[3]</a></sup> The vendor's own release page renders its copy client-side and yielded no readable text to this newsroom's fetcher, so this report leans on the tracker and the thread; between them, the record is not thin.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="statbox">
+      <div class="t">Qwen4-Max, Measured</div>
+      <table>
+        <tr><td>Intelligence Index (Artificial Analysis)</td><td>43</td></tr>
+        <tr><td>Cost per index task</td><td>$3.27</td></tr>
+        <tr><td>Context window</td><td>984k tokens</td></tr>
+        <tr><td>GPT-6.1 Sol (medium), per the thread</td><td>46 · $0.36</td></tr>
+        <tr><td>Front page at snapshot</td><td>665 pts · 310 cmts</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Security Desk</div>
+    <h2 class="headline">uBlock Origin Patches One-Click Universal XSS</h2>
+    <h3 class="deck">A hostile page could steer the element picker into adding a trusted filter — and run script on any site</h3>
+    <div class="byline"><span>Security Desk</span><span class="score">★ 471 pts · 137 cmts</span></div>
+    <p class="first">A one-click universal cross-site scripting flaw in uBlock Origin's element picker, disclosed Sunday by Smitty van Bodegom, let a malicious website run arbitrary JavaScript in the context of any site the visitor used — the extension's own trusted filters turned against it.<sup class="cite"><a href="#src4">[4]</a></sup> The flaw affects the MV2 Firefox build; uBO Lite, the MV3 version, carried "a similar but less problematic issue." Both are fixed — uBlock Origin 1.75.4 and uBO Lite 2026.1110.1816 carry the patch, version numbers confirmed in the thread.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>The attack first had to learn the extension's random per-installation UUID, and a default uBlock filter handed it over: an uAssets rule replaces a fetch for an ad script with a moz-extension:// request, and a page that hooks XMLHttpRequest can read the extension's address out of that hook. From there the attacker embeds the picker invisibly, drives it to compose the filter he wants, and overlays the "Create" button where the victim is about to click.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <figure>
+      <img src="images/ubo-uxss.png" alt="The uBlock Origin element picker interface overlaid on a web page">
+      <figcaption>The element picker, whose interface a hostile page could drive and overlay. <span class="cr">iter.ca</span></figcaption>
+    </figure>
+    <p>The writeup's provenance drew as much attention as the bug: the author credits GPT-5.6 Sol with "most of the hard work of finding the issue," which he then verified himself, while Claude wrote most of the proof-of-concept code and he wrote the prose.<sup class="cite"><a href="#src4">[4]</a></sup> One reader's wider worry outlasted the specific fix — that extensions must place their interfaces in the page's own DOM, so a password manager's suggestions can leak to the page which accounts you hold.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">The Business of Chips</div>
+    <h2 class="headline">Steve Blank on Nvidia After Jensen Huang: The Successor Problem</h2>
+    <h3 class="deck">The day's most-discussed story, 414 comments deep, on what an execution CEO trims first</h3>
+    <div class="byline"><span>Field Desk</span><span class="score">★ 337 pts · 414 cmts</span></div>
+    <p class="first">Steve Blank's "What's Next for Nvidia?" treats Huang's resignation — announced 33 years after he co-founded the company — as a succession problem with a known failure mode, and the thread made it the day's most-discussed story at 414 comments.<sup class="cite"><a href="#src12">[12]</a></sup><sup class="cite"><a href="#src13">[13]</a></sup> Blank's evidence is his own genre history: Ballmer tripled Microsoft's sales to $78 billion and profits to $22 billion, yet lost search, smartphones, mobile operating systems, media and the cloud; Tim Cook grew Apple's revenue from $108 billion to $416 billion while Vision Pro stumbled, Siri needed Google's help, and the company turned to an insider in September 2026.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <p>The Nvidia-specific numbers are stark: Huang ran roughly 60 direct reports, kept no long-term plans, "didn't believe in succession planning," and anointed no one — leaving the board "in crisis, led by the first chair the company has ever had."<sup class="cite"><a href="#src12">[12]</a></sup> The bets an execution CEO would trim first, Blank warns, are exactly Huang's answers to customers becoming competitors: a new chip generation every year, the CUDA moat, and roughly $50 billion invested in the AI labs that run on Nvidia — while Google, Amazon, Microsoft, Meta, OpenAI and Tesla build their own silicon.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <figure>
+      <img src="images/nvidia-next.jpg" alt="Chart of Nvidia's reinventions: CUDA in 2006, the 2012 ImageNet pivot, Mellanox racks in 2020">
+      <figcaption>Blank's chart of the reinventions: CUDA in 2006, the 2012 ImageNet pivot, Mellanox racks in 2020. <span class="cr">steveblank.com</span></figcaption>
+    </figure>
+    <p>The thread argued both sides at volume. Its most-upvoted comment defends Jobs-style self-cannibalization — the iPod disrupting itself again and again — as the trait Nvidia now lacks; others read the week's employee petition to bring Huang back as the board's real problem.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="section-label"><span>Dispatches from the Desks</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">Cybercrime Desk</div>
+    <h2 class="headline">2011 Bitly Links Repurposed in Old Burger King and McDonald's Posts</h2>
+    <h3 class="deck">No accounts were hacked; the lapsed short links were re-registered and pointed at Wikipedia articles on the Holocaust and 9/11</h3>
+    <div class="byline"><span>Cybercrime Desk</span><span class="score">★ 328 pts · 164 cmts</span></div>
+    <p class="first">Burger King's X account was not hacked. A Bitly short link in a tweet the chain posted on 24 July 2011 — an advertisement for a restaurant locator — was re-registered by someone else on 15 November and pointed at Wikipedia's list of Nazi concentration camps; a post quoting it passed 2 million views within hours, and the original tweet has since become unavailable.<sup class="cite"><a href="#src14">[14]</a></sup> Eighteen minutes earlier, the same fate met a McDonald's link from June 2011, which redirected to the September 11 attacks article.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <p>Bitly confirmed the problem at 19:13 UTC on Saturday, saying an issue had "allowed bad actors to repurpose certain old, inactive links"; it suspended the accounts involved and disabled the affected links, and by 19:22 UTC the Burger King and McDonald's links returned a "Link Deactivated" page.<sup class="cite"><a href="#src14">[14]</a></sup> CNN later found redirected links in old posts from Bill Gates, Justin Trudeau, Mike Pence, the FBI and the Department of Defense; of 49 re-created links found in old Trump tweets, all still worked at the researchers' 23:35 UTC check.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <figure>
+      <img src="images/bitly-hijack.png" alt="Ransomnews report on re-registered Bitly links in old brand tweets">
+      <figcaption>Ransomnews' account of the re-registered 2011 links. <span class="cr">ransomnews.com</span></figcaption>
+    </figure>
+    <p>The thread's most-upvoted observation was plain surprise that a URL shortener "makes enough money to have a Trust and Safety team"; the more durable point, from another reader, is that outsourced shorteners accrete links for years and fail permanently when an account lapses — which is precisely the mechanism this incident exploited.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Education Desk</div>
+    <h2 class="headline">MIT's "How to Make (almost) Anything" Posts Its 2026 Syllabus</h2>
+    <h3 class="deck">One semester, one desk at a time: CAD, cutting, embedded programming, machining, input and output devices</h3>
+    <div class="byline"><span>Education Desk</span><span class="score">★ 467 pts · 86 cmts</span></div>
+    <p class="first">MIT has posted the 2026 site for "How To Make (almost) Anything" — MAS.863/4.140/6.9020, held Wednesdays from 1 to 4 in E14-633 — and its week-by-week schedule is the course's thesis in list form: computer-aided design and project management in September, then computer-controlled cutting, embedded programming, 3-D scanning and printing, electronics design and production, computer-controlled machining, and input and output devices into November, with recitations from parametric design to AI agents and edge AI alongside.<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <p>The thread split over exactly what such breadth is worth. One reader defended the survey: an overview of "what's even possible" means that when a problem arrives years later, "they'll remember that there was this thing called Y."<sup class="cite"><a href="#src7">[7]</a></sup> Another was harsher — people spend entire careers on CAD alone, "yet they somehow crammed it all into part of one lecture which seems to be little more than an enumeration of 50 different CAD tools."<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>A former teaching assistant offered the practical defense: the weekly pages only guide the lectures, and the course's real record is the project sites students build to document their work — most arrive with minimal electronics, CAD, machining or programming, or specialize in just one of them.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Science Desk</div>
+    <h2 class="headline">Crows Answer Visual Tests in 235 Milliseconds, Twice the Human Pace</h2>
+    <h3 class="deck">The Science study is the first to quantify the speed of avian decision-making; the birds kept their accuracy</h3>
+    <div class="byline"><span>Science Desk</span><span class="score">★ 264 pts · 178 cmts</span></div>
+    <p class="first">Lemmy and Iggy, two carrion crows, were shown a visual cue and given three seconds to answer; they pecked their decisions in about 235 milliseconds — roughly twice as fast as rhesus monkeys or humans on similar experiments — without giving up accuracy, researchers report in Science, in the first quantification of the neural speed of avian decision-making.<sup class="cite"><a href="#src16">[16]</a></sup> "This was a result that we didn't anticipate," said Andreas Nieder, the University of Tübingen neurophysiologist who co-authored the study.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <p>The relevant circuit is the nidopallium caudolaterale, comparable to the primate prefrontal cortex — "the C.E.O. in our brain," in Nieder's phrasing, the seat of planning, working memory and abstract thought.<sup class="cite"><a href="#src16">[16]</a></sup> Corvids have separately shown self-recognition, future planning and theory of mind. "It's taken the last 20 years to realize that actually their brain architecture is quite fascinating," said Mike Colombo of the University of Otago, who was not involved in the work.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <figure>
+      <img src="images/crows.jpg" alt="A carrion crow">
+      <figcaption>A carrion crow, the species behind the 235-millisecond result. <span class="cr">nytimes.com</span></figcaption>
+    </figure>
+    <p>The thread's most-upvoted comment reached for the long view: intelligence has evolved on Earth at least three times — mammals, corvids, octopuses — and the corvid line got there with a different neuron design and a different brain architecture.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+  </div>
+</div>
+
+<!-- 6. SECURITY & PRACTICAL -->
+<div class="section-label"><span>The Workshop &amp; The Screening Room</span></div>
+<div class="sec2">
+  <div class="cell">
+    <div class="kicker">Tools Desk</div>
+    <h2 class="headline">Ductus Turns a Browser Into a Font Foundry</h2>
+    <h3 class="deck">Write your letters by hand; download an OTF and WOFF of your own handwriting</h3>
+    <div class="byline"><span>Tools Desk</span><span class="score">★ 354 pts · 62 cmts</span></div>
+    <p class="first">Ductus, a browser tool by Soren Blank, turns handwriting into an installable font: write each of 26 lowercase letters — then capitals, digits and punctuation — on a canvas, and download the result as OTF and WOFF files.<sup class="cite"><a href="#src10">[10]</a></sup> The pitch that travels sits under the workflow: the letters are "checked on this computer," never uploaded.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <figure>
+      <img src="images/handwriting-font.png" alt="Ductus interface showing handwritten letter forms being collected">
+      <figcaption>The letter-by-letter workflow; export arrives as OTF and WOFF. <span class="cr">ductus.sorenblank.com</span></figcaption>
+    </figure>
+    <p>The thread's first request was sample output before the labor of 26 letters; its first bug report was precise — one user's font failed export on a missing segment in a SweepLine tree, "Unable to find segment #17104," leaving the export buttons greyed out.<sup class="cite"><a href="#src11">[11]</a></sup> Others asked for photo import instead of letter-by-letter entry, and for more umlauts.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+
+    <div class="kicker" style="margin-top:14px">The Hangar</div>
+    <h2 class="headline">Baron Flies a Seeded World Into the Browser</h2>
+    <h3 class="deck">A WebGL flight simulator with procedurally generated terrain, cross-country missions and touch controls</h3>
+    <div class="byline"><span>The Hangar</span><span class="score">★ 183 pts · 44 cmts</span></div>
+    <p class="first">Baron puts "a biplane in every browser": a WebGL flight simulator over seed-generated terrain, with free-flight, cross-country and arcade missions, flap and brake controls, chase or cockpit cameras, and a bail-out key.<sup class="cite"><a href="#src20">[20]</a></sup> It runs from a phone — the left thumb steers, a throttle lever sits on the right edge — and installs to the home screen as an app.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <p>The page credits DAI Studio, and the thread took the provenance seriously: one reader wanted the build's prompt graph published alongside the game; another called it "AI slop that is barely the same quality as the first iPhone apps"; a third could not get the throttle back down.<sup class="cite"><a href="#src21">[21]</a></sup> The seed field drew a kindred spirit — a reader who had spent the weekend prompt-building a paper-plane simulator in "a very similar visual style."<sup class="cite"><a href="#src21">[21]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">The Screening Room</div>
+    <h2 class="headline">El Niño, Explained for the Winter Cockpit</h2>
+    <h3 class="deck">From trade winds and upwelling to the winter jet stream — then region-by-region flying risks for 2026–27</h3>
+    <div class="byline"><span>Science Desk</span><span class="score">★ 263 pts · 141 cmts</span></div>
+    <p class="first">The video is titled "El Niño Winter 2026–27: What Pilots Should Expect," and it means it: FlightInsight's walkthrough runs from Pacific trade winds and ocean upwelling to the shifted winter jet stream, then turns regional — California mountain crossings, Gulf Coast rain, Northeast winter storms — with implications for IFR conditions, mountain obscuration, freezing levels and icing in flight planning.<sup class="cite"><a href="#src18">[18]</a></sup> Posted 13 November, it stood at 42,443 views at press time.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <figure>
+      <img src="images/el-nino.jpg" alt="Poster frame of the El Niño aviation video">
+      <figcaption>The video's poster frame. <span class="cr">i.ytimg.com</span></figcaption>
+    </figure>
+    <div class="videobox">
+      <div class="vt"><span>The Picture Show — Staff Screening</span><span>42,443 views · posted Nov 13</span></div>
+      <iframe src="https://www.youtube.com/embed/7_JF3etiAv8" title="El Niño Winter 2026–27: What Pilots Should Expect" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+    <p>The thread took the climate frame rather than the cockpit one: its most-upvoted comment notes this El Niño is arriving "in the context of a global climate that is warmer than any time in the last 125,000 years," and another reader pointed to Climate Reanalyzer's sea-surface-temperature graphs for the current picture.<sup class="cite"><a href="#src19">[19]</a></sup> The video's own caution holds for both audiences: "a milder winter doesn't necessarily mean easier flying."<sup class="cite"><a href="#src18">[18]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Practical Tech Corner</div>
+    <h2 class="headline">Self-Hosting a World Map for Five Dollars a Month</h2>
+    <h3 class="deck">PMTiles serves the whole planet from one 139 GB file over HTTP Range requests</h3>
+    <div class="byline"><span>Practical Tech Corner</span><span class="score">★ 394 pts · 67 cmts</span></div>
+    <p class="first">Bruce Röttgers walks through hosting your own world map on Protomaps' PMTiles format: a single archive file served over HTTP Range requests, so a storage bucket plus a CDN is the whole infrastructure.<sup class="cite"><a href="#src8">[8]</a></sup> The full 139-gigabyte planet extract, replicated to five continents on Bunny.net, runs about $5 a month in storage; loading a map of Europe and zooming into a city moves about 5 megabytes, priced near $0.00005 — roughly $0.05 per thousand map loads, against Mapbox's $5 per thousand once its free tier is exhausted.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <p>The thread added the usual caveats and companions: high-resolution satellite imagery is a different order of problem — one reader stopped his North American mosaic at zoom 17, with global coverage reaching into the hundreds of terabytes; OpenFreeMap offers a free hosted alternative with no view limits; and Tilemaker pull requests now in review could soon cut a planet build to under five minutes.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+
+    <div class="pullquote">"We wouldn't think of birds making these decisions faster than monkeys, or faster than us 'awesome' human beings. But they do. They're just incredibly fast."<span class="attr">Mike Colombo, University of Otago, to The New York Times</span></div>
+
+    <div class="classifieds">
+      <div class="t">Classifieds — Rates: 1 Karma per line</div>
+      <p>FOUND: 49 short links, re-created years after the tweets that carried them, all resolving at the 23:35 UTC check. Bitly is disabling them.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+      <p>STORAGE, ONE FILE: 139 GB planet, HTTP Range access, about $5 a month with five-way replication. Pick-up: any storage bucket.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+      <p>SITUATION VACANT: chief executive. About 60 direct reports; the last one anointed no successor and left the board the day he left the job.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="section-label"><span>The Box Score</span></div>
+<div class="chartrow">
+  <div class="cell">
+    <div class="statbox" style="margin-top:0"><div class="t">Points, All Ten Stories — Snapshot 14:00 UTC</div></div>
+    <figure style="margin:0">
+    <svg viewBox="0 0 640 392" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block" role="img" aria-label="Horizontal bar chart of points for the ten stories">
+      <defs>
+        <pattern id="inkHatch" width="4.5" height="4.5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="4.5" height="4.5" fill="#eee4cf"/>
+          <line x1="0" y1="0" x2="0" y2="4.5" stroke="#191510" stroke-width="1.7"/>
+        </pattern>
+        <pattern id="appleHatch" width="4.5" height="4.5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="4.5" height="4.5" fill="#eee4cf"/>
+          <line x1="0" y1="0" x2="0" y2="4.5" stroke="#7a1f1f" stroke-width="1.7"/>
+        </pattern>
+      </defs>
+      <!-- gridlines behind bars -->
+      <line class="grid" x1="74" y1="6" x2="74" y2="344"/>
+      <line class="grid" x1="149" y1="6" x2="149" y2="344"/>
+      <line class="grid" x1="223" y1="6" x2="223" y2="344"/>
+      <line class="grid" x1="297" y1="6" x2="297" y2="344"/>
+      <line class="grid" x1="371" y1="6" x2="371" y2="344"/>
+      <line class="grid" x1="446" y1="6" x2="446" y2="344"/>
+      <line class="grid" x1="520" y1="6" x2="520" y2="344"/>
+      <!-- bars -->
+      <rect x="0.5" y="22"  width="494" height="15" fill="url(#inkHatch)" stroke="#191510" stroke-width="1"/>
+      <rect x="0.5" y="56"  width="350" height="15" fill="url(#inkHatch)" stroke="#191510" stroke-width="1"/>
+      <rect x="0.5" y="90"  width="347" height="15" fill="url(#inkHatch)" stroke="#191510" stroke-width="1"/>
+      <rect x="0.5" y="124" width="293" height="15" fill="url(#inkHatch)" stroke="#191510" stroke-width="1"/>
+      <rect x="0.5" y="158" width="263" height="15" fill="url(#inkHatch)" stroke="#191510" stroke-width="1"/>
+      <rect x="0.5" y="192" width="250" height="15" fill="url(#inkHatch)" stroke="#191510" stroke-width="1"/>
+      <rect x="0.5" y="226" width="244" height="15" fill="url(#inkHatch)" stroke="#191510" stroke-width="1"/>
+      <rect x="0.5" y="260" width="196" height="15" fill="url(#inkHatch)" stroke="#191510" stroke-width="1"/>
+      <rect x="0.5" y="294" width="195" height="15" fill="url(#inkHatch)" stroke="#191510" stroke-width="1"/>
+      <rect x="0.5" y="328" width="136" height="15" fill="url(#inkHatch)" stroke="#191510" stroke-width="1"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0" y1="352" x2="520" y2="352"/>
+      <!-- tick labels -->
+      <text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text>
+      <text x="74" y="366" font-size="11" fill="#3d352a" text-anchor="middle">100</text>
+      <text x="149" y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="223" y="366" font-size="11" fill="#3d352a" text-anchor="middle">300</text>
+      <text x="297" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="371" y="366" font-size="11" fill="#3d352a" text-anchor="middle">500</text>
+      <text x="446" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text>
+      <text x="520" y="366" font-size="11" fill="#3d352a" text-anchor="middle">700</text>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18"  font-size="12" font-weight="600" fill="#191510">Qwen4-Max</text>
+      <text class="barlabel" x="0" y="52"  font-size="12" font-weight="600" fill="#191510">uBlock Origin UXSS</text>
+      <text class="barlabel" x="0" y="86"  font-size="12" font-weight="600" fill="#191510">MIT HTMAA syllabus</text>
+      <text class="barlabel" x="0" y="120" font-size="12" font-weight="600" fill="#191510">Protomaps tiles</text>
+      <text class="barlabel" x="0" y="154" font-size="12" font-weight="600" fill="#191510">Ductus handwriting</text>
+      <text class="barlabel" x="0" y="188" font-size="12" font-weight="600" fill="#191510">What's Next for Nvidia? &#8224;</text>
+      <text class="barlabel" x="0" y="222" font-size="12" font-weight="600" fill="#191510">Bitly links repurposed</text>
+      <text class="barlabel" x="0" y="256" font-size="12" font-weight="600" fill="#191510">Crows decide faster</text>
+      <text class="barlabel" x="0" y="290" font-size="12" font-weight="600" fill="#191510">El Niño pilots' video</text>
+      <text class="barlabel" x="0" y="324" font-size="12" font-weight="600" fill="#191510">Baron flight sim</text>
+      <!-- values -->
+      <text class="barval" x="501" y="34"  font-size="11" font-weight="700" fill="#191510">665 ★ · 310 cmts</text>
+      <text class="barval" x="357" y="68"  font-size="11" fill="#3d352a">471 · 137</text>
+      <text class="barval" x="354" y="102" font-size="11" fill="#3d352a">467 · 86</text>
+      <text class="barval" x="300" y="136" font-size="11" fill="#3d352a">394 · 67</text>
+      <text class="barval" x="270" y="170" font-size="11" fill="#3d352a">354 · 62</text>
+      <text class="barval" x="257" y="204" font-size="11" fill="#3d352a">337 · 414</text>
+      <text class="barval" x="251" y="238" font-size="11" fill="#3d352a">328 · 164</text>
+      <text class="barval" x="203" y="272" font-size="11" fill="#3d352a">264 · 178</text>
+      <text class="barval" x="202" y="306" font-size="11" fill="#3d352a">263 · 141</text>
+      <text class="barval" x="143" y="340" font-size="11" fill="#3d352a">183 · 44</text>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">★ = points · cmts = comments · &#8224; most-discussed story of the day · red hatch marks Apple coverage (none today)</text>
+    </svg>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <p class="first" style="text-align:left"><b>The day in one line.</b> Qwen4-Max takes the day at 665 points, uBlock Origin patches a one-click universal XSS, and a 2011 short link outlives the account that made it.</p>
+    <div class="statbox">
+      <div class="t">The Front Page Ledger</div>
+      <table>
+        <tr><td>Fresh stories</td><td>10</td></tr>
+        <tr><td>Follow-ups</td><td>0</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>3,726</td></tr>
+        <tr><td>Combined comments</td><td>1,603</td></tr>
+        <tr><td>Top of the page</td><td>Qwen4-Max · 665</td></tr>
+        <tr><td>Most-discussed</td><td>Nvidia post-mortem · 414</td></tr>
+        <tr><td>Snapshot</td><td>14:00 UTC · 08:00 CST</td></tr>
+      </table>
+    </div>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>The "hijack" was a re-registration.</b> The thread's headline says old Bitly links "are being hijacked"; the report underneath is specific that no account was hacked — the brands' original short links lapsed and were re-registered by third parties. Bitly's own word is "repurposed," and its remedy is account suspension and link disabling, not credential resets.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+      <p><b>"Universal," scoped.</b> The uBlock Origin flaw is universal in effect but Firefox-MV2 in scope: the writeup names the MV2 build as the vulnerable one, with uBO Lite (MV3) carrying "a similar but less problematic issue." Both are fixed — 1.75.4 and 2026.1110.1816 respectively.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+      <p><b>"Max," measured.</b> The model's name suggests the top of the range; the Artificial Analysis Intelligence Index puts it at 43, at $3.27 per task, with GPT-6.1 Sol at medium effort cited in-thread at 46 for $0.36. "Above average," in the tracker's phrasing, is accurate; frontier is not.<sup class="cite"><a href="#src2">[2]</a></sup><sup class="cite"><a href="#src3">[3]</a></sup></p>
+      <p><b>A short explainer, aimed at cockpits.</b> The thread called it "a short explainer on how El Niño works." The video's own title is "El Niño Winter 2026–27: What Pilots Should Expect," and the mechanism is the setup for a regional flying outlook — IFR, icing, freezing levels — rather than the main event.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher's Note</div>
+  <p>Ten fresh stories led the morning: Qwen4-Max carried the top score while the thread carried the receipts; Steve Blank's Nvidia post-mortem drew the day's deepest comment pool; and uBlock Origin shipped a fix worth installing before lunch. The paper's one blank is the Qwen release page itself, which renders no readable copy to the fetcher — the lead is reported from the independent tracker and the thread instead. No follow-ups, no digest; the front page turned over completely.</p>
+  <div class="sig">— The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="section-label"><span>Sources</span></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">Alibaba Qwen — Qwen4-Max release post (page renders client-side; no machine-readable copy at fetch time). <a href="https://qwen.ai/blog?id=qwen4-max">qwen.ai/blog?id=qwen4-max</a></li>
+    <li data-n="[2]" id="src2">Artificial Analysis — Qwen4-Max model page: Intelligence Index 43, $3.27 per task, 984k-token context, text+image input; FAQ credits Alibaba and a November 16, 2026 release. <a href="https://artificialanalysis.ai/models/qwen4-max">artificialanalysis.ai/models/qwen4-max</a></li>
+    <li data-n="[3]" id="src3">Hacker News thread 50513215 — Willison's four-effort pelican runs; the 46-at-$0.36 comparison; "is the open weights lag widening?". <a href="https://news.ycombinator.com/item?id=50513215">news.ycombinator.com/item?id=50513215</a></li>
+    <li data-n="[4]" id="src4">Smitty van Bodegom — "Universal XSS in uBlock Origin from website-driven element picker," iter.ca, Nov 15, 2026. <a href="https://iter.ca/post/ubo-uxss/">iter.ca/post/ubo-uxss</a></li>
+    <li data-n="[5]" id="src5">Hacker News thread 50513160 — fixed-version numbers (1.75.4; uBO Lite 2026.1110.1816); extension-DOM discussion. <a href="https://news.ycombinator.com/item?id=50513160">news.ycombinator.com/item?id=50513160</a></li>
+    <li data-n="[6]" id="src6">MIT — "How To Make (almost) Anything" 2026 course site, MAS.863/4.140/6.9020, E14-633. <a href="https://pub.cba.mit.edu/863.26/site/">pub.cba.mit.edu/863.26/site</a></li>
+    <li data-n="[7]" id="src7">Hacker News thread 50514470 — breadth-vs-depth argument; former TA's account. <a href="https://news.ycombinator.com/item?id=50514470">news.ycombinator.com/item?id=50514470</a></li>
+    <li data-n="[8]" id="src8">Bruce Röttgers — "Protomaps: Self-hosting map tiles has gotten cheap and easy," Nov 15, 2026. <a href="https://bruceroettgers.eu/blog/protomaps/">bruceroettgers.eu/blog/protomaps</a></li>
+    <li data-n="[9]" id="src9">Hacker News thread 50509837 — OpenFreeMap; zoom-17 satellite mosaic; Tilemaker planet-build PRs. <a href="https://news.ycombinator.com/item?id=50509837">news.ycombinator.com/item?id=50509837</a></li>
+    <li data-n="[10]" id="src10">Soren Blank — Ductus: your handwriting, as a font; on-device processing claim. <a href="https://ductus.sorenblank.com">ductus.sorenblank.com</a></li>
+    <li data-n="[11]" id="src11">Hacker News thread 50509972 — SweepLine export bug; sample-output and photo-import requests. <a href="https://news.ycombinator.com/item?id=50509972">news.ycombinator.com/item?id=50509972</a></li>
+    <li data-n="[12]" id="src12">Steve Blank — "What's Next for Nvidia?", Nov 15, 2026: 60 direct reports; ~$50B in AI-lab investments; Ballmer and Cook case studies. <a href="https://steveblank.com/2026/11/15/whats-next-for-nvidia/">steveblank.com</a></li>
+    <li data-n="[13]" id="src13">Hacker News thread 50512235 — most-upvoted comment on Jobs-style self-cannibalization; return speculation. <a href="https://news.ycombinator.com/item?id=50512235">news.ycombinator.com/item?id=50512235</a></li>
+    <li data-n="[14]" id="src14">Ransomnews Research Team — "Old Bitly links hijacked in Burger King, McDonald's and Trump tweets," Nov 15, 2026, with Bitly's 19:13 UTC statement and the CNN follow-up. <a href="https://ransomnews.com/burger-king-tweet-bitly-link-hijack-2026/">ransomnews.com</a></li>
+    <li data-n="[15]" id="src15">Hacker News thread 50511395 — Trust-and-Safety surprise; outsourced-shortener failure mode. <a href="https://news.ycombinator.com/item?id=50511395">news.ycombinator.com/item?id=50511395</a></li>
+    <li data-n="[16]" id="src16">The New York Times — "'Birdbrain' Is a Misnomer. Crows Make Decisions Faster Than We Can," Nov 15, 2026 (metered). <a href="https://www.nytimes.com/2026/11/15/science/birdbrain-crows-birds-research-decision.html">nytimes.com</a></li>
+    <li data-n="[17]" id="src17">Hacker News thread 50509023 — intelligence-evolved-three-times comment. <a href="https://news.ycombinator.com/item?id=50509023">news.ycombinator.com/item?id=50509023</a></li>
+    <li data-n="[18]" id="src18">FlightInsight — "El Niño Winter 2026–27: What Pilots Should Expect," YouTube, posted Nov 13, 2026; 42,443 views at snapshot; description quoted. <a href="https://www.youtube.com/watch?v=7_JF3etiAv8">youtube.com/watch?v=7_JF3etiAv8</a></li>
+    <li data-n="[19]" id="src19">Hacker News thread 50509308 — the 125,000-year framing; Climate Reanalyzer pointer; actual-title note. <a href="https://news.ycombinator.com/item?id=50509308">news.ycombinator.com/item?id=50509308</a></li>
+    <li data-n="[20]" id="src20">DAI Studio — Baron: "a biplane in every browser"; seeded terrain, missions, touch controls. <a href="https://baron.by.dai.studio/">baron.by.dai.studio</a></li>
+    <li data-n="[21]" id="src21">Hacker News thread 50510296 — provenance debate; throttle report; paper-plane comparison. <a href="https://news.ycombinator.com/item?id=50510296">news.ycombinator.com/item?id=50510296</a></li>
+    <li data-n="[22]" id="src22">Alibaba Cloud — About page; China (Hangzhou) region listing anchors the lead dateline. <a href="https://www.alibabacloud.com/about">alibabacloud.com/about</a></li>
+  </ol>
+  <p class="method">Methodology: snapshot of the Hacker News front page taken 16 November 2026, 14:00 UTC (08:00 US Central — Morning Edition), via the Algolia HN Search API (50 candidates requested, 30 returned). Points and comment counts are as of the snapshot and move after publication. Deduplication ran against the previous four editions (48 hours): all ten stories are fresh — no follow-ups, no digest, no second wire. Articles were fetched with a browser user-agent; qwen.ai's release page renders its copy client-side and yielded no text, YouTube served no duration field for the embedded video, and the Times article was read up to its meter — each omission is noted where it occurs. Scores in bylines are snapshot values; the box score's axis runs to 700 points.</p>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <span>The Hacker Herald — Typeset from the Hacker News front page</span>
+  <span>❧ Printed on 100% recycled bandwidth ❧</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</span>
+</footer>
+
+</body>
+</html>
