@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 17, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page · Snapshot 22:00 UTC</div>
+  <div class="mid">Afternoon Edition</div>
+  <div class="r">10 Stories · 4,231 Points · 2,444 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type — a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Tuesday, November 17, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">The Lead</span><b>Phone-Ban Study Tops 1,000 Points</b>
+    Strict school bans lift math and reading by an extra week or two of school a year; the story is up ▲ +861 since the Morning Edition.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup></div>
+  <div class="cell"><span class="tag">Artificial Intelligence</span><b>OpenAI Ships GPT-6.2 Astra and Sol</b>
+    Frontier token rates cut 20 percent, cached input 60 percent, hours before Anthropic&rsquo;s IPO.<sup class="cite"><a href="#src3">[3]</a></sup><sup class="cite"><a href="#src4">[4]</a></sup></div>
+  <div class="cell"><span class="tag">Security</span><b>NSA&rsquo;s Internal Network Down</b>
+    CNN, citing six sources: no evidence of a cyberattack; the agency calls it &ldquo;scheduled routine maintenance.&rdquo;<sup class="cite"><a href="#src7">[7]</a></sup><sup class="cite"><a href="#src8">[8]</a></sup></div>
+  <div class="cell"><span class="tag">Systems</span><b>Apple Services Fail, Status Stays Green</b>
+    Sign-ins, the App Store and Apple Cash reported failing while the status pages listed them operating.<sup class="cite"><a href="#src5">[5]</a></sup><sup class="cite"><a href="#src6">[6]</a></sup></div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <div class="kicker">Follow-Up · Culture Desk · Lead Story</div>
+    <h2 class="headline">Phone-Ban Study Becomes the Day&rsquo;s Biggest Story, Up 861 Points Since Morning</h2>
+    <h3 class="deck">The first national before-and-after analysis — 3.3 million students at 4,600 schools — found strict bans lift math and reading as if students had an extra week or two of school a year. At the Morning Edition&rsquo;s snapshot it stood at 225 points; by 22:00 UTC it had 1,086 and the day&rsquo;s largest comment count in waiting.</h3>
+    <div class="byline"><span>CAMBRIDGE, MASS. — By the Culture Desk</span><span class="score"><b>★ 1086 pts · ▲ +861 since the last edition</b></span></div>
+    <p class="first">The New York Times reported Tuesday that school cellphone bans are beginning to improve academic performance, citing the first large national analysis to compare test scores before and after bans, from Harvard&rsquo;s Center for Education Policy Research. The study followed 3.3 million students in third through tenth grade at 4,600 U.S. schools from 2021 to 2026, using fall-to-spring MAP test growth to compare strict-ban schools — phones locked in pouches all school day — with similar schools that had no ban. The gains equaled an additional week or two of school per year and reversed about half of the average annual loss students recorded before the pandemic.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <figure>
+      <img src="images/nyt-phones.jpg" alt="Article image from the New York Times report on school phone bans.">
+      <figcaption>The study compared schools that require phones to be locked away for the whole school day against similar schools without bans.<span class="cr">Nytimes.com</span></figcaption>
+    </figure>
+    <p>&ldquo;The earlier studies on cellphone bans have been dismissed as implying small impacts,&rdquo; Thomas Kane of the Harvard Graduate School of Education, an author of the study, told the Times; &ldquo;But we think that&rsquo;s mistaken.&rdquo; The Times itself sits behind a bot wall; the article&rsquo;s findings are as verified in this morning&rsquo;s reporting and restated in the thread. The story&rsquo;s rise — 225 points at the Morning Edition snapshot to 1,086 by this one, +861 points, near a fivefold multiple — is the largest single-edition swing in recent editions.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <p>The thread&rsquo;s sharpest argument is about mechanism, not measurement: several readers who went to school before the smartphone argued the harm arrived with around-the-clock social media rather than the phone itself — recess spent sharing MP3s over infrared being, as one put it, &ldquo;a far cry&rdquo; from a device that is &ldquo;one big 24/7 public group.&rdquo; Others pointed at enforcement: teachers who could not confiscate phones without a parent dispute stopped trying.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">AI Desk</div>
+    <h2 class="headline">OpenAI Ships GPT-6.2 Astra and Sol, Cutting Frontier Rates the Day Before Anthropic&rsquo;s IPO</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>★ 906 pts · 545 cmts</b></span></div>
+    <figure>
+      <img src="images/gpt62.png" alt="Announcement art for GPT-6.2 Astra and Sol.">
+      <figcaption>OpenAI&rsquo;s announcement art for GPT-6.2 Astra and Sol.<span class="cr">Openai.com</span></figcaption>
+    </figure>
+    <p class="first">OpenAI introduced GPT-6.2 Astra, its new frontier model, and GPT-6.2 Sol, its everyday model, available immediately to Plus, Pro, Enterprise and Edu users in ChatGPT Work and Codex, and through the API as gpt-6.2-astra and gpt-6.2-sol. On Agents&rsquo; Last Exam, which tests multistep professional work, the company says Astra scores 5.2 points higher than GPT-6 Astra at less than a third of the cost, and 5.5 points ahead of Claude Fable 5.2 at 5 percent of the cost.<sup class="cite"><a href="#src3">[3]</a></sup><sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <p>API rates for Astra fall 20 percent on input and output from GPT-6 Astra, with a 60 percent discount on cached input: $8 for input, $0.40 for cached input and $40 for output per million tokens. Sol keeps GPT-6.1 Sol&rsquo;s rates of $2, $0.10 and $10. On Harvey LAB-AA v1.1, a legal-assignments benchmark, OpenAI says Astra more than doubles Fable 5.2&rsquo;s pass rate at about a sixth of the cost, with an Astra for Law configuration scoring higher still; on internal GDPval v2 it leads with 6.2 points over GPT-6 Astra while using 22 percent fewer output tokens.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The thread timed the release against Anthropic&rsquo;s IPO — &ldquo;it&rsquo;s actually in OpenAI&rsquo;s interests that Anthropic&rsquo;s IPO is successful,&rdquo; one reader countered — noted the linked system card was not yet up at lunchtime, and split on practical differences: several practitioners said Astra earns its keep coordinating subagents and cleaning up Sol&rsquo;s output; others called Sol the better default.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Systems Desk</div>
+    <h2 class="headline">Apple Sign-Ins, App Store and Apple Cash Fail While Status Pages Stay Green</h2>
+    <div class="byline"><span>Systems Desk</span><span class="score"><b>★ 536 pts · 293 cmts</b></span></div>
+    <p class="first">Apple services failed across sign-in, store and payments on Tuesday, according to reports in the thread: fresh Apple Account logins errored while existing sessions mostly held; the App Store and App Store Connect were unreachable for three to four hours for at least one iOS developer; Apple Cash transfers failed; Apple Pay stopped appearing as a checkout option on Stripe payment elements; and MusicKit&rsquo;s curated playlists loaded only sporadically in some regions.<sup class="cite"><a href="#src5">[5]</a></sup><sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <div class="statbox">
+      <div class="t">What the thread reported down</div>
+      <table>
+        <tr><td>Apple Account sign-in</td><td>failing on fresh login</td></tr>
+        <tr><td>App Store / App Store Connect</td><td>unreachable, hours</td></tr>
+        <tr><td>Apple Cash / Apple Pay</td><td>transfers and checkouts failing</td></tr>
+        <tr><td>MusicKit curated playlists</td><td>sporadic, some regions</td></tr>
+        <tr><td>Status pages at snapshot</td><td>listing services green</td></tr>
+      </table>
+    </div>
+    <p>Apple&rsquo;s two status pages — consumer and developer — render only in a browser and listed several of the affected services as operating while they failed; a Yahoo Tech report quoted in the thread carried the headline &ldquo;Apple confirms iCloud outage as users report issues with Apple Pay, App Store and other services.&rdquo; The thread also debated whether this week&rsquo;s string of outages — Microsoft&rsquo;s Exchange Online failure, the FAA groundings, multi-bank delays — forms a pattern or a pattern-seeking news cycle.<sup class="cite"><a href="#src6">[6]</a></sup></p>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3: SECURITY · CULTURE · FIELD -->
+<div class="section-label"><span>Security · Culture · The Field</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">Security Desk</div>
+    <h2 class="headline">NSA&rsquo;s Classified Internal Network Is Down; the Agency Calls It &ldquo;Scheduled Routine Maintenance&rdquo;</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>★ 353 pts · 474 cmts</b></span></div>
+    <figure>
+      <img src="images/nsanet.jpg" alt="NSA headquarters at Fort Meade, Maryland, in 2010.">
+      <figcaption>The National Security Agency headquarters at Fort Meade, Maryland, photographed in 2010.<span class="cr">Media.cnn.com</span></figcaption>
+    </figure>
+    <p class="first">NSANet, the highly classified network the National Security Agency uses for internal communications, is down, CNN reported Tuesday, citing six people familiar with the matter. There is no evidence of a cyberattack, the sources said; the agency has enacted staggered arrivals for personnel while it works to understand the scope of the problem. The report was published at 10:31 a.m. ET and updated through the afternoon.<sup class="cite"><a href="#src7">[7]</a></sup><sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <p>&ldquo;The National Security Agency experienced temporary degradation during scheduled routine maintenance,&rdquo; the agency said in a statement. &ldquo;While some internal systems were affected, mission-critical capabilities remain fully operational and our ability to defend national security continues.&rdquo; White House spokesperson Lauren Bis said on Newsmax there was &ldquo;no crisis, or anything like that, for Americans to be worried about.&rdquo; A source told CNN restoration was ongoing but not complete.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>Officials said the outage would not affect urgent intelligence reaching President Trump, traveling in Asia on Air Force One — in the Philippines, with talks in China ahead — over backup networks. NSANet is &ldquo;more of a network of networks, and it&rsquo;s unlikely that a full outage exists given the many redundancies in place,&rdquo; a former senior NSA official told CNN, though it &ldquo;could impact analysis and reporting.&rdquo;<sup class="cite"><a href="#src7">[7]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Tools Desk</div>
+    <h2 class="headline">83 Billion Tokens Later, a Harness Leaderboard Finds the Best Coding-Agent Harness Depends on the Model</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>★ 297 pts · 105 cmts</b></span></div>
+    <figure>
+      <img src="images/runta.png" alt="The FrontierHarness Eval v1.1 announcement card.">
+      <figcaption>The announcement card for FrontierHarness Eval v1.1, built with Baseten.<span class="cr">Runta.com</span></figcaption>
+    </figure>
+    <p class="first">Runta, with Baseten, ran 22 harness configurations against five open-weight models on 62 terminal tasks with four attempts each — 27,280 agent runs and 83 billion tokens, 76 times the size of its v1.0 leaderboard. The finding: when you switch models, consider switching harnesses. Each model had a different best-value harness — Codex CLI with GLM-5.3, Pi with GLM-5.3 Flash, ZCode with DeepSeek V4.1 Flash 1017, Oh My Pi with Muse, and Alma with Kimi-K3.<sup class="cite"><a href="#src9">[9]</a></sup><sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <p>Cost rankings moved sharply between models: the median harness shifted 11 of 22 places, and Codex CLI went from first with GLM-5.3 to sixteenth with Kimi-K3. Across all models, four harnesses sat on the cost-pass frontier — OpenCode v2 lowest at $0.561 per task, ZCode highest pass rate at 61.9 percent — with the rest costing up to 1.6 times as much. On any single model, cost per pass varies by up to 4.4 times.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>Caveats came from the thread itself: the founder, Guanlan, disclosed the eval runs on Runta&rsquo;s own runtime — &ldquo;weigh this accordingly&rdquo; — and one reader noted that explaining cost differences by &ldquo;steps per pass&rdquo; is nearly tautological, since run cost is proportional to tokens produced.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Field Desk</div>
+    <h2 class="headline">Nvidia Stopped Disclosing Singapore Sales as Subsidiary Revenue Hit $104B</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>★ 236 pts · 122 cmts</b></span></div>
+    <p class="first">Nvidia stopped disclosing the scale of its business in Singapore as revenues routed through its Singapore subsidiary hit $104 billion, the Financial Times reports — at one point the city-state accounted for almost half of the company&rsquo;s worldwide revenue. The article sits behind a bot wall; the figures above are from its headline, and the detail below from the thread.<sup class="cite"><a href="#src11">[11]</a></sup><sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <p>The thread&rsquo;s most-cited clarification: the $104 billion is the subsidiary&rsquo;s 2025 external revenue — server-makers route orders through Singapore for delivery elsewhere — not sales to Singapore customers, which Nvidia&rsquo;s earlier reporting had put at $2 billion to $4 billion by billing location. Nvidia&rsquo;s July 2025 quarterly filing showed $10 billion in a quarter under &ldquo;Customer Billing Location&rdquo;; the disclosure categories changed afterward.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <p>The context is the Megaspeed affair: chips shipped toward Malaysia reportedly ended up in containers of unopened boxes rather than running racks, and Treasury Secretary Scott Bessent said the Treasury, Defense and State departments and the USTR had urged Commerce to add Megaspeed to the Entity List. Readers contested how much smuggling was ever verified — renting Singapore compute to Chinese customers was, for a time, legal.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+  </div>
+</div>
+
+<!-- ROW OF 3: AI · AI · CULTURE -->
+<div class="section-label"><span>Artificial Intelligence · Languages · Culture</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">AI Desk</div>
+    <h2 class="headline">Claude Code Team Says 90 Percent of Its Code Is Written and Reviewed by Claude</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>★ 233 pts · 179 cmts</b></span></div>
+    <figure>
+      <img src="images/claude-verify.png" alt="Card art for the Claude Code verification essay.">
+      <figcaption>Card art for &ldquo;How the Claude Code team thinks about verification.&rdquo;<span class="cr">Claude.dev</span></figcaption>
+    </figure>
+    <p class="first">On the Claude Code team, &ldquo;the vast majority of our code (~90%) is written and reviewed by Claude,&rdquo; writes Addy Osmani on claude.dev — which makes verification, not writing, the bottleneck. Verification loops are &ldquo;the building block that lets you delegate more work to Claude&rdquo;: without them &ldquo;you can really only run one or two Claudes at a time, because you have to check everything yourself&rdquo;; with them, dozens or hundreds in parallel.<sup class="cite"><a href="#src13">[13]</a></sup><sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <p>The team&rsquo;s evidence: in internal testing on structured file generation, a separate grader checking Claude&rsquo;s work against a rubric improved task success by up to 10 points over a standard prompting loop, with the largest gains on the hardest problems. The essay walks through three test types worth investing in — end-to-end, property and differential — and closes the loop by turning repeated failures into hooks and explicit rules.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The thread&rsquo;s top-rated reply is four words of due diligence: &ldquo;I am more interested in the remaining 10%.&rdquo; Others pushed on the parallel-scale claim — one reader already spends $2,000 a month on tokens running one or two agents — and on what verification costs when the verifier is also a model.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">AI Desk</div>
+    <h2 class="headline">Microsoft&rsquo;s MAI Code 2 Claims 98 Percent of GPT 6.1 Sol at 40 Percent of the Cost</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>★ 205 pts · 101 cmts</b></span></div>
+    <figure>
+      <img src="images/mai-code-2.jpg" alt="Announcement art for MAI Code 2 and Code 2 Flash.">
+      <figcaption>Announcement art for MAI Code 2 and MAI Code 2 Flash, published during Microsoft&rsquo;s Ignite week.<span class="cr">Microsoft.ai</span></figcaption>
+    </figure>
+    <p class="first">Microsoft AI announced MAI Code 2 and MAI Code 2 Flash, two coding models aimed at everyday enterprise work: Code 2 for taking code to production, deep debugging, multi-file implementation, repo-wide reasoning and UI; Flash for high-volume work such as explanations, targeted edits and routine fixes. Averaged over four benchmarks — DeepSWE 1.1, Terminal Bench 2.1, SWE-Atlas and FrontierCode v1.1 — Microsoft says Code 2 delivers 98 percent of GPT 6.1 Sol&rsquo;s performance at 40 percent of the cost, and 96 percent of Claude Opus 5.5&rsquo;s at 5 percent of the cost.<sup class="cite"><a href="#src15">[15]</a></sup><sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <p>The company&rsquo;s own framing invites the precision: the models are &ldquo;explicitly not yet tuned for harder problems, like fundamental science research and very long horizon agentic work,&rdquo; and the four-benchmark average targets &ldquo;the everyday enterprise coding tasks we see in GitHub Copilot.&rdquo; The thread added that the listed rate is a 50 percent promotional discount, with comparisons taken at maximum reasoning effort for the rival models.<sup class="cite"><a href="#src15">[15]</a></sup><sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <p>Readers asked for DeepSeek, GLM and Qwen comparisons, and argued distribution over quality: every large corporation already holds a GitHub subscription, one noted, so MAI&rsquo;s realistic lane may be Copilot rather than the frontier.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Culture Desk</div>
+    <h2 class="headline">VisualBasic.World Archives 2,500 Planet Source Code Programs by Their Screenshots</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>★ 202 pts · 77 cmts</b></span></div>
+    <p class="first">VisualBasic.World is a gallery of Planet Source Code programs from 1997 to 2012, browsed through their original screenshots — &ldquo;a visual archive of the things we made in Visual Basic.&rdquo; The collection draws on an archive of more than 15,000 projects, with 2,500 currently shown, weighted toward popular submissions across six categories: Graphics, Games, DirectX, Complete Applications, Custom Controls/Forms/Menus, and Sound/MP3.<sup class="cite"><a href="#src17">[17]</a></sup><sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <p>The thread read it as interface history. The gallery is &ldquo;nightmare fuel for modern designers who are afraid of the concept of &lsquo;useful information density,&rsquo;&rdquo; one reader wrote; a reply allowed that some of it was nightmare fuel for users too, but pressed the point: &ldquo;somehow our screens are higher resolution than ever but showing less information than we used to show on 14&rdquo; CRTs running at 800x600.&rdquo;<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <p>The nostalgia came with its own ledger: Visual Basic was &ldquo;a sloppy language to code in, the runtimes were a pain to manage,&rdquo; and everything was tied to one proprietary operating system — and yet, the same reader concluded, it was &ldquo;a little silly&rdquo; that it remained a better tool for building desktop GUIs as a teenager than what came after.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+  </div>
+</div>
+
+<!-- 6. SECURITY BRIEFING & PRACTICAL -->
+<div class="sec2">
+  <div class="cell">
+    <div class="kicker">Security Desk</div>
+    <h2 class="headline">Phrack 73 Arrives 41 Years to the Day After Issue 1</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>★ 177 pts · 11 cmts</b></span></div>
+    <figure>
+      <img src="images/phrack.webp" alt="The Phrack magazine site masthead art.">
+      <figcaption>The Phrack masthead; issue 73&rsquo;s release date, November 17, 2026, is exactly 41 years after issue 1&rsquo;s.<span class="cr">Phrack.org</span></figcaption>
+    </figure>
+    <p class="first">Phrack issue 73 was released on November 17, 2026 — exactly 41 years after issue 1, dated November 17, 1985. The contents run from the Phrack Prophile on Halvar Flake through &ldquo;Escaping from a Docker container through vDSO,&rdquo; &ldquo;Owning the Truth: Undecidability, unsound kernels, and the forging of proof&rdquo; by endrazine and veorq, &ldquo;Cryptographic Ideas for TCC Bypasses&rdquo; by Jonathan Bar Or, QNX userland shellcode, and two WinFsp zero-days grown out of PhrackCTF.<sup class="cite"><a href="#src19">[19]</a></sup><sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <p>Two titles mark how the field has moved: &ldquo;Reflections on Trusting AI: A Virus Inside an LLM&rdquo; and &ldquo;A Journey Into Kernel Exploit Development in the LLM Era.&rdquo; The thread, quiet at eleven comments, reached for canon instead — issue 49&rsquo;s &ldquo;Smashing The Stack For Fun And Profit,&rdquo; the 1996 article that taught a generation buffer overflows, with one reader reporting they &ldquo;devoured that article when it came out and adapted it to other processors and other Unixes.&rdquo;<sup class="cite"><a href="#src19">[19]</a></sup><sup class="cite"><a href="#src20">[20]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">The Day&rsquo;s Verdict</div>
+    <h2 class="headline">Quote of the Day</h2>
+    <div class="byline"><span>Chosen for insight</span><span class="score">Thread-sourced</span></div>
+    <div class="pullquote" style="font-size:16px">&ldquo;On the Claude Code team, the vast majority of our code (~90%) is written and reviewed by Claude&hellip; Without them, you can really only run one or two Claudes at a time, because you have to check everything yourself.&rdquo;<span class="attr">Addy Osmani, on the Claude Code team&rsquo;s verification post</span></div>
+    <div class="statbox">
+      <div class="t">The Day in One Line</div>
+      <p style="font-size:12.5px; text-align:left; margin:0">OpenAI cut frontier rates hours before Anthropic&rsquo;s IPO, the NSA&rsquo;s internal network took a maintenance window, Apple&rsquo;s status pages stayed green while its services did not, and a phone-ban study climbed past a thousand points.</p>
+    </div>
+  </div>
+
+  <div class="cell">
+    <div class="classifieds">
+      <div class="t">Classifieds — Rates: 1 Karma per line</div>
+      <p>FOUND: one Internet Archive snapshot of OpenAI&rsquo;s GPT-6.2 page, taken 19:16 UTC today. The live page wanted JavaScript.</p>
+      <p>FOR VIEWING: 2,500 Visual Basic screenshots, six categories, drawn from 15,000+ archived Planet Source Code projects, 1997&ndash;2012.</p>
+      <p>CELEBRATING: issue 73, released exactly 41 years after issue 1. Both dated November 17; submissions always open.</p>
+    </div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Fresh stories</td><td>9</td></tr>
+        <tr><td>Follow-ups</td><td>1</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>4,231</td></tr>
+        <tr><td>Combined comments</td><td>2,444</td></tr>
+        <tr><td>Most-discussed of the ten</td><td>GPT-6.2 · 545</td></tr>
+        <tr><td>Fastest riser</td><td>Phone-ban study · ▲ +861</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="kicker">The Box Score</div>
+    <h2 class="headline" style="font-size:22px">Points on the Day&rsquo;s Ten</h2>
+    <figure>
+    <svg viewBox="0 0 640 392" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block" role="img" aria-label="Bar chart of points for the ten front-page stories">
+      <defs>
+        <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f3ecdd"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+        <pattern id="hatchR" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f3ecdd"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <g class="grid">
+        <line x1="0" y1="6" x2="0" y2="344"/>
+        <line x1="95" y1="6" x2="95" y2="344"/>
+        <line x1="189" y1="6" x2="189" y2="344"/>
+        <line x1="284" y1="6" x2="284" y2="344"/>
+        <line x1="378" y1="6" x2="378" y2="344"/>
+        <line x1="473" y1="6" x2="473" y2="344"/>
+        <line x1="520" y1="6" x2="520" y2="344"/>
+      </g>
+      <!-- bars: top = 8 + 34*i -->
+      <rect x="0.5" y="22" width="513" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="56" width="428" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="90" width="253" height="15" fill="url(#hatchR)"/>
+      <rect x="0.5" y="124" width="167" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="158" width="140" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="192" width="112" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="226" width="110" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="260" width="97" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="294" width="95" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="328" width="84" height="15" fill="url(#hatch)"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0.5" y1="352" x2="520.5" y2="352"/>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18">Phone Bans ▲</text>
+      <text class="barlabel" x="0" y="52">GPT-6.2 &#8224;</text>
+      <text class="barlabel" x="0" y="86">Apple Outage</text>
+      <text class="barlabel" x="0" y="120">NSANet Down</text>
+      <text class="barlabel" x="0" y="154">Harness Eval</text>
+      <text class="barlabel" x="0" y="188">Nvidia-Singapore</text>
+      <text class="barlabel" x="0" y="222">Claude Verify</text>
+      <text class="barlabel" x="0" y="256">MAI Code 2</text>
+      <text class="barlabel" x="0" y="290">VB World</text>
+      <text class="barlabel" x="0" y="324">Phrack 73</text>
+      <!-- values -->
+      <text class="barval" x="520" y="34" font-weight="bold">1086 ★ · 537 cmts</text>
+      <text class="barval" x="435" y="68">906 · 545</text>
+      <text class="barval" x="260" y="102">536 · 293</text>
+      <text class="barval" x="174" y="136">353 · 474</text>
+      <text class="barval" x="147" y="170">297 · 105</text>
+      <text class="barval" x="119" y="204">236 · 122</text>
+      <text class="barval" x="117" y="238">233 · 179</text>
+      <text class="barval" x="104" y="272">205 · 101</text>
+      <text class="barval" x="102" y="306">202 · 77</text>
+      <text class="barval" x="91" y="340">177 · 11</text>
+      <!-- tick labels -->
+      <g fill="#3d352a" font-size="11">
+        <text x="0" y="366" text-anchor="start">0</text>
+        <text x="95" y="366" text-anchor="middle">200</text>
+        <text x="189" y="366" text-anchor="middle">400</text>
+        <text x="284" y="366" text-anchor="middle">600</text>
+        <text x="378" y="366" text-anchor="middle">800</text>
+        <text x="473" y="366" text-anchor="middle">1000</text>
+        <text x="520" y="366" text-anchor="middle">1100</text>
+      </g>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">★ = points · cmts = comments · &#8224; most-discussed story of the day · red hatch = Apple coverage · ▲ follow-up since morning</text>
+    </svg>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>&ldquo;Gradually,&rdquo; precisely.</b> The headline says phone bans are &ldquo;gradually improving test scores&rdquo;; the measured effect belongs to strict bans — phones locked in pouches for the whole school day — and equals &ldquo;an additional week or two of school a year,&rdquo; reversing about half of the average pre-pandemic annual loss. Looser bans are not what the study measured.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+      <p><b>The $104B is the subsidiary, not the island.</b> The FT headline pairs &ldquo;Singapore sales&rdquo; with &ldquo;$104B&rdquo;; the thread&rsquo;s clarification is that the figure is the 2025 external revenue of Nvidia&rsquo;s Singapore subsidiary — orders routed through the entity — while sales booked to customers in Singapore were earlier reported at $2B&ndash;$4B. Singapore lacks the data-center space and grid to run the chips itself; where they ran is the open question.<sup class="cite"><a href="#src11">[11]</a></sup><sup class="cite"><a href="#src12">[12]</a></sup></p>
+      <p><b>&ldquo;98% of GPT 6.1 Sol at 40% of the cost&rdquo; is an average of four.</b> Microsoft&rsquo;s figure is averaged over DeepSWE 1.1, Terminal Bench 2.1, SWE-Atlas and FrontierCode v1.1 — benchmarks chosen for &ldquo;everyday enterprise coding tasks&rdquo; — and the company states the models are &ldquo;explicitly not yet tuned for harder problems.&rdquo; The thread notes the comparison rate is a 50 percent promotional discount taken against rivals at maximum reasoning effort.<sup class="cite"><a href="#src15">[15]</a></sup><sup class="cite"><a href="#src16">[16]</a></sup></p>
+      <p><b>&ldquo;Apple Services Down&rdquo; is set from the thread, not the page.</b> The linked developer status page renders only in a browser, and both of Apple&rsquo;s status pages listed failing services — sign-ins, Apple Cash, App Store Connect — as operating at snapshot. The outage&rsquo;s record this afternoon is reader reports, confirmed by a Yahoo Tech headline quoted among them.<sup class="cite"><a href="#src5">[5]</a></sup><sup class="cite"><a href="#src6">[6]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER&rsquo;S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher&rsquo;s Note</div>
+  <p>This edition leads with the phone-ban study&rsquo;s second appearance: 225 points at the Morning Edition&rsquo;s snapshot, 1,086 by this one, the fastest rise in recent editions. OpenAI&rsquo;s GPT-6.2 announcement follows at 906, with the NSA&rsquo;s NSANet outage and Apple&rsquo;s green-status-page outage behind it; the day&rsquo;s AI desks carry three stories and the Tools desk a harness leaderboard built on 83 billion tokens. Two sources sat behind bot walls — the Times and the Financial Times — and were set from the thread and this morning&rsquo;s verified reporting; OpenAI&rsquo;s page wanted JavaScript and was recovered from an Internet Archive snapshot taken at 19:16 UTC today. Nine of the ten are fresh. The rest of the paper is as found.</p>
+  <div class="sig">— The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="kicker">Sources</div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">The New York Times, The Upshot, &ldquo;New Evidence Shows School Phone Bans Are Gradually Improving Test Scores&rdquo; (November 17, 2026; behind an automated bot wall at press time — findings as verified in the Morning Edition and restated in the thread). <a href="https://www.nytimes.com/2026/11/17/upshot/school-phone-bans-study-scores.html">nytimes.com</a></li>
+    <li data-n="[2]" id="src2">Hacker News thread on the phone-ban study. <a href="https://news.ycombinator.com/item?id=50530163">news.ycombinator.com/item?id=50530163</a></li>
+    <li data-n="[3]" id="src3">OpenAI, &ldquo;Introducing GPT-6.2 Astra and Sol&rdquo; (live page JavaScript-gated at press time; quoted from the Internet Archive&rsquo;s snapshot of 19:16 UTC, November 17, 2026). <a href="https://openai.com/index/introducing-gpt-6-2-astra-sol/">openai.com</a></li>
+    <li data-n="[4]" id="src4">Hacker News thread, &ldquo;GPT-6.2 Astra and Sol.&rdquo; <a href="https://news.ycombinator.com/item?id=50535230">news.ycombinator.com/item?id=50535230</a></li>
+    <li data-n="[5]" id="src5">Apple Developer System Status page (renders only in a browser; listed affected services as operating at snapshot). <a href="https://developer.apple.com/system-status/">developer.apple.com</a></li>
+    <li data-n="[6]" id="src6">Hacker News thread, &ldquo;Apple Services Down.&rdquo; <a href="https://news.ycombinator.com/item?id=50535238">news.ycombinator.com/item?id=50535238</a></li>
+    <li data-n="[7]" id="src7">CNN, &ldquo;Exclusive: Highly classified US national security communications network goes down, sources say&rdquo; (Natasha Bertrand, Katie Bo Lillis, Sean Lyngaas, Davis Winkie, Zachary Cohen; November 17, 2026, 10:31 a.m. ET). <a href="https://www.cnn.com/2026/11/17/politics/highly-classified-national-security-communications-network-goes-down">cnn.com</a></li>
+    <li data-n="[8]" id="src8">Hacker News thread on the NSANet outage. <a href="https://news.ycombinator.com/item?id=50532849">news.ycombinator.com/item?id=50532849</a></li>
+    <li data-n="[9]" id="src9">Runta, &ldquo;Introducing FrontierHarness Eval v1.1&rdquo; — with Baseten; 22 harness configurations, 5 open-weight models, 62 tasks, 4 attempts. <a href="https://runta.com/blog/introducing-frontierharness-eval-v1-1">runta.com</a></li>
+    <li data-n="[10]" id="src10">Hacker News thread, &ldquo;What is the best harness for each model?&rdquo; <a href="https://news.ycombinator.com/item?id=50532191">news.ycombinator.com/item?id=50532191</a></li>
+    <li data-n="[11]" id="src11">Financial Times, &ldquo;Nvidia stopped disclosing Singapore sales as revenues hit $104B&rdquo; (behind an automated bot wall at press time; headline figures only). <a href="https://www.ft.com/content/dbde7a30-548c-4f9d-a4be-7898a0c2428e">ft.com</a></li>
+    <li data-n="[12]" id="src12">Hacker News thread on Nvidia&rsquo;s Singapore disclosure, including readers&rsquo; accounting clarifications and Bessent&rsquo;s Entity List remarks. <a href="https://news.ycombinator.com/item?id=50534631">news.ycombinator.com/item?id=50534631</a></li>
+    <li data-n="[13]" id="src13">Addy Osmani, &ldquo;How the Claude Code team thinks about verification,&rdquo; claude.dev blog (November 16, 2026). <a href="https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification">claude.dev</a></li>
+    <li data-n="[14]" id="src14">Hacker News thread on the Claude Code verification post. <a href="https://news.ycombinator.com/item?id=50529612">news.ycombinator.com/item?id=50529612</a></li>
+    <li data-n="[15]" id="src15">Microsoft AI, &ldquo;MAI Code 2 and Code 2 Flash: Everyday coding at scalable prices.&rdquo; <a href="https://microsoft.ai/news/introducing-mai-code-2-and-mai-code-2-flash/">microsoft.ai</a></li>
+    <li data-n="[16]" id="src16">Hacker News thread, &ldquo;MAI Code 2 and Code 2 Flash.&rdquo; <a href="https://news.ycombinator.com/item?id=50535885">news.ycombinator.com/item?id=50535885</a></li>
+    <li data-n="[17]" id="src17">VisualBasic.World, &ldquo;A Visual Archive&rdquo; — gallery of Planet Source Code programs, 1997&ndash;2012 (gallery renders in the browser; scope as described on the page and by its submitter). <a href="https://visualbasic.world/">visualbasic.world</a></li>
+    <li data-n="[18]" id="src18">Hacker News thread, &ldquo;VisualBasic.World: A gallery of Planet Source Code programs from 1997 to 2012.&rdquo; <a href="https://news.ycombinator.com/item?id=50511874">news.ycombinator.com/item?id=50511874</a></li>
+    <li data-n="[19]" id="src19">Phrack issue 73, contents listing; release date 2026-11-17, edited by Phrack Staff. <a href="https://phrack.org/issues/73/introduction_md.html">phrack.org</a></li>
+    <li data-n="[20]" id="src20">Hacker News thread, &ldquo;Phrack 73 Released.&rdquo; <a href="https://news.ycombinator.com/item?id=50535992">news.ycombinator.com/item?id=50535992</a></li>
+  </ol>
+  <p class="method">Methodology: Snapshot taken at 22:00 UTC, Tuesday, November 17, 2026 — 16:00 in Chicago, the Afternoon Edition — from the Hacker News front page via the Algolia front-page API (30 candidates). Stories were deduplicated against the previous four editions in the archive manifest; nine stories are fresh, and one returned as a follow-up — the phone-ban study, up from 225 points at the Morning Edition&rsquo;s snapshot to 1,086 (+861, +383 percent). No story was carried in the digest. The Financial Times and the New York Times sat behind automated bot walls; the former is set from its headline and thread, the latter from this morning&rsquo;s verified reporting and the thread. OpenAI&rsquo;s announcement page was JavaScript-gated and is quoted from the Internet Archive&rsquo;s snapshot taken 19:16 UTC today; Apple&rsquo;s status pages render only in a browser, so that outage is set from thread reports. Points and comment counts are as recorded at snapshot; the dagger marks the most-discussed story among the ten typeset. Images are the publishers&rsquo; own announcement or report artwork, fetched from the cited pages.</p>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <div>The Hacker Herald — Typeset from the Hacker News front page</div>
+  <div>❧ Printed on 100% recycled bandwidth ❧</div>
+  <div><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</div>
+</footer>
+
+</body>
+</html>

@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-11-17 · Afternoon | 2026-11-17 ≈22:00 | Phone-ban study becomes the day's biggest story, up 861 points since morning | 1086 | 537 | [editions/2026-11-17-afternoon/](editions/2026-11-17-afternoon/) |
 | 2026-11-17 · Morning | 2026-11-17 ≈14:00 | Carnegie Mellon posts full CS semesters on YouTube free; Optimizely compromise reached 178 organisations | 1820 | 245 | [editions/2026-11-17-morning/](editions/2026-11-17-morning/) |
 | 2026-11-16 · Afternoon | 2026-11-16 ≈22:00 | MIT's make-anything course page tops 800 points as Amazon's "deals" audit draws the day's biggest thread | 808 | 136 | [editions/2026-11-16-afternoon/](editions/2026-11-16-afternoon/) |
 | 2026-11-16 · Morning | 2026-11-16 ≈14:00 | Alibaba releases Qwen4-Max; independent index scores it 43 | 665 | 310 | [editions/2026-11-16-morning/](editions/2026-11-16-morning/) |

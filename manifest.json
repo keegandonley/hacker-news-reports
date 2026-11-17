@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-17-afternoon",
+      "date": "2026-11-17",
+      "label": "Afternoon",
+      "snapshot_utc": "22:00",
+      "items": [
+        {
+          "id": 50530163,
+          "title": "New Evidence Shows School Phone Bans Are Gradually Improving Test Scores",
+          "score": 1086,
+          "comments": 537
+        },
+        {
+          "id": 50535230,
+          "title": "GPT‑6.2 Astra and Sol",
+          "score": 906,
+          "comments": 545
+        },
+        {
+          "id": 50535238,
+          "title": "Apple Services Down",
+          "score": 536,
+          "comments": 293
+        },
+        {
+          "id": 50532849,
+          "title": "Highly classified US national security communications network goes down",
+          "score": 353,
+          "comments": 474
+        },
+        {
+          "id": 50532191,
+          "title": "What is the best harness for each model?",
+          "score": 297,
+          "comments": 105
+        },
+        {
+          "id": 50534631,
+          "title": "Nvidia stopped disclosing Singapore sales as revenues hit $104B",
+          "score": 236,
+          "comments": 122
+        },
+        {
+          "id": 50529612,
+          "title": "How the Claude Code team thinks about verification",
+          "score": 233,
+          "comments": 179
+        },
+        {
+          "id": 50535885,
+          "title": "MAI Code 2 and Code 2 Flash",
+          "score": 205,
+          "comments": 101
+        },
+        {
+          "id": 50511874,
+          "title": "VisualBasic.World: A gallery of Planet Source Code programs from 1997 to 2012",
+          "score": 202,
+          "comments": 77
+        },
+        {
+          "id": 50535992,
+          "title": "Phrack 73 Released",
+          "score": 177,
+          "comments": 11
+        }
+      ]
+    },
+    {
       "folder": "2026-11-17-morning",
       "date": "2026-11-17",
       "label": "Morning",
@@ -2018,74 +2086,6 @@
           "title": "Tailscale SSH: Investigation and remediation update",
           "score": 323,
           "comments": 170
-        }
-      ]
-    },
-    {
-      "folder": "2026-10-28-afternoon",
-      "date": "2026-10-28",
-      "label": "Afternoon",
-      "snapshot_utc": "13:01",
-      "items": [
-        {
-          "id": 50208960,
-          "title": "Start Doing Graph Theory",
-          "score": 239,
-          "comments": 44
-        },
-        {
-          "id": 50223739,
-          "title": "Decompiling Fast Food Tycoon 2: Drawing the World",
-          "score": 108,
-          "comments": 22
-        },
-        {
-          "id": 50227400,
-          "title": "MacOS Extensions Pack for the Apple Network Server v1.0",
-          "score": 86,
-          "comments": 2
-        },
-        {
-          "id": 50234796,
-          "title": "Ink droplets in motion snag top prize in Nikon Small World contest",
-          "score": 305,
-          "comments": 52
-        },
-        {
-          "id": 50261319,
-          "title": "Genie 4",
-          "score": 956,
-          "comments": 548
-        },
-        {
-          "id": 50261998,
-          "title": "Ghostty 1.4",
-          "score": 1153,
-          "comments": 366
-        },
-        {
-          "id": 50264853,
-          "title": "Survival LLM: AI assistant and emergency library that runs on your own computer",
-          "score": 420,
-          "comments": 158
-        },
-        {
-          "id": 50264857,
-          "title": "Tailscale SSH: Investigation and remediation update",
-          "score": 323,
-          "comments": 170
-        },
-        {
-          "id": 50268380,
-          "title": "Git for the US Code",
-          "score": 342,
-          "comments": 176
-        },
-        {
-          "id": 50271640,
-          "title": "Ten days later, Git on macOS still trusts the compromised eMudhra certificates",
-          "score": 345,
-          "comments": 140
         }
       ]
     }
