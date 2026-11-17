@@ -2,6 +2,86 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-17-morning",
+      "date": "2026-11-17",
+      "label": "Morning",
+      "snapshot_utc": "14:00",
+      "items": [
+        {
+          "id": 50522980,
+          "title": "Carnegie Mellon is putting computer science courses on YouTube for free",
+          "score": 1820,
+          "comments": 245
+        },
+        {
+          "id": 50523601,
+          "title": "BugMeNot has closed",
+          "score": 615,
+          "comments": 278
+        },
+        {
+          "id": 50519354,
+          "title": "Frame – 31.5\" color ePaper display",
+          "score": 469,
+          "comments": 322
+        },
+        {
+          "id": 50524767,
+          "title": "Optimizely compromised, served malware on Zoom, GitLab",
+          "score": 461,
+          "comments": 192
+        },
+        {
+          "id": 50519744,
+          "title": "Jiff 1.0: A datetime library for Rust",
+          "score": 407,
+          "comments": 88
+        },
+        {
+          "id": 50517602,
+          "title": "What is w2rt6byl5nf1opmc-a.com?",
+          "score": 377,
+          "comments": 155
+        },
+        {
+          "id": 50517321,
+          "title": "Microsoft blames monster email outage on software defect introduced in July fix",
+          "score": 370,
+          "comments": 285
+        },
+        {
+          "id": 50523459,
+          "title": "OpenCode Browse",
+          "score": 304,
+          "comments": 185
+        },
+        {
+          "id": 50522643,
+          "title": "Chemistry is Actually Geometry",
+          "score": 266,
+          "comments": 120
+        },
+        {
+          "id": 50530163,
+          "title": "New Evidence Shows School Phone Bans Are Gradually Improving Test Scores",
+          "score": 225,
+          "comments": 116
+        },
+        {
+          "id": 50521045,
+          "title": "Technical issue at JPMorgan Chase triggers online banking delays for US banks",
+          "score": 797,
+          "comments": 668
+        },
+        {
+          "id": 50520182,
+          "title": "Grazing sheep in fields with solar arrays",
+          "score": 293,
+          "comments": 295
+        }
+      ]
+    },
+    {
       "folder": "2026-11-16-afternoon",
       "date": "2026-11-16",
       "label": "Afternoon",

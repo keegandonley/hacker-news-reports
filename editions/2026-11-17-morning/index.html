@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 17, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page · Snapshot 14:00 UTC</div>
+  <div class="mid">Morning Edition</div>
+  <div class="r">10 Stories · 5,314 Points · 1,986 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type — a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Tuesday, November 17, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">The Classroom Desk</span><b>CMU Posts Its Courses, Free</b>
+    Thirteen full courses open on YouTube; one premieres each day this week.<sup class="cite"><a href="#src1">[1]</a></sup></div>
+  <div class="cell"><span class="tag">Web History</span><b>BugMeNot Has Closed</b>
+    The shared-login site leaves two sentences of thanks and a wall of code groups.<sup class="cite"><a href="#src3">[3]</a></sup></div>
+  <div class="cell"><span class="tag">Security</span><b>Malware Via Optimizely</b>
+    178 organisations served a wallet-swapping, card-skimming script from a trusted CDN.<sup class="cite"><a href="#src7">[7]</a></sup></div>
+  <div class="cell"><span class="tag">Systems</span><b>Microsoft&rsquo;s Outage Post-Mortem</b>
+    A July fix, a load surge, and 80 percent of gateway servers unresponsive.<sup class="cite"><a href="#src13">[13]</a></sup></div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <div class="kicker">The Classroom Desk · Lead Story</div>
+    <h2 class="headline">Carnegie Mellon Posts Full Semesters of Computer Science Lectures on YouTube, Free</h2>
+    <h3 class="deck">CS Learn opens with thirteen courses from seven departments — one premiering each day this week, five more in January — and the professor who runs it answered the launch thread within hours.</h3>
+    <div class="byline"><span>PITTSBURGH — By the Classroom Desk</span><span class="score"><b>★ 1820 pts · 245 comments</b></span></div>
+    <p class="first">Carnegie Mellon&rsquo;s Kenneth C. Griffin School of Computer Science has launched CS Learn, a free YouTube channel carrying full semesters of lectures from current courses. The November catalog lists eight courses — from 10-605 Machine Learning with Large Datasets, taught by William Cohen, to 15-442 Machine Learning Systems, taught by Tianqi Chen and Zhihao Jia — with two premiering today, two more on Wednesday and two on Thursday; five further courses, including Mor Harchol-Balter&rsquo;s 15-259 Probability and Computing, arrive in January 2027.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <figure>
+      <img src="images/cmu-gates.jpg" alt="The Gates Center, home of Carnegie Mellon's School of Computer Science, as pictured on the CS Learn portal.">
+      <figcaption>The Gates Center, the Pittsburgh home of Carnegie Mellon&rsquo;s School of Computer Science, as pictured on the CS Learn portal that launched today.<span class="cr">Cs.cmu.edu</span></figcaption>
+    </figure>
+    <p>The program is run by Phillip Compeau, who teaches in the Griffin School and introduced himself on the Hacker News thread: students built tooling that automates much of the production work, so &ldquo;a small team can get a course out quickly and still have people review every lecture.&rdquo; Asked about the obvious precedent, he conceded it outright: &ldquo;Yes, MIT got here 25 years ago.&rdquo; Next on the roadmap are self-paced courseware with instant feedback and badges, then AI tutoring built into that courseware.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <p>The thread&rsquo;s sharpest requests concerned independence from YouTube: one reader asked for a PeerTube mirror, and Compeau replied that the program already runs a Panopto server for internal use and will look into it. The story drew 1,820 points by snapshot — the day&rsquo;s largest by more than a thousand — and 245 comments.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Culture Desk</div>
+    <h2 class="headline">BugMeNot Closes, Leaving Thanks and a Wall of Code</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>★ 615 pts · 278 cmts</b></span></div>
+    <p class="first">BugMeNot, the site where strangers deposited working logins for sites that demanded registration, has closed. The entire domain is now two sentences — &ldquo;BugMeNot has closed. Thanks to everyone who envisioned a better internet.&rdquo; — followed by an unexplained grid of twenty-five rows of five-letter code groups, and nothing else.<sup class="cite"><a href="#src3">[3]</a></sup><sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <p>The thread became an obituary and a legal seminar at once. &ldquo;If it ever worked at scale, it would be shut down legally, and by its nature, it can&rsquo;t really work not at scale,&rdquo; wrote one reader; replies debated whether password-sharing breaches contract law at all, since the site&rsquo;s operators never signed any agreement with the sites whose logins were shared.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <div class="pullquote" style="font-size:16px">&ldquo;If it ever worked at scale, it would be shut down legally, and by its nature, it can&rsquo;t really work not at scale.&rdquo;<span class="attr">A reader, on the BugMeNot closure thread</span></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Follow-Up · Hardware Desk</div>
+    <h2 class="headline">TRMNL&rsquo;s 31.5-Inch Color ePaper Frame: First Batch 470 Units</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>★ 469 pts · ▲ +248 since the last edition</b></span></div>
+    <p class="first">TRMNL&rsquo;s Frame — a 31.5-inch full-color ePaper display in a handmade wooden body, announced Sunday — returns as the day&rsquo;s fastest riser, up from 221 points at the last edition&rsquo;s snapshot to 469 this morning. The first batch is about 470 units; most deliveries are expected in early 2027, with a few shipping by the end of 2026.<sup class="cite"><a href="#src5">[5]</a></sup><sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <figure>
+      <img src="images/frame-trmnl.jpg" alt="The TRMNL Frame, a 31.5-inch color ePaper display in a wooden body.">
+      <figcaption>Frame, the 31.5-inch color ePaper display in its handmade wooden body; wooden parts are made to order in Pine Mountain, Georgia.<span class="cr">Trmnl.com</span></figcaption>
+    </figure>
+    <p>The announcement details the supply chain piece by piece: 300 displays in a warehouse with 200 en route, plastic parts printed daily at the LaGrange, Georgia headquarters, and a Lazarus color-conversion engine — to be open-sourced — that TRMNL claims gives the best color matching of any Spectra 6 display. Thread pricing talk gave readers pause: &ldquo;the price at $1200 (soon to be $1300),&rdquo; as one put it.<sup class="cite"><a href="#src5">[5]</a></sup><sup class="cite"><a href="#src6">[6]</a></sup></p>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3: SECURITY -->
+<div class="section-label"><span>Security · The Field · Systems</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">Security Desk</div>
+    <h2 class="headline">Malware Served From Optimizely&rsquo;s Own CDN Reached 178 Organisations</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>★ 461 pts · 192 cmts</b></span></div>
+    <figure>
+      <img src="images/optimizely.png" alt="Report URI's announcement graphic for the Optimizely compromise.">
+      <figcaption>Report URI&rsquo;s write-up of the Optimizely compromise, published November 16 at 22:47 UTC.<span class="cr">Blog.report-uri.com</span></figcaption>
+    </figure>
+    <p class="first">On November 16, malicious JavaScript was served to visitors of 178 organisations through the Optimizely Web experimentation platform — Zoom, the BBC, CNN, Salesforce, GitLab, IKEA, HSBC, Equifax, Air France-KLM and Ledger among them. The attacker wrote code into each customer&rsquo;s &ldquo;Project JavaScript&rdquo; field, so the files kept serving from cdn.optimizely.com with Optimizely&rsquo;s own certificate, from a host every affected site already trusted.<sup class="cite"><a href="#src7">[7]</a></sup><sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <p>The payload, rebuilt 26 times during the day, swapped cryptocurrency wallet addresses — checksum-validated, across Bitcoin, Ethereum, TRON, Solana and more — in pages, clipboards and outgoing requests; skimmed card numbers from sites&rsquo; own forms (Luhn-checked, though not from hosted payment iframes); stole cookies and html2canvas screenshots; and served iOS exploit chains, Coruna for iOS 13&ndash;17 and DarkSword for 18.x, to devices on 18.6 or earlier. Attacker wallets received about $7,040 in roughly nine hours; cards and cookies cannot be counted. Cleanup went from 169 infected snippets at 20:56 UTC to one of 188 at 21:52.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>How the attacker obtained write access across unrelated customer projects remains unexplained. The thread worked the defense angle: subresource integrity proves the file you expected but &ldquo;doesn&rsquo;t ensure that script doesn&rsquo;t load other scripts &hellip; You need CSP for that,&rdquo; one reader noted — and platforms like Optimizely exist precisely to change their script, which is what made the injection hard to pin.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Field Desk</div>
+    <h2 class="headline">A Mystery Domain Ranks Eighth on a Web Popularity List</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>★ 377 pts · 155 cmts</b></span></div>
+    <figure>
+      <img src="images/sigrate.png" alt="The banner illustration for the essay What is w2rt6byl5nf1opmc-a.com?">
+      <figcaption>The essay&rsquo;s banner; its subtitle reads &ldquo;Don&rsquo;t test in production.&rdquo;<span class="cr">Jack.cab</span></figcaption>
+    </figure>
+    <p class="first">A backlink monitor tipped the author of jack.cab to siterate.org, a site that ranks webpages by TLD — and whose .com table reads google.com first, facebook.com second, youtube.com third, and, at position eight, between apple.com and googletagmanager.com, the string w2rt6byl5nf1opmc-a.com. The domain does not resolve — Firefox returns dnsNotFound — yet Majestic&rsquo;s Site Explorer credits it with 241,085,378 nofollow backlinks across 5,163,708 referring domains, all &ldquo;fresh,&rdquo; meaning from the last 120 days. Ahrefs, for comparison, sees 53 backlinks.<sup class="cite"><a href="#src11">[11]</a></sup><sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <p>Certificate Transparency records show the domain was first bought on November 11 — after most of its backlinks. The essay, published November 15, ends unresolved; the domain is simply the fastest-growing entry in the top 100 of the Majestic Million, which ranks domains by the number of subnets linking to them. Readers supplied context in the thread: Majestic and Tranco are ranking services, and &ldquo;Faviconese&rdquo; — the author&rsquo;s word — means he identified the .cab sites outranking him as casinos by their favicons.<sup class="cite"><a href="#src11">[11]</a></sup><sup class="cite"><a href="#src12">[12]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Systems Desk</div>
+    <h2 class="headline">Microsoft: July Fix Lurked Until a Load Surge Felled 80 Percent of Gateway Servers</h2>
+    <div class="byline"><span>Systems Desk</span><span class="score"><b>★ 370 pts · 285 cmts</b></span></div>
+    <figure>
+      <img src="images/register-outlook.jpg" alt="Article art from The Register's report on Microsoft's outage post-mortem.">
+      <figcaption>The Register&rsquo;s report on Microsoft&rsquo;s preliminary post-incident report, published November 16.<span class="cr">Theregister.com</span></figcaption>
+    </figure>
+    <p class="first">Microsoft&rsquo;s preliminary post-incident report, published November 15, blames last week&rsquo;s Exchange Online outage on a defect introduced in a July 2026 update to its Microsoft 365 network gateway servers. The defect caused &ldquo;lock contention inside an internal Windows process which caused the machine&rsquo;s resources (CPU &amp; memory) to be exhausted,&rdquo; worsened on machines with more cores — and the load testing had &ldquo;tended to focus on weaker hardware with fewer cores.&rdquo;<sup class="cite"><a href="#src13">[13]</a></sup><sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <p>At 01:07 UTC on November 12, Teams failed over to the primary gateway supporting Exchange Online just as nearly 14 percent of gateway capacity sat out of service. Each server failure rerouted traffic to the next healthy endpoint, which then failed the same way; within two hours, more than 80 percent of servers were unresponsive. A rollback was impossible — the defect was months old — so engineers shipped &ldquo;an update that returned the code path to the previously known good state,&rdquo; applied from 07:20 UTC on November 13. A final report is due November 20.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The thread fastened on the test-environment gap: &ldquo;If low end is 4 core and deployment is 128 cores, this is not acceptable,&rdquo; wrote one reader, and another noted the history — &ldquo;It was MUTEX spins in Windows 95, it&rsquo;s lock contention in 2026.&rdquo;<sup class="cite"><a href="#src14">[14]</a></sup></p>
+  </div>
+</div>
+
+<!-- ROW OF 3: LANGUAGES · TOOLS · SCIENCE -->
+<div class="section-label"><span>Languages · Tools · Science</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">Follow-Up · Language Desk</div>
+    <h2 class="headline">Jiff 1.0 Commits Its Datetime API Indefinitely for Rust</h2>
+    <div class="byline"><span>Language Desk</span><span class="score"><b>★ 407 pts · ▲ +157 since the last edition</b></span></div>
+    <p class="first">Andrew Gallant&rsquo;s Jiff, a datetime library for Rust that puts time zones and daylight-saving time &ldquo;front and center&rdquo; in its API, declared 1.0 on November 15 with an unusual pledge: unless a significant defect is found, the API holds at 1.0 indefinitely. The rationale is adoption — Jiff is already used in production by uv, Cargo, Starship, fd, Nushell, mise, Jujutsu, uutils/coreutils, and as the basis for a Temporal implementation in AWS&rsquo;s LLRT, which makes semver-incompatible releases an ecosystem-wide cost.<sup class="cite"><a href="#src9">[9]</a></sup><sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <p>The thread read less as news than as a settling of the standard: &ldquo;Jiff will probably be the default datetime library for a lot of Rustaceans (and LLMs) in the years to come,&rdquo; wrote one reader, and contributors described the maintainer&rsquo;s review style firsthand. The story rose from 250 points at the last edition&rsquo;s snapshot to 407 this morning.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Tools Desk</div>
+    <h2 class="headline">OpenCode Browse Lets Coding Agents Drive Your Real Browser</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>★ 304 pts · 185 cmts</b></span></div>
+    <p class="first">OpenCode has released Browse, an MCP server paired with a Chromium extension that lets coding agents use the user&rsquo;s real browser — with its tabs, logins and extensions. Agent tabs open in the background in collapsed groups, where the agents read pages, click, type, take screenshots and record network traffic; when a login, 2FA prompt or payment is required, the tab is handed back to the human and the agent continues once they click Continue.<sup class="cite"><a href="#src15">[15]</a></sup><sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <p>Supported browsers are Chrome, Edge, Brave, Arc, Helium, Vivaldi, Opera and Chromium — not Firefox, which one reader questioned; a reply explained that &ldquo;it&rsquo;s an extension, so the api surface is different on FF.&rdquo; Any MCP client works, including OpenCode, Claude Code, Cursor, Codex and Zed. The thread also carried pushback on the business model, with one reader arguing the project is &ldquo;angling for commercial viability status under the guise of being &lsquo;open&rsquo;&rdquo; after usage limits and a subscription tier appeared.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Science Desk</div>
+    <h2 class="headline">Essay Argues Chemistry&rsquo;s Qualitative Behavior Is Read Off as Geometry</h2>
+    <div class="byline"><span>Science Desk</span><span class="score"><b>★ 266 pts · 120 cmts</b></span></div>
+    <p class="first">A Substack essay makes the case that theoretical biologists should know Martin Feinberg&rsquo;s chemical reaction network theory: results such as the Deficiency Zero Theorem let qualitative questions — whether a reaction can oscillate, or admit multiple steady states — be answered from the geometry of the reaction network itself, rather than by estimating the hundreds of rate constants a model of, say, the Krebs cycle might carry. &ldquo;Without theory we are blind to the landscape of what is actually possible,&rdquo; the author writes.<sup class="cite"><a href="#src17">[17]</a></sup><sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <p>Feinberg&rsquo;s own framing, quoted in the essay: absent an overarching theory, &ldquo;we would be forced to study complex chemical systems on a case-by-case basis, and each new case would be fraught with terrible analytical difficulties.&rdquo; The thread split on the epistemology — &ldquo;we really ought to stop mistaking the map for the territory,&rdquo; wrote one reader, drawing replies that experimental results, not mathematical appeal, decide empirical science.<sup class="cite"><a href="#src17">[17]</a></sup><sup class="cite"><a href="#src18">[18]</a></sup></p>
+  </div>
+</div>
+
+<!-- 6. SECURITY & PRACTICAL -->
+<div class="sec2">
+  <div class="cell">
+    <div class="kicker">Culture Desk</div>
+    <h2 class="headline">First National Study Finds Strict School Phone Bans Lift Test Scores</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>★ 225 pts · 116 cmts</b></span></div>
+    <figure>
+      <img src="images/nyt-phones.jpg" alt="Article image from the New York Times report on school phone bans.">
+      <figcaption>The study measured schools that require phones to be locked away all day, compared against similar schools without bans.<span class="cr">Nytimes.com</span></figcaption>
+    </figure>
+    <p class="first">School cellphone bans are beginning to modestly improve academic performance, according to the first large national analysis to compare students&rsquo; test scores before and after bans, published Tuesday by Harvard&rsquo;s Center for Education Policy Research. Schools with strict bans — requiring phones locked in pouches all school day — saw math and reading improve as if students had an additional week or two of school a year.<sup class="cite"><a href="#src19">[19]</a></sup><sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <p>The study followed 3.3 million students in third through tenth grade at 4,600 U.S. schools from 2021 to 2026, using fall-to-spring MAP test growth to compare strict-ban schools with similar schools that had no ban. The annual gains reversed about half of the average annual loss students recorded before the pandemic. &ldquo;The earlier studies on cellphone bans have been dismissed as implying small impacts,&rdquo; said Thomas Kane of the Harvard Graduate School of Education, an author of the study; &ldquo;But we think that&rsquo;s mistaken.&rdquo;<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>Thread readers, several self-identifying as former students, argued the harm arrived with around-the-clock social media rather than phones per se — sharing MP3s over infrared at recess being, one wrote, &ldquo;a far cry&rdquo; from a device that is &ldquo;one big 24/7 public group.&rdquo;<sup class="cite"><a href="#src20">[20]</a></sup></p>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">The Day&rsquo;s Verdict</div>
+    <h2 class="headline">Quote of the Day</h2>
+    <div class="byline"><span>Chosen for insight</span><span class="score">Thread-sourced</span></div>
+    <div class="pullquote" style="font-size:16px">&ldquo;Yes, MIT got here 25 years ago :). What I&rsquo;m excited about is how we&rsquo;re doing it: a few of our students built tools that automate a lot of the production work, so a small team can get a course out quickly and still have people review every lecture.&rdquo;<span class="attr">Phillip Compeau, who runs CS Learn, on the launch thread</span></div>
+    <div class="statbox">
+      <div class="t">The Day in One Line</div>
+      <p style="font-size:12.5px; text-align:left; margin:0">Carnegie Mellon opened its lecture halls on YouTube, a shared-login commons closed, and 178 organisations learned their A/B-testing snippet was the malware.</p>
+    </div>
+  </div>
+
+  <div class="cell">
+    <div class="classifieds">
+      <div class="t">Classifieds — Rates: 1 Karma per line</div>
+      <p>WANTED: one working login, any site, no questions asked. The commons that supplied them has closed; thanks to everyone who envisioned a better internet.</p>
+      <p>FOR SALE: 241,085,378 nofollow backlinks, one owner. Domain does not resolve; serious offers only.</p>
+      <p>HANDMADE wooden frames, 31.5-inch color ePaper, ~470 units. Pine Mountain, Georgia; most deliveries early 2027.</p>
+    </div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Fresh stories</td><td>8</td></tr>
+        <tr><td>Follow-ups</td><td>2</td></tr>
+        <tr><td>Carried in digest</td><td>2</td></tr>
+        <tr><td>Combined points</td><td>5,314</td></tr>
+        <tr><td>Combined comments</td><td>1,986</td></tr>
+        <tr><td>Most-discussed of the ten</td><td>MS email outage · 285</td></tr>
+        <tr><td>Fastest riser</td><td>TRMNL Frame · ▲ +248</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="kicker">The Box Score</div>
+    <h2 class="headline" style="font-size:22px">Points on the Day&rsquo;s Ten</h2>
+    <figure>
+    <svg viewBox="0 0 640 392" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block" role="img" aria-label="Bar chart of points for the ten front-page stories">
+      <defs>
+        <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f3ecdd"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+        <pattern id="hatchR" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f3ecdd"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <g class="grid">
+        <line x1="0" y1="6" x2="0" y2="344"/>
+        <line x1="55" y1="6" x2="55" y2="344"/>
+        <line x1="109" y1="6" x2="109" y2="344"/>
+        <line x1="164" y1="6" x2="164" y2="344"/>
+        <line x1="219" y1="6" x2="219" y2="344"/>
+        <line x1="274" y1="6" x2="274" y2="344"/>
+        <line x1="328" y1="6" x2="328" y2="344"/>
+        <line x1="383" y1="6" x2="383" y2="344"/>
+        <line x1="438" y1="6" x2="438" y2="344"/>
+        <line x1="493" y1="6" x2="493" y2="344"/>
+        <line x1="520" y1="6" x2="520" y2="344"/>
+      </g>
+      <!-- bars: top = 8 + 34*i -->
+      <rect x="0.5" y="22" width="498" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="56" width="168" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="90" width="128" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="124" width="126" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="158" width="111" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="192" width="103" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="226" width="101" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="260" width="83" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="294" width="73" height="15" fill="url(#hatch)"/>
+      <rect x="0.5" y="328" width="62" height="15" fill="url(#hatch)"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0.5" y1="352" x2="520.5" y2="352"/>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18">CMU on YouTube</text>
+      <text class="barlabel" x="0" y="52">BugMeNot Closes</text>
+      <text class="barlabel" x="0" y="86">TRMNL Frame</text>
+      <text class="barlabel" x="0" y="120">Optimizely Hack</text>
+      <text class="barlabel" x="0" y="154">Jiff 1.0</text>
+      <text class="barlabel" x="0" y="188">Ranking Anomaly</text>
+      <text class="barlabel" x="0" y="222">MS Email Outage &#8224;</text>
+      <text class="barlabel" x="0" y="256">OpenCode Browse</text>
+      <text class="barlabel" x="0" y="290">Chem as Geometry</text>
+      <text class="barlabel" x="0" y="324">Phone Bans</text>
+      <!-- values -->
+      <text class="barval" x="505" y="34" font-weight="bold">1820 ★ · 245 cmts</text>
+      <text class="barval" x="175" y="68">615 · 278</text>
+      <text class="barval" x="135" y="102">469 · 322</text>
+      <text class="barval" x="133" y="136">461 · 192</text>
+      <text class="barval" x="118" y="170">407 · 88</text>
+      <text class="barval" x="110" y="204">377 · 155</text>
+      <text class="barval" x="108" y="238">370 · 285</text>
+      <text class="barval" x="90" y="272">304 · 185</text>
+      <text class="barval" x="80" y="306">266 · 120</text>
+      <text class="barval" x="69" y="340">225 · 116</text>
+      <!-- tick labels -->
+      <g fill="#3d352a" font-size="11">
+        <text x="0" y="366" text-anchor="start">0</text>
+        <text x="55" y="366" text-anchor="middle">200</text>
+        <text x="109" y="366" text-anchor="middle">400</text>
+        <text x="164" y="366" text-anchor="middle">600</text>
+        <text x="219" y="366" text-anchor="middle">800</text>
+        <text x="274" y="366" text-anchor="middle">1000</text>
+        <text x="328" y="366" text-anchor="middle">1200</text>
+        <text x="383" y="366" text-anchor="middle">1400</text>
+        <text x="438" y="366" text-anchor="middle">1600</text>
+        <text x="493" y="366" text-anchor="middle">1800</text>
+        <text x="520" y="366" text-anchor="middle">1900</text>
+      </g>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">★ = points · cmts = comments · &#8224; most-discussed story of the day · red hatch = Apple coverage (none in today&rsquo;s ten)</text>
+    </svg>
+    </figure>
+  </div>
+
+  <div class="cell">
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>&ldquo;Gradually,&rdquo; precisely.</b> The headline says phone bans are &ldquo;gradually improving test scores&rdquo;; the measured effect applies to strict bans — phones locked in pouches all school day — and equals &ldquo;an additional week or two of school a year,&rdquo; reversing about half of the average pre-pandemic annual loss. Looser bans are not what the study measured.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+      <p><b>&ldquo;$7,040 stolen&rdquo; is the countable part only.</b> Report URI&rsquo;s figure covers on-chain wallet transfers in roughly nine hours. &ldquo;We cannot see how many cards or cookies reached&rdquo; the attacker&rsquo;s server — the skimming and cookie theft are real but unmeasured.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+      <p><b>Thirteen courses, not the curriculum.</b> &ldquo;Carnegie Mellon is putting computer science courses on YouTube&rdquo; describes a launch catalog — eight courses premiering this week, five in January 2027 — with more promised but unnamed. The operator&rsquo;s own benchmark for the effort: &ldquo;MIT got here 25 years ago.&rdquo;<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup></p>
+      <p><b>The &ldquo;monster&rdquo; had a shape.</b> The Register&rsquo;s headline frames a monster outage; Microsoft&rsquo;s report locates it in one component — the Microsoft 365 network gateway — where more than 80 percent of servers went unresponsive, and where Exchange Online, alone among major services, could not fail out &ldquo;for scale reasons.&rdquo; Teams, OneDrive and SharePoint failed over.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- 7b. DIGEST -->
+<div style="padding:14px 18px 16px; border-bottom:1px solid var(--rule)">
+  <div class="statbox" style="margin:0">
+    <div class="t">Still Making the Rounds — covered in recent editions, still on the front page</div>
+    <table>
+      <tr><td style="max-width:100%"><b>Technical issue at JPMorgan Chase triggers online banking delays for US banks</b> · ★ 797 pts · 668 cmts</td></tr>
+      <tr><td style="border-bottom:none">The AP report sits behind a bot wall; the thread reports declined cards and unreachable branches, and the story grew +218 points (+38 percent) since Monday evening&rsquo;s edition — under the +40 percent bar for a follow-up.<sup class="cite"><a href="#src21">[21]</a></sup><sup class="cite"><a href="#src22">[22]</a></sup></td></tr>
+      <tr><td style="max-width:100%"><b>Grazing sheep in fields with solar arrays</b> · ★ 293 pts · 295 cmts</td></tr>
+      <tr><td style="border-bottom:none">Cornell&rsquo;s agrivoltaics trials found two sheep per hectare raised beneficial-insect abundance 38 percent over mowing (honey bees +83), while eight per hectare maximized vegetation control but cut honey bees 45 percent.<sup class="cite"><a href="#src23">[23]</a></sup><sup class="cite"><a href="#src24">[24]</a></sup></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER&rsquo;S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher&rsquo;s Note</div>
+  <p>This edition leads with Carnegie Mellon&rsquo;s CS Learn launch, which took 1,820 points — the largest single-story haul in recent editions — followed by BugMeNot&rsquo;s closure and the Optimizely supply-chain compromise, which hit 178 organisations through a script every affected site already trusted. TRMNL&rsquo;s Frame (+248) and Jiff 1.0 (+157) return as follow-ups; the JPMorgan banking delays and Cornell&rsquo;s solar-grazing sheep, both still on the front page but below the follow-up bar, are carried in the digest, the former set from its thread because the Associated Press report sat behind a bot wall. Eight of the ten are fresh. The rest of the paper is as found.</p>
+  <div class="sig">— The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="kicker">Sources</div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">Carnegie Mellon School of Computer Science, &ldquo;CS Learn&rdquo; — free lecture portal, launched November 2026. <a href="https://www.cs.cmu.edu/learn/">cs.cmu.edu</a></li>
+    <li data-n="[2]" id="src2">Hacker News thread, &ldquo;Carnegie Mellon is putting computer science courses on YouTube for free.&rdquo; <a href="https://news.ycombinator.com/item?id=50522980">news.ycombinator.com/item?id=50522980</a></li>
+    <li data-n="[3]" id="src3">BugMeNot, closure notice. <a href="https://www.bugmenot.com/">bugmenot.com</a></li>
+    <li data-n="[4]" id="src4">Hacker News thread, &ldquo;BugMeNot has closed.&rdquo; <a href="https://news.ycombinator.com/item?id=50523601">news.ycombinator.com/item?id=50523601</a></li>
+    <li data-n="[5]" id="src5">Ryan Kulp, TRMNL, &ldquo;Introducing Frame&rdquo; (November 16, 2026). <a href="https://trmnl.com/blog/introducing-frame">trmnl.com</a></li>
+    <li data-n="[6]" id="src6">Hacker News thread, &ldquo;Frame – 31.5&quot; color ePaper display.&rdquo; <a href="https://news.ycombinator.com/item?id=50519354">news.ycombinator.com/item?id=50519354</a></li>
+    <li data-n="[7]" id="src7">Report URI, &ldquo;World&rsquo;s Largest Brands Infected With Malware Via Optimizely&rdquo; (November 16, 2026, 22:47 UTC). <a href="https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/">blog.report-uri.com</a></li>
+    <li data-n="[8]" id="src8">Hacker News thread, &ldquo;Optimizely compromised, served malware on Zoom, GitLab.&rdquo; <a href="https://news.ycombinator.com/item?id=50524767">news.ycombinator.com/item?id=50524767</a></li>
+    <li data-n="[9]" id="src9">Andrew Gallant, &ldquo;A datetime library for Rust&rdquo; — the Jiff 1.0 announcement (November 15, 2026). <a href="https://burntsushi.net/jiff/">burntsushi.net</a></li>
+    <li data-n="[10]" id="src10">Hacker News thread, &ldquo;Jiff 1.0: A datetime library for Rust.&rdquo; <a href="https://news.ycombinator.com/item?id=50519744">news.ycombinator.com/item?id=50519744</a></li>
+    <li data-n="[11]" id="src11">Jack Cook, &ldquo;What is w2rt6byl5nf1opmc-a.com?&rdquo; (November 15, 2026). <a href="https://jack.cab/blog/siterate">jack.cab</a></li>
+    <li data-n="[12]" id="src12">Hacker News thread, &ldquo;What is w2rt6byl5nf1opmc-a.com?&rdquo; <a href="https://news.ycombinator.com/item?id=50517602">news.ycombinator.com/item?id=50517602</a></li>
+    <li data-n="[13]" id="src13">The Register, &ldquo;Microsoft blames monster email outage on software defect introduced in July fix&rdquo; (November 16, 2026). <a href="https://www.theregister.com/saas/2026/11/16/microsoft-blames-monster-email-outage-on-software-defect-introduced-in-july-fix/5310026">theregister.com</a></li>
+    <li data-n="[14]" id="src14">Hacker News thread on Microsoft&rsquo;s post-incident report. <a href="https://news.ycombinator.com/item?id=50517321">news.ycombinator.com/item?id=50517321</a></li>
+    <li data-n="[15]" id="src15">OpenCode, &ldquo;Browse, your real browser for coding agents.&rdquo; <a href="https://opencode.ai/product/browse">opencode.ai</a></li>
+    <li data-n="[16]" id="src16">Hacker News thread, &ldquo;OpenCode Browse.&rdquo; <a href="https://news.ycombinator.com/item?id=50523459">news.ycombinator.com/item?id=50523459</a></li>
+    <li data-n="[17]" id="src17">CasualPhysicsEnjoyer, &ldquo;Chemistry is Actually Geometry&rdquo; (November 16, 2026). <a href="https://chillphysicsenjoyer.substack.com/p/chemistry-is-actually-geometry">chillphysicsenjoyer.substack.com</a></li>
+    <li data-n="[18]" id="src18">Hacker News thread, &ldquo;Chemistry is Actually Geometry.&rdquo; <a href="https://news.ycombinator.com/item?id=50522643">news.ycombinator.com/item?id=50522643</a></li>
+    <li data-n="[19]" id="src19">The New York Times, The Upshot, &ldquo;New Evidence Shows School Phone Bans Are Gradually Improving Test Scores&rdquo; (November 17, 2026). <a href="https://www.nytimes.com/2026/11/17/upshot/school-phone-bans-study-scores.html">nytimes.com</a></li>
+    <li data-n="[20]" id="src20">Hacker News thread on the phone-ban study. <a href="https://news.ycombinator.com/item?id=50530163">news.ycombinator.com/item?id=50530163</a></li>
+    <li data-n="[21]" id="src21">Associated Press, &ldquo;Technical issue at JPMorgan Chase triggers online banking delays for US banks&rdquo; (behind an automated bot wall at press time). <a href="https://apnews.com/article/bank-outage-chase-wells-fargo-truist-50fee2693c22f597fa6ca51e97ef2cda">apnews.com</a></li>
+    <li data-n="[22]" id="src22">Hacker News thread on the bank-outage delays. <a href="https://news.ycombinator.com/item?id=50521045">news.ycombinator.com/item?id=50521045</a></li>
+    <li data-n="[23]" id="src23">Cornell Chronicle, &ldquo;Sheep grazing in solar fields offers farmers economic, ecological gains.&rdquo; <a href="https://news.cornell.edu/stories/2026/10/sheep-grazing-solar-fields-offers-farmers-economic-ecological-gains">news.cornell.edu</a></li>
+    <li data-n="[24]" id="src24">Hacker News thread, &ldquo;Grazing sheep in fields with solar arrays.&rdquo; <a href="https://news.ycombinator.com/item?id=50520182">news.ycombinator.com/item?id=50520182</a></li>
+  </ol>
+  <p class="method">Methodology: Snapshot taken at 14:00 UTC, Tuesday, November 17, 2026, from the Hacker News front page via the Algolia front-page API (30 candidates). Stories were deduplicated against the previous four editions in the archive manifest; eight stories are fresh, and two returned as follow-ups — TRMNL&rsquo;s Frame, up from 221 to 469 points (+248, +112 percent), and Jiff 1.0, up from 250 to 407 (+157, +63 percent). The JPMorgan Chase banking-delay story rose +218 points (+38 percent), under the +40 percent bar for a follow-up, and is carried in the digest; its Associated Press report was blocked by an automated bot wall at press time, so it is sourced from its thread and labeled as such. Points and comment counts are as recorded at snapshot; the dagger marks the most-discussed story among the ten typeset. Images are the publishers&rsquo; own announcement or report artwork, fetched from the cited pages. The newsroom clock runs on US Central time: 08:00 in Chicago, the Morning Edition.</p>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <div>The Hacker Herald — Typeset from the Hacker News front page</div>
+  <div>❧ Printed on 100% recycled bandwidth ❧</div>
+  <div><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> · © 2026 Keegan · All karma reserved</div>
+</footer>
+
+</body>
+</html>
