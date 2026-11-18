@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 18, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <span>Hacker News Front Page &middot; Snapshot 22:00 UTC</span>
+  <span class="mid">Afternoon Edition</span>
+  <span>10 Stories &middot; 3,407 Points &middot; 1,610 Comments</span>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <span class="l">Compiled from news.ycombinator.com</span>
+  <span class="c">Wednesday, November 18, 2026</span>
+  <span class="r">Every fact checked; every joke earned</span>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Security</span><b>NGINX, patched today</b>Two unauthenticated remote-code-execution flaws rated 9.2 under CVSS&nbsp;4.0, one of them shipping since 2015; fixed builds landed within half an hour of disclosure.</div>
+  <div class="cell"><span class="tag">Investigations</span><b>15 million files</b>The Inside Deutsche Bank leak spans sanctions monitoring, internal audit and the units that decide whether risky clients stay or go.</div>
+  <div class="cell"><span class="tag">AI Desk</span><b>Nine models in one day</b>Microsoft ships seven at Ignite; Google answers with Genie&nbsp;4 and Gemini&nbsp;4 Neon. The thread doubts the comparisons.</div>
+  <div class="cell"><span class="tag">Language</span><b>&lsquo;Human&rsquo;, 2026</b>Cambridge Dictionary&rsquo;s Word of the Year, defined against &ldquo;gods, animals, or machines.&rdquo;</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <span class="kicker">Security</span>
+    <h2 class="headline">Two unauthenticated RCE flaws in NGINX patched on disclosure day</h2>
+    <h3 class="deck">Five research teams independently found the twin HTTP/2 bugs, both rated 9.2 critical; one has shipped in default configurations since NGINX 1.9.5 in 2015, and the software fronts more than 225 million websites</h3>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 901 pts</b> &middot; 389 comments</span></div>
+    <figure><img src="images/nginx-rce.webp" alt="Header image of the Wiz disclosure post for the two NGINX HTTP/2 vulnerabilities" loading="lazy">
+    <figcaption>Header image accompanying the Wiz disclosure. <span class="cr">wiz.io</span></figcaption></figure>
+    <p class="first">NEW YORK &mdash; Wiz Research, joined independently by Ikotas Labs, Metnir, Rapid7 and Xint, disclosed two unauthenticated remote-code-execution vulnerabilities in NGINX on Wednesday: CVE-2026-123633, a use-after-free in HTTP/2 connection handling, and CVE-2026-123007, an integer underflow in HTTP/2 flow control, both scored 9.2 (critical) under CVSS&nbsp;4.0 and both requiring only that HTTP/2 be enabled.<sup class="cite"><a href="#src1">[1]</a></sup> F5, which maintains NGINX, shipped fixed releases within the hour &mdash; 1.30.7 stable and 1.31.9 mainline &mdash; in a security release covering ten vulnerabilities, including a third 9.2-rated use-after-free, this one in HTTP/3 (CVE-2026-121810).<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The two flaws work differently and bite different setups. The use-after-free, present since NGINX 1.19.7, affects reverse-proxy deployments when available connection slots run low: a partially sent HEADERS frame leaves the connection marked reusable while a request is being created on it. The integer underflow, present since NGINX 1.9.5 in 2015, skews flow-control accounting into an invalid memory copy, and Wiz demonstrated code execution on a 64-bit server doing nothing but serving static files over HTTPS &mdash; no backend application, no third-party modules, default configuration.<sup class="cite"><a href="#src1">[1]</a></sup> Memory-safety mitigations such as ASLR do not stop either, since both allow memory reads before code execution; where upgrading must wait, Wiz&rsquo;s interim fix is to turn HTTP/2 off (<em>http2 off;</em>) and reload.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The disclosure&rsquo;s other finding is about who finds such bugs now. Wiz says it located both flaws with Wiz Atlas, its AI code-scanning harness, and validated the impact of each with Gemini&nbsp;4 Carbon and ChatGPT&nbsp;5.6 Sol, concluding that &ldquo;complexity can no longer be relied upon as a barrier to discovery or exploitation.&rdquo;<sup class="cite"><a href="#src1">[1]</a></sup> The thread worked the practical angles: one reader timed the patched releases to &ldquo;within 30 mins&rdquo; of the post going up;<sup class="cite"><a href="#src2">[2]</a></sup> another asked whether five independent teams hitting the same two bugs &ldquo;is some kind of record for bug collision&rdquo;;<sup class="cite"><a href="#src2">[2]</a></sup> a third, running no HTTP/2 at all, kept to the sidelines &mdash; &ldquo;Glad I&rsquo;m http/1.1 only.&rdquo;<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="jump">Continued in the thread &middot; news.ycombinator.com/item?id=50547374</div>
+  </div>
+  <div class="cell side">
+    <span class="kicker">Infrastructure</span>
+    <h2 class="headline">Quad9 will stop resolving for France on November 24, under &euro;1,000 a day</h2>
+    <div class="byline"><span>Infrastructure Desk</span><span class="score"><b>&#9733; 518 pts</b> &middot; 180 cmts</span></div>
+    <figure><img src="images/dns-piracy.jpg" alt="Cover image of the Tech Stackups article on Quad9 leaving France" loading="lazy">
+    <figcaption>Article cover image. <span class="cr">techstackups.com</span></figcaption></figure>
+    <p class="first">On Tuesday, November 24, Quad9 &mdash; the Swiss non-profit behind the free 9.9.9.9 resolver &mdash; stops answering DNS queries from France. A Paris court imposed a &euro;1,000-a-day penalty on October 21 (docket RG 26/11882) after the resolver refused to block pirate sports-streaming domains for beIN Sports; the broadcaster had asked for &euro;10,000 a day per domain, &euro;580,000 a day across 58 domains, and with about 20 similar cases pending in France, Quad9 says leaving is the only option it can afford.<sup class="cite"><a href="#src3">[3]</a></sup> This paper carried the withdrawal itself from Cloudflare&rsquo;s post this morning; the new long-form piece supplies the legal arithmetic behind it.</p>
+    <p>Who loses service is the piece&rsquo;s sharpest point: Quad9&rsquo;s announcement lists French networks it serves &mdash; the interministerial digital directorate DINUM, the CEA, the Institut Pasteur, RENATER, EDF, SNCF, Marseille&rsquo;s AP-HM hospitals, Thales &mdash; and because the resolver keeps no user records, it has no way to warn them. In Cloudflare&rsquo;s words, users will see no error message: &ldquo;Their Internet will simply stop working.&rdquo;<sup class="cite"><a href="#src3">[3]</a></sup> The thread&rsquo;s sharpest dissent came from a reader who argued that Quad9&rsquo;s call for reasoned letters to policymakers misreads the matter: &ldquo;Judges and lawmakers didn&rsquo;t do this because they misunderstood some technology issue.&rdquo;<sup class="cite"><a href="#src4">[4]</a></sup></p>
+  </div>
+  <div class="cell side">
+    <span class="kicker">Investigations</span>
+    <h2 class="headline">A leak of 15 million files puts Deutsche Bank&rsquo;s controls on public display</h2>
+    <div class="byline"><span>Investigations Desk</span><span class="score"><b>&#9733; 453 pts</b> &middot; 155 cmts</span></div>
+    <figure><img src="images/deutsche-bank.jpg" alt="Cover photograph on the Inside Deutsche Bank project site" loading="lazy">
+    <figcaption>Cover photograph from the project site. <span class="cr">inside-db.com</span></figcaption></figure>
+    <p class="first">A new hub site, Inside Deutsche Bank, presents a global investigation built on a leak of more than 15 million files, spanning what it calls the bank&rsquo;s &ldquo;anti-financial crime, sanctions monitoring, internal auditing and the units responsible for deciding whether risky clients stay or go&rdquo; &mdash; with partner stories running in the Financial Times, the New York Times, Malaysiakini and eight other outlets.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>The partners carry the specifics: Deutsche Bank facilitated at least 24 transactions totalling &euro;172.98 million linked to the fugitive financier Jho Low (Malaysiakini); leaked files show suspicious Epstein-related payments of $600 million, double the previously known figure (KCIJ Newstapa); and an analyst&rsquo;s note &mdash; &ldquo;As you know we have a large Russian Oligarchs client population&rdquo; &mdash; written as the bank braced for sanctions (New York Times).<sup class="cite"><a href="#src5">[5]</a></sup> The thread reached for the wider record, one reader citing David Enrich&rsquo;s 2020 book <em>Dark Towers</em>, and another asking how the cases square with Germany&rsquo;s regulatory reputation.<sup class="cite"><a href="#src6">[6]</a></sup></p>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="section-label"><span>The Day&rsquo;s Other Leads</span></div>
+<div class="row3">
+  <div class="cell">
+    <span class="kicker">AI Desk &middot; Big Tech</span>
+    <h2 class="headline">Microsoft releases seven models, pitched on price against GPT-6 and Opus</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 366 pts</b> &middot; 246 cmts</span></div>
+    <figure><img src="images/ms-ignite.jpg" alt="Header image from Microsoft's Ignite 2026 model announcement" loading="lazy">
+    <figcaption>Header image from the announcement post. <span class="cr">microsoft.ai</span></figcaption></figure>
+    <p class="first">At Ignite, Microsoft&rsquo;s MAI unit released seven models in a single post, each framed by price. MAI Code&nbsp;2 claims 98% of GPT-6.1 Sol&rsquo;s coding quality at about 40% of the price, and 96% of Opus&nbsp;5.5&rsquo;s performance for 5%; MAI Cyber&nbsp;2 Flash claims to beat GPT-6 Astra&rsquo;s quality at under 2% of the cost per task on the CyberGym-E2E benchmark; MAI Realtime&nbsp;1 starts at $0.01 per audio minute; and Dragon Copilot Transcribe, built on MAI Transcribe&nbsp;2, already processes 10 million patient encounters a month with multilingual error rates halved.<sup class="cite"><a href="#src7">[7]</a></sup> A second-generation accelerator, Maia&nbsp;200, enters production at a claimed 1.7x more tokens per watt.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>The commentariat went at the comparisons first. &ldquo;&lsquo;Decision 1.1 is the latest decision model from Microsoft, 50x faster and 79x cheaper than GPT-6.1 Sol&rsquo;&hellip; uhm okay. What a useless comparison,&rdquo; wrote the top-rated comment;<sup class="cite"><a href="#src8">[8]</a></sup> others asked why the models are absent from the Artificial Analysis index, summed the release up as &ldquo;weak models, closed weights, no technical information,&rdquo; and argued Microsoft needs open weights to win share &mdash; &ldquo;Otherwise, it&rsquo;s Windows Phone OS all over again.&rdquo;<sup class="cite"><a href="#src8">[8]</a></sup></p>
+  </div>
+  <div class="cell">
+    <span class="kicker">Language Desk</span>
+    <h2 class="headline">Cambridge Dictionary names &lsquo;human&rsquo; its Word of the Year for 2026</h2>
+    <div class="byline"><span>Language Desk</span><span class="score"><b>&#9733; 203 pts</b> &middot; 156 cmts</span></div>
+    <p class="first">The choice marks a year &ldquo;defined by global debates on what it means to be human when AI is blurring the boundaries between people and machines&rdquo; &mdash; and the dictionary&rsquo;s own definition of the word sets it against &ldquo;gods, animals, or machines.&rdquo;<sup class="cite"><a href="#src13">[13]</a></sup> The release collects the year&rsquo;s landmarks: Bill Gates&rsquo; case for &ldquo;human reserved jobs&rdquo; such as caregivers (&ldquo;The measure of AI&rsquo;s success should be how much it improves human lives&rdquo;); Geoffrey Hinton&rsquo;s &ldquo;we&rsquo;re creating alien beings. I&rsquo;m willing to be selfish and choose humans&rdquo;; and Pope Leo XIV&rsquo;s warning against new forms of &ldquo;dehumanization.&rdquo;<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The arts supplied the countermovement the release catalogs: the Human Artistry Campaign&rsquo;s artists against machine-generated replicas, the Authors Guild&rsquo;s &ldquo;Human Authored&rdquo; kitemark, and Matthew McConaughey becoming the first Hollywood actor to pre-emptively trademark his voice, face and catchphrase against unauthorized digital reproduction, with Taylor Swift following in April.<sup class="cite"><a href="#src13">[13]</a></sup> In the thread, the most-replied comment took on the Gates proposal: deciding which jobs stay human &ldquo;hinges on personal preferences, class interests, and even market pressures&hellip; It&rsquo;s not something that can be reasoned about on a global scale.&rdquo;<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <div class="jump">No image obtained &middot; sourced from the university release and thread</div>
+  </div>
+  <div class="cell">
+    <span class="kicker">Science Desk</span>
+    <h2 class="headline">Energy-based reasoners hit 99.9% on Sudoku-Extreme with 345&times; less compute</h2>
+    <div class="byline"><span>Science Desk</span><span class="score"><b>&#9733; 291 pts</b> &middot; 48 cmts</span></div>
+    <figure><img src="images/energy-reasoners.png" alt="Figure from the Energy-Based Reasoners project page illustrating the energy landscape" loading="lazy">
+    <figcaption>Project-page figure: correct solutions settle at low-energy states. <span class="cr">energy-based-reasoners.github.io</span></figcaption></figure>
+    <p class="first">A paper posted this week replaces the learned recurrent step of looped reasoners with gradient descent on a single learned energy function: the energy scores how well a candidate answer fits the puzzle, its gradient says how to improve it, and the gradient&rsquo;s size decides when to stop &mdash; easy puzzles finish in a few steps, hard ones keep going.<sup class="cite"><a href="#src9">[9]</a></sup> Across four algorithmic benchmarks the authors report 99.9% single-sample accuracy on Sudoku-Extreme using 345&times; fewer inference FLOPs than the next-best model, with 1.8 million parameters against rivals&rsquo; 5&ndash;10 million, and five samples matching what the strongest baseline needs 128 samples to find.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>Readers stressed the domain: this is &ldquo;energy-based search for a discrete problem (graph coloring, solving mazes, sudoku),&rdquo; one wrote &mdash; constrained rules, few solutions &mdash; and it would be interesting to see it on chess or Go.<sup class="cite"><a href="#src10">[10]</a></sup> Another flagged the definitional drift: the headline efficiency comes &ldquo;for a very generous definition of reasoning, that has almost nothing in common with the thing most people associate with the term nowadays.&rdquo;<sup class="cite"><a href="#src10">[10]</a></sup> A third pointed to Logical Intelligence, the energy-model group that counts Yann LeCun, for where the approach already troubles LLMs &mdash; &ldquo;primary school level maths and counting.&rdquo;<sup class="cite"><a href="#src10">[10]</a></sup></p>
+  </div>
+</div>
+
+<!-- 6. SECURITY & PRACTICAL -->
+<div class="section-label"><span>Security &amp; Practical</span></div>
+<div class="sec2">
+  <div class="cell">
+    <span class="kicker">Security Briefing</span>
+    <h2 class="headline">Linux KVM bug let a guest keep running on a stale MMU context</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 154 pts</b> &middot; 108 cmts</span></div>
+    <p class="first">CVE-2026-99312, published Wednesday in the Linux kernel record, describes a nested-virtualization flaw: when KVM emulates an INIT while a nested guest (L2) is running with paging disabled, the kernel can keep running the parent guest (L1) on a stale memory-management-unit context. The fix makes the MMU reset unconditional on INIT; the bug affects nested SVM only, since INIT is an unconditional intercept under VMX, and stable fixes are marked in kernel releases 6.12.118, 6.18.64 and 7.3.5.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>The thread&rsquo;s advice for operators was blunt and contested. &ldquo;Another nested KVM bug&hellip; we&rsquo;ve gotten at least 2 more nested KVM escapes in the last year. Don&rsquo;t allow nested KVM,&rdquo; wrote one reader;<sup class="cite"><a href="#src16">[16]</a></sup> another cautioned against disabling it &mdash; nested virtualization &ldquo;is still better security than everything else&rdquo; &mdash; while noting that the write-up circulating with the record &ldquo;is AI-written. It really should be rewritten by a human.&rdquo;<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <div class="jump">cve.org served an empty page to this newsroom; sourced from the CVE Program record and the thread</div>
+  </div>
+  <div class="cell">
+    <span class="kicker">Field Desk &middot; Professional Services</span>
+    <h2 class="headline">In KPMG&rsquo;s 100-agent audit trial, the AI sometimes dug deeper than the team</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 247 pts</b> &middot; 120 cmts</span></div>
+    <figure><img src="images/kpmg-audit.jpg" alt="Header image of the European Business Magazine article on KPMG's AI audit trial" loading="lazy">
+    <figcaption>Header image (the site&rsquo;s alt text reads &ldquo;kpmg&rdquo;). <span class="cr">europeanbusinessmagazine.com</span></figcaption></figure>
+    <p class="first">LONDON &mdash; In &ldquo;Project Exponential,&rdquo; KPMG UK set more than 100 AI agents on the financial statements of an unnamed FTSE&nbsp;250 company, working alongside a conventional audit team across the whole process &mdash; collecting evidence, analyzing and documenting data, drafting conclusions and proposing next steps, and dividing responsibilities among themselves. Head of audit Cath Burnet said the technology had, in several instances, gone considerably deeper than the regular team, &ldquo;identifying areas requiring further investigation and asking questions that human auditors had not necessarily raised.&rdquo;<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The caveats are material. The four-month exercise was not a statutory audit &mdash; a partner signed off on the experiment, but its findings were not used to approve the accounts &mdash; and an auditor had to intervene when one agent failed to match regulatory requirements with the company&rsquo;s documentation. KPMG plans to expand to as many as 20 larger audits, concedes the technology is not ready for thousands of engagements, and has not said whether efficiencies will lower audit fees; the UK&rsquo;s Financial Reporting Council warns AI must not undermine auditor independence or professional scepticism.<sup class="cite"><a href="#src11">[11]</a></sup> The thread supplied both readings: &ldquo;I suspect this says more about KPMG accountants than AI,&rdquo; one reader wrote; another, citing decades of accounting scandals, asked whether better questions help in a business where audits are &ldquo;too often a cut-rate whitewashing exercise.&rdquo;<sup class="cite"><a href="#src12">[12]</a></sup></p>
+  </div>
+  <div class="cell">
+    <div class="pullquote">&ldquo;We&rsquo;re creating alien beings. I&rsquo;m willing to be selfish and choose humans.&rdquo;<span class="attr">Geoffrey Hinton, in Cambridge&rsquo;s Word of the Year release &middot; [13]</span></div>
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p>PUBLIC NOTICE: Quad9 (9.9.9.9) stops answering French queries November 24; holders of dependent networks, hospitals included, will not be notified. [3]</p>
+      <p>WORLDS FOR BUILDING, editable mid-session, native audio included &mdash; Ultra subscription or waitlist. Inquire within. Google DeepMind. [17]</p>
+    </div>
+  </div>
+</div>
+
+<!-- 6b. LATE WIRE -->
+<div class="section-label"><span>Late Wire &mdash; AI Desk</span></div>
+<div class="row3">
+  <div class="cell">
+    <span class="kicker">AI Desk &middot; World Models</span>
+    <h2 class="headline">Genie 4 reaches Project Genie, with mid-session editing and native audio</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 142 pts</b> &middot; 118 cmts</span></div>
+    <figure><img src="images/genie-4.png" alt="Project Genie thumbnail image from Google's Genie 4 announcement" loading="lazy">
+    <figcaption>Announcement thumbnail for Project Genie. <span class="cr">blog.google</span></figcaption></figure>
+    <p class="first">Google DeepMind rolled out Genie&nbsp;4, its most interactive world model yet, to eligible Google AI Ultra subscribers: type a prompt mid-session and the world changes &mdash; the weather, the characters, the direction of the action &mdash; with native audio that adapts as the scene unfolds, a first for the line. A conversational &ldquo;Project Genie agent&rdquo; builds worlds from plain descriptions, and a new community gallery lets users publish, explore and remix them.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>Genie&nbsp;3 stays in the model picker for longer runs and gains three-minute sessions, up from 60 seconds, world chaining, and 360-degree panorama seeding.<sup class="cite"><a href="#src17">[17]</a></sup> The thread&rsquo;s reservations were about access and about worth: &ldquo;So now we&rsquo;re allowed to pay to use a beta? I&rsquo;m good,&rdquo; one reader wrote; another called world models &ldquo;such an insane waste of resources&rdquo; next to looking up a panorama.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+  </div>
+  <div class="cell">
+    <span class="kicker">AI Desk</span>
+    <h2 class="headline">Gemini 4 Neon posts #3 on Artificial Analysis at $3 per million tokens</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 132 pts</b> &middot; 90 cmts</span></div>
+    <figure><img src="images/gemini-neon.png" alt="Blog header image from Google's Gemini 4 Neon announcement" loading="lazy">
+    <figcaption>Blog-header image from the announcement. <span class="cr">blog.google</span></figcaption></figure>
+    <p class="first">Also Wednesday, Google introduced Gemini&nbsp;4 Neon, a frontier-class model priced at $3 per million input tokens and $15 per million output, with cached input at $0.15 &mdash; a 95% discount &mdash; and a one-million-token context window. Google reports it #3 overall on the Artificial Analysis Intelligence Index (score 61 at its xhigh thinking level), #1 on the Artificial Analysis Coding Agent Index (58.6), #1 on the Legal Research Bench and Tax Agent Bench, and #1 on Vending-Bench&nbsp;2, a long-horizon business simulation, with the company&rsquo;s lowest fabrication rate yet in internal testing.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>Its orchestration role is the quieter headline: Neon is built to sustain long, tool-heavy agent sessions and to act as a fast &ldquo;Orchestrator&rdquo; directing parallel Hydrogen subagents in Google Antigravity, handling context compaction along the way.<sup class="cite"><a href="#src19">[19]</a></sup> Readers kept score of the cadence &mdash; &ldquo;Google is on a roll, what is this the 4th release this month?&rdquo; &mdash; and of the naming: &ldquo;Credit to Google for outdoing OpenAI and Anthropic in terms of choosing a confusing naming convention.&rdquo;<sup class="cite"><a href="#src20">[20]</a></sup> One judged it &ldquo;the long awaited successor to 3.1 pro.&rdquo;<sup class="cite"><a href="#src20">[20]</a></sup></p>
+  </div>
+  <div class="cell">
+    <div class="statbox">
+      <div class="t">The Day by the Numbers</div>
+      <table>
+        <tr><td>Front-page candidates at snapshot</td><td>30</td></tr>
+        <tr><td>Model releases announced today</td><td>9</td></tr>
+        <tr><td>NGINX CVEs fixed in today&rsquo;s release</td><td>10</td></tr>
+        <tr><td>&hellip;of those rated 9.2 critical</td><td>3</td></tr>
+        <tr><td>Gemini 4 Neon, per M input tokens</td><td>$3</td></tr>
+        <tr><td>Gemini 4 Neon, per M output tokens</td><td>$15</td></tr>
+        <tr><td>Genie sessions, up from 60 seconds</td><td>180 s</td></tr>
+      </table>
+    </div>
+    <div class="statbox">
+      <div class="t">Quad9 in France, by the Numbers</div>
+      <table>
+        <tr><td>Court penalty from Oct 21</td><td>&euro;1,000/day</td></tr>
+        <tr><td>beIN&rsquo;s request (58 domains)</td><td>&euro;580,000/day</td></tr>
+        <tr><td>Similar cases pending</td><td>~20</td></tr>
+        <tr><td>Resolver goes dark in France</td><td>Nov 24</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <span class="kicker">Box Score &middot; Points per Story</span>
+    <figure><svg viewBox="0 0 640 392" style="width:100%; height:auto; display:block" role="img" aria-label="Points per story, snapshot 22:00 UTC"><defs><pattern id="hatchInk" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#191510" stroke-width="2.4"/></pattern></defs><line class="grid" x1="104" y1="6" x2="104" y2="344"/><line class="grid" x1="208" y1="6" x2="208" y2="344"/><line class="grid" x1="312" y1="6" x2="312" y2="344"/><line class="grid" x1="416" y1="6" x2="416" y2="344"/><line class="grid" x1="520" y1="6" x2="520" y2="344"/><text class="barlabel" x="0" y="18">NGINX RCE &#8224;</text><rect x="0.5" y="22" width="469" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="476" y="34" font-weight="700">901 &#9733; &#183; 389 cmts</text><text class="barlabel" x="0" y="52">DNS resolvers vs piracy</text><rect x="0.5" y="56" width="269" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="276" y="68">518 &#183; 180</text><text class="barlabel" x="0" y="86">Inside Deutsche Bank</text><rect x="0.5" y="90" width="236" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="243" y="102">453 &#183; 155</text><text class="barlabel" x="0" y="120">Microsoft Ignite models</text><rect x="0.5" y="124" width="190" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="197" y="136">366 &#183; 246</text><text class="barlabel" x="0" y="154">Energy-Based Reasoners</text><rect x="0.5" y="158" width="151" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="158" y="170">291 &#183; 48</text><text class="barlabel" x="0" y="188">KPMG AI audit trial</text><rect x="0.5" y="192" width="128" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="135" y="204">247 &#183; 120</text><text class="barlabel" x="0" y="218">&lsquo;Human&rsquo;, word of the year</text><rect x="0.5" y="222" width="106" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="113" y="234">203 &#183; 156</text><text class="barlabel" x="0" y="248">KVM stale-MMU bug</text><rect x="0.5" y="252" width="80" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="87" y="264">154 &#183; 108</text><text class="barlabel" x="0" y="282">Genie 4</text><rect x="0.5" y="286" width="74" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="81" y="298">142 &#183; 118</text><text class="barlabel" x="0" y="316">Gemini 4 Neon</text><rect x="0.5" y="320" width="69" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="76" y="332">132 &#183; 90</text><line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/><line class="axis" x1="0.5" y1="352" x2="520" y2="352"/><text class="barval" x="0" y="366" text-anchor="start" fill="#3d352a">0</text><text class="barval" x="104" y="366" text-anchor="middle" fill="#3d352a">200</text><text class="barval" x="208" y="366" text-anchor="middle" fill="#3d352a">400</text><text class="barval" x="312" y="366" text-anchor="middle" fill="#3d352a">600</text><text class="barval" x="416" y="366" text-anchor="middle" fill="#3d352a">800</text><text class="barval" x="520" y="366" text-anchor="middle" fill="#3d352a">1000</text><text class="barval" x="0" y="386" fill="#3d352a">&#9733; = points &#183; cmts = comments &#183; &#8224; most-discussed story of the day &#183; red hatch marks Apple coverage (none on today&rsquo;s page)</text></figure>
+    <p style="text-align:center;font-size:12.5px;font-style:italic;color:#3d352a">The day in one line: a decade-old NGINX flaw patched at 9.2 on disclosure day; 15 million bank files on public display; nine models from two firms before dinner; and the dictionary&rsquo;s word for the year of it all &mdash; &ldquo;human.&rdquo;</p>
+  </div>
+  <div class="cell">
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories typeset</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>10</td></tr>
+        <tr><td>Follow-ups</td><td>0</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>3,407</td></tr>
+        <tr><td>Combined comments</td><td>1,610</td></tr>
+        <tr><td>Most-discussed</td><td>NGINX RCE (389)</td></tr>
+        <tr><td>Security desk share</td><td>1,055 pts &middot; 497 cmts</td></tr>
+        <tr><td>AI desks share</td><td>931 pts &middot; 502 cmts</td></tr>
+      </table>
+    </div>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>385&times;, or 345&times;.</b> The front-page title bills &ldquo;385x more efficient inference.&rdquo; The project page reports 345&times; fewer FLOPs than the next-best model on Sudoku-Extreme, and elsewhere 7&times; fewer iterations and 43&times; fewer samples to match that model&rsquo;s best accuracy. The extra 40&times; is not in the release.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+      <p><b>Seven models, and one accelerator.</b> Microsoft&rsquo;s &ldquo;seven new models&rdquo; is a count of models; Maia&nbsp;200, announced in the same post, is hardware. The pricing claims are per-benchmark comparisons of Microsoft&rsquo;s choosing &mdash; Decision&nbsp;1.1&rsquo;s &ldquo;50x faster and 79x cheaper&rdquo; sets a purpose-built decision model against the general-purpose GPT-6.1 Sol, and the post publishes no underlying runs.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+      <p><b>&ldquo;Better questions&rdquo; &mdash; sometimes.</b> The magazine&rsquo;s headline drops the trial&rsquo;s own qualifier: the agents &ldquo;sometimes&rdquo; went deeper, on one unnamed FTSE&nbsp;250 company, in a non-statutory exercise that needed a human correction mid-run; the underlying reporting is the Financial Times&rsquo;.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+      <p><b>Word of the Year is an editorial pick.</b> Cambridge describes a year &ldquo;defined by global debates&rdquo; in choosing &lsquo;human&rsquo;; the selection marks 2026&rsquo;s arguments rather than any measured spike in lookups or usage.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher&rsquo;s Note</div>
+  <p>All ten stories in this edition are fresh &mdash; no follow-ups qualified and no digest was needed. The page spent its day on two NGINX flaws patched within half an hour of disclosure, a 15-million-file look inside Deutsche Bank, and nine model releases from Microsoft and Google, while Cambridge&rsquo;s lexicographers closed the circle by naming &ldquo;human.&rdquo; One record page at cve.org would not load for this newsroom; the CVE Program&rsquo;s own data stood in.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">Wiz Research, &ldquo;Unauthenticated Remote Code Execution in NGINX: CVE-2026-123633 and CVE-2026-123007&rdquo; &mdash; <a href="https://www.wiz.io/blog/nginx-http2-rce-vulnerabilities">wiz.io</a></li>
+    <li data-n="[2]" id="src2">Hacker News thread, item 50547374 &mdash; <a href="https://news.ycombinator.com/item?id=50547374">news.ycombinator.com</a></li>
+    <li data-n="[3]" id="src3">Tech Stackups, &ldquo;Quad9 Is Leaving France: Why DNS Resolvers Are the Wrong Place to Fight Piracy&rdquo; &mdash; <a href="https://techstackups.com/articles/quad9-leaves-france-dns-blocking/">techstackups.com</a></li>
+    <li data-n="[4]" id="src4">Hacker News thread, item 50545958 &mdash; <a href="https://news.ycombinator.com/item?id=50545958">news.ycombinator.com</a></li>
+    <li data-n="[5]" id="src5">Inside Deutsche Bank, project hub and partner index &mdash; <a href="https://www.inside-db.com/">inside-db.com</a></li>
+    <li data-n="[6]" id="src6">Hacker News thread, item 50547620 &mdash; <a href="https://news.ycombinator.com/item?id=50547620">news.ycombinator.com</a></li>
+    <li data-n="[7]" id="src7">Microsoft AI, &ldquo;Seven new world-class models at scalable price-performance&rdquo; (Ignite 2026) &mdash; <a href="https://microsoft.ai/news/microsoft-ignite-2026/">microsoft.ai</a></li>
+    <li data-n="[8]" id="src8">Hacker News thread, item 50548021 &mdash; <a href="https://news.ycombinator.com/item?id=50548021">news.ycombinator.com</a></li>
+    <li data-n="[9]" id="src9">&ldquo;Energy-Based Reasoners: Your Recurrent Reasoner Should Be an Energy-Based Model&rdquo; (paper: arXiv 2611.08977) &mdash; <a href="https://energy-based-reasoners.github.io/">energy-based-reasoners.github.io</a></li>
+    <li data-n="[10]" id="src10">Hacker News thread, item 50543989 &mdash; <a href="https://news.ycombinator.com/item?id=50543989">news.ycombinator.com</a></li>
+    <li data-n="[11]" id="src11">European Business Magazine, &ldquo;AI Agents Ask Better Questions Than KPMG Accountants&rdquo; (after the Financial Times) &mdash; <a href="https://europeanbusinessmagazine.com/ai-agents-better-questions-kpmg/">europeanbusinessmagazine.com</a></li>
+    <li data-n="[12]" id="src12">Hacker News thread, item 50547777 &mdash; <a href="https://news.ycombinator.com/item?id=50547777">news.ycombinator.com</a></li>
+    <li data-n="[13]" id="src13">University of Cambridge, &ldquo;Cambridge Dictionary reveals Word of the Year 2026&rdquo; &mdash; <a href="https://www.cam.ac.uk/news/cambridge-dictionary-reveals-word-of-the-year-2026">cam.ac.uk</a></li>
+    <li data-n="[14]" id="src14">Hacker News thread, item 50546914 &mdash; <a href="https://news.ycombinator.com/item?id=50546914">news.ycombinator.com</a></li>
+    <li data-n="[15]" id="src15">CVE Program record, CVE-2026-99312 (KVM: x86: Unconditionally reset MMU context when emulating INIT) &mdash; <a href="https://www.cve.org/CVERecord?id=CVE-2026-99312">cve.org</a> via the CVE Program API</li>
+    <li data-n="[16]" id="src16">Hacker News thread, item 50548004 &mdash; <a href="https://news.ycombinator.com/item?id=50548004">news.ycombinator.com</a></li>
+    <li data-n="[17]" id="src17">Google DeepMind, &ldquo;Project Genie update featuring Genie 4&rdquo; &mdash; <a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/">blog.google</a></li>
+    <li data-n="[18]" id="src18">Hacker News thread, item 50550415 &mdash; <a href="https://news.ycombinator.com/item?id=50550415">news.ycombinator.com</a></li>
+    <li data-n="[19]" id="src19">Google, &ldquo;Introducing Gemini 4 Neon&rdquo; &mdash; <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/">blog.google</a></li>
+    <li data-n="[20]" id="src20">Hacker News thread, item 50552424 &mdash; <a href="https://news.ycombinator.com/item?id=50552424">news.ycombinator.com</a></li>
+  </ol>
+  <p class="method">Methodology: snapshot of the Hacker News front page taken at 22:00 UTC on Wednesday, November 18, 2026, via the Algolia HN Search API (tags=front_page; 30 candidates returned). Points and comment counts are frozen at the snapshot and move afterwards. Deduplicated by story id against the previous four editions (manifest.json): all ten stories are fresh to this edition; no story met the follow-up threshold and no digest was required. Articles were fetched at publication time; cve.org returned an application shell, so CVE-2026-99312 is sourced from the CVE Program&rsquo;s record. Images are the stories&rsquo; own header images, credited to their hosts; no image was fabricated. Corrections &amp; Clarifications items are drawn from today&rsquo;s stories only.</p>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <span>The Hacker Herald &mdash; Typeset from the Hacker News front page</span>
+  <span>&#10087; Printed on 100% recycled bandwidth &#10087;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</span>
+</footer>
+
+</body>
+</html>
