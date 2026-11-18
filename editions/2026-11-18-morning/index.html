@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 18, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+
+</style>
+</head>
+<body>
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <span>Hacker News Front Page &middot; Snapshot 14:00 UTC</span>
+  <span class="mid">Morning Edition</span>
+  <span>10 Stories &middot; 6,279 Points &middot; 3,664 Comments</span>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <span class="l">Compiled from news.ycombinator.com</span>
+  <span class="c">Wednesday, November 18, 2026</span>
+  <span class="r">Every fact checked; every joke earned</span>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">AI Desk</span><b>GPT-6.2 holds the lead</b>OpenAI&rsquo;s release stands at 1,302 points, up 396 since yesterday afternoon&rsquo;s edition &mdash; the day&rsquo;s biggest riser.</div>
+  <div class="cell"><span class="tag">Security</span><b>Java4Shell, CVSS 9.2</b>A flaw in OpenJDK&rsquo;s Base64 decoder yields pre-auth remote code execution in Keycloak, Jira and Jenkins, in default configs.</div>
+  <div class="cell"><span class="tag">Infrastructure</span><b>Quad9 quits France</b>A court&rsquo;s daily penalties push the Swiss resolver out; hospitals and utilities using it will see lookups simply fail.</div>
+  <div class="cell"><span class="tag">National Security</span><b>NSANet offline</b>The NSA&rsquo;s classified internal network is down; the agency says maintenance, the DNI says patching. Follow-Up inside.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <span class="kicker">Follow-Up &middot; AI Desk</span>
+    <h2 class="headline">GPT-6.2 Astra and Sol hold the front page as testers weigh cost against Opus</h2>
+    <h3 class="deck">OpenAI&rsquo;s release retook the lead at 1,302 points and 813 comments; thread benchmarks put Astra near Opus 5.5 at a fraction of the cost</h3>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 1302 pts</b> &middot; 813 comments &middot; &#9650; +396 since the last edition</span></div>
+    <p class="first">SAN FRANCISCO &mdash; OpenAI&rsquo;s GPT-6.2 Astra and Sol, released this week ahead of Anthropic&rsquo;s initial public offering, held the front page&rsquo;s top slot at this morning&rsquo;s snapshot with 1,302 points and 813 comments, up 396 points since the Herald&rsquo;s Tuesday-afternoon edition.<sup class="cite"><a href="#src11">[11]</a></sup> OpenAI&rsquo;s announcement page sat behind a bot wall for this newsroom, so this report is drawn from the thread, where early testers posted numbers within hours of the release.</p>
+    <p>Third-party results land Astra and Sol just behind Anthropic&rsquo;s Opus 5.5. On FrontierCode 2.0, Sol 6.2 scores 43.8% against Opus&rsquo;s 45.5%, up from 39.0% for Sol 6.1; on Terminal-Bench-Science it posts 68.0% to Opus&rsquo;s 63.3%; on the Artificial Analysis Intelligence Index it reaches 57.3 to Opus&rsquo;s 59.1.<sup class="cite"><a href="#src11">[11]</a></sup> Costs are moving faster than scores: on Plotly&rsquo;s data-analytics exam, Astra finished for about $4 where GPT-6.0 cost about $20, and Sol for $1.2 against $2.6, with similar accuracy and fewer tool calls.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The thread&rsquo;s sharpest dissent concerns the model it replaces. &ldquo;Sol 6.1 is statistically equal with DeepSeek 4.1 Flash at 10x the cost and 25% slower,&rdquo; one tester wrote of his company&rsquo;s internal battles; an early-access user reported that 6.2 &ldquo;is still overengineering, especially Sol.&rdquo;<sup class="cite"><a href="#src11">[11]</a></sup> Several readers read the release date itself as a move: landing a frontier model days before a rival&rsquo;s IPO, one put it, is a &ldquo;Nintendo vs. Sega&rdquo; moment &mdash; two players too similar for both to keep spending at this rate.</p>
+    <div class="jump">Continued in the thread &middot; news.ycombinator.com</div>
+  </div>
+  <div class="cell side">
+    <span class="kicker">Security</span>
+    <h2 class="headline">Java4Shell: pre-auth RCE in OpenJDK&rsquo;s Base64 decoder, rated 9.2 critical</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 1040 pts</b> &middot; 276 cmts</span></div>
+    <figure><img src="images/java4shell.jpg" alt="Java4Shell disclosure poster: Write once, RCE everywhere" loading="lazy">
+    <figcaption>Disclosure poster for CVE-2026-114938, &ldquo;Write once, RCE everywhere.&rdquo; <span class="cr">calif.io</span></figcaption></figure>
+    <p class="first">Researchers at Calif disclosed Java4Shell (CVE-2026-114938), a memory-corruption flaw in OpenJDK&rsquo;s Base64 decoder scored 9.2 out of 10 (critical) under CVSS 4.0, with pre-authentication remote code execution demonstrated in the default configurations of Keycloak, Atlassian Jira and Confluence, Jenkins, JFrog Artifactory and PingFederate.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <p>The bug sits in hand-written AVX-512 assembly that OpenJDK uses to decode Base64 in bulk: 64 &ldquo;A&rdquo; characters and one &ldquo;=&rdquo; make the routine compute a negative output length and write 62 bytes past a 50-byte buffer, exposing memory in the manner of Heartbleed.<sup class="cite"><a href="#src2">[2]</a></sup> A client-side variant compromises a Java program that merely opens a TLS connection to a hostile server.<sup class="cite"><a href="#src2">[2]</a></sup> With the fixed runtime only just pushed, one reader flagged a stopgap: running the JVM with <em>-XX:UseAVX=2</em> sidesteps the vectorized decode path entirely.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+  </div>
+  <div class="cell side">
+    <span class="kicker">Infrastructure</span>
+    <h2 class="headline">Quad9 withdraws its DNS resolver from France under daily penalties</h2>
+    <div class="byline"><span>Infrastructure Desk</span><span class="score"><b>&#9733; 764 pts</b> &middot; 334 cmts</span></div>
+    <figure><img src="images/quad9.png" alt="Quad9 withdrawal from France — Cloudflare blog illustration" loading="lazy">
+    <figcaption>Cloudflare&rsquo;s post calls the withdrawal &ldquo;a canary in the coal mine.&rdquo; <span class="cr">blog.cloudflare.com</span></figcaption></figure>
+    <p class="first">Quad9, the Swiss non-profit that runs a free public DNS resolver, will withdraw from France after a court ruling imposed daily financial penalties for not blocking domains tied to alleged copyright infringement &mdash; and French government bodies, schools, hospitals and utilities that use it have no way to be told their lookups are about to fail.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>Cisco&rsquo;s OpenDNS withdrew from France, Portugal and Belgium under similar orders, and a Belgian court has given Cloudflare, Google and Cisco until early January 2027 to begin blocking through their public resolvers or face substantial penalties &mdash; something Cloudflare says it has never done.<sup class="cite"><a href="#src3">[3]</a></sup> The thread reached for the structural point: &ldquo;If you want to preserve the Internet as you see it,&rdquo; one reader argued, &ldquo;you need to provide a solution for copyright.&rdquo;<sup class="cite"><a href="#src13">[13]</a></sup></p>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="section-label"><span>The Day&rsquo;s Other Leads</span></div>
+<div class="row3">
+  <div class="cell">
+    <span class="kicker">Follow-Up &middot; National Security</span>
+    <h2 class="headline">NSANet, the NSA&rsquo;s classified internal network, is down</h2>
+    <div class="byline"><span>National Security Desk</span><span class="score"><b>&#9733; 631 pts</b> &middot; 709 cmts &middot; &#9650; +278</span></div>
+    <figure><img src="images/nsanet.jpg" alt="NSA headquarters at Fort Meade, Maryland" loading="lazy">
+    <figcaption>NSA headquarters at Fort Meade, Maryland. <span class="cr">media.cnn.com</span></figcaption></figure>
+    <p class="first">FORT MEADE, MD. &mdash; NSANet, the highly classified network the National Security Agency uses for internal communications, went down Tuesday, CNN reported, citing six people familiar with the matter; the agency closed its Fort Meade campus to all but essential personnel under a &ldquo;code yellow&rdquo; staffing level, hours after telling employees they could return as normal.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <p>Officials said there is no evidence of a cyberattack. The NSA called it &ldquo;temporary degradation during scheduled routine maintenance&rdquo;; Director of National Intelligence Jay Clayton said patching for the PHP vulnerabilities disclosed last month left some systems not coming back up &ldquo;as expected.&rdquo;<sup class="cite"><a href="#src4">[4]</a></sup> A former senior NSA official called a full NSANet outage &ldquo;alarming, but likely not crippling&rdquo;: the agency is a network of networks, with backups that also reach the president, who is traveling in Asia this week.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+  </div>
+  <div class="cell">
+    <span class="kicker">Media</span>
+    <h2 class="headline">Randomized experiment: AI Overviews cut search clicks by 40%</h2>
+    <div class="byline"><span>Media Desk</span><span class="score"><b>&#9733; 549 pts</b> &middot; 408 cmts</span></div>
+    <p class="first">When researchers gave US desktop Chrome users an extension that hid Google&rsquo;s AI Overviews from some and not others, the group that still saw them averaged 0.37 clicks to outside websites per search, against 0.62 for the hidden group &mdash; a cut of about 40% on any search where an Overview appears.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>Overviews now show on 61.4% of the US keywords DataForSEO tracks, up from 5.9% in September 2024, while featured snippets fell from 8.96% to 0.44% of results; health and finance queries draw them most often, at 69.7% and 68.8%.<sup class="cite"><a href="#src5">[5]</a></sup> The author, who submitted the piece himself, argued in the thread that Google disrupting its own search page beats being disrupted by rival chatbots &mdash; and that the transition has so far left ad revenue intact.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+  </div>
+  <div class="cell">
+    <span class="kicker">Culture</span>
+    <h2 class="headline">&ldquo;AI is killing All About Berlin&rdquo;: a solo guide loses three-quarters of its traffic</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 543 pts</b> &middot; 516 cmts</span></div>
+    <p class="first">All About Berlin, the English-language guide Nicolas Bouliane has run since 2017 and lived on since 2020, has lost roughly three-quarters of its traffic after seven years of growth. Where Google once returned a link, he writes, it now returns &ldquo;a page of ads, then an AI-generated answer trained on my content, then finally a link to my website.&rdquo;<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <p>The site is not a hobby: Berlin&rsquo;s immigration office uses his data about itself, and the project inspired two government portals.<sup class="cite"><a href="#src6">[6]</a></sup> The thread&rsquo;s harder question is where new source material comes from &mdash; &ldquo;AI is only getting (inaccurate shadows of) the info from these sources which it is simultaneously working to kill,&rdquo; one reader wrote, of Stack Overflow and sites like this one.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+  </div>
+</div>
+
+<!-- 6. SECURITY & PRACTICAL -->
+<div class="section-label"><span>Security &amp; Practical</span></div>
+<div class="sec2">
+  <div class="cell">
+    <span class="kicker">Privacy</span>
+    <h2 class="headline">IRS sign-ins via ID.me run under ID.me&rsquo;s terms, arbitrator included</h2>
+    <div class="byline"><span>Privacy Desk</span><span class="score"><b>&#9733; 404 pts</b> &middot; 203 cmts</span></div>
+    <p class="first">Taxpayers who sign into IRS online services with ID.me accept the vendor&rsquo;s own terms of service, which send disputes to a neutral arbitrator rather than a judge or jury unless the user opts out within 30 days; its privacy policy reserves the right to use information &ldquo;for marketing purposes&rdquo; and to transfer it in a sale or merger, Consumer Rights Wiki documents.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>The government-run Login.gov works for the same sign-ins, and the IRS&rsquo;s Direct Pay takes bank-account payments with no sign-in at all; Senators Wyden and Warren asked Treasury on October 29 why it keeps using ID.me, a day after TreasuryDirect switched to it as its only login.<sup class="cite"><a href="#src7">[7]</a></sup> ID.me&rsquo;s current terms (version 10.1.0, dated November 13) count continued use as acceptance of changes.<sup class="cite"><a href="#src7">[7]</a></sup> The thread&rsquo;s practical note: the Login.gov door at irs.gov is open now.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <div class="jump">No image obtained &middot; sourced from the wiki and thread</div>
+  </div>
+  <div class="cell">
+    <span class="kicker">Science</span>
+    <h2 class="headline">350 years ago, Ole R&oslash;mer showed light travels at a finite speed</h2>
+    <div class="byline"><span>Science Desk</span><span class="score"><b>&#9733; 362 pts</b> &middot; 119 cmts</span></div>
+    <figure><img src="images/romer.jpg" alt="Portrait of Danish astronomer Ole R&oslash;mer" loading="lazy">
+    <figcaption>Ole R&oslash;mer, who timed Io&rsquo;s eclipses to put a speed limit on light. <span class="cr">sciencenorway.no</span></figcaption></figure>
+    <p class="first">PARIS, 1676 &mdash; In September of that year the Danish astronomer Ole R&oslash;mer told the Acad&eacute;mie des Sciences that on November 9, Jupiter&rsquo;s moon Io would emerge from the planet&rsquo;s shadow ten minutes later than the tables predicted. It did, and instantaneous light died on the spot.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <p>R&oslash;mer used Io as a clock: its eclipses ran late while Earth receded from Jupiter and early as it approached, which he explained by light&rsquo;s travel time &mdash; about 22 minutes to cross Earth&rsquo;s orbit, an estimate roughly 25% low (about 225,000 km/s against the true 300,000, the modern value cited by NTNU&rsquo;s Jacob W&uuml;sthoff Linder).<sup class="cite"><a href="#src8">[8]</a></sup> Published that December 7 in the <em>Journal des s&ccedil;avans</em>, the result wasn&rsquo;t fully accepted until Bradley&rsquo;s stellar aberration, 50 years on &mdash; though, as one reader noted, Empedocles and Ibn al-Haytham had guessed finitude first.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+  </div>
+  <div class="cell">
+    <span class="kicker">Language</span>
+    <h2 class="headline">jQuery 4.1.0 ships, with 3.8.0 &ldquo;passing the torch&rdquo;</h2>
+    <div class="byline"><span>Language Desk</span><span class="score"><b>&#9733; 347 pts</b> &middot; 179 cmts</span></div>
+    <figure><img src="images/jquery.png" alt="jQuery 4.1.0 release card on GitHub" loading="lazy">
+    <figcaption>Release 4.1.0, signed by Timmy Willison. <span class="cr">github.com</span></figcaption></figure>
+    <p class="first">jQuery 4.1.0 shipped Tuesday evening, signed by maintainer Timmy Willison, alongside a 3.8.0 the release blog bills as &ldquo;passing the torch.&rdquo; The changes are cleanup with teeth: a workaround for a Safari 27 regex-interpreter bug, a ReDoS fix in identifier matching, <em>querySelectorAll</em> replacing the old getElementsBy* lookups, and support for form-associated custom elements.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>The release also adds guidelines for machine-generated contributions.<sup class="cite"><a href="#src9">[9]</a></sup> The thread was an obituary that declined to stay buried &mdash; &ldquo;I&rsquo;m actually surprised (in a good way) that it&rsquo;s still maintained,&rdquo; one reader wrote, &ldquo;and it still helps half of the internet to function.&rdquo;<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <hr style="border:none;border-top:1px solid #b7ab93;margin:10px 0">
+    <span class="kicker">Tools</span>
+    <h2 class="headline">Solid 2.0 goes stable, built to be written by agents</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 337 pts</b> &middot; 107 cmts</span></div>
+    <figure><img src="images/solid.png" alt="Solid 2.0 — The Long Hold announcement card" loading="lazy">
+    <figcaption>Solid 2.0, five years after 1.0. <span class="cr">solidjs.com</span></figcaption></figure>
+    <p class="first">Solid 2.0 reached stable, five years after 1.0, with an &ldquo;async graph&rdquo; in which any computation can return a promise or async iterator and everything downstream simply copes, and with diagnostics built for machines: development builds report a reactive mistake with a stable code, its source location, and a repair guide aimed at coding agents.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <p>The claim&rsquo;s premise is that fine-grained reactivity suits agents precisely because it constrains them. Readers split on the premise: &ldquo;if a framework is made so that coding agents can use it well, why is it a negative?&rdquo; asked one, while another answered that agents should mean <em>less</em> framework, not better-behaved ones.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+  </div>
+</div>
+
+<!-- 6b. QUOTE + CLASSIFIEDS -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="pullquote" style="font-size:20px">&ldquo;Every framework now says it &lsquo;works great with AI&rsquo;, and usually that means models have seen a lot of it. That&rsquo;s a statement about training data, not about the framework.&rdquo;
+      <span class="attr">Solid 2.0 announcement &middot; solidjs.com &middot; <a href="#src10">[10]</a></span>
+    </div>
+  </div>
+  <div class="cell">
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p>NOTICE: French government bodies, hospitals and utilities still pointing at Quad9 &mdash; your resolver stops working, with no notice and no explanation. Plan accordingly.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+      <p>WANTED: another way to pay the rent. Eight years of Berlin guides, three-quarters of the audience gone. Owner teaches computers his words for free.<sup class="cite"><a href="#src6">[6]</a></sup></p>
+      <p>FOR DISPUTE: your IRS sign-in. One arbitrator, no jury; opt out within 30 days of accepting. Login.gov accepted at the same door.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label" style="margin-top:0"><span>The Box Score</span></div>
+    <figure><svg viewBox="0 0 640 392" style="width:100%; height:auto; display:block" role="img" aria-label="Points per story, snapshot 14:00 UTC"><defs><pattern id="hatchInk" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#191510" stroke-width="2.4"/></pattern></defs><line class="grid" x1="74" y1="6" x2="74" y2="344"/><line class="grid" x1="149" y1="6" x2="149" y2="344"/><line class="grid" x1="223" y1="6" x2="223" y2="344"/><line class="grid" x1="297" y1="6" x2="297" y2="344"/><line class="grid" x1="371" y1="6" x2="371" y2="344"/><line class="grid" x1="446" y1="6" x2="446" y2="344"/><line class="grid" x1="520" y1="6" x2="520" y2="344"/><text class="barlabel" x="0" y="18">GPT-6.2 Astra & Sol &#8224;</text><rect x="0.5" y="22" width="484" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="491" y="34" font-weight="700">1302 &#9733; &#183; 813 cmts</text><text class="barlabel" x="0" y="52">Java4Shell RCE</text><rect x="0.5" y="56" width="386" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="393" y="68">1040 &#183; 276</text><text class="barlabel" x="0" y="86">Quad9 quits France</text><rect x="0.5" y="90" width="284" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="291" y="102">764 &#183; 334</text><text class="barlabel" x="0" y="120">NSANet outage</text><rect x="0.5" y="124" width="234" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="241" y="136">631 &#183; 709</text><text class="barlabel" x="0" y="154">AI Overviews cut clicks</text><rect x="0.5" y="158" width="204" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="211" y="170">549 &#183; 408</text><text class="barlabel" x="0" y="188">AI kills All About Berlin</text><rect x="0.5" y="192" width="202" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="209" y="204">543 &#183; 516</text><text class="barlabel" x="0" y="222">ID.me required at IRS</text><rect x="0.5" y="226" width="150" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="157" y="238">404 &#183; 203</text><text class="barlabel" x="0" y="256">Romer times the light</text><rect x="0.5" y="260" width="134" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="141" y="272">362 &#183; 119</text><text class="barlabel" x="0" y="290">jQuery 4.1.0</text><rect x="0.5" y="294" width="129" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="136" y="306">347 &#183; 179</text><text class="barlabel" x="0" y="324">Solid 2.0</text><rect x="0.5" y="328" width="125" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="132" y="340">337 &#183; 107</text><line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/><line class="axis" x1="0.5" y1="352" x2="520" y2="352"/><text class="barval" x="0" y="366" text-anchor="start" fill="#3d352a">0</text><text class="barval" x="74" y="366" text-anchor="middle" fill="#3d352a">200</text><text class="barval" x="149" y="366" text-anchor="middle" fill="#3d352a">400</text><text class="barval" x="223" y="366" text-anchor="middle" fill="#3d352a">600</text><text class="barval" x="297" y="366" text-anchor="middle" fill="#3d352a">800</text><text class="barval" x="371" y="366" text-anchor="middle" fill="#3d352a">1000</text><text class="barval" x="446" y="366" text-anchor="middle" fill="#3d352a">1200</text><text class="barval" x="520" y="366" text-anchor="middle" fill="#3d352a">1400</text><text class="barval" x="0" y="386" fill="#3d352a">&#9733; = points &#183; cmts = comments &#183; &#8224; most-discussed story of the day &#183; red hatch marks Apple coverage (none on today&#8217;s page)</text></figure>
+    <p style="text-align:center;font-size:12.5px;font-style:italic;color:#3d352a">The day in one line: GPT-6.2 leads at 1,302 points; a 64-character Base64 string earns Java a 9.2; Quad9 leaves France; the NSA learns patching is also an outage.</p>
+  </div>
+  <div class="cell">
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories typeset</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>8</td></tr>
+        <tr><td>Follow-ups</td><td>2</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>6,279</td></tr>
+        <tr><td>Combined comments</td><td>3,664</td></tr>
+        <tr><td>Most-discussed</td><td>GPT-6.2 (813)</td></tr>
+        <tr><td>Biggest riser</td><td>GPT-6.2 &#9650;+396</td></tr>
+      </table>
+    </div>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>The 40%, precisely.</b> The front page&rsquo;s headline &mdash; AI answers &ldquo;reducing search traffic by 40%&rdquo; &mdash; compresses the finding. The experiment measured clicks on searches where an Overview appears (0.37 vs 0.62 per search); a given site&rsquo;s total loss depends on how often its keywords now draw Overviews &mdash; 61.4% of tracked US keywords, per the source.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+      <p><b>&ldquo;Last week&rdquo; vs. May.</b> The Berlin essay says Google announced &ldquo;last week&rdquo; that AI answers will replace search results entirely, with ads in them; readers date both the announcements it cites, and the post itself, to May 2026. The traffic figure is the author&rsquo;s own analytics, self-reported.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+      <p><b>&ldquo;Write once, RCE everywhere.&rdquo;</b> The slogan narrows on inspection: Keycloak, Jira, Confluence, Artifactory, Jenkins and PingFederate fall pre-auth, per the disclosure; Kafka, Solr, Elasticsearch, Gerrit and Spinnaker require authenticated access.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+      <p><b>Maintenance, or patching.</b> The NSA&rsquo;s statement attributes the NSANet outage to &ldquo;temporary degradation during scheduled routine maintenance&rdquo;; DNI Clayton attributed it to patching for last month&rsquo;s PHP vulnerabilities. Both are official accounts; they are not the same explanation.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher&rsquo;s Note</div>
+  <p>This morning&rsquo;s paper is led by a follow-up &mdash; OpenAI&rsquo;s GPT-6.2, up 396 points since Tuesday afternoon &mdash; with the NSANet outage returning as the second. Eight fresh stories fill the rest, headlined by a critical flaw in OpenJDK&rsquo;s Base64 decoder. One degradation: OpenAI&rsquo;s announcement page sat behind a bot wall, so that report is sourced from its thread.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">OpenAI &mdash; &ldquo;Introducing GPT-6.2 Astra and Sol,&rdquo; openai.com/index/introducing-gpt-6-2-astra-sol/ (page behind a bot wall at press time)</li>
+    <li data-n="[2]" id="src2">Calif &mdash; &ldquo;Java4Shell: Write once, RCE everywhere&rdquo; (CVE-2026-114938), calif.io/java4shell/</li>
+    <li data-n="[3]" id="src3">Cloudflare blog &mdash; &ldquo;Quad9&rsquo;s withdrawal from France: A canary in the coal mine,&rdquo; blog.cloudflare.com</li>
+    <li data-n="[4]" id="src4">CNN &mdash; &ldquo;Highly classified US national security communications network goes down, sources say,&rdquo; by N. Bertrand, K.B. Lillis, S. Lyngaas, D. Winkie, Z. Cohen, Nov 17, 2026</li>
+    <li data-n="[5]" id="src5">RevScope &mdash; &ldquo;Google&rsquo;s AI Overviews cut clicks to websites by 40%,&rdquo; revscope.co, Nov 9, 2026</li>
+    <li data-n="[6]" id="src6">Nicolas Bouliane &mdash; &ldquo;AI is killing All About Berlin,&rdquo; nicolasbouliane.com</li>
+    <li data-n="[7]" id="src7">Consumer Rights Wiki &mdash; &ldquo;ID.me terms required for IRS sign-in,&rdquo; consumerrights.wiki</li>
+    <li data-n="[8]" id="src8">Science Norway &mdash; &ldquo;350 years ago, this man discovered that light has a finite speed,&rdquo; by Elise Kj&oslash;rstad, Nov 16, 2026</li>
+    <li data-n="[9]" id="src9">jQuery &mdash; &ldquo;Release 4.1.0,&rdquo; github.com/jquery/jquery (Nov 17, 18:59 UTC)</li>
+    <li data-n="[10]" id="src10">SolidJS &mdash; &ldquo;Solid 2.0 &mdash; The Long Hold,&rdquo; solidjs.com/blog</li>
+    <li data-n="[11]" id="src11">HN thread &mdash; GPT-6.2 Astra and Sol: news.ycombinator.com/item?id=50535230</li>
+    <li data-n="[12]" id="src12">HN thread &mdash; Java4Shell: news.ycombinator.com/item?id=50538240</li>
+    <li data-n="[13]" id="src13">HN thread &mdash; Quad9&rsquo;s withdrawal from France: news.ycombinator.com/item?id=50538994</li>
+    <li data-n="[14]" id="src14">HN thread &mdash; Classified US network goes down: news.ycombinator.com/item?id=50532849</li>
+    <li data-n="[15]" id="src15">HN thread &mdash; AI Overviews and search traffic: news.ycombinator.com/item?id=50540178</li>
+    <li data-n="[16]" id="src16">HN thread &mdash; AI is killing All About Berlin: news.ycombinator.com/item?id=50542705</li>
+    <li data-n="[17]" id="src17">HN thread &mdash; ID.me terms at the IRS: news.ycombinator.com/item?id=50540437</li>
+    <li data-n="[18]" id="src18">HN thread &mdash; R&oslash;mer and the speed of light: news.ycombinator.com/item?id=50536813</li>
+    <li data-n="[19]" id="src19">HN thread &mdash; jQuery 4.1.0: news.ycombinator.com/item?id=50537156</li>
+    <li data-n="[20]" id="src20">HN thread &mdash; Solid 2.0: news.ycombinator.com/item?id=50536387</li>
+  </ol>
+  <p class="method">Methodology: snapshot of the Hacker News front page taken at 14:00 UTC, November 18, 2026 (08:00 US Central), via the Algolia HN Search API (front_page tag, 30 candidates). Points and comment counts are as of the snapshot and will move. Stories were deduplicated against the four previous editions (~48 hours); a story returns as a Follow-Up only if it gained at least 40% and 150 points since coverage. The GPT-6.2 report is sourced from its thread, the announcement page being unavailable to this newsroom; the ID.me item runs without an image, none having been obtained. Every number in this paper comes from the linked sources above.</p>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <span>The Hacker Herald &mdash; Typeset from the Hacker News front page</span>
+  <span>&#10087; Printed on 100% recycled bandwidth &#10087;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</span>
+</footer>
+
+</body>
+</html>

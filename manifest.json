@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-18-morning",
+      "date": "2026-11-18",
+      "label": "Morning",
+      "snapshot_utc": "14:00",
+      "items": [
+        {
+          "id": 50535230,
+          "title": "GPT‑6.2 Astra and Sol",
+          "score": 1302,
+          "comments": 813
+        },
+        {
+          "id": 50538240,
+          "title": "Java4Shell: RCE in OpenJDK when processing Base64",
+          "score": 1040,
+          "comments": 276
+        },
+        {
+          "id": 50538994,
+          "title": "Quad9's withdrawal from France: A canary in the coal mine",
+          "score": 764,
+          "comments": 334
+        },
+        {
+          "id": 50532849,
+          "title": "Highly classified US national security communications network goes down",
+          "score": 631,
+          "comments": 709
+        },
+        {
+          "id": 50540178,
+          "title": "Google's AI answers reducing search traffic by 40%",
+          "score": 549,
+          "comments": 408
+        },
+        {
+          "id": 50542705,
+          "title": "AI is killing All About Berlin",
+          "score": 543,
+          "comments": 516
+        },
+        {
+          "id": 50540437,
+          "title": "ID.me terms required for IRS sign-in",
+          "score": 404,
+          "comments": 203
+        },
+        {
+          "id": 50536813,
+          "title": "350 years ago, Ole Rømer discovered that light has a finite speed",
+          "score": 362,
+          "comments": 119
+        },
+        {
+          "id": 50537156,
+          "title": "jQuery 4.1.0",
+          "score": 347,
+          "comments": 179
+        },
+        {
+          "id": 50536387,
+          "title": "Solid 2.0",
+          "score": 337,
+          "comments": 107
+        }
+      ]
+    },
+    {
       "folder": "2026-11-17-afternoon",
       "date": "2026-11-17",
       "label": "Afternoon",
@@ -2018,74 +2086,6 @@
           "title": "Decompiling Fast Food Tycoon 2: Drawing the World",
           "score": 178,
           "comments": 37
-        }
-      ]
-    },
-    {
-      "folder": "2026-10-27-evening",
-      "date": "2026-10-27",
-      "label": "Evening",
-      "snapshot_utc": "20:40",
-      "items": [
-        {
-          "id": 50257326,
-          "title": "Wikipedia's Cleanup of AI-Generated Content",
-          "score": 484,
-          "comments": 222
-        },
-        {
-          "id": 50257419,
-          "title": "Python's experimental JIT to be removed",
-          "score": 545,
-          "comments": 298
-        },
-        {
-          "id": 50258538,
-          "title": "New iMac with M6",
-          "score": 353,
-          "comments": 447
-        },
-        {
-          "id": 50261319,
-          "title": "Genie 4",
-          "score": 956,
-          "comments": 548
-        },
-        {
-          "id": 50261352,
-          "title": "New 14‑inch MacBook Pro with M6",
-          "score": 388,
-          "comments": 535
-        },
-        {
-          "id": 50261647,
-          "title": "Classification of Finite Simple Groups Formalized in Lean",
-          "score": 226,
-          "comments": 69
-        },
-        {
-          "id": 50261998,
-          "title": "Ghostty 1.4",
-          "score": 1153,
-          "comments": 366
-        },
-        {
-          "id": 50263701,
-          "title": "Three TLS Bugs in GoAhead",
-          "score": 66,
-          "comments": 15
-        },
-        {
-          "id": 50264853,
-          "title": "Survival LLM: AI assistant and emergency library that runs on your own computer",
-          "score": 420,
-          "comments": 158
-        },
-        {
-          "id": 50264857,
-          "title": "Tailscale SSH: Investigation and remediation update",
-          "score": 323,
-          "comments": 170
         }
       ]
     }
