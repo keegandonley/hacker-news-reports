@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 19, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <span>Hacker News Front Page &middot; Snapshot 14:00 UTC</span>
+  <span class="mid">Morning Edition</span>
+  <span>10 Stories &middot; 4,361 Points &middot; 2,526 Comments</span>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <span class="l">Compiled from news.ycombinator.com</span>
+  <span class="c">Thursday, November 19, 2026</span>
+  <span class="r">Every fact checked; every joke earned</span>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Security</span><b>NGINX, day two</b>Both HTTP/2 remote-code-execution flaws were patched within half an hour of Tuesday&rsquo;s disclosure; the thread is now auditing the week the fix sat in the open-source repo.</div>
+  <div class="cell"><span class="tag">Markets</span><b>$83.00 for &ldquo;ANT&rdquo;</b>Anthropic prices 980 million Class&nbsp;A shares &mdash; about $81.3 billion at the offer &mdash; and begins trading on Nasdaq this morning.</div>
+  <div class="cell"><span class="tag">Language</span><b>Seven Ruby bugs</b>Regexp and string-case flaws, several with proven RCE PoCs, fixed in Ruby 4.0.10, 3.4.13 and 3.3.14; credits include Anthropic.</div>
+  <div class="cell"><span class="tag">Field Desk</span><b>Brussels on Matrix</b>Nine months from proof of concept to every Commission laptop: 40,000 staff on a messaging service the Commission runs itself.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <span class="kicker">Security Desk &middot; Follow-Up</span>
+    <h2 class="headline">NGINX&rsquo;s patched HTTP/2 RCEs hold the front page at 1,444 points on day two</h2>
+    <h3 class="deck">Both flaws rated 9.2 under CVSS&nbsp;4.0 need nothing but HTTP/2 switched on; one has shipped in default configurations since 2015, NGINX fronts more than 225 million websites, and the fix was sitting in the open-source repository for a week before anyone was told</h3>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 1,444 pts</b> &middot; 609 comments &middot; &#9650; +543 since the last edition</span></div>
+    <figure><img src="images/nginx-rce.jpg" alt="Header image from the Wiz disclosure post for the two NGINX HTTP/2 vulnerabilities" loading="lazy">
+    <figcaption>Header image accompanying the Wiz disclosure. <span class="cr">wiz.io</span></figcaption></figure>
+    <p class="first">NEW YORK &mdash; Wiz Research &mdash; with Ikotas Labs, Metnir, Rapid7 and Xint, all of whom found the same bugs independently &mdash; reported two unauthenticated remote-code-execution flaws in NGINX: CVE-2026-123633, a use-after-free in HTTP/2 connection handling, and CVE-2026-123007, an integer underflow in HTTP/2 flow control that leads to an invalid memory copy. Both are rated 9.2, critical, under CVSS&nbsp;4.0, and both were fixed in F5&rsquo;s November 18 security release.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src2">[2]</a></sup> This paper carried the story at 901 points yesterday afternoon; it has added 543 since.</p>
+    <p>The reach is what keeps it on the front page. Exploitation requires no authentication and no bug in the site behind the proxy &mdash; only HTTP/2 enabled. Wiz demonstrated code execution on an NGINX serving ordinary static files over HTTPS on 64-bit systems, with memory-safety mitigations such as ASLR offering no protection; CVE-2026-123007 affects versions from 1.9.5, released in 2015, in default configurations, while CVE-2026-123633 hits reverse-proxy setups from 1.19.7 when connection slots run low.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The thread&rsquo;s sharpest finding is about the clock, not the code. One reader noted that the fix landed in the open-source repository roughly a week before disclosure, in a commit message crediting &ldquo;Xint.io&rdquo; &mdash; a heads-up for anyone who diffs such repositories for a living &mdash; and that the interim mitigation is as simple as disabling HTTP/2.<sup class="cite"><a href="#src2">[2]</a></sup> Another counted a 16-day head start available to anyone scanning certificate-transparency logs for the disclosure&rsquo;s marketing site. The loudest worry is the long tail of small operators: &ldquo;there&rsquo;s got to be thousands who are too small time to wipe and reinstall.&rdquo;<sup class="cite"><a href="#src2">[2]</a></sup></p>
+  </div>
+  <div class="cell side">
+    <span class="kicker">AI Desk &middot; Follow-Up</span>
+    <h2 class="headline">Gemini 4 Neon is the day&rsquo;s most-discussed story, and the argument is the name</h2>
+    <h3 class="deck">Google&rsquo;s new model ranks #3 overall on the Artificial Analysis index at $3 per million input tokens; the thread&rsquo;s top complaint is mapping eight model names to eight jobs</h3>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 900 pts</b> &middot; 709 cmts &middot; &#9650; +768 since the last edition</span></div>
+    <figure><img src="images/gemini-neon.jpg" alt="Header image from Google's Gemini 4 Neon announcement" loading="lazy">
+    <figcaption>Announcement header image. <span class="cr">blog.google</span></figcaption></figure>
+    <p class="first">Gemini 4 Neon, announced November 18 by Google DeepMind&rsquo;s chief AI architect Koray Kavukcuoglu, ranks third overall on the Artificial Analysis Intelligence Index with a score of 61 at its top &ldquo;xhigh&rdquo; thinking level &mdash; the post concedes it lands &ldquo;just behind larger, slower models&rdquo; &mdash; and second on the Vals Index (70.9 percent).<sup class="cite"><a href="#src3">[3]</a></sup> It is priced at $3 per million input tokens and $15 per million output tokens, with a one-million-token context window and cached input at a 95 percent discount; Google claims a 32 percent lower cost per task than Gemini 4 Carbon and 50 to 80 percent lower than competing frontier models.<sup class="cite"><a href="#src3">[3]</a></sup> Yesterday&rsquo;s paper caught it at 132 points, hours old; it has added 768.</p>
+    <p>The comment thread, now the day&rsquo;s largest, spends most of its energy on taxonomy: &ldquo;most of the world is trying to map Sol, Astra, Neon, Opus, Fable, Mythos, Carbon, Haiku,&rdquo; as the top-voted comment puts it. One reader built a table assigning each name a size class across Google, Anthropic and OpenAI; an Artificial Analysis employee added that Carbon remains Google&rsquo;s long-horizon model even where Neon scores higher overall, so &ldquo;picking a model will only get more difficult from here.&rdquo;<sup class="cite"><a href="#src4">[4]</a></sup> Several readers still rate Anthropic&rsquo;s Opus&nbsp;5.5 ahead in day-to-day use: &ldquo;Opus feels like human level intelligent &hellip; while GPT and Gemini feel like I&rsquo;m talking to an AI.&rdquo;<sup class="cite"><a href="#src4">[4]</a></sup></p>
+  </div>
+  <div class="cell side">
+    <span class="kicker">Field Desk &middot; Markets</span>
+    <h2 class="headline">Anthropic prices at $83; &ldquo;ANT&rdquo; begins trading today</h2>
+    <h3 class="deck">980 million Class&nbsp;A shares &mdash; 956.4 million from the company, 23.6 million from selling stockholders &mdash; plus a 147-million-share option for the underwriters</h3>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 304 pts</b> &middot; 573 cmts</span></div>
+    <figure><img src="images/anthropic-ipo.jpg" alt="Header image from Anthropic's IPO pricing announcement" loading="lazy">
+    <figcaption>Pricing announcement image. <span class="cr">anthropic.com</span></figcaption></figure>
+    <p class="first">Anthropic, PBC priced its initial public offering at $83.00 per Class&nbsp;A share on November 18, with trading on the Nasdaq Global Select Market under the symbol &ldquo;ANT&rdquo; expected to begin today, November 19, and the offering to close November 20.<sup class="cite"><a href="#src5">[5]</a></sup> Of the 980,000,000 shares, 956,351,354 are sold by Anthropic itself and 23,648,646 by selling stockholders, from whom the company receives nothing; underwriters hold a 30-day option for up to 147,000,000 more shares.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>The thread did the arithmetic the prospectus leaves out. One reader noted the deal priced above its reported $70&ndash;78 range with 20 percent more shares than planned &mdash; &ldquo;the rumor is they were oversubscribed by more than 6 times over,&rdquo; against 3.5 to 4 for SpaceX &mdash; and another flagged that employees may sell immediately, &ldquo;not a good sign&rdquo; in his view. A third put the implied market capitalization near $1.5&nbsp;trillion for a company founded in 2021, &ldquo;a valuation not achieved by Apple until 2020.&rdquo;<sup class="cite"><a href="#src6">[6]</a></sup> The bears reached for 2000: &ldquo;Anthropic and OpenAI are the AltaVista of the AI era.&rdquo;<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <div class="statbox">
+      <div class="t">&ldquo;ANT,&rdquo; by the Numbers</div>
+      <table>
+        <tr><td>Offer price, per share</td><td>$83.00</td></tr>
+        <tr><td>Shares offered</td><td>980,000,000</td></tr>
+        <tr><td>Gross size at the offer</td><td>&asymp;$81.3B</td></tr>
+        <tr><td>Underwriters&rsquo; 30-day option</td><td>+147,000,000</td></tr>
+        <tr><td>Nasdaq debut under &ldquo;ANT&rdquo;</td><td>Nov 19, 2026</td></tr>
+        <tr><td>Expected close</td><td>Nov 20, 2026</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="row3">
+  <div class="cell">
+    <span class="kicker">Language Desk</span>
+    <h2 class="headline">Ruby patches seven Regexp and case-conversion flaws; PoCs prove RCE</h2>
+    <h3 class="deck">Fixes ship in Ruby 4.0.10, 3.4.13 and 3.3.14; the credits list Stephan Lipp of Ada Logics &mdash; and Anthropic</h3>
+    <div class="byline"><span>Language Desk</span><span class="score"><b>&#9733; 300 pts</b> &middot; 110 cmts</span></div>
+    <p class="first">Ruby&rsquo;s maintainers released fixes for seven vulnerabilities in the regular-expression engine and in string case conversion on November 18, advising an immediate upgrade to Ruby 4.0.10, 3.4.13 or 3.3.14. &ldquo;We are aware of PoCs that prove some of them can be used to trigger remote code execution,&rdquo; the advisory states; CVE identifiers have been requested but were unassigned at publication, so the flaws carry GitHub Security Advisory identifiers instead.<sup class="cite"><a href="#src7">[7]</a></sup> Ruby 3.2 and earlier are end-of-life and will not be patched.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>The advisory&rsquo;s core is GHSA-34m4-m9fh-gqp5, a one-byte heap buffer overflow in case conversion. A widely discussed thread comment reconstructs the mechanism: Windows-1252 encodes the German sharp&nbsp;s (&szlig;) but has no uppercase form, so upcasing produces &ldquo;SS&rdquo; &mdash; one byte longer than the input &mdash; and &ldquo;if the last character of a string you upcase is &szlig;, it looks like you get a one-byte overflow (of &lsquo;S&rsquo;).&rdquo;<sup class="cite"><a href="#src8">[8]</a></sup> The same thread noted the byline of the times: several of the seven were reported by &ldquo;Stephan Lipp (Ada Logics) and Anthropic,&rdquo; i.e., found with AI assistance.<sup class="cite"><a href="#src7">[7]</a></sup><sup class="cite"><a href="#src8">[8]</a></sup></p>
+  </div>
+  <div class="cell">
+    <span class="kicker">Field Desk &middot; Brussels</span>
+    <h2 class="headline">European Commission runs Matrix for 40,000 staff, nine months after proof of concept</h2>
+    <h3 class="deck">A sovereign Element deployment on EU Login and tendered sovereign clouds; federation remains undecided, and live presence had to be switched off</h3>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 265 pts</b> &middot; 111 cmts</span></div>
+    <figure><img src="images/ec-matrix.jpg" alt="Illustration accompanying Element's account of the European Commission Matrix deployment" loading="lazy">
+    <figcaption>Image from Element&rsquo;s conference write-up. <span class="cr">element.io</span></figcaption></figure>
+    <p class="first">The European Commission went from a Matrix proof of concept in December 2025 to a chat service on every Commission laptop by September 2026; more than 40,000 staff now use the tool, built on Element Server Suite and operated by the Commission itself on sovereign-cloud providers chosen through this year&rsquo;s hosting tender, with sign-in through the existing EU&nbsp;Login.<sup class="cite"><a href="#src9">[9]</a></sup> Officials defined &ldquo;sovereignty&rdquo; along five axes &mdash; resilience, vendor diversity, data control, platform ownership, and procurement leverage &mdash; and say federation with outside servers is still &ldquo;under assessment,&rdquo; a governance question more than a technical one.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>Scale brought trade-offs the Commission admitted at the Matrix Conference: staff on different Synapse homeservers initially could not find each other, and the real-time presence indicator was disabled outright once load began to bite.<sup class="cite"><a href="#src9">[9]</a></sup> The Hacker News thread was harsher than the officials: it quoted Commission users calling the tool unusable in earlier reports, one commenter calling Matrix&rsquo;s encryption &ldquo;a tire fire,&rdquo; and another pitying 40,000 people verifying new devices.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+  </div>
+  <div class="cell">
+    <span class="kicker">Hardware Desk</span>
+    <h2 class="headline">One VM runs 15 million web servers on a userland network stack</h2>
+    <h3 class="deck">smoltcp plus DPDK and AF_XDP move TCP/IP out of the kernel; sandboxed guests share one host process in what the author calls &ldquo;our own micro OS&rdquo;</h3>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>&#9733; 246 pts</b> &middot; 28 cmts</span></div>
+    <figure><img src="images/webservers.png" alt="Benchmark chart from the 15 million web servers post" loading="lazy">
+    <figcaption>The post&rsquo;s benchmark card. <span class="cr">kapteko.com</span></figcaption></figure>
+    <p class="first">The engineering post walks the failure path first: 15 million ordinary server processes exhaust Linux&rsquo;s ephemeral port range (32,768 through 60,999) and then memory itself, so the author indexed each listener to its own IP from a 10.64.0.1 base and sandboxed every guest with LFI &mdash; loading them all into one host process, replacing syscalls with a host handler, and scheduling them as a self-built micro OS.<sup class="cite"><a href="#src13">[13]</a></sup> Networking then left the kernel entirely for smoltcp, the Rust event-driven TCP/IP stack that needs no heap allocation, driven through DPDK and AF_XDP; an active connection costs about 5KB, an idle one about zero.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The 28-comment thread is largely applause, with one kernel-architecture debate (&ldquo;maybe Linux finally becomes a microkernel,&rdquo; answered that this is closer to an exokernel) and one reader noting the servers all reply &ldquo;OK&rdquo; regardless of which site you asked for &mdash; virtual hosting being the next problem the stack does not solve.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+  </div>
+</div>
+
+<!-- 6. SECURITY & PRACTICAL -->
+<div class="sec2">
+  <div class="cell">
+    <span class="kicker">Security Briefing &middot; Rails</span>
+    <h2 class="headline">One &szlig;, one byte over: pre-authentication RCE demonstrated on stock Rails</h2>
+    <h3 class="deck">Veria Labs shows the case-conversion overflow is reachable in default Rails and Sinatra; GitLab 19.6.0, GitHub Enterprise Server 3.22.5 and Chatwoot 4.20.0 bundle affected Rubies</h3>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 237 pts</b> &middot; 92 cmts</span></div>
+    <figure><img src="images/ruby2shell.png" alt="Header image from Veria Labs' Ruby2Shell write-up" loading="lazy">
+    <figcaption>Write-up header image. <span class="cr">verialabs.com</span></figcaption></figure>
+    <p class="first">Veria Labs&rsquo; &ldquo;Ruby2&szlig;hell&rdquo; demonstrates that GHSA-34m4-m9fh-gqp5 &mdash; the one-byte &szlig;-to-&ldquo;SS&rdquo; case-conversion overflow patched the same day in Ruby&rsquo;s advisory &mdash; is reachable without authentication in Rails and Sinatra in their default configurations; plain Rack applications are not exposed by default.<sup class="cite"><a href="#src15">[15]</a></sup> The affected line runs longer than Ruby&rsquo;s advisory suggests: every release back to Ruby 2.4.0 carries the bug, and at snapshot the latest GitLab (19.6.0, on Ruby 3.3.13), GitHub Enterprise Server (3.22.5, on 4.0.9) and Chatwoot (4.20.0, on 3.4.4) all bundled an unfixed Ruby; Mastodon 4.7.6, OpenProject 17.9.8 and Discourse&rsquo;s base image were already fixed.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>The thread&rsquo;s pointed observation is who is doing the drudgery: &ldquo;the recent RCE wave seems to be people finding more single byte overflows and such, but reporting them as RCEs because AI can do the tedious grunt work of finding the rest of the vulnerability chain.&rdquo;<sup class="cite"><a href="#src16">[16]</a></sup> Another reader reconstructed the bug&rsquo;s biography: case conversion was written assuming it never changes a string&rsquo;s length, and the &szlig; mapping was added later without that audit.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <div class="rule-thick" style="margin:12px 0 10px"></div>
+    <span class="kicker">Security Briefing &middot; Tooling</span>
+    <h2 class="headline">A reverse engineer&rsquo;s workflow, handed to agents</h2>
+    <h3 class="deck">Ghidra and radare2 driven through MCP bridges, with a written hypothesis log the author says stops agents from &ldquo;going in circles&rdquo;</h3>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 264 pts</b> &middot; 67 cmts</span></div>
+    <p class="first">A practitioner with two decades of hardware and software hacking describes pointing DeepSeek v4.1 Flash agents at binaries through a Ghidra MCP bridge and radare2, with every finding written to Markdown files so the notes survive context compaction and handoffs. The centerpiece is a &ldquo;hypothesis debugging&rdquo; loop: record a hypothesis in a CSV file, design an experiment that definitively proves or disproves it, log the result, repeat &mdash; the scientific method, applied because agents otherwise &ldquo;go in circles.&rdquo;<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The commentariat tested the margins. One reader found the big labs&rsquo; models refuse reverse-engineering work while DeepSeek objects only in Mandarin; another reported having Codex strip subscription checks out of Android apps; a dissenter argued the process is the point &mdash; &ldquo;it&rsquo;s through the process that you gain skills.&rdquo;<sup class="cite"><a href="#src12">[12]</a></sup></p>
+  </div>
+  <div class="cell">
+    <span class="kicker">Practical Tech Corner &middot; Hardware</span>
+    <h2 class="headline">SSD relief is a 2027 story; hard drives run into 2028</h2>
+    <h3 class="deck">ComputerBase&rsquo;s one-year tracker puts hard drives 134 percent above pre-crisis prices and SSDs 129 percent; Seagate&rsquo;s data-centre capacity is allocated into 2028</h3>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>&#9733; 165 pts</b> &middot; 139 cmts</span></div>
+    <p class="first">The storage-crisis outlook, published by DriveVault &mdash; a company whose product catalogues the drives you already own &mdash; dates the turn precisely: SSDs &ldquo;should start to ease in the second half of 2027&rdquo; as NAND supply catches up per TrendForce, while hard drives stay expensive &ldquo;probably into 2028&rdquo; because Seagate has already sold most of its data-centre capacity and nobody is building factories.<sup class="cite"><a href="#src19">[19]</a></sup> ComputerBase&rsquo;s monthly tracker of the same dozen drives since September 2025 supplies the damage: hard drives up 134 percent, SSDs up 129 percent; a Toshiba MG09 18TB went from &euro;288 to &euro;858, a Seagate IronWolf 4TB from &euro;94 to &euro;195.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>The thread&rsquo;s most substantive comment reads the market instead of the shelves: Micron is growing revenue &ldquo;well over +300%&rdquo; year on year yet trades below ten times earnings, which &ldquo;the market expects a collapse in their profits&rdquo; &mdash; the same signal ROOFLES inverted, arguing manufacturers are refusing to build capacity precisely because they doubt AI demand lasts. On the shop floor the advice splits: buy if work needs it, wait if it does not, and favour SSDs, which should fall first.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+  </div>
+  <div class="cell">
+    <span class="kicker">AI Desk &middot; Training Floor</span>
+    <h2 class="headline">1,200 tasks and 18 days: DaisyRose-27B more than doubles its base model&rsquo;s Terminal-Bench score</h2>
+    <h3 class="deck">RadixArk&rsquo;s first model &mdash; Qwen3.8-27B post-trained with the Miles RL framework on 144 H200s &mdash; lifts Terminal-Bench 4.1 pass@1 from 5.6 to 12.0 percent</h3>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 236 pts</b> &middot; 88 cmts</span></div>
+    <figure><img src="images/daisyrose.jpg" alt="Header image from RadixArk's DaisyRose-27B announcement" loading="lazy">
+    <figcaption>Announcement header image. <span class="cr">radixark.com</span></figcaption></figure>
+    <p class="first">RadixArk, releasing its first model, reports training DaisyRose-27B on just 1,200 curated long-horizon tasks over 18 days on 144 H200 GPUs &mdash; 128 running the agent, 16 training it, asynchronously &mdash; for 63,000 GPU-hours. Each task chains interdependent problems with sessions up to 1M tokens and 1.5-hour sandbox attempts, and every task was designed against a specific mistake the base Qwen3.8-27B model makes; tasks passable without really solving them were removed on review.<sup class="cite"><a href="#src17">[17]</a></sup> The outfit claims 37 percent model-FLOPs utilization against 16 percent for the Megatron-based open-source trainer &mdash; 57 percent less GPU time &mdash; and about 944,000 sandbox runs across the project, peaking at 1,566 concurrent.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>The thread priced and prodded it. One reader put the compute at roughly $331,000 at spot rates; another asked what benchmark-maxing costs everywhere else; a third ran it against a private 86-task suite and scored it 2.5 points in 100 above a Qwen 3.8 fine-tune, &ldquo;to determine if it&rsquo;s benchmaxxing or actual improvement.&rdquo;<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <div class="pullquote">&ldquo;Are we going to discover in a year that every server online this month had a rootkit installed? There&rsquo;s got to be thousands who are too small time to wipe and reinstall.&rdquo;<span class="attr">A reader on the NGINX thread &middot; [2]</span></div>
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p>FOR SALE: 980,000,000 shares, Class&nbsp;A, one careful owner. Trades today, Nasdaq, as &ldquo;ANT.&rdquo; [5]</p>
+      <p>LOST: one byte, last seen leaving a Windows-1252 buffer during an upcase of &szlig;. Known to travel with &ldquo;S.&rdquo; [7]</p>
+      <p>WAITING: hard-drive relief, contracted into 2028. Enquiries to Seagate&rsquo;s order book. [19]</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <span class="kicker">Box Score &middot; Points per Story</span>
+    <figure><svg viewBox="0 0 640 392" style="width:100%; height:auto; display:block" role="img" aria-label="Points per story, snapshot 14:00 UTC"><defs><pattern id="hatchInk" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#191510" stroke-width="2.4"/></pattern></defs><line class="grid" x1="69" y1="6" x2="69" y2="344"/><line class="grid" x1="139" y1="6" x2="139" y2="344"/><line class="grid" x1="208" y1="6" x2="208" y2="344"/><line class="grid" x1="277" y1="6" x2="277" y2="344"/><line class="grid" x1="347" y1="6" x2="347" y2="344"/><line class="grid" x1="416" y1="6" x2="416" y2="344"/><line class="grid" x1="485" y1="6" x2="485" y2="344"/><line class="grid" x1="520" y1="6" x2="520" y2="344"/><text class="barlabel" x="0" y="18">NGINX RCE</text><rect x="0.5" y="22" width="501" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="508" y="34" font-weight="700">1444 &#9733; &#183; 609 cmts</text><text class="barlabel" x="0" y="52">GEMINI 4 NEON &#8224;</text><rect x="0.5" y="56" width="312" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="319" y="68">900 &#183; 709</text><text class="barlabel" x="0" y="86">ANTHROPIC IPO</text><rect x="0.5" y="90" width="105" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="112" y="102">304 &#183; 573</text><text class="barlabel" x="0" y="120">RUBY REGEXP BUGS</text><rect x="0.5" y="124" width="104" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="111" y="136">300 &#183; 110</text><text class="barlabel" x="0" y="154">EC ON MATRIX</text><rect x="0.5" y="158" width="92" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="99" y="170">265 &#183; 111</text><text class="barlabel" x="0" y="188">LLM-ASSISTED RE</text><rect x="0.5" y="192" width="92" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="99" y="204">264 &#183; 67</text><text class="barlabel" x="0" y="222">15M WEB SERVERS</text><rect x="0.5" y="226" width="85" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="92" y="238">246 &#183; 28</text><text class="barlabel" x="0" y="256">RUBY2SHELL RAILS</text><rect x="0.5" y="260" width="82" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="89" y="272">237 &#183; 92</text><text class="barlabel" x="0" y="290">DAISYROSE-27B</text><rect x="0.5" y="294" width="82" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="89" y="306">236 &#183; 88</text><text class="barlabel" x="0" y="324">SSD PRICE OUTLOOK</text><rect x="0.5" y="328" width="57" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="64" y="340">165 &#183; 139</text><line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/><line class="axis" x1="0.5" y1="352" x2="520" y2="352"/><text class="barval" x="0" y="366" text-anchor="start" fill="#3d352a">0</text><text class="barval" x="69" y="366" text-anchor="middle" fill="#3d352a">200</text><text class="barval" x="139" y="366" text-anchor="middle" fill="#3d352a">400</text><text class="barval" x="208" y="366" text-anchor="middle" fill="#3d352a">600</text><text class="barval" x="277" y="366" text-anchor="middle" fill="#3d352a">800</text><text class="barval" x="347" y="366" text-anchor="middle" fill="#3d352a">1000</text><text class="barval" x="416" y="366" text-anchor="middle" fill="#3d352a">1200</text><text class="barval" x="485" y="366" text-anchor="middle" fill="#3d352a">1400</text><text class="barval" x="520" y="366" text-anchor="middle" fill="#3d352a">1500</text><text class="barval" x="0" y="386" fill="#3d352a">&#9733; = points &#183; cmts = comments &#183; &#8224; most-discussed story of the day &#183; red hatch marks Apple coverage (none on today&rsquo;s page)</text></figure>
+    <p style="text-align:center;font-size:12.5px;font-style:italic;color:#3d352a">The day in one line: a week-old NGINX fix commit drew more scrutiny than the disclosure itself; Anthropic priced roughly $81 billion of stock for a Thursday Nasdaq debut; Ruby patched seven memory bugs, some found with AI help; and Brussels moved 40,000 staff onto a messaging stack it runs itself.</p>
+  </div>
+  <div class="cell">
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories typeset</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>8</td></tr>
+        <tr><td>Follow-ups</td><td>2</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>4,361</td></tr>
+        <tr><td>Combined comments</td><td>2,526</td></tr>
+        <tr><td>Most-discussed</td><td>Gemini 4 Neon (709)</td></tr>
+        <tr><td>Security desks&rsquo; share</td><td>2,245 pts &middot; 878 cmts</td></tr>
+        <tr><td>AI desks&rsquo; share</td><td>1,136 pts &middot; 797 cmts</td></tr>
+      </table>
+    </div>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>&ldquo;One server for every human being on the planet.&rdquo;</b> So says the kapteko post&rsquo;s own subtitle. The post actually stands up 15,000,000 servers &mdash; one for roughly every 530 people alive. The demonstration concerns density on a single VM, not planetary coverage.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+      <p><b>Two Ruby stories, one bug family.</b> &ldquo;Pre-authentication RCE on stock Rails&rdquo; is Veria Labs&rsquo; demonstration, not the Ruby advisory&rsquo;s wording: Ruby&rsquo;s bulletin says PoCs prove &ldquo;some&rdquo; of the seven flaws can trigger RCE &ldquo;in some scenarios&rdquo; and names no frameworks, while Veria shows one of them &mdash; the &szlig; overflow &mdash; reachable in default Rails and Sinatra. Both front-page items trace to the same GHSA-34m4-m9fh-gqp5.<sup class="cite"><a href="#src7">[7]</a></sup><sup class="cite"><a href="#src15">[15]</a></sup></p>
+      <p><b>&ldquo;#3 overall&rdquo; at a chosen setting.</b> Google&rsquo;s post ranks Neon third on the Artificial Analysis index at its top &ldquo;xhigh&rdquo; thinking level &mdash; two larger, slower models still rank above it &mdash; and its cost claims (32 percent under Carbon, 50&ndash;80 percent under rivals) are per-task comparisons at settings Google chose. An Artificial Analysis employee in the thread notes Carbon remains the long-horizon model regardless.<sup class="cite"><a href="#src3">[3]</a></sup><sup class="cite"><a href="#src4">[4]</a></sup></p>
+      <p><b>&ldquo;Prices will start going down&rdquo; &mdash; gradually, in H2 2027, and not to 2024 levels.</b> The article&rsquo;s own summary: &ldquo;a gradual slide, not a crash&rdquo;; hard drives &ldquo;probably into 2028&rdquo;; &ldquo;2024 prices are not coming back soon.&rdquo; The outlook is also published by a vendor of drive-cataloguing software.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher&rsquo;s Note</div>
+  <p>The NGINX flaws returned as the lead follow-up &mdash; 1,444 points, up 543 since yesterday afternoon&rsquo;s paper &mdash; with Gemini 4 Neon close behind at +768 and the day&rsquo;s largest comment thread. Eight fresh stories led with Anthropic&rsquo;s $83 pricing for this morning&rsquo;s Nasdaq debut. Two source pages needed a second URL to load (blog.google, ruby-lang.org) and both were recovered in full; no story was degraded, and the digest box stayed empty &mdash; nothing else earned a repeat.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">Wiz Research, &ldquo;Unauthenticated Remote Code Execution in NGINX: CVE-2026-123633 and CVE-2026-123007&rdquo; &mdash; <a href="https://www.wiz.io/blog/nginx-http2-rce-vulnerabilities">wiz.io</a></li>
+    <li data-n="[2]" id="src2">Hacker News thread, item 50547374 &mdash; <a href="https://news.ycombinator.com/item?id=50547374">news.ycombinator.com</a></li>
+    <li data-n="[3]" id="src3">Google, &ldquo;Introducing Gemini 4 Neon&rdquo; &mdash; <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/">blog.google</a></li>
+    <li data-n="[4]" id="src4">Hacker News thread, item 50552424 &mdash; <a href="https://news.ycombinator.com/item?id=50552424">news.ycombinator.com</a></li>
+    <li data-n="[5]" id="src5">Anthropic, PBC, &ldquo;Anthropic prices initial public offering&rdquo; &mdash; <a href="https://www.anthropic.com/news/anthropic-prices-initial-public-offering">anthropic.com</a></li>
+    <li data-n="[6]" id="src6">Hacker News thread, item 50553843 &mdash; <a href="https://news.ycombinator.com/item?id=50553843">news.ycombinator.com</a></li>
+    <li data-n="[7]" id="src7">Ruby Security Advisories, &ldquo;Multiple vulnerabilities in Regexp and String case conversion&rdquo; (mame, 18 Nov 2026) &mdash; <a href="https://www.ruby-lang.org/en/news/2026/11/18/multiple-vulnerabilities-in-regexp-and-string/">ruby-lang.org</a></li>
+    <li data-n="[8]" id="src8">Hacker News thread, item 50554038 &mdash; <a href="https://news.ycombinator.com/item?id=50554038">news.ycombinator.com</a></li>
+    <li data-n="[9]" id="src9">Element, &ldquo;How the European Commission rolled out Matrix to more than 40,000 staff&rdquo; &mdash; <a href="https://element.io/blog/how-the-european-commission-rolled-out-matrix-to-more-than-40-000-staff/">element.io</a></li>
+    <li data-n="[10]" id="src10">Hacker News thread, item 50558533 &mdash; <a href="https://news.ycombinator.com/item?id=50558533">news.ycombinator.com</a></li>
+    <li data-n="[11]" id="src11">Slow Chronicle, &ldquo;LLM assisted reverse engineering&rdquo; &mdash; <a href="https://www.slowchronicle.com/posts/llm-assisted-reverse-engineering">slowchronicle.com</a></li>
+    <li data-n="[12]" id="src12">Hacker News thread, item 50553225 &mdash; <a href="https://news.ycombinator.com/item?id=50553225">news.ycombinator.com</a></li>
+    <li data-n="[13]" id="src13">kapteko, &ldquo;15 million web servers on one VM &mdash; smoltcp, DPDK, AF_XDP&rdquo; &mdash; <a href="https://kapteko.com/15-million-webservers/">kapteko.com</a></li>
+    <li data-n="[14]" id="src14">Hacker News thread, item 50556533 &mdash; <a href="https://news.ycombinator.com/item?id=50556533">news.ycombinator.com</a></li>
+    <li data-n="[15]" id="src15">Veria Labs, &ldquo;Ruby2&szlig;hell: Pre-authentication RCE on stock Rails&rdquo; (GHSA-34m4-m9fh-gqp5) &mdash; <a href="https://verialabs.com/ruby2shell/">verialabs.com</a></li>
+    <li data-n="[16]" id="src16">Hacker News thread, item 50556287 &mdash; <a href="https://news.ycombinator.com/item?id=50556287">news.ycombinator.com</a></li>
+    <li data-n="[17]" id="src17">RadixArk, &ldquo;DaisyRose-27B: Pushing the Frontier of Post-Training Efficiency&rdquo; &mdash; <a href="https://www.radixark.com/blog/daisyrose-27b">radixark.com</a></li>
+    <li data-n="[18]" id="src18">Hacker News thread, item 50551046 &mdash; <a href="https://news.ycombinator.com/item?id=50551046">news.ycombinator.com</a></li>
+    <li data-n="[19]" id="src19">DriveVault, &ldquo;When Will Hard Drive Prices Come Down? The Honest 2026&ndash;2028 Outlook&rdquo; (citing ComputerBase, TrendForce, Seagate, Western Digital) &mdash; <a href="https://www.drivevault.io/blog/when-will-hard-drive-prices-come-down.html">drivevault.io</a></li>
+    <li data-n="[20]" id="src20">Hacker News thread, item 50557716 &mdash; <a href="https://news.ycombinator.com/item?id=50557716">news.ycombinator.com</a></li>
+  </ol>
+  <p class="method">Methodology: snapshot of the Hacker News front page taken at 14:00 UTC on Thursday, November 19, 2026, via the Algolia HN Search API (tags=front_page; 30 candidates returned). Points and comment counts are frozen at the snapshot and move afterwards. Deduplicated by story id against the previous four editions (manifest.json): eight stories are fresh; two returned as follow-ups, NGINX (+543 points, +60 percent since Tuesday&rsquo;s 901) and Gemini 4 Neon (+768 from 132), each clearing the +40-percent-and-+150 bar. No digest was required and no second wire was used. Articles were fetched at publication time; two pages needed a corrected URL (blog.google, ruby-lang.org) and both loaded in full. Images are the stories&rsquo; own header images, credited to their hosts; no image was fabricated. Corrections &amp; Clarifications items are drawn from today&rsquo;s stories only.</p>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <span>The Hacker Herald &mdash; Typeset from the Hacker News front page</span>
+  <span>&#10087; Printed on 100% recycled bandwidth &#10087;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</span>
+</footer>
+
+</body>
+</html>

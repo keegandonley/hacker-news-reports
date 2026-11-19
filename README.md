@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-11-19 · Morning | 2026-11-19 ≈14:00 | NGINX's patched HTTP/2 RCEs hold the front page on day two | 1,444 | 609 | [editions/2026-11-19-morning/](editions/2026-11-19-morning/) |
 | 2026-11-18 · Afternoon | 2026-11-18 ≈22:00 | Two unauthenticated NGINX RCEs patched on disclosure day as a 15-million-file Deutsche Bank leak opens | 901 | 389 | [editions/2026-11-18-afternoon/](editions/2026-11-18-afternoon/) |
 | 2026-11-18 · Morning | 2026-11-18 ≈14:00 | GPT-6.2 Astra and Sol hold the front page as a critical Base64 flaw lands in OpenJDK | 1302 | 813 | [editions/2026-11-18-morning/](editions/2026-11-18-morning/) |
 | 2026-11-17 · Afternoon | 2026-11-17 ≈22:00 | Phone-ban study becomes the day's biggest story, up 861 points since morning | 1086 | 537 | [editions/2026-11-17-afternoon/](editions/2026-11-17-afternoon/) |
