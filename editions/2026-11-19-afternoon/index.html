@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 19, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <span>Hacker News Front Page &middot; Snapshot 22:00 UTC</span>
+  <span class="mid">Afternoon Edition</span>
+  <span>10 Stories &middot; 4,223 Points &middot; 2,631 Comments</span>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <span class="l">Compiled from news.ycombinator.com</span>
+  <span class="c">Thursday, November 19, 2026</span>
+  <span class="r">Every fact checked; every joke earned</span>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Markets</span><b>$2 trillion, fully diluted</b>Anthropic&rsquo;s Nasdaq debut carries the day&rsquo;s biggest thread; the $2T figure counts every share, and thread arithmetic puts Nasdaq&rsquo;s own market-cap math near $1.28T at $98.</div>
+  <div class="cell"><span class="tag">Security</span><b>The order exists</b>The Investigatory Powers Tribunal rejects the UK government&rsquo;s claim that confirming a technical capability notice to Apple would damage national security; the notice&rsquo;s contents stay secret.</div>
+  <div class="cell"><span class="tag">Science</span><b>Three patients, stable</b>An engineered adenovirus, injected at one-tenth of the target dose, has stopped pancreatic tumours from growing in all three patients treated; fifteen more receive higher doses next.</div>
+  <div class="cell"><span class="tag">Tools &middot; Follow-Up</span><b>Brussels, still on Matrix</b>The European Commission&rsquo;s 40,000-seat migration returns at 620 points, up 355 since the morning edition, and the thread arrives with usability and encryption complaints.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <span class="kicker">AI Desk</span>
+    <h2 class="headline">Anthropic&rsquo;s Nasdaq debut is billed at $2 trillion; the share count says less</h2>
+    <h3 class="deck">The day&rsquo;s most-discussed story by a factor of four; the headline number is fully diluted, Nasdaq&rsquo;s outstanding-share math lands near $1.28 trillion at $98, and the stock spent its first session sliding from the open</h3>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 680 pts</b> &middot; 1,199 comments</span></div>
+    <div class="statbox">
+      <div class="t">The debut, by the numbers</div>
+      <table>
+        <tr><td>Offer (last night)</td><td>$83.00 &times; 980m shares &asymp; $81.3B</td></tr>
+        <tr><td>Headline value</td><td>$2T, fully diluted</td></tr>
+        <tr><td>Nasdaq market-cap math</td><td>13,086,672,593 sh &times; $98 &asymp; $1.28T</td></tr>
+        <tr><td>Session, per readers</td><td>&ldquo;straight down since open&rdquo;; &ldquo;back to 1.5T&rdquo;</td></tr>
+        <tr><td>Lockups (S-1)</td><td>10% day one for some; waves at day 27; founders 29% at 180 days</td></tr>
+      </table>
+    </div>
+    <p class="first">NEW YORK &mdash; Anthropic, priced overnight at $83.00 for 980 million Class&nbsp;A shares &mdash; roughly $81.3 billion at the offer &mdash; began trading on Nasdaq this morning and was immediately billed as a $2 trillion debut.<sup class="cite"><a href="#src1">[1]</a></sup><sup class="cite"><a href="#src3">[3]</a></sup> The round number deserves its asterisk: one reader worked the exchange&rsquo;s own arithmetic &mdash; 13,086,672,593 shares outstanding at a then-current $98, or about $1,279,156,812,603 &mdash; and noted the $2T figure circulating in headlines is fully diluted value, &ldquo;hence the discrepancy that will be seen across different reporting.&rdquo;<sup class="cite"><a href="#src2">[2]</a></sup> Reuters&rsquo; own report, which frames the debut as putting &ldquo;AI&rsquo;s promise, peril&rdquo; to a Wall Street test, would not load for this paper&rsquo;s fetch; the thread supplies the numbers above.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The valuation question ran all day. One reader asked how a company &ldquo;with a revenue of close to $17 billion per quarter&rdquo; reaches $2 trillion; another answered with the multiplication &mdash; about $68 billion a year, roughly thirty times revenue &mdash; and the growth rates needed to justify it.<sup class="cite"><a href="#src2">[2]</a></sup> A commenter who says he works in finance reported the professionals he talks to put a &ldquo;realistic valuation backed by actual math&rdquo; at $400&ndash;500 billion. The S-1&rsquo;s lockup schedule also drew reads: certain employees may sell up to 10 percent of their holdings on day one, others in waves beginning 27 days after the prospectus filing, founders 29 percent at 180 days.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <p>The tape did not cooperate with the headline. Readers tracked the stock &ldquo;straight down since open&rdquo; &mdash; one still had it &ldquo;up 20% from IPO price&rdquo; &mdash; and another watched the diluted figure slip &ldquo;back to 1.5T&rdquo; intraday.<sup class="cite"><a href="#src2">[2]</a></sup> This morning&rsquo;s edition carried the pricing at 304 points; the debut thread closed the snapshot at 680 points and 1,199 comments, the most-discussed story of the day by nearly a factor of four.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+  </div>
+  <div class="cell side">
+    <span class="kicker">Tools Desk &middot; Follow-Up</span>
+    <h2 class="headline">Commission&rsquo;s Matrix migration returns, now with 40,000 users&rsquo; worth of complaints</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 620 pts</b> &middot; 300 cmts &middot; &#9650; +355</span></div>
+    <p class="first">BRUSSELS &mdash; The European Commission&rsquo;s rollout of Matrix to more than 40,000 staff, first typeset in this morning&rsquo;s paper at 265 points, returned to the front page at 620 &mdash; up 355 points, or 134 percent, the day&rsquo;s only qualifying follow-up.<sup class="cite"><a href="#src6">[6]</a></sup> The Element write-up itself has moved &mdash; its URL now serves a conference-talks index &mdash; so this dispatch is typeset from the thread, which quotes the article where it matters: live presence indicators had to be switched off because &ldquo;the load from live presence&hellip; started to affect performance.&rdquo;<sup class="cite"><a href="#src5">[5]</a></sup><sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <p>The thread&rsquo;s verdict is mixed. One reader calls Matrix&rsquo;s encryption &ldquo;a tire fire&rdquo; and says the move to MLS &ldquo;seems to be abandoned&rdquo;; another links Slashdot coverage in which officials reportedly called the Commission&rsquo;s Element Pro deployment &ldquo;absolute shit&rdquo; on usability.<sup class="cite"><a href="#src6">[6]</a></sup> A third multiplied the pain of &ldquo;verifying my device&rdquo; by 40,000. Defenders held the sovereignty line &mdash; Europe is &ldquo;paying the high price of riding itself of US dependencies&rdquo; &mdash; and one friend group&rsquo;s self-hosted migration to ElementX reported clean notifications and well-designed iOS apps, apart from one member.<sup class="cite"><a href="#src6">[6]</a></sup></p>
+  </div>
+  <div class="cell side">
+    <span class="kicker">Hardware Desk</span>
+    <h2 class="headline">Owner evicts the ad-funded garage-door app with a $62 open-source board</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>&#9733; 671 pts</b> &middot; 278 cmts</span></div>
+    <figure><img src="images/garage-door-spam.jpg" alt="Photograph of the post's author" loading="lazy">
+    <figcaption>Author photograph serving as the post&rsquo;s header image. <span class="cr">harrison.page</span></figcaption></figure>
+    <p class="first">When Chamberlain cut off third-party access to its myQ API in late 2023 and the official app filled with advertising, one owner documented the exit: two ratgdo32 boards at about $62 each, open-source firmware that speaks LiftMaster&rsquo;s Security+ 2.0 protocol locally over the network the house already runs.<sup class="cite"><a href="#src7">[7]</a></sup> HomeKit integration worked immediately; a JSON status endpoint plus a nightly cron job now flags a door left open, a software rebuild of the mercury switch his father once wired to a hallway light.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>The result runs with no cloud, and the notifications say who opened the door &mdash; &ldquo;which myQ never did.&rdquo; The thread turned into a parts counter: a $30 Ekyro opener with no subscription, a Meross HomeKit interface, and a from-scratch ESP32 board for those who can solder.<sup class="cite"><a href="#src8">[8]</a></sup> The shared grievance is the ads themselves &mdash; software for hardware already paid for, reported to the app stores with no effect.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="section-label"><span>Science &amp; Culture Desks</span></div>
+<div class="row3">
+  <div class="cell">
+    <span class="kicker">Science Desk</span>
+    <h2 class="headline">Engineered virus halts pancreatic tumours in three patients at a tenth of the dose</h2>
+    <div class="byline"><span>Science Desk</span><span class="score"><b>&#9733; 308 pts</b> &middot; 33 cmts</span></div>
+    <figure><img src="images/pancreatic-virus.jpg" alt="Scanning electron micrograph of pancreatic cancer cells" loading="lazy">
+    <figcaption>A scanning electron micrograph of pancreatic cancer cells, accompanying the report. <span class="cr">newscientist.com</span></figcaption></figure>
+    <p class="first">An adenovirus genetically engineered to replicate only inside tumours &mdash; its replication switched on by the COX-2 enzyme, far more abundant in cancer cells than healthy ones &mdash; has stopped the growth of pancreatic tumours in all three patients treated so far, at one-tenth of the dose the trial is aiming for.<sup class="cite"><a href="#src16">[16]</a></sup> The first patient, treated a year ago with a tumour seven centimetres across, and the two since, are &ldquo;all still alive and have clinically stable disease,&rdquo; says Masato Yamamoto of the University of Minnesota, who presented the results at the American Society of Gene and Cell Therapy meeting in Boston.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <p>The delivery is endoscopic: a thin tube guided down the throat to the pancreas, an ultrasound probe on its end for aiming. Fifteen further patients will now receive higher doses.<sup class="cite"><a href="#src16">[16]</a></sup> The context is brutal &mdash; pancreatic cancer usually kills within three to six months of diagnosis, and its tumours are, in Yamamoto&rsquo;s words, &ldquo;hard as hockey pucks,&rdquo; blocking chemotherapy. The caution is as real as the result: the trial has no control group, and pancreatic surgeon Kai Brown of Royal North Shore Hospital, Sydney, calls the data &ldquo;hypothesis-generating,&rdquo; noting oncology&rsquo;s record of early signals that &ldquo;vanished by the time rigorous phase III testing was done.&rdquo;<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <p>The thread&rsquo;s specialists add scale: one reader counts 25 registered clinical trials of oncolytic viruses for pancreatic cancer and notes that engineered adenoviruses &ldquo;rarely make it all the way to become a therapy in practice.&rdquo;<sup class="cite"><a href="#src17">[17]</a></sup></p>
+  </div>
+  <div class="cell">
+    <span class="kicker">Science Desk</span>
+    <h2 class="headline">Anthropic says Claude completed two open black-hole calculations, one set aside in 2003</h2>
+    <div class="byline"><span>Science Desk</span><span class="score"><b>&#9733; 295 pts</b> &middot; 122 cmts</span></div>
+    <figure><img src="images/black-holes.jpg" alt="Abstract illustration of a black circle like a black hole at the center of swirling marbled patterns" loading="lazy">
+    <figcaption>Illustration accompanying the research post: a black circle amid marbled patterns. <span class="cr">anthropic.com</span></figcaption></figure>
+    <p class="first">Anthropic&rsquo;s research post, published on the morning of its market debut, reports that Claude solved two open problems in the theory of quantum gravity.<sup class="cite"><a href="#src20">[20]</a></sup> The first finished a calculation physicists set out in 2003 &mdash; whether the abrupt Hawking&ndash;Page phase transition, known since 1983, survives in a regime where spacetime has no definite shape. Claude ran &ldquo;a small research group of copies of itself,&rdquo; checking its math against known results, and found the transition is abrupt there too.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <p>The second fixed the ceiling of the &ldquo;modular bootstrap&rdquo; &mdash; a method that rules out inconsistent theories of quantum gravity by capping how light a model universe&rsquo;s smallest black hole can be. Claude noticed a pattern in the numerical results physicists had missed, borrowed a method from sphere-packing mathematics &mdash; reproducing a sphere-packing result recently proved by an OpenAI model, with half the final proof following that proof&rsquo;s strategy &mdash; and produced the exact ceiling, after an earlier agent had failed in 61 parallel attempts. The results were formally verified in the Lean proof checker in September; &ldquo;Claude then wrote the paper with minimal guidance, and a physicist checked every main result.&rdquo;<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <p>The origin story is modest: an August side project by researcher Hongbin Chen, 22 candidate problems, agents left running about six weeks. The post&rsquo;s own limits sentence is quoted in full elsewhere on this page.<sup class="cite"><a href="#src20">[20]</a></sup> The thread, noting the publication date, asks whether the results were checked and who gets credit; one physicist-reader calls the bootstrap ceiling &ldquo;very exciting.&rdquo;<sup class="cite"><a href="#src21">[21]</a></sup></p>
+  </div>
+  <div class="cell">
+    <span class="kicker">AI Desk</span>
+    <h2 class="headline">Engineer reports AI safeguards blocked a real security fix and forced a detour to open-weight models</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 386 pts</b> &middot; 153 cmts</span></div>
+    <figure><img src="images/ai-safeguards.jpg" alt="Cover image of the blog post" loading="lazy">
+    <figcaption>The post&rsquo;s cover image. The title is not printable in a family broadsheet. <span class="cr">ounapuu.ee</span></figcaption></figure>
+    <p class="first">A senior product engineer writes that when he asked Claude Code to find &ldquo;low-hanging fruit&rdquo; security issues in his own service, it found a genuine flaw with a one-line fix &mdash; and then refused to proceed on safety grounds.<sup class="cite"><a href="#src12">[12]</a></sup> The exemption process he describes requires multi-day waits, forfeits data-retention protections, demands government ID or passport, and may still refuse: &ldquo;approval to appropriately protect your own service.&rdquo;<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <p>His workaround was an EU-hosted open-weights model, GLM 5.3, which he says proved the vulnerability, then helped fix and verify it.<sup class="cite"><a href="#src12">[12]</a></sup> The thread supplies the sharpest corroboration: during the recent attack on HuggingFace, &ldquo;closed models refused to help&rdquo; and GLM-5 &ldquo;is what HuggingFace used to thwart the swarm,&rdquo; one reader recounts &mdash; while the same unrestricted tooling is what produced the hostile code in the first place.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The post closes by charging the labs with making &ldquo;the world an unsafer place&rdquo;; its strongest thread reply is quieter: the safeguards &ldquo;are ineffective at best, and don&rsquo;t actually protect anything, and at worst make the global security posture weaker.&rdquo;<sup class="cite"><a href="#src13">[13]</a></sup></p>
+  </div>
+</div>
+
+<!-- 6. SECURITY & PRACTICAL -->
+<div class="sec2">
+  <div class="cell">
+    <div class="section-label"><span>Security Briefing</span></div>
+    <span class="kicker">Security Desk</span>
+    <h2 class="headline">Tribunal rules the UK cannot stay silent on whether it ordered Apple to break encryption</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 390 pts</b> &middot; 171 cmts</span></div>
+    <p class="first">LONDON &mdash; The Investigatory Powers Tribunal, in an open judgment dated today, rejected the Home Secretary&rsquo;s contention &ldquo;that it would be damaging to national security to confirm the fact that the respondent has given Apple a technical capability notice&rdquo; under section 253 of the Investigatory Powers Act 2016.<sup class="cite"><a href="#src9">[9]</a></sup> The notice&rsquo;s contents remain secret: the Tribunal found the line between secret and open detail &ldquo;better addressed separately,&rdquo; with private and closed judgments withheld under rule 7, and a substantive hearing now likely in the first half of 2027.<sup class="cite"><a href="#src9">[9]</a></sup> The report that carried the story was blocked to this paper&rsquo;s fetch; the judgment is the primary source.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <p>The judgment&rsquo;s factual section records &ldquo;extensive media reporting&rdquo; that the notice requires Apple &ldquo;to be able to maintain access to its users&rsquo; data in decrypted form,&rdquo; and recites the transatlantic history: US intelligence officials announcing the demand had been dropped in August 2025, the Financial Times reporting a new order that September.<sup class="cite"><a href="#src9">[9]</a></sup> Apple&rsquo;s first challenge was dismissed after a change of circumstances; this second claim began in July 2026.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>The thread&rsquo;s closest reading is of Apple&rsquo;s own wording: the old assurance that &ldquo;nobody can access your data, not even Apple&rdquo; became &ldquo;Apple cannot access your data&rdquo; &mdash; a formulation one reader dissects key-encryption-key by key-encryption-key to argue it &ldquo;presents the same feel of assurance&rdquo; with less coverage.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <div style="border-top:1px solid #b7ab93; margin:12px 0 10px"></div>
+    <span class="kicker">Security Desk</span>
+    <h2 class="headline">Java4Shell bug sat in an OpenJDK pull request since September</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 307 pts</b> &middot; 82 cmts</span></div>
+    <figure><img src="images/java4shell-pr.png" alt="GitHub banner rendering of the September 9 pull request" loading="lazy">
+    <figcaption>The September 9 pull request as GitHub renders it. <span class="cr">github.com</span></figcaption></figure>
+    <p class="first">Yesterday this paper typeset Java4Shell, the Base64 remote-code-execution flaw in OpenJDK; today the front page carries its prehistory. A pull request filed September 9 by an OpenJDK member describes the same territory precisely: in the AVX-512 Base64 decode path, inputs shorter than four bytes drive an output-size counter below zero, corrupting the mask and storing &ldquo;past the logical output length&hellip; corrupting the heap.&rdquo; The suggested fix was an early return to Java.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <p>The timeline assembled in the thread: a SIGSEGV crash was reported to Adoptium in June and isolated to Base64 in September; on October 1 the PR&rsquo;s author wrote that Oracle had emailed asking him &ldquo;to NOT proceed with a PR until receiving approval&rdquo;; by October 28 it was &ldquo;taken over by Oracle.&rdquo; One reader found the merged Oracle commit&rsquo;s message identical, word for word, to the PR&rsquo;s fix.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>The uncomfortable question is heredity. Yesterday&rsquo;s disclosure credited an AI-driven audit &mdash; &ldquo;I told Codex to look at those areas like any serious security researcher in 2026&rdquo; &mdash; and today&rsquo;s thread asks whether the model independently found the bug or read the open report; the consensus is that no one can now prove either.<sup class="cite"><a href="#src19">[19]</a></sup> A second thread theme: the fix sat bot-flagged and unreviewed for months, &ldquo;all it needed is someone to have a proper look.&rdquo;<sup class="cite"><a href="#src19">[19]</a></sup></p>
+  </div>
+  <div class="cell">
+    <div class="section-label"><span>Practical Tech Corner</span></div>
+    <span class="kicker">Language Desk</span>
+    <h2 class="headline">PHP 8.6 ships with partial application and a polling API &mdash; hours after critical patches for older branches</h2>
+    <div class="byline"><span>Language Desk</span><span class="score"><b>&#9733; 257 pts</b> &middot; 124 cmts</span></div>
+    <figure><img src="images/php86.png" alt="PHP 8.6 release announcement banner" loading="lazy">
+    <figcaption>The official release announcement&rsquo;s banner, published today. <span class="cr">php.net</span></figcaption></figure>
+    <p class="first">PHP 8.6.0 arrived today with a compact feature list: partial function application using <b>?</b> and <b>&hellip;</b> placeholders, a <b>\Time\Duration</b> class covering more than 250 years at nanosecond precision, an <b>Io\Poll</b> API built on epoll, kqueue and WSAPoll for event loops like ReactPHP and AMPHP, plus <b>clamp()</b>, a <b>SortDirection</b> enum and default values for readonly properties.<sup class="cite"><a href="#src22">[22]</a></sup></p>
+    <p>The timing is the story&rsquo;s edge: php.net had scheduled security releases for 14:00&ndash;14:30 UTC this afternoon across every supported branch &mdash; 8.5.13, 8.4.28, 8.3.37, 8.2.36 &mdash; with &ldquo;the highest severity&rdquo; rated CRITICAL, though those CRITICAL issues &ldquo;require either non-default configuration or uncommon setups.&rdquo;<sup class="cite"><a href="#src23">[23]</a></sup> The thread&rsquo;s practitioners flagged the quieter wins: ZTS overhead reduction that one core contributor says could someday leave &ldquo;only ZTS mode&rdquo; and open a path to native async, and stream error handling that finally throws instead of returning false.<sup class="cite"><a href="#src24">[24]</a></sup> One reader also caught the release notes&rsquo; own clamp example with min and max inverted.<sup class="cite"><a href="#src24">[24]</a></sup></p>
+    <div style="border-top:1px solid #b7ab93; margin:12px 0 10px"></div>
+    <span class="kicker">Culture Desk</span>
+    <h2 class="headline">Lastbook packs a survival library &mdash; up to 388 GB &mdash; for the day the internet is not there</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 309 pts</b> &middot; 169 cmts</span></div>
+    <figure><img src="images/lastbook.png" alt="Lastbook header image promoting local AI, maps and how-to videos" loading="lazy">
+    <figcaption>The project&rsquo;s header image: local AI, maps, how-to videos, offline. <span class="cr">lastbook.org</span></figcaption></figure>
+    <p class="first">Lastbook, an open-source desktop application for Mac, Windows and Linux &mdash; deliberately not phones &mdash; downloads a survival and rebuilding library that works offline: first aid, water, food preservation, repairs, power and emergency planning, with 2,324 videos and 258,000-plus searchable map places including water points, fire stations and shelters.<sup class="cite"><a href="#src14">[14]</a></sup> Sizes run from 7.7 GB to about 388 GB, with an optional local Gemma model adding roughly 17 GB; the medical material is drawn from Hesperian, the World Health Organization and the Red Cross, and the project states plainly it &ldquo;is not clinically reviewed.&rdquo;<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <p>The thread tests the premise against the scenario: a rebuild kit that dies with a two-year laptop battery draws skepticism &mdash; &ldquo;surely this would need to be printed out?&rdquo; &mdash; and one reader finds it &ldquo;conspicuously light on the &lsquo;society&rsquo; part,&rdquo; with nothing on de-escalation or managing groups. Kiwix, the offline Wikipedia server, is the recurring alternative.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+  </div>
+  <div class="cell">
+    <div class="pullquote">&ldquo;Neither result describes our own universe directly, and neither has practical applications, but both contribute to a long-running theoretical effort to understand how quantum mechanics and relativity fit together.&rdquo;
+      <span class="attr">Anthropic&rsquo;s research post, on Claude&rsquo;s black-hole results<sup class="cite"><a href="#src20">[20]</a></sup></span>
+    </div>
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p>FOR SALE: cloud garage-door app, ads included. Owner replaced it with two $62 boards and a cron job; notifications now name the operator.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+      <p>NOTICE: contents of a technical capability notice remain secret. Existence of said notice: now confirmed, by tribunal order.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    </div>
+    <div class="statbox">
+      <div class="t">Security Desk Ledger</div>
+      <table>
+        <tr><td>UK Apple order</td><td>390 pts &middot; 171 cmts</td></tr>
+        <tr><td>Java4Shell prehistory</td><td>307 pts &middot; 82 cmts</td></tr>
+        <tr><td>Combined</td><td>697 pts &middot; 253 cmts</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Day&rsquo;s Box Score</span></div>
+    <figure><svg viewBox="0 0 640 392" style="width:100%; height:auto; display:block" role="img" aria-label="Points per story, snapshot 22:00 UTC"><defs><pattern id="hatchInk" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#191510" stroke-width="2.4"/></pattern><pattern id="hatchApple" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#7a1f1f" stroke-width="2.4"/></pattern></defs><line class="grid" x1="74" y1="6" x2="74" y2="344"/><line class="grid" x1="149" y1="6" x2="149" y2="344"/><line class="grid" x1="223" y1="6" x2="223" y2="344"/><line class="grid" x1="297" y1="6" x2="297" y2="344"/><line class="grid" x1="371" y1="6" x2="371" y2="344"/><line class="grid" x1="446" y1="6" x2="446" y2="344"/><line class="grid" x1="520" y1="6" x2="520" y2="344"/><text class="barlabel" x="0" y="18">ANTHROPIC $2T DEBUT &#8224;</text><rect x="0.5" y="22" width="505" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="512" y="34" font-weight="700">680 &#9733; &#183; 1,199 cmts</text><text class="barlabel" x="0" y="52">GARAGE DOOR SPAM</text><rect x="0.5" y="56" width="498" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="505" y="68">671 &#183; 278</text><text class="barlabel" x="0" y="86">EC ON MATRIX</text><rect x="0.5" y="90" width="461" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="468" y="102">620 &#183; 300</text><text class="barlabel" x="0" y="120">UK APPLE ORDER</text><rect x="0.5" y="124" width="290" height="15" fill="url(#hatchApple)" stroke="#7a1f1f" stroke-width="1"/><text class="barval" x="297" y="136">390 &#183; 171</text><text class="barlabel" x="0" y="154">AI SAFEGUARDS POST</text><rect x="0.5" y="158" width="287" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="294" y="170">386 &#183; 153</text><text class="barlabel" x="0" y="188">LASTBOOK</text><rect x="0.5" y="192" width="230" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="237" y="204">309 &#183; 169</text><text class="barlabel" x="0" y="222">PANCREAS VIRUS TRIAL</text><rect x="0.5" y="226" width="229" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="236" y="238">308 &#183; 33</text><text class="barlabel" x="0" y="256">JAVA4SHELL PR</text><rect x="0.5" y="260" width="228" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="235" y="272">307 &#183; 82</text><text class="barlabel" x="0" y="290">BLACK-HOLE RESULTS</text><rect x="0.5" y="294" width="219" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="226" y="306">295 &#183; 122</text><text class="barlabel" x="0" y="324">PHP 8.6</text><rect x="0.5" y="328" width="191" height="15" fill="url(#hatchInk)" stroke="#191510" stroke-width="1"/><text class="barval" x="198" y="340">257 &#183; 124</text><line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/><line class="axis" x1="0.5" y1="352" x2="520" y2="352"/><text class="barval" x="0" y="366" text-anchor="start" fill="#3d352a">0</text><text class="barval" x="74" y="366" text-anchor="middle" fill="#3d352a">100</text><text class="barval" x="149" y="366" text-anchor="middle" fill="#3d352a">200</text><text class="barval" x="223" y="366" text-anchor="middle" fill="#3d352a">300</text><text class="barval" x="297" y="366" text-anchor="middle" fill="#3d352a">400</text><text class="barval" x="371" y="366" text-anchor="middle" fill="#3d352a">500</text><text class="barval" x="446" y="366" text-anchor="middle" fill="#3d352a">600</text><text class="barval" x="520" y="366" text-anchor="middle" fill="#3d352a">700</text><text class="barval" x="0" y="386" fill="#3d352a">&#9733; = points &#183; cmts = comments &#183; &#8224; most-discussed story of the day &#183; red hatch marks Apple coverage (the UK encryption-order story)</text></figure>
+    <p style="text-align:center;font-size:12.5px;font-style:italic;color:#3d352a">The day in one line: Anthropic opened at a $2 trillion headline and spent the session giving some of it back; a tribunal ruled the UK cannot stay silent on its order to Apple; an engineered virus stopped pancreatic tumours in three patients at a tenth of the planned dose; and PHP shipped a major release hours after warning of critical-severity fixes for older branches.</p>
+  </div>
+  <div class="cell">
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories typeset</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>9</td></tr>
+        <tr><td>Follow-ups</td><td>1</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>4,223</td></tr>
+        <tr><td>Combined comments</td><td>2,631</td></tr>
+        <tr><td>Most-discussed</td><td>Anthropic debut (1,199)</td></tr>
+        <tr><td>Security desks&rsquo; share</td><td>697 pts &middot; 253 cmts</td></tr>
+        <tr><td>AI desks&rsquo; share</td><td>1,361 pts &middot; 1,474 cmts</td></tr>
+      </table>
+    </div>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>&ldquo;Anthropic hits $2T.&rdquo;</b> The headline number is fully diluted value. By Nasdaq&rsquo;s own outstanding-share count &mdash; 13,086,672,593 shares at $98 &mdash; the market cap was about $1.28 trillion when the thread did the math, and readers tracked the diluted figure as low as $1.5 trillion intraday. Same company, three same-day numbers.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+      <p><b>&ldquo;Claude solves two open problems&rdquo; &mdash; in model universes.</b> Anthropic&rsquo;s own post states neither result &ldquo;describes our own universe directly&rdquo; and neither has practical applications; one is a completed calculation set out in 2003, the other a proved ceiling that rules out theories without identifying one. &ldquo;Solves&rdquo; is the company&rsquo;s word; the scope is the post&rsquo;s.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+      <p><b>&ldquo;Pancreatic cancer halted&rdquo; &mdash; in three patients, with no control group.</b> The tumours stopped growing but did not shrink; the dose was one-tenth of target; the data was presented at a conference, not in a peer-reviewed paper; and a pancreatic surgeon in the thread&rsquo;s own coverage calls it &ldquo;hypothesis-generating.&rdquo;<sup class="cite"><a href="#src16">[16]</a></sup></p>
+      <p><b>&ldquo;What&rsquo;s New in PHP 8.6&rdquo; led with features on a patch day.</b> The same site scheduled CRITICAL-severity security releases across all supported older branches for 14:00&ndash;14:30 UTC today &mdash; though php.net notes those CRITICAL issues require non-default configurations or uncommon setups.<sup class="cite"><a href="#src23">[23]</a></sup></p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher&rsquo;s Note</div>
+  <p>The Anthropic debut led at 680 points with the day&rsquo;s largest thread by far; the European Commission&rsquo;s Matrix migration returned as the only follow-up, up 355 points since morning, and nine stories were fresh. Three sources declined automated fetches &mdash; Reuters and the Macanorak report behind bot walls, the Element post now serving a conference page &mdash; so those stories are typeset from their threads, and the Apple story from the tribunal&rsquo;s own judgment; the lead ran without an image. Everything else loaded in full.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">Reuters, &ldquo;Anthropic&rsquo;s historic debut puts AI&rsquo;s promise, peril on Wall St test&rdquo; (headline via link; page blocked to automated fetch) &mdash; <a href="https://www.reuters.com/business/finance/anthropics-historic-debut-put-ais-promise-peril-wall-st-test-2026-11-19/">reuters.com</a></li>
+    <li data-n="[2]" id="src2">Hacker News thread, item 50562754 &mdash; <a href="https://news.ycombinator.com/item?id=50562754">news.ycombinator.com</a></li>
+    <li data-n="[3]" id="src3">Anthropic, PBC, &ldquo;Anthropic prices initial public offering&rdquo; (offer terms as carried in this morning&rsquo;s edition) &mdash; <a href="https://www.anthropic.com/news/anthropic-prices-initial-public-offering">anthropic.com</a></li>
+    <li data-n="[4]" id="src4">Hacker News thread, item 50553843, &ldquo;Anthropic prices initial public offering&rdquo; &mdash; <a href="https://news.ycombinator.com/item?id=50553843">news.ycombinator.com</a></li>
+    <li data-n="[5]" id="src5">Element, &ldquo;How the European Commission rolled out Matrix to more than 40,000 staff&rdquo; (URL now serves a conference-talks index; quoted via the thread) &mdash; <a href="https://element.io/blog/how-the-european-commission-rolled-out-matrix-to-more-than-40-000-staff/">element.io</a></li>
+    <li data-n="[6]" id="src6">Hacker News thread, item 50558533 &mdash; <a href="https://news.ycombinator.com/item?id=50558533">news.ycombinator.com</a></li>
+    <li data-n="[7]" id="src7">Harrison Page, &ldquo;Garage Door Spam&rdquo; (16 Nov 2026) &mdash; <a href="https://blog.harrison.page/garage-door-spam/">blog.harrison.page</a></li>
+    <li data-n="[8]" id="src8">Hacker News thread, item 50519231 &mdash; <a href="https://news.ycombinator.com/item?id=50519231">news.ycombinator.com</a></li>
+    <li data-n="[9]" id="src9">Investigatory Powers Tribunal, <i>Apple Inc and Secretary of State for the Home Department; Privacy International and ors v Secretary of State</i>, OPEN judgment, [2026] UKIPTrib 9, 19 Nov 2026 &mdash; <a href="https://investigatorypowerstribunal.org.uk/judgement/1-mr-vincent-kearney-2-british-broadcasting-corporation-v-1-chief-constable-of-the-police-service-of-northern-ireland-2-chief-constable-of-durham-constabulary-3-security-service-4-governme/">investigatorypowerstribunal.org.uk</a></li>
+    <li data-n="[10]" id="src10">Macanorak, &ldquo;UK government forced to admit it issued Apple a secret encryption order&rdquo; (page blocked to automated fetch) &mdash; <a href="https://macanorak.com/uk-government-forced-to-admit-it-issued-apple-a-secret-encryption-order/">macanorak.com</a></li>
+    <li data-n="[11]" id="src11">Hacker News thread, item 50562113 &mdash; <a href="https://news.ycombinator.com/item?id=50562113">news.ycombinator.com</a></li>
+    <li data-n="[12]" id="src12">ounapuu.ee, &ldquo;[expletive] your AI safeguards&rdquo; (19 Nov 2026) &mdash; <a href="https://ounapuu.ee/posts/2026/11/19/unsafeguards/">ounapuu.ee</a></li>
+    <li data-n="[13]" id="src13">Hacker News thread, item 50562262 &mdash; <a href="https://news.ycombinator.com/item?id=50562262">news.ycombinator.com</a></li>
+    <li data-n="[14]" id="src14">Lastbook, &ldquo;Everything you need to survive and rebuild society&rdquo; &mdash; <a href="https://lastbook.org/">lastbook.org</a></li>
+    <li data-n="[15]" id="src15">Hacker News thread, item 50560822 &mdash; <a href="https://news.ycombinator.com/item?id=50560822">news.ycombinator.com</a></li>
+    <li data-n="[16]" id="src16">New Scientist, &ldquo;Pancreatic cancer halted by virus injection in three patients&rdquo; &mdash; <a href="https://www.newscientist.com/article/2528235-pancreatic-cancer-halted-by-virus-injection-in-three-patients/">newscientist.com</a></li>
+    <li data-n="[17]" id="src17">Hacker News thread, item 50563066 &mdash; <a href="https://news.ycombinator.com/item?id=50563066">news.ycombinator.com</a></li>
+    <li data-n="[18]" id="src18">OpenJDK pull request #32781, &ldquo;8392044: AVX-512 Base64 decoder overwrites output buffer on short padded tail&rdquo; (filed 9 Sep 2026) &mdash; <a href="https://github.com/openjdk/jdk/pull/32781">github.com</a></li>
+    <li data-n="[19]" id="src19">Hacker News thread, item 50558906 &mdash; <a href="https://news.ycombinator.com/item?id=50558906">news.ycombinator.com</a></li>
+    <li data-n="[20]" id="src20">Anthropic, &ldquo;Claude Fable 5.2 solves two open problems in the physics of black holes&rdquo; &mdash; <a href="https://www.anthropic.com/research/claude-black-hole-physics">anthropic.com</a></li>
+    <li data-n="[21]" id="src21">Hacker News thread, item 50563148 &mdash; <a href="https://news.ycombinator.com/item?id=50563148">news.ycombinator.com</a></li>
+    <li data-n="[22]" id="src22">php.net, &ldquo;PHP 8.6.0 Released!&rdquo; (19 Nov 2026) &mdash; <a href="https://www.php.net/releases/8.6/en.php">php.net</a></li>
+    <li data-n="[23]" id="src23">php.net news archive, security releases for 8.5.13, 8.4.28, 8.3.37, 8.2.36, scheduled 19 Nov 2026 &mdash; <a href="https://www.php.net/archive/2026.php">php.net</a></li>
+    <li data-n="[24]" id="src24">Hacker News thread, item 50557870 &mdash; <a href="https://news.ycombinator.com/item?id=50557870">news.ycombinator.com</a></li>
+  </ol>
+  <p class="method">Methodology: snapshot of the Hacker News front page taken at 22:00:54 UTC on Thursday, November 19, 2026, via the Algolia HN Search API (tags=front_page; 30 candidates returned). Points and comment counts are frozen at the snapshot and move afterwards. Deduplicated by story id against the previous four editions (manifest.json): nine stories are fresh; one returned as a follow-up &mdash; the Commission&rsquo;s Matrix rollout, 620 points against 265 this morning, +355 and +134 percent, clearing the +40-percent-and-+150 bar; no other repeat qualified (15M web servers reached +37%, Ruby2&szlig;hell +52% but +124 points). No digest and no second wire were required. Articles were fetched at publication time; reuters.com and macanorak.com blocked automated fetches and the element.io post has moved, so those stories are typeset from their threads and, for Apple, the tribunal&rsquo;s judgment fetched in full. Images are the stories&rsquo; own header images, verified by magic bytes and credited to their hosts; no image was fabricated. Corrections &amp; Clarifications items are drawn from today&rsquo;s stories only.</p>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <span>The Hacker Herald &mdash; Typeset from the Hacker News front page</span>
+  <span>&#10087; Printed on 100% recycled bandwidth &#10087;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</span>
+</footer>
+
+</body>
+</html>

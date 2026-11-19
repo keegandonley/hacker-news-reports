@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-19-afternoon",
+      "date": "2026-11-19",
+      "label": "Afternoon",
+      "snapshot_utc": "22:00",
+      "items": [
+        {
+          "id": 50562754,
+          "title": "Anthropic hits $2T in Nasdaq debut",
+          "score": 680,
+          "comments": 1199
+        },
+        {
+          "id": 50519231,
+          "title": "Garage Door Spam",
+          "score": 671,
+          "comments": 278
+        },
+        {
+          "id": 50558533,
+          "title": "How the European Commission rolled out Matrix to more than 40k staff",
+          "score": 620,
+          "comments": 300
+        },
+        {
+          "id": 50562113,
+          "title": "UK government forced to admit it issued Apple a secret encryption order",
+          "score": 390,
+          "comments": 171
+        },
+        {
+          "id": 50562262,
+          "title": "Fuck Your AI Safeguards",
+          "score": 386,
+          "comments": 153
+        },
+        {
+          "id": 50560822,
+          "title": "Everything you need to survive and rebuild society",
+          "score": 309,
+          "comments": 169
+        },
+        {
+          "id": 50563066,
+          "title": "Pancreatic cancer halted by virus injection in three patients",
+          "score": 308,
+          "comments": 33
+        },
+        {
+          "id": 50558906,
+          "title": "Someone reported java4shell bug in September 2026",
+          "score": 307,
+          "comments": 82
+        },
+        {
+          "id": 50563148,
+          "title": "Claude solves two open problems in the physics of black holes",
+          "score": 295,
+          "comments": 122
+        },
+        {
+          "id": 50557870,
+          "title": "What's New in PHP 8.6",
+          "score": 257,
+          "comments": 124
+        }
+      ]
+    },
+    {
       "folder": "2026-11-19-morning",
       "date": "2026-11-19",
       "label": "Morning",
@@ -1982,74 +2050,6 @@
           "title": "elect.horse",
           "score": 199,
           "comments": 42
-        }
-      ]
-    },
-    {
-      "folder": "2026-10-29-afternoon",
-      "date": "2026-10-29",
-      "label": "Afternoon",
-      "snapshot_utc": "21:01",
-      "items": [
-        {
-          "id": 50294702,
-          "title": "Patrick Stewart has died",
-          "score": 1159,
-          "comments": 211
-        },
-        {
-          "id": 50289418,
-          "title": "We're releasing the weights of Mistral Large 4",
-          "score": 961,
-          "comments": 270
-        },
-        {
-          "id": 50291945,
-          "title": "Google Search is now less than half of Alphabet's revenue",
-          "score": 364,
-          "comments": 310
-        },
-        {
-          "id": 50287919,
-          "title": "DoorDash to acquire Instacart",
-          "score": 343,
-          "comments": 539
-        },
-        {
-          "id": 50290668,
-          "title": "I went to Mexico to test-drive the cars Americans can't buy",
-          "score": 260,
-          "comments": 285
-        },
-        {
-          "id": 50290177,
-          "title": "LLM Voice",
-          "score": 254,
-          "comments": 137
-        },
-        {
-          "id": 50286987,
-          "title": "Chained PHP2Shell exploit roots 25 servers, including US Government servers",
-          "score": 238,
-          "comments": 104
-        },
-        {
-          "id": 50291054,
-          "title": "H.264 Is Magic (2016)",
-          "score": 229,
-          "comments": 103
-        },
-        {
-          "id": 50287775,
-          "title": "If IPv4 were land",
-          "score": 195,
-          "comments": 216
-        },
-        {
-          "id": 50233059,
-          "title": "If-then-else had to be invented (2020)",
-          "score": 157,
-          "comments": 151
         }
       ]
     }
