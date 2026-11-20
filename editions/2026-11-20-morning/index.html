@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 20, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page &middot; Snapshot 14:00 UTC</div>
+  <div class="mid">Morning Edition</div>
+  <div class="r">10 Stories &middot; 3,512 Points &middot; 1,619 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Friday, November 20, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Medicine &middot; Follow-Up</span><b>Virus halts tumours at a tenth of the dose</b>
+    An engineered virus stopped pancreatic tumours in three US trial patients, all alive with stable disease; the story added 510 points since yesterday evening to lead the page at 818.</div>
+  <div class="cell"><span class="tag">Physics &middot; Follow-Up</span><b>Two open black-hole calculations closed</b>
+    Anthropic says Claude completed a calculation physicists set up more than 20 years ago, and found the exact limit of a quantum-gravity test method; 518 points.</div>
+  <div class="cell"><span class="tag">Security</span><b>OpenSSL patches base64 buffer overflow</b>
+    CVE-2026-121481 makes EVP_EncodeBlock() return &minus;1 on invalid input after a CVSS 9.8 buffer-overflow report; the fix spans the master, 4.0 and 4.1 branches.</div>
+  <div class="cell"><span class="tag">Software</span><b>PostgreSQL 19 released</b>
+    REPACK reclaims space without blocking writes, standbys gain read-your-writes consistency, and sequence values finally replicate; released November 19.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <div class="kicker">Follow-Up &middot; Science Desk</div>
+    <h2 class="headline">Engineered virus halts pancreatic tumours in three patients at a tenth of the planned dose</h2>
+    <h3 class="deck">All three remain alive with stable disease, a year after the first injection &mdash; and reviewers warn three patients is a signal, not a verdict</h3>
+    <div class="byline"><span>Science Desk</span><span class="score"><b>&#9733; 818 pts</b> &middot; &#9650; +510 since the last edition &middot; 141 comments</span></div>
+    <figure>
+      <img src="images/cancer.jpg" alt="Scanning electron micrograph of pancreatic cancer cells">
+      <figcaption>A scanning electron micrograph of pancreatic cancer cells, distributed with the New Scientist report. <span class="cr">newscientist.com</span></figcaption>
+    </figure>
+    <p class="first">BOSTON &mdash; A cancer-killing virus has stopped pancreatic tumours from growing or spreading in three patients in a US early-safety trial, <i>New Scientist</i> reports, with all three still alive and their disease clinically stable.<sup class="cite"><a href="#src1">[1]</a></sup> The first patient, treated a year ago with a tumour seven centimetres across, and two treated since, had cancer confined to the pancreas at injection; none of the tumours has grown further, said Masato Yamamoto of the University of Minnesota, who led the treatment's development, presenting at the American Society of Gene and Cell Therapy's annual meeting in Boston this month.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The dose was one-tenth of the eventual target. &ldquo;We only injected one-tenth of the dose we are eventually aiming at, so the efficacy is better than I expected, especially as this is pancreatic cancer,&rdquo; Yamamoto said. Pancreatic tumours resist treatment because their exteriors are tough and fibrous &mdash; &ldquo;they're hard as hockey pucks,&rdquo; in his words &mdash; blocking chemotherapy, while the disease usually allows three to six months after diagnosis. Fifteen further patients will now receive higher doses to find the optimum level.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The thread kept the scale in view. One reader counted 25 registered clinical trials of oncolytic viruses for pancreatic cancer alone; another asked whether three uncontrolled patients can be called better than doing nothing.<sup class="cite"><a href="#src2">[2]</a></sup> Kai Brown, a pancreatic surgeon at Royal North Shore Hospital in Sydney, told the paper that &ldquo;the history of oncology is littered with promising early signals that vanished by the time rigorous phase III testing was done.&rdquo;<sup class="cite"><a href="#src1">[1]</a></sup> The story's 510-point rise since yesterday evening's edition is the day's largest move.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50563066">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Follow-Up &middot; AI Desk</div>
+    <h2 class="headline">Claude completes two open black-hole calculations, one first set up two decades ago</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 518 pts</b> &middot; &#9650; +223 &middot; 243 cmts</span></div>
+    <figure>
+      <img src="images/blackhole.jpg" alt="Illustration accompanying Anthropic's black-hole physics research post">
+      <figcaption>The illustration accompanying the research post. <span class="cr">anthropic.com</span></figcaption>
+    </figure>
+    <p class="first">Anthropic says Claude has solved two open problems in theoretical physics, both concerning black holes and the search for quantum gravity. In the first, the model completed a calculation physicists set up more than 20 years ago but never finished, showing that a sudden transition associated with black-hole formation persists even where spacetime no longer has a definite shape. In the second, it found the exact limit of the simplest version of a technique used to test candidate theories of quantum gravity. Preprints accompany the post.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The company draws the boundary itself: &ldquo;Neither result describes our own universe directly, and neither has practical applications,&rdquo; the post says &mdash; both results live in simplified model universes studied through holographic duality, which recasts questions about gravity as questions about quantum systems in one dimension fewer.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>Readers who opened the preprints called the second result the stronger one &mdash; Claude proved an upper limit on black-hole mass consistent with a given central charge, which one put as making the theory &ldquo;a consistent theory of quantum gravity.&rdquo; Another noted it appeared as a bullet point in a product announcement.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50563148">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Hardware Desk</div>
+    <h2 class="headline">Firm reports an AI-designed CPU at 4.59&times; an in-order core's performance-per-watt</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>&#9733; 275 pts</b> &middot; 184 cmts</span></div>
+    <figure>
+      <img src="images/frostbite.jpg" alt="Cover illustration for the Frostbite CPU announcement">
+      <figcaption>The cover illustration of the Frostbite announcement post. <span class="cr">architectlabs.com</span></figcaption>
+    </figure>
+    <p class="first">Architect Labs has introduced Frostbite, a general-purpose CPU with a new instruction set that its AI systems &ldquo;discovered, designed, and verified end-to-end,&rdquo; iterating autonomously over the compiler, ISA, microarchitecture, RTL, verification and final GDS chip layout. The firm reports 4.59&times; the performance-per-watt of a &ldquo;modern, silicon-proven superscalar (dual-issue, in-order) CPU core&rdquo; across 25 workloads, 15 of them held back until final evaluation. The architecture is built on interaction nets, where every step is local, every dependency explicit, and every value has exactly one owner.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>The thread asked for corroboration. One reader questioned holding back evaluation criteria at all (&ldquo;This isn't LLM training&rdquo;); another called the number of claims &ldquo;absolutely breathtaking&rdquo; and asked for a sober human overview, recalling the Mill CPU as an architecture that promised similarly and shipped never.<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50572503">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="section-label"><span>Field &amp; Culture Desks</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">Language Desk</div>
+    <h2 class="headline">A student is praised for writing her own report &mdash; because so many others aren't</h2>
+    <div class="byline"><span>Language Desk</span><span class="score"><b>&#9733; 283 pts</b> &middot; 278 cmts &#8224;</span></div>
+    <p class="first">&ldquo;I can tell you wrote this yourself&rdquo; were among the first words an honours supervisor said about a 10-page progress report on the control of flapping-wing micro aerial vehicles &mdash; and the student, who writes under the name Em, was unsure whether to take it as praise until he added: &ldquo;I've been sent a lot of reports written by AI.&rdquo; She had drafted the 5,000 words in 48 hours after mistyping the deadline in her own calendar.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>Her account of the degree runs the other way: assignment documents &ldquo;strongly encouraged&rdquo; to explore AI, which she says becomes the clear understanding that students are expected to use it and disadvantaged by not using it. She describes days spent prompting an AI for eight hours in a windowless lab as &ldquo;soul crushing,&rdquo; and says she does not want to outsource her thinking to it.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>The commentariat split along familiar lines &mdash; 278 of them, the day's largest thread. One reader argued the same objection was once made against CAD and finite-element analysis in engineering; another pointed out that the essay itself misspells &ldquo;write&rdquo; as &ldquo;right&rdquo; &mdash; evidence, the thread suggested, for using AI as a proofreader rather than a ghostwriter.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50571189">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Culture Desk</div>
+    <h2 class="headline">Analysis found Carnival's ships emit ten times the sulphur oxide of Europe's 260 million cars</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 257 pts</b> &middot; 145 cmts</span></div>
+    <figure>
+      <img src="images/carnival.jpg" alt="A Carnival cruise vessel at sea, used to illustrate the emissions analysis">
+      <figcaption>The lead image accompanying the emissions analysis. <span class="cr">ecohustler.com</span></figcaption>
+    </figure>
+    <p class="first">Carnival Corporation, the world's largest luxury cruise operator, emitted nearly ten times more sulphur oxide around European coasts than all 260 million of Europe's cars in 2017, according to an analysis by sustainable-transport group Transport &amp; Environment that resurfaced on the front page this week. Royal Caribbean ranked second, at four times the car fleet. Spain, Italy and Greece were the most-exposed countries; Barcelona, Palma de Mallorca and Venice the most-impacted ports, followed by Civitavecchia and Southampton.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>The thread dated the numbers. The multiple predates the International Maritime Organization's 2020 cap, which cut permitted fuel sulphur from 3.5% to 0.5% in what one reader linked as shipping's biggest fuel-rule change in decades &mdash; so the ten-times figure is a pre-cap snapshot, not a current measurement. Other readers noted that container ships burn the same bunker fuel for the same cost reasons.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50572116">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Field Desk</div>
+    <h2 class="headline">Pete Warden argues AI's next home is the laptop: open weights, voice, no round-trip</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 263 pts</b> &middot; 230 cmts</span></div>
+    <figure>
+      <img src="images/warden.jpg" alt="Episode artwork for Pete Warden's interview on The Data Exchange">
+      <figcaption>Episode artwork for the interview. <span class="cr">thedataexchange.media</span></figcaption>
+    </figure>
+    <p class="first">Pete Warden, co-creator of the Moonshine voice models and a longtime deep-learning engineer, argues in a Data Exchange interview with Ben Lorica that AI increasingly wants to run locally rather than in the cloud: open-weight models are improving quickly, quantization now fits capable models on laptops and in browsers, and voice &mdash; where round-trip latency decides whether an interface feels natural &mdash; is the application that makes locality visible. The conversation also covers specialized versus end-to-end speech models, the economics of local inference, and hardware approaches that could challenge GPU-centric infrastructure.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The thread took the sceptic's chair alongside the believer's. One reader argued local AI matters mostly for narrow scenarios, while models-as-infrastructure evolve like the internet did; another countered that when every service ships its own walled assistant, the only way to bridge them will be an assistant you run yourself. A third noted the debate rhymes with decades of self-hosting advocacy, which most consumers have declined regardless of cost.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50561508">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 6. SECURITY & PRACTICAL -->
+<div class="sec2">
+  <div class="cell">
+    <div class="section-label"><span>Security Briefing</span></div>
+    <div class="kicker">Security Desk</div>
+    <h2 class="headline">OpenSSL fix makes its base64 encoder reject invalid input after buffer-overflow report</h2>
+    <h3 class="deck">CVE-2026-121481, rated CVSS 9.8, is fixed by returning &minus;1 from EVP_EncodeBlock() for inputs no int can hold</h3>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 306 pts</b> &middot; 254 cmts</span></div>
+    <p class="first">A pull request by Niels Mouha fixes a buffer overflow in OpenSSL's EVP_EncodeBlock() &mdash; CVE-2026-121481, carried on the thread at CVSS 9.8 &mdash; by returning &minus;1 for invalid inputs: NULL buffers, negative lengths, and inputs whose encoded size does not fit in an int. The bug is reachable from the command line: a very large <i>&minus;proxy_pass</i> password to openssl s_client reaches the path, with GOST accepting such passwords when supplied through an environment variable. The fix pattern mirrors CVE-2021-23840, and carries branch labels for master, 4.0 and 4.1.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <figure>
+      <svg viewBox="0 0 300 46" style="width:100%;height:auto;display:block" role="img" aria-label="CVSS severity ledger showing 9.8 of 10">
+        <defs>
+          <pattern id="hatchR" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+            <rect width="5" height="5" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="5" stroke="#7a1f1f" stroke-width="2"/>
+          </pattern>
+        </defs>
+        <text x="0" y="10" font-size="10" letter-spacing="2" fill="#3d352a">CVSS LEDGER &middot; CRITICAL BAND &#8805; 9.0</text>
+        <rect x="0.5" y="16" width="284" height="15" fill="url(#hatchR)" stroke="#191510" stroke-width="0.75"/>
+        <line x1="261" y1="13" x2="261" y2="34" stroke="#191510" stroke-width="1"/>
+        <text x="264" y="27" font-size="10" font-weight="700" fill="#7a1f1f">9.8</text>
+        <text x="0" y="43" font-size="9" fill="#3d352a">0</text>
+        <text x="145" y="43" font-size="9" fill="#3d352a" text-anchor="middle">5</text>
+        <text x="290" y="43" font-size="9" fill="#3d352a" text-anchor="end">10</text>
+      </svg>
+      <figcaption>The reported severity on the standard 0&ndash;10 CVSS scale. <span class="cr">github.com</span></figcaption>
+    </figure>
+    <p>The reachability question ran through the thread. One programmer's quick read puts the malfunctioning inputs above roughly 1.5&nbsp;GB &mdash; &ldquo;EVP_EncodeBlock is a function that encodes base64,&rdquo; he noted &mdash; and a concern quoted from review holds that callers casting the return value to size_t unchecked may mishandle the new &minus;1. Whether the 9.8 describes an exposed socket or an obscure path depends, as one reader put it, on which OpenSSL you run: several suspected only the 4.x series is affected.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50569226">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Practical Tech Corner</span></div>
+    <div class="kicker">Tools Desk</div>
+    <h2 class="headline">MIT posts &ldquo;How to CAD Almost Anything&rdquo; free, from mugs to Saturn V rockets</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 312 pts</b> &middot; 102 cmts</span></div>
+    <p class="first">MIT OpenCourseWare has published RES.16-002, &ldquo;How to CAD Almost Anything,&rdquo; a non-credit workshop by instructor Andy G. Eskenazi of the Aeronautics and Astronautics department that teaches computer-aided design through reverse engineering &mdash; a mug, a bottle, a Saturn V rocket, jet-engine blades, a crash-test dummy &mdash; rather than by following engineering drawings. Materials cover Solidworks, Creo, Fusion, Inventor, Onshape and NX, each with companion video playlists.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>Readers mostly traded learning paths: one linked the direct lecture playlist; another noted the course stops short of photo-to-3D and AI-assisted workflows that now exist alongside it; a third credited a free YouTube series for teaching him Solidworks end to end.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+
+    <div class="kicker" style="margin-top:8px">Tools Desk</div>
+    <h2 class="headline">PostgreSQL 19 ships REPACK, read-your-writes standbys, sequence replication</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 276 pts</b> &middot; 14 cmts</span></div>
+    <p class="first">PostgreSQL 19, released November 19, adds a REPACK command that reclaims disk space and reorganizes tables, with a CONCURRENTLY mode that does not block reads or writes; a WAIT command for read-your-writes consistency on standbys; logical replication that can be enabled without a restart when wal_level is replica; and, at last, replication of sequence values. Autovacuum now works indexes in parallel, I/O workers scale automatically, and RADIUS support is gone &mdash; its UDP transport judged unfixably insecure.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>The thread was brief and warm. One database administrator asked whether this is the rare .0 release safe to install before .1 &mdash; the notes themselves list the incompatibilities to check first.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+
+    <div class="kicker" style="margin-top:8px">Tools Desk</div>
+    <h2 class="headline">FFmpeg 9.1 &ldquo;Gauss&rdquo; adds ASTC textures and a reworked AAC encoder</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 204 pts</b> &middot; 28 cmts</span></div>
+    <p class="first">FFmpeg 9.1, codenamed &ldquo;Gauss,&rdquo; adds ASTC texture encoding and decoding via libastcenc with KTX 1.0 container support, an extensively improved AAC encoder, an APV Vulkan encoder, an iTerm2 inline-image muxer, LCEVC payload handling, and a new graph-based bitstream filtering API &mdash; per the changelog posted in the release thread by the maintainer of the project's Windows builds. Source is on ffmpeg.org; the project distributes code only.<sup class="cite"><a href="#src19">[19]</a><a href="#src20">[20]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50569998">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>The Exchange</span></div>
+    <div class="pullquote">&ldquo;Neither result describes our own universe directly, and neither has practical applications, but both contribute to a long-running theoretical effort to understand how quantum mechanics and relativity fit together.&rdquo;
+      <span class="attr">&mdash; Anthropic's research post, quoted by a reader in the black-hole thread</span>
+    </div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories chosen</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>8</td></tr>
+        <tr><td>Follow-ups returning</td><td>2</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>3,512</td></tr>
+        <tr><td>Combined comments</td><td>1,619</td></tr>
+        <tr><td>Most-discussed story</td><td>278 cmts</td></tr>
+        <tr><td>Biggest mover</td><td>+510 pts</td></tr>
+      </table>
+    </div>
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p>WANTED: one day off from patching servers. Serious inquiries within the OpenSSL thread.</p>
+      <p>FREE COURSE: CAD almost anything, mug to Saturn V, six toolchains included, no credit offered &mdash; MIT OpenCourseWare.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Day's Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" style="width:100%;height:auto;display:block" role="img" aria-label="Bar chart of the ten stories by points">
+      <defs>
+        <pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <line class="grid" x1="58" y1="6" x2="58" y2="344"/>
+      <line class="grid" x1="116" y1="6" x2="116" y2="344"/>
+      <line class="grid" x1="173" y1="6" x2="173" y2="344"/>
+      <line class="grid" x1="231" y1="6" x2="231" y2="344"/>
+      <line class="grid" x1="289" y1="6" x2="289" y2="344"/>
+      <line class="grid" x1="347" y1="6" x2="347" y2="344"/>
+      <line class="grid" x1="404" y1="6" x2="404" y2="344"/>
+      <line class="grid" x1="462" y1="6" x2="462" y2="344"/>
+      <line class="grid" x1="520" y1="6" x2="520" y2="344"/>
+      <!-- bars -->
+      <rect x="0.5" y="22"  width="473" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="56"  width="299" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="90"  width="180" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="124" width="177" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="158" width="164" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="192" width="159" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="226" width="159" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="260" width="152" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="294" width="148" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="328" width="118" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0" y1="352" x2="520" y2="352"/>
+      <!-- tick labels -->
+      <text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text>
+      <text x="58" y="366" font-size="11" fill="#3d352a" text-anchor="middle">100</text>
+      <text x="116" y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="173" y="366" font-size="11" fill="#3d352a" text-anchor="middle">300</text>
+      <text x="231" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="289" y="366" font-size="11" fill="#3d352a" text-anchor="middle">500</text>
+      <text x="347" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text>
+      <text x="404" y="366" font-size="11" fill="#3d352a" text-anchor="middle">700</text>
+      <text x="462" y="366" font-size="11" fill="#3d352a" text-anchor="middle">800</text>
+      <text x="520" y="366" font-size="11" fill="#3d352a" text-anchor="middle">900</text>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18">Pancreatic cancer virus trial</text>
+      <text class="barlabel" x="0" y="52">Claude black-hole proofs</text>
+      <text class="barlabel" x="0" y="86">MIT CAD course</text>
+      <text class="barlabel" x="0" y="120">OpenSSL EVP_EncodeBlock</text>
+      <text class="barlabel" x="0" y="154">I can tell you wrote this &#8224;</text>
+      <text class="barlabel" x="0" y="188">PostgreSQL 19</text>
+      <text class="barlabel" x="0" y="222">Frostbite CPU</text>
+      <text class="barlabel" x="0" y="256">Pete Warden local AI</text>
+      <text class="barlabel" x="0" y="290">Cruise sulphur oxide</text>
+      <text class="barlabel" x="0" y="324">FFmpeg 9.1 &lsquo;Gauss&rsquo;</text>
+      <!-- values -->
+      <text class="barval" x="480" y="34" font-weight="700">818 &#9733; &middot; 141 cmts</text>
+      <text class="barval" x="306" y="68">518 &middot; 243</text>
+      <text class="barval" x="187" y="102">312 &middot; 102</text>
+      <text class="barval" x="184" y="136">306 &middot; 254</text>
+      <text class="barval" x="171" y="170">283 &middot; 278</text>
+      <text class="barval" x="166" y="204">276 &middot; 14</text>
+      <text class="barval" x="166" y="238">275 &middot; 184</text>
+      <text class="barval" x="159" y="272">263 &middot; 230</text>
+      <text class="barval" x="155" y="306">257 &middot; 145</text>
+      <text class="barval" x="125" y="340">204 &middot; 28</text>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">&#9733; = points &middot; cmts = comments &middot; &#8224; most-discussed story of the day &middot; red hatch would mark Apple coverage (none today)</text>
+    </svg>
+    </figure>
+  </div>
+  <div class="cell">
+    <div class="section-label"><span>The Day in One Line</span></div>
+    <p class="first">The day's biggest mover was a three-patient cancer trial up 510 points since yesterday evening; the day's biggest argument &mdash; 278 comments &mdash; was over who actually wrote the coursework.</p>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>&ldquo;Solves two open problems.&rdquo;</b> Anthropic's own post bounds the result: &ldquo;Neither result describes our own universe directly, and neither has practical applications.&rdquo; The proofs hold in simplified model universes; the headline verb is exact for the mathematics and narrower than it sounds for physics.</p>
+      <p><b>&ldquo;Ten times more sulphur oxide than all of Europe's cars (2019).&rdquo;</b> The Transport &amp; Environment analysis measures 2017 emissions and was published in 2019. As the thread's most-cited correction notes, the IMO's 2020 cap cut marine fuel sulphur from 3.5% to 0.5% &mdash; the multiple is a pre-cap snapshot, not a current measurement.</p>
+      <p><b>CVSS 9.8, precisely.</b> The rated overflow sits in EVP_EncodeBlock(), a base64 helper; one programmer's reading puts failing inputs above roughly 1.5&nbsp;GB, and the fix returns &minus;1 rather than repairing a common path. The score prices the worst case, not the typical deployment.</p>
+      <p><b>&ldquo;4.59&times; performance-per-watt.&rdquo;</b> Frostbite's multiple is measured against a dual-issue, in-order core &mdash; a modest baseline &mdash; on 25 workloads, 15 held back until final evaluation. It is not a comparison against a flagship out-of-order core.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher's Note</div>
+  <p>A follow-up leads: the pancreatic-cancer virus trial returned at 818 points, up 510 since yesterday evening's edition, with Claude's black-hole proofs back up 223. Eight fresh stories fill the rest of the page; every source loaded, and five photographs arrived with them.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">&ldquo;Pancreatic cancer halted by virus injection in three patients,&rdquo; New Scientist, <a href="https://www.newscientist.com/article/2528235-pancreatic-cancer-halted-by-virus-injection-in-three-patients/">newscientist.com</a></li>
+    <li data-n="[2]" id="src2">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50563066">news.ycombinator.com/item?id=50563066</a></li>
+    <li data-n="[3]" id="src3">&ldquo;Claude solves two open problems in the physics of black holes,&rdquo; Anthropic, <a href="https://www.anthropic.com/research/claude-black-hole-physics">anthropic.com</a></li>
+    <li data-n="[4]" id="src4">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50563148">news.ycombinator.com/item?id=50563148</a></li>
+    <li data-n="[5]" id="src5">&ldquo;Introducing Frostbite,&rdquo; Architect Labs, <a href="https://architectlabs.com/blog/frostbite">architectlabs.com</a></li>
+    <li data-n="[6]" id="src6">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50572503">news.ycombinator.com/item?id=50572503</a></li>
+    <li data-n="[7]" id="src7">&ldquo;&lsquo;I can tell you wrote this yourself,&rsquo;&rdquo; Em's Blog, <a href="https://em-online.bearblog.dev/i-can-tell-you-wrote-this-yourself/">em-online.bearblog.dev</a></li>
+    <li data-n="[8]" id="src8">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50571189">news.ycombinator.com/item?id=50571189</a></li>
+    <li data-n="[9]" id="src9">&ldquo;One corporation to pollute them all,&rdquo; Ecohustler, <a href="https://ecohustler.com/article/one-corporation-to-pollute-them-all/">ecohustler.com</a></li>
+    <li data-n="[10]" id="src10">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50572116">news.ycombinator.com/item?id=50572116</a></li>
+    <li data-n="[11]" id="src11">&ldquo;Why AI Wants to Be Local&rdquo; &mdash; Pete Warden with Ben Lorica, The Data Exchange, <a href="https://thedataexchange.media/pete-warden-moonshine/">thedataexchange.media</a></li>
+    <li data-n="[12]" id="src12">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50561508">news.ycombinator.com/item?id=50561508</a></li>
+    <li data-n="[13]" id="src13">Pull request #33652, openssl/openssl, <a href="https://github.com/openssl/openssl/pull/33652">github.com</a></li>
+    <li data-n="[14]" id="src14">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50569226">news.ycombinator.com/item?id=50569226</a></li>
+    <li data-n="[15]" id="src15">RES.16-002 &ldquo;How to CAD Almost Anything,&rdquo; MIT OpenCourseWare, <a href="https://ocw.mit.edu/courses/res-16-002-how-to-cad-almost-anything-january-iap-2024/">ocw.mit.edu</a></li>
+    <li data-n="[16]" id="src16">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50528119">news.ycombinator.com/item?id=50528119</a></li>
+    <li data-n="[17]" id="src17">PostgreSQL 19 release notes, <a href="https://www.postgresql.org/docs/release/19.0/">postgresql.org</a></li>
+    <li data-n="[18]" id="src18">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50569890">news.ycombinator.com/item?id=50569890</a></li>
+    <li data-n="[19]" id="src19">FFmpeg download page, <a href="https://ffmpeg.org/download.html#release_9.1">ffmpeg.org</a></li>
+    <li data-n="[20]" id="src20">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50569998">news.ycombinator.com/item?id=50569998</a></li>
+  </ol>
+  <p class="method">Method: compiled at 14:00 UTC (08:00 US Central) on Friday, November 20, 2026, from the Hacker News front page via the Algolia search API &mdash; 30 candidates returned against 50 requested. Ten stories were chosen by snapshot score after excluding every item covered in the previous four editions (about 48 hours); two returned as Follow-ups under the +40%-and-+150-point rule (pancreatic-cancer trial, +510; Claude black-hole proofs, +223). No story required the digest and no second wire was needed. Points and comments are snapshot values and will drift. Photographs are each source's own preview images, compressed for delivery.</p>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <div>The Hacker Herald &mdash; Typeset from the Hacker News front page</div>
+  <div>&#10087; Printed on 100% recycled bandwidth &#10087;</div>
+  <div><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</div>
+</footer>
+
+</body>
+</html>

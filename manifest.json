@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-20-morning",
+      "date": "2026-11-20",
+      "label": "Morning",
+      "snapshot_utc": "14:00",
+      "items": [
+        {
+          "id": 50563066,
+          "title": "Pancreatic cancer halted by virus injection in three patients",
+          "score": 818,
+          "comments": 141
+        },
+        {
+          "id": 50563148,
+          "title": "Claude solves two open problems in the physics of black holes",
+          "score": 518,
+          "comments": 243
+        },
+        {
+          "id": 50528119,
+          "title": "How to CAD Almost Anything",
+          "score": 312,
+          "comments": 102
+        },
+        {
+          "id": 50569226,
+          "title": "OpenSSL: Buffer overflow in EVP_EncodeBlock() (CVE-2026-121481, CVSS 9.8)",
+          "score": 306,
+          "comments": 254
+        },
+        {
+          "id": 50571189,
+          "title": "\"I can tell you wrote this yourself\"",
+          "score": 283,
+          "comments": 278
+        },
+        {
+          "id": 50569890,
+          "title": "PostgreSQL 19",
+          "score": 276,
+          "comments": 14
+        },
+        {
+          "id": 50572503,
+          "title": "Frostbite: A new CPU architecture discovered, designed and verified by AI",
+          "score": 275,
+          "comments": 184
+        },
+        {
+          "id": 50561508,
+          "title": "Pete Warden on local AI, open models, voice interfaces, the future of hardware",
+          "score": 263,
+          "comments": 230
+        },
+        {
+          "id": 50572116,
+          "title": "Carnival Cruises emits ten times more sulphur oxide than all of Europe's cars (2019)",
+          "score": 257,
+          "comments": 145
+        },
+        {
+          "id": 50569998,
+          "title": "FFmpeg 9.1 'Gauss'",
+          "score": 204,
+          "comments": 28
+        }
+      ]
+    },
+    {
       "folder": "2026-11-19-afternoon",
       "date": "2026-11-19",
       "label": "Afternoon",
@@ -113,13 +181,13 @@
         },
         {
           "id": 50556533,
-          "title": "15M web servers on one VM – smoltcp, DPDK, AF_XDP",
+          "title": "15M web servers on one VM \u2013 smoltcp, DPDK, AF_XDP",
           "score": 246,
           "comments": 28
         },
         {
           "id": 50556287,
-          "title": "Ruby2ßhell: Pre-authentication RCE on stock Rails",
+          "title": "Ruby2\u00dfhell: Pre-authentication RCE on stock Rails",
           "score": 237,
           "comments": 92
         },
@@ -181,7 +249,7 @@
         },
         {
           "id": 50546914,
-          "title": "The Cambridge Dictionary has named ‘human’ as the Word of the Year 2026",
+          "title": "The Cambridge Dictionary has named \u2018human\u2019 as the Word of the Year 2026",
           "score": 203,
           "comments": 156
         },
@@ -213,7 +281,7 @@
       "items": [
         {
           "id": 50535230,
-          "title": "GPT‑6.2 Astra and Sol",
+          "title": "GPT\u20116.2 Astra and Sol",
           "score": 1302,
           "comments": 813
         },
@@ -255,7 +323,7 @@
         },
         {
           "id": 50536813,
-          "title": "350 years ago, Ole Rømer discovered that light has a finite speed",
+          "title": "350 years ago, Ole R\u00f8mer discovered that light has a finite speed",
           "score": 362,
           "comments": 119
         },
@@ -287,7 +355,7 @@
         },
         {
           "id": 50535230,
-          "title": "GPT‑6.2 Astra and Sol",
+          "title": "GPT\u20116.2 Astra and Sol",
           "score": 906,
           "comments": 545
         },
@@ -361,7 +429,7 @@
         },
         {
           "id": 50519354,
-          "title": "Frame – 31.5\" color ePaper display",
+          "title": "Frame \u2013 31.5\" color ePaper display",
           "score": 469,
           "comments": 322
         },
@@ -435,7 +503,7 @@
         },
         {
           "id": 50517488,
-          "title": "Many of Amazon’s Black Friday and Cyber Monday “deals” offered no savings",
+          "title": "Many of Amazon\u2019s Black Friday and Cyber Monday \u201cdeals\u201d offered no savings",
           "score": 744,
           "comments": 460
         },
@@ -465,7 +533,7 @@
         },
         {
           "id": 50519354,
-          "title": "Frame – 31.5\" color ePaper display",
+          "title": "Frame \u2013 31.5\" color ePaper display",
           "score": 221,
           "comments": 135
         },
@@ -545,7 +613,7 @@
         },
         {
           "id": 50509308,
-          "title": "A short explainer on how El Niño works [video]",
+          "title": "A short explainer on how El Ni\u00f1o works [video]",
           "score": 263,
           "comments": 141
         },
@@ -589,7 +657,7 @@
         },
         {
           "id": 50486748,
-          "title": "AI unlocks Gödel's notebooks, said to contain hundreds of proved theorems",
+          "title": "AI unlocks G\u00f6del's notebooks, said to contain hundreds of proved theorems",
           "score": 258,
           "comments": 75
         },
@@ -1189,7 +1257,7 @@
         },
         {
           "id": 50418176,
-          "title": "KetchUp – Open-source SketchUp alternative built with Rust and WebGPU",
+          "title": "KetchUp \u2013 Open-source SketchUp alternative built with Rust and WebGPU",
           "score": 594,
           "comments": 176
         },
@@ -1603,7 +1671,7 @@
         },
         {
           "id": 50346755,
-          "title": "Show HN: HackerTV – HN's most-recommended Youtube videos as 24/7 TV channels",
+          "title": "Show HN: HackerTV \u2013 HN's most-recommended Youtube videos as 24/7 TV channels",
           "score": 374,
           "comments": 71
         },
@@ -1727,7 +1795,7 @@
         },
         {
           "id": 50340088,
-          "title": "Show HN: Subvocal – Talk to your computer without making noise",
+          "title": "Show HN: Subvocal \u2013 Talk to your computer without making noise",
           "score": 754,
           "comments": 355
         },
@@ -1763,7 +1831,7 @@
         },
         {
           "id": 50348962,
-          "title": "Nvidia – open-source auto-ontology",
+          "title": "Nvidia \u2013 open-source auto-ontology",
           "score": 177,
           "comments": 57
         },
@@ -1801,7 +1869,7 @@
         },
         {
           "id": 50340088,
-          "title": "Show HN: Subvocal – Talk to your computer without making noise",
+          "title": "Show HN: Subvocal \u2013 Talk to your computer without making noise",
           "score": 412,
           "comments": 237
         },
@@ -1837,7 +1905,7 @@
         },
         {
           "id": 50339221,
-          "title": "Show HN: Warsaw in voxels – An interactive 3D map of the city centre",
+          "title": "Show HN: Warsaw in voxels \u2013 An interactive 3D map of the city centre",
           "score": 171,
           "comments": 31
         },
@@ -1863,7 +1931,7 @@
         },
         {
           "id": 50326821,
-          "title": "Show HN: HackerBooks – HackerTube, but for books mentioned on HN",
+          "title": "Show HN: HackerBooks \u2013 HackerTube, but for books mentioned on HN",
           "score": 1610,
           "comments": 265
         },
@@ -1893,13 +1961,13 @@
         },
         {
           "id": 50333339,
-          "title": "Show HN: Wikihack – HackerTube, but for Wikipedia articles mentioned on HN",
+          "title": "Show HN: Wikihack \u2013 HackerTube, but for Wikipedia articles mentioned on HN",
           "score": 293,
           "comments": 89
         },
         {
           "id": 50325253,
-          "title": "Show HN: OmniDiff – Opensource, super fast, content aware Git difftool, in Rust",
+          "title": "Show HN: OmniDiff \u2013 Opensource, super fast, content aware Git difftool, in Rust",
           "score": 274,
           "comments": 81
         },
@@ -1943,7 +2011,7 @@
         },
         {
           "id": 50301854,
-          "title": "Azure's Weakest Link – Five Full Cross-Tenant Compromises",
+          "title": "Azure's Weakest Link \u2013 Five Full Cross-Tenant Compromises",
           "score": 231,
           "comments": 40
         },
@@ -1982,74 +2050,6 @@
           "title": "Show HN: A working Nintendo in ~1GB of Qwen weights",
           "score": 138,
           "comments": 95
-        }
-      ]
-    },
-    {
-      "folder": "2026-10-30-morning",
-      "date": "2026-10-30",
-      "label": "Morning",
-      "snapshot_utc": "13:01",
-      "items": [
-        {
-          "id": 50289418,
-          "title": "We're releasing the weights of Mistral Large 4",
-          "score": 1556,
-          "comments": 408
-        },
-        {
-          "id": 50296470,
-          "title": "Binance-hacker-1029 – $5.6B stolen from Binance",
-          "score": 1522,
-          "comments": 991
-        },
-        {
-          "id": 50290177,
-          "title": "LLM Voice",
-          "score": 513,
-          "comments": 269
-        },
-        {
-          "id": 50302334,
-          "title": "Backdoors in official Claude Code extensions",
-          "score": 342,
-          "comments": 93
-        },
-        {
-          "id": 50296486,
-          "title": "We ran AI agent swarms in Minecraft and Mindustry",
-          "score": 324,
-          "comments": 125
-        },
-        {
-          "id": 50298436,
-          "title": "Herdr has released native app",
-          "score": 257,
-          "comments": 172
-        },
-        {
-          "id": 50295450,
-          "title": "A tiny world model running games on a Raspberry Pi Pico 2 W",
-          "score": 237,
-          "comments": 16
-        },
-        {
-          "id": 50301983,
-          "title": "Anthropic hacked to deliver remote access trojan",
-          "score": 230,
-          "comments": 40
-        },
-        {
-          "id": 50286197,
-          "title": "What we know so far about Spain train crash",
-          "score": 226,
-          "comments": 406
-        },
-        {
-          "id": 50301462,
-          "title": "elect.horse",
-          "score": 199,
-          "comments": 42
         }
       ]
     }
