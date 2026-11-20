@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-20-afternoon",
+      "date": "2026-11-20",
+      "label": "Afternoon",
+      "snapshot_utc": "22:00",
+      "items": [
+        {
+          "id": 50574968,
+          "title": "Levent Alpöge claims proof of the Generalized Riemann Hypothesis [pdf]",
+          "score": 2132,
+          "comments": 1457
+        },
+        {
+          "id": 50579568,
+          "title": "Hurried Announcement: Alessandro Masullo GRH",
+          "score": 1059,
+          "comments": 502
+        },
+        {
+          "id": 50572503,
+          "title": "Frostbite: A new CPU architecture discovered, designed and verified by AI",
+          "score": 577,
+          "comments": 307
+        },
+        {
+          "id": 50572355,
+          "title": "If you can't explain something in simple terms, you don't understand it (2017)",
+          "score": 572,
+          "comments": 277
+        },
+        {
+          "id": 50572348,
+          "title": "Signal Is Serious About Protecting Your Privacy",
+          "score": 428,
+          "comments": 272
+        },
+        {
+          "id": 50581260,
+          "title": "Inkling 2 Mini",
+          "score": 330,
+          "comments": 45
+        },
+        {
+          "id": 50577265,
+          "title": "Language Models Can Rewrite Their Own Weights",
+          "score": 290,
+          "comments": 97
+        },
+        {
+          "id": 50578358,
+          "title": "Unforced Navier-Stokes Singularity and the Generalized Riemann Hypothesis",
+          "score": 241,
+          "comments": 68
+        },
+        {
+          "id": 50576232,
+          "title": "Finite-time blow-up for the Navier–Stokes equations",
+          "score": 221,
+          "comments": 71
+        },
+        {
+          "id": 50577901,
+          "title": "Google Workers Tell Their Employer Not to Punish Schools That Don't Want AI",
+          "score": 209,
+          "comments": 144
+        }
+      ]
+    },
+    {
       "folder": "2026-11-20-morning",
       "date": "2026-11-20",
       "label": "Morning",
@@ -181,13 +249,13 @@
         },
         {
           "id": 50556533,
-          "title": "15M web servers on one VM \u2013 smoltcp, DPDK, AF_XDP",
+          "title": "15M web servers on one VM – smoltcp, DPDK, AF_XDP",
           "score": 246,
           "comments": 28
         },
         {
           "id": 50556287,
-          "title": "Ruby2\u00dfhell: Pre-authentication RCE on stock Rails",
+          "title": "Ruby2ßhell: Pre-authentication RCE on stock Rails",
           "score": 237,
           "comments": 92
         },
@@ -249,7 +317,7 @@
         },
         {
           "id": 50546914,
-          "title": "The Cambridge Dictionary has named \u2018human\u2019 as the Word of the Year 2026",
+          "title": "The Cambridge Dictionary has named ‘human’ as the Word of the Year 2026",
           "score": 203,
           "comments": 156
         },
@@ -281,7 +349,7 @@
       "items": [
         {
           "id": 50535230,
-          "title": "GPT\u20116.2 Astra and Sol",
+          "title": "GPT‑6.2 Astra and Sol",
           "score": 1302,
           "comments": 813
         },
@@ -323,7 +391,7 @@
         },
         {
           "id": 50536813,
-          "title": "350 years ago, Ole R\u00f8mer discovered that light has a finite speed",
+          "title": "350 years ago, Ole Rømer discovered that light has a finite speed",
           "score": 362,
           "comments": 119
         },
@@ -355,7 +423,7 @@
         },
         {
           "id": 50535230,
-          "title": "GPT\u20116.2 Astra and Sol",
+          "title": "GPT‑6.2 Astra and Sol",
           "score": 906,
           "comments": 545
         },
@@ -429,7 +497,7 @@
         },
         {
           "id": 50519354,
-          "title": "Frame \u2013 31.5\" color ePaper display",
+          "title": "Frame – 31.5\" color ePaper display",
           "score": 469,
           "comments": 322
         },
@@ -503,7 +571,7 @@
         },
         {
           "id": 50517488,
-          "title": "Many of Amazon\u2019s Black Friday and Cyber Monday \u201cdeals\u201d offered no savings",
+          "title": "Many of Amazon’s Black Friday and Cyber Monday “deals” offered no savings",
           "score": 744,
           "comments": 460
         },
@@ -533,7 +601,7 @@
         },
         {
           "id": 50519354,
-          "title": "Frame \u2013 31.5\" color ePaper display",
+          "title": "Frame – 31.5\" color ePaper display",
           "score": 221,
           "comments": 135
         },
@@ -613,7 +681,7 @@
         },
         {
           "id": 50509308,
-          "title": "A short explainer on how El Ni\u00f1o works [video]",
+          "title": "A short explainer on how El Niño works [video]",
           "score": 263,
           "comments": 141
         },
@@ -657,7 +725,7 @@
         },
         {
           "id": 50486748,
-          "title": "AI unlocks G\u00f6del's notebooks, said to contain hundreds of proved theorems",
+          "title": "AI unlocks Gödel's notebooks, said to contain hundreds of proved theorems",
           "score": 258,
           "comments": 75
         },
@@ -1257,7 +1325,7 @@
         },
         {
           "id": 50418176,
-          "title": "KetchUp \u2013 Open-source SketchUp alternative built with Rust and WebGPU",
+          "title": "KetchUp – Open-source SketchUp alternative built with Rust and WebGPU",
           "score": 594,
           "comments": 176
         },
@@ -1671,7 +1739,7 @@
         },
         {
           "id": 50346755,
-          "title": "Show HN: HackerTV \u2013 HN's most-recommended Youtube videos as 24/7 TV channels",
+          "title": "Show HN: HackerTV – HN's most-recommended Youtube videos as 24/7 TV channels",
           "score": 374,
           "comments": 71
         },
@@ -1795,7 +1863,7 @@
         },
         {
           "id": 50340088,
-          "title": "Show HN: Subvocal \u2013 Talk to your computer without making noise",
+          "title": "Show HN: Subvocal – Talk to your computer without making noise",
           "score": 754,
           "comments": 355
         },
@@ -1831,7 +1899,7 @@
         },
         {
           "id": 50348962,
-          "title": "Nvidia \u2013 open-source auto-ontology",
+          "title": "Nvidia – open-source auto-ontology",
           "score": 177,
           "comments": 57
         },
@@ -1869,7 +1937,7 @@
         },
         {
           "id": 50340088,
-          "title": "Show HN: Subvocal \u2013 Talk to your computer without making noise",
+          "title": "Show HN: Subvocal – Talk to your computer without making noise",
           "score": 412,
           "comments": 237
         },
@@ -1905,7 +1973,7 @@
         },
         {
           "id": 50339221,
-          "title": "Show HN: Warsaw in voxels \u2013 An interactive 3D map of the city centre",
+          "title": "Show HN: Warsaw in voxels – An interactive 3D map of the city centre",
           "score": 171,
           "comments": 31
         },
@@ -1931,7 +1999,7 @@
         },
         {
           "id": 50326821,
-          "title": "Show HN: HackerBooks \u2013 HackerTube, but for books mentioned on HN",
+          "title": "Show HN: HackerBooks – HackerTube, but for books mentioned on HN",
           "score": 1610,
           "comments": 265
         },
@@ -1961,13 +2029,13 @@
         },
         {
           "id": 50333339,
-          "title": "Show HN: Wikihack \u2013 HackerTube, but for Wikipedia articles mentioned on HN",
+          "title": "Show HN: Wikihack – HackerTube, but for Wikipedia articles mentioned on HN",
           "score": 293,
           "comments": 89
         },
         {
           "id": 50325253,
-          "title": "Show HN: OmniDiff \u2013 Opensource, super fast, content aware Git difftool, in Rust",
+          "title": "Show HN: OmniDiff – Opensource, super fast, content aware Git difftool, in Rust",
           "score": 274,
           "comments": 81
         },
@@ -1982,74 +2050,6 @@
           "title": "Radiation Map of the World",
           "score": 192,
           "comments": 53
-        }
-      ]
-    },
-    {
-      "folder": "2026-10-30-afternoon",
-      "date": "2026-10-30",
-      "label": "Afternoon",
-      "snapshot_utc": "21:00",
-      "items": [
-        {
-          "id": 50300683,
-          "title": "Backdoor in Claude Code for VS Code extension on the Cursor Marketplace",
-          "score": 625,
-          "comments": 415
-        },
-        {
-          "id": 50305693,
-          "title": "AI isn't replacing SREs, it's deskilling them",
-          "score": 392,
-          "comments": 300
-        },
-        {
-          "id": 50305025,
-          "title": "Northflank Breached",
-          "score": 275,
-          "comments": 195
-        },
-        {
-          "id": 50301854,
-          "title": "Azure's Weakest Link \u2013 Five Full Cross-Tenant Compromises",
-          "score": 231,
-          "comments": 40
-        },
-        {
-          "id": 50307219,
-          "title": "Anthropic may not secure investment-grade rating after IPO, Blackstone says",
-          "score": 187,
-          "comments": 133
-        },
-        {
-          "id": 50305573,
-          "title": "The federated code forge",
-          "score": 169,
-          "comments": 59
-        },
-        {
-          "id": 50305480,
-          "title": "Blockchain intelligence firms link North Korea to $6.3B hack on Binance",
-          "score": 160,
-          "comments": 104
-        },
-        {
-          "id": 50307190,
-          "title": "My favourite PowerMac is a Nintendo Wii",
-          "score": 152,
-          "comments": 40
-        },
-        {
-          "id": 50305637,
-          "title": "Florilegium: Procedural Flowers in LaTeX",
-          "score": 149,
-          "comments": 25
-        },
-        {
-          "id": 50306442,
-          "title": "Show HN: A working Nintendo in ~1GB of Qwen weights",
-          "score": 138,
-          "comments": 95
         }
       ]
     }

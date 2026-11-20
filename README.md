@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-11-20 · Afternoon | 2026-11-20 ≈22:00 | Number theorist claims a proof of the Riemann Hypothesis, written with Claude and formalized in Lean | 2,132 | 1,457 | [editions/2026-11-20-afternoon/](editions/2026-11-20-afternoon/) |
 | 2026-11-20 · Morning | 2026-11-20 ≈14:00 | Engineered virus halts pancreatic tumours in three patients at a tenth of the planned dose | 818 | 141 | [editions/2026-11-20-morning/](editions/2026-11-20-morning/) |
 | 2026-11-19 · Afternoon | 2026-11-19 ≈22:00 | Anthropic's $2T Nasdaq debut leads; tribunal forces UK silence on Apple order to end | 680 | 1,199 | [editions/2026-11-19-afternoon/](editions/2026-11-19-afternoon/) |
 | 2026-11-19 · Morning | 2026-11-19 ≈14:00 | NGINX's patched HTTP/2 RCEs hold the front page on day two | 1,444 | 609 | [editions/2026-11-19-morning/](editions/2026-11-19-morning/) |
