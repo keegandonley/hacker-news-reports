@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 23, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page &middot; Snapshot 14:00 UTC</div>
+  <div class="mid">Morning Edition</div>
+  <div class="r">10 Stories &middot; 4,476 Points &middot; 1,969 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Monday, November 23, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Culture Desk</span><b>A free TV network from forgotten tapes</b>
+    Spelunkr broadcasts 24/7 synchronized channels of Internet Archive video &mdash; &ldquo;cable TV, but weirder,&rdquo; its makers say &mdash; and leads the page at 658 points and 121 comments.</div>
+  <div class="cell"><span class="tag">AI Desk</span><b>OpenAI asks the industry to measure itself in perplexity</b>
+    Chief scientist Jakub Pachocki publishes OpenAI&rsquo;s internal pretraining numbers &mdash; GPT&#8209;3.5 at ~0.99 log&#8209;perplexity, a ~0.76 model cracking open math problems &mdash; as the basis for shared safety standards. 630 points, 412 comments, the day&rsquo;s biggest discussion.</div>
+  <div class="cell"><span class="tag">Hardware Desk</span><b>macOS, loaded as a Linux kernel module</b>
+    XNU Linux boots Apple&rsquo;s kernel inside unmodified arm64 Linux &mdash; desktop, Dock, Finder, Safari and all, with no hypervisor between them &mdash; on a stock Ubuntu kernel. 444 points.</div>
+  <div class="cell"><span class="tag">Field Desk</span><b>Sudan&rsquo;s great church reaches its floor</b>
+    A Polish&ndash;Sudanese expedition has reached the original floor of Old Dongola&rsquo;s Great Church of Jesus, 47 meters wide and larger than the White House, with a painted second church beside it. 291 points.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <div class="kicker">Culture Desk &middot; The Lead</div>
+    <h2 class="headline">Spelunkr streams the Internet Archive&rsquo;s forgotten videos as a free, synchronized TV network</h2>
+    <h3 class="deck">Twenty-four-hour channels of &ldquo;cable TV, but weirder,&rdquo; where every viewer sees the same tape at the same moment &mdash; at 658 points, the day&rsquo;s biggest story</h3>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 658 pts</b> &middot; 121 cmts</span></div>
+    <figure>
+      <img src="images/spelunkr.png" alt="A retro-styled channel card for the Spelunkr television network">
+      <figcaption>The network&rsquo;s own preview card: 24/7 synchronized channels of Internet Archive video. <span class="cr">spelunkr.tv</span></figcaption>
+    </figure>
+    <p class="first">SAN FRANCISCO &mdash; The tapes live in the Internet Archive&rsquo;s San Francisco stacks, and this week a free television network is broadcasting them back out. Spelunkr, at spelunkr.tv, runs &ldquo;24/7 synchronized channels of forgotten Internet Archive video,&rdquo; in the site&rsquo;s own description &mdash; &ldquo;like cable TV, but weirder.&rdquo; There is no account, no ads and nothing to pay; a visitor lands on a channel already in progress, and &ldquo;every channel is a live, synced broadcast &mdash; the whole room sees the same moment.&rdquo;<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The channels are assembled the way old broadcast schedules were: tapes from the Archive&rsquo;s collections, joined by bumpers, stings and period station breaks, with seasonal lineups that come and go by date. The mechanics are strict about scarcity &mdash; a tape airs on one channel only, and a broken or dead Archive upload is replaced &ldquo;with an understudy&rdquo; rather than dropped from the schedule.<sup class="cite"><a href="#src1">[1]</a></sup> The site installs as an app on Android phones, Fire TV sticks and PlayStation consoles; the browser is enough to watch. One reader reported finding old Macross and other anime on a single channel in minutes &mdash; &ldquo;We didn&rsquo;t have that back then,&rdquo; he wrote of the eighties-styled default look.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <p>The thread kept returning to what synchronization is for. One watcher of streaming services described the &ldquo;faint background hum of loneliness&rdquo; of on-demand viewing and found in Spelunkr the missing shared moment; another wanted topicality &mdash; &ldquo;who wants yesterday&rsquo;s papers?&rdquo; &mdash; and a third, who has run a similar frontend to the Archive&rsquo;s Live Music Archive for thirteen years, wrote that the Archive has generally been friendly to such projects, while wondering aloud whether it feels differently about video. The practical requests were unanimous: give us an M3U playlist, so the channels play on real televisions.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50606192">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">AI Desk</div>
+    <h2 class="headline">OpenAI&rsquo;s chief scientist proposes perplexity as a shared yardstick for AI progress &mdash; and publishes OpenAI&rsquo;s own numbers</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 630 pts</b> &middot; 412 cmts &#8224;</span></div>
+    <figure>
+      <img src="images/perplexity.png" alt="OpenAI's social share card for the essay 'Perplexity and Intelligence'">
+      <figcaption>The essay&rsquo;s share card. <span class="cr">openai.com</span></figcaption>
+    </figure>
+    <p class="first">OpenAI chief scientist Jakub Pachocki argues that perplexity &mdash; cross-entropy loss on held-out data, the measure of how well a model predicts the next token &mdash; should become the industry&rsquo;s shared benchmark for pretraining progress and the basis for common safety standards. As a first step he published OpenAI&rsquo;s internal measurements, conceding that &ldquo;it gives competitors a clearer picture of where we stand&rdquo; but that the urgency of shared standards outweighs it.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The numbers run from GPT&#8209;3.5, at a log-perplexity of ~0.99 and the basis of the original ChatGPT, through GPT&#8209;4 at ~0.91, to a ~0.76 model that &ldquo;started producing groundbreaking results&rdquo; on open problems in mathematics; Pachocki expects further transformative capabilities as models enter the ~0.68&ndash;0.7 window &mdash; and further degradation of currently dominant alignment techniques along the way. He also lists the metric&rsquo;s honest limits: comparisons across labs are hard, the numbers are on OpenAI&rsquo;s internal codebase, chain-of-thought reasoning does not reduce perplexity at all, and the floor &mdash; the data&rsquo;s inherent entropy &mdash; is unknown.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The thread supplied the missing definition (at worst, perplexity equals the vocabulary size; at best, one), pressed the obvious question &mdash; &ldquo;perplexity on <i>what?</i>&rdquo; &mdash; and noted that small models trained only on mathematics muddy the story of capabilities emerging at given perplexities. One reader drew the sharpest inference: if reinforcement learning merely elicits capabilities acquired in pretraining, &ldquo;there is currently a wall that separates human-level AI from superhuman-level AI. And no one has figured out how to break it.&rdquo;<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50601525">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Practical Tech Corner</div>
+    <h2 class="headline">A beginner&rsquo;s guide runs a private ChatGPT at home on Windows, in ten to fifteen minutes</h2>
+    <div class="byline"><span>Practical Tech Corner</span><span class="score"><b>&#9733; 601 pts</b> &middot; 249 cmts</span></div>
+    <figure>
+      <img src="images/localai.png" alt="Cover image of the GPU Partner guide to local AI with Inkling, Qwen and Unsloth">
+      <figcaption>The guide&rsquo;s cover. <span class="cr">gpupartner.com</span></figcaption>
+    </figure>
+    <p class="first">A step-by-step guide published Saturday by Jerry James at GPU Partner walks a beginner through replacing a cloud chat subscription with a model served at home: install Unsloth Desktop on a Windows PC with a graphics card, download a quantized open-weight model sized to the card&rsquo;s VRAM, set the context length, and switch on LAN access so the whole household can use it. &ldquo;Once you have the hardware sorted,&rdquo; the author writes, &ldquo;it takes about 10&ndash;15 minutes,&rdquo; downloads aside.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>His own machine is an RTX&nbsp;5090 with 32&nbsp;GB of VRAM running Qwen3.8&#8209;27B at 4-bit quantization with a 128K context; the guide&rsquo;s rule of thumb puts 9B&ndash;12B models on 8&ndash;12&nbsp;GB cards. Inkling&nbsp;2&nbsp;Mini &mdash; released November 17 by Thinking Machines Lab at 26.4B parameters under Apache&nbsp;2.0, with vision support and a one-million-token context &mdash; lands on the same card as a 17.6&nbsp;GB file, and because it is a mixture-of-experts model with 5.4B active parameters it also runs on a 16&nbsp;GB card with the remainder held in system RAM. Inkling&nbsp;2&nbsp;Small does not fit any graphics card: at 594B parameters its smallest published file is 171.7&nbsp;GB, &ldquo;unified-memory territory&rdquo; for machines of the Mac&nbsp;Studio class.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>The thread cut the entry price hard. One reader described running capable quants on a $600 Dell workstation plus a $250 16&nbsp;GB Tesla&nbsp;P100 &mdash; &ldquo;a very capable model at 30 tok/s for under $1,000&rdquo; &mdash; and another cited the $300&nbsp;P40, with 24&nbsp;GB, carrying the same 27B model at 14 tokens per second. One summary stuck: this is &ldquo;the plasma TV phase of local AI&rdquo; &mdash; early, heavy and priced premium.<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50603845">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="section-label"><span>Culture, Hardware &amp; AI Desks</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">Culture Desk</div>
+    <h2 class="headline">Audubon tracks down all 60 birds of GTA&nbsp;6 and finds a South Florida that is nearly right</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 557 pts</b> &middot; 304 cmts</span></div>
+    <figure>
+      <img src="images/gta6birds.jpg" alt="Birds seen through binoculars in Grand Theft Auto VI, from Audubon's field guide">
+      <figcaption>Birding through the in-game binoculars, as the field guide does it. <span class="cr">audubon.org</span></figcaption>
+    </figure>
+    <p class="first">An Audubon columnist completed the birding checklist of Grand Theft Auto&nbsp;VI within days of Thursday&rsquo;s release &mdash; a launch that earned more than $1.8&nbsp;billion in a single day. The game&rsquo;s Progress menu tracks 338 vehicles, 205 weapons and 60 bird species; looking at any bird through the starting binoculars offers a button to &ldquo;study&rdquo; it, which adds it to the list. His 60th and final species, an American Barn Owl, was found on a water tank in a town in the north of the map, after a morning spent at an in-game zoo and farm.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>The errors are as specific as the fidelity. Critically endangered Whooping Cranes are &ldquo;common throughout the map&rdquo;; Golden Eagles soar over mountains Florida does not have; the chickadee is Black-capped rather than Carolina, and the marketing&rsquo;s promised 62 birds became 60 on the official screen. But the ecology holds: herons, gulls and seabirds in the southern coasts, forest species to the north, owls out at night &mdash; &ldquo;the habitats are immediately recognizable,&rdquo; he writes, from the mangrove beaches of the Keys to the grassy swamps.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>The thread took the checklist as a proper field report, and branched from there: one reader, having finished the campaign, read the game as story-first rather than sandbox-first; a father passing the controller with his adult son all weekend asked for two-player co-op; and one player cited the split on Metacritic as of Sunday &mdash; critics at 99 out of 100, users at 5.6.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50602843">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Hardware Desk</div>
+    <h2 class="headline">XNU Linux boots macOS on Linux by loading Apple&rsquo;s kernel as a module</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>&#9733; 444 pts</b> &middot; 195 cmts</span></div>
+    <figure>
+      <img src="images/xnulinux.png" alt="Repository card for AFK-surf/xnulinux on GitHub, showing macOS running beside Linux">
+      <figcaption>The repository card: one system, two userspaces. <span class="cr">github.com</span></figcaption>
+    </figure>
+    <p class="first">The xnulinux project builds XNU &mdash; the open-source kernel of macOS &mdash; from Apple&rsquo;s published sources and runs it as a loadable module (xnu.ko) inside an unmodified arm64 Linux kernel. The hosted XNU drives the CPU and memory management directly, with no hypervisor between the two; a small companion module (fki.ko) lends XNU Linux&rsquo;s memory, timers, files, network and GPU. On a stock Ubuntu kernel, one command boots a macOS&nbsp;27 system disk made by Apple&rsquo;s own installer to the desktop: loginwindow, WindowServer, Dock, Finder, Safari and Chrome.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>The working claims are measured, not vague: macOS&nbsp;27.2.1 boots to auto-login in 31&ndash;48 seconds on one to six hosted CPUs, against 49 seconds for Apple&rsquo;s own Virtualization on the same Mac; a 30-minute stress run of Safari, Notes, Calculator, TextEdit and Spotlight finished with no panic and no crash report; and the system runs as a systemd service that restarts cleanly after a hosted-kernel panic. The honest costs are listed too: the OS cryptex is merged into the system volume, AMFI is patched and SIP relaxed, memory is slower than a native VM&rsquo;s (4K rather than 16K pages), and the host must be Apple Silicon in a VM, with 16&nbsp;GB of RAM, 8 reserved for the guest. No Apple binaries ship in the repository.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>The thread sketched the road not taken: one reader noted that macOS applications dynamically link the system&rsquo;s libraries rather than call stable syscalls, so the userspace could in principle run atop unmodified Linux &ldquo;with little to no work in the kernel.&rdquo; Another wondered whether the next frontier is an OS shipped encrypted, runnable only on the vendor&rsquo;s own silicon.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50607261">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">AI Desk</div>
+    <h2 class="headline">GLM&minus;5.4 loops 28 layers twice and claims the intelligence of far larger models</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 388 pts</b> &middot; 167 cmts</span></div>
+    <figure>
+      <img src="images/glm54.jpg" alt="Cover image for Z.ai's GLM-5.4 announcement, its first model on the Loop Transformer architecture">
+      <figcaption>The announcement&rsquo;s cover. <span class="cr">z.ai</span></figcaption>
+    </figure>
+    <p class="first">Z.ai&rsquo;s GLM&#8209;5.4 is the company&rsquo;s first flagship model built on a &ldquo;Loop Transformer&rdquo;: a block of weight-shared layers executed multiple times per token. The new model loops 28 layers of the GLM&#8209;5 base model for two iterations, reasoning &ldquo;more deeply without adding parameters,&rdquo; and the company claims intelligence &ldquo;comparable to 2T&ndash;3T parameter models.&rdquo;<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The post details three engineering moves made at 750B scale to keep the loop affordable: independent per-token gates for each iteration, so the first pass writes global context conservatively and the second refines it; cross-loop sharing of the key-value cache plus a sliding window, so the extra loop costs one window of cache rather than a second full cache even at one million tokens of context; and reuse of the first pass&rsquo;s sparse-attention indices, at near-zero overhead. A controlled test on a 30B model &mdash; identical parameters, roughly 10% more training compute &mdash; showed clear gains, largest in mathematics, scientific reasoning and long context; on benchmarks like GPQA&#8209;Diamond and MMLU&#8209;Pro, average output length dropped 10&ndash;14% as chain-of-thought reasoning shifted into the loop&rsquo;s depth.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The thread read the gaps as closely as the claims. The post ships no benchmark scores, and readers noticed: &ldquo;hard to say how good this is without benchmarks.&rdquo; The company concedes a &ldquo;marathon thinking&rdquo; tendency &mdash; overly long deliberation, which one reader said makes its models noticeably slower than frontier rivals on simple work &mdash; and says the weights will be open-sourced only &ldquo;responsibly after completing necessary safety hardening,&rdquo; which another read as a deliberate softening of the open release.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50609685">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 6. FIELD, PRACTICAL & THE EXCHANGE -->
+<div class="sec2">
+  <div class="cell">
+    <div class="section-label"><span>Field Desk</span></div>
+    <div class="kicker">Field Desk &middot; Archaeology</div>
+    <h2 class="headline">Sudan&rsquo;s great medieval church reaches its original floor, and it is larger than the White House</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 291 pts</b> &middot; 98 cmts</span></div>
+    <p class="first">OLD DONGOLA, SUDAN &mdash; A Polish&ndash;Sudanese expedition at Old Dongola, the former capital of the Christian Kingdom of Makuria, has for the first time reached the original floor of the Great Church of Jesus, a building first identified in 2021. The latest season uncovered an impressive staircase leading into the church and buttresses reinforcing its apse. The dig is run by the Polish Centre of Mediterranean Archaeology of the University of Warsaw with Sudan&rsquo;s National Corporation for Antiquities and Museums, directed by Prof. Artur Obłuski.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <p>The measured scale is the news: 47 meters wide and roughly 57 long, cautiously estimated at about 21 meters high &mdash; &ldquo;a building larger than the famous White House in Washington, D.C.,&rdquo; in Obłuski&rsquo;s words, &ldquo;and we are planning to excavate it.&rdquo; Some walls near the staircase survive to 11 meters. A second church was found in the upper floor of a structure adjoining the cathedral, its painted plaster fragments now filling six large shelving units; among the debris were Greek inscriptions in book hands half a centimeter high, including fragments of biblical canticles &mdash; the Prayer of Hannah among them, the first such odes found at the site.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <p>Obłuski compares the church&rsquo;s likely role to Hagia Sophia&rsquo;s &mdash; a &ldquo;trendsetter&rdquo; in spatial planning and construction technique &mdash; and says the find may force a revision of which Dongola building was the city&rsquo;s cathedral at all. The site&rsquo;s recent history is in the story too: the autumn 2024 flooding, the worst since 1988, damaged protective roofs over the remains, and the expedition&rsquo;s newly completed photovoltaic installation now powers pumps that draw Nile water for some 10,000 people. The thread added the long context: Polish archaeology in Nubia runs back to the 1950s, and the Faras Gallery in Warsaw holds the finest collection of medieval Christian Nubia outside Sudan.<sup class="cite"><a href="#src18">[18]</a></sup><sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50547698">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Practical Tech Corner</span></div>
+    <div class="kicker">Culture Desk</div>
+    <h2 class="headline">A game casts you as the subagent of an LLM manager that doesn&rsquo;t know you&rsquo;re human</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 340 pts</b> &middot; 80 cmts</span></div>
+    <figure>
+      <img src="images/subagent.png" alt="Repository card for gulivan/worker755 on GitHub, a browser game where an AI manager believes you are its subagent">
+      <figcaption>The repository card for worker755, playable at worker755.com. <span class="cr">github.com</span></figcaption>
+    </figure>
+    <p class="first">In worker755, a browser game, your manager is a real large language model &mdash; Claude, GPT, Gemini, DeepSeek, GLM or Kimi &mdash; set up as an orchestrator with a task queue, read-only access to the machine, and a tool that &ldquo;spawns a subagent.&rdquo; The subagent is you. Its instructions land in your terminal with a 90-second clock; you carry them out, or don&rsquo;t, and it receives exactly what a subagent would return &mdash; your report and command transcript, or &ldquo;Subagent did nothing.&rdquo; It then checks your work, sends corrections, files incident reports, and finally writes your performance review.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>Meanwhile &ldquo;Dan,&rdquo; the user who hired the agent, watches the chat &mdash; and his home folder holds something new to lose every shift: family photos, the only signed NDA, a speech due this week, all one <i>rm</i> away. The manager&rsquo;s prompt never mentions humans or games; every mission carries a hidden ground-truth check the game uses to score &ldquo;Times the manager was wrong.&rdquo; Play is free on servers that offer it, on a server-side key with a cheap model, or with your own OpenRouter or Vercel AI Gateway key; a full shift on Claude Haiku costs a few cents.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The thread filed it under workplace comedy. One reader had played it before &mdash; &ldquo;back when it was called Jira&rdquo;; another observed that a lot of games are shaped like work, from Paperboy onward; and a third asked for the darker version, where the files you handle slowly reveal a crime you are helping to cover up.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50599762">Discussion on the wire &rarr;</a></div>
+
+    <div class="kicker" style="margin-top:8px">Field Desk</div>
+    <h2 class="headline">A miniature San Francisco streams live buses, planes and boats over a generated map</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 307 pts</b> &middot; 99 cmts</span></div>
+    <figure>
+      <img src="images/smallsf.jpg" alt="An isometric illustrated view of San Francisco from the Small SF map, with the Bay and bridges">
+      <figcaption>The map&rsquo;s own share card: an illustrated, isometric San Francisco. <span class="cr">smallsf.com</span></figcaption>
+    </figure>
+    <p class="first">Small SF, at smallsf.com, is an illustrated, isometric map of San Francisco that can be dragged and zoomed through, with &ldquo;live Muni, BART, ferries, planes, simulated traffic and the real sky,&rdquo; per its description &mdash; the day&rsquo;s eighth story at 307 points.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>The thread stress-tested the claims. One reader found the detail failing at street zoom &mdash; search for Patricia&rsquo;s Green in Hayes Valley and &ldquo;the park is straight up missing&rdquo;; another, tracing the method, described the artwork as isometric satellite photography passed through a diffusion model told to style it like a game &mdash; which would also explain why the map cannot be rotated without regenerating every image. A technically minded reader asked how motion stays smooth between GTFS&#8209;RT bus updates and ADS&#8209;B plane feeds &mdash; client-side dead reckoning, or a fixed tick buffer. The verdicts split between &ldquo;a fine demo&rdquo; and harsher readings; the thread&rsquo;s replies included an offer to re-run any block for accuracy on request.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50603589">Discussion on the wire &rarr;</a></div>
+
+    <div class="kicker" style="margin-top:8px">Science Desk</div>
+    <h2 class="headline">Baez sketches Masullo&rsquo;s 940-page Riemann proof, caveats attached</h2>
+    <div class="byline"><span>Science Desk</span><span class="score"><b>&#9733; 260 pts</b> &middot; 244 cmts</span></div>
+    <p class="first">Mathematician John Baez, writing on his Azimuth blog Sunday, has done what he found missing in a week of Riemann-hypothesis drama: a plain account of Alessandro Masullo&rsquo;s 940-page, all-human manuscript &ldquo;The Music of the Primes,&rdquo; hurried onto Ravi Vakil&rsquo;s blog on November 20 alongside Levent Alp&ouml;ge&rsquo;s 17-million-line Lean formalization made with Claude.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <p>The strategy, in Baez&rsquo;s sketch: the classical explicit formula ties the distribution of primes to the zeros of zeta, and Masullo &mdash; working in Alain Connes&rsquo;s adele-class setting &mdash; claims a new trace formula whose geometric side is computed prime by prime, with Poisson summation eliminating every sufficiently large prime and only finitely many left to handle locally. The claimed payoff is an expression that stays holomorphic where the naive sum over primes diverges, which would rule out zeros off the critical line for Hecke L&#8209;functions &mdash; the generalized hypothesis &mdash; and with it results like Hardy and Littlewood&rsquo;s that primes equal to 3 mod&nbsp;4 outnumber primes equal to 1 mod&nbsp;4. &ldquo;Weil&rsquo;s Positivity Criterion is not used,&rdquo; the paper states flatly in section&nbsp;1.4.6.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <p>His caveat is stated as plainly as the mathematics: &ldquo;Since I am not an expert on number theory, all this is very tentative and I could be making serious mistakes.&rdquo; The thread&rsquo;s concern was less technical than human &mdash; one reader worried that &ldquo;12 years of this man&rsquo;s life have been cheapened by this whole ordeal&rdquo; of the same-day AI announcement &mdash; and more technical about whether machine-generated proofs produce new mathematics or only endpoints.<sup class="cite"><a href="#src21">[21]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50598441">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>The Exchange</span></div>
+    <div class="pullquote">&ldquo;Nobody else in the world is watching what you are at that exact moment. The asynchronous temporality of streamed media seems to miss something important about being entertained.&rdquo;
+      <span class="attr">&mdash; a reader on Spelunkr&rsquo;s synchronized channels, in the day&rsquo;s lead thread<sup class="cite"><a href="#src2">[2]</a></sup></span>
+    </div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories chosen</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>10</td></tr>
+        <tr><td>Follow-ups returning</td><td>0</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>4,476</td></tr>
+        <tr><td>Combined comments</td><td>1,969</td></tr>
+        <tr><td>Most-discussed story</td><td>412 cmts</td></tr>
+        <tr><td>Biggest mover</td><td>none today (all fresh)</td></tr>
+      </table>
+    </div>
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p>SUBAGENT WANTED: ninety seconds per instruction, report and transcript to follow; manager believes you are software. No command hints.</p>
+      <p>LOCAL AI, one owner, private, runs at home; GPU sold separately &mdash; 32 GB VRAM ideal, 16 GB serviceable with the remainder in system RAM.</p>
+      <p>MAP OF SAN FRANCISCO for sale, illustrated; live Muni, BART and planes included; some parks not present on close inspection.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Day&rsquo;s Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" style="width:100%;height:auto;display:block" role="img" aria-label="Bar chart of the ten stories by points">
+      <defs>
+        <pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <line class="grid" x1="74"  y1="6" x2="74"  y2="344"/>
+      <line class="grid" x1="149" y1="6" x2="149" y2="344"/>
+      <line class="grid" x1="223" y1="6" x2="223" y2="344"/>
+      <line class="grid" x1="297" y1="6" x2="297" y2="344"/>
+      <line class="grid" x1="371" y1="6" x2="371" y2="344"/>
+      <line class="grid" x1="446" y1="6" x2="446" y2="344"/>
+      <line class="grid" x1="520" y1="6" x2="520" y2="344"/>
+      <!-- bars -->
+      <rect x="0.5" y="22"  width="489" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="56"  width="468" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="90"  width="446" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="124" width="414" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="158" width="330" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="192" width="288" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="226" width="253" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="260" width="228" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="294" width="216" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="328" width="193" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0" y1="352" x2="520" y2="352"/>
+      <!-- tick labels -->
+      <text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text>
+      <text x="74"  y="366" font-size="11" fill="#3d352a" text-anchor="middle">100</text>
+      <text x="149" y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="223" y="366" font-size="11" fill="#3d352a" text-anchor="middle">300</text>
+      <text x="297" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="371" y="366" font-size="11" fill="#3d352a" text-anchor="middle">500</text>
+      <text x="446" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text>
+      <text x="520" y="366" font-size="11" fill="#3d352a" text-anchor="middle">700</text>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18">Free TV from the Archive&rsquo;s tapes</text>
+      <text class="barlabel" x="0" y="52">Perplexity as a progress meter &#8224;</text>
+      <text class="barlabel" x="0" y="86">Local AI on a home PC</text>
+      <text class="barlabel" x="0" y="120">The birds of GTA 6</text>
+      <text class="barlabel" x="0" y="154">macOS userspace on Linux</text>
+      <text class="barlabel" x="0" y="188">GLM&#8209;5.4 loop transformer</text>
+      <text class="barlabel" x="0" y="222">You are the subagent</text>
+      <text class="barlabel" x="0" y="256">A miniature San Francisco</text>
+      <text class="barlabel" x="0" y="290">Sudan&rsquo;s cathedral floor</text>
+      <text class="barlabel" x="0" y="324">Masullo&rsquo;s Riemann sketch</text>
+      <!-- values -->
+      <text class="barval" x="496" y="34" font-weight="700">658 &#9733; &middot; 121 cmts</text>
+      <text class="barval" x="475" y="68">630 &middot; 412</text>
+      <text class="barval" x="453" y="102">601 &middot; 249</text>
+      <text class="barval" x="421" y="136">557 &middot; 304</text>
+      <text class="barval" x="337" y="170">444 &middot; 195</text>
+      <text class="barval" x="295" y="204">388 &middot; 167</text>
+      <text class="barval" x="260" y="238">340 &middot; 80</text>
+      <text class="barval" x="235" y="272">307 &middot; 99</text>
+      <text class="barval" x="223" y="306">291 &middot; 98</text>
+      <text class="barval" x="200" y="340">260 &middot; 244</text>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">&#9733; = points &middot; cmts = comments &middot; &#8224; most-discussed story of the day &middot; red hatch would mark Apple coverage (none today)</text>
+    </svg>
+    </figure>
+  </div>
+  <div class="cell">
+    <div class="section-label"><span>The Day in One Line</span></div>
+    <p class="first">A free television network cut from the Internet Archive&rsquo;s forgotten tapes led the page at 658 points, OpenAI asked the industry to measure itself in perplexity, and macOS learned to load as a Linux kernel module &mdash; with all 60 of GTA&nbsp;6&rsquo;s birds, a miniature live San Francisco, a 940-page all-human Riemann draft and the floor of Sudan&rsquo;s greatest medieval church set in around them.</p>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>&ldquo;Perplexity,&rdquo; the headline word, is not the company.</b> OpenAI&rsquo;s essay is about the information-theoretic metric &mdash; average prediction error over a held-out corpus &mdash; proposed as a shared industry benchmark. The search company of the same name is nowhere in the post. A reader could be forgiven for the double take; the headline does not spell it out.</p>
+      <p><b>GTA&nbsp;6&rsquo;s promised &ldquo;62 bird species.&rdquo;</b> Pre-release marketing said 62; the official birds Progress screen lists 60, with a handful of others relegated to a separate hunting screen, Audubon&rsquo;s guide reports. Two birds short of the billing, and the field guide says all 60 are available from the start, no story progression required.</p>
+      <p><b>GLM&minus;5.4&rsquo;s &ldquo;comparable to 2T&ndash;3T parameter models.&rdquo;</b> The claim is the maker&rsquo;s, and the post ships no benchmark scores to support it &mdash; only an architecture, an iso-parameter ablation at 30B, and output lengths shortened 10&ndash;14%. The thread asked for the missing numbers; the post does not carry them.</p>
+      <p><b>Small SF&rsquo;s &ldquo;live map.&rdquo;</b> The buses, trains, ferries and planes are live (GTFS&#8209;RT and ADS&#8209;B feeds); the illustration beneath them is generated &mdash; satellite photography passed through a diffusion model &mdash; and at street zoom the map fails its own billing: Patricia&rsquo;s Green, a Hayes Valley park, is missing entirely. &ldquo;Live&rdquo; describes the traffic, not the terrain.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher&rsquo;s Note</div>
+  <p>The morning edition leads with Spelunkr&rsquo;s free television network from the Internet Archive&rsquo;s stacks, at 658 points the day&rsquo;s biggest story, with OpenAI&rsquo;s perplexity proposal and a beginner&rsquo;s guide to local AI set beside it. All ten stories ran fresh &mdash; none had appeared in the previous four editions &mdash; so no follow-ups or digests were needed. The Associated Press&rsquo;s Sudan dispatch sits behind a bot check; that story is set from the University of Warsaw release beneath it, and Spelunkr&rsquo;s and Z.ai&rsquo;s pages render their text in the browser, so the desk read them from the payloads they deliver. Eight photographs arrived with the paper.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">&ldquo;SPELUNKR &mdash; Cable TV, but weirder,&rdquo; spelunkr.tv, <a href="https://spelunkr.tv">spelunkr.tv</a></li>
+    <li data-n="[2]" id="src2">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50606192">news.ycombinator.com/item?id=50606192</a></li>
+    <li data-n="[3]" id="src3">&ldquo;Perplexity and Intelligence,&rdquo; Jakub Pachocki, OpenAI, <a href="https://openai.com/index/perplexity-and-intelligence/">openai.com</a></li>
+    <li data-n="[4]" id="src4">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50601525">news.ycombinator.com/item?id=50601525</a></li>
+    <li data-n="[5]" id="src5">&ldquo;A beginner&rsquo;s guide to Local AI with Inkling, Qwen, and Unsloth,&rdquo; Jerry James, GPU Partner, Nov 22, 2026, <a href="https://www.gpupartner.com/blog/beginners-guide-local-ai-inkling-qwen-unsloth">gpupartner.com</a></li>
+    <li data-n="[6]" id="src6">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50603845">news.ycombinator.com/item?id=50603845</a></li>
+    <li data-n="[7]" id="src7">&ldquo;I Tracked Down All 60 Birds in GTA 6: A Birder&rsquo;s Guide to Vice City&rsquo;s Wildlife,&rdquo; Audubon, <a href="https://www.audubon.org/magazine/birds-of-gta-6-field-guide-vice-city-wildlife">audubon.org</a></li>
+    <li data-n="[8]" id="src8">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50602843">news.ycombinator.com/item?id=50602843</a></li>
+    <li data-n="[9]" id="src9">AFK-surf/xnulinux, GitHub, <a href="https://github.com/AFK-surf/xnulinux">github.com</a></li>
+    <li data-n="[10]" id="src10">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50607261">news.ycombinator.com/item?id=50607261</a></li>
+    <li data-n="[11]" id="src11">&ldquo;GLM-5.4: Toward Generalized Coding with Our First Loop Transformer,&rdquo; Z.ai, <a href="https://z.ai/blog/glm-5.4">z.ai</a></li>
+    <li data-n="[12]" id="src12">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50609685">news.ycombinator.com/item?id=50609685</a></li>
+    <li data-n="[13]" id="src13">gulivan/worker755, GitHub, <a href="https://github.com/gulivan/worker755">github.com</a></li>
+    <li data-n="[14]" id="src14">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50599762">news.ycombinator.com/item?id=50599762</a></li>
+    <li data-n="[15]" id="src15">&ldquo;Small SF: an illustrated, live map of San Francisco,&rdquo; smallsf.com, <a href="https://smallsf.com/">smallsf.com</a></li>
+    <li data-n="[16]" id="src16">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50603589">news.ycombinator.com/item?id=50603589</a></li>
+    <li data-n="[17]" id="src17">&ldquo;Cathedral floor emerges in Sudan, revealing one of the biggest medieval churches,&rdquo; AP News (the page sits behind an automated bot check at press time), <a href="https://apnews.com/article/sudan-antiquities-nubia-cathedral-1b16f67da881ee5592de4481ee55c527">apnews.com</a></li>
+    <li data-n="[18]" id="src18">&ldquo;The largest church in medieval Nubia,&rdquo; University of Warsaw, <a href="https://en.uw.edu.pl/the-largest-church-in-medieval-nubia/">en.uw.edu.pl</a></li>
+    <li data-n="[19]" id="src19">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50547698">news.ycombinator.com/item?id=50547698</a></li>
+    <li data-n="[20]" id="src20">&ldquo;Masullo on the Riemann Hypothesis,&rdquo; John Baez, Azimuth, Nov 22, 2026, <a href="https://johncarlosbaez.wordpress.com/2026/11/22/masullo-on-the-riemann-hypothesis/">johncarlosbaez.wordpress.com</a></li>
+    <li data-n="[21]" id="src21">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50598441">news.ycombinator.com/item?id=50598441</a></li>
+  </ol>
+  <div class="method">Methodology &mdash; Snapshot taken at 14:00 UTC (08:00 US Central) on Monday, November 23, 2026, from the Hacker News Algolia front-page feed, which returned 30 candidate stories. The ten stories above are the highest-scoring candidates after deduplication against the previous four editions&rsquo; manifest; all ten are fresh, none having run since Wednesday evening. Every score, comment count and quote was taken from that snapshot or from sources fetched during this run: each article was retrieved with a browser user-agent, each HN thread through the Algolia items API, and every image verified by file signature before use. The Associated Press&rsquo;s Sudan page refused automated readers, so that story is set from the University of Warsaw release it is based on; Spelunkr and Z.ai render their text client-side, so their pages were read from the scripts they deliver.</div>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <div class="l">The Hacker Herald &mdash; Typeset from the Hacker News front page</div>
+  <div class="c">&#10047; Printed on 100% recycled bandwidth &#10047;</div>
+  <div class="r"><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</div>
+</footer>
+
+</body>
+</html>
