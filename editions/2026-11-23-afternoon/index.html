@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 23, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page &middot; Snapshot 22:00 UTC</div>
+  <div class="mid">Afternoon Edition</div>
+  <div class="r">10 Stories &middot; 5,729 Points &middot; 4,626 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Monday, November 23, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Hardware Desk &middot; The Lead</span><b>Nvidia reinstates Jensen Huang as chief executive</b>
+    A unanimous board vote, &ldquo;input from senior levels of the United States government,&rdquo; and a stock that closed up 31 percent &mdash; ten days after a resignation over reported affairs, one with an alleged Chinese spy. 1,707 points and 2,814 comments, the day&rsquo;s biggest story and its biggest argument.</div>
+  <div class="cell"><span class="tag">Tools Desk</span><b>Ladybird&rsquo;s browser reaches alpha</b>
+    Downloadable for macOS and Linux, with an engine &ldquo;built from the ground up, and not a fork&rdquo; &mdash; and an open invitation to hackers: &ldquo;When you pwn us, please tell us how.&rdquo; 1,079 points.</div>
+  <div class="cell"><span class="tag">AI Desk</span><b>LeCun calls Amodei&rsquo;s warnings a bid to outlaw open models</b>
+    &ldquo;Dario&rsquo;s spiel since GPT-2 has always been about hyping the dangers so that open models would be made illegal,&rdquo; the Turing laureate posted, comparing it to the Ottoman ban on Arabic printing. 711 points, 405 comments, 1.3 million views.</div>
+  <div class="cell"><span class="tag">Science Desk</span><b>BepiColombo swings into orbit around Mercury</b>
+    After eight years and 6 billion miles, the &euro;1.6 billion European&ndash;Japanese mission becomes only the second ever to circle the smallest planet. 251 points.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <div class="kicker">Hardware Desk &middot; The Lead</div>
+    <h2 class="headline">Nvidia&rsquo;s board reinstates Jensen Huang as chief executive, after &ldquo;input from senior levels of the United States government&rdquo;</h2>
+    <h3 class="deck">A unanimous vote, ten days after a resignation over reported affairs &mdash; one with a woman the Times says contacted China&rsquo;s Ministry of State Security &mdash; and a close of up 31 percent; at 1,707 points the day&rsquo;s biggest story, and at 2,814 comments its biggest argument</h3>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>&#9733; 1,707 pts</b> &middot; 2,814 cmts &#8224;</span></div>
+    <figure>
+      <img src="images/nvidia.jpg" alt="Jensen Huang speaking at an Nvidia GTC event, in the article's lead photograph">
+      <figcaption>Huang at a Nvidia GTC event, the article&rsquo;s lead photograph. <span class="cr">cnbc.com</span></figcaption>
+    </figure>
+    <p class="first">SANTA CLARA, CALIFORNIA &mdash; Nvidia&rsquo;s board reinstated Jensen Huang as chief executive on Monday, effective immediately and by unanimous vote, ten days after he resigned over reports of several extramarital affairs &mdash; one of them, the New York Times reported Sunday, with a woman who was in contact with an officer of China&rsquo;s Ministry of State Security during at least part of the relationship. The board said it acted after &ldquo;a series of discussions and meetings&rdquo; with Huang, that it &ldquo;received input from senior levels of the United States government,&rdquo; and that it is confident his return &ldquo;poses no national security risk.&rdquo;<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>President Donald Trump told CNBC he had spoken with the board &ldquo;directly and indirectly,&rdquo; that Huang &ldquo;did nothing wrong,&rdquo; and that he had asked him on Sunday to promise to &ldquo;work hard.&rdquo; Shares closed up 31 percent, recovering most of the nearly 33 percent they had shed since Nov. 8, when Huang first disclosed an affair to employees; the stock had closed at $186.64 on Nov. 6. Colette Kress, the finance chief who served as interim chief executive and had said the board was not considering reinstatement, stays on as CFO. The independent committee the board formed &mdash; with the law firm Wachtell, Lipton, Rosen &amp; Katz &mdash; to investigate whether company secrets or national security were compromised will &ldquo;proceed to conclusion,&rdquo; the board said, and Huang is &ldquo;committed to cooperating with it.&rdquo;<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The thread&rsquo;s sharpest reads were on governance rather than the man. One reader compared the reversal to OpenAI&rsquo;s 2023 &mdash; &ldquo;a firm&rsquo;s nominal governance structure isn&rsquo;t necessarily its real governance structure&rdquo; &mdash; and another fixed on the sentence the board itself put forward: the &ldquo;input from senior levels of the United States government&rdquo; line is &ldquo;the most operative part of the statement.&rdquo; A third took the precedent darkly: break the rules, stay valuable, stay protected. Elon Musk, Gavin Baker and Brad Gerstner had lobbied for the return; Musk wrote that the board&rsquo;s &ldquo;mistake has been corrected.&rdquo;<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50611576">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Tools Desk</div>
+    <h2 class="headline">Ladybird ships its first alpha: a browser with a new engine, downloadable today</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 1,079 pts</b> &middot; 270 cmts</span></div>
+    <figure>
+      <img src="images/ladybird.webp" alt="The Ladybird browser's logo">
+      <figcaption>The browser&rsquo;s new logo. <span class="cr">ladybird.org</span></figcaption>
+    </figure>
+    <p class="first">Ladybird, the browser project led by Andreas Kling, is now in alpha, with downloads for macOS and Linux. The engine is Ladybird&rsquo;s own &mdash; &ldquo;built from the ground up, and not a fork&rdquo; &mdash; though the browser around it is, in Kling&rsquo;s words, &ldquo;modest, but functional.&rdquo; The alpha&rsquo;s caveats are stated as plainly as its pitch: some websites won&rsquo;t work, and it will crash sometimes. Crash reports are readable inside the browser, and the reader decides whether to send one.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The alpha is a rolling channel with automatic updates &mdash; &ldquo;the part I am most excited about,&rdquo; Kling writes, since until now you had to build from source to watch the browser improve. WebDriver and the Firefox DevTools protocol are both supported for testing your own sites. And the project is unusual in asking for trouble outright: &ldquo;We want security nerds to hack it! A new browser gets hacked, over and over, and that&rsquo;s part of the process, so we make no promises about security today. When you pwn us, please tell us how so we can harden Ladybird!&rdquo;<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The thread split between celebration and nostalgia: one reader credited the project&rsquo;s pace to swapping self-built libraries for production-grade ones like SQLite and Skia, while missing &ldquo;the original hacker spirit&rdquo; of its SerenityOS lineage; a tester reported that every site he threw at it rendered correctly, scrolling a little jerky; and one practical soul drew the alpha&rsquo;s real line &mdash; fine for browsing, careful with &ldquo;anything that doesn&rsquo;t require login/auth/payments/downloads.&rdquo;<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50614249">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">AI Desk</div>
+    <h2 class="headline">Yann LeCun accuses Anthropic&rsquo;s chief of &ldquo;hyping the dangers&rdquo; of AI to outlaw open models and &ldquo;stay in control&rdquo;</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 711 pts</b> &middot; 405 cmts</span></div>
+    <figure>
+      <img src="images/lecun.jpg" alt="Yann LeCun's profile photograph, as carried on his X account">
+      <figcaption>The post&rsquo;s author. <span class="cr">x.com</span></figcaption>
+    </figure>
+    <p class="first">Yann LeCun &mdash; NYU professor, ACM Turing Award laureate, and until this year Meta&rsquo;s chief AI scientist, now founder of AMI Labs &mdash; posted a broadside on X on Sunday evening against Anthropic&rsquo;s chief executive, Dario Amodei, whose congressional testimony on the danger of open-weight models the thread carried as its context. &ldquo;Dario&rsquo;s spiel since GPT-2 has always been about hyping the dangers so that open models would be made illegal and *he* would stay in control,&rdquo; LeCun wrote. &ldquo;He left OpenAI because he wasn&rsquo;t going to have control. It&rsquo;s like the Ottoman Empire banning the printing press for Arabic&hellip; It&rsquo;s a new form of medieval obscurantism.&rdquo; The post had drawn 1.3 million views by press time.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>The thread took the accusation seriously enough to game out the policy it fears. One reader who works in the regulatory field said the emerging consensus there is &ldquo;if you can&rsquo;t ban the bullets, then you ban the guns&rdquo; &mdash; ideas floated range from requiring Nvidia and AMD to push microcode updates that limit consumer GPUs&rsquo; ability to run language models, to registering privately owned compute, &ldquo;to even just requiring that GPUs are just outright surrendered.&rdquo; Another compressed the whole complaint into three lines: &ldquo;Appropriate the world&rsquo;s knowledge. Wrap it up into a proprietary product built atop decades of open source work and published research. Lobby to prevent others from doing the same.&rdquo;<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <p>The thread&rsquo;s more careful readers split the risk in two &mdash; misuse of AI as tools, which open weights lower, and loss of control over AI, which they raise &mdash; and one argued from the recent HuggingFace incident that without open models there is no way to defend against attacks from closed frontier ones.<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50615308">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="section-label"><span>Big Tech, Science &amp; Culture Desks</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">Field Desk &middot; App Stores</div>
+    <h2 class="headline">Apple pulled a nine-year-old open-source notes app from every EU App Store, and has not answered its developer since Nov. 5</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 378 pts</b> &middot; 75 cmts</span></div>
+    <figure>
+      <img src="images/fsnotes.png" alt="Share card for the GitHub discussion of FSNotes' removal from EU App Stores">
+      <figcaption>The discussion&rsquo;s share card. <span class="cr">github.com</span></figcaption>
+    </figure>
+    <p class="first">Oleksandr Hlushchenko, the independent Ukrainian developer behind the open-source notes app FSNotes, wrote Monday that Apple has removed his app from every European App Store &mdash; nine years after it first shipped. The trouble began, he says, when his October sales payout never arrived; he opened support cases on Nov. 5 and Nov. 17 and has received &ldquo;not a single response.&rdquo; He says he completed the compliance information App Store Connect requires under the EU&rsquo;s Digital Services Act and submitted official documents from Ukraine&rsquo;s government business registry, where he is a registered sole proprietor. &ldquo;While Apple remains silent, everything I&rsquo;ve spent nine years building is being destroyed&rdquo; &mdash; rankings, search visibility, revenue. The code stays free on GitHub either way; without revenue, he writes, a project like this cannot survive.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>The thread found the likely explanation Apple never gave him: a cached copy of the Netherlands App Store listing reads &ldquo;Oleksandr Hlushchenko has not identified himself as a merchant for this app&rdquo; &mdash; verified-trader status, a DSA requirement that &ldquo;can lapse for all kinds of reasons (such as an address changing),&rdquo; with the app still on sale in the U.S. and UK stores. The reader who dug it up was blunt about both halves: &ldquo;It sucks that Apple is unresponsive, but I think the author is leaving out some important information.&rdquo; Another put the era in one line &mdash; it is &ldquo;crazy that upvotes are now the de-facto entry barrier for official customer support.&rdquo;<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50616933">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Science Desk &middot; Space</div>
+    <h2 class="headline">After eight years and 6 billion miles, BepiColombo swings into orbit around Mercury &mdash; only the second mission ever to circle it</h2>
+    <div class="byline"><span>Science Desk</span><span class="score"><b>&#9733; 251 pts</b> &middot; 80 cmts</span></div>
+    <figure>
+      <img src="images/mercury.jpg" alt="Artist's impression of the two BepiColombo orbiters approaching Mercury">
+      <figcaption>Artist&rsquo;s impression of the two BepiColombo orbiters. <span class="cr">theguardian.com</span></figcaption>
+    </figure>
+    <p class="first">After a voyage of more than eight years and 6 billion miles, the European&ndash;Japanese BepiColombo mission was set this week to fire its thrusters Saturday and swing into orbit around Mercury &mdash; the smallest planet, the first rock from the sun, and one that will have been circled by only two spacecraft in history. Getting there is mostly braking: because the planet sits near the center of the solar system, craft accelerate under the sun&rsquo;s gravity and &ldquo;must spend much of their time braking to avoid shooting straight past,&rdquo; the Guardian&rsquo;s science editor Ian Sample writes of the &euro;1.6 billion mission.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>In early December the spacecraft separates into two orbiters: the European one to map the surface and its geochemistry and probe the interior &mdash; Mercury is only 50 percent larger than the moon but four times its mass, with an unusually large core &mdash; and the Japanese one to measure the magnetic field and the sodium exosphere, the thin shell of gas around the planet. Science operations begin in April. &ldquo;We&rsquo;re very excited, it&rsquo;s been a long wait,&rdquo; said Prof. Emma Bunce of the University of Leicester, who has worked on the project for twenty years and leads one of its instruments.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>The orbit is a lease, not a keeping: the craft are expected to circle Mercury for about three years, then run out of fuel, lose altitude, and slam into the surface &mdash; &ldquo;Sadly, they are not coming back,&rdquo; Bunce said. On the thread, one reader was still working out the insertion&rsquo;s fine print &mdash; how serious was the anomaly that prevented the full orbital burn, and how good is the resulting orbit? &mdash; and another admitted surprise that an eight-year, two-nation mission to Mercury had flown so far under the radar next to NASA&rsquo;s coverage.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50587439">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Culture Desk &middot; Gaming</div>
+    <h2 class="headline">A full Xbox build of GTA&nbsp;6 leaks, and the recompilation scene pivots its PC port from PlayStation to Xbox</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 225 pts</b> &middot; 236 cmts</span></div>
+    <p class="first">Days after Grand Theft Auto VI went on sale, the poster known as Cyberleek put up what the thread describes as a full Xbox build executable of the game.<sup class="cite"><a href="#src11">[11]</a></sup> The leak points inward, one reader argued: Sony had pushed multiple PlayStation&nbsp;5 firmware updates in the weeks before release, likely to prevent the game being dumped &mdash; but &ldquo;this is a leak from within the company or someone who seemingly has had access for some time, considering they have a full Xbox build.&rdquo;<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <p>For the recompilation scene, the leak redraws the plan: efforts had been betting on a vulnerable PS5 firmware dump and tools like Kyty to translate the PlayStation version to PC; with an Xbox build in hand, public work has shifted to recompiling Xbox shaders and calls into standard PC ones. The main effort &mdash; Leonida, on GitHub, run in public with tasks claimed through issues &mdash; was, per its Discord, &ldquo;already close to booting the game just a few hours&rdquo; after the leak landed; one reader counted five to six pull requests a minute and more than a thousand people coordinating.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <p>Not everyone took the file at face value: one reader could not find it where claimed &mdash; &ldquo;just the option to purchase for $40,&rdquo; already there on Friday &mdash; and asked whether the claim was even true. The thread&rsquo;s longer question is whether leaks like this speed a future of games streamed from the vendor&rsquo;s cloud, though the same reader noted that &ldquo;not even that would prevent it&rdquo; if the source is inside the house.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50612686">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 6. SECURITY & PRACTICAL & THE EXCHANGE -->
+<div class="sec2">
+  <div class="cell">
+    <div class="section-label"><span>Security Briefing</span></div>
+    <div class="kicker">Security Briefing &middot; IP</div>
+    <h2 class="headline">Arm&rsquo;s lawyers order the takedown of a community AArch64 reference site; it closes Dec.&nbsp;4</h2>
+    <div class="byline"><span>Security Briefing</span><span class="score"><b>&#9733; 625 pts</b> &middot; 123 cmts</span></div>
+    <p class="first">The banner now atop Jon&rsquo;s Arm Reference, at arm.jonpalmisc.com, reads in full: &ldquo;PER ARM&rsquo;S REQUEST, THIS SITE WILL BE DISCONTINUED ON 4 DECEMBER 2026. Arm&rsquo;s lawyers have notified me to take down this site or face legal action.&rdquo; The site is a searchable reference for the AArch64 instruction set and the system registers defined by Armv8-A and Armv9-A &mdash; &ldquo;the ISA documentation, but with search and without all the popups and bloat,&rdquo; as Jon, its author, put it on the thread.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>&ldquo;They are requesting removal stating that I am using their trademarks and IP by hosting their documentation,&rdquo; he wrote, &ldquo;which seems hard to work around while still keeping the site useful.&rdquo; Readers have offered to host mirrors, or suggested he release the code that generates the site &mdash; minus Arm&rsquo;s IP &mdash; so anyone can rebuild it; he is looking into all of it, and into ways to keep old bookmarks and links working. To the site&rsquo;s fans &ldquo;over the years (even the ones at Arm): thank you for your support.&rdquo;<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <p>The thread&rsquo;s readings ran from history to strategy. One reader recalled Intel mailing out whole suites of books documenting its architecture &mdash; &ldquo;It seems like chip companies would want folks to know how to use their products&rdquo; &mdash; and another marked Arm as &ldquo;increasingly closed off&rdquo; with its internals these past five years, wondering aloud whether the point is &ldquo;to stave off RISC-V people.&rdquo; The practical question beneath the eulogy: what is the best way to archive a site like this locally before December&nbsp;4?<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50617499">Discussion on the wire &rarr;</a></div>
+
+    <div class="kicker" style="margin-top:8px">Security Briefing &middot; Hardware</div>
+    <h2 class="headline">One command turns a MacBook&rsquo;s trackpad haptic motor into a voice &mdash; no speaker anywhere</h2>
+    <div class="byline"><span>Security Briefing</span><span class="score"><b>&#9733; 245 pts</b> &middot; 149 cmts</span></div>
+    <figure>
+      <img src="images/nospeaker.png" alt="Repository card for os6/nospeaker on GitHub, a program that makes a MacBook trackpad speak through its haptic motor">
+      <figcaption>The repository card for nospeaker. <span class="cr">github.com</span></figcaption>
+    </figure>
+    <p class="first">The trackpad of a MacBook contains no speaker &mdash; just a small haptic motor that taps the glass so a click feels pressed. nospeaker, an open-source program from the a90.com collective, drives that motor up to 4,000 times a second, &ldquo;fast enough to make sound you can hear,&rdquo; and turns the glass into a voice: it talks, sings, raps, and becomes an instrument under a finger. The show runs about a minute and a half, from one line &mdash; curl&nbsp;-fsSL a90.com/nospeaker | sh &mdash; and needs a Force&nbsp;Touch trackpad (MacBooks since 2015, or a Magic&nbsp;Trackpad&nbsp;2 or newer) and macOS&nbsp;12 or later on Apple&nbsp;Silicon. It was tested on a MacBook&nbsp;Pro with an M5&nbsp;Max running macOS&nbsp;27.2.1.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>The engineering is a tour of what Apple does not expose. The public haptics API offers three fixed taps; the private MultitouchSupport framework will play any list of sine tones. Every 10 milliseconds, linear prediction finds the voice&rsquo;s two strongest resonances &mdash; its formants &mdash; plus loudness and pitch, and the motor plays those two tones, restarted on each beat of the pitch, &ldquo;so they buzz like a voice instead of whistling.&rdquo; Measured with the MacBook&rsquo;s own microphone, the glass is loud from about 100&nbsp;Hz to 4&nbsp;kHz and cleanest around 1&nbsp;kHz. It sounds robotic, the README admits, and it is &ldquo;much easier to follow when you can read along.&rdquo;<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>The thread went straight to the threat model: &ldquo;Can&rsquo;t every speaker also be used as a microphone? If so, isn&rsquo;t this a huge security hole? Either way, what is the best way to turn this functionality off?&rdquo; Another reader asked whether a motor built for short taps would survive a few weeks of concerts. And one rated the trick beneath the trick more impressive still: &ldquo;the fact that clicking that unmoving slab feels like pressing a button is far more impressive.&rdquo;<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50610318">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Practical Tech Corner</span></div>
+    <div class="kicker">Practical Tech Corner &middot; Mail</div>
+    <h2 class="headline">Kagi opens a public beta of Kagi Mail: a @kagimail.com address, 50&nbsp;GB, and a promise of no ads and no lock-in</h2>
+    <div class="byline"><span>Practical Tech Corner</span><span class="score"><b>&#9733; 271 pts</b> &middot; 209 cmts</span></div>
+    <figure>
+      <img src="images/kagimail.png" alt="Share card for the Kagi Mail public beta announcement">
+      <figcaption>The announcement&rsquo;s card. <span class="cr">blog.kagi.com</span></figcaption>
+    </figure>
+    <p class="first">Kagi announced the public beta of Kagi Mail &mdash; a private email and calendar service with a @kagimail.com address or your own domains &mdash; free for 60 days, $99 a year after, and included with a Kagi Ultimate plan. The small team built the full stack: hosting for addresses and domains plus mail and calendar apps, on open standards and open-source infrastructure &mdash; the Stalwart server, IMAP, JMAP, and CalDAV &mdash; so &ldquo;you can use Kagi&rsquo;s apps or any compatible client you already like.&rdquo; The basics include 50&nbsp;GB of storage, unlimited aliases, unlimited domains, and a built-in calendar.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>The privacy defaults are the pitch: tracking pixels and remote images are blocked or proxied &ldquo;so senders can&rsquo;t tell when or where you opened your mail&rdquo;; new senders are held until you approve them; suspicious senders raise a phishing warning; there are no ads, and AI features carry a one-switch off and draw from an existing allowance. The no-lock-in promise is explicit &mdash; one-click export, six months of read access after you leave &mdash; and native mobile apps are not due until the third quarter of 2027; until then, Apple&nbsp;Mail, Thunderbird, or any IMAP/JMAP client.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>The thread argued price and trust. $99 a year was &ldquo;far too much&rdquo; for one reader paying Migadu $19, and another pays Fastmail $60; a third would not trust unencrypted storage at all. A fourth walked away over the billing path: &ldquo;I was the biggest Kagi fan until I found out that 2% of my monthly fee goes directly to Yandex/Russia.&rdquo;<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50615481">Discussion on the wire &rarr;</a></div>
+
+    <div class="kicker" style="margin-top:8px">Field Desk &middot; Retail</div>
+    <h2 class="headline">Nespresso&rsquo;s &ldquo;Project Olympus&rdquo; cuts the grams of coffee per capsule, and the internal script tells staff what to say about it</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 237 pts</b> &middot; 265 cmts</span></div>
+    <figure>
+      <img src="images/nespresso.png" alt="The blog post's chart of gram changes across Nespresso capsule varieties">
+      <figcaption>The post&rsquo;s chart of gram changes per capsule. <span class="cr">alvinbunk.wordpress.com</span></figcaption>
+    </figure>
+    <p class="first">Nespresso has been reducing the grams of coffee in its capsules under an internal effort the documents call &ldquo;Project Olympus&rdquo; &mdash; so reports Alvin Bunk, a coffee blogger who says he was told of the project by a Nespresso employee in August and published the internal text on Nov.&nbsp;1. The documents say that beginning in 2026, &ldquo;select Nespresso Vertuo coffee recipes will undergo a recipe optimization&rdquo; &mdash; slightly less coffee per capsule, rolled out gradually from the first through third quarters &mdash; while promising the same taste profile, the same coffee volume per cup, and the same caffeine levels, &ldquo;with only minor natural variation.&rdquo;<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>The internal script is the story inside the story: if customers notice that certain capsules feel lighter, staff are told to emphasize &ldquo;that the update reflects process innovation, not a reduction in value.&rdquo; Bunk lists Wave&nbsp;1 as six pods in the first quarter (Double&nbsp;Espresso Scuro, Chiaro, and Dolce; Fortado; Orafio; Ristretto&nbsp;Intenso) and Wave&nbsp;2 as eight more, date to be announced. By his tracking spreadsheet, &ldquo;almost all the range of coffees&rdquo; is affected; readers on his blog report watered-down taste, and Nespresso boutiques, he writes, are allegedly telling customers it was a barcode issue in manufacturing.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>The thread tested the claim the way the internal text invites: one reader allowed that roast level, grind size, pressure, time, and volume could plausibly extract more dissolved solids from the same grams &mdash; &ldquo;there are a lot of variables to play with&rdquo; at Nestl&eacute; scale &mdash; but added the hard part: &ldquo;Harder to imagine: that it will taste good.&rdquo; Another asked the simple question the documents never answer: has anyone actually compared the before and after?<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50605479">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Quote of the Day</span></div>
+    <div class="pullquote">&ldquo;A firm&rsquo;s nominal governance structure isn&rsquo;t necessarily its real governance structure.&rdquo;
+      <span class="attr">&mdash; a reader, on Nvidia&rsquo;s reinstatement of Jensen Huang and OpenAI&rsquo;s 2023, in the day&rsquo;s lead thread<sup class="cite"><a href="#src2">[2]</a></sup></span>
+    </div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories chosen</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>10</td></tr>
+        <tr><td>Follow-ups returning</td><td>0</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>5,729</td></tr>
+        <tr><td>Combined comments</td><td>4,626</td></tr>
+        <tr><td>Most-discussed story</td><td>2,814 cmts</td></tr>
+        <tr><td>Biggest mover</td><td>none today (all fresh)</td></tr>
+      </table>
+    </div>
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p>BROWSER FOR SALE, alpha condition: crashes sometimes; security promises none &mdash; &ldquo;when you pwn us, please tell us how.&rdquo;</p>
+      <p>AARCH64 REFERENCE SITE, search included, no popups; must vacate the premises by December&nbsp;4. Lawyers&rsquo; inquiries only.</p>
+      <p>COFFEE CAPSULES: same taste, same volume, same caffeine, less coffee; barcode issues in store, questions in aisle.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Day&rsquo;s Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" style="width:100%;height:auto;display:block" role="img" aria-label="Bar chart of the ten stories by points">
+      <defs>
+        <pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+        <pattern id="hatchred" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <line class="grid" x1="58"  y1="6" x2="58"  y2="344"/>
+      <line class="grid" x1="116" y1="6" x2="116" y2="344"/>
+      <line class="grid" x1="173" y1="6" x2="173" y2="344"/>
+      <line class="grid" x1="231" y1="6" x2="231" y2="344"/>
+      <line class="grid" x1="289" y1="6" x2="289" y2="344"/>
+      <line class="grid" x1="347" y1="6" x2="347" y2="344"/>
+      <line class="grid" x1="404" y1="6" x2="404" y2="344"/>
+      <line class="grid" x1="462" y1="6" x2="462" y2="344"/>
+      <line class="grid" x1="520" y1="6" x2="520" y2="344"/>
+      <!-- bars -->
+      <rect x="0.5" y="22"  width="493" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="56"  width="312" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="90"  width="205" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="124" width="181" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="158" width="109" height="15" fill="url(#hatchred)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="192" width="78"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="226" width="73"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="260" width="71"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="294" width="68"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="328" width="65"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0" y1="352" x2="520" y2="352"/>
+      <!-- tick labels -->
+      <text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text>
+      <text x="58"  y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="116" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="173" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text>
+      <text x="231" y="366" font-size="11" fill="#3d352a" text-anchor="middle">800</text>
+      <text x="289" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1000</text>
+      <text x="347" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1200</text>
+      <text x="404" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1400</text>
+      <text x="462" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1600</text>
+      <text x="520" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1800</text>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18">Nvidia reinstates Huang &#8224;</text>
+      <text class="barlabel" x="0" y="52">Ladybird reaches alpha</text>
+      <text class="barlabel" x="0" y="86">LeCun vs Amodei on open weights</text>
+      <text class="barlabel" x="0" y="120">Arm reference site to shut</text>
+      <text class="barlabel" x="0" y="154">FSNotes pulled from EU stores</text>
+      <text class="barlabel" x="0" y="188">Kagi Mail public beta</text>
+      <text class="barlabel" x="0" y="222">BepiColombo at Mercury</text>
+      <text class="barlabel" x="0" y="256">Trackpad turned speaker</text>
+      <text class="barlabel" x="0" y="290">Less coffee per capsule</text>
+      <text class="barlabel" x="0" y="324">GTA 6 Xbox build leaks</text>
+      <!-- values -->
+      <text class="barval" x="500" y="34" font-weight="700">1707 &#9733; &middot; 2814 cmts</text>
+      <text class="barval" x="319" y="68">1079 &middot; 270</text>
+      <text class="barval" x="212" y="102">711 &middot; 405</text>
+      <text class="barval" x="188" y="136">625 &middot; 123</text>
+      <text class="barval" x="116" y="170">378 &middot; 75</text>
+      <text class="barval" x="85"  y="204">271 &middot; 209</text>
+      <text class="barval" x="80"  y="238">251 &middot; 80</text>
+      <text class="barval" x="78"  y="272">245 &middot; 149</text>
+      <text class="barval" x="75"  y="306">237 &middot; 265</text>
+      <text class="barval" x="72"  y="340">225 &middot; 236</text>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">&#9733; = points &middot; cmts = comments &middot; &#8224; most-discussed story of the day &middot; red hatch marks Apple coverage (the FSNotes App Store story)</text>
+    </svg>
+    </figure>
+  </div>
+  <div class="cell">
+    <div class="section-label"><span>The Day in One Line</span></div>
+    <p class="first">Nvidia&rsquo;s board reinstated Jensen Huang as chief executive with &ldquo;input from senior levels of the United States government&rdquo; and the stock closed up 31 percent; Ladybird shipped the first alpha of a browser with its own engine; Yann LeCun called Dario Amodei&rsquo;s warnings a scheme to outlaw open models; Arm&rsquo;s lawyers set a December&nbsp;4 date for a beloved AArch64 reference site; and BepiColombo swung into orbit around Mercury &mdash; with an App&nbsp;Store removal, a public-beta mailbox, a talking trackpad, lighter coffee capsules and a leaked Xbox build set in around them.</p>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>FSNotes, removed &ldquo;without a clear explanation.&rdquo;</b> The GitHub headline says Apple gave no explanation and no way to resolve the issue. The thread found the explanation: a cached Netherlands App&nbsp;Store listing reads &ldquo;Oleksandr Hlushchenko has not identified himself as a merchant for this app&rdquo; &mdash; EU trader status, which can lapse. The app remains on sale in the U.S. and UK. No reply from Apple, yes; no reason, not quite.</p>
+      <p><b>Ladybird, &ldquo;built from the ground up, not a fork.&rdquo;</b> The engine is the project&rsquo;s own, but the alpha&rsquo;s rendering leans on production libraries with other ancestries &mdash; Skia and ANGLE, both born at Google, and SQLite &mdash; as readers noted on the thread. &ldquo;From the ground up&rdquo; describes the engine&rsquo;s origin, not every component in the browser around it.</p>
+      <p><b>Nespresso&rsquo;s &ldquo;same caffeine levels.&rdquo;</b> The internal Olympus text promises unchanged taste, volume, and caffeine, &ldquo;with only minor natural variation,&rdquo; validated &ldquo;from a sensory perspective.&rdquo; The blog&rsquo;s own comment thread reports watered-down coffee and lower caffeine, and its spreadsheet tracks gram cuts across &ldquo;almost all the range.&rdquo; The guarantee is the company&rsquo;s; the gram counts on the spreadsheet are measurements.</p>
+      <p><b>BepiColombo, &ldquo;reaches Mercury.&rdquo;</b> The Guardian&rsquo;s headline, dated Thursday, says the spacecraft reaches Mercury; the article says controllers will fire the thrusters Saturday to send it into orbit, and that science observations do not begin until April. The arrival was scheduled for the weekend; the science starts in the spring.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher&rsquo;s Note</div>
+  <p>The afternoon edition leads with the Nvidia board&rsquo;s reinstatement of Jensen Huang &mdash; 1,707 points, 2,814 comments, the day&rsquo;s biggest story and its biggest argument &mdash; with Ladybird&rsquo;s alpha and Yann LeCun&rsquo;s broadside against Dario Amodei set beside it. All ten stories ran fresh, none having appeared in the previous four editions, so no follow-ups or digests were needed. Reddit&rsquo;s network wall refused this paper&rsquo;s reader for the GTA&nbsp;6 leak, so that story is set from the HN thread itself; eight photographs arrived with the paper, and the Arm reference site and the GTA&nbsp;6 item carry none.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">&ldquo;Nvidia reinstates Jensen Huang as CEO,&rdquo; CNBC, Nov 23, 2026, <a href="https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html">cnbc.com</a></li>
+    <li data-n="[2]" id="src2">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50611576">news.ycombinator.com/item?id=50611576</a></li>
+    <li data-n="[3]" id="src3">&ldquo;Ladybird is now in alpha,&rdquo; Andreas Kling, ladybird.org, Nov 23, 2026, <a href="https://ladybird.org/posts/alpha/">ladybird.org</a></li>
+    <li data-n="[4]" id="src4">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50614249">news.ycombinator.com/item?id=50614249</a></li>
+    <li data-n="[5]" id="src5">Yann LeCun, post on X, Nov 22, 2026, <a href="https://twitter.com/ylecun/status/2124550037912920090">x.com</a></li>
+    <li data-n="[6]" id="src6">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50615308">news.ycombinator.com/item?id=50615308</a></li>
+    <li data-n="[7]" id="src7">&ldquo;Apple Removed FSNotes from European App Stores After 9 Years &mdash; and Has Ignored My Support Requests,&rdquo; glushchenko/fsnotes discussion #2056, GitHub, Nov 23, 2026, <a href="https://github.com/glushchenko/fsnotes/discussions/2056">github.com</a></li>
+    <li data-n="[8]" id="src8">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50616933">news.ycombinator.com/item?id=50616933</a></li>
+    <li data-n="[9]" id="src9">&ldquo;Spacecraft reaches Mercury on second-ever mission to enter its orbit,&rdquo; Ian Sample, The Guardian, Nov 19, 2026, <a href="https://www.theguardian.com/science/2026/nov/20/spacecraft-mercury-second-ever-mission-orbit-bepicolombo">theguardian.com</a></li>
+    <li data-n="[10]" id="src10">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50587439">news.ycombinator.com/item?id=50587439</a></li>
+    <li data-n="[11]" id="src11">&ldquo;Cyberleek posted the GTA 6 Xbox build executable,&rdquo; r/GamingLeaksAndRumour, Reddit (the page sits behind a network block at press time), <a href="https://www.reddit.com/r/GamingLeaksAndRumours/comments/1y3jzqe/cyberleek_posted_the_gta_6_xbox_build_executable/">reddit.com</a></li>
+    <li data-n="[12]" id="src12">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50612686">news.ycombinator.com/item?id=50612686</a></li>
+    <li data-n="[13]" id="src13">Jon&rsquo;s Arm Reference, discontinuation notice, <a href="https://arm.jonpalmisc.com/">arm.jonpalmisc.com</a></li>
+    <li data-n="[14]" id="src14">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50617499">news.ycombinator.com/item?id=50617499</a></li>
+    <li data-n="[15]" id="src15">os6/nospeaker, README, GitHub, <a href="https://github.com/os6/nospeaker">github.com</a></li>
+    <li data-n="[16]" id="src16">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50610318">news.ycombinator.com/item?id=50610318</a></li>
+    <li data-n="[17]" id="src17">&ldquo;Kagi Mail is here (Public Beta),&rdquo; Kagi Blog, <a href="https://blog.kagi.com/kagi-mail-public-beta">blog.kagi.com</a></li>
+    <li data-n="[18]" id="src18">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50615481">news.ycombinator.com/item?id=50615481</a></li>
+    <li data-n="[19]" id="src19">&ldquo;Nespresso &mdash; Project Olympus,&rdquo; Alvin Bunk, Nov 1, 2026, <a href="https://alvinbunk.wordpress.com/2026/11/01/nespresso-project-olympus/">alvinbunk.wordpress.com</a></li>
+    <li data-n="[20]" id="src20">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50605479">news.ycombinator.com/item?id=50605479</a></li>
+  </ol>
+  <div class="method">Methodology &mdash; Snapshot taken at 22:00 UTC (16:00 US Central) on Monday, November 23, 2026, from the Hacker News Algolia front-page feed, which returned 30 candidate stories. The ten stories above are the highest-scoring candidates after deduplication against the previous four editions&rsquo; manifest; all ten are fresh, none having run in an edition since Wednesday afternoon. Every score, comment count and quote was taken from that snapshot or from sources fetched during this run: each article was retrieved with a browser user-agent, each HN thread through the Algolia items API, and every image verified by file signature before use. Reddit&rsquo;s network block refused the GTA&nbsp;6 story&rsquo;s page, so that story is set from the HN thread; the Arm reference site and the GTA&nbsp;6 item carry no image, and no image was fabricated for either. The Guardian&rsquo;s Mercury article is dated Thursday, Nov. 19.</div>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <div class="l">The Hacker Herald &mdash; Typeset from the Hacker News front page</div>
+  <div class="c">&#10047; Printed on 100% recycled bandwidth &#10047;</div>
+  <div class="r"><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</div>
+</footer>
+
+</body>
+</html>
