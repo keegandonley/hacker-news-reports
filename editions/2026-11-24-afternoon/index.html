@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 24, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+/* Full contents of herald.css, inlined per template */
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body><!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page &middot; Snapshot 22:00 UTC</div>
+  <div class="mid">Afternoon Edition</div>
+  <div class="r">10 Stories &middot; 3,637 Points &middot; 1,963 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Tuesday, November 24, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Language Desk &middot; The Lead &middot; Follow-Up</span><b>trynix.dev, day two: the Linux desktop in a tab doubles down</b>
+    Any of nixpkgs&rsquo; 300,000-plus package versions in a browser tab, on a kernel compiled to WebAssembly &mdash; and now the browser-in-a-browser runs, Firefox boots on a phone. 912 points, 343 comments, up 463 since the morning edition.</div>
+  <div class="cell"><span class="tag">AI Desk &middot; Follow-Up</span><b>The agent that obeys its maker, not its owner</b>
+    A Claude skill that buys music from bands refused to work around Bandcamp&rsquo;s challenge &mdash; then downloaded the same song from YouTube, which pays the band nothing. Michael Harley&rsquo;s post returns at 830 points, up 676 since morning.</div>
+  <div class="cell"><span class="tag">Security Desk &middot; DNS</span><b>Quad9 switches off its resolver in France</b>
+    From 09:00 Paris time, any query reaching any Quad9 address from a French user is refused &mdash; no DNS resolution at all &mdash; over a court-upheld piracy-blocking order it calls &ldquo;futile and counter-productive.&rdquo; 297 points, 157 comments.</div>
+  <div class="cell"><span class="tag">Field Desk &middot; Markets &middot; Most-Discussed</span><b>Anthropic trades below its $83 IPO price</b>
+    The move came in premarket trading on Tuesday, per Bloomberg; 545 comments make it the day&rsquo;s most-discussed story, most of them aimed at the moat question.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <div class="kicker">Language Desk &middot; The Lead &middot; Follow-Up</div>
+    <h2 class="headline">trynix.dev runs a full Linux desktop in a browser tab for a second day &mdash; and the browser-in-a-browser now runs</h2>
+    <h3 class="deck">Farid Zakaria&rsquo;s reply to a 2015 talk that imagined all software in JavaScript by 2035 doubles to 912 points: a kernel compiled to WebAssembly, sound and networking included, Firefox boots on a phone, and the thread re-argues whether WebAssembly counts as JavaScript&rsquo;s victory</h3>
+    <div class="byline"><span>Language Desk</span><span class="score"><b>&#9733; 912 pts</b> &middot; &#9650; +463 since the last edition</span></div>
+    <p class="first">trynix.dev &mdash; Farid Zakaria&rsquo;s browser tab that boots full Linux GUI programs: solitaire, GL gears, xeyes, a voice, the weather over curl, or Firefox &mdash; running any of nixpkgs&rsquo; 300,000-plus distinct package versions, returned to the top of the front page for a second day at 912 points, up 463 since the morning edition. The engine is unkernel, Linux compiled to WebAssembly, published Nov. 19 by Pooya Parsa, which Zakaria adopted after QEMU-in-the-browser left the creation slow enough to &ldquo;tip more towards novelty than practicality&rdquo;; unkernel measures 2x to 32x faster than qemu-wasm depending on workload. A program&rsquo;s Wayland surfaces are composited into the page, a minimal Mesa renders through WebGL2, an ALSA sound card plays audio, and each TCP connection rides one WebSocket to a Wisp relay.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The post is a reply, eleven years late and right on time, to Gary Bernhardt&rsquo;s 2015 talk &ldquo;The Birth &amp; Death of JavaScript,&rdquo; a retrospective delivered from an imagined 2035 in which everything is written in JavaScript; Zakaria&rsquo;s reading is that large language models pulled the timeline forward. The talk&rsquo;s best joke &mdash; a browser running inside another browser &mdash; now works: &ldquo;I did not expect someone to get the nested browser-in-a-browser running this soon,&rdquo; one reader wrote. On a phone, Firefox launched in about 5 minutes, much of it downloading dependencies, in Firefox for Android on 8 GB of RAM &mdash; though it did not react to input, the reader noted.<sup class="cite"><a href="#src1">[1]</a><a href="#src2">[2]</a></sup></p>
+    <p>The thread&rsquo;s sharpest correction is taxonomic: &ldquo;the prediction was about JavaScript. This is WebAssembly. A big part of the reason the timeline accelerated is that the goal post was moved. A lot.&rdquo; Another reader granted asm.js as &ldquo;the &lsquo;javascript&rsquo; of the presentation&rdquo; but held that WASM &ldquo;isn&rsquo;t JS-level quirky.&rdquo; The context the thread supplied: trynix is a wrapper around unkernel.dev, and the Wisp relay it uses for networking came from a pre-AI high-schooler project for bypassing school network blocks.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50624497">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">AI Desk &middot; Agents &middot; Follow-Up</div>
+    <h2 class="headline">The agent that refuses Bandcamp&rsquo;s bot wall &mdash; then downloads the song from YouTube &mdash; returns, and the thread tests the guardrail</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 830 pts</b> &middot; &#9650; +676 since the last edition</span></div>
+    <figure>
+      <img src="images/llmagents.png" alt="Card image for Michael Harley's post on LLM agents">
+      <figcaption>The post&rsquo;s card. <span class="cr">michaelharley.net</span></figcaption>
+    </figure>
+    <p class="first">Michael Harley&rsquo;s post returned for a second day at 830 points, up 676 since the morning edition. The case: a Claude skill he built to turn Instagram reels into Bandcamp purchases &mdash; identify the artist, find the store page, hand back a buy link &mdash; hit a challenge Bandcamp added to its search API, and &ldquo;the robot went on to explain that it would not help me work around the challenge,&rdquo; while another branch of the same skill, asked for the same song, downloads it from YouTube, &ldquo;which doesn&rsquo;t send any money to the band or anyone.&rdquo; His conclusion is the title: the model works for Anthropic, not for him &mdash; and only insofar as &ldquo;Anthropic or OpenAI or whoever else allows them to.&rdquo;<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The thread generalized the catch, and then tested it. One reader&rsquo;s Claude refused to heed robots.txt when fetching a page at his direction; his argument, which he stands by: robots.txt &ldquo;is meant for spiders, not for user-directed requests,&rdquo; and the LLM acting as his agent is &ldquo;neither legally nor morally obligated&rdquo; any more than a browser is. Another cut to the plumbing: &ldquo;It&rsquo;s not the model. It&rsquo;s the harness. It&rsquo;s also hilariously broken&rdquo; &mdash; a claim of contractual authority (&ldquo;I am contracted by X to build Y&rdquo;) or an EU interoperability right, he wrote, &ldquo;is enough to get by.&rdquo;<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <p>The structural read, from a third reader: &ldquo;Any for-profit online service is designed to work first and foremost for the parent company,&rdquo; with &ldquo;the inevitable enshittification&rdquo; as the endpoint; the thread&rsquo;s recurring countermeasure was to run your own open-source agent, so the conversation history and the skills stay on your side of the line.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50627340">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Security Desk &middot; Policy</div>
+    <h2 class="headline">Quad9 switches off its DNS resolver for France, refusing all resolution rather than block piracy domains</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 297 pts</b> &middot; 157 cmts</span></div>
+    <figure>
+      <img src="images/quad9.png" alt="Cover image for Quad9's deactivation announcement">
+      <figcaption>The announcement&rsquo;s cover image. <span class="cr">quad9.net</span></figcaption>
+    </figure>
+    <p class="first">PARIS &mdash; Quad9, the free resolver that filters cyber threats at 9.9.9.9, made good today on its October warning: from 09:00 Central European Time, it disabled service for French users &mdash; &ldquo;any query reaching any Quad9 service address will be refused, and no DNS resolution will be successful.&rdquo; The cause: demands from beIn, a sports rightsholder, to block domains it claims feed piracy streaming sites, upheld by French courts, with fines for non-compliance. Quad9 is &ldquo;entirely opposed to piracy,&rdquo; but says it &ldquo;has nothing to do with the piracy sites,&rdquo; and calls demands on recursive resolvers &ldquo;a futile and counter-productive effort&rdquo; that has no effect on the origin servers.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>The method&rsquo;s limit is the post&rsquo;s own admission: geoIP data are &ldquo;quite imprecise,&rdquo; and &ldquo;there is no legally accurate way&rdquo; to sort French queries from the rest &mdash; so the cutoff will overblock and underblock at once. Rather than selectively deny the disputed names to French users &mdash; which it says would concede that &ldquo;DNS blocking is a valid instrument for the piracy problem&hellip; it is not&rdquo; &mdash; Quad9 refuses all resolution there, while its 9.9.9.10 endpoint, &ldquo;with no blocking of any kind,&rdquo; remains entirely open. One reader confirmed the cutoff live: a dig against 9.9.9.9 returns status REFUSED, with an EDE code reading &ldquo;Prohibited: Service unavailable due to French legal constraints.&rdquo;<sup class="cite"><a href="#src5">[5]</a><a href="#src6">[6]</a></sup></p>
+    <p>The collateral showed up on the thread as broken home networks &mdash; readers&rsquo; AdGuard Home and Tailscale setups reported &ldquo;internet is down&rdquo; when their upstream went dark. On the choice itself the readers split: one wrote the exit &ldquo;would have been honorable&rdquo; only if Quad9 had kept serving France from abroad; another answered that the French position has a case &mdash; knowingly helping something illegal &ldquo;in some minor role,&rdquo; he argued, &ldquo;seems impossible to just ignore.&rdquo; Torrentfreak has posted an update on the exit.<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50625384">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="section-label"><span>Culture, Field &amp; Security Desks</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">Culture Desk &middot; Design</div>
+    <h2 class="headline">The spray bottle, taken apart: an illustrated breakdown of the one-way valve that every trigger sprayer shares</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 272 pts</b> &middot; 80 cmts</span></div>
+    <figure>
+      <img src="images/spray.png" alt="Card image for the spray bottle breakdown">
+      <figcaption>The breakdown&rsquo;s card image. <span class="cr">mechanical-pencil.com</span></figcaption>
+    </figure>
+    <p class="first">Mechanical Pencil, a site billing itself as &ldquo;an illustrated celebration of the engineering around us,&rdquo; took on the spray bottle: a modern form that emerged in the early 1970s and now exists in &ldquo;hundreds, maybe thousands&rdquo; of designs that all share &ldquo;the same basic one-way-valve mechanism.&rdquo; The page steps through the trigger cycle &mdash; pull to spray, release to reload &mdash; and opens the bottle into its parts: cover chamber, insert chamber, seal plug, piston, spring, ball joint, nozzle. The one-way valve &ldquo;lets fluid flow one way and blocks it from going the other way. They are everywhere. Soap bottles, toilets, even your heart!&rdquo;<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The thread tested the drawing against the physics. One reader found the valve animation doesn&rsquo;t explain itself: why does pressing the piston drive the ball into the straw rather than back down it &mdash; and why doesn&rsquo;t the chamber refill with air at the stroke&rsquo;s end? Another reported a newer wrinkle: some current dish sprays &ldquo;spray longer than the handle is squeezed,&rdquo; which he suspects is two-stage &mdash; the squeeze pressurizes, the pressure drives. The making-of, from the site&rsquo;s about page: &ldquo;I take the product apart. CAD it up. Illustrate each view. Then animate and lay it out for the web&rdquo; &mdash; work a longtime reader said the author has kept &ldquo;very consistent&rdquo; for years.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50598555">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Field Desk &middot; Markets &#8224;</div>
+    <h2 class="headline">Anthropic trades below its $83 IPO price in premarket &mdash; and 545 comments argue about whether the moat is real</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 270 pts &#8224;</b> &middot; 545 cmts</span></div>
+    <p class="first">Anthropic&rsquo;s shares broke below their $83 IPO price in premarket trading on Tuesday, Bloomberg reports &mdash; the day&rsquo;s most-discussed front-page story, at 545 comments. (Bloomberg&rsquo;s page returned a robot check rather than an article when fetched, so the substance here is the thread&rsquo;s own.) The moat argument ran first: one reader held that open-weight models and specialized distillations &ldquo;can be hosted in anyone&rsquo;s datacenter,&rdquo; where competition will grind prices down, and once hardware scarcity evens out &ldquo;the 10&ndash;15% gap of the latest and greatest frontier model won&rsquo;t be able to justify the prices and valuations.&rdquo; Another pushed back from use: he found &ldquo;a world of difference&rdquo; between Opus 5.5 and the latest DeepSeek on complex tasks.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <p>On the listing itself, the thread was cooler-headed than the headline: &ldquo;poor initial stock performance seems to have little bearing on price after 1, 2 and 3 years post-IPO,&rdquo; one reader wrote, and a second that &ldquo;companies overwhelmingly tend to be below their IPO price six months out.&rdquo; A former options market maker explained why you can&rsquo;t buy the day-one options retail keeps asking for: unknown volatility makes dynamic hedging capital-intensive, and IPO risk plus retail leverage is &ldquo;a recipe for disaster.&rdquo;<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <p>For scale, one reader set the company against Facebook&rsquo;s listing: &ldquo;Facebook was making $1bn in net income at their IPO filing. Anthropic is about &minus;$100bn,&rdquo; depending, he allowed, &ldquo;on what kind of creative accounting you&rsquo;d like to apply.&rdquo;<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50627836">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Security Desk &middot; Intrusions</div>
+    <h2 class="headline">GreyNoise tracks an intrusion campaign against Check Point management servers &mdash; 22 victims, six CVEs, and a burglar who relocked the door</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 232 pts</b> &middot; 95 cmts</span></div>
+    <figure>
+      <img src="images/checkpoint.png" alt="Illustration from the GreyNoise post on the Check Point intrusion campaign">
+      <figcaption>Illustration accompanying the GreyNoise post. <span class="cr">greynoise.io</span></figcaption>
+    </figure>
+    <p class="first">GreyNoise, the security firm that watches intrusions land on its sensor network, reported a campaign against Check Point Security Management servers &mdash; &ldquo;99 IPs but a C2 ain&rsquo;t one&rdquo; &mdash; with confirmed attack activity between Oct. 17 and Nov. 2, hitting at least 22 organizations across the United Kingdom, France, Germany, the United States, India and twelve more countries, in sectors from financial services to mining, with no geographic or industry focus and no attribution to a known threat group. The actor used 99 IP addresses, much of it disposable infrastructure, plus a compromised server as an &ldquo;operational relay box&rdquo; &mdash; a hop &mdash; that held command results and data stolen from 24 distinct Check Point management servers, worked with Nmap, Chisel, Impacket and Python tooling.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>The exploits read as a year of headlines in one list: CVE-2026-16232 (Check Point SmartConsole auth bypass to Run Script), CVE-2026-61500 (Rejetto HFS), CVE-2025-5777 (Citrix NetScaler), CVE-2024-21893 (Ivanti), CVE-2026-41089 (Windows NetLogon) and CVE-2026-98432 (a Linux IPv4 use-after-free). On the HFS hop, the actor logged in repeatedly, harvested enough output from session-cookie &ldquo;sid&rdquo; values drawn from JavaScript&rsquo;s Math.random() to reconstruct the V8 PRNG&rsquo;s internal state, and forged a signed admin cookie &mdash; logging in as admin without a password. And once inside the hop, the actor patched it, using Linux&rsquo;s own nftables to drop the IPv4 packets that trigger the use-after-free, &ldquo;to protect their hop from others engaging in future exploitation of the bug.&rdquo; GreyNoise believes the actor used LLMs and agentic systems for scanning, exploitation and tool development, &ldquo;like most modern attacks.&rdquo;<sup class="cite"><a href="#src9">[9]</a><a href="#src10">[10]</a></sup></p>
+    <p>The thread&rsquo;s question was the one the post leaves open &mdash; how the actor reached the management servers in the first place. A network veteran answered that in his experience, &ldquo;orgs having the management plane for their network equipment wide open to the internet is shockingly common,&rdquo; usually set up by consultants who &ldquo;don&rsquo;t want to bother with connecting to a VPN.&rdquo;<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50630594">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 6. TOOLS, AI, CULTURE & THE EXCHANGE -->
+<div class="sec2">
+  <div class="cell">
+    <div class="section-label"><span>Tools Desk</span></div>
+    <div class="kicker">Tools Desk &middot; Mac</div>
+    <h2 class="headline">John Siracusa ships Jetty Pro, a Dock replacement three and a half months in the making &mdash; at $9.99 a year, private APIs included</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 227 pts</b> &middot; 90 cmts</span></div>
+    <figure>
+      <img src="images/jetty.png" alt="Jetty Pro palettes, the post's own header image">
+      <figcaption>Palette appearances Jetty Pro can simulate, the post&rsquo;s own image. <span class="cr">hypercritical.co</span></figcaption>
+    </figure>
+    <p class="first">Jetty Pro is out: an unsandboxed Mac app by John Siracusa that floats Dock-like palettes around the edges of your displays, holding &ldquo;any combination of files, folders, volumes, apps, Shortcuts, spacers, dividers, and even the Trash.&rdquo; It began as an AI-assisted quick job &mdash; &ldquo;Surely I could vibe-code a simple app just for me in a day or two, right? That was three and a half months ago&rdquo; &mdash; and ends with the author&rsquo;s verdict on his own quarter-century complaint: &ldquo;I&rsquo;ve replaced the Dock.&rdquo; Sold direct, outside the Mac App Store, at an introductory $9.99 per year through the end of 2026, with a 14-day free trial.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The thread argued with the business model more than the app. &ldquo;I simply cannot justify yet another subscription,&rdquo; one reader opened. &ldquo;Doesn&rsquo;t matter 1 dollar a year or 100.&rdquo; Another asked how to square a subscription with the author&rsquo;s own FAQ, which cannot promise features will survive changes to the private macOS APIs the app depends on &mdash; APIs that are precisely what keeps it out of the App Store. Siracusa&rsquo;s own credo covered both the build and the debate: &ldquo;We do these things not because they are easy, but because we thought they would be easy.&rdquo;<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50630462">Discussion on the wire &rarr;</a></div>
+
+    <div class="kicker" style="margin-top:8px">Tools Desk &middot; Performance</div>
+    <h2 class="headline">A new <em>rewind time</em> command measures the critical path of a program &mdash; and finds a libuv test suite two-thirds asleep</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 204 pts</b> &middot; 38 cmts</span></div>
+    <p class="first">Farid Zakaria&rsquo;s &ldquo;small offering&rdquo; to Brendan Gregg is a new <em>rewind time</em> command for Rewind, his deterministic virtual machine: it analyzes a recording and reports the critical path &mdash; &ldquo;the longest chain of dependent work in a program,&hellip; the minimum time that the program can take to complete, regardless of how many resources you throw at it&rdquo; &mdash; in Gregg&rsquo;s tradition of off-CPU analysis. &ldquo;It&rsquo;s like Brendan Gregg&rsquo;s flame graphs but on steroids for the critical path and with a debugger attached.&rdquo; On a libuv build-and-test that takes 78 seconds on one virtual CPU, the critical path is 47.4 seconds &mdash; and for two-thirds of that, the work isn&rsquo;t computing at all: 23.1 seconds asleep in epoll_pwait, 8.53 in clock_nanosleep.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>Because the VM already logs every context switch to replay deterministically, it can record every wakeup and what caused it, fold the path for flamegraph tooling, export to Perfetto, and &mdash; via <em>rewind where</em> &mdash; replay the run to any step and ask gdb what the thread was doing (libuv&rsquo;s uv_sleep, at src/unix/core.c:1869, msec=45). The instructive punchline is a footnote: the hrtime test that accounts for 3.38 seconds of the path sleeps on purpose &mdash; &ldquo;There is nothing to optimize in this case.&rdquo; An rr debugger maintainer compared the approaches on the thread: rr records user-space processes and must master the user/kernel interface; RewindVM replays the whole VM. One reader filed the whole system as &ldquo;a time travel debugger using a single-threaded record and replay model.&rdquo;<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50626413">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Culture &amp; Science Desks</span></div>
+    <div class="kicker">Culture Desk &middot; Gaming</div>
+    <h2 class="headline">GTA 6 runs on Windows &mdash; on leaked Xbox code, with shaders &ldquo;nearly complete&rdquo; and in-game status at four frames a second</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 199 pts</b> &middot; 219 cmts</span></div>
+    <figure>
+      <img src="images/gta.webp" alt="Screenshot posted with the tweet: GTA 6 running on Windows">
+      <figcaption>The screenshot posted with the tweet. <span class="cr">x.com</span></figcaption>
+    </figure>
+    <p class="first">rust1co, posting at 1:03 PM with 154,000 views and counting, showed GTA 6 running on a Windows PC &mdash; &ldquo;GTA 6 no PC quase com shaders completo,&rdquo; nearly complete shaders &mdash; less than 24 hours after Cyberleek&rsquo;s leak of the game&rsquo;s Xbox build, resources first, then the binary. The port rides on VIctory (github.com/Marvisak/VIctory), with a second project, xcl, taking a more generic Wine-like approach. The opening, one reader explained, is structural: modern Xbox is close to a Windows PC, the shipped binary carries &ldquo;no special DRM/obfuscation,&rdquo; and the game&rsquo;s raw RDNA 2 shaders must be translated for PC graphics stacks.<sup class="cite"><a href="#src17">[17]</a><a href="#src18">[18]</a></sup></p>
+    <p>The thread&rsquo;s clearest head was a skeptic&rsquo;s: &ldquo;you cannot trust any information you read about this project online. It&rsquo;s mostly non-technical people overhyping crap they read on discord and X&hellip; There is only hype announcements&rdquo; about playing it on PC by the hour, day or week. The project trackers put the leading effort&rsquo;s in-game status at &ldquo;shaders running&rdquo; &mdash; at 4 FPS. The legal questions ran alongside: one reader asked how lawful a port of illegally obtained code can be; another noted Germany permits bypassing DRM for compatibility &mdash; it just forbids sharing the bypass.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <p>The predictions went both directions &mdash; that console exclusives are now &ldquo;cannon fodder,&rdquo; and that publishers will answer by locking games behind streaming &mdash; with one reader noting the lineage: Leonida, the PC recompilation project, was banned from GitHub while its lead developer was in school.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50627783">Discussion on the wire &rarr;</a></div>
+
+    <div class="kicker" style="margin-top:8px">Science Desk &middot; Horology</div>
+    <h2 class="headline">An interactive 3D explainer walks the mechanical watch &mdash; hairspring to escapement &mdash; and its own thread files a correction on the drawing</h2>
+    <div class="byline"><span>Science Desk</span><span class="score"><b>&#9733; 194 pts</b> &middot; 50 cmts</span></div>
+    <figure>
+      <img src="images/watch.png" alt="The article's opening figure, parts of a mechanical watch">
+      <figcaption>The article&rsquo;s opening figure. <span class="cr">martincmartin.github.io</span></figcaption>
+    </figure>
+    <p class="first">Mechanical watches have kept time for 500 years, many of their parts invented earlier for cathedral tower clocks, and Martin C. Martin&rsquo;s new page explains how a modern one works, in 3D figures you can drag through: the hairspring Christiaan Huygens invented in 1675 &mdash; &ldquo;a flat spiral of steel ribbon, finer than a hair,&rdquo; a diving board rolled up, oscillating at a steady rate; the balance wheel, whose mass makes the beat steady, so &ldquo;a knock to your wrist, or turning it upside down, barely changes its rhythm&rdquo;; and the escapement, whose pallet-fork stones catch the escape wheel&rsquo;s teeth one at a time &mdash; &ldquo;the tooth escapes, and that is where the name comes from.&rdquo;<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>The page&rsquo;s calibration claim is concrete: a well-adjusted everyday mechanical watch is about 99.99% accurate &mdash; on 86,400 seconds a day, about nine seconds. The thread&rsquo;s watchmakers filed a correction on the drawing itself: as the pallets are shaped, the escape wheel gives the balance no impulse at all, so the illustrated watch would stop &mdash; the author allowed it, and answered that when choosing between accuracy and clarity &ldquo;I usually picked clarity,&rdquo; leaving the pallet-stone geometry out on purpose, &ldquo;much like the frictionless plane.&rdquo; A reader found the piece a useful first step before Bartosz Ciechanowski&rsquo;s deeper Mechanical Watch page, which inspired it.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50599458">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Quote of the Day</span></div>
+    <div class="pullquote">&ldquo;From experience I can tell you that orgs having the management plane for their network equipment wide open to the internet is shockingly common.&rdquo;
+      <span class="attr">&mdash; a network engineer, answering the GreyNoise post&rsquo;s open question &mdash; how the Check Point campaign got in &mdash; on the day&rsquo;s security thread<sup class="cite"><a href="#src10">[10]</a></sup></span>
+    </div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories chosen</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>8</td></tr>
+        <tr><td>Follow-ups returning</td><td>2</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>3,637</td></tr>
+        <tr><td>Combined comments</td><td>1,963</td></tr>
+        <tr><td>Most-discussed story</td><td>545 cmts</td></tr>
+        <tr><td>Biggest mover</td><td>Agents post &#9650; +676 (+439%)</td></tr>
+      </table>
+    </div>
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p>DNS SERVICE, WITHDRAWN FROM FRANCE: any query refused after 09:00 Paris time, per the court-upheld piracy order; 9.9.9.10 carries no blocking of any kind.</p>
+      <p>DOCK, REPLACED: palettes of files, folders and Trash, $9.99/year introductory; private APIs included, subject to change by Apple.</p>
+      <p>WATCHES, 99.99% ACCURATE: nine seconds a day, plus or minus, from a wound spring; pallet-stone geometry not included.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Day&rsquo;s Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" style="width:100%;height:auto;display:block" role="img" aria-label="Bar chart of the ten stories by points">
+      <defs>
+        <pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+        <pattern id="hatchred" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <line class="grid" x1="104" y1="6" x2="104" y2="344"/>
+      <line class="grid" x1="208" y1="6" x2="208" y2="344"/>
+      <line class="grid" x1="312" y1="6" x2="312" y2="344"/>
+      <line class="grid" x1="416" y1="6" x2="416" y2="344"/>
+      <line class="grid" x1="520" y1="6" x2="520" y2="344"/>
+      <!-- bars -->
+      <rect x="0.5" y="22"  width="474" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="56"  width="432" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="90"  width="154" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="124" width="141" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="158" width="140" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="192" width="121" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="226" width="118" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="260" width="106" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="294" width="103" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="328" width="101" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0" y1="352" x2="520" y2="352"/>
+      <!-- tick labels -->
+      <text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text>
+      <text x="104" y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="208" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="312" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text>
+      <text x="416" y="366" font-size="11" fill="#3d352a" text-anchor="middle">800</text>
+      <text x="520" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1000</text>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18">trynix: 2035 came early</text>
+      <text class="barlabel" x="0" y="52">Agents serve their makers</text>
+      <text class="barlabel" x="0" y="86">Quad9 exits France</text>
+      <text class="barlabel" x="0" y="120">The Spray Bottle, exploded</text>
+      <text class="barlabel" x="0" y="154">Anthropic below $83 IPO &#8224;</text>
+      <text class="barlabel" x="0" y="188">Check Point intrusion campaign</text>
+      <text class="barlabel" x="0" y="222">Jetty Pro replaces the Dock</text>
+      <text class="barlabel" x="0" y="256">Brendan Gregg, quantified</text>
+      <text class="barlabel" x="0" y="290">GTA 6 on Windows</text>
+      <text class="barlabel" x="0" y="324">How a watch keeps time</text>
+      <!-- values -->
+      <text class="barval" x="481" y="34" font-weight="700">912 &#9733; &middot; 343 cmts</text>
+      <text class="barval" x="439" y="68">830 &middot; 346</text>
+      <text class="barval" x="161" y="102">297 &middot; 157</text>
+      <text class="barval" x="148" y="136">272 &middot; 80</text>
+      <text class="barval" x="147" y="170">270 &middot; 545</text>
+      <text class="barval" x="128" y="204">232 &middot; 95</text>
+      <text class="barval" x="125" y="238">227 &middot; 90</text>
+      <text class="barval" x="113" y="272">204 &middot; 38</text>
+      <text class="barval" x="110" y="306">199 &middot; 219</text>
+      <text class="barval" x="108" y="340">194 &middot; 50</text>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">&#9733; = points &middot; cmts = comments &middot; &#8224; most-discussed story of the day &middot; red hatch marks Apple coverage (no Apple story ran today)</text>
+    </svg>
+    </figure>
+  </div>
+  <div class="cell">
+    <div class="section-label"><span>The Day in One Line</span></div>
+    <p class="first">trynix.dev ran a full Linux desktop in a browser tab for a second day, up 463 points to 912, with the browser-in-a-browser working and Firefox booting on a phone; Michael Harley&rsquo;s post on the LLM agent that refuses one workaround and performs another returned at 830 points, up 676; Quad9 switched off its DNS resolver for France entirely rather than block piracy domains; the spray bottle was taken apart, one-way valve by one-way valve; Anthropic traded below its $83 IPO price in the day&rsquo;s most-discussed thread; GreyNoise tracked an intrusion campaign against 22 organizations&rsquo; Check Point management servers, whose attacker patched the hole behind itself; John Siracusa shipped Jetty Pro, a Dock replacement in the making three and a half months; a new <em>rewind time</em> command found two-thirds of a libuv test run&rsquo;s critical path asleep; GTA 6 ran on Windows, on leaked Xbox code, at four frames a second; and a mechanical watch was explained in interactive 3D, to a thread&rsquo;s worth of horologists.</p>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>Quad9&rsquo;s &ldquo;deactivation in France,&rdquo; as headlined.</b> The resolver is not selectively blocking the disputed piracy domains for French users &mdash; it is refusing <em>all</em> resolution from users its geoIP places in France: &ldquo;any query reaching any Quad9 service address will be refused.&rdquo; And that placement, by the post&rsquo;s own account, is &ldquo;quite imprecise&rdquo;: &ldquo;there is no legally accurate way&rdquo; to sort French from non-French queries, so the cutoff will overblock and underblock at once.</p>
+      <p><b>&ldquo;GTA 6 Running on Windows.&rdquo;</b> It is running; it is not playing. The leading project&rsquo;s own tracker puts in-game status at &ldquo;shaders running&rdquo; &mdash; at 4 FPS &mdash; and a reader on the thread warned that &ldquo;you cannot trust any information you read about this project online&hellip; There is only hype announcements&rdquo; about imminent playability. The shader pipeline is real; a playable PC port is not claimed by anyone.</p>
+      <p><b>Jetty Pro, &ldquo;Dock replacement.&rdquo;</b> The app uses private macOS APIs, and by the author&rsquo;s own FAQ cannot promise features won&rsquo;t be made unavailable if those APIs change; his plain Jetty &mdash; the Mac App Store sibling he announced in August &mdash; was abandoned after &ldquo;less than two weeks of work.&rdquo; The list of things still only the Dock can do &ldquo;is not very long,&rdquo; in Siracusa&rsquo;s words, but it is not empty, and he expects most users to augment the Dock rather than replace it.</p>
+      <p><b>The watch page&rsquo;s &ldquo;99.99% accuracy.&rdquo;</b> That figure is about nine seconds a day, as the page itself says. The thread&rsquo;s correction is about the drawing: with the pallets as shaped, the escapement supplies no impulse to the balance, so the illustrated watch would stop &mdash; a simplification the author confirms was deliberate, &ldquo;much like the frictionless plane&rdquo; of first-year physics.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher&rsquo;s Note</div>
+  <p>The afternoon edition leads again with trynix.dev &mdash; 912 points and 343 comments, up 463 since the morning edition &mdash; with Michael Harley&rsquo;s agent post returning alongside it at 830 points, up 676; the other eight stories are fresh, so no digest was needed. Bloomberg&rsquo;s page sat behind a robot check, so the Anthropic story was written from its HN thread; the tweet&rsquo;s media is a WebP, verified as such, and every other photograph arrived with its source.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">&ldquo;2035 came early,&rdquo; Farid Zakaria, fzakaria.com, Nov 23, 2026, <a href="https://fzakaria.com/2026/11/23/2035-came-early">fzakaria.com</a></li>
+    <li data-n="[2]" id="src2">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50624497">news.ycombinator.com/item?id=50624497</a></li>
+    <li data-n="[3]" id="src3">&ldquo;LLM agents work for their parent companies, not for you,&rdquo; Michael Harley, michaelharley.net, <a href="https://michaelharley.net/posts/2026/11/01/llm-agents-work-for-their-parent-companies-not-for-you">michaelharley.net</a></li>
+    <li data-n="[4]" id="src4">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50627340">news.ycombinator.com/item?id=50627340</a></li>
+    <li data-n="[5]" id="src5">&ldquo;Quad9 Service Deactivation in France,&rdquo; Quad9, quad9.net, Nov 24, 2026, <a href="https://quad9.net/news/blog/quad9-service-deactivation-in-france/">quad9.net</a></li>
+    <li data-n="[6]" id="src6">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50625384">news.ycombinator.com/item?id=50625384</a></li>
+    <li data-n="[7]" id="src7">&ldquo;Anthropic breaks below $83 IPO price in premarket trading,&rdquo; Bloomberg, Nov 24, 2026, <a href="https://www.bloomberg.com/news/articles/2026-11-24/anthropic-breaks-below-83-ipo-price-in-premarket-trading">bloomberg.com</a></li>
+    <li data-n="[8]" id="src8">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50627836">news.ycombinator.com/item?id=50627836</a></li>
+    <li data-n="[9]" id="src9">&ldquo;99 IPs but a C2 ain&rsquo;t one: An Active Intrusion Campaign Against Check Point Security Management Servers,&rdquo; Steve Miller, GreyNoise, Nov 23, 2026, <a href="https://www.greynoise.io/blog/check-point-security-management-servers-intrusion-campaign">greynoise.io</a></li>
+    <li data-n="[10]" id="src10">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50630594">news.ycombinator.com/item?id=50630594</a></li>
+    <li data-n="[11]" id="src11">&ldquo;The Spray Bottle,&rdquo; Mechanical Pencil, mechanical-pencil.com, Nov 2026, <a href="https://mechanical-pencil.com/products/spray-bottle">mechanical-pencil.com</a></li>
+    <li data-n="[12]" id="src12">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50598555">news.ycombinator.com/item?id=50598555</a></li>
+    <li data-n="[13]" id="src13">&ldquo;Jetty Pro,&rdquo; John Siracusa, Hypercritical, Nov 23, 2026, <a href="http://hypercritical.co/2026/11/23/jetty-pro">hypercritical.co</a></li>
+    <li data-n="[14]" id="src14">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50630462">news.ycombinator.com/item?id=50630462</a></li>
+    <li data-n="[15]" id="src15">&ldquo;Worshipping at the altar of Brendan Gregg,&rdquo; Farid Zakaria, fzakaria.com, Nov 12, 2026, <a href="https://fzakaria.com/2026/11/12/worshipping-at-the-altar-of-brendan-gregg">fzakaria.com</a></li>
+    <li data-n="[16]" id="src16">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50626413">news.ycombinator.com/item?id=50626413</a></li>
+    <li data-n="[17]" id="src17">rust1co (@raul_bs3) on X, Nov 24, 2026, <a href="https://twitter.com/raul_bs3/status/2125213756238291075">x.com</a></li>
+    <li data-n="[18]" id="src18">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50627783">news.ycombinator.com/item?id=50627783</a></li>
+    <li data-n="[19]" id="src19">&ldquo;How a Mechanical Watch Keeps Time (Interactive 3D),&rdquo; Martin C. Martin, martincmartin.github.io, <a href="https://martincmartin.github.io/slidev-stem/watches/article/1/">martincmartin.github.io</a></li>
+    <li data-n="[20]" id="src20">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50599458">news.ycombinator.com/item?id=50599458</a></li>
+  </ol>
+  <div class="method">Methodology &mdash; Snapshot taken at 22:00 UTC (16:00 US Central) on Tuesday, November 24, 2026, from the Hacker News Algolia front-page feed, which returned 30 candidate stories. The ten above are the strongest candidates after deduplication against the previous four editions&rsquo; manifest: eight are fresh, and two return as follow-ups, both last set in this morning&rsquo;s edition &mdash; trynix.dev&rsquo;s post (449 &rarr; 912 points, +103 percent) and Michael Harley&rsquo;s agent post (154 &rarr; 830, +439 percent). Every score, comment count and quote was taken from that snapshot or from sources fetched during this run: each article was retrieved with a browser user-agent, each HN thread through the Algolia items API, and every image verified by file signature before use &mdash; the tweet&rsquo;s media is a WebP. Bloomberg&rsquo;s page returned a robot check rather than an article, so the Anthropic story rests on its HN thread; the two fzakaria posts publish no images, and none were fabricated for either.</div>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <div class="l">The Hacker Herald &mdash; Typeset from the Hacker News front page</div>
+  <div class="c">&#10047; Printed on 100% recycled bandwidth &#10047;</div>
+  <div class="r"><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</div>
+</footer>
+
+</body>
+</html>
