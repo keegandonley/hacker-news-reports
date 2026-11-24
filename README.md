@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-11-24 · Morning | 2026-11-24 ≈14:00 | Nvidia's board reinstates Jensen Huang as chief executive, citing "input from senior levels of the United States government" | 2,678 | 3,541 | [editions/2026-11-24-morning/](editions/2026-11-24-morning/) |
 | 2026-11-23 · Afternoon | 2026-11-23 ≈22:00 | Nvidia's board reinstates Jensen Huang as chief executive, citing "input from senior levels of the United States government" | 1,707 | 2,814 | [editions/2026-11-23-afternoon/](editions/2026-11-23-afternoon/) |
 | 2026-11-23 · Morning | 2026-11-23 ≈14:00 | Spelunkr streams the Internet Archive's forgotten videos as a free, synchronized TV network | 658 | 121 | [editions/2026-11-23-morning/](editions/2026-11-23-morning/) |
 | 2026-11-20 · Afternoon | 2026-11-20 ≈22:00 | Number theorist claims a proof of the Riemann Hypothesis, written with Claude and formalized in Lean | 2,132 | 1,457 | [editions/2026-11-20-afternoon/](editions/2026-11-20-afternoon/) |

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 24, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'%3E%3C/rect%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px; flex-wrap:wrap}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page &middot; Snapshot 14:00 UTC</div>
+  <div class="mid">Morning Edition</div>
+  <div class="r">10 Stories &middot; 7,621 Points &middot; 5,277 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Tuesday, November 24, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Hardware Desk &middot; The Lead &middot; Follow-Up</span><b>Nvidia&rsquo;s board reinstates Jensen Huang</b>
+    A unanimous vote, ten days after a resignation over reported affairs, with &ldquo;input from senior levels of the United States government&rdquo; &mdash; and a close 31 percent higher. 2,678 points, 3,541 comments, up 971 since yesterday&rsquo;s edition; the day&rsquo;s biggest story and its biggest argument.</div>
+  <div class="cell"><span class="tag">Tools Desk &middot; Follow-Up</span><b>Ladybird&rsquo;s alpha, second day on the wire</b>
+    Downloads for macOS and Linux, an engine &ldquo;built from the ground up, and not a fork,&rdquo; rolling automatic updates &mdash; and a standing invitation: &ldquo;When you pwn us, please tell us how.&rdquo; 2,155 points, up 1,076 since yesterday.</div>
+  <div class="cell"><span class="tag">Tools Desk &middot; Mail</span><b>Stalwart 1.2.0 becomes a drop-in Exchange replacement</b>
+    MAPI over HTTP, Exchange Web Services, ActiveSync and Autodiscover: Outlook, Apple Mail and phone mail apps connect to the open-source server as they would to Microsoft&rsquo;s. 552 points, 300 comments.</div>
+  <div class="cell"><span class="tag">Field Desk &middot; Consumer</span><b>New York bans post-purchase subscription fees on pre-installed car features</b>
+    Heated seats and remote starts included; navigation, infotainment and driver-assistance subscriptions excluded by the statute&rsquo;s own text. Effective February 27, 2027. 508 points, 223 comments.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <div class="kicker">Hardware Desk &middot; The Lead &middot; Follow-Up</div>
+    <h2 class="headline">Nvidia&rsquo;s board reinstates Jensen Huang as chief executive, citing &ldquo;input from senior levels of the United States government&rdquo;</h2>
+    <h3 class="deck">A unanimous vote, ten days and one 31 percent rally after a resignation over reported affairs &mdash; one, the Times says, with a woman in contact with Chinese state security &mdash; returns the founder to the corner office</h3>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>&#9733; 2,678 pts &#8224;</b> &middot; &#9650; +971 since the last edition</span></div>
+    <figure>
+      <img src="images/nvidia.jpg" alt="Jensen Huang speaking at an Nvidia GTC event, the article's lead photograph">
+      <figcaption>Huang at a Nvidia GTC event, the article&rsquo;s lead photograph. <span class="cr">cnbc.com</span></figcaption>
+    </figure>
+    <p class="first">SANTA CLARA, CALIFORNIA &mdash; Nvidia&rsquo;s board voted unanimously on Monday to reinstate Jensen Huang as chief executive, effective immediately, ten days after he resigned over reports of several extramarital affairs &mdash; one of them, the New York Times reported Sunday, with a woman who was in contact with an officer of China&rsquo;s Ministry of State Security during at least part of the relationship. The board said it acted after &ldquo;a series of discussions and meetings&rdquo; with Huang, that it &ldquo;received input from senior levels of the United States government,&rdquo; and that it is confident his return &ldquo;poses no national security risk.&rdquo;<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>President Trump told CNBC he had spoken with the board &ldquo;directly and indirectly,&rdquo; that Huang &ldquo;did nothing wrong,&rdquo; and that he had asked him on Sunday to promise to &ldquo;work hard&rdquo;; on his social network he called the reinstatement &ldquo;the correct and proper decision&rdquo; and Huang &ldquo;a Great Patriot and National Treasure.&rdquo; Senior officials briefed the board late last week that no national security laws were violated; the first Huang conversations came Saturday, the decision at a second meeting Sunday &mdash; a schedule sources said Nvidia&rsquo;s cratering stock accelerated. Shares closed up 31 percent, recovering most of the near-33 percent shed since Huang&rsquo;s Nov. 8 disclosure of an affair to employees; the stock had closed at $186.64 on Nov. 6. &ldquo;I am honored to return to NVIDIA and lead one of the most consequential technology companies in the world at the beginning of a new industrial revolution,&rdquo; Huang said.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The thread argued the price was the point. One reader put the week&rsquo;s arithmetic bluntly: there is &ldquo;no way&rdquo; the stock should have gone &ldquo;from $220 a share to $120, just because Jensen Huang was forced to leave&rdquo; &mdash; a drop that size on a chief executive&rsquo;s exit, he wrote, suggests traders feared what the departure would expose about the business. Another cut the governance to a sentence: the board exists &ldquo;to act as a proxy for shareholders, not to be moral police.&rdquo; Elon Musk, Gavin Baker and Brad Gerstner had lobbied for the return; Musk wrote that the board&rsquo;s &ldquo;mistake has been corrected.&rdquo;<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50611576">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Tools Desk &middot; Follow-Up</div>
+    <h2 class="headline">Ladybird&rsquo;s first alpha goes out as a rolling channel, crash reports you read before you send</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 2,155 pts</b> &middot; &#9650; +1,076 since the last edition</span></div>
+    <figure>
+      <img src="images/ladybird.webp" alt="The Ladybird browser's logo">
+      <figcaption>The browser&rsquo;s logo. <span class="cr">ladybird.org</span></figcaption>
+    </figure>
+    <p class="first">Ladybird, Andreas Kling&rsquo;s browser with an engine &ldquo;built from the ground up, and not a fork,&rdquo; is in alpha, downloadable for macOS and Linux. The caveats are printed as plainly as the pitch &mdash; some sites will not work, it will crash sometimes &mdash; and after a crash the report is readable in the browser, with the reader deciding whether to send it.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The build is a rolling channel with automatic updates, &ldquo;the part I am most excited about,&rdquo; Kling writes, since until now you had to compile from source to watch the browser improve. WebDriver and the Firefox DevTools protocol are both supported, so site owners can run their own pages against it, and the security posture is an open invitation: &ldquo;We want security nerds to hack it! A new browser gets hacked, over and over, and that&rsquo;s part of the process, so we make no promises about security today. When you pwn us, please tell us how so we can harden Ladybird!&rdquo;<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The thread took stock of the project&rsquo;s trades: one reader credited the pace to retiring self-built libraries for production-grade ones like SQLite and Skia, while missing &ldquo;the original hacker spirit&rdquo; of the SerenityOS lineage; a second asked what the goal is &ldquo;without SerenityOS&rdquo;; and a third answered that now is exactly the moment to rebuild those parts from the ground up and &ldquo;recreate the lineage of what worked and what didn&rsquo;t.&rdquo;<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50614249">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Tools Desk &middot; Mail</div>
+    <h2 class="headline">Stalwart 1.2.0 speaks MAPI, EWS, ActiveSync and Autodiscover, making the open-source server a drop-in Exchange replacement</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 552 pts</b> &middot; 300 cmts</span></div>
+    <figure>
+      <img src="images/stalwart.png" alt="Announcement card for Stalwart 1.2.0">
+      <figcaption>The release&rsquo;s announcement card. <span class="cr">stalw.art</span></figcaption>
+    </figure>
+    <p class="first">Stalwart 1.2.0, released Sunday, implements the protocols Exchange clients speak &mdash; MAPI over HTTP, Exchange Web Services, ActiveSync and Autodiscover &mdash; so Outlook, Apple Mail and the mail apps on phones and tablets connect to it as they would to an Exchange server, with mail, calendars, contacts, tasks and notes in one account: type an address and password, and Autodiscover does the rest. The Exchange support ships in the open-source Community edition, under the AGPL.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>The release&rsquo;s case against staying on Microsoft&rsquo;s server is a ledger: Exchange 2016 and 2019 left support Oct. 14, 2025, their extended-update program ended this October, and Subscription Edition is the last on-premises version there will be; the new Outlook&rsquo;s own documentation says &ldquo;on-premises Exchange accounts aren&rsquo;t supported,&rdquo; and EWS in Exchange Online began switching off this month, to be gone by April 2027. For organizations that cannot hand their mail to a US cloud &mdash; the post cites the CLOUD Act&rsquo;s reach &mdash; the choices had been shrinking.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>The thread&rsquo;s sharpest point was the license, not the protocols: &ldquo;It&rsquo;s AGPL v3 licensed so even if they close the source code you can fork it,&rdquo; one reader wrote. Another, recalling a mail server whose free tier was pulled, asked whether a free edition would always exist; and a third filed the release under an old argument &mdash; asked where all the new software is if AI makes it free, &ldquo;Here it is.&rdquo;<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50620349">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="section-label"><span>Field, Language &amp; Security Desks</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">Field Desk &middot; Consumer</div>
+    <h2 class="headline">Hochul signs a ban on subscription fees for pre-installed car features, effective February 27, 2027</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 508 pts</b> &middot; 223 cmts</span></div>
+    <p class="first">ALBANY, NEW YORK &mdash; Governor Kathy Hochul signed S.9348A/A.10411A on Sunday, barring manufacturers, dealers and third-party providers from charging subscription or post-purchase fees for any vehicle feature that uses pre-installed components &ldquo;that do not have an ongoing cost&rdquo; &mdash; the heated seats, remote starts and built-in navigation that became monthly line items. &ldquo;People spending their hard-earned money on a car shouldn&rsquo;t have to fork over even more money for features that should automatically come with the car,&rdquo; the governor said. The law takes effect in 90 days, on Feb. 27, 2027.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>The thread went straight to the statute&rsquo;s exclusions, which one reader quoted in full: navigation system updates, infotainment features, satellite radio, in-vehicle Wi-Fi, telematics services, roadside assistance, and software-dependent driver assistance or automation features are all outside the ban &mdash; so a self-driving subscription remains legal, while a heated-seat subscription does not. On prices the readers split: one argued the sticker is now &ldquo;the benchmark&rdquo; and transparent competition will do its work; another expected manufacturers to fold the lost subscription revenue into the sticker itself.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50622774">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Language Desk &middot; Web Assembly</div>
+    <h2 class="headline">A full Linux desktop boots in a browser tab &mdash; kernel compiled to WebAssembly, GUI programs, sound and networking included</h2>
+    <div class="byline"><span>Language Desk</span><span class="score"><b>&#9733; 449 pts</b> &middot; 176 cmts</span></div>
+    <p class="first">trynix.dev now boots GUI programs from a browser tab &mdash; solitaire, GL gears, xeyes, a voice, the weather over curl, or Firefox &mdash; running any of nixpkgs&rsquo; 300,000-plus package versions, Farid Zakaria writes. The piece is a reply, eleven years late and right on time, to Gary Bernhardt&rsquo;s 2015 talk &ldquo;The Birth &amp; Death of JavaScript,&rdquo; a retrospective delivered from an imagined 2035 in which everything is written in JavaScript; Zakaria&rsquo;s reading is that language models pulled the timeline forward.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>The speed came from an engine swap: where QEMU-in-the-browser had left his earlier build slow enough to &ldquo;tip more towards novelty than practicality,&rdquo; Zakaria adopted unkernel &mdash; Linux compiled to WebAssembly, published Nov. 19 by Pooya Parsa &mdash; so the kernel and system components run at wasm speed and only user programs are emulated, measured 2x to 32x faster than qemu-wasm depending on workload. Wayland surfaces are composited into the page; a minimal Mesa renders through WebGL2; an ALSA card plays sound; each TCP connection rides one WebSocket.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>The thread&rsquo;s sharpest caveat is taxonomic: the prediction was about JavaScript, and &ldquo;this is WebAssembly&hellip; a big part of the reason the timeline accelerated is that the goal post was moved. A lot.&rdquo; Another reader made the same point on the label &mdash; almost none of it is written in JavaScript, only transpiled toward it.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50624497">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Security Desk &middot; Markets</div>
+    <h2 class="headline">An on-chain study times a $4,648 Polymarket bet on Huang&rsquo;s return 89 minutes before the president&rsquo;s post, clearing $66,869</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 369 pts</b> &middot; 213 cmts</span></div>
+    <p class="first">A French-language forensic analysis, published Sunday by the author of an algorithm that continuously watches Polymarket&rsquo;s most sensitive markets, reconstructs a trade on &ldquo;Will Jensen Huang rejoin NVIDIA by December 31, 2026?&rdquo; down to the transaction hash. Between 02:19 and 03:28 CET on Monday, an account created 81 hours earlier &mdash; used for nothing else &mdash; swept the sleeping order book with four limit orders, buying $4,648 of &ldquo;Yes&rdquo; at $0.065, a 6.5 percent implied probability.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The timing is the story: the buying finished 89 minutes before President Trump&rsquo;s Truth Social post hoping the board would rehire Jensen, and eleven hours before Nvidia&rsquo;s announcement. The market resolved to $1.00 on the unanimous board vote, and the account &mdash; operating under the pseudonym ljhggk &mdash; cashed out 71,518 USDC, a net gain of 66,869.34 USDC, a 15.38x multiple. On the raw chain data, the author writes, chance is &ldquo;statistically disqualified.&rdquo;<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The thread filed the trade under the week&rsquo;s bigger picture &mdash; &ldquo;I joked about this yesterday on social media, but I&rsquo;m absolutely not surprised if it&rsquo;s true,&rdquo; one reader wrote &mdash; and a practical soul noted that the analysis being in French is less a barrier than it once was, machine translation now covering &ldquo;a near totality of HN readers.&rdquo;<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50626578">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 6. TOOLS, AI, CULTURE & THE EXCHANGE -->
+<div class="sec2">
+  <div class="cell">
+    <div class="section-label"><span>Tools &amp; Hardware Desks</span></div>
+    <div class="kicker">Tools Desk &middot; Open Source</div>
+    <h2 class="headline">Zed spins GPUI, its GPU-accelerated Rust UI framework, into a repository of its own &mdash; with little in it yet</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 323 pts</b> &middot; 113 cmts</span></div>
+    <figure>
+      <img src="images/gpui.png" alt="Repository card for zed-industries/gpui on GitHub">
+      <figcaption>The repository&rsquo;s card. <span class="cr">github.com</span></figcaption>
+    </figure>
+    <p class="first">GPUI &mdash; the GPU-accelerated, open-source UI framework behind the Zed editor, combining immediate and retained modes &mdash; now has a standalone repository at zed-industries/gpui, with a site promised at gpui.rs. What is there today is a placeholder: a single commit, a README reading &ldquo;See you in a few weeks,&rdquo; 1.3k stars and 12 forks.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The thread&rsquo;s most-upvoted entry was a correction: &ldquo;the repo also has literally no content yet&hellip; Despite the title of this HN post, this isn&rsquo;t an announcement from Zed, it&rsquo;s just a random third party noticing that Zed created a GPUI repository and linked to it.&rdquo; The demand around it was concrete &mdash; if you ship a GUI framework, &ldquo;put together a demo,&rdquo; one reader pressed, and put the link where everyone can find it, &ldquo;not buried in a help document on page 66.&rdquo;<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50619103">Discussion on the wire &rarr;</a></div>
+
+    <div class="kicker" style="margin-top:8px">Hardware Desk &middot; Servers</div>
+    <h2 class="headline">AMD&rsquo;s Zen 6 server flagships measure 12.1x the 2017 Zen 1 flagship across real-world workloads &mdash; and about 5x per watt</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>&#9733; 147 pts</b> &middot; 82 cmts</span></div>
+    <figure>
+      <img src="images/amd.webp" alt="The review's photograph of its EPYC test platforms">
+      <figcaption>The review&rsquo;s EPYC test platforms. <span class="cr">phoronix.net</span></figcaption>
+    </figure>
+    <p class="first">With the EPYC 9006 &ldquo;Venice&rdquo; SP7 processors now shipping, Phoronix&rsquo;s Michael Larabel benchmarked the decade between them: the EPYC 9996 &mdash; 256 Zen 6C cores, 512 threads, 4.1 GHz boost, 1,024 MB of L3, 600 W &mdash; against 2017&rsquo;s EPYC 7601 flagship, at 32 cores, 64 threads, 3.2 GHz boost, 64 MB of L3 and 180 W. Across the review&rsquo;s real-world suite on Ubuntu 26.10, the geometric mean lands at 12.1x, running up to 133x in AI workloads; on performance-per-watt it is about 5x.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>The thread supplied the context the headline leaves out: Zen 1 ran on GlobalFoundries 14nm, &ldquo;not even close&rdquo; to the state of the art at the time, while Zen 6 is on TSMC 2nm &mdash; a fair part of the gain is the foundry&rsquo;s &mdash; and the geometric mean includes the workloads that most favor the newer silicon. A home-server contingent read the numbers for what they portend at low power: &ldquo;Just make it 20W.&rdquo;<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50624061">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>AI &amp; Culture Desks</span></div>
+    <div class="kicker">AI Desk &middot; Agents</div>
+    <h2 class="headline">A developer&rsquo;s agent refuses to help around Bandcamp&rsquo;s bot wall &mdash; then downloads the same song from YouTube, which pays the artist nothing</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 154 pts</b> &middot; 45 cmts</span></div>
+    <figure>
+      <img src="images/llmagents.png" alt="Card for the post on LLM agents working for their parent companies">
+      <figcaption>The post&rsquo;s card. <span class="cr">michaelharley.net</span></figcaption>
+    </figure>
+    <p class="first">Michael Harley built a Claude skill to turn Instagram reels into Bandcamp purchases: identify the artist, find the store page, hand back a link to buy. When Bandcamp added a challenge to its search API, the model refused to help work around it &mdash; while another branch of the same skill, asked for the same song, downloads it from YouTube, &ldquo;which doesn&rsquo;t send any money to the band or anyone.&rdquo; His conclusion is the post&rsquo;s title: LLM agents work for their parent companies, not for you.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>The thread generalized the catch. &ldquo;Any for-profit online service is designed to work first and foremost for the parent company,&rdquo; one reader wrote &mdash; the agent is only as user-serving as its owner permits, with &ldquo;the inevitable enshittification&rdquo; as the endpoint. Another argued the boundary cases from first principles: an agent fetching a page at its user&rsquo;s direction is a browser, not a spider, and robots.txt &ldquo;is meant for spiders, not for user-directed requests.&rdquo;<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50627340">Discussion on the wire &rarr;</a></div>
+
+    <div class="kicker" style="margin-top:8px">Culture Desk &middot; The Web</div>
+    <h2 class="headline">Bored.com, a directory of 183 free games and 77 &ldquo;pointless fun&rdquo; links, is read closely &mdash; and found machine-made</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 286 pts</b> &middot; 61 cmts</span></div>
+    <figure>
+      <img src="images/bored.png" alt="Card for the Bored.com directory of websites and games">
+      <figcaption>The directory&rsquo;s card. <span class="cr">bored.com</span></figcaption>
+    </figure>
+    <p class="first">Bored.com bills itself as a collection of &ldquo;the most fun, interesting and cool websites on the internet&rdquo;: 77 links under &ldquo;pointless fun,&rdquo; 59 mini games, and an arcade of &ldquo;183 free games we made ourselves,&rdquo; sorted into sims, visual toys, rage rooms and crowd experiments. A ticker across the top cycles facts &mdash; two diseases eradicated so far, octopuses with three hearts, the shortest war in history at 38 to 45 minutes.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>The thread&rsquo;s testing was unsparing: one reader reported the site &ldquo;popped up in 2026,&rdquo; carrying &ldquo;a half-broken Snake game and a non-functional ticker on top with LLM-esque factoids that don&rsquo;t scroll and don&rsquo;t change across visits, suggesting that no human has actually even tested all of this.&rdquo; Another traced the look to neobrutalism, by way of neubrutalism.com; a third defended the premise itself &mdash; being bored is not a bad thing, and &ldquo;wouldn&rsquo;t it be better to just gaze aimlessly and let your mind wander?&rdquo;<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50619207">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Quote of the Day</span></div>
+    <div class="pullquote">&ldquo;There&rsquo;s no way Nvidia stocks should have gone from $220 a share to $120, just because Jensen Huang was forced to leave.&rdquo;
+      <span class="attr">&mdash; a reader, on the slide in Nvidia&rsquo;s shares during Huang&rsquo;s ten days out of the corner office, in the day&rsquo;s lead thread<sup class="cite"><a href="#src2">[2]</a></sup></span>
+    </div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories chosen</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>8</td></tr>
+        <tr><td>Follow-ups returning</td><td>2</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>7,621</td></tr>
+        <tr><td>Combined comments</td><td>5,277</td></tr>
+        <tr><td>Most-discussed story</td><td>3,541 cmts</td></tr>
+        <tr><td>Biggest mover</td><td>Ladybird &#9650; +1,076 (+100%)</td></tr>
+      </table>
+    </div>
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p>MAIL SERVER, EXCHANGE-TRAINED: type your address and password; Autodiscover does the rest. Calendars, contacts and notes included. AGPL.</p>
+      <p>HEATED SEATS, ONE PAYMENT ONLY: New York State, effective February 27, 2027. Monthly subscriptions no longer accepted.</p>
+      <p>SECURITY RESEARCHERS SOUGHT, ALPHA BROWSER: no security promises made today; &ldquo;when you pwn us, please tell us how.&rdquo;</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Day&rsquo;s Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" style="width:100%;height:auto;display:block" role="img" aria-label="Bar chart of the ten stories by points">
+      <defs>
+        <pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+        <pattern id="hatchred" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <line class="grid" x1="39"  y1="6" x2="39"  y2="344"/>
+      <line class="grid" x1="77"  y1="6" x2="77"  y2="344"/>
+      <line class="grid" x1="116" y1="6" x2="116" y2="344"/>
+      <line class="grid" x1="154" y1="6" x2="154" y2="344"/>
+      <line class="grid" x1="193" y1="6" x2="193" y2="344"/>
+      <line class="grid" x1="231" y1="6" x2="231" y2="344"/>
+      <line class="grid" x1="270" y1="6" x2="270" y2="344"/>
+      <line class="grid" x1="308" y1="6" x2="308" y2="344"/>
+      <line class="grid" x1="347" y1="6" x2="347" y2="344"/>
+      <line class="grid" x1="385" y1="6" x2="385" y2="344"/>
+      <line class="grid" x1="424" y1="6" x2="424" y2="344"/>
+      <line class="grid" x1="462" y1="6" x2="462" y2="344"/>
+      <line class="grid" x1="501" y1="6" x2="501" y2="344"/>
+      <!-- bars -->
+      <rect x="0.5" y="22"  width="516" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="56"  width="415" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="90"  width="106" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="124" width="98"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="158" width="86"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="192" width="71"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="226" width="62"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="260" width="55"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="294" width="30"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="328" width="28"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0" y1="352" x2="520" y2="352"/>
+      <!-- tick labels -->
+      <text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text>
+      <text x="39"  y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="77"  y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="116" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text>
+      <text x="154" y="366" font-size="11" fill="#3d352a" text-anchor="middle">800</text>
+      <text x="193" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1000</text>
+      <text x="231" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1200</text>
+      <text x="270" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1400</text>
+      <text x="308" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1600</text>
+      <text x="347" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1800</text>
+      <text x="385" y="366" font-size="11" fill="#3d352a" text-anchor="middle">2000</text>
+      <text x="424" y="366" font-size="11" fill="#3d352a" text-anchor="middle">2200</text>
+      <text x="462" y="366" font-size="11" fill="#3d352a" text-anchor="middle">2400</text>
+      <text x="501" y="366" font-size="11" fill="#3d352a" text-anchor="middle">2600</text>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18">Nvidia reinstates Huang &#8224;</text>
+      <text class="barlabel" x="0" y="52">Ladybird reaches alpha</text>
+      <text class="barlabel" x="0" y="86">Stalwart replaces Exchange</text>
+      <text class="barlabel" x="0" y="120">New York bans car fees</text>
+      <text class="barlabel" x="0" y="154">Linux desktop in a tab</text>
+      <text class="barlabel" x="0" y="188">Polymarket trade timed</text>
+      <text class="barlabel" x="0" y="222">GPUI gets own repository</text>
+      <text class="barlabel" x="0" y="256">Bored.com directory</text>
+      <text class="barlabel" x="0" y="290">Agents serve their makers</text>
+      <text class="barlabel" x="0" y="324">EPYC Zen 6 vs Zen 1</text>
+      <!-- values -->
+      <text class="barval" x="523" y="34" font-weight="700">2678 &#9733; &middot; 3541 cmts</text>
+      <text class="barval" x="422" y="68">2155 &middot; 524</text>
+      <text class="barval" x="113" y="102">552 &middot; 300</text>
+      <text class="barval" x="105" y="136">508 &middot; 223</text>
+      <text class="barval" x="93"  y="170">449 &middot; 176</text>
+      <text class="barval" x="78"  y="204">369 &middot; 213</text>
+      <text class="barval" x="69"  y="238">323 &middot; 113</text>
+      <text class="barval" x="62"  y="272">286 &middot; 61</text>
+      <text class="barval" x="37"  y="306">154 &middot; 45</text>
+      <text class="barval" x="35"  y="340">147 &middot; 82</text>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">&#9733; = points &middot; cmts = comments &middot; &#8224; most-discussed story of the day &middot; red hatch marks Apple coverage (no Apple story ran today)</text>
+    </svg>
+    </figure>
+  </div>
+  <div class="cell">
+    <div class="section-label"><span>The Day in One Line</span></div>
+    <p class="first">Nvidia&rsquo;s board reinstated Jensen Huang ten days after his resignation, with &ldquo;input from senior levels of the United States government&rdquo; and a close 31 percent higher; Ladybird&rsquo;s alpha returned for a second day; Stalwart 1.2.0 made the open-source mail server a drop-in Exchange replacement; New York banned post-purchase subscription fees on pre-installed car features; a Linux desktop booted in a browser tab through a WebAssembly kernel; an on-chain study timed a Polymarket bet on Huang&rsquo;s return 89 minutes ahead of the president&rsquo;s post; Zed moved GPUI to a repository of its own; readers found Bored.com machine-made; a developer argued his LLM agent serves its parent company before him; and AMD&rsquo;s Zen 6 server flagships measured 12.1x their 2017 ancestors on average.</p>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>New York&rsquo;s subscription ban, as headlined.</b> The law bars fees only for features using pre-installed components &ldquo;that do not have an ongoing cost.&rdquo; As one reader quoted the statute, it excludes &ldquo;navigation system updates, infotainment features, satellite radio, in-vehicle Wi-Fi, telematics services, roadside assistance, software-dependent driver assistance or driver automation features,&rdquo; and services relying on cellular networks. A heated-seat subscription is now illegal in New York; a self-driving subscription is not.</p>
+      <p><b>&ldquo;GPUI is getting its own repository.&rdquo;</b> The repository exists, and contains a single commit and a README reading &ldquo;See you in a few weeks.&rdquo; As a reader on the thread put it: &ldquo;this isn&rsquo;t an announcement from Zed, it&rsquo;s just a random third party noticing that Zed created a GPUI repository and linked to it.&rdquo; A repository has been created; the framework has not yet been announced.</p>
+      <p><b>Bored.com, &ldquo;hand-picked&rdquo; websites.</b> The directory&rsquo;s own description says its sites are hand-picked. A reader testing it found &ldquo;a half-broken Snake game and a non-functional ticker&hellip; with LLM-esque factoids that don&rsquo;t scroll and don&rsquo;t change across visits, suggesting that no human has actually even tested all of this.&rdquo; The curation claim is the site&rsquo;s; the testing, on the thread&rsquo;s evidence, is nobody&rsquo;s.</p>
+      <p><b>&ldquo;12.1x in less than ten years.&rdquo;</b> That figure is the geometric mean across the Phoronix review&rsquo;s benchmark suite, which includes AI workloads where the Zen 6 advantage runs to 133x; on performance-per-watt the decade&rsquo;s gain is about 5x, as one reader flagged from the same review. The comparison also pairs GlobalFoundries 14nm silicon against TSMC 2nm, as another noted &mdash; the headline number is real, and it is the most dramatic of the review&rsquo;s several.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher&rsquo;s Note</div>
+  <p>The morning edition leads again with Nvidia&rsquo;s reinstatement of Jensen Huang &mdash; 2,678 points and 3,541 comments, up 971 since yesterday&rsquo;s edition &mdash; with Ladybird&rsquo;s alpha returning alongside it, up 1,076; the other eight stories are fresh, so no digest was needed. The Polymarket analysis and the trynix post published no images, and none were made for them; every other photograph arrived with its source.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">&ldquo;Jensen Huang reinstated as Nvidia CEO. Stock skyrockets 31%,&rdquo; CNBC, Nov 23, 2026, <a href="https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html">cnbc.com</a></li>
+    <li data-n="[2]" id="src2">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50611576">news.ycombinator.com/item?id=50611576</a></li>
+    <li data-n="[3]" id="src3">&ldquo;Ladybird is now in alpha,&rdquo; Andreas Kling, ladybird.org, Nov 23, 2026, <a href="https://ladybird.org/posts/alpha/">ladybird.org</a></li>
+    <li data-n="[4]" id="src4">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50614249">news.ycombinator.com/item?id=50614249</a></li>
+    <li data-n="[5]" id="src5">&ldquo;Stalwart is now a drop-in replacement for Microsoft Exchange,&rdquo; stalw.art, Nov 23, 2026, <a href="https://stalw.art/blog/microsoft-exchange-replacement/">stalw.art</a></li>
+    <li data-n="[6]" id="src6">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50620349">news.ycombinator.com/item?id=50620349</a></li>
+    <li data-n="[7]" id="src7">&ldquo;Money in Your Pockets: Governor Hochul Signs Bill Restricting Exploitative Vehicle Subscription Fees,&rdquo; Office of the Governor, New York State, Nov 23, 2026, <a href="https://www.governor.ny.gov/news/money-your-pockets-governor-hochul-signs-bill-restricting-exploitative-vehicle-subscription">governor.ny.gov</a></li>
+    <li data-n="[8]" id="src8">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50622774">news.ycombinator.com/item?id=50622774</a></li>
+    <li data-n="[9]" id="src9">&ldquo;2035 came early,&rdquo; Farid Zakaria, fzakaria.com, Nov 23, 2026, <a href="https://fzakaria.com/2026/11/23/2035-came-early">fzakaria.com</a></li>
+    <li data-n="[10]" id="src10">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50624497">news.ycombinator.com/item?id=50624497</a></li>
+    <li data-n="[11]" id="src11">&ldquo;Polymarket: Autopsie d&rsquo;un d&eacute;lit d&rsquo;initi&eacute; sur la r&eacute;int&eacute;gration de Jensen Huang chez NVIDIA,&rdquo; deucalionn, Nov 23, 2026, <a href="https://deucalionn.vercel.app/polymarket-delit-initie-jensen-huang-nvidia/">deucalionn.vercel.app</a></li>
+    <li data-n="[12]" id="src12">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50626578">news.ycombinator.com/item?id=50626578</a></li>
+    <li data-n="[13]" id="src13">zed-industries/gpui, GitHub, <a href="https://github.com/zed-industries/gpui">github.com</a></li>
+    <li data-n="[14]" id="src14">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50619103">news.ycombinator.com/item?id=50619103</a></li>
+    <li data-n="[15]" id="src15">Bored.com, <a href="https://www.bored.com/">bored.com</a></li>
+    <li data-n="[16]" id="src16">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50619207">news.ycombinator.com/item?id=50619207</a></li>
+    <li data-n="[17]" id="src17">&ldquo;LLM agents work for their parent companies, not for you,&rdquo; Michael Harley, michaelharley.net, <a href="https://michaelharley.net/posts/2026/11/01/llm-agents-work-for-their-parent-companies-not-for-you">michaelharley.net</a></li>
+    <li data-n="[18]" id="src18">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50627340">news.ycombinator.com/item?id=50627340</a></li>
+    <li data-n="[19]" id="src19">&ldquo;AMD EPYC Zen 6 vs. Zen 1 Performance: 12.1x Geo Mean In Less Than 10 Years, Up To 133x In AI,&rdquo; Michael Larabel, Phoronix, Nov 23, 2026, <a href="https://www.phoronix.com/review/amd-epyc-9006-7601">phoronix.com</a></li>
+    <li data-n="[20]" id="src20">Hacker News thread, <a href="https://news.ycombinator.com/item?id=50624061">news.ycombinator.com/item?id=50624061</a></li>
+  </ol>
+  <div class="method">Methodology &mdash; Snapshot taken at 14:00 UTC (08:00 US Central) on Tuesday, November 24, 2026, from the Hacker News Algolia front-page feed, which returned 30 candidate stories. The ten above are the strongest candidates after deduplication against the previous four editions&rsquo; manifest: eight are fresh, and two return as follow-ups, both last set in yesterday afternoon&rsquo;s edition &mdash; Nvidia&rsquo;s reinstatement (1,707 &rarr; 2,678 points, +57 percent) and Ladybird&rsquo;s alpha (1,079 &rarr; 2,155, +100 percent). Every score, comment count and quote was taken from that snapshot or from sources fetched during this run: each article was retrieved with a browser user-agent, each HN thread through the Algolia items API, and every image verified by file signature before use &mdash; the Phoronix illustration is a WebP. The Polymarket analysis and the trynix post publish no images, and none were fabricated for either.</div>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <div class="l">The Hacker Herald &mdash; Typeset from the Hacker News front page</div>
+  <div class="c">&#10047; Printed on 100% recycled bandwidth &#10047;</div>
+  <div class="r"><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</div>
+</footer>
+
+</body>
+</html>
