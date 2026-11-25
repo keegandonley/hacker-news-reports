@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-25-afternoon",
+      "date": "2026-11-25",
+      "label": "Afternoon",
+      "snapshot_utc": "22:00",
+      "items": [
+        {
+          "id": 50644817,
+          "title": "1Password Security Incident",
+          "score": 845,
+          "comments": 351
+        },
+        {
+          "id": 50638032,
+          "title": "Button Sounds – collection of professionally-recorded button clicks and presses",
+          "score": 805,
+          "comments": 127
+        },
+        {
+          "id": 50646108,
+          "title": "Holy shit holy shit holy shit holy shit: The magnitude of what’s now happening",
+          "score": 583,
+          "comments": 422
+        },
+        {
+          "id": 50643065,
+          "title": "Rumors swirling that labs might have cracked Factoring in P",
+          "score": 417,
+          "comments": 293
+        },
+        {
+          "id": 50642086,
+          "title": "Google releases Cogentic papers on integer factorization, discrete logs and more",
+          "score": 401,
+          "comments": 314
+        },
+        {
+          "id": 50643129,
+          "title": "A few questions for the guy who went snorkeling in a Home Depot retention pond",
+          "score": 388,
+          "comments": 97
+        },
+        {
+          "id": 50641171,
+          "title": "Windows Loudness Equalization, reverse-engineered and ported to PipeWire",
+          "score": 296,
+          "comments": 166
+        },
+        {
+          "id": 50639698,
+          "title": "Smart people who give a shit use tools",
+          "score": 223,
+          "comments": 173
+        },
+        {
+          "id": 50624446,
+          "title": "Porting Rockbox to an undocumented $9 AliExpress 'YP3' MP3 player with LLMs",
+          "score": 177,
+          "comments": 74
+        },
+        {
+          "id": 50643720,
+          "title": "Investigating degraded experiences across GitHub products",
+          "score": 174,
+          "comments": 93
+        }
+      ]
+    },
+    {
       "folder": "2026-11-25-morning",
       "date": "2026-11-25",
       "label": "Morning",
@@ -1982,74 +2050,6 @@
           "title": "Lemmings CSS Animation",
           "score": 273,
           "comments": 53
-        }
-      ]
-    },
-    {
-      "folder": "2026-11-04-afternoon",
-      "date": "2026-11-04",
-      "label": "Afternoon",
-      "snapshot_utc": "22:01",
-      "items": [
-        {
-          "id": 50364336,
-          "title": "AI is forcing us to pay off 40 years of technical debt",
-          "score": 957,
-          "comments": 585
-        },
-        {
-          "id": 50363461,
-          "title": "Tell HN: Gemini trains on chat history, even for subscribers (personal accounts)",
-          "score": 574,
-          "comments": 148
-        },
-        {
-          "id": 50362905,
-          "title": "Nvidia RTX Spark encrypted firmware slows inference speed to 35% on Linux",
-          "score": 560,
-          "comments": 255
-        },
-        {
-          "id": 50365755,
-          "title": "North Korean fake job interview led to $6.3B Binance heist",
-          "score": 509,
-          "comments": 305
-        },
-        {
-          "id": 50367125,
-          "title": "AMD expects to outsell Intel in Q4 for the first time in history",
-          "score": 391,
-          "comments": 124
-        },
-        {
-          "id": 50366999,
-          "title": "Kimi K3.1 Pro model weights are out",
-          "score": 282,
-          "comments": 78
-        },
-        {
-          "id": 50363378,
-          "title": "Incident with Pull Requests, Git Operations and Issues",
-          "score": 238,
-          "comments": 119
-        },
-        {
-          "id": 50371246,
-          "title": "Residential proxies detected on White House network",
-          "score": 237,
-          "comments": 61
-        },
-        {
-          "id": 50366522,
-          "title": "Guerrilla bike lanes: San Francisco makes illicit infrastructure permanent (2016)",
-          "score": 217,
-          "comments": 163
-        },
-        {
-          "id": 50363019,
-          "title": "Verification Is Not Knowledge: Science needs more than answers",
-          "score": 208,
-          "comments": 123
         }
       ]
     }

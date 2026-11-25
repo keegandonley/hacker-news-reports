@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 25, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+
+</style>
+</head>
+<body>
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page &middot; Snapshot 22:00 UTC</div>
+  <div class="mid">Afternoon Edition</div>
+  <div class="r">10 Stories &middot; 4,309 Points &middot; 2,110 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Wednesday, November 25, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Security Desk &middot; The Lead</span><b>1Password: attacker in an employee&rsquo;s GitHub account; vaults safe</b>
+    On Nov. 19 an attacker pushed malicious code to 1Password&rsquo;s backend services and downloaded customer names and email addresses; the Nov. 25 report says vault contents and the keys protecting them were never touched, and internal credentials have been rotated. 845 points, 351 comments.</div>
+  <div class="cell"><span class="tag">AI Desk &middot; Most-Discussed</span><b>Aaronson, on the week&rsquo;s proofs: &ldquo;a proof of P &ne; NP is not far&rdquo;</b>
+    The Shtetl-Optimized post logs VP &ne; VNP, matrix multiplication at exactly 9/4, and a Fourier-transform lower bound improving the FFT &mdash; and says the labs are &ldquo;sitting on one or more bombshells&rdquo; in cryptography, without vouching for any specific claim. 583 points, 422 comments.</div>
+  <div class="cell"><span class="tag">AI Desk &middot; Mathematics</span><b>Google releases Cogentic&rsquo;s papers: factoring, discrete logs, log-rank</b>
+    Unconditional integer factorization in time L<sub>N</sub>[1/3, O(1)], discrete logarithms in sub-quasi-polynomial time, a square-root break for the log-rank conjecture and more, Apache 2.0 and reviewed by human experts before publication. 401 points, 314 comments.</div>
+  <div class="cell"><span class="tag">Culture Desk &middot; Follow-Up</span><b>Button Sounds returns at 805 points, up 258 since the morning edition</b>
+    The free library of professionally recorded clicks keeps climbing, and the thread has replaced the site&rsquo;s &ldquo;use a desktop&rdquo; advice with a simpler fix: the hardware silent switch, five minutes of poking around to find. 805 points, 127 comments.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <div class="kicker">Security Desk &middot; The Lead</div>
+    <h2 class="headline">1Password discloses a breach of its backend systems &mdash; an attacker rode an employee&rsquo;s GitHub account to production, and customer vaults were never touched</h2>
+    <h3 class="deck">The Nov. 25 incident report: malicious code pushed on Nov. 19 downloaded customer names, email addresses and non-secret account metadata; all possibly exposed credentials rotated, emailed recovery codes lengthened from six digits to ten characters, phishing attempts expected</h3>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 845 pts</b> &middot; 351 comments</span></div>
+    <figure>
+      <img src="images/onepassword.webp" alt="Card image from 1Password's incident blog post">
+      <figcaption>The incident post&rsquo;s card image. <span class="cr">1password.com</span></figcaption>
+    </figure>
+    <p class="first">TORONTO &mdash; 1Password published &ldquo;Update on a security incident involving 1Password&rsquo;s backend systems&rdquo; on Nov. 25, disclosing that on Nov. 19 it began investigating indications that an attacker gained access to an employee&rsquo;s corporate GitHub account. The actor used the account to access source code and push malicious code to backend services, which downloaded administrative data about customers: names and email addresses, account and user identifiers, account-creation and last sign-in times, public keys, Secure Remote Password protocol parameters, and tokens in certain emailed links for invitations, provisioning and account recovery. Vault contents and the keys protecting them were not affected, and 1Password does not hold any customer&rsquo;s account password or secret key.<sup class="cite"><a href="#src1">[1]</a><a href="#src2">[2]</a></sup></p>
+    <p>The attacker also copied source code from private repositories and reached the CI/CD system, which &ldquo;contains infrastructure related secrets&rdquo;; every credential that may have been exposed has been rotated or revoked, with no impact on services, availability or product security. The emailed invitation and recovery tokens cannot open an account on their own &mdash; they require an SSO sign-in or a six-digit code sent to the registered address &mdash; and as a precaution those codes have been expanded from six numeric digits to ten alphanumeric characters, a length the post says makes brute-force guessing &ldquo;practically impossible.&rdquo; Containment so far: the affected GitHub account disabled, the stolen token revoked, internal GitHub, CI/CD and endpoint controls tightened, new detections added for this class of attack, independent cybersecurity experts brought in, and a validation pass that found no evidence of account takeovers through the exposed provisioning tokens.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The company&rsquo;s advice to customers is narrow: watch for phishing in the form of unexpected emails, texts or calls that mention 1Password, invitations or account recovery &mdash; and 1Password will never ask for an account password or Secret Key. The thread&rsquo;s sharpest question is how one employee&rsquo;s GitHub account could push code to production at all: &ldquo;Interesting that there is no code review in place and the attacker could just deploy something,&rdquo; one reader wrote &mdash; answered from below by a second who noted an administrator can often bypass review settings anyway (&ldquo;the button just turns red in GitHub, still clickable&rdquo;), and a third who countered that even admin bypass can be disabled. A fourth reader put the wider worry in one line: how far the attacker got, and what was extracted before detection, &ldquo;is very concerning.&rdquo;<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50644817">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Culture Desk &middot; Sound &middot; Follow-Up</div>
+    <h2 class="headline">The button clicks keep climbing: 805 points, up 258 since the morning edition &mdash; and the thread has a better iOS fix than &ldquo;use a desktop&rdquo;</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 805 pts</b> &middot; &#9650; +258 since the last edition &middot; 127 cmts</span></div>
+    <figure>
+      <img src="images/buttons.png" alt="Card image for the Button Sounds collection">
+      <figcaption>The collection&rsquo;s card. <span class="cr">joshwcomeau.com</span></figcaption>
+    </figure>
+    <p class="first">Button Sounds &mdash; Josh Comeau&rsquo;s free collection of more than 50 professionally recorded clicks, presses and toggles, multi-sampled so the same switch never sounds identical twice, recorded on a Zoom H4 in a sound-treated room and MIT-licensed via npm &mdash; returned for a second edition at 805 points, up 258 since the morning paper&rsquo;s 547.<sup class="cite"><a href="#src3">[3]</a><a href="#src4">[4]</a></sup></p>
+    <p>What changed in the thread is the iOS diagnosis. The site itself warns that &ldquo;iOS Safari seems particularly strict&rdquo; about blocking audio and advises checking the page on a desktop; one reader found the simpler route &mdash; flip the hardware silent switch off, a fix he admits took five minutes of poking around to find. The thread then litigated what the switch is even for: &ldquo;the intent of the silent switch is to silence the ringer, not to mute the whole OS,&rdquo; one reader argued, noting music keeps playing with it on; another countered that respecting silent mode is &ldquo;perfectly reasonable&rdquo; for a browser; and a third observed that many apps already misread the signal, muting all their audio so a game has to be un-silenced to be heard at all.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50638032">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">AI Desk &middot; Complexity &middot; Most-Discussed</div>
+    <h2 class="headline">Scott Aaronson, four times over: the week&rsquo;s proofs reached complexity theory&rsquo;s oldest questions &mdash; and he now expects P &ne; NP &ldquo;not far&rdquo;</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 583 pts</b> &middot; 422 cmts &#8224;</span></div>
+    <p class="first">Scott Aaronson posted &ldquo;HOLY SHIT HOLY SHIT HOLY SHIT HOLY SHIT&rdquo; to Shtetl-Optimized on Wednesday at 1:01 pm, filed under AI, Complexity and &ldquo;The Fate of Humanity,&rdquo; and its 422-comment thread made it the day&rsquo;s most-discussed story. The occasion: processing OpenAI&rsquo;s and Anthropic&rsquo;s proofs of VP &ne; VNP, hot on the heels of the Alp&ouml;ge/Anthropic proof of the Riemann Hypothesis, and an OpenAI claim that the matrix-multiplication exponent &omega; is exactly 9/4 &mdash; a lower bound, matching the upper bound from the Oct. 6 &ldquo;Mathocalypse&rdquo; release.<sup class="cite"><a href="#src5">[5]</a><a href="#src6">[6]</a></sup></p>
+    <p>Two shocks, by his own count: that the answer to a question open since Volker Strassen&rsquo;s 1969 &omega;&thinsp;&lt;&thinsp;3 is a rational number &mdash; and, bigger, that the AI could prove any lower bound of the form &omega;&thinsp;&gt;&thinsp;2 at all: &ldquo;I never expected this challenge to be all that much easier than P &ne; NP.&rdquo; A same-night release put the linear gates needed to compute the Fourier transform at N&thinsp;(log&thinsp;N)<sup>1/2+o(1)</sup>, improving the O(N&thinsp;log&thinsp;N) fast Fourier transform that had stood since the 1960s, with a matching lower bound; Yupan Liu, he notes, just posted QIP(2)&thinsp;=&thinsp;PSPACE.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>On cryptography he was careful: &ldquo;yes, I&rsquo;m virtually certain, from multiple reliable sources, that the AI labs are now sitting on one or more bombshells in that area&rdquo; &mdash; but he would not vouch for any specific version of them, warning that &ldquo;exact statements of what was done may have been mangled in a game of Telephone.&rdquo; The thread tested the politics of that: a breakthrough would be &ldquo;forcibly classified by the organs of state security the same way the NSA had IBM keep differential cryptanalysis under wraps in the &rsquo;70s,&rdquo; one reader argued; another answered that it is &ldquo;a pretty different world&rdquo; now, and that Aaronson is &ldquo;far from being a random blogger.&rdquo;<sup class="cite"><a href="#src5">[5]</a><a href="#src6">[6]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50646108">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="section-label"><span>Field, Culture &amp; AI Desks</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">Field Desk &middot; Field Notes</div>
+    <h2 class="headline">A Florida biologist snorkels the retention pond behind his Home Depot, finds it teeming &mdash; and passes 2 million views</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 388 pts</b> &middot; 97 cmts</span></div>
+    <figure>
+      <img src="images/home-depot.jpg" alt="Thumbnail from the Home Depot retention pond snorkel video">
+      <figcaption>The video&rsquo;s thumbnail. <span class="cr">vox.com</span></figcaption>
+    </figure>
+    <p class="first">Joseph Ricketts, a crocodile and alligator research biologist in Florida, posted &ldquo;Night Snorkel In a Home Depot Retention Pond&rdquo; to his YouTube channel earlier this fall; it has since passed 2 million views. What it shows: a water snake undulating past with &ldquo;a bulge in its stomach revealing a recent meal,&rdquo; tadpoles &ldquo;half on their way to froghood,&rdquo; and shrimp scuttling along a silty bottom &mdash; in what is, from the surface, a stagnant pool with old beer cans in it.<sup class="cite"><a href="#src11">[11]</a><a href="#src12">[12]</a></sup></p>
+    <p>The pond itself is load-bearing Florida infrastructure, as he told Vox: natural wetlands absorb intense stormwater, but once a shopping center is paved, &ldquo;that stormwater needs a place to go and collect &mdash; or it&rsquo;s just going to flood parking lots and stores and houses&rdquo;; nowadays certain areas cannot be built unless a retention pond goes in. His dive was three miles from his house &mdash; his shortest-ever commute to one. The vocation dates to his first snorkel at 16, face-to-face with a manatee: &ldquo;I experienced so much joy in that moment, and I just kind of subconsciously knew I&rsquo;d be chasing that for the rest of my life to some degree or another.&rdquo;<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The thread&rsquo;s favorite detail was practical: before getting in, Ricketts does &ldquo;a quick scan for alligators.&rdquo; &ldquo;It&rsquo;s a body of water in Florida, so that feels quite prudent,&rdquo; one reader wrote. Others recommended the video for showing &ldquo;how beautiful life can be even if it&rsquo;s right next to a highway,&rdquo; and supplied the natural history of how remote ponds get fish at all &mdash; birds&rsquo; feet, floodwaters mixing basins, eggs that survive drought in soil, and a few species that move overland.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50643129">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Culture Desk &middot; The Trade</div>
+    <h2 class="headline">A rebuttal to &ldquo;AI dissolves the engineer&rdquo;: the tools amplified the engineers who gave a shit all along</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 223 pts</b> &middot; 173 cmts</span></div>
+    <p class="first">Ian K. Duncan&rsquo;s Nov. 19 essay &ldquo;Smart People Who Give a Shit Use Tools&rdquo; takes up a post by Justin Michael, which &mdash; after a run of outages at Microsoft 365, United, major banks and Apple &mdash; blames executives for trying to swap careful engineers for generative AI, and then blames the tools: &ldquo;Every prompt moves them one step further away from the system they used to know inside and out.&rdquo; Duncan&rsquo;s counter, written from daily use on systems &ldquo;where bugs cost significant sums of money&rdquo;: &ldquo;LLMs mostly amplify whoever is sitting at the keyboard.&rdquo;<sup class="cite"><a href="#src15">[15]</a><a href="#src16">[16]</a></sup></p>
+    <p>His evidence is the pre-2024 baseline: caring was &ldquo;rationed by how fast one human could read and type&rdquo; &mdash; the TLA+ spec for the gnarly race condition went unwritten because it took two days nobody had, so the engineer &ldquo;eyeballed the diff, wrote a unit test for the happy path, left a slightly nervous comment, and hoped.&rdquo; Given a capable model, that same engineer &ldquo;finally writes the TLA+ spec,&rdquo; traces every caller of a legacy function across the monorepo instead of &ldquo;grepping for five minutes and praying,&rdquo; and runs the mutation testing &mdash; rigor &ldquo;suddenly cheap enough to pull off on an ordinary Thursday.&rdquo; The risk he concedes: a model fails &ldquo;in smooth, confident prose that looks totally reasonable until production catches fire,&rdquo; and the engineer who ships unverified slop predates the tool &mdash; ten years ago &ldquo;they pasted the top Stack Overflow answer without reading the comments.&rdquo;<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>On the outages themselves he aims elsewhere: &ldquo;a huge share of the instability we are watching right now is the bill coming due for forty years of insufficient engineering rigor&rdquo; &mdash; memory-unsafe languages, under-specified protocols, state machines whose edge cases lived in one person&rsquo;s head. Executives get no pass: &ldquo;now we can lay off the prickly senior engineers who push back on bad ideas and replace them with a $200-a-month subscription&rdquo; is &ldquo;a slow-motion train wreck,&rdquo; and &ldquo;to someone who has never been paged at three in the morning, a fragile system held aloft by quiet competence and a pile of plausible-looking slop look identical on a quarterly slide deck.&rdquo; The thread&rsquo;s driest exchange ran three moves on determinism: &ldquo;Calculators are deterministic.&rdquo; &mdash; &ldquo;A non-deterministic tool proved GRH.&rdquo; &mdash; &ldquo;No, a human using a non-deterministic tool produced deterministic Lean output that [probably] proves GRH.&rdquo;<sup class="cite"><a href="#src15">[15]</a><a href="#src16">[16]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50639698">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">AI Desk &middot; Mathematics</div>
+    <h2 class="headline">Google releases Cogentic&rsquo;s papers: unconditional integer factoring in L<sub>N</sub>[1/3, O(1)], sub-quasi-polynomial discrete logs, and more</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 401 pts</b> &middot; 314 cmts</span></div>
+    <figure>
+      <img src="images/cogentic.png" alt="Card image for the google-research cogentic papers repository">
+      <figcaption>The repository&rsquo;s card image. <span class="cr">github.com</span></figcaption>
+    </figure>
+    <p class="first">Google&rsquo;s google-research repository gained a directory of papers &ldquo;produced by Cogentic,&rdquo; dated Nov. 25: &ldquo;Unconditional Integer Factorization in Time L<sub>N</sub>[1/3, O(1)]&rdquo;; &ldquo;Discrete Logarithms in Finite Fields of Fixed Characteristic in Sub-Quasi-Polynomial Time&rdquo;; &ldquo;An Exact Polynomial-Time Algorithm for 1/5-Approximate Nash Equilibria in Bimatrix Games&rdquo;; &ldquo;Unconditional Deterministic Subexponential Integer Factoring and Quadratic Nonresidue Construction&rdquo;; &ldquo;Breaking the Square-Root Barrier for the Log-Rank Conjecture&rdquo;; and &ldquo;Unconditional Edge Reconstruction of Simple Graphs of Linear Density.&rdquo; Earlier-dated entries include O(log&thinsp;log&thinsp;log&thinsp;m) prophet inequalities for subadditive combinatorial auctions (Nov. 23) and near-quadratic sample compression for all VC classes (Nov. 18). The directory is Apache 2.0 with the repository&rsquo;s standing disclaimer: &ldquo;This is not an official Google product.&rdquo;<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>Cogentic, per the paper the thread surfaced &mdash; &ldquo;Cogentic: Multi-Agent Orchestration for Automated Proof Discovery&rdquo; &mdash; is a harness in which existing LLMs collaborate on open conjectures through a central orchestrator and a shared database of intermediate proofs; one reader&rsquo;s summary: using Gemini 4 Argon, &ldquo;they have already obtained a number of interesting results. Math is going through its own version of the industrial revolution.&rdquo; Aaronson&rsquo;s blog adds the quality control: these papers &ldquo;are apparently reviewed by human experts before publication&rdquo; &mdash; and, unlike the OpenAI and Anthropic releases, do not come with Lean formalizations. A reader on the factoring thread had the timing right: &ldquo;Looks like Google has joined the race to publish.&rdquo;<sup class="cite"><a href="#src10">[10]</a><a href="#src5">[5]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50642086">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 6. SECURITY & PRACTICAL -->
+<div class="sec2">
+  <div class="cell">
+    <div class="section-label"><span>Science &amp; Field Desks</span></div>
+    <div class="kicker">Science Desk &middot; Cryptography</div>
+    <h2 class="headline">The &ldquo;Factoring in P&rdquo; rumor, sourced: a screenshot of a Scott Aaronson blog comment &mdash; and Aaronson himself doubts the specifics</h2>
+    <div class="byline"><span>Science Desk</span><span class="score"><b>&#9733; 417 pts</b> &middot; 293 cmts</span></div>
+    <p class="first">The r/singularity post behind the thread is thin &mdash; in one reader&rsquo;s description, &ldquo;a screenshot of some forum with a comment supposedly from Scott Aaronson saying that big labs are &lsquo;sitting on&rsquo; some result&rdquo; relating to factoring complexity (the Reddit page itself sits behind a login; the Herald read the claim through the thread and its sources). The comment it circulates is real and public: on his own blog, Aaronson wrote, &ldquo;I&rsquo;ve now heard many, many rumors that one or both labs are sitting on Factoring in P. I don&rsquo;t know how much to credit this. While I&rsquo;m virtually certain that the labs are, indeed, sitting on one or more bombshells for cryptography, it&rsquo;s possible that the exact nature of those bombshells has gotten distorted via a game of Telephone.&rdquo;<sup class="cite"><a href="#src7">[7]</a><a href="#src8">[8]</a></sup></p>
+    <p>The thread supplied the missing scale. One reader linked Anthropic&rsquo;s factoring of RSA-896 &ldquo;a couple of months ago,&rdquo; noting the company used existing methods and &ldquo;stressed that they didn&rsquo;t find a more efficient approach to factoring&rdquo; &mdash; computing power thrown at the problem, not a breakthrough. Another observed that cryptography was &ldquo;absent from the OpenAI paper dump,&rdquo; and a third answered with numbers: cryptography, optimization, statistics and machine-learning theory were each under 1% of that dump, against a maths-literature average near 20% &mdash; fields, he noted, with less Lean in them.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50643065">Discussion on the wire &rarr;</a></div>
+    <div class="kicker" style="margin-top:8px">Field Desk &middot; Infrastructure</div>
+    <h2 class="headline">GitHub resolves a day of degradation across its product line &mdash; root cause: high database load, fixed by redistribution</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 174 pts</b> &middot; 93 cmts</span></div>
+    <p class="first">GitHub&rsquo;s status page closed &ldquo;Investigating degraded experiences across GitHub products&rdquo; as Resolved, after an incident that by its own updates began with &ldquo;reports of degraded performance for Actions and Webhooks&rdquo; and spread to Git Operations, Pull Requests, Issues, Pages, Packages and API Requests. The stated root cause: &ldquo;increased failures due to high database load.&rdquo; The stated fix was redistribution &mdash; &ldquo;we&rsquo;ve updated our database load distribution and are starting to see recovery&rdquo; &mdash; after which each affected component was reported mitigated in turn, and the incident closed under monitoring with the note that &ldquo;a detailed root cause analysis will be shared as soon as it is available.&rdquo;<sup class="cite"><a href="#src19">[19]</a><a href="#src20">[20]</a></sup></p>
+    <p>The thread counted the blast radius and found it was everything: &ldquo;Issues, pages, pull requests, notifications, actions, git operations, and packages. So basically the entire thing,&rdquo; one reader wrote. Another tried to add an SSH key through the worst of it &mdash; &ldquo;I had to try over and over&rdquo; &mdash; and mused that he only gets &ldquo;more and more frustrated that GitHub is the de facto home of OSS. Downtime doesn&rsquo;t surprise me anymore.&rdquo;<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50643720">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Tools &amp; Hardware Desks</span></div>
+    <div class="kicker">Tools Desk &middot; Audio</div>
+    <h2 class="headline">Windows&rsquo; Loudness Equalization, reverse-engineered from WMALFXGFXDSP.dll and rebuilt for PipeWire</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 296 pts</b> &middot; 166 cmts</span></div>
+    <figure>
+      <img src="images/loudness-eq.png" alt="Card image for the pw-loudness-eq repository">
+      <figcaption>The repository&rsquo;s card image. <span class="cr">github.com</span></figcaption>
+    </figure>
+    <p class="first">pw-loudness-eq ports the Windows feature to Linux audio: a PipeWire module that runs a DSP plugin on each application&rsquo;s playback stream &mdash; &ldquo;so quiet and loud parts play at a similar level&rdquo; &mdash; plus the output limiter from Windows&rsquo; own audio engine (AudioEng.dll) on every playback device, &ldquo;always on, independent of Loudness Equalization, as on Windows.&rdquo; Settings live in a PipeWire metadata object, so they can be scripted; changes apply immediately and survive restarts. It requires PipeWire &ge; 1.4, and leaves JACK clients, streams beyond eight channels, and Flatpak apps that use PipeWire directly unprocessed.<sup class="cite"><a href="#src13">[13]</a><a href="#src14">[14]</a></sup></p>
+    <p>The README documents the algorithm to the constant: a broadband automatic gain control &mdash; &ldquo;despite the name, it doesn&rsquo;t equalize the spectrum&rdquo; &mdash; with 512-sample frames at 44.1/48 kHz and 50% overlap, power summed into 25 frequency bands, loudness L&thinsp;=&thinsp;1.72&thinsp;&middot;&thinsp;&Sigma;&thinsp;max(E<sub>b</sub>&thinsp;&minus;&thinsp;T<sub>b</sub>,&thinsp;10<sup>&minus;32</sup>)<sup>0.25</sup>, and a target gain of min((1300/L)<sup>1.6</sup>,&thinsp;10) &mdash; at most +20 dB, approached over a release of about 4.6 seconds, with drops applied instantly.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The thread split exactly along the README&rsquo;s own framing. &ldquo;This is never what I want. A composition has a dynamic range for a reason,&rdquo; one reader wrote; another answered that per-app leveling is precisely the point when several applications make sound at once, so a system beep cannot overpower a call &mdash; everything &ldquo;sits in the pocket.&rdquo; A third, doing audio engineering on Linux, asked that the limiter not ship always-on, and hoped the module would not be &ldquo;usurped/consumed/included by pipewire&rdquo; on by default.<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50641171">Discussion on the wire &rarr;</a></div>
+    <div class="kicker" style="margin-top:8px">Hardware Desk &middot; Reverse Engineering</div>
+    <h2 class="headline">An LLM ports Rockbox to a $9 AliExpress MP3 player with 512 KiB of SRAM &mdash; half the smallest target that came before it</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>&#9733; 177 pts</b> &middot; 74 cmts</span></div>
+    <p class="first">Jayden Milne&rsquo;s Nov. 14 writeup describes the unbranded &ldquo;YP3&rdquo; player &mdash; $9.71 shipped, under $7 wholesale &mdash; and what it is: two Cortex-M4 cores at 192 MHz, 512 KiB of SRAM, 2 MB of flash, a 128&times;160 color LCD, USB-C, Bluetooth with an undocumented stack, and a ROM download mode that makes it unbrickable (found by ilyakurdyukov: hold Down and plug in USB). The smallest existing Rockbox target had 2 MiB of SRAM. &ldquo;I was already scrolling AliExpress for another one, but the LLM said &lsquo;trust me bro I can make it happen.&rsquo;&rdquo;<sup class="cite"><a href="#src17">[17]</a><a href="#src18">[18]</a></sup></p>
+    <p>It booted a Rockbox build &ldquo;on a crash diet&rdquo; after about a week &mdash; &ldquo;every single buffer had been cut to the bone&rdquo; &mdash; with another month of tuning after that. The compromises: one shared 128 KiB arena for codecs and plugins, so starting a plugin stops the music; English only; no voice; no album art or cuesheets; playlists capped at 400 entries and folders truncated at 256; and the dropped codecs include WMA Pro, Musepack and RealAudio Cook. &ldquo;I was barely involved,&rdquo; he writes &mdash; and the reusable toolkit built from what worked, auto-rockbox, then got Rockbox running on a second player, the TS47, in four hours. In the thread he defended the exercise: &ldquo;no one was going to spend hundreds of hours reverse engineering a $9 MP3 player&rsquo;s chipset, so the fact that it does exist now seems to be a net benefit to the world.&rdquo;<sup class="cite"><a href="#src17">[17]</a><a href="#src18">[18]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50624446">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Quote of the Day</span></div>
+    <div class="pullquote">&ldquo;I now feel it in my bones, for the first time ever, that a proof of P &ne; NP is not far.&rdquo;
+      <span class="attr">&mdash; Scott Aaronson, Shtetl-Optimized, Nov. 25, 2026, on the week&rsquo;s proofs<sup class="cite"><a href="#src5">[5]</a></sup></span>
+    </div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories chosen</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>9</td></tr>
+        <tr><td>Follow-ups returning</td><td>1</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>4,309</td></tr>
+        <tr><td>Combined comments</td><td>2,110</td></tr>
+        <tr><td>Most-discussed story</td><td>422 cmts</td></tr>
+        <tr><td>Biggest mover</td><td>Button Sounds &#9650; +258 (+47%)</td></tr>
+      </table>
+    </div>
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p>PASSWORD MANAGER, BREACHED AT THE EDGES: vaults safe; names, emails and metadata copied via one employee&rsquo;s GitHub account; emailed codes now ten characters; phishing expected, passwords never requested by mail.</p>
+      <p>MP3 PLAYER, $9.71, SHIPPED: runs Rockbox after one LLM port; unbrickable via ROM download mode; playlists capped at 400, folders at 256; previous owner barely involved.</p>
+      <p>RETENTION POND, OCCUPIED: snake fed, tadpoles maturing, shrimp on the bottom; alligator scan completed before entry; 2,000,000 views and counting.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Day&rsquo;s Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" style="width:100%;height:auto;display:block" role="img" aria-label="Bar chart of the ten stories by points">
+      <defs>
+        <pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+        <pattern id="hatchred" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <line class="grid" x1="58" y1="6" x2="58" y2="344"/>
+      <line class="grid" x1="116" y1="6" x2="116" y2="344"/>
+      <line class="grid" x1="173" y1="6" x2="173" y2="344"/>
+      <line class="grid" x1="231" y1="6" x2="231" y2="344"/>
+      <line class="grid" x1="289" y1="6" x2="289" y2="344"/>
+      <line class="grid" x1="347" y1="6" x2="347" y2="344"/>
+      <line class="grid" x1="404" y1="6" x2="404" y2="344"/>
+      <line class="grid" x1="462" y1="6" x2="462" y2="344"/>
+      <!-- bars -->
+      <rect x="0.5" y="22"  width="488" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="56"  width="465" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="90"  width="337" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="124" width="241" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="158" width="232" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="192" width="224" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="226" width="171" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="260" width="129" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="294" width="102" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="328" width="101" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0" y1="352" x2="520" y2="352"/>
+      <!-- tick labels -->
+      <text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text>
+      <text x="58" y="366" font-size="11" fill="#3d352a" text-anchor="middle">100</text>
+      <text x="116" y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="173" y="366" font-size="11" fill="#3d352a" text-anchor="middle">300</text>
+      <text x="231" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="289" y="366" font-size="11" fill="#3d352a" text-anchor="middle">500</text>
+      <text x="347" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text>
+      <text x="404" y="366" font-size="11" fill="#3d352a" text-anchor="middle">700</text>
+      <text x="462" y="366" font-size="11" fill="#3d352a" text-anchor="middle">800</text>
+      <text x="520" y="366" font-size="11" fill="#3d352a" text-anchor="middle">900</text>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18">1Password backend breach</text>
+      <text class="barlabel" x="0" y="52">Button Sounds, back again</text>
+      <text class="barlabel" x="0" y="86">Shtetl-Optimized on the proofs &#8224;</text>
+      <text class="barlabel" x="0" y="120">Factoring-in-P rumors</text>
+      <text class="barlabel" x="0" y="154">Cogentic papers released</text>
+      <text class="barlabel" x="0" y="188">Home Depot pond snorkel</text>
+      <text class="barlabel" x="0" y="222">Loudness EQ on PipeWire</text>
+      <text class="barlabel" x="0" y="256">Smart people use tools</text>
+      <text class="barlabel" x="0" y="290">Rockbox on a $9 player</text>
+      <text class="barlabel" x="0" y="324">GitHub degradation</text>
+      <!-- values -->
+      <text class="barval" x="495" y="34" font-weight="700">845 &#9733; &middot; 351 cmts</text>
+      <text class="barval" x="472" y="68">805 &middot; 127</text>
+      <text class="barval" x="344" y="102">583 &middot; 422</text>
+      <text class="barval" x="248" y="136">417 &middot; 293</text>
+      <text class="barval" x="239" y="170">401 &middot; 314</text>
+      <text class="barval" x="231" y="204">388 &middot; 97</text>
+      <text class="barval" x="178" y="238">296 &middot; 166</text>
+      <text class="barval" x="136" y="272">223 &middot; 173</text>
+      <text class="barval" x="109" y="306">177 &middot; 74</text>
+      <text class="barval" x="108" y="340">174 &middot; 93</text>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">&#9733; = points &middot; cmts = comments &middot; &#8224; most-discussed story of the day &middot; red hatch marks Apple coverage (none this edition)</text>
+    </svg>
+    </figure>
+  </div>
+  <div class="cell">
+    <div class="section-label"><span>The Day in One Line</span></div>
+    <p class="first">1Password disclosed a backend breach that left vaults untouched but copied customer names and emails through an employee&rsquo;s GitHub account; the button-sounds library followed up at 805 points with a better iOS fix than &ldquo;use a desktop&rdquo;; Scott Aaronson, in the day&rsquo;s most-discussed thread, counted the week&rsquo;s proofs &mdash; VP &ne; VNP, matrix multiplication at exactly 9/4, a Fourier-transform lower bound &mdash; and put P &ne; NP &ldquo;not far&rdquo;; rumors of &ldquo;Factoring in P&rdquo; circulated on the strength of a screenshot of his own blog comment, which he declines to vouch for; Google released Cogentic&rsquo;s human-reviewed papers, including unconditional factoring in L<sub>N</sub>[1/3, O(1)]; a Florida biologist&rsquo;s retention-pond snorkel passed 2 million views; Windows&rsquo; Loudness Equalization was reverse-engineered onto PipeWire; an essay argued that the tools amplify the engineers who give a shit; an LLM ported Rockbox to a $9 MP3 player with half the SRAM of anything that ran it before; and GitHub resolved a database-load degradation that had touched nearly its entire product line.</p>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>&ldquo;Equalization&rdquo; is a misnomer, by the port&rsquo;s own admission.</b> The PipeWire README&rsquo;s algorithm section opens: &ldquo;A broadband automatic gain control. Despite the name, it doesn&rsquo;t equalize the spectrum.&rdquo; The 25 frequency bands are summed into one loudness figure and one gain; nothing in the frequency domain is equalized.</p>
+      <p><b>A rumor is not a result.</b> The &ldquo;Factoring in P&rdquo; thread rests on a screenshot of a blog comment about rumors; the comment&rsquo;s author, Scott Aaronson, writes that he doesn&rsquo;t &ldquo;know how much to credit this&rdquo; and that specifics may have &ldquo;gotten distorted via a game of Telephone.&rdquo; What is actually published today is unconditional factoring in L<sub>N</sub>[1/3, O(1)] &mdash; far short of polynomial time.</p>
+      <p><b>&ldquo;Google releases&rdquo; carries an asterisk.</b> The Cogentic papers sit in google-research under Apache 2.0 with the repository&rsquo;s own disclaimer, &ldquo;This is not an official Google product,&rdquo; and &mdash; unlike the week&rsquo;s OpenAI and Anthropic math releases &mdash; carry no Lean certificates; human expert review is the stated guarantee.</p>
+      <p><b>&ldquo;Resolved&rdquo; means mitigated.</b> GitHub&rsquo;s incident is closed with the degradation &ldquo;mitigated&rdquo; and database load redistributed; the status page&rsquo;s own final line concedes that the detailed root cause analysis is still to come.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher&rsquo;s Note</div>
+  <p>The afternoon edition is led by 1Password&rsquo;s disclosure &mdash; vaults safe, customer names and emails not &mdash; with nine stories fresh and one follow-up: the button-sounds library, up 258 since the morning paper. The morning&rsquo;s lead, the matrix-multiplication preprint, is still climbing at 991 points but its growth fell short of the follow-up bar, so it stands in this morning&rsquo;s edition alone. One source, the Reddit post behind the factoring rumor, sits behind a login and was read through its cited sources and the thread; nothing else was degraded, and every score is from the 22:00 UTC snapshot.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">&ldquo;Update on a security incident involving 1Password&rsquo;s backend systems,&rdquo; 1Password, Nov. 25, 2026 &mdash; <a href="https://1password.com/blog/update-on-nov-2026-security-incident">1password.com/blog</a></li>
+    <li data-n="[2]" id="src2">Hacker News thread on the incident &mdash; <a href="https://news.ycombinator.com/item?id=50644817">news.ycombinator.com/item?id=50644817</a></li>
+    <li data-n="[3]" id="src3">&ldquo;Button Sounds &mdash; tactile SFX for your UI,&rdquo; Josh Comeau &mdash; <a href="https://buttons.joshwcomeau.com/">buttons.joshwcomeau.com</a></li>
+    <li data-n="[4]" id="src4">Hacker News thread on the collection &mdash; <a href="https://news.ycombinator.com/item?id=50638032">news.ycombinator.com/item?id=50638032</a></li>
+    <li data-n="[5]" id="src5">&ldquo;HOLY SHIT HOLY SHIT HOLY SHIT HOLY SHIT,&rdquo; Scott Aaronson, Shtetl-Optimized, Nov. 25, 2026, 1:01 pm &mdash; <a href="https://scottaaronson.blog/?p=10379">scottaaronson.blog</a></li>
+    <li data-n="[6]" id="src6">Hacker News thread on the post &mdash; <a href="https://news.ycombinator.com/item?id=50646108">news.ycombinator.com/item?id=50646108</a></li>
+    <li data-n="[7]" id="src7">&ldquo;Rumors swirling that labs might have cracked Factoring in P,&rdquo; r/singularity, with Scott Aaronson&rsquo;s blog comment &mdash; <a href="https://www.reddit.com/r/singularity/comments/1y59ef1/rumor_that_openai_or_anthropic_might_have_cracked/">reddit.com/r/singularity</a> and <a href="https://scottaaronson.blog/?p=10362#comment-2044495">scottaaronson.blog</a></li>
+    <li data-n="[8]" id="src8">Hacker News thread on the rumor &mdash; <a href="https://news.ycombinator.com/item?id=50643065">news.ycombinator.com/item?id=50643065</a></li>
+    <li data-n="[9]" id="src9">Cogentic Research Papers directory, google-research, papers dated Nov. 25, 2026 &mdash; <a href="https://github.com/google-research/google-research/tree/master/cogentic_research_papers">github.com/google-research</a></li>
+    <li data-n="[10]" id="src10">Hacker News thread on the papers; &ldquo;Cogentic: Multi-Agent Orchestration for Automated Proof Discovery&rdquo; &mdash; <a href="https://news.ycombinator.com/item?id=50642086">news.ycombinator.com/item?id=50642086</a> and <a href="https://arxiv.org/abs/2609.40324">arxiv.org/abs/2609.40324</a></li>
+    <li data-n="[11]" id="src11">&ldquo;A few questions for the guy who went snorkeling in a Home Depot retention pond,&rdquo; Vox, Nov. 2026 &mdash; <a href="https://www.vox.com/down-to-earth/511999/home-depot-retention-pond-snorkel-joseph">vox.com/down-to-earth</a></li>
+    <li data-n="[12]" id="src12">Hacker News thread on the video &mdash; <a href="https://news.ycombinator.com/item?id=50643129">news.ycombinator.com/item?id=50643129</a></li>
+    <li data-n="[13]" id="src13">&ldquo;pw-loudness-eq: Windows&rsquo; Loudness Equalization for PipeWire,&rdquo; xoxorwr, README &mdash; <a href="https://github.com/xoxorwr/pw-loudness-eq">github.com/xoxorwr/pw-loudness-eq</a></li>
+    <li data-n="[14]" id="src14">Hacker News thread on the port &mdash; <a href="https://news.ycombinator.com/item?id=50641171">news.ycombinator.com/item?id=50641171</a></li>
+    <li data-n="[15]" id="src15">&ldquo;Smart People Who Give a Shit Use Tools,&rdquo; Ian K. Duncan, Nov. 19, 2026 &mdash; <a href="https://www.iankduncan.com/engineering/2026-11-19-smart-people-who-give-a-shit-use-tools">iankduncan.com</a></li>
+    <li data-n="[16]" id="src16">Hacker News thread on the essay &mdash; <a href="https://news.ycombinator.com/item?id=50639698">news.ycombinator.com/item?id=50639698</a></li>
+    <li data-n="[17]" id="src17">&ldquo;Porting Rockbox to an undocumented $9 Aliexpress &lsquo;YP3&rsquo; MP3 Player with LLMs,&rdquo; Jayden Milne, Nov. 14, 2026 &mdash; <a href="https://jayd.ml/2026/11/14/rockbox-on-yp3.html">jayd.ml</a></li>
+    <li data-n="[18]" id="src18">Hacker News thread on the port &mdash; <a href="https://news.ycombinator.com/item?id=50624446">news.ycombinator.com/item?id=50624446</a></li>
+    <li data-n="[19]" id="src19">&ldquo;Investigating degraded experiences across GitHub products,&rdquo; GitHub Status, resolved Nov. 25, 2026 &mdash; <a href="https://www.githubstatus.com/incidents/qn8mfv6q5hlx">githubstatus.com</a></li>
+    <li data-n="[20]" id="src20">Hacker News thread on the incident &mdash; <a href="https://news.ycombinator.com/item?id=50643720">news.ycombinator.com/item?id=50643720</a></li>
+  </ol>
+  <div class="method">Methodology: snapshot taken 22:00 UTC, Wednesday, November 25, 2026 (16:00 US Central). Candidates were drawn from the Hacker News front page via the Algolia front-page endpoint (50 requested, 31 returned, one a hiring post carrying no points) and ranked by points; the ten chosen stories carry 4,309 points and 2,110 comments between them. Deduplication ran against the previous four editions: a covered story returns only if it grew at least +40% and +150 points since coverage &mdash; Button Sounds qualified at +258 (+47%); the matrix-multiplication preprint, still first on the front page at 991 points, did not at +217 (+28%). Comment text comes from the Algolia items API; article text and images were fetched from each story&rsquo;s primary source this run. Scores drift within minutes of any snapshot.</div>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <span>The Hacker Herald &mdash; Typeset from the Hacker News front page</span>
+  <span>&#10086; Printed on 100% recycled bandwidth &#10086;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</span>
+</footer>
+</body>
+</html>
