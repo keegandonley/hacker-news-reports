@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-11-25 · Morning | 2026-11-25 ≈14:00 | The matrix multiplication exponent is 9/4 — an OpenAI model's proof settles the question Strassen opened in 1969, at exactly a quarter over hope | 774 | 441 | [editions/2026-11-25-morning/](editions/2026-11-25-morning/) |
 | 2026-11-24 · Afternoon | 2026-11-24 ≈22:00 | trynix.dev runs a full Linux desktop in a browser tab for a second day — and the browser-in-a-browser now runs | 912 | 343 | [editions/2026-11-24-afternoon/](editions/2026-11-24-afternoon/) |
 | 2026-11-24 · Morning | 2026-11-24 ≈14:00 | Nvidia's board reinstates Jensen Huang as chief executive, citing "input from senior levels of the United States government" | 2,678 | 3,541 | [editions/2026-11-24-morning/](editions/2026-11-24-morning/) |
 | 2026-11-23 · Afternoon | 2026-11-23 ≈22:00 | Nvidia's board reinstates Jensen Huang as chief executive, citing "input from senior levels of the United States government" | 1,707 | 2,814 | [editions/2026-11-23-afternoon/](editions/2026-11-23-afternoon/) |

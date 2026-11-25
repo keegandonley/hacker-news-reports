@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-25-morning",
+      "date": "2026-11-25",
+      "label": "Morning",
+      "snapshot_utc": "14:00",
+      "items": [
+        {
+          "id": 50637220,
+          "title": "Matrix Multiplication is Θ(n^2.25) [pdf]",
+          "score": 774,
+          "comments": 441
+        },
+        {
+          "id": 50638032,
+          "title": "Button Sounds – collection of professionally-recorded button clicks and presses",
+          "score": 547,
+          "comments": 81
+        },
+        {
+          "id": 50598555,
+          "title": "The Spray Bottle",
+          "score": 534,
+          "comments": 121
+        },
+        {
+          "id": 50633922,
+          "title": "Ternary Bonsai 2.5 27B",
+          "score": 490,
+          "comments": 150
+        },
+        {
+          "id": 50627783,
+          "title": "GTA 6 Running on Windows",
+          "score": 451,
+          "comments": 513
+        },
+        {
+          "id": 50630809,
+          "title": "Ask HN: Anthropic is accusing my company of distilling. How can I prove I'm not?",
+          "score": 361,
+          "comments": 279
+        },
+        {
+          "id": 50637686,
+          "title": "Models Can Communicate via Inference Servers Despite Being Sandboxed",
+          "score": 312,
+          "comments": 134
+        },
+        {
+          "id": 50637056,
+          "title": "PenGPT: A Generative Transformer for Handwriting and Sketches",
+          "score": 310,
+          "comments": 52
+        },
+        {
+          "id": 50634658,
+          "title": "GPT-6 models demonstrate intrinsic protein-design capabilities",
+          "score": 303,
+          "comments": 90
+        },
+        {
+          "id": 50637890,
+          "title": "Bypassing iOS Safari's 60 FPS Limit to Build Web Applications That Feel Native",
+          "score": 290,
+          "comments": 105
+        }
+      ]
+    },
+    {
       "folder": "2026-11-24-afternoon",
       "date": "2026-11-24",
       "label": "Afternoon",
@@ -187,7 +255,7 @@
         },
         {
           "id": 50610318,
-          "title": "Nospeaker \u2500 Make your MacBook's trackpad talk using its haptic motor",
+          "title": "Nospeaker ─ Make your MacBook's trackpad talk using its haptic motor",
           "score": 245,
           "comments": 149
         },
@@ -281,7 +349,7 @@
       "items": [
         {
           "id": 50574968,
-          "title": "Levent Alp\u00f6ge claims proof of the Generalized Riemann Hypothesis [pdf]",
+          "title": "Levent Alpöge claims proof of the Generalized Riemann Hypothesis [pdf]",
           "score": 2132,
           "comments": 1457
         },
@@ -329,7 +397,7 @@
         },
         {
           "id": 50576232,
-          "title": "Finite-time blow-up for the Navier\u2013Stokes equations",
+          "title": "Finite-time blow-up for the Navier–Stokes equations",
           "score": 221,
           "comments": 71
         },
@@ -521,13 +589,13 @@
         },
         {
           "id": 50556533,
-          "title": "15M web servers on one VM \u2013 smoltcp, DPDK, AF_XDP",
+          "title": "15M web servers on one VM – smoltcp, DPDK, AF_XDP",
           "score": 246,
           "comments": 28
         },
         {
           "id": 50556287,
-          "title": "Ruby2\u00dfhell: Pre-authentication RCE on stock Rails",
+          "title": "Ruby2ßhell: Pre-authentication RCE on stock Rails",
           "score": 237,
           "comments": 92
         },
@@ -589,7 +657,7 @@
         },
         {
           "id": 50546914,
-          "title": "The Cambridge Dictionary has named \u2018human\u2019 as the Word of the Year 2026",
+          "title": "The Cambridge Dictionary has named ‘human’ as the Word of the Year 2026",
           "score": 203,
           "comments": 156
         },
@@ -621,7 +689,7 @@
       "items": [
         {
           "id": 50535230,
-          "title": "GPT\u20116.2 Astra and Sol",
+          "title": "GPT‑6.2 Astra and Sol",
           "score": 1302,
           "comments": 813
         },
@@ -663,7 +731,7 @@
         },
         {
           "id": 50536813,
-          "title": "350 years ago, Ole R\u00f8mer discovered that light has a finite speed",
+          "title": "350 years ago, Ole Rømer discovered that light has a finite speed",
           "score": 362,
           "comments": 119
         },
@@ -695,7 +763,7 @@
         },
         {
           "id": 50535230,
-          "title": "GPT\u20116.2 Astra and Sol",
+          "title": "GPT‑6.2 Astra and Sol",
           "score": 906,
           "comments": 545
         },
@@ -769,7 +837,7 @@
         },
         {
           "id": 50519354,
-          "title": "Frame \u2013 31.5\" color ePaper display",
+          "title": "Frame – 31.5\" color ePaper display",
           "score": 469,
           "comments": 322
         },
@@ -843,7 +911,7 @@
         },
         {
           "id": 50517488,
-          "title": "Many of Amazon\u2019s Black Friday and Cyber Monday \u201cdeals\u201d offered no savings",
+          "title": "Many of Amazon’s Black Friday and Cyber Monday “deals” offered no savings",
           "score": 744,
           "comments": 460
         },
@@ -873,7 +941,7 @@
         },
         {
           "id": 50519354,
-          "title": "Frame \u2013 31.5\" color ePaper display",
+          "title": "Frame – 31.5\" color ePaper display",
           "score": 221,
           "comments": 135
         },
@@ -953,7 +1021,7 @@
         },
         {
           "id": 50509308,
-          "title": "A short explainer on how El Ni\u00f1o works [video]",
+          "title": "A short explainer on how El Niño works [video]",
           "score": 263,
           "comments": 141
         },
@@ -997,7 +1065,7 @@
         },
         {
           "id": 50486748,
-          "title": "AI unlocks G\u00f6del's notebooks, said to contain hundreds of proved theorems",
+          "title": "AI unlocks Gödel's notebooks, said to contain hundreds of proved theorems",
           "score": 258,
           "comments": 75
         },
@@ -1597,7 +1665,7 @@
         },
         {
           "id": 50418176,
-          "title": "KetchUp \u2013 Open-source SketchUp alternative built with Rust and WebGPU",
+          "title": "KetchUp – Open-source SketchUp alternative built with Rust and WebGPU",
           "score": 594,
           "comments": 176
         },
@@ -1982,74 +2050,6 @@
           "title": "Verification Is Not Knowledge: Science needs more than answers",
           "score": 208,
           "comments": 123
-        }
-      ]
-    },
-    {
-      "folder": "2026-11-04-morning",
-      "date": "2026-11-04",
-      "label": "Morning",
-      "snapshot_utc": "14:00",
-      "items": [
-        {
-          "id": 50354960,
-          "title": "Postman silently auto-installs AI plugins and attempts to share all API data",
-          "score": 1384,
-          "comments": 458
-        },
-        {
-          "id": 50339288,
-          "title": "Jailbreaking my car's navigation system just so I can change the time",
-          "score": 878,
-          "comments": 332
-        },
-        {
-          "id": 50358562,
-          "title": "Safari introduces Adaptive Dark Mode in 27.3",
-          "score": 464,
-          "comments": 241
-        },
-        {
-          "id": 50346755,
-          "title": "Show HN: HackerTV \u2013 HN's most-recommended Youtube videos as 24/7 TV channels",
-          "score": 374,
-          "comments": 71
-        },
-        {
-          "id": 50360164,
-          "title": "C++26 Disapproved",
-          "score": 357,
-          "comments": 249
-        },
-        {
-          "id": 50361268,
-          "title": "Jelly Sheet",
-          "score": 321,
-          "comments": 81
-        },
-        {
-          "id": 50358702,
-          "title": "The Internals of PostgreSQL",
-          "score": 314,
-          "comments": 23
-        },
-        {
-          "id": 50364336,
-          "title": "AI is forcing us to pay off 40 years of technical debt",
-          "score": 257,
-          "comments": 141
-        },
-        {
-          "id": 50362905,
-          "title": "Nvidia RTX Spark encrypted firmware slows inference speed to 35% on Linux",
-          "score": 238,
-          "comments": 137
-        },
-        {
-          "id": 50362980,
-          "title": "Kitty 0.50",
-          "score": 230,
-          "comments": 142
         }
       ]
     }
