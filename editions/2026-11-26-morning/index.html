@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 26, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+
+</style>
+</head>
+<body>
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page &middot; Snapshot 14:00 UTC</div>
+  <div class="mid">Morning Edition</div>
+  <div class="r">10 Stories &middot; 6,131 Points &middot; 3,658 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Thursday, November 26, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">AI Desk &middot; The Lead &middot; Follow-Up</span><b>Aaronson&rsquo;s proofs post nearly triples overnight: 1,718 points, up 1,135 since the afternoon paper</b>
+    The Wednesday post &mdash; VP &ne; VNP, matrix multiplication at exactly &omega;&thinsp;=&thinsp;9/4, a Fourier-transform lower bound &mdash; is the day&rsquo;s most-discussed story at 1,554 comments, and its commentariat has moved on to who reads the proofs and what the labs are sitting on. 1,718 points, 1,554 comments.</div>
+  <div class="cell"><span class="tag">Security Desk &middot; Follow-Up</span><b>1Password&rsquo;s disclosure climbs to 1,523 points; the thread&rsquo;s question is how one GitHub account pushed code to production</b>
+    Up 678 since the afternoon edition&rsquo;s 845. Vault contents were never touched; customer names, emails and account metadata were downloaded on Nov. 19; the thread now turns on code review, admin bypass and the architecture that kept the blast radius narrow. 1,523 points, 655 comments.</div>
+  <div class="cell"><span class="tag">AI Desk &middot; Mathematics</span><b>A 76,000-line Lean compression of the Riemann proof &mdash; &ldquo;passed machine checks only&rdquo;</b>
+    A personal repository by an Anthropic employee compresses the Alp&ouml;ge/Claude proof to a fifth of its community rival&rsquo;s reduction: 99.56% against the original&rsquo;s roughly 17 million lines. The community compression project has already switched to it. 491 points, 286 comments.</div>
+  <div class="cell"><span class="tag">Culture Desk &middot; Photography</span><b>The Times bans Photoshop 2027 on assignment &mdash; AI metadata could mark news photos as machine-made</b>
+    An email from two Times photography leaders warns the 2027 update&rsquo;s AI features work &ldquo;in ways that may not be apparent to users&rdquo;; which specific features cause the tags, neither the paper nor Adobe would say. 476 points, 393 comments.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <div class="kicker">AI Desk &middot; Complexity &middot; Follow-Up &middot; Most-Discussed</div>
+    <h2 class="headline">The proofs post has tripled on the wire &mdash; 1,718 points &mdash; and the talk has moved from the results to their consequences: who reads them, what breaks, and whether to still apply to graduate school</h2>
+    <h3 class="deck">Scott Aaronson&rsquo;s Wednesday account of OpenAI&rsquo;s and Anthropic&rsquo;s proofs &mdash; VP &ne; VNP, &omega;&thinsp;=&thinsp;9/4, a Fourier-transform lower bound at N(log&thinsp;N)<sup>1/2+o(1)</sup> &mdash; adds 1,135 points since the afternoon paper; the blog&rsquo;s own comment thread now reports the newest papers readable and the Riemann proof reconstructed within a week</h3>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 1,718 pts</b> &middot; &#9650; +1,135 since the last edition &middot; 1,554 cmts &#8224;</span></div>
+    <figure>
+      <img src="images/aaronson.jpg" alt="The post&rsquo;s card image: the Shtetl-Optimized title on a green background">
+      <figcaption>The post&rsquo;s card image. <span class="cr">scottaaronson.blog</span></figcaption>
+    </figure>
+    <p class="first">AUSTIN, TEXAS &mdash; &ldquo;HOLY SHIT HOLY SHIT HOLY SHIT HOLY SHIT,&rdquo; posted to Shtetl-Optimized on Wednesday at 1:01 pm, stood at 583 points when the afternoon Herald went to press; this morning it opens at 1,718 &mdash; up 1,135, nearly triple, with 1,554 comments, the day&rsquo;s most-discussed story. The post&rsquo;s ledger of the week is unchanged: OpenAI&rsquo;s proof that &omega;, the exponent of matrix multiplication, is exactly 9/4 &mdash; a lower bound, matching the upper bound of the Oct. 6 &ldquo;Mathocalypse&rdquo; drop, and settling a question open since Strassen in 1969 &mdash; plus a same-night release putting the linear gates for the Fourier transform at N(log&thinsp;N)<sup>1/2+o(1)</sup>, improving the O(N&thinsp;log&thinsp;N) fast Fourier transform that had stood since the 1960s, with a matching lower bound.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>What has grown alongside the score is the argument. Aaronson reiterates both certainties: that he is &ldquo;virtually certain, from multiple reliable sources, that the AI labs are now sitting on one or more bombshells&rdquo; in cryptography &mdash; while refusing to vouch for any specific version, since &ldquo;exact statements of what was done may have been mangled in a game of Telephone&rdquo; &mdash; and that his &ldquo;working assumption by this point is that any proof that comes directly from OpenAI or Anthropic is correct barring information to the contrary,&rdquo; the labs having &ldquo;repeatedly shown that they can back up their claims with Lean certificates.&rdquo; He now feels &ldquo;in my bones, for the first time ever, that a proof of P &ne; NP is not far,&rdquo; and passes along a friend&rsquo;s line on the reversal of the crackpot trade: after years of crackpot &ldquo;solutions&rdquo; claiming Millennium Problems are solved, &ldquo;now that we have actual solutions, we have crackpot &lsquo;refutations&rsquo; claiming Millennium Problems are not solved.&rdquo;<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The post&rsquo;s own comment section is where the reading has moved. &ldquo;MD&rdquo; reports that &ldquo;the most recent wave of papers is becoming actually readable, as opposed to the messy AI slop of the previous waves&rdquo;; Ernest Davis counts three expositions of the general structure of the Alp&ouml;ge Riemann proof already posted, two on GitHub, within the week &mdash; &ldquo;the proofs don&rsquo;t seem to be beyond human ken, validated by Lean but utterly mysterious, as some of the early reactions breathlessly claimed.&rdquo; One graduate-school applicant asks Aaronson point-blank whether to still apply in theoretical computer science: &ldquo;I know it&rsquo;s going to be different, but maybe that&rsquo;s okay? &hellip; It&rsquo;s exciting but frankly a bit dreadful.&rdquo; The HN thread, for its part, litigated the cryptography rumor&rsquo;s politics &mdash; whether a lab breakthrough would be &ldquo;forcibly classified by the organs of state security&rdquo; as with differential cryptanalysis in the &rsquo;70s, answered by a reader noting it is &ldquo;a pretty different world&rdquo; and that Aaronson is &ldquo;far from being a random blogger.&rdquo;<sup class="cite"><a href="#src1">[1]</a><a href="#src2">[2]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50646108">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Security Desk &middot; Follow-Up</div>
+    <h2 class="headline">The 1Password disclosure keeps climbing &mdash; 1,523 points &mdash; and the thread has found its question: how did one employee&rsquo;s GitHub account push malicious code to production?</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 1,523 pts</b> &middot; &#9650; +678 since the last edition &middot; 655 cmts</span></div>
+    <figure>
+      <img src="images/onepassword.webp" alt="Card image from 1Password&rsquo;s incident blog post">
+      <figcaption>The incident post&rsquo;s card image. <span class="cr">1password.com</span></figcaption>
+    </figure>
+    <p class="first">TORONTO &mdash; The Nov. 25 incident report &mdash; an attacker in an employee&rsquo;s corporate GitHub account on Nov. 19, malicious code pushed to backend services, customer names, email addresses and account metadata downloaded, vault contents and their keys untouched, emailed recovery codes lengthened from six digits to ten characters &mdash; returned overnight at 1,523 points, up 678 since the afternoon edition&rsquo;s 845, with 655 comments. What changed in the thread is the focus: from what was taken to how it was reached.<sup class="cite"><a href="#src3">[3]</a><a href="#src4">[4]</a></sup></p>
+    <p>The sharpest line was posted within the hour: &ldquo;Interesting that their is no code review in place and the attacker could just deploy something,&rdquo; one reader wrote &mdash; answered from below by a second noting that an administrator account &ldquo;can just bypass all code review settings (the button just turns red in Github, still clickable),&rdquo; and a third that &ldquo;even admin bypass can be disabled,&rdquo; with a fourth arguing GitHub&rsquo;s permissions are &ldquo;more akin to a social network than an enterprise tool&rdquo; for identity and access control. The architecture held up better than the deployment path: one reader who works in security put the design plainly &mdash; &ldquo;you were never going to be one SQL query away from vault plaintext at 1Password&rdquo; &mdash; while another flagged how much is still unknown: how far the attacker got through the systems, and what was extracted before detection, &ldquo;is very concerning. Feels like a bullet was dodged.&rdquo;<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50644817">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">AI Desk &middot; Mathematics</div>
+    <h2 class="headline">A 76,000-line Lean compression of the Riemann proof &mdash; &ldquo;passed machine checks only. No mathematician has read it through, and no paper comes with it&rdquo;</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 491 pts</b> &middot; 286 cmts</span></div>
+    <figure>
+      <img src="images/grh-lean.png" alt="Card image for the lsernau/grh-lean repository">
+      <figcaption>The repository&rsquo;s card image. <span class="cr">github.com</span></figcaption>
+    </figure>
+    <p class="first">A personal repository by Luke Sernau &mdash; &ldquo;produced in collaboration with my colleagues at Anthropic, and Claude&rdquo; &mdash; offers a Lean 4 proof of the Riemann Hypothesis and its generalization to Dirichlet L-functions, built on Mathlib with only the axioms <i>propext</i>, <i>Classical.choice</i> and <i>Quot.sound</i>, based on Levent Alp&ouml;ge&rsquo;s proof with Claude. Two editions ship: <i>grh/</i>, a readable 300,000 lines, and <i>grh-compact/</i>, the same five theorems at about 76,000 lines. The status line is unusually blunt: the proof &ldquo;has passed machine checks only&hellip; No mathematician has read it through, and no paper comes with it.&rdquo; A build takes one to two hours on 12 cores with 24 GB of memory.<sup class="cite"><a href="#src5">[5]</a><a href="#src6">[6]</a></sup></p>
+    <p>The thread did the arithmetic and the forensics. From the original proof&rsquo;s roughly 17 million lines, 76,000 is &ldquo;a 99.56% reduction&rdquo;; the community-driven compression &mdash; &ldquo;a hundred contributors and thousands of pull requests&rdquo; &mdash; sits at a mere 33%, and its dashboard has since switched to this repository&rsquo;s version. On the attribution: &ldquo;If this were &lsquo;from Anthropic&rsquo; surely it would be hosted on an Anthropic account?&rdquo; one reader asked &mdash; and another supplied the detail: Anthropic has not acknowledged the Riemann proof; Alp&ouml;ge posted his original on his own website, &ldquo;after asking Dario for permission.&rdquo;<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50648050">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="section-label"><span>Culture, Big Tech &amp; Design Desks</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">Culture Desk &middot; Photography</div>
+    <h2 class="headline">The Times tells contributing photographers not to use Photoshop 2027 on assignment &mdash; AI metadata could mark news photos as machine-made</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 476 pts</b> &middot; 393 cmts</span></div>
+    <figure>
+      <img src="images/nyt-photoshop.jpg" alt="A photographer at work behind a long lens">
+      <figcaption>The Verge&rsquo;s card image for the story. <span class="cr">theverge.com</span></figcaption>
+    </figure>
+    <p class="first">An email from two of the New York Times&rsquo;s photography leaders, Meaghan Looram and Josh Haner, warns that features in Photoshop&rsquo;s 2027 update use AI &ldquo;in ways that may not be apparent to users,&rdquo; and that their use &ldquo;can result in metadata identifying photographs as AI-generated.&rdquo; The requirement, confirmed to The Verge by Times spokesperson Graham James: &ldquo;all contributing photographers avoid using Adobe Photoshop 2027 (release 28.0.0 and subsequent updates) when working on assignment for The Times.&rdquo; The November update adds an &ldquo;AI Assisted Editor&rdquo; view putting every AI feature behind one toolbar, an AI assistant for step-by-step editing instructions, prompt-based image transformation, new AI upscaling, and an AI tool that recomposes images for other canvas sizes.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>Which specific features trip the tags is not stated &mdash; Adobe did not respond to The Verge&rsquo;s request, and even some older tools, like automated selection, may now count as AI. Adobe began rolling out C2PA metadata across its apps in August; the thread&rsquo;s most-informed reply noted the limit: &ldquo;C2PA does not prevent this from happening; it only allows the problem to be identified after the fact.&rdquo; A reader from the creative-tools trade called the separation the &ldquo;biggest issue right now&rdquo;: &ldquo;it&rsquo;s nearly impossible to separate &lsquo;this image was fully generated with AI&rsquo; versus &lsquo;I made a minor edit&hellip; with AI&rsquo; when the endpoint is an image.&rdquo; One editor reported a 40-second video flagged after a single three-second, five-percent-of-frame stock arrow turned out to be AI-generated.<sup class="cite"><a href="#src7">[7]</a><a href="#src8">[8]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50647673">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">AI Desk &middot; Commerce</div>
+    <h2 class="headline">OpenAI calls it a billing mistake: GPT-6.2 Astra now reaches plan limits 40% faster, Sol 25% &mdash; one banked reset for every subscriber</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 352 pts</b> &middot; 192 cmts</span></div>
+    <figure>
+      <img src="images/openai-cuts.jpg" alt="Profile image of the post&rsquo;s author on X">
+      <figcaption>The post author&rsquo;s profile image. <span class="cr">x.com</span></figcaption>
+    </figure>
+    <p class="first">Tibo (@thsottiaux) posted to X at 2:50 a.m. on Nov. 26: &ldquo;We made a billing mistake at launch of GPT-6.2 that incorrectly discounted GPT-6.2 Astra and Sol usage for most users. We&rsquo;ve fixed this now, so the same work will use more of your plan&rsquo;s usage allowance.&rdquo; Comparing to last week, subscribers will reach their limits 40% faster on GPT-6.2 Astra and 25% faster on Sol &mdash; though usage &ldquo;should still &hellip; go further&rdquo; than on GPT-6 Astra and 6.1 Sol. Other models were unaffected, past usage will not be surcharged, and &ldquo;as a small token to apologize,&rdquo; one banked reset will be added for everyone on Go, Plus, Pro and Business. The post has 3.7 million views.<sup class="cite"><a href="#src9">[9]</a><a href="#src10">[10]</a></sup></p>
+    <p>The thread took the framing first and the economics second. &ldquo;These models were already like &lsquo;meh &hellip; at least they&rsquo;re cheap&rsquo; and now it turns out they were not even supposed to be cheap. Is OpenAI ok?&rdquo; one reader wrote; another asked why the announcement dropped on Thanksgiving Eve and how it went unnoticed; a third asked &ldquo;how is it legal to just adjust what people paid for in the middle of their plans?&rdquo; A fourth subscriber reported two emails from the company, the first too vague to understand &mdash; &ldquo;communication I&rsquo;d get from a tiny startup doing the move fast and break things routine, not a company on the verge of a trillion dollar IPO.&rdquo;<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50651117">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Culture Desk &middot; Design</div>
+    <h2 class="headline">Four decades of interface rulebooks, preserved in one archive: from Apple&rsquo;s 1980 Lisa guidelines to GNOME&rsquo;s current HIG</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 278 pts</b> &middot; 49 cmts</span></div>
+    <figure>
+      <img src="images/ui-guides.png" alt="Card image for the UI style guides collection">
+      <figcaption>The collection&rsquo;s card image. <span class="cr">aresluna.org</span></figcaption>
+    </figure>
+    <p class="first">Aresluna&rsquo;s collection gathers preserved UI style guides &mdash; &ldquo;interface guidelines&rdquo; documents &mdash; from the early 1980s to today, most as PDFs with Internet Archive viewers, and the whole set downloadable as one archive. The oldest Apple entry is the Lisa&rsquo;s 1980 guide; Macintosh Human Interface Guidelines run from a 1986 draft through 1995; IBM&rsquo;s Common User Access standards of 1991&ndash;93 sit beside OSF/Motif (1993), Windows&rsquo; first SDK guide (1986, version 1.03), Amiga&rsquo;s 1991 Workbench guide, and current documents from Android, Apple, GNOME and Microsoft. The mirrors, the curator notes, were &ldquo;lightly cleaned up to make their consumption easier &mdash; stuff like pixellating images better, inlining images &hellip; or fixing YouTube embeds.&rdquo;<sup class="cite"><a href="#src15">[15]</a><a href="#src16">[16]</a></sup></p>
+    <p>The thread read them like primary sources. &ldquo;I forgot how much I loved the way Openlook (sorry, OPEN LOOK) looked,&rdquo; one reader wrote; another credited the early-2000s Windows UX guidelines as &ldquo;a great teacher&hellip; design guidelines from designers who care about functionality and usability even more than aesthetics.&rdquo; One reader surfaced a line from Amiga&rsquo;s 1991 guide on genderless pronouns &mdash; &ldquo;we&rsquo;ve changed genders at random. That way it best mimics&rdquo; real usage &mdash; and another ran the page through Claude and found its errors: the Symbian Belle entry&rsquo;s &ldquo;2012 PDF&rdquo; links point to the 2010 Symbian3 guide above it, and the webOS dates contradict their own links.<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50649834">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 6. SECURITY & PRACTICAL -->
+<div class="sec2">
+  <div class="cell">
+    <div class="section-label"><span>Security &amp; Field Desks</span></div>
+    <div class="kicker">Security Desk &middot; Distributions</div>
+    <h2 class="headline">Nine days after NoisyTCP details went public, Ubuntu still has no fix &mdash; &ldquo;updates &hellip; within hours, not days or weeks&rdquo;</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 342 pts</b> &middot; 183 cmts</span></div>
+    <p class="first">Independent security researcher Hanno B&ouml;ck posted to the oss-security list on Nov. 25 that Ubuntu&rsquo;s response to severe flaws &ldquo;is concerning.&rdquo; His ledger: NoisyTCP (CVE-2026-99288), a remote memory corruption in the Linux kernel&rsquo;s TCP stack, had its details published on Nov. 16 &mdash; and nine days later Ubuntu had still shipped no fix, &ldquo;while other distros had a fix already available when the details were published.&rdquo; A KVM host escape affecting AMD virtualization (CVE-2026-99312), published Nov. 18, was likewise unfixed; a third remote TCP corruption (CVE-2026-98432) took multiple weeks; and GreyNoise reporting, he notes, indicates possible in-the-wild exploitation of that one.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>His diagnosis is structural: a recent Ubuntu LTS system runs kernel 7.0.0-44, which &ldquo;seems to indicate that Ubuntu is not relying on longterm supported kernels from kernel.org, but is instead backporting patches to an old kernel version&rdquo; &mdash; a strategy he calls &ldquo;hardly viable,&rdquo; against Debian stable&rsquo;s 6.12.118+deb13, based on a current longterm kernel. The thread took the accounting further: &ldquo;Red Hat isn&rsquo;t doing much better even while their customers pay handsomely &mdash; CVE-2026-99288 fixed Nov. 23; CVE-2026-99312 still open,&rdquo; one reader wrote, while another is moving containers off Ubuntu to Alpine or Debian. One supplied the history: &ldquo;Ubuntu partially stemmed from a frustration with Debian&rsquo;s slow update times. Oh how the turntables.&rdquo;<sup class="cite"><a href="#src11">[11]</a><a href="#src12">[12]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50647181">Discussion on the wire &rarr;</a></div>
+    <div class="kicker" style="margin-top:8px">Field Desk &middot; The Wire</div>
+    <h2 class="headline">The Ask HN drought, diagnosed: the /ask feed was starved by the front page&rsquo;s top-1500 ranking &mdash; so it now gets a list of its own</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 320 pts</b> &middot; 124 cmts</span></div>
+    <p class="first">The site&rsquo;s moderator, posting as &ldquo;dang,&rdquo; closed the case of the empty /ask page: the pool of stories behind it &ldquo;has traditionally been drawn from the ranked stories list from which we generate the frontpage,&rdquo; which is restricted to the top 1,500 ranked submissions &mdash; and &ldquo;the % of submissions which are text posts &hellip; had declined enough to starve the Ask HN feed.&rdquo; The fix: &ldquo;compute a separate list of ranked Ask HNs.&rdquo; (&ldquo;Ask HN&rdquo; is convention, he notes &mdash; the posts are simply submissions without a linked URL, whether titled Ask HN, Tell HN or nothing in particular.)<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The same thread carries the week&rsquo;s other moderation note: Show HNs appearing instantly &ldquo;[flagged] [dead]&rdquo; are posts &ldquo;which come with text which has been classified as genai&rdquo; per the site&rsquo;s generated-text guidelines &mdash; &ldquo;this doesn&rsquo;t mean we&rsquo;re against using AI tools, coding agents, etc. We use them ourselves! We just don&rsquo;t want&rdquo; the generated text. He reverted the [flagged] label within the thread (&ldquo;ok, it&rsquo;s reverted now&rdquo;) after a reader noted it had always meant human-flagged. Elsewhere in the thread, one reader recognized the pattern from reporting systems: take the top M results, M&thinsp;&gt;&thinsp;N, and filter client-side to N &mdash; fast, as long as the page stays full.<sup class="cite"><a href="#src13">[13]</a><a href="#src14">[14]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50649864">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Tools Desks</span></div>
+    <div class="kicker">Tools Desk &middot; Benchmarks</div>
+    <h2 class="headline">Google&rsquo;s 2015 internal code-golf records, replayed by models: GPT-6.2 Astra is the first to post shorter passing solutions than the humans did</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 412 pts</b> &middot; 115 cmts</span></div>
+    <p class="first">The benchmark&rsquo;s author &mdash; who competed on Google&rsquo;s internal go/codegolf site in 2015, one problem a week, shortest passing program winning &mdash; brought back 32 of those problems as a benchmark across eight languages: JavaScript, Python, C++ and Haskell (the originals, with frozen 2015 human records), plus Ruby, Raku, Racket and GolfScript, which have none. Each model gets a fresh session, a 30-minute wall-clock limit per cell, the statement, the test cases and a language guide; no internet, shell or files; and for the four original languages the sandbox &ldquo;reproduces the 2015 environment, down to the compiler or interpreter version, flags and quirks.&rdquo; Scoring is by byte count of the shortest solution that passes every test &mdash; hardcoding the tests was legal even in 2015. The thread&rsquo;s title, posted by the author himself, makes the result: &ldquo;GPT-6.2 Astra is the first model to beat Googlers&rsquo; code golf records.&rdquo;<sup class="cite"><a href="#src17">[17]</a><a href="#src18">[18]</a></sup></p>
+    <p>The thread split on what the records mean. &ldquo;Can&rsquo;t they just train the model on solutions to make them win benchmarks?&rdquo; one reader asked &mdash; answered from below: they can, &ldquo;and that means it does very well on an old benchmark and very poorly on a new one, and everyone points and says &lsquo;you tried to trick us.&rsquo;&rdquo; The most personal reply: &ldquo;I too felt the updated Astra was the first model that finally beats me squarely at any programming task&hellip; But since this month it appears even that advantage has evaporated.&rdquo; One reader, looking for the winning code, found only scores &mdash; &ldquo;Where are the submissions linked?&rdquo; &mdash; and was told the cells&rsquo; numbers are clickable.<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50601280">Discussion on the wire &rarr;</a></div>
+    <div class="kicker" style="margin-top:8px">Tools Desk &middot; Terminal</div>
+    <h2 class="headline">A desktop environment rendered over SSH: Kitty graphics, OSC notifications and a microVM you reach with &ldquo;ssh zydra.sh&rdquo;</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 219 pts</b> &middot; 107 cmts</span></div>
+    <figure>
+      <img src="images/ssh-gui.png" alt="Card image for the SSH is a GUI framework article">
+      <figcaption>The article&rsquo;s card image. <span class="cr">zydra.sh</span></figcaption>
+    </figure>
+    <p class="first">Hasan Madi&rsquo;s argument, posted Nov. 21: SSH is &ldquo;a multiplexed, encrypted byte stream accessible on a cross-platform rendering engine that ships on every laptop, server, and phone on earth,&rdquo; and the terminal protocols now stacked on it &mdash; the Kitty graphics protocol (which superseded Sixel and iTerm2&rsquo;s), OSC 99/777/9 notifications, OSC 52 clipboard sharing, mouse tracking at CSI&nbsp;?&thinsp;1000&ndash;1006, synchronized output &mdash; amount to a GUI framework. The proof of work is a microVM with a desktop environment that renders natively over SSH: <kbd>ssh zydra.sh</kbd> (port 443 for office networks), and <kbd>ssh -t zydra.sh dino</kbd> for the Chromium T-Rex game. Compositing tricks keep it fast &mdash; text streamed as text, per-cell frame diffs, and dropping alpha where unneeded &ldquo;to save another 25% in bandwidth.&rdquo;<sup class="cite"><a href="#src19">[19]</a><a href="#src20">[20]</a></sup></p>
+    <p>The thread tested the title and mostly kept it. &ldquo;Using sixel or other sub-character graphics to render a GUI isn&rsquo;t really a feature of ssh&hellip; you could do it with telnet,&rdquo; one reader objected &mdash; and the author agreed: &ldquo;SSH is just the tool of choice to move bytes around&hellip; In practice, SSH gives you encryption, key auth, and a way past restrictive firewalls.&rdquo; (&ldquo;By that logic, TLS is a web browser,&rdquo; ran another.) The security reply was more serious: escape-sequence parsers &ldquo;can achieve remote code execution in someone&rsquo;s terminal,&rdquo; and terminals lack browser-grade sandboxing &mdash; conceded by the author as &ldquo;a much smaller attack surface&rdquo; to harden.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50589784">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Quote of the Day</span></div>
+    <div class="pullquote">&ldquo;The proofs don&rsquo;t seem to be beyond human ken, validated by Lean but utterly mysterious, as some of the early reactions breathlessly claimed.&rdquo;
+      <span class="attr">&mdash; Ernest Davis, comment on Shtetl-Optimized, Nov. 25, 2026, on expositions of the Riemann proof<sup class="cite"><a href="#src1">[1]</a></sup></span>
+    </div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories chosen</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>8</td></tr>
+        <tr><td>Follow-ups returning</td><td>2</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>6,131</td></tr>
+        <tr><td>Combined comments</td><td>3,658</td></tr>
+        <tr><td>Most-discussed story</td><td>1,554 cmts</td></tr>
+        <tr><td>Biggest mover</td><td>Proofs post &#9650; +1,135 (+195%)</td></tr>
+      </table>
+    </div>
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p>PHOTOSHOP 2027, WITHHELD: Times assignment work only; AI features may tag photos as machine-made; which features, neither the paper nor Adobe would say.</p>
+      <p>GPT-6.2, MISPRICED AT LAUNCH: Astra reaches plan limits 40% faster, Sol 25%; past usage not surcharged; apology issued as one banked reset.</p>
+      <p>ASK HNS, BACK IN STOCK: /ask feed re-fed by its own ranking list; Show HNs flagged on arrival when text classifies as generated; label since reverted.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Day&rsquo;s Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" style="width:100%;height:auto;display:block" role="img" aria-label="Bar chart of the ten stories by points">
+      <defs>
+        <pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+        <pattern id="hatchred" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <line class="grid" x1="58" y1="6" x2="58" y2="344"/>
+      <line class="grid" x1="116" y1="6" x2="116" y2="344"/>
+      <line class="grid" x1="173" y1="6" x2="173" y2="344"/>
+      <line class="grid" x1="231" y1="6" x2="231" y2="344"/>
+      <line class="grid" x1="289" y1="6" x2="289" y2="344"/>
+      <line class="grid" x1="347" y1="6" x2="347" y2="344"/>
+      <line class="grid" x1="404" y1="6" x2="404" y2="344"/>
+      <line class="grid" x1="462" y1="6" x2="462" y2="344"/>
+      <!-- bars -->
+      <rect x="0.5" y="22"  width="496" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="56"  width="440" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="90"  width="142" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="124" width="137" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="158" width="119" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="192" width="102" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="226" width="99"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="260" width="92"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="294" width="80"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="328" width="63"  height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0" y1="352" x2="520" y2="352"/>
+      <!-- tick labels -->
+      <text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text>
+      <text x="58" y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="116" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="173" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text>
+      <text x="231" y="366" font-size="11" fill="#3d352a" text-anchor="middle">800</text>
+      <text x="289" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1000</text>
+      <text x="347" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1200</text>
+      <text x="404" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1400</text>
+      <text x="462" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1600</text>
+      <text x="520" y="366" font-size="11" fill="#3d352a" text-anchor="middle">1800</text>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18">The week&rsquo;s proofs, day two &#8224;</text>
+      <text class="barlabel" x="0" y="52">1Password incident, still climbing</text>
+      <text class="barlabel" x="0" y="86">GRH Lean, compressed</text>
+      <text class="barlabel" x="0" y="120">Times bans Photoshop 2027</text>
+      <text class="barlabel" x="0" y="154">Code-golf records fall</text>
+      <text class="barlabel" x="0" y="188">GPT-6.2 &ldquo;billing mistake&rdquo;</text>
+      <text class="barlabel" x="0" y="222">Ubuntu&rsquo;s slow kernel patches</text>
+      <text class="barlabel" x="0" y="256">Ask HN drought, diagnosed</text>
+      <text class="barlabel" x="0" y="290">UI style guides archive</text>
+      <text class="barlabel" x="0" y="324">SSH is a GUI framework</text>
+      <!-- values -->
+      <text class="barval" x="503" y="34" font-weight="700">1718 &#9733; &middot; 1554 cmts</text>
+      <text class="barval" x="447" y="68">1523 &middot; 655</text>
+      <text class="barval" x="149" y="102">491 &middot; 286</text>
+      <text class="barval" x="144" y="136">476 &middot; 393</text>
+      <text class="barval" x="126" y="170">412 &middot; 115</text>
+      <text class="barval" x="109" y="204">352 &middot; 192</text>
+      <text class="barval" x="106" y="238">342 &middot; 183</text>
+      <text class="barval" x="99"  y="272">320 &middot; 124</text>
+      <text class="barval" x="87"  y="306">278 &middot; 49</text>
+      <text class="barval" x="70"  y="340">219 &middot; 107</text>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">&#9733; = points &middot; cmts = comments &middot; &#8224; most-discussed story of the day &middot; red hatch marks Apple coverage (none this edition)</text>
+    </svg>
+    </figure>
+  </div>
+  <div class="cell">
+    <div class="section-label"><span>The Day in One Line</span></div>
+    <p class="first">Scott Aaronson&rsquo;s proofs post nearly tripled overnight to 1,718 points &mdash; VP &ne; VNP, &omega; at exactly 9/4, a Fourier-transform lower bound &mdash; with P &ne; NP &ldquo;not far&rdquo; in his bones and expositions of the Riemann proof already up; 1Password&rsquo;s disclosure followed at 1,523, its thread now asking how one GitHub account pushed code to production; an Anthropic employee&rsquo;s personal repo compressed the Riemann proof to 76,000 Lean lines, machine-checked and read by no mathematician; the Times banned Photoshop 2027 on assignment over AI metadata neither it nor Adobe would specify; OpenAI&rsquo;s &ldquo;billing mistake&rdquo; puts GPT-6.2 Astra at plan limits 40% faster, apologized for with one banked reset; GPT-6.2 Astra became the first model to beat Google&rsquo;s 2015 code-golf byte records; Ubuntu went nine days without a NoisyTCP fix while Red Hat fared little better; HN&rsquo;s moderator diagnosed the Ask HN drought as a top-1500 ranking problem and quietly reverted the genai [flagged] label; four decades of UI style guides were preserved in one archive; and a microVM desktop learned to render over SSH, saving 25% of bandwidth by dropping what it didn&rsquo;t need.</p>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>A &ldquo;billing mistake,&rdquo; not a cut &mdash; and the baseline is last week.</b> The wire&rsquo;s headline says OpenAI &ldquo;cuts&rdquo; GPT-6.2 usage; the post itself says launch pricing &ldquo;incorrectly discounted&rdquo; Astra and Sol for most users, so the same work now consumes more of a plan&rsquo;s allowance. OpenAI&rsquo;s own comparisons are &ldquo;to last week,&rdquo; and it maintains usage &ldquo;should still &hellip; go further&rdquo; than on GPT-6 Astra and 6.1 Sol; other models were never affected.</p>
+      <p><b>&ldquo;From Anthropic&rdquo; is one employee&rsquo;s personal repository.</b> The thread title credits the 76,000-line compression to Anthropic; the README says it was &ldquo;produced in collaboration with my colleagues at Anthropic, and Claude,&rdquo; under Apache 2.0 with Anthropic&rsquo;s copyright &mdash; but it is hosted on lsernau&rsquo;s personal account, is &ldquo;not maintained,&rdquo; and per the thread Anthropic has never acknowledged the Riemann proof it builds on.</p>
+      <p><b>&ldquo;Beating the Googlers&rdquo; means shorter bytes, not cleaner code.</b> The records are frozen 2015 scoreboard byte counts &mdash; shortest program passing every test, with hardcoding every test case expressly allowed, so long as the program was deterministic. The four added languages (Ruby, Raku, Racket, GolfScript) carry no human records at all; they are scored against an oracle run.</p>
+      <p><b>The Photoshop ban is narrower than &ldquo;don&rsquo;t update.&rdquo;</b> The Times&rsquo;s email requires &ldquo;contributing photographers&rdquo; to avoid &ldquo;Adobe Photoshop 2027 (release 28.0.0 and subsequent updates)&rdquo; &ldquo;when working on assignment for The Times&rdquo; &mdash; not all Photoshop use, and not all photographers. Which specific features produce the AI metadata is unstated; Adobe did not respond to The Verge.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher&rsquo;s Note</div>
+  <p>This morning&rsquo;s paper is led by both of yesterday&rsquo;s big stories returning as follow-ups: Scott Aaronson&rsquo;s account of the week&rsquo;s proofs, up 1,135 points to 1,718 since the afternoon edition, and 1Password&rsquo;s incident disclosure, up 678 to 1,523. Eight stories are fresh, from the Riemann proof&rsquo;s 76,000-line compression to a terminal-rendered desktop; nothing was degraded, one benchmark&rsquo;s leaderboard renders in the browser and was read through its published text and thread, and every score is from the 14:00 UTC snapshot.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">&ldquo;HOLY SHIT HOLY SHIT HOLY SHIT HOLY SHIT,&rdquo; Scott Aaronson, Shtetl-Optimized, Nov. 25, 2026, 1:01 pm, with its comment thread &mdash; <a href="https://scottaaronson.blog/?p=10379">scottaaronson.blog</a></li>
+    <li data-n="[2]" id="src2">Hacker News thread on the post &mdash; <a href="https://news.ycombinator.com/item?id=50646108">news.ycombinator.com/item?id=50646108</a></li>
+    <li data-n="[3]" id="src3">&ldquo;Update on a security incident involving 1Password&rsquo;s backend systems,&rdquo; 1Password, Nov. 25, 2026 &mdash; <a href="https://1password.com/blog/update-on-nov-2026-security-incident">1password.com/blog</a></li>
+    <li data-n="[4]" id="src4">Hacker News thread on the incident &mdash; <a href="https://news.ycombinator.com/item?id=50644817">news.ycombinator.com/item?id=50644817</a></li>
+    <li data-n="[5]" id="src5">&ldquo;GRH for Dirichlet L-functions, in Lean&rdquo; (grh-compact), lsernau/grh-lean README &mdash; <a href="https://github.com/lsernau/grh-lean">github.com/lsernau</a></li>
+    <li data-n="[6]" id="src6">Hacker News thread on the repository &mdash; <a href="https://news.ycombinator.com/item?id=50648050">news.ycombinator.com/item?id=50648050</a></li>
+    <li data-n="[7]" id="src7">&ldquo;The New York Times warns photographers not to update Photoshop over AI features,&rdquo; Emma Roth, The Verge, Nov. 24, 2026, 4:09 pm UTC &mdash; <a href="https://www.theverge.com/ai-artificial-intelligence/1041227/the-new-york-times-warns-photographers-not-to-update-photoshop-over-ai-features">theverge.com</a></li>
+    <li data-n="[8]" id="src8">Hacker News thread on the report &mdash; <a href="https://news.ycombinator.com/item?id=50647673">news.ycombinator.com/item?id=50647673</a></li>
+    <li data-n="[9]" id="src9">Tibo (@thsottiaux) on X, Nov. 26, 2026, 2:50 am &mdash; <a href="https://twitter.com/thsottiaux/status/2125784147889393806">x.com/thsottiaux</a></li>
+    <li data-n="[10]" id="src10">Hacker News thread on the announcement &mdash; <a href="https://news.ycombinator.com/item?id=50651117">news.ycombinator.com/item?id=50651117</a></li>
+    <li data-n="[11]" id="src11">&ldquo;Slow Ubuntu security response times,&rdquo; Hanno B&ouml;ck, oss-security list, Nov. 25, 2026, 5:26 pm &mdash; <a href="https://www.openwall.com/lists/oss-security/2026/11/25/9">openwall.com/lists/oss-security</a></li>
+    <li data-n="[12]" id="src12">Hacker News thread on the letter &mdash; <a href="https://news.ycombinator.com/item?id=50647181">news.ycombinator.com/item?id=50647181</a></li>
+    <li data-n="[13]" id="src13">&ldquo;Tell HN: Lots of Ask HNs again,&rdquo; dang, Hacker News &mdash; <a href="https://news.ycombinator.com/item?id=50649864">news.ycombinator.com/item?id=50649864</a></li>
+    <li data-n="[14]" id="src14">Hacker News guidelines on generated text, as linked in the same thread &mdash; <a href="https://news.ycombinator.com/newsguidelines.html">news.ycombinator.com/newsguidelines.html</a></li>
+    <li data-n="[15]" id="src15">&ldquo;UI style guides,&rdquo; Aresluna &mdash; <a href="https://aresluna.org/ui-style-guides/">aresluna.org/ui-style-guides</a></li>
+    <li data-n="[16]" id="src16">Hacker News thread on the collection &mdash; <a href="https://news.ycombinator.com/item?id=50649834">news.ycombinator.com/item?id=50649834</a></li>
+    <li data-n="[17]" id="src17">&ldquo;go/codegolf benchmark: frontier models vs. Google&rsquo;s 2015 code golfers,&rdquo; bjin &mdash; <a href="https://bjin.github.io/go-codegolf-benchmark/">bjin.github.io/go-codegolf-benchmark</a></li>
+    <li data-n="[18]" id="src18">Hacker News thread on the benchmark, titled by its author &mdash; <a href="https://news.ycombinator.com/item?id=50601280">news.ycombinator.com/item?id=50601280</a></li>
+    <li data-n="[19]" id="src19">&ldquo;SSH is a GUI framework,&rdquo; Hasan Madi, Zydra, Nov. 21, 2026 &mdash; <a href="https://zydra.sh/articles/ssh-is-a-gui-framework/">zydra.sh</a></li>
+    <li data-n="[20]" id="src20">Hacker News thread on the article &mdash; <a href="https://news.ycombinator.com/item?id=50589784">news.ycombinator.com/item?id=50589784</a></li>
+  </ol>
+  <div class="method">Methodology: snapshot taken 14:00 UTC, Thursday, November 26, 2026 (08:00 US Central). Candidates were drawn from the Hacker News front page via the Algolia front-page endpoint (50 requested, 30 returned, one a job listing carrying no points) and ranked by points; the ten chosen stories carry 6,131 points and 3,658 comments between them. Deduplication ran against the previous four editions: a covered story returns only if it grew at least +40% and +150 points since coverage &mdash; the Shtetl-Optimized proofs post (+1,135, +195%) and the 1Password incident report (+678, +80%) qualified; no story needed the digest, and the go/codegolf leaderboard renders its data in the browser, so its figures are quoted from the benchmark&rsquo;s published text and its thread. Comment text comes from the Algolia items API; article text and images were fetched from each story&rsquo;s primary source this run. Scores drift within minutes of any snapshot.</div>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <span>The Hacker Herald &mdash; Typeset from the Hacker News front page</span>
+  <span>&#10086; Printed on 100% recycled bandwidth &#10086;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</span>
+</footer>
+</body>
+</html>

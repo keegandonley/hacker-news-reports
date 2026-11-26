@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-26-morning",
+      "date": "2026-11-26",
+      "label": "Morning",
+      "snapshot_utc": "14:00",
+      "items": [
+        {
+          "id": 50646108,
+          "title": "Holy shit holy shit holy shit holy shit: The magnitude of what’s now happening",
+          "score": 1718,
+          "comments": 1554
+        },
+        {
+          "id": 50644817,
+          "title": "1Password Security Incident",
+          "score": 1523,
+          "comments": 655
+        },
+        {
+          "id": 50648050,
+          "title": "Much shorter version of GRH Lean verification from Anthropic",
+          "score": 491,
+          "comments": 286
+        },
+        {
+          "id": 50647673,
+          "title": "The New York Times warns photographers not to update Photoshop over AI features",
+          "score": 476,
+          "comments": 393
+        },
+        {
+          "id": 50601280,
+          "title": "GPT-6.2 Astra is the first model to beat Googlers' code golf records",
+          "score": 412,
+          "comments": 115
+        },
+        {
+          "id": 50651117,
+          "title": "OpenAI cuts GPT-6.2 usage: Astra hits limits 40% faster, Sol 25% faster",
+          "score": 352,
+          "comments": 192
+        },
+        {
+          "id": 50647181,
+          "title": "Slow Ubuntu security response times",
+          "score": 342,
+          "comments": 183
+        },
+        {
+          "id": 50649864,
+          "title": "Tell HN: Lots of Ask HNs again",
+          "score": 320,
+          "comments": 124
+        },
+        {
+          "id": 50649834,
+          "title": "Collection of preserved UI style guides",
+          "score": 278,
+          "comments": 49
+        },
+        {
+          "id": 50589784,
+          "title": "SSH is a GUI framework",
+          "score": 219,
+          "comments": 107
+        }
+      ]
+    },
+    {
       "folder": "2026-11-25-afternoon",
       "date": "2026-11-25",
       "label": "Afternoon",
@@ -1982,74 +2050,6 @@
           "title": "MCP Explained",
           "score": 204,
           "comments": 106
-        }
-      ]
-    },
-    {
-      "folder": "2026-11-05-morning",
-      "date": "2026-11-05",
-      "label": "Morning",
-      "snapshot_utc": "14:01",
-      "items": [
-        {
-          "id": 50364336,
-          "title": "AI is forcing us to pay off 40 years of technical debt",
-          "score": 1222,
-          "comments": 714
-        },
-        {
-          "id": 50371246,
-          "title": "Residential proxies detected on White House network",
-          "score": 1168,
-          "comments": 378
-        },
-        {
-          "id": 50378228,
-          "title": "Sshole",
-          "score": 456,
-          "comments": 107
-        },
-        {
-          "id": 50372929,
-          "title": "A thousand fewer paths to root",
-          "score": 419,
-          "comments": 304
-        },
-        {
-          "id": 50366117,
-          "title": "Ask HN: What's your current AI agentic setup?",
-          "score": 414,
-          "comments": 470
-        },
-        {
-          "id": 50369106,
-          "title": "A new Go API for JSON",
-          "score": 351,
-          "comments": 178
-        },
-        {
-          "id": 50372945,
-          "title": "Images 2.6",
-          "score": 340,
-          "comments": 203
-        },
-        {
-          "id": 50369925,
-          "title": "Ripple-65B Preview: U.S. Open-Weight SOTA on Agentic Coding",
-          "score": 313,
-          "comments": 111
-        },
-        {
-          "id": 50370610,
-          "title": "Insects don't swarm at LED lights",
-          "score": 294,
-          "comments": 145
-        },
-        {
-          "id": 50375354,
-          "title": "Lemmings CSS Animation",
-          "score": 273,
-          "comments": 53
         }
       ]
     }
