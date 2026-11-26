@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-11-26 · Afternoon | 2026-11-26 ≈22:00 | A one-line Tell HN leads the fourth-Thursday front page — ericmay's Thanksgiving post stands at 528 points | 528 | 130 | [editions/2026-11-26-afternoon/](editions/2026-11-26-afternoon/) |
 | 2026-11-26 · Morning | 2026-11-26 ≈14:00 | The proofs post has tripled on the wire — Scott Aaronson's account of VP ≠ VNP and ω = 9/4 stands at 1,718 points | 1,718 | 1,554 | [editions/2026-11-26-morning/](editions/2026-11-26-morning/) |
 | 2026-11-25 · Afternoon | 2026-11-25 ≈22:00 | 1Password discloses a backend breach — an attacker rode an employee's GitHub account to production; customer vaults were never touched | 845 | 351 | [editions/2026-11-25-afternoon/](editions/2026-11-25-afternoon/) |
 | 2026-11-25 · Morning | 2026-11-25 ≈14:00 | The matrix multiplication exponent is 9/4 — an OpenAI model's proof settles the question Strassen opened in 1969, at exactly a quarter over hope | 774 | 441 | [editions/2026-11-25-morning/](editions/2026-11-25-morning/) |

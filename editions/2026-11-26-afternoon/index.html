@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 26, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page &middot; Snapshot 22:00 UTC</div>
+  <div class="mid">Afternoon Edition</div>
+  <div class="r">10 Stories &middot; 2,815 Points &middot; 1,284 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Thursday, November 26, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Field Desk &middot; The Lead</span><b>Thanksgiving tops the front page: ericmay&rsquo;s one-line Tell HN stands at 528 points</b>
+    The post &mdash; &ldquo;Hopefully it&rsquo;s a great day spent with your friends and family. And if it&rsquo;s not, make it a great day anyway!&rdquo; &mdash; went up at 14:26 UTC and led the page by nightfall; the thread&rsquo;s thanks run from a reader grateful for &ldquo;the site I come to daily&rdquo; to a European asking what Thanksgiving is. 528 points, 130 comments.</div>
+  <div class="cell"><span class="tag">Culture Desk &middot; Design</span><b>A monospaced typeface built with low-vision and legally blind developers on its feedback panel returns at 423 points &mdash; the day&rsquo;s most-discussed thread</b>
+    Intel One Mono ships free under an open license, in four weights with italics, covering more than 200 Latin-script languages. Its 230 comments argue over one glyph: the lowercase e, an unfinished tail or a wider gap that reads better small. 423 points, 230 comments.</div>
+  <div class="cell"><span class="tag">Tools Desk &middot; Office Suites</span><b>Nextcloud ships its Office desktop app for Windows, macOS and Linux &mdash; offline files, your own fonts, digital signatures</b>
+    The ready-to-use build landed Nov. 13. The thread&rsquo;s first order of business was the naming: Euro-Office and the Nextcloud Office app are one codebase, signed builds under one name and unsigned community builds under the other. 381 points, 190 comments.</div>
+  <div class="cell"><span class="tag">Tools Desk &middot; Databases</span><b>PostgreSQL as one executable: no server to configure, no Linux kernel to boot, a Plan 9 kernel answering the calls</b>
+    minipg, by Jeff Lindsay, treats a .pgdb directory as the database and runs Alpine&rsquo;s Postgres binaries directly on the host&rsquo;s hypervisor through h9. The author&rsquo;s own warning is plain: about 2&times; slower than native, don&rsquo;t trust it yet with data you can&rsquo;t recreate. 280 points, 44 comments.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <div class="kicker">Field Desk &middot; The Wire &middot; The Lead</div>
+    <h2 class="headline">A one-line Tell HN leads the fourth-Thursday front page: &ldquo;Hopefully it&rsquo;s a great day spent with your friends and family. And if it&rsquo;s not, make it a great day anyway!&rdquo;</h2>
+    <h3 class="deck">ericmay&rsquo;s Thanksgiving post, up at 14:26 UTC, stands at 528 points with 130 comments &mdash; the day&rsquo;s top story by points, and by some distance the warmest</h3>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 528 pts</b> &middot; 130 cmts</span></div>
+    <p class="first">SAN FRANCISCO, CALIFORNIA &mdash; Today is Thanksgiving, the fourth Thursday of November, and the front page&rsquo;s top story is exactly what the day calls for: a single sentence. &ldquo;Tell HN: Happy Thanksgiving,&rdquo; posted by ericmay at 14:26 UTC from the site&rsquo;s home base: &ldquo;Hopefully it&rsquo;s a great day spent with your friends and family. And if it&rsquo;s not, make it a great day anyway!&rdquo; It stands at 528 points and 130 comments this evening, ahead of a typeface release at 423 and Nextcloud&rsquo;s office-suite desktop app at 381.<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The thread beneath it is mostly gratitude, with the site itself the named beneficiary. &ldquo;I&rsquo;m grateful for HN and the community here. It&rsquo;s the site I come to daily and have probably gotten the most value out of for my career,&rdquo; one reader wrote. Another kept the day&rsquo;s customs in view &mdash; &ldquo;Isn&rsquo;t it part of the tradition some critical must-fix-today security bug is about to surface later today?&rdquo; &mdash; and no such bug led the page at press time.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <p>The rest of the thread is the world checking in. A reader asked &ldquo;What is Thanksgiving?&rdquo; and was answered from below &mdash; &ldquo;loading up on starchy foods and overeating,&rdquo; with the encyclopedia entry linked; another explained the United States&rsquo; eleven federal holidays and was corrected within the hour: there are twelve, Inauguration Day being technically one, observed in the Washington area every four years. Holiday or not, the front page ran at full strength &mdash; 29 items on the wire this evening, and 2,815 points across today&rsquo;s ten chosen stories.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50655664">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Culture Desk &middot; Design &middot; Most-Discussed</div>
+    <h2 class="headline">A typeface designed with low-vision developers on the feedback panel returns to the front page &mdash; and its most-argued letter is the lowercase e</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 423 pts</b> &middot; 230 cmts &#8224;</span></div>
+    <figure>
+      <img src="images/intel-one-mono.png" alt="The repository's card image for the Intel One Mono font family">
+      <figcaption>The repository&rsquo;s card image. <span class="cr">github.com</span></figcaption>
+    </figure>
+    <p class="first">Intel One Mono is free, open-source, and built, in its own words, &ldquo;with clarity, legibility, and the needs of developers in mind&rdquo;: Frere-Jones Type designed it in partnership with the Intel brand team and VMLY&amp;R, and &ldquo;a panel of low-vision and legally blind developers provided feedback at each stage of design.&rdquo; It covers more than 200 languages using the Latin script, in four weights &mdash; Light, Regular, Medium, Bold &mdash; each with a matching italic, and recommends itself at 7 points and larger in print, 9 pixels and up on screen, with the release&rsquo;s desktop and web builds &ldquo;manually optimized for screen display.&rdquo;<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The day&rsquo;s most-discussed thread, at 230 comments, spent most of its argument on one glyph. The lowercase e &ldquo;looks&hellip; unfinished. The tail feels like it wants to be just a bit longer,&rdquo; one reader wrote &mdash; answered from below with the design&rsquo;s own brief, that the lowercase &ldquo;e&rdquo; and cap &ldquo;G&rdquo; are shapes &ldquo;prone to be confused with others and need extra clarification,&rdquo; and by a third reader who recognized the form: &ldquo;Isn&rsquo;t it just the &lsquo;e&rsquo; from the Intel logo?&rdquo; The defense that held best was accessibility itself: the short tail &ldquo;leaves a wider gap that&rsquo;s easier to see at small sizes&hellip; having low vision devs use early versions day to day and give feedback seems like a good way to get little details like that right.&rdquo;<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50653667">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Tools Desk &middot; Office Suites</div>
+    <h2 class="headline">Nextcloud&rsquo;s office suite reaches the desktop: offline editing, local fonts, digital signatures &mdash; and a naming puzzle the thread untangled first</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 381 pts</b> &middot; 190 cmts</span></div>
+    <figure>
+      <img src="images/nextcloud-office.png" alt="The release post's card image for the Nextcloud Office Desktop app">
+      <figcaption>The release post&rsquo;s card image. <span class="cr">nextcloud.com</span></figcaption>
+    </figure>
+    <p class="first">The Nextcloud Office Desktop app is out as a ready-to-use download for Windows (x64 and ARM64), macOS on Apple Silicon, and Linux (.deb and .rpm), with editors for text documents, spreadsheets, presentations and PDFs, and what the post calls &ldquo;high compatibility&rdquo; with both Microsoft&rsquo;s formats (DOCX, XLSX, PPTX) and the open ones (ODT, ODS, ODP). Connected to a Nextcloud instance it co-edits files in real time; offline, it keeps files on the device, uses the fonts installed on the machine, and signs documents digitally from a Protection tab &mdash; a feature that needs a certificate, for which the post points European users at an EU list of providers.<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>The thread&rsquo;s first order of business was the name. &ldquo;I wish the article made clear what is the difference between NC Office Desktop app and Euro-Office,&rdquo; one reader wrote &mdash; answered from below with the project&rsquo;s own install notes: the two are &ldquo;just signed builds of exactly the same codebase,&rdquo; signed builds shipping as Nextcloud Office with APT and DNF repositories, unsigned community builds on the Euro-Office GitHub page. Euro-Office itself, the post&rsquo;s timeline says, is a &ldquo;sovereign collaborative office suite developed and governed in Europe,&rdquo; first declared production-ready on June 9 &mdash; and, per the thread, a 2026 fork of ONLYOFFICE whose upstream later disputed the branding conditions. One user&rsquo;s review of the online side was blunt: editing xlsx files there is &ldquo;a terrible experience,&rdquo; and PDFs &ldquo;stopped rendering in browser recently.&rdquo;<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50654289">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="section-label"><span>Tools, Culture &amp; Commerce Desks</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">Tools Desk &middot; Databases</div>
+    <h2 class="headline">PostgreSQL in a single executable: the database is a directory, the kernel is Plan 9, and Docker is nowhere in it</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 280 pts</b> &middot; 44 cmts</span></div>
+    <p class="first">minipg, by Jeff Lindsay, is &ldquo;PostgreSQL as one executable, ready to use, with no server to configure.&rdquo; A .pgdb directory is the database &mdash; its data, config, credentials and Postgres version all live inside it &mdash; and <kbd>minipg app.pgdb</kbd> opens a psql shell on it, starting a server only when a command needs one and stopping it when idle. The executable embeds Docker Hub&rsquo;s postgres:18-alpine image but runs Alpine&rsquo;s own Postgres binaries directly on the host&rsquo;s hypervisor through h9, whose &ldquo;Linux personality&rdquo; has a Plan 9 kernel answering the system calls: &ldquo;There&rsquo;s no Linux kernel to boot, no VM image, and no Docker.&rdquo;<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>The rest is furniture you can copy while stopped: the Postgres data directory as plain files, a minipg.toml holding settings and the generated superuser password, dump and restore commands, and a <kbd>run</kbd> that sets DATABASE_URL for an application. The browser demo downloads about 35 MB and needs JavaScript Promise Integration, which Chrome and Edge have from version 137. The most newsworthy paragraph is the author&rsquo;s own warning: on h9&rsquo;s native backend, Postgres runs &ldquo;about 2&times; slower than native for one client, and slower under load. Don&rsquo;t trust it with data you can&rsquo;t recreate yet.&rdquo; The thread, small at 44 comments, ran the comparisons &mdash; chiefly against PGlite, the WebAssembly single-binary Postgres: &ldquo;So this uses virtualization and pglite does not. Seems like pglite is lighter then,&rdquo; one reader concluded.<sup class="cite"><a href="#src8">[8]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50650892">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Culture Desk &middot; Unix History</div>
+    <h2 class="headline">Lions&rsquo; Commentary on Unix, photocopied in secret for twenty years: how AT&amp;T&rsquo;s license terms built samizdat for kernel code</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 262 pts</b> &middot; 56 cmts</span></div>
+    <figure>
+      <img src="images/lions-commentary.png" alt="An image from the Lions' Commentary on Unix post">
+      <figcaption>An image from the post. <span class="cr">fosscomics.com</span></figcaption>
+    </figure>
+    <p class="first">John Lions taught operating systems at the University of New South Wales; in May 1976 he prepared lecture notes explaining the kernel source of AT&amp;T&rsquo;s Unix Version 6, and by 1977 they were circulating among other schools and research institutions with Unix licenses &mdash; Bell Labs included, which eventually took over distribution. At USENIX in June 1979, AT&amp;T announced Version 7 license terms restricting courses that disclosed or discussed source code, and distribution of Lions&rsquo; book was &ldquo;tightly controlled&rdquo; as well. For roughly twenty years before an official edition existed, computer-science students studied the kernel from unauthorized photocopies.<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>The book reached print because the community kept asking: Peter H. Salus, Dennis Ritchie and Berny Goodheart pressed AT&amp;T, then Novell, then the Santa Cruz Operation for permission, and SCO agreed &mdash; Peer-to-Peer Communications published the official edition in 1996, ISBN 1-57398-013-7, foreword by Ritchie. The thread did the house history around it: Plan 9 was already circulating as books with source at the same time; the SCOs were sorted into &ldquo;Good SCO&rdquo; (Santa Cruz Operation, which granted the permission) and &ldquo;Bad SCO&rdquo; (the later ex-Caldera SCO Group); and one Unix kernel hacker of the era, recalling the book&rsquo;s most famous line &mdash; &ldquo;You are not expected to understand this,&rdquo; quoted with a smiley &mdash; reported hand-simulating that very code and finding it buggy, fixed in Version 7.<sup class="cite"><a href="#src10">[10]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50651719">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">AI Desk &middot; Commerce</div>
+    <h2 class="headline">Moat sells wholesale AI at Costco prices: $5 a month, 30&ndash;70% off list &mdash; and the thread&rsquo;s first question is what &ldquo;no limits&rdquo; leaves out</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 222 pts</b> &middot; 128 cmts</span></div>
+    <figure>
+      <img src="images/moat.png" alt="The membership page's card image for Moat">
+      <figcaption>The membership page&rsquo;s card image. <span class="cr">commandcode.ai</span></figcaption>
+    </figure>
+    <p class="first">The service bills itself as &ldquo;the costco of ai&rdquo;: a $5-a-month membership ($60 billed yearly; $10 monthly, cancel anytime) that pools a &ldquo;large member base&hellip; into hundreds of trillions of tokens&rdquo; of buying power, listing 105 models at member prices per million tokens, discounted 30 to 70 percent off list &mdash; from Z.ai&rsquo;s GLM-5.3 Flash at $0.045 in and $0.15 out (70% off) to Moonshot&rsquo;s Kimi K3 at $1.80 and $9.00 (40% off). What the pitch leans on is subtraction: &ldquo;no 5-hour or no weekly limits,&rdquo; against a comparison tier priced at $10.<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The thread read the fine print before anything else. &ldquo;When I see a subscription model with &lsquo;no limits,&rsquo; my instinct tells me there&rsquo;s something fishy going on,&rdquo; one reader wrote &mdash; and was answered from below: &ldquo;You pay per token in addition to the monthly fee.&rdquo; Another put the model plainly: &ldquo;It&rsquo;s not no limits, they&rsquo;re giving you a discount. Like a &lsquo;costco&rsquo; card&hellip; there&rsquo;s lots of discounted token shops selling unused token allocations for 80% off,&rdquo; with the warning that &ldquo;selling discounted tokens is probably the most effective honeypot at the moment.&rdquo; A reader who compared it with her own providers found it &ldquo;ain&rsquo;t cheaper&rdquo;; another, benchmarking DeepSeek usage, went back to the direct API at roughly 50% more cost for consistent performance.<sup class="cite"><a href="#src12">[12]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50652184">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 6. AI PLATFORMS, SCIENCE & PRACTICAL -->
+<div class="sec2">
+  <div class="cell">
+    <div class="section-label"><span>AI &amp; Platforms Desks</span></div>
+    <div class="kicker">AI Desk &middot; Inference</div>
+    <h2 class="headline">An AMD-specific fork of llama.cpp does it the small way: a patch set re-applied upstream, generation 35&rarr;55 tokens per second</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 220 pts</b> &middot; 54 cmts</span></div>
+    <p class="first">The devnull.land write-up recommends llama-cpp-rdna-boosts &ldquo;if you have an AMD graphics card&rdquo;: a minimal set of changes applied against a pinned commit of llama.cpp, continually re-applied to newer versions, and shipped as a prebuilt Podman image against ROCm 10.1. On the author&rsquo;s setup &mdash; an AMD R9700 over an eGPU connection, running a 27-billion-parameter GGUF quantization with speculative decoding enabled &mdash; prefill went from roughly 700 to roughly 1,300 tokens per second, and generation from about 35 to about 55.<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The context is this year&rsquo;s &ldquo;explosion in the number of bespoke inference engines&rdquo; &mdash; forks that focus on one subset of models and hardware, lean on frontier models to write them, and &ldquo;chase ever-higher token generation speeds,&rdquo; in one case running a heavily quantized 180-billion-parameter model on a 16 GB graphics card. What the author flags is where the chase leads: optimizations &ldquo;less about hardware-specific changes&hellip; more about changing how the model thinks so that it goes brrr faster,&rdquo; with one engine now preferring to poll experts loaded in VRAM even when experts paged out to system RAM would ordinarily have been chosen. The thread asked the matching question: &ldquo;is anyone actually checking the output quality of the tokens with some of these optimisations, or just chasing pure speed?&rdquo;<sup class="cite"><a href="#src14">[14]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50657265">Discussion on the wire &rarr;</a></div>
+    <div class="kicker" style="margin-top:8px">AI Desk &middot; Platforms</div>
+    <h2 class="headline">From February 1, tools &ldquo;driven by an AI Agent&rdquo; must reach Gmail and Drive through Google&rsquo;s MCP servers &mdash; whose public Gmail server cannot send email</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 161 pts</b> &middot; 167 cmts</span></div>
+    <p class="first">On November 24 Google made its eight Workspace MCP servers generally available and published a new clause in its API terms: from February 1, 2027, &ldquo;The GWS Access Tool must use a Google MCP where the GWS Access Tool is or is driven by an AI Agent, an AI Harness or an AI model or service employing an AI model.&rdquo; The public Gmail server can search mail, read threads, create drafts and manage labels &mdash; it cannot send, reply or forward; those tools &ldquo;require partner access and aren&rsquo;t generally available,&rdquo; and Anthropic&rsquo;s connector for Claude is the visible case of a partner that has them. Disguising an agent to dodge the classification is forbidden outright; breaking either rule lets Google restrict access or suspend the account.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>The terms carry data rules with teeth: Workspace data may be processed only &ldquo;to fulfill active, user-authorized tasks,&rdquo; must be deleted when the user disconnects, and Google can cap retention of embeddings, memory indexes, profiles and organizational graphs built from it at 30 days &mdash; training, fine-tuning and distillation on it are banned outright. Agents that keep calling the REST APIs directly fall to the free Standard tier, 5,000 requests a day per project, with a Gmail search counting as ten. The thread&rsquo;s sharpest reply was architectural: &ldquo;You just put another MCP in front of the Google MCP. Treat the Google MCP as an API.&rdquo;<sup class="cite"><a href="#src19">[19]</a><a href="#src20">[20]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50653477">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Science Desk &amp; Practical Tech Corner</span></div>
+    <div class="kicker">Science Desk &middot; Physics</div>
+    <h2 class="headline">A 54-page preprint claims a background-independent quantization of gravity &mdash; built on null cones, and on months of work with GPT-6 Astra</h2>
+    <div class="byline"><span>Science Desk</span><span class="score"><b>&#9733; 177 pts</b> &middot; 57 cmts</span></div>
+    <p class="first">&ldquo;We propose a background independent quantization of vacuum general relativity on four dimensional Lorentzian spacetimes&rdquo;: Venkatesa Chandrasekaran&rsquo;s paper, submitted to arXiv&rsquo;s high-energy theory section on November 25 (54 pages plus appendices, 34 figures), solves the gravitational constraints on intersecting null cones of a bulk subregion, promotes the reduced phase space&rsquo;s Poisson brackets to commutation relations, and constructs a nonperturbative Hilbert-space representation in which the resulting algebra generates a type I factor. Among its checks: the Bekenstein-Hawking entropy for marginally trapped surfaces, with the logarithmic correction for large Schwarzschild black holes recovering at one loop the coefficient Sen found by Euclidean methods.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>The thread&rsquo;s plain-English summary came early: &ldquo;tl;dr: We claim a construction of a quantum theory of gravity.&rdquo; The acknowledgements, quoted in full in the Quote of the Day, credit &ldquo;detailed, back and forth collaboration with GPT-6 Astra over the course of many months, amounting to &sim;400M total tokens spent,&rdquo; with OpenAI thanked for the compute; the author is an OpenAI researcher, and a linked presentation suggests parts of the construction may be formalizable in Lean. One physicist commenter flagged the boundary: the paper &ldquo;doesn&rsquo;t seem to connect to Quantum Field Theory (the Standard Model).&rdquo;<sup class="cite"><a href="#src16">[16]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50651863">Discussion on the wire &rarr;</a></div>
+    <div class="kicker" style="margin-top:8px">Practical Tech Corner &middot; The Browser</div>
+    <h2 class="headline">The YouTube Ad Punisher blocks no ads &mdash; it reloads around them, timestamp in hand, and logs every one it meets</h2>
+    <div class="byline"><span>Practical Tech Corner</span><span class="score"><b>&#9733; 161 pts</b> &middot; 228 cmts</span></div>
+    <figure>
+      <img src="images/youtube-punisher.png" alt="The repository's card image for the YouTube Ad Punisher extension">
+      <figcaption>The repository&rsquo;s card image. <span class="cr">github.com</span></figcaption>
+    </figure>
+    <p class="first">The extension&rsquo;s answer to an ad is a page reload. On detecting the .ad-showing class, a skip button or an ad overlay &mdash; polled every 500 milliseconds, plus a MutationObserver &mdash; it captures the video&rsquo;s current time into sessionStorage, reloads with the timestamp in the URL, and lets YouTube auto-seek back to it. &ldquo;Reload the page. That&rsquo;s it. Two reloads and the ad is gone. Every time,&rdquo; the README promises &mdash; with a three-second cooldown guard, an automatic four-second detour through a helper tab once three reloads fail (Chrome throttles background tabs, a working trick the author credits to &ldquo;George&rdquo;), and a last resort that redirects to an ad-free mirror site. It asks only for storage and tabs permissions, on YouTube domains only.<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>It also keeps books: every ad is logged with advertiser, duration, skip text, video and timestamp, exportable as JSON or CSV. The thread&rsquo;s 228 comments split on whether the problem exists &mdash; &ldquo;Using uBlock Origin on Firefox I don&rsquo;t think I have seen a youtube-forced ad in YEARS,&rdquo; one reader wrote, though a Chromebook user answered that &ldquo;YouTube doesn&rsquo;t work if I use any ad-blocker&rdquo; &mdash; and on the tactic: &ldquo;more advertising subversion is never a bad thing, especially if it leverages a different tactic.&rdquo;<sup class="cite"><a href="#src18">[18]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50657530">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Quote of the Day</span></div>
+    <div class="pullquote">&ldquo;Several of the calculations and proofs in this paper were developed through detailed, back and forth collaboration with GPT-6 Astra over the course of many months, amounting to &sim;400M total tokens spent; I thank OpenAI for providing this compute.&rdquo;
+      <span class="attr">&mdash; Venkatesa Chandrasekaran, acknowledgements, &ldquo;An algebraic quantization of gravity from the null cone,&rdquo; arXiv, Nov. 25, 2026<sup class="cite"><a href="#src15">[15]</a></sup></span>
+    </div>
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories chosen</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>10</td></tr>
+        <tr><td>Follow-ups returning</td><td>0</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>2,815</td></tr>
+        <tr><td>Combined comments</td><td>1,284</td></tr>
+        <tr><td>Most-discussed story</td><td>Intel One Mono &middot; 230 cmts</td></tr>
+        <tr><td>Held over (below the bar)</td><td>Proofs post &#9650; +225 (+13%)</td></tr>
+        <tr><td>Held over (below the bar)</td><td>UI style guides &#9650; +108 (+39%)</td></tr>
+      </table>
+    </div>
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p>MOAT MEMBERSHIP, $5/MO: wholesale model prices 30&ndash;70% off list, no 5-hour or weekly limits; tokens sold separately, per million.</p>
+      <p>YOUTUBE ADS, SERVED AND LOGGED: advertiser, duration, skip text, video and timestamp recorded on detection; export in JSON or CSV.</p>
+      <p>GRAVITY, QUANTIZED: 54 pages, 34 figures, submitted Nov. 25; roughly 400M tokens spent with GPT-6 Astra, peer review pending.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Day&rsquo;s Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" style="width:100%;height:auto;display:block" role="img" aria-label="Bar chart of the ten chosen stories by points">
+      <defs>
+        <pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+        <pattern id="hatchred" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <line class="grid" x1="87"  y1="6" x2="87"  y2="344"/>
+      <line class="grid" x1="173" y1="6" x2="173" y2="344"/>
+      <line class="grid" x1="260" y1="6" x2="260" y2="344"/>
+      <line class="grid" x1="347" y1="6" x2="347" y2="344"/>
+      <line class="grid" x1="433" y1="6" x2="433" y2="344"/>
+      <line class="grid" x1="520" y1="6" x2="520" y2="344"/>
+      <!-- bars -->
+      <rect x="0.5" y="22"  width="458" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="56"  width="367" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="90"  width="330" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="124" width="243" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="158" width="227" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="192" width="192" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="226" width="191" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="260" width="153" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="294" width="139" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="328" width="139" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0" y1="352" x2="520" y2="352"/>
+      <!-- tick labels -->
+      <text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text>
+      <text x="87" y="366" font-size="11" fill="#3d352a" text-anchor="middle">100</text>
+      <text x="173" y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="260" y="366" font-size="11" fill="#3d352a" text-anchor="middle">300</text>
+      <text x="347" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="433" y="366" font-size="11" fill="#3d352a" text-anchor="middle">500</text>
+      <text x="520" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18">Tell HN: Happy Thanksgiving</text>
+      <text class="barlabel" x="0" y="52">Intel One Mono, a free typeface &#8224;</text>
+      <text class="barlabel" x="0" y="86">Nextcloud Office on the desktop</text>
+      <text class="barlabel" x="0" y="120">minipg: Postgres, one executable</text>
+      <text class="barlabel" x="0" y="154">Lions&rsquo; Unix commentary</text>
+      <text class="barlabel" x="0" y="188">Moat: wholesale AI, $5/mo</text>
+      <text class="barlabel" x="0" y="222">AMD-tuned llama.cpp patches</text>
+      <text class="barlabel" x="0" y="256">Gravity quantized on null cones</text>
+      <text class="barlabel" x="0" y="290">YouTube Ad Punisher</text>
+      <text class="barlabel" x="0" y="324">Agents routed to Google MCP</text>
+      <!-- values -->
+      <text class="barval" x="465" y="34" font-weight="700">528 &#9733; &middot; 130 cmts</text>
+      <text class="barval" x="374" y="68">423 &middot; 230</text>
+      <text class="barval" x="337" y="102">381 &middot; 190</text>
+      <text class="barval" x="250" y="136">280 &middot; 44</text>
+      <text class="barval" x="234" y="170">262 &middot; 56</text>
+      <text class="barval" x="199" y="204">222 &middot; 128</text>
+      <text class="barval" x="198" y="238">220 &middot; 54</text>
+      <text class="barval" x="160" y="272">177 &middot; 57</text>
+      <text class="barval" x="146" y="306">161 &middot; 228</text>
+      <text class="barval" x="146" y="340">161 &middot; 167</text>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">&#9733; = points &middot; cmts = comments &middot; &#8224; most-discussed story of the day &middot; red hatch marks Apple coverage (none this edition)</text>
+    </svg>
+    </figure>
+  </div>
+  <div class="cell">
+    <div class="section-label"><span>The Day in One Line</span></div>
+    <p class="first">A one-line Thanksgiving Tell HN led the fourth-Thursday front page at 528 points; a monospaced typeface built with low-vision and legally blind developers on its feedback panel followed at 423, its 230 comments the day&rsquo;s most-discussed thread, all of them arguing the lowercase e; Nextcloud shipped its Office desktop app for Windows, macOS and Linux, the thread having first established that Euro-Office and the app are one codebase under two names &mdash; signed builds one way, unsigned community builds the other &mdash; descending from a 2026 fork of ONLYOFFICE; minipg put PostgreSQL in a single executable with a Plan 9 kernel answering the calls, no Docker anywhere, and an author&rsquo;s warning not to trust it yet; John Lions&rsquo; Unix commentary &mdash; photocopied in secret for twenty years after AT&amp;T&rsquo;s 1979 license clampdown, printed officially in 1996 with Ritchie&rsquo;s foreword &mdash; reached the front page three decades on; a $5-a-month &ldquo;Costco of AI&rdquo; drew a thread that read its fine print first, tokens billed per million on top of the fee; an AMD-specific llama.cpp patch set lifted generation from about 35 to about 55 tokens per second the modest way, re-applied upstream as a patch set; a 54-page arXiv preprint claimed a background-independent quantization of gravity on null cones, acknowledging roughly 400 million tokens spent in collaboration with GPT-6 Astra; a Chrome extension settled for reloading YouTube pages around ads &mdash; timestamp preserved, helper tab after three strikes, every ad logged with its advertiser; and from February 1, Google will require any tool &ldquo;driven by an AI Agent&rdquo; to reach Gmail and Drive through its MCP servers, whose public Gmail server cannot send email.</p>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>&ldquo;No limits,&rdquo; priced per token.</b> Moat&rsquo;s page sells &ldquo;unlimited wholesale AI&rdquo; at $5 a month; the &ldquo;no limits&rdquo; are rate limits &mdash; &ldquo;no 5-hour or no weekly limits&rdquo; &mdash; while the models themselves are billed per million tokens at member prices, on top of the membership fee. The thread caught it in the first replies: &ldquo;You pay per token in addition to the monthly fee.&rdquo;</p>
+      <p><b>The &ldquo;Ad Blocker&rdquo; that blocks no ads.</b> The extension&rsquo;s own title card calls it a blocker; its README describes no blocking at all &mdash; detection, a timestamped reload, a helper-tab detour after three failures, then a redirect to an ad-free mirror. &ldquo;Two reloads and the ad is gone. Every time&rdquo; is the README&rsquo;s promise, not a test&rsquo;s result; the thread&rsquo;s uBlock Origin users report seeing no ads in years.</p>
+      <p><b>The Nextcloud app and Euro-Office are one codebase &mdash; and a fork.</b> The blog post&rsquo;s headline names only &ldquo;the Nextcloud Office Desktop app&rdquo;; the project&rsquo;s own install notes and the thread establish that Euro-Office and the app are the same codebase, signed builds shipping as Nextcloud Office and unsigned community builds under the Euro-Office name &mdash; and that the suite is a 2026 fork of ONLYOFFICE, whose upstream later disputed the branding conditions the community found unenforceable under the AGPL.</p>
+      <p><b>&ldquo;A quantization of gravity&rdquo; is a preprint, not a review.</b> The paper was submitted to arXiv&rsquo;s hep-th section on November 25 and has not been through peer review; and its own abstract concedes the limits of its headline claim &mdash; the graviton-pair amplitude is finite as a closed form &ldquo;nonperturbatively in G<sub>N</sub>,&rdquo; but &ldquo;expanding first in G<sub>N</sub> yields a logarithmic divergence.&rdquo; The finiteness is specific to the construction&rsquo;s own order of summation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher&rsquo;s Note</div>
+  <p>Tonight&rsquo;s paper is led by a single sentence: ericmay&rsquo;s Thanksgiving Tell HN, 528 points on the fourth Thursday of November. All ten stories are fresh &mdash; the morning edition&rsquo;s two big returnees, the proofs post (1,943 points, up 13 percent since morning) and the UI style-guides archive (386, up 39 percent), both fell below the follow-up bar and are carried only in the ledger. Nothing was degraded: all ten primary sources and six images were fetched this run, and every score is from the 22:00 UTC snapshot.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">&ldquo;Tell HN: Happy Thanksgiving,&rdquo; ericmay, Hacker News, Nov. 26, 2026, 14:26 UTC &mdash; <a href="https://news.ycombinator.com/item?id=50655664">news.ycombinator.com/item?id=50655664</a></li>
+    <li data-n="[2]" id="src2">Hacker News comment thread on the post &mdash; <a href="https://news.ycombinator.com/item?id=50655664">news.ycombinator.com/item?id=50655664</a></li>
+    <li data-n="[3]" id="src3">&ldquo;Intel One Mono Typeface,&rdquo; intel/intel-one-mono README, Intel &mdash; <a href="https://github.com/intel/intel-one-mono">github.com/intel</a></li>
+    <li data-n="[4]" id="src4">Hacker News thread on the font &mdash; <a href="https://news.ycombinator.com/item?id=50653667">news.ycombinator.com/item?id=50653667</a></li>
+    <li data-n="[5]" id="src5">&ldquo;Euro-Office comes to your desktop with the Nextcloud Office Desktop app,&rdquo; Mikhail Korotaev, Nextcloud, Nov. 13, 2026 &mdash; <a href="https://nextcloud.com/blog/euro-office-comes-to-your-desktop-with-the-nextcloud-office-desktop-app/">nextcloud.com/blog</a></li>
+    <li data-n="[6]" id="src6">Hacker News thread on the release &mdash; <a href="https://news.ycombinator.com/item?id=50654289">news.ycombinator.com/item?id=50654289</a></li>
+    <li data-n="[7]" id="src7">&ldquo;minipg: PostgreSQL as a single executable,&rdquo; Jeff Lindsay &mdash; <a href="https://progrium.github.io/minipg/">progrium.github.io/minipg</a></li>
+    <li data-n="[8]" id="src8">Hacker News thread on minipg &mdash; <a href="https://news.ycombinator.com/item?id=50650892">news.ycombinator.com/item?id=50650892</a></li>
+    <li data-n="[9]" id="src9">&ldquo;17. Lions&rsquo; Commentary on Unix,&rdquo; fosscomics, Nov. 25, 2026 &mdash; <a href="https://fosscomics.com/posts/17.%20Lions%27%20Commentary%20on%20Unix/">fosscomics.com</a></li>
+    <li data-n="[10]" id="src10">Hacker News thread on the commentary &mdash; <a href="https://news.ycombinator.com/item?id=50651719">news.ycombinator.com/item?id=50651719</a></li>
+    <li data-n="[11]" id="src11">&ldquo;MOAT membership &mdash; the costco of ai,&rdquo; Command Code &mdash; <a href="https://commandcode.ai/moat">commandcode.ai/moat</a></li>
+    <li data-n="[12]" id="src12">Hacker News thread on Moat &mdash; <a href="https://news.ycombinator.com/item?id=50652184">news.ycombinator.com/item?id=50652184</a></li>
+    <li data-n="[13]" id="src13">&ldquo;AMD-specific fork of llama.cpp,&rdquo; devnull.land, November 2026 &mdash; <a href="https://devnull.land/amd-specific-llama-cpp">devnull.land</a></li>
+    <li data-n="[14]" id="src14">Hacker News thread on the fork &mdash; <a href="https://news.ycombinator.com/item?id=50657265">news.ycombinator.com/item?id=50657265</a></li>
+    <li data-n="[15]" id="src15">Venkatesa Chandrasekaran, &ldquo;An algebraic quantization of gravity from the null cone,&rdquo; arXiv:2611.34924 [hep-th], submitted Nov. 25, 2026 &mdash; <a href="https://arxiv.org/abs/2611.34924">arxiv.org/abs/2611.34924</a></li>
+    <li data-n="[16]" id="src16">Hacker News thread on the paper &mdash; <a href="https://news.ycombinator.com/item?id=50651863">news.ycombinator.com/item?id=50651863</a></li>
+    <li data-n="[17]" id="src17">&ldquo;YouTube Ad Punisher &mdash; Auto-reloads YouTube pages when an ad plays,&rdquo; antonpictures/youtube-punisher README &mdash; <a href="https://github.com/antonpictures/youtube-punisher">github.com/antonpictures</a></li>
+    <li data-n="[18]" id="src18">Hacker News thread on the extension &mdash; <a href="https://news.ycombinator.com/item?id=50657530">news.ycombinator.com/item?id=50657530</a></li>
+    <li data-n="[19]" id="src19">&ldquo;Google Will Make AI Agents Use Its Workspace MCP Servers. The Gmail One Can&rsquo;t Send Email,&rdquo; Tech Stackups &mdash; <a href="https://techstackups.com/articles/google-workspace-ai-agents-mcp/">techstackups.com</a></li>
+    <li data-n="[20]" id="src20">Hacker News thread on the policy &mdash; <a href="https://news.ycombinator.com/item?id=50653477">news.ycombinator.com/item?id=50653477</a></li>
+  </ol>
+  <div class="method">Methodology: snapshot taken 22:00 UTC, Thursday, November 26, 2026 (16:00 US Central). Candidates were drawn from the Hacker News front page via the Algolia front-page endpoint (50 requested, 29 returned, one a job listing carrying no points) and ranked by points; the ten chosen stories carry 2,815 points and 1,284 comments between them. Deduplication ran against the previous four editions: two covered stories returned on the wire &mdash; the proofs post at 1,943 points (+225, +13% since the morning edition) and the UI style-guides archive at 386 (+108, +39%) &mdash; but both fell short of the follow-up bar of at least +40% and +150 points, so they are carried only in the ledger; no story needed the digest or the second wire, as 26 fresh candidates stood. Comment text comes from the Algolia items API; article text and images were fetched from each story&rsquo;s primary source this run. Scores drift within minutes of any snapshot.</div>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <span>The Hacker Herald &mdash; Typeset from the Hacker News front page</span>
+  <span>&#10086; Printed on 100% recycled bandwidth &#10086;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</span>
+</footer>
+</body>
+</html>
