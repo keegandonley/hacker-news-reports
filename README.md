@@ -12,6 +12,7 @@ Newest first. Each edition is fully self-contained — open its `index.html` (or
 
 | Edition | Snapshot (UTC) | Top story | Pts | Cmts | Open |
 |---|---|---|---|---|---|
+| 2026-11-27 · Afternoon | 2026-11-27 ≈22:00 | The AI group-chat prompt returns as the day's biggest story — up 225 points since the morning edition, at 648 | 648 | 277 | [editions/2026-11-27-afternoon/](editions/2026-11-27-afternoon/) |
 | 2026-11-27 · Morning | 2026-11-27 ≈14:00 | AI made self-hosting fun again — a self-hoster's essay leads at 850 points | 850 | 415 | [editions/2026-11-27-morning/](editions/2026-11-27-morning/) |
 | 2026-11-26 · Afternoon | 2026-11-26 ≈22:00 | A one-line Tell HN leads the fourth-Thursday front page — ericmay's Thanksgiving post stands at 528 points | 528 | 130 | [editions/2026-11-26-afternoon/](editions/2026-11-26-afternoon/) |
 | 2026-11-26 · Morning | 2026-11-26 ≈14:00 | The proofs post has tripled on the wire — Scott Aaronson's account of VP ≠ VNP and ω = 9/4 stands at 1,718 points | 1,718 | 1,554 | [editions/2026-11-26-morning/](editions/2026-11-26-morning/) |
