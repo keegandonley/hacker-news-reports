@@ -2,6 +2,74 @@
   "_note": "Cross-edition memory for The Hacker Herald. The run PREPENDS one entry per edition (newest first, cap 30) and never edits older entries. `items` are the 10 stories covered, with score/comments at publication. Seed note: the two seed entries use HN values as of seeding time (2026-10-29), not exact publication-time values.",
   "editions": [
     {
+      "folder": "2026-11-27-morning",
+      "date": "2026-11-27",
+      "label": "Morning",
+      "snapshot_utc": "14:00",
+      "items": [
+        {
+          "id": 50660180,
+          "title": "AI made self-hosting fun again",
+          "score": 850,
+          "comments": 415
+        },
+        {
+          "id": 50657530,
+          "title": "YouTube Ad Punisher – Auto-reloads YouTube pages when an ad plays",
+          "score": 451,
+          "comments": 535
+        },
+        {
+          "id": 50659640,
+          "title": "Company Culture = Slack Emoji ÷ √Headcount",
+          "score": 436,
+          "comments": 213
+        },
+        {
+          "id": 50661646,
+          "title": "Hard Drive pricing has gotten bad",
+          "score": 427,
+          "comments": 370
+        },
+        {
+          "id": 50659841,
+          "title": "Kamil Khan Mumtaz: Pakistani architect, admired at home, almost invisible abroad",
+          "score": 427,
+          "comments": 110
+        },
+        {
+          "id": 50663595,
+          "title": "The group chat where your AI talks behind your back",
+          "score": 423,
+          "comments": 187
+        },
+        {
+          "id": 50657265,
+          "title": "AMD-specific fork of llama.cpp",
+          "score": 399,
+          "comments": 97
+        },
+        {
+          "id": 50649040,
+          "title": "The USAID Files",
+          "score": 297,
+          "comments": 360
+        },
+        {
+          "id": 50657645,
+          "title": "CTO of 'RansomwareHelp' indicted for wire fraud",
+          "score": 294,
+          "comments": 142
+        },
+        {
+          "id": 50655868,
+          "title": "Show HN: I wrote an entire Vim manual over 4 years",
+          "score": 232,
+          "comments": 72
+        }
+      ]
+    },
+    {
       "folder": "2026-11-26-afternoon",
       "date": "2026-11-26",
       "label": "Afternoon",
@@ -1982,74 +2050,6 @@
           "title": "Rune: A native GPU-rendered Rust UI framework for macOS, Windows, Linux and web",
           "score": 120,
           "comments": 94
-        }
-      ]
-    },
-    {
-      "folder": "2026-11-06-morning",
-      "date": "2026-11-06",
-      "label": "Morning",
-      "snapshot_utc": "14:05",
-      "items": [
-        {
-          "id": 50380810,
-          "title": "Motorola Signature 27 with GrapheneOS support",
-          "score": 522,
-          "comments": 377
-        },
-        {
-          "id": 50378942,
-          "title": "I wish tech companies knew more about me",
-          "score": 482,
-          "comments": 381
-        },
-        {
-          "id": 50385272,
-          "title": "Claude Code sends your email address to websites",
-          "score": 1310,
-          "comments": 412
-        },
-        {
-          "id": 50384233,
-          "title": "MS Paint Remote Code Execution Vulnerability",
-          "score": 604,
-          "comments": 224
-        },
-        {
-          "id": 50385870,
-          "title": "Cuban: Facebook knowingly runs AI deepfake scam ads; docs say $16B fraud revenue",
-          "score": 422,
-          "comments": 192
-        },
-        {
-          "id": 50381383,
-          "title": "Window Sweaters",
-          "score": 388,
-          "comments": 115
-        },
-        {
-          "id": 50389333,
-          "title": "Blender's UI and Runtime: Much Faster Than GPUI",
-          "score": 376,
-          "comments": 152
-        },
-        {
-          "id": 50389222,
-          "title": "Britain to make salary disclosure in job ads mandatory",
-          "score": 349,
-          "comments": 291
-        },
-        {
-          "id": 50383057,
-          "title": "The Hackintosh Reborn",
-          "score": 348,
-          "comments": 196
-        },
-        {
-          "id": 50390124,
-          "title": "Dutch 'idealist' bank ASN blocks non-Google Android, including GrapheneOS",
-          "score": 321,
-          "comments": 204
         }
       ]
     }

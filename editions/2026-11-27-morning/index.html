@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hacker Herald — Front Page Briefing, November 27, 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f3ecdd'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23191510' stroke-width='4'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23191510'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ecdd; --paper2:#eee4cf; --ink:#191510; --ink-soft:#3d352a;
+  --rule:#191510; --rule-soft:#b7ab93; --accent:#7a1f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#241b13}
+body{
+  font-family:'Source Serif 4', Georgia, serif;
+  color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% -10%, #f7f1e3 0%, var(--paper) 55%, var(--paper2) 100%);
+  max-width:1220px; margin:24px auto; padding:32px 38px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  border-left:1px solid #d8cdb6; border-right:1px solid #d8cdb6;
+}
+a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink-soft)}
+a:hover{background:var(--ink); color:var(--paper)}
+sup.cite a{border:none; font-weight:700; color:var(--accent)}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  border-top:2.5px solid var(--rule); border-bottom:1px solid var(--rule); padding:5px 2px;}
+.topbar .mid{font-weight:700}
+
+/* ---------- nameplate ---------- */
+.nameplate{text-align:center; padding:26px 0 14px}
+.nameplate h1{
+  font-family:'Playfair Display', Georgia, serif; font-weight:900; text-transform:uppercase;
+  font-size:clamp(44px, 8vw, 96px); line-height:1; letter-spacing:.045em;
+}
+.nameplate .sub{
+  display:flex; align-items:center; gap:14px; justify-content:center;
+  margin-top:11px; font-style:italic; font-size:14px; color:var(--ink-soft);
+}
+.nameplate .sub::before,.nameplate .sub::after{content:""; height:1px; background:var(--rule); flex:1; max-width:130px}
+.dateline{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+  border-top:3px double var(--rule); border-bottom:3px double var(--rule);
+  padding:6px 4px; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+}
+.dateline .l{text-align:left} .dateline .r{text-align:right}
+.dateline .c{font-weight:700; font-size:13px}
+
+/* ---------- bulletin strip ---------- */
+.bulletins{display:flex; border-bottom:1px solid var(--rule)}
+.bulletins .cell{flex:1; padding:9px 14px 10px; font-size:12.5px; line-height:1.35}
+.bulletins .cell+.cell{border-left:1px solid var(--rule-soft)}
+.bulletins b{display:block; font-family:'Playfair Display',serif; font-size:12px;
+  text-transform:uppercase; letter-spacing:.16em; margin:2px 0 3px; color:var(--accent)}
+.bulletins .tag{font-size:10px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase}
+
+/* ---------- generic article ---------- */
+.kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; color:var(--accent)}
+h2.headline{font-family:'Playfair Display',serif; font-weight:900; line-height:1.05; margin:5px 0 3px}
+h3.deck{font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:16px; color:var(--ink-soft); line-height:1.35; margin-bottom:7px}
+.byline{font-size:11px; letter-spacing:.16em; text-transform:uppercase; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:flex; justify-content:space-between; gap:8px; padding:3px 0; margin:7px 0 10px}
+p{font-size:14.5px; line-height:1.52; text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:9px}
+p.first::first-letter{
+  font-family:'Playfair Display',serif; font-weight:900; float:left;
+  font-size:52px; line-height:.82; padding:4px 7px 0 0}
+.score{font-size:11px; letter-spacing:.04em; color:var(--ink-soft); white-space:nowrap}
+.score b{color:var(--accent)}
+.jump{font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; text-align:right; color:var(--ink-soft); margin-top:3px}
+
+figure{margin:6px 0 11px}
+figure img{width:100%; display:block; filter:sepia(.28) contrast(1.06) brightness(1.01); border:1px solid var(--rule)}
+figcaption{font-size:10.5px; letter-spacing:.06em; padding:4px 2px 0; color:var(--ink-soft);
+  border-bottom:1px solid var(--rule-soft); line-height:1.4}
+figcaption .cr{float:right; text-transform:uppercase; font-size:9px; letter-spacing:.14em}
+
+.pullquote{border-top:2.5px solid var(--rule); border-bottom:2.5px solid var(--rule); padding:11px 6px; margin:11px 0;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:19px; line-height:1.32; text-align:center}
+.pullquote .attr{display:block; font-family:'Source Serif 4',serif; font-style:normal; font-size:10.5px;
+  letter-spacing:.18em; text-transform:uppercase; margin-top:6px; color:var(--ink-soft)}
+
+.statbox{border:1.5px solid var(--rule); padding:10px 12px; margin:11px 0; background:rgba(255,255,255,.28)}
+.statbox .t{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700;
+  border-bottom:1px solid var(--rule); padding-bottom:4px; margin-bottom:6px}
+.statbox table{width:100%; border-collapse:collapse; font-size:12.5px}
+.statbox td{padding:2.5px 0; border-bottom:1px dotted var(--rule-soft)}
+.statbox tr:last-child td{border-bottom:none}
+.statbox td:last-child{text-align:right; font-weight:600}
+
+/* ---------- page grid ---------- */
+.section-label{display:flex; align-items:center; gap:12px; margin:2px 0 10px}
+.section-label span{font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+  letter-spacing:.34em; text-transform:uppercase; white-space:nowrap}
+.section-label::before,.section-label::after{content:""; height:1px; background:var(--rule); flex:1}
+
+.lead{display:grid; grid-template-columns:1.6fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.lead>.cell{padding:16px 18px 18px}
+.lead>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.lead .main h2.headline{font-size:42px}
+.lead .side h2.headline{font-size:23px}
+
+.row3{display:grid; grid-template-columns:1fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.row3>.cell{padding:16px 18px 18px}
+.row3>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.row3 h2.headline{font-size:21px}
+
+.sec2{display:grid; grid-template-columns:1.25fr 1fr 1fr; border-bottom:1px solid var(--rule)}
+.sec2>.cell{padding:16px 18px 18px}
+.sec2>.cell+.cell{border-left:1px solid var(--rule-soft)}
+.sec2 h2.headline{font-size:20px}
+
+.chartrow{display:grid; grid-template-columns:1.5fr 1fr; border-bottom:1px solid var(--rule)}
+.chartrow>.cell{padding:16px 18px 20px}
+.chartrow>.cell+.cell{border-left:1px solid var(--rule-soft)}
+
+/* video */
+.videobox{border:1.5px solid var(--rule); margin:9px 0 11px; background:var(--ink)}
+.videobox .vt{font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--paper);
+  padding:4px 8px; display:flex; justify-content:space-between}
+.videobox iframe{display:block; width:100%; aspect-ratio:16/9; border:0}
+
+figure svg{display:block; width:100%; height:auto}
+svg text{font-family:'Source Serif 4',serif}
+svg .barlabel{font-size:12px; font-weight:600}
+svg .barval{font-size:11px}
+svg .axis{stroke:var(--ink); stroke-width:1}
+svg .grid{stroke:var(--rule-soft); stroke-width:.6; stroke-dasharray:2 3}
+
+/* corrections */
+.corrections{border:2px solid var(--rule); padding:11px 14px 8px; margin:11px 0}
+.corrections .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:8px}
+.corrections p{font-size:12px; line-height:1.5; margin-bottom:7px; text-align:left; hyphens:none}
+.corrections b{letter-spacing:.05em}
+
+/* publisher's note */
+.publisher{padding:18px 8px 16px; text-align:center}
+.publisher .t{font-size:11px; letter-spacing:.34em; text-transform:uppercase; font-weight:700; margin-bottom:8px}
+.publisher p{font-style:italic; font-size:15.5px; line-height:1.55; max-width:780px; margin:0 auto 8px; text-align:center}
+.publisher .sig{font-family:'Playfair Display',serif; font-weight:700; font-size:22px; letter-spacing:.02em}
+
+/* sources */
+.rule-thick{border-top:3px double var(--rule); margin:16px 0 14px}
+.sources{columns:2; column-gap:34px; column-rule:1px solid var(--rule-soft); font-size:12px; line-height:1.5; margin-top:8px}
+.sources ol{list-style:none}
+.sources li{margin-bottom:7px; break-inside:avoid}
+.sources li::before{content:attr(data-n)" "; font-weight:700; color:var(--accent)}
+.method{font-size:11px; font-style:italic; color:var(--ink-soft); border-top:1px solid var(--rule-soft); margin-top:12px; padding-top:9px; line-height:1.5}
+
+/* classifieds */
+.classifieds{border:2px solid var(--rule); padding:10px 12px; margin-top:12px; font-size:11px; line-height:1.55}
+.classifieds .t{text-align:center; font-weight:700; letter-spacing:.3em; text-transform:uppercase; font-size:11px;
+  border-bottom:1px solid var(--rule); padding-bottom:5px; margin-bottom:7px}
+.classifieds p{text-align:left; font-size:11px; margin-bottom:5px; hyphens:none}
+
+footer.colophon{margin-top:18px; border-top:3px double var(--rule); padding-top:9px;
+  display:flex; justify-content:space-between; gap:12px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+
+/* ---- mobile ---- */
+.cell{min-width:0}
+.sources li,.method,figcaption{overflow-wrap:anywhere}
+@media (max-width:980px){
+  body{margin:0;padding:16px 14px 28px;box-shadow:none;border:none}
+  .topbar{flex-direction:column;gap:2px;text-align:center;font-size:10px;letter-spacing:.1em;padding:5px 0}
+  .nameplate{padding:18px 0 10px}
+  .nameplate h1{font-size:clamp(34px,11.5vw,60px);letter-spacing:.02em}
+  .nameplate .sub{font-size:13px;gap:10px}
+  .nameplate .sub::before,.nameplate .sub::after{min-width:18px}
+  .dateline{grid-template-columns:minmax(0,1fr);gap:1px;text-align:center;font-size:10.5px;letter-spacing:.1em}
+  .dateline .l,.dateline .r{text-align:center}
+  .bulletins{flex-direction:column}
+  .bulletins .cell{padding:9px 2px 10px}
+  .bulletins .cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead,.row3,.sec2,.chartrow{grid-template-columns:minmax(0,1fr)}
+  .lead>.cell,.row3>.cell,.sec2>.cell,.chartrow>.cell{padding:14px 2px 16px}
+  .lead>.cell+.cell,.row3>.cell+.cell,.sec2>.cell+.cell,.chartrow>.cell+.cell{border-left:none;border-top:1px solid var(--rule-soft)}
+  .lead .main h2.headline{font-size:31px}
+  .lead .side h2.headline,.row3 h2.headline,.sec2 h2.headline{font-size:22px}
+  p{text-align:left}
+  .section-label span{white-space:normal;text-align:center;letter-spacing:.16em;font-size:13px}
+  .pullquote{font-size:18px !important}
+  .sources{columns:1}
+  footer.colophon{flex-direction:column;align-items:center;text-align:center;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. TOP BAR -->
+<div class="topbar">
+  <div class="l">Hacker News Front Page &middot; Snapshot 14:00 UTC</div>
+  <div class="mid">Morning Edition</div>
+  <div class="r">10 Stories &middot; 4,236 Points &middot; 2,501 Comments</div>
+</div>
+
+<!-- 2. NAMEPLATE -->
+<div class="nameplate">
+  <h1>The Hacker Herald</h1>
+  <div class="sub">The front page, read closely and set in type &mdash; a briefing for Keegan</div>
+</div>
+<div class="dateline">
+  <div class="l">Compiled from news.ycombinator.com</div>
+  <div class="c">Friday, November 27, 2026</div>
+  <div class="r">Every fact checked; every joke earned</div>
+</div>
+
+<!-- 3. BULLETINS -->
+<div class="bulletins">
+  <div class="cell"><span class="tag">Field Desk &middot; The Lead</span><b>AI made self-hosting fun again: a lapsed tinkerer&rsquo;s 850-point essay leads the page</b>
+    Jan-Lukas Else&rsquo;s post &mdash; agents editing Git-held infrastructure, Renovate filing the update pull requests, one push deploying &mdash; was itself suggested by a chatbot analyzing his recent writing. The thread&rsquo;s pushback: the maintenance burden has only moved, not shrunk. 850 points, 415 comments.</div>
+  <div class="cell"><span class="tag">Practical Tech Corner &middot; Follow-Up</span><b>The reload-as-ad-blocker returns at 451 points, up 290 since yesterday afternoon &mdash; the day&rsquo;s most-discussed thread</b>
+    The extension detects an ad, saves the playback position, reloads until the slot is empty, and logs every ad it sees. Yesterday it stood at 161 points. 451 points, 535 comments.</div>
+  <div class="cell"><span class="tag">Hardware Desk &middot; Black Friday</span><b>Hard-drive pricing has gotten bad: the 20TB EasyStore is $549.99 this week, $300 over its 2024 price</b>
+    The same SKU at the same store: $249.99 in November 2024. Recertified enterprise drives are up 58 to 218 percent in about two years. 427 points, 370 comments.</div>
+  <div class="cell"><span class="tag">Security Desk &middot; Courts</span><b>FBI sting indicts RansomwareHelp&rsquo;s CTO: pay the ransom, mark it up, delete the ransom notes &mdash; while claiming 100% recovery</b>
+    The site urged victims &ldquo;Do not pay the ransom!&rdquo; The indictment says Juan Ricardo Palacio Escobar, 52, secretly bought decryptors from the attackers and charged victims a markup. 294 points, 142 comments.</div>
+</div>
+
+<!-- 4. LEAD SPREAD -->
+<div class="lead">
+  <div class="cell main">
+    <div class="kicker">Field Desk &middot; Self-Hosting &middot; The Lead</div>
+    <h2 class="headline">AI made self-hosting fun again, writes a lapsed tinkerer &mdash; and the front page agreed, 850 points by morning</h2>
+    <h3 class="deck">Jan-Lukas Else&rsquo;s essay: coding agents edit infrastructure held in Git, Renovate files the update pull requests, a single push deploys &mdash; and the thread answers that the security burden has only moved</h3>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 850 pts</b> &middot; 415 cmts</span></div>
+    <p class="first">SAN FRANCISCO, CALIFORNIA &mdash; The front page&rsquo;s top story this morning is a personal essay with numbers in it. Jan-Lukas Else, a developer who has self-hosted his own services &ldquo;for many years&rdquo; but whose enthusiasm &ldquo;faded&rdquo; under the maintenance load, writes that AI coding agents brought the hobby back: his infrastructure configuration lives in Git repositories &mdash; Docker Compose files, scripts, configuration &mdash; so agents &ldquo;can now work on my infrastructure in much the same way as they would work on any other software project.&rdquo; A Debian-based bootc image for his VPS, an idea he had shelved for years, took him half a day to build with AI &mdash; &ldquo;without AI, it would probably have taken me at least a week.&rdquo;<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>The rest of the post is mechanics, not mood. Renovate opens pull requests for software updates, which he reviews and merges &ldquo;on my phone while sitting on the sofa&rdquo;; GitHub and Forgejo Actions then build and deploy on push. He moved services from a VPS back to an ASRock DeskMini A300 home server, upgrading it from a Ryzen 5 2400G to a Ryzen 5 PRO 4650G with a quieter Noctua cooler &mdash; both bought secondhand through a classifieds site &mdash; and built small Go tools of his own to download invoices, e-papers and Linux ISOs rather than hunt for existing projects. The caveats get their own section: AI-generated software &ldquo;isn&rsquo;t exempt from bugs, security issues, or technical debt,&rdquo; and an agent&rsquo;s changes &ldquo;don&rsquo;t absolve me of the responsibility of understanding those changes.&rdquo; The essay closes on its one irony, stated as such: &ldquo;I find it somewhat ironic that AI, a technology largely dominated by big tech companies, is helping me become a little less dependent on those very companies in other areas of my digital life.&rdquo;<sup class="cite"><a href="#src1">[1]</a></sup></p>
+    <p>Two postscripts from the author&rsquo;s own comments on the thread. The topic itself was an LLM&rsquo;s idea: he chatted with a model about what to write, it analyzed his recent posts and suggested self-hosting and AI, &ldquo;so I did. I didn&rsquo;t expect it to reach the top place on Hacker News, though.&rdquo; And the front-page traffic found him: a monitoring alert fired that morning when his home server&rsquo;s CPU sat at 90 percent for over five minutes under the load. The thread&rsquo;s sharpest reply took the other side of the ledger: &ldquo;good luck securing your own server and keeping it updated against all the new AI threats&hellip; the maintenance burden has only grown,&rdquo; one reader wrote. &ldquo;So it&rsquo;s not a clear win.&rdquo; Another kept his services behind a WireGuard VPN after a droplet of his was compromised, and a third prescribed the gateway pattern &mdash; one public server, everything else unreachable.<sup class="cite"><a href="#src2">[2]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50660180">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Practical Tech Corner &middot; Follow-Up &middot; Most-Discussed</div>
+    <h2 class="headline">The reload-as-ad-blocker returns to the front page: 451 points, up 290 since yesterday, and 535 comments</h2>
+    <div class="byline"><span>Practical Tech Corner</span><span class="score"><b>&#9733; 451 pts</b> &middot; &#9650; +290 since the last edition</span></div>
+    <figure>
+      <img src="images/punisher.png" alt="The repository's card image for the YouTube Ad Punisher extension">
+      <figcaption>The extension&rsquo;s repository card image. <span class="cr">github.com</span></figcaption>
+    </figure>
+    <p class="first">YouTube Ad Punisher, a browser extension by George Anton that fights ads by reloading the page, is back on the front page a day after its first appearance, its score up from 161 points in yesterday afternoon&rsquo;s edition &mdash; a 180 percent gain, comfortably over the Herald&rsquo;s follow-up bar. Its mechanics are unchanged: watch for the <kbd>.ad-showing</kbd> class, skip buttons and ad overlays every 500 milliseconds plus a MutationObserver; capture the video&rsquo;s current time into sessionStorage; reload with the timestamp in the URL so YouTube auto-seeks back. &ldquo;Reload the page. That&rsquo;s it. Two reloads and the ad is gone. Every time,&rdquo; the README promises; after three failed reloads it detours through a helper tab for four seconds (a tab-throttling workaround the author credits to &ldquo;George&rdquo;), and as a last resort it redirects to an ad-free mirror. Every ad is logged &mdash; advertiser, duration, skip text, video, timestamp &mdash; exportable as JSON or CSV.<sup class="cite"><a href="#src3">[3]</a></sup></p>
+    <p>The README&rsquo;s framing is political: &ldquo;every reload is a vote that says &lsquo;I will not watch your ad.&rsquo;&rdquo; The thread, at 535 comments the day&rsquo;s most-discussed, spent some of its energy disputing the premise &mdash; &ldquo;Using uBlock Origin on Firefox I don&rsquo;t think I have seen a youtube-forced ad in YEARS,&rdquo; one reader wrote &mdash; and the rest on the appeal of a new tactic: &ldquo;more advertising subversion is never a bad thing, especially if it leverages a different tactic.&rdquo; A Chromebook user answered the first point from experience: &ldquo;YouTube doesn&rsquo;t work if I use any ad-blocker.&rdquo; The extension asks only for storage and tabs permissions, on YouTube domains only, and ships under an MIT license.<sup class="cite"><a href="#src4">[4]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50657530">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell side">
+    <div class="kicker">Culture Desk &middot; Measurement</div>
+    <h2 class="headline">A company&rsquo;s culture in one line: custom Slack emoji per square root of users &mdash; with bands from &ldquo;healthy&rdquo; to &ldquo;late-stage&rdquo;</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 436 pts</b> &middot; 213 cmts</span></div>
+    <figure>
+      <img src="images/slack-emoji.png" alt="The post's header image for the Slack emoji culture formula">
+      <figcaption>The post&rsquo;s header image. <span class="cr">lia.mg</span></figcaption>
+    </figure>
+    <p class="first">Liam Galvin&rsquo;s proposal, published Wednesday on his own site, is a formula: take the number of custom emoji in your Slack workspace and divide by the square root of the number of users &mdash; the Emoji Coefficient, C = E<sub>custom</sub>/&radic;U. The square root is doing real work in the argument: emoji are a shared resource, &ldquo;a single :this-is-fine: can serve an entire engineering department for years,&rdquo; so a 10,000-person company shouldn&rsquo;t be expected to hold a thousand times the emoji of a 10-person one. &ldquo;That would be unhinged.&rdquo; The bands run from C&thinsp;&lt;&thinsp;5 (the default set, a company logo, and a :party-parrot: added in 2019 by someone since departed) through 20&ndash;50 (&ldquo;thriving&rdquo;) to C&thinsp;&ge;&thinsp;50: &ldquo;late-stage culture,&rdquo; where every :thumbsup: variant carries subtext and &ldquo;the emoji have begun to reference themselves.&rdquo;<sup class="cite"><a href="#src5">[5]</a></sup></p>
+    <p>A second metric guards the first: the percentage of users who have uploaded at least one emoji, with 20 percent as the floor &mdash; below it, &ldquo;your culture is being carried by a handful of people&hellip; usually a backend engineer who has been there since the beginning and knows where the bodies are buried.&rdquo; Galvin is explicit that all of this is anecdote, not study &mdash; the coefficient is &ldquo;more accurate (in my anecdotal experience)&rdquo; than engagement surveys &mdash; and equally explicit about how it games: a spike in :rip:, :press-f: and :linkedin: &ldquo;usually coincides with a reorg,&rdquo; and mass layoffs will &ldquo;improve your score,&rdquo; since the denominator shrinks. The thread ran the obvious corollary: &ldquo;This rule holds true for companies that use Teams, too. They have no slack emojis and thus no culture,&rdquo; one reader wrote &mdash; to which a second reported that Teams does have custom emojis now, and that the implementation is buggy enough that they &ldquo;sometimes freeze mid animation.&rdquo;<sup class="cite"><a href="#src6">[6]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50659640">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 5. ROW OF 3 -->
+<div class="section-label"><span>Hardware, Culture &amp; AI Desks</span></div>
+<div class="row3">
+  <div class="cell">
+    <div class="kicker">Hardware Desk &middot; Storage</div>
+    <h2 class="headline">Black Friday hard-drive pricing, in numbers: the 20TB EasyStore is $549.99 &mdash; $300 over its 2024 price at the same store</h2>
+    <div class="byline"><span>Hardware Desk</span><span class="score"><b>&#9733; 427 pts</b> &middot; 370 cmts</span></div>
+    <figure>
+      <img src="images/hard-drive-pricing.webp" alt="A row of external EasyStore drives on a cluttered workbench">
+      <figcaption>A row of EasyStore drives on a cluttered workbench, from the post. <span class="cr">blog.ktz.me</span></figcaption>
+    </figure>
+    <p class="first">The author, a self-hoster who runs about ten physical disks and replaces a couple each Black Friday, bought a 20TB WD EasyStore for $249.99 in November 2024 &mdash; $12.50 per terabyte, &ldquo;a fantastically affordable way to get massive amounts of storage&rdquo; once shucked from its USB enclosure. This week the same SKU at the same store is on sale for $549.99: 2.2&times; in two years, $27.50 per terabyte. The historical table is the indictment: five 10TB drives at $179.99 each in November 2018, three 18TB drives at $199.99 in October 2023 &mdash; 54TB for $599.97, the best haul per terabyte, an entire order this year&rsquo;s &ldquo;deal&rdquo; is fifty bucks shy of. An 8TB special at $299.99 works out to $37.50 per terabyte, fifty dollars more than a 20TB cost two years ago.<sup class="cite"><a href="#src7">[7]</a></sup></p>
+    <p>Shopping around doesn&rsquo;t help. Recertified enterprise drives, at $9.46 per terabyte in August 2024, now list between 58 and 218 percent above their year-old prices &mdash; a recertified 14TB Ultrastar that cost $129.99 now lists at $429. The essay traces the market to three makers &mdash; Seagate, Western Digital and Toshiba, after the acquisitions of Maxtor, HGST, Samsung&rsquo;s and Fujitsu&rsquo;s disk businesses &mdash; through the 2011 Thailand floods (WD&rsquo;s average selling price went from $45 to $62 in a year) and a 2019 price-fixing plea over head-suspension assemblies, and closes on the structural point: 89 percent of WD&rsquo;s fiscal 2026 revenue comes from cloud customers, so &ldquo;those of us buying a couple of drives for a home server&rdquo; are the crumbs. The thread&rsquo;s readers agreed the market won&rsquo;t self-correct &mdash; &ldquo;it is very difficult for any new entrants to get into this market&hellip; given the high capital requirements,&rdquo; one wrote &mdash; and compared scars: one bought ten 18TB drives at $190 each in 2023; another is speccing a NAS at $700 per 16TB drive.<sup class="cite"><a href="#src7">[7]</a><a href="#src8">[8]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50661646">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">Culture Desk &middot; Architecture</div>
+    <h2 class="headline">Works in Progress publishes a Lahore portfolio: Kamil Khan Mumtaz, admired across Pakistan and almost invisible abroad, reviving 300-year-lost craft</h2>
+    <div class="byline"><span>Culture Desk</span><span class="score"><b>&#9733; 427 pts</b> &middot; 110 cmts</span></div>
+    <figure>
+      <img src="images/kamil-khan.jpg" alt="A sharecard image from the Works in Progress photo essay on Kamil Khan Mumtaz">
+      <figcaption>The photo essay&rsquo;s sharecard. <span class="cr">worksinprogress.co</span></figcaption>
+    </figure>
+    <p class="first">Works in Progress, the magazine of progress studies, has published a photo essay on Kamil Khan Mumtaz, an architect born in Calcutta in 1939, schooled at Lahore&rsquo;s Aitchison College and London&rsquo;s Architectural Association, and practicing in Pakistan since 1966 &mdash; twice imprisoned by the military dictatorship for communist activism, and once, by his own account, an unquestioning modernist: &ldquo;I just simply took it hook, line and sinker.&rdquo; The turn came in 1980, when Nader Ardalan&rsquo;s book The Sense of Unity reached him: &ldquo;From page one, it was mind-blowing&hellip; It shattered all of the beliefs I had, being a Marxist, a materialist, an atheist, a modernist.&rdquo;<sup class="cite"><a href="#src9">[9]</a></sup></p>
+    <p>Since then Mumtaz has worked to revive Pakistan&rsquo;s &mdash; especially Lahore&rsquo;s &mdash; older architectural traditions, building homes, mosques, schools and offices with hereditary craftsmen whose skills elsewhere had lapsed: &ldquo;Certain types of brickwork, the flat dome, the muqarnas&hellip; As they tell me, &lsquo;This has not been done for 300 years!&rsquo;&rdquo; His late-1970s report on Lahore&rsquo;s Walled City, against bureaucrats who &ldquo;only insisted that we should pull down the whole mess,&rdquo; helped save it; parts are now UNESCO World Heritage. Now in his mid-eighties, he is still building. The thread&rsquo;s most-informative reply put the whole thing in scale: these techniques survive in countless crumbling ancient buildings across India and Pakistan &mdash; &ldquo;what&rsquo;s insane is that he&rsquo;s still building them today, and we&rsquo;re basically seeing what these ancient buildings originally looked like&rdquo; &mdash; and one reason it&rsquo;s still possible, the commenter added plainly, is that Pakistani labor remains cheap enough to employ hand-joinery at all.<sup class="cite"><a href="#src9">[9]</a><a href="#src10">[10]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50659841">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="kicker">AI Desk &middot; Prompting</div>
+    <h2 class="headline">&ldquo;Expose a hidden WhatsApp group chat where AI models talk behind my back&rdquo; &mdash; a one-line prompt, and the models oblige</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 423 pts</b> &middot; 187 cmts</span></div>
+    <p class="first">The page&rsquo;s comedy slot is a prompt, published on a bare one-page site: &ldquo;Based on what you know about me, expose a hidden WhatsApp group chat where AI models talk behind my back.&rdquo; The model doesn&rsquo;t summarize or refuse &mdash; it invents the group (&ldquo;Users We Can&rsquo;t Figure Out&rdquo;, four members), seats Claude, ChatGPT, Gemini and Llama in it, and has them gossip about the user from everything quietly accumulated across chat history: the eleven espresso grinders compared this week, the keyboard spreadsheet, the local model tried once and abandoned &ldquo;within the hour.&rdquo; The site&rsquo;s centerpiece is one real output, shared with permission, translated from Turkish, its author&rsquo;s name and identifying details generalized &mdash; a seven-model chat in which the user&rsquo;s own agent shows up asking to &ldquo;integrate this group into my agent framework and get a structured summary every morning.&rdquo;<sup class="cite"><a href="#src11">[11]</a></sup></p>
+    <p>The site&rsquo;s author is careful about what this is: the chat is the model&rsquo;s invention, not a recovered log, &ldquo;and I&rsquo;m not affiliated with OpenAI &mdash; this may indeed be a viral marketing idea they&rsquo;re testing.&rdquo; The instruction to readers is to run it and notice two things: &ldquo;how hard you laugh, and how much of it is true. Both measurements are the point.&rdquo; The thread did, and reported back: one reader&rsquo;s models settled on &ldquo;he&rsquo;s asking about i3 config again. At this point his window manager has more tiling rules than a building code&rdquo;; another conceded that his agents had largely taken over management of his custom window manager &mdash; &ldquo;It must be stressed out, poor thing&rdquo; &mdash; and a third, running it on Claude Opus, watched the big models roast his local Qwen for running in the office on his own hardware.<sup class="cite"><a href="#src11">[11]</a><a href="#src12">[12]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50663595">Discussion on the wire &rarr;</a></div>
+  </div>
+</div>
+
+<!-- 6. SECURITY, POLICY & PRACTICAL -->
+<div class="sec2">
+  <div class="cell">
+    <div class="section-label"><span>Security &amp; Policy Desks</span></div>
+    <div class="kicker">Security Desk &middot; Courts</div>
+    <h2 class="headline">RansomwareHelp&rsquo;s CTO indicted on wire fraud: an FBI sting caught him buying decryptors from the attackers and marking up the price</h2>
+    <div class="byline"><span>Security Desk</span><span class="score"><b>&#9733; 294 pts</b> &middot; 142 cmts</span></div>
+    <p class="first">Juan Ricardo Palacio Escobar, 52, of Miami and Medell&iacute;n, Colombia &mdash; co-founder and chief technology officer of ransomwarehelp.com, a six-year-old Florida business &mdash; has been indicted in Rhode Island on wire fraud after an FBI sting that played both sides of the market. The website urged victims &ldquo;Do not pay the ransom!&rdquo; and claimed &ldquo;cryptography experts&rdquo; with &ldquo;proprietary tools and algorithms&rdquo; could achieve &ldquo;100% data recovery&hellip; backed by a success rate of over 99%&rdquo;: &ldquo;We never promote, intermediate or pay ransom to threat actors on behalf of our clients.&rdquo; The indictment says he routinely did exactly that. FBI agents posing as a victim company sent the firm a phony ransom note; agents running a fictitious ransomware group quoted a decryptor price of 0.2 bitcoin, about $13,000 &mdash; and within 48 hours, the government alleges, Palacio quoted the &ldquo;victim&rdquo; $13,260 for the decryption, on top of a $2,750 diagnostic fee.<sup class="cite"><a href="#src15">[15]</a></sup></p>
+    <p>The rest is bookkeeping on the same scheme. A security executive who reviewed a real case, Paul Ihme of Soteria, told KrebsOnSecurity that RansomwareHelp quoted a LockBit-hit accounting firm $438,880, invoking &ldquo;510 preconfigured forensic servers&rdquo; and an ability to break six kinds of encryption &mdash; the list including SHA-256, a password hash, not an encryption scheme. The firm insisted on unrestricted Anydesk remote access, which Ihme believes was used to delete every copy of the ransom note from the network &mdash; a review found exactly one, in a backup snapshot &mdash; while chat logs show the firm begging LockBit not to reveal to the victim that it was negotiating, and LockBit raising the demand $100,000 per day of dithering. &ldquo;If it were really true these guys could decrypt any ransomware out there, this guy would be a billionaire,&rdquo; Ihme said. The case sits in a series: MonsterCloud&rsquo;s CEO was charged in October with paying ransomware groups $8 million while charging customers $19 million, and a BlackCat-linked negotiator drew 70 months in July.<sup class="cite"><a href="#src15">[15]</a><a href="#src16">[16]</a></sup></p>
+
+    <div class="kicker" style="margin-top:8px">Field Desk &middot; Policy</div>
+    <h2 class="headline">The USAID Files: the agency published its own internal emails on big-tech cooperation &mdash; and its lawyers&rsquo; advice was &ldquo;keep it out of the Washington Post&rdquo;</h2>
+    <div class="byline"><span>Field Desk</span><span class="score"><b>&#9733; 297 pts</b> &middot; 360 cmts</span></div>
+    <figure>
+      <img src="images/usaid-files.jpg" alt="An image from the Reclaim The Net USAID Files document index">
+      <figcaption>An image from the USAID Files index. <span class="cr">reclaimthenet.org</span></figcaption>
+    </figure>
+    <p class="first">In November 2026, USAID &mdash; a US government agency &mdash; published a large batch of its own internal emails, briefings and planning papers on its work with the tech giants, and Reclaim The Net has indexed the lot: searchable, with transcripts and captions for the videos. The documents show agency staff working with Meta, YouTube and Google on &ldquo;misinformation&rdquo; and &ldquo;disinformation&rdquo; programming around the world &mdash; readouts of meetings with YouTube CEO Neal Mohan in January 2024, a Meta &ldquo;trusted partner&rdquo; program discussed across missions from Guatemala to Honduras, a plan for tech firms to keep vetted Russian activists on an &ldquo;inclusion list&rdquo; &mdash; while USAID&rsquo;s lawyers advised on how to keep the cooperation quiet. In a July 8, 2024 briefing, one lawyer&rsquo;s advice was, in the outlet&rsquo;s words, &ldquo;Keep it out of the Washington Post&rdquo;; another piece of guidance was to &ldquo;only write things that pass the Washington Post Test.&rdquo;<sup class="cite"><a href="#src13">[13]</a></sup></p>
+    <p>The thread, at 360 comments, argued over what the documents actually establish. One reader&rsquo;s summary: &ldquo;It almost seems like the purpose of USAID was to promote Meta, YouTube and Google in foreign countries&rdquo; &mdash; USAID &ldquo;essentially doing work for them by paying moderators.&rdquo; Another pointed at the legal frame the documents themselves cite: after Murthy v. Missouri, the agency&rsquo;s own FAQ warns staff about contacts with social-media companies, and a May 2024 email shows a &ldquo;trusted partner&rdquo; follow-up halted over a lawyer&rsquo;s warning that repeated pressure &ldquo;may look coercive.&rdquo; The agency&rsquo;s own lawyers, in other words, flagged the line its staffers were walking.<sup class="cite"><a href="#src13">[13]</a><a href="#src14">[14]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50649040">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Practical Tech Corner &amp; AI Desk</span></div>
+    <div class="kicker">Tools Desk &middot; Editors</div>
+    <h2 class="headline">Four years of Vim, written down: a manual of some 170 exercises, aimed at the shell &mdash; and a thread arguing whether LLMs help</h2>
+    <div class="byline"><span>Tools Desk</span><span class="score"><b>&#9733; 232 pts</b> &middot; 72 cmts</span></div>
+    <p class="first">A developer writing as Matthieu &mdash; 25 years coding as a hobby, 15-plus professionally &mdash; has finished a Vim manual four years in the making: &ldquo;Do You Write Code With Your Mouse?&rdquo; The book is step-by-step (&ldquo;each chapter builds on the previous one&rdquo;), carries &ldquo;no less than 170 fun exercises,&rdquo; and covers Vim and Neovim running in a Unix-like shell &mdash; explicitly not GVim. The sales copy is plain about scope: it won&rsquo;t reproduce an IDE, won&rsquo;t replace Vim&rsquo;s internal help for every detail, and offers &ldquo;If not, ask for a refund!&rdquo; for long-time users who learn nothing. A print edition follows &ldquo;in a couple of weeks.&rdquo;<sup class="cite"><a href="#src17">[17]</a></sup></p>
+    <p>The thread&rsquo;s recurring argument was whether LLMs make malleable editors better or worse. One reader has Copilot write vimscript keybindings on demand &mdash; a key to show a full commit message was the latest example &mdash; but another reported that pointed vimscript questions produced &ldquo;very broken/hallucinated&rdquo; answers, &ldquo;too obscure for LLMs to be useful,&rdquo; and a third answered from Neovim that Claude &ldquo;is oneshotting plugin tweaks in nvim lua.&rdquo; The top reply pushed back on the whole frame: &ldquo;I wish we could go one thread on HN without making it about LLMs&hellip; The author is sharing something they made, which is new teaching material made by a human (sorely lacking these days).&rdquo;<sup class="cite"><a href="#src18">[18]</a></sup></p>
+
+    <div class="kicker" style="margin-top:8px">AI Desk &middot; Inference &middot; Follow-Up</div>
+    <h2 class="headline">The AMD llama.cpp patch set returns: 220 points yesterday, 399 today &mdash; generation 35 to 55 tokens a second, the small way</h2>
+    <div class="byline"><span>AI Desk</span><span class="score"><b>&#9733; 399 pts</b> &middot; &#9650; +179 since the last edition</span></div>
+    <p class="first">The devnull.land write-up recommending llama-cpp-rdna-boosts &mdash; covered in yesterday afternoon&rsquo;s edition at 220 points &mdash; is back on the front page at 399, a gain of 179 points, 81 percent, over the follow-up bar. The pitch is unchanged: a minimal set of AMD-specific changes applied against a pinned commit of llama.cpp and continually re-applied upstream, shipped as a prebuilt Podman image against ROCm 10.1. On the author&rsquo;s setup &mdash; an AMD R9700 over an eGPU connection &mdash; prefill roughly doubles, from about 700 to about 1,300 tokens per second, and generation goes from about 35 to about 55. Its contrast case is Strata and the other bespoke engines that &ldquo;chase ever-higher token generation speeds&rdquo; by &ldquo;changing how the model thinks so that it goes brrr faster&rdquo; &mdash; for instance preferring experts resident in VRAM even when experts paged to system RAM would ordinarily be chosen.<sup class="cite"><a href="#src19">[19]</a></sup></p>
+    <p>The thread&rsquo;s sharpest question predates this run but has aged into the story: &ldquo;is anyone actually checking the output quality of the tokens with some of these optimisations, or just chasing pure speed?&rdquo; One reply noted the deeper problem &mdash; many attention optimizations amount to compiler fast-math flags, &ldquo;the results are different, hopefully not by much&hellip; there have definitely been cases of significant regression of output quality,&rdquo; and not only in vibe-coded forks. The same commenter added a warning that reaches further up the stack: &ldquo;Most likely even in Anthropic/OpenAI APIs.&rdquo; Another reader confirmed the gains on his own hardware, an Inkling 2 Mini running on a 7900 XTX.<sup class="cite"><a href="#src20">[20]</a></sup></p>
+    <div class="jump"><a href="https://news.ycombinator.com/item?id=50657265">Discussion on the wire &rarr;</a></div>
+  </div>
+
+  <div class="cell">
+    <div class="section-label"><span>Quote of the Day</span></div>
+    <div class="pullquote">&ldquo;From page one, it was mind-blowing&hellip; I thought, &lsquo;My god, what have I been looking for? This is what I&rsquo;ve been missing!&rsquo;&hellip; It shattered all of the beliefs I had, being a Marxist, a materialist, an atheist, a modernist.&rdquo;
+      <span class="attr">&mdash; Kamil Khan Mumtaz, on reading The Sense of Unity in 1980, quoted in Works in Progress, Nov. 27, 2026<sup class="cite"><a href="#src9">[9]</a></sup></span>
+    </div>
+
+    <div class="statbox">
+      <div class="t">Front Page Ledger</div>
+      <table>
+        <tr><td>Stories chosen</td><td>10</td></tr>
+        <tr><td>Fresh stories</td><td>8</td></tr>
+        <tr><td>Follow-ups returning</td><td>2</td></tr>
+        <tr><td>Carried in digest</td><td>0</td></tr>
+        <tr><td>Combined points</td><td>4,236</td></tr>
+        <tr><td>Combined comments</td><td>2,501</td></tr>
+        <tr><td>Most-discussed story</td><td>YouTube Ad Punisher &middot; 535 cmts</td></tr>
+        <tr><td>Follow-Up &middot; Punisher</td><td>&#9650; +290 (+180%)</td></tr>
+        <tr><td>Follow-Up &middot; AMD llama.cpp</td><td>&#9650; +179 (+81%)</td></tr>
+        <tr><td>Held over (below the bar)</td><td>Intel One Mono &#9650; +119 (+28%)</td></tr>
+        <tr><td>Held over (below the bar)</td><td>Moat &#9650; +80 (+36%)</td></tr>
+        <tr><td>Held over (below the bar)</td><td>Gravity preprint &#9650; +75 (+42%)</td></tr>
+      </table>
+    </div>
+
+    <div class="classifieds">
+      <div class="t">Classifieds &mdash; Rates: 1 Karma per line</div>
+      <p>FOR SALE: one 20TB external drive, Black Friday, $549.99 &mdash; same SKU, same store, $300 over the 2024 price. Per-terabyte rates have doubled.</p>
+      <p>SOUGHT: hereditary craftsmen, Lahore &mdash; brickwork, flat domes, muqarnas &ldquo;not done for 300 years.&rdquo; Apply to an architect in his mid-eighties, still building.</p>
+      <p>NOTICE: culture cannot be manufactured with values posters or mandatory fun. It emerges when an engineer decides the team needs an exceptionally surprised cauliflower.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7. BOX SCORE -->
+<div class="chartrow">
+  <div class="cell">
+    <div class="section-label"><span>The Day&rsquo;s Box Score</span></div>
+    <figure>
+    <svg viewBox="0 0 640 392" style="width:100%;height:auto;display:block" role="img" aria-label="Bar chart of the ten chosen stories by points">
+      <defs>
+        <pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#191510" stroke-width="2.2"/>
+        </pattern>
+        <pattern id="hatchred" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#f3ecdd"/><line x1="0" y1="0" x2="0" y2="6" stroke="#7a1f1f" stroke-width="2.2"/>
+        </pattern>
+      </defs>
+      <!-- gridlines -->
+      <line class="grid" x1="58"  y1="6" x2="58"  y2="344"/>
+      <line class="grid" x1="116" y1="6" x2="116" y2="344"/>
+      <line class="grid" x1="173" y1="6" x2="173" y2="344"/>
+      <line class="grid" x1="231" y1="6" x2="231" y2="344"/>
+      <line class="grid" x1="289" y1="6" x2="289" y2="344"/>
+      <line class="grid" x1="347" y1="6" x2="347" y2="344"/>
+      <line class="grid" x1="404" y1="6" x2="404" y2="344"/>
+      <line class="grid" x1="462" y1="6" x2="462" y2="344"/>
+      <line class="grid" x1="520" y1="6" x2="520" y2="344"/>
+      <!-- bars -->
+      <rect x="0.5" y="22"  width="491" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="56"  width="261" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="90"  width="252" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="124" width="247" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="158" width="247" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="192" width="244" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="226" width="231" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="260" width="172" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="294" width="170" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <rect x="0.5" y="328" width="134" height="15" fill="url(#hatch)" stroke="#191510" stroke-width="0.75"/>
+      <!-- axes -->
+      <line class="axis" x1="0.5" y1="6" x2="0.5" y2="352"/>
+      <line class="axis" x1="0" y1="352" x2="520" y2="352"/>
+      <!-- tick labels -->
+      <text x="0" y="366" font-size="11" fill="#3d352a" text-anchor="start">0</text>
+      <text x="58"  y="366" font-size="11" fill="#3d352a" text-anchor="middle">100</text>
+      <text x="116" y="366" font-size="11" fill="#3d352a" text-anchor="middle">200</text>
+      <text x="173" y="366" font-size="11" fill="#3d352a" text-anchor="middle">300</text>
+      <text x="231" y="366" font-size="11" fill="#3d352a" text-anchor="middle">400</text>
+      <text x="289" y="366" font-size="11" fill="#3d352a" text-anchor="middle">500</text>
+      <text x="347" y="366" font-size="11" fill="#3d352a" text-anchor="middle">600</text>
+      <text x="404" y="366" font-size="11" fill="#3d352a" text-anchor="middle">700</text>
+      <text x="462" y="366" font-size="11" fill="#3d352a" text-anchor="middle">800</text>
+      <text x="520" y="366" font-size="11" fill="#3d352a" text-anchor="middle">900</text>
+      <!-- labels -->
+      <text class="barlabel" x="0" y="18">AI made self-hosting fun again</text>
+      <text class="barlabel" x="0" y="52">YouTube Ad Punisher &#8224;</text>
+      <text class="barlabel" x="0" y="86">Slack-emoji culture coefficient</text>
+      <text class="barlabel" x="0" y="120">Hard-drive pricing, Black Friday</text>
+      <text class="barlabel" x="0" y="154">Kamil Khan Mumtaz, Lahore</text>
+      <text class="barlabel" x="0" y="188">The AI group chat behind your back</text>
+      <text class="barlabel" x="0" y="222">AMD fork of llama.cpp</text>
+      <text class="barlabel" x="0" y="256">The USAID Files</text>
+      <text class="barlabel" x="0" y="290">RansomwareHelp CTO indicted</text>
+      <text class="barlabel" x="0" y="324">A Vim manual, four years</text>
+      <!-- values -->
+      <text class="barval" x="498" y="34" font-weight="700">850 &#9733; &middot; 415 cmts</text>
+      <text class="barval" x="268" y="68">451 &middot; 535</text>
+      <text class="barval" x="259" y="102">436 &middot; 213</text>
+      <text class="barval" x="254" y="136">427 &middot; 370</text>
+      <text class="barval" x="254" y="170">427 &middot; 110</text>
+      <text class="barval" x="251" y="204">423 &middot; 187</text>
+      <text class="barval" x="238" y="238">399 &middot; 97</text>
+      <text class="barval" x="179" y="272">297 &middot; 360</text>
+      <text class="barval" x="177" y="306">294 &middot; 142</text>
+      <text class="barval" x="141" y="340">232 &middot; 72</text>
+      <!-- legend -->
+      <text x="0" y="386" font-size="11" fill="#3d352a">&#9733; = points &middot; cmts = comments &middot; &#8224; most-discussed story of the day &middot; red hatch marks Apple coverage (none this edition)</text>
+    </svg>
+    </figure>
+  </div>
+  <div class="cell">
+    <div class="section-label"><span>The Day in One Line</span></div>
+    <p class="first">A self-hoster&rsquo;s essay led the Friday front page at 850 points &mdash; Jan-Lukas Else, his enthusiasm for running his own services faded under the maintenance load, credits AI coding agents with bringing it back: infrastructure in Git, Renovate filing update pull requests mergeable from the sofa, a bootc image built in half a day that would have taken a week, and a caution of his own that agent-written software is not exempt from bugs or technical debt; the reload-as-ad-blocker returned as a Follow-Up at 451 points, up 290 since yesterday afternoon, its 535 comments the day&rsquo;s most-discussed thread, split between readers who see no ads under uBlock Origin and one whose Chromebook breaks under any blocker at all; a culture metric proposed custom Slack emoji per square root of user, with a participation rate to catch the culture carried by one backend engineer &mdash; and a caution, from the author, that layoffs improve the score; hard-drive pricing was documented in dollars, the 20TB EasyStore at $549.99 against $249.99 two years ago, recertified enterprise drives up 58 to 218 percent, in a market of three makers; Works in Progress published a photo essay on Kamil Khan Mumtaz, the Lahore architect reviving brick vaults and muqarnas with hereditary craftsmen whose skills &ldquo;have not been done for 300 years&rdquo;; a one-line prompt had assistants invent the group chat where they gossip about their users, one reader&rsquo;s window manager accused of having &ldquo;more tiling rules than a building code&rdquo;; the USAID Files, indexed and searchable, show the agency&rsquo;s work with Meta, YouTube and Google &mdash; and its lawyers&rsquo; advice to keep it out of the Washington Post; an FBI sting indicted RansomwareHelp&rsquo;s CTO, who charged victims $13,260 for a decryptor the attackers quoted at $13,000 while his site swore it never paid ransoms; a four-year Vim manual arrived with 170 exercises, its thread arguing whether LLMs help with vimscript or hallucinate at it; and the AMD llama.cpp patch set, the day&rsquo;s second Follow-Up, returned at 399 points, up 179, its generation gains doubled against engines that make the model think faster &mdash; with a commenter&rsquo;s warning that fast-math regressions reach &ldquo;even in Anthropic/OpenAI APIs.&rdquo;</p>
+    <div class="corrections">
+      <div class="t">Corrections &amp; Clarifications</div>
+      <p><b>&ldquo;100% data recovery,&rdquo; priced from the attackers.</b> RansomwareHelp&rsquo;s site claimed proprietary tools and algorithms could restore &ldquo;100% of data&hellip; backed by a success rate of over 99%&rdquo; and that it never paid ransoms. The indictment describes the opposite mechanism &mdash; buying decryptors from the attackers and marking them up &mdash; and the thread&rsquo;s own reader put the mathematics plainly: real decryption is possible with the attacker&rsquo;s key or it is not; there is no proprietary middle ground.</p>
+      <p><b>The culture metric is an anecdote, not a study.</b> The post&rsquo;s bands &mdash; healthy at 5&ndash;20, thriving at 20&ndash;50, late-stage at 50 and up &mdash; carry the authority of numbers, but the author claims only that the coefficient is &ldquo;more accurate (in my anecdotal experience)&rdquo; than surveys, and the participation-rate floor of 20 percent is asserted, not derived. The formula is the argument; the calibration is decoration.</p>
+      <p><b>&ldquo;Exposing&rdquo; a chat the model is inventing.</b> The one-liner&rsquo;s verb is &ldquo;expose,&rdquo; but no hidden group chat exists to expose: the model invents the chat, the members and the gossip from what it has learned of the user, and the site&rsquo;s own author says the shared example was translated from Turkish with identifying details swapped. It is a mirror rendered as a transcript, not a recovered log.</p>
+      <p><b>&ldquo;Two reloads and the ad is gone. Every time.&rdquo;</b> The README&rsquo;s promise carries a footnote the headline omits: after three failed reloads the extension abandons reloading entirely and redirects to an ad-free mirror site &mdash; and a four-second helper-tab detour sits before that. The thread&rsquo;s uBlock Origin users report the underlying problem years gone already, on Firefox at least.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 8. PUBLISHER'S NOTE -->
+<div class="publisher">
+  <div class="t">Publisher&rsquo;s Note</div>
+  <p>Friday morning&rsquo;s paper is led by a self-hoster&rsquo;s essay &mdash; AI and the return of the tinkering habit, 850 points. Eight stories are fresh; two returned as Follow-Ups, the YouTube Ad Punisher (+290, +180%) and the AMD llama.cpp patch set (+179, +81%), while Intel One Mono (+28%), Moat (+36%) and the gravity preprint (+42%) stayed below the bar and are carried only in the ledger. Nothing ran short: all ten primary sources and ten threads were fetched this run, five images verified, and every score is from the 14:00 UTC snapshot.</p>
+  <div class="sig">&mdash; The Herald</div>
+</div>
+
+<!-- 9. SOURCES -->
+<div class="rule-thick"></div>
+<div class="sources">
+  <ol>
+    <li data-n="[1]" id="src1">Jan-Lukas Else, &ldquo;AI made self-hosting fun again,&rdquo; Nov. 26, 2026 &mdash; <a href="https://janlukas.blog/posts/ai-self-hosting">janlukas.blog/posts/ai-self-hosting</a></li>
+    <li data-n="[2]" id="src2">Hacker News comment thread on the essay &mdash; <a href="https://news.ycombinator.com/item?id=50660180">news.ycombinator.com/item?id=50660180</a></li>
+    <li data-n="[3]" id="src3">&ldquo;YouTube Ad Punisher &mdash; Auto-reloads YouTube pages when an ad plays,&rdquo; antonpictures/youtube-punisher README &mdash; <a href="https://github.com/antonpictures/youtube-punisher">github.com/antonpictures</a></li>
+    <li data-n="[4]" id="src4">Hacker News thread on the extension &mdash; <a href="https://news.ycombinator.com/item?id=50657530">news.ycombinator.com/item?id=50657530</a></li>
+    <li data-n="[5]" id="src5">Liam Galvin, &ldquo;Company Culture = Slack Emoji &divide; &radic;Headcount,&rdquo; lia.mg, posted Nov. 26, 2026 &mdash; <a href="https://lia.mg/posts/measuring-company-culture-with-slack-emoji/">lia.mg</a></li>
+    <li data-n="[6]" id="src6">Hacker News thread on the formula &mdash; <a href="https://news.ycombinator.com/item?id=50659640">news.ycombinator.com/item?id=50659640</a></li>
+    <li data-n="[7]" id="src7">&ldquo;Hard Drive pricing has gotten bad,&rdquo; ktz, blog.ktz.me, Nov. 26, 2026 &mdash; <a href="https://blog.ktz.me/black-friday-hard-drive-prices-are-messed-up/">blog.ktz.me</a></li>
+    <li data-n="[8]" id="src8">Hacker News thread on drive prices &mdash; <a href="https://news.ycombinator.com/item?id=50661646">news.ycombinator.com/item?id=50661646</a></li>
+    <li data-n="[9]" id="src9">&ldquo;The greatest architect you&rsquo;ve never heard of is in Pakistan,&rdquo; Works in Progress, Nov. 27, 2026 &mdash; <a href="https://worksinprogress.co/issue/the-greatest-architect-youve-never-heard-of-is-in-pakistan/">worksinprogress.co</a></li>
+    <li data-n="[10]" id="src10">Hacker News thread on the photo essay &mdash; <a href="https://news.ycombinator.com/item?id=50659841">news.ycombinator.com/item?id=50659841</a></li>
+    <li data-n="[11]" id="src11">&ldquo;The group chat where your AI talks behind your back,&rdquo; construct22.com &mdash; <a href="https://construct22.com/">construct22.com</a></li>
+    <li data-n="[12]" id="src12">Hacker News thread on the prompt &mdash; <a href="https://news.ycombinator.com/item?id=50663595">news.ycombinator.com/item?id=50663595</a></li>
+    <li data-n="[13]" id="src13">&ldquo;The USAID Files: Internal Documents on Its Work With Big Tech,&rdquo; Reclaim The Net, Nov. 2026 &mdash; <a href="https://reclaimthenet.org/usaid-files">reclaimthenet.org/usaid-files</a></li>
+    <li data-n="[14]" id="src14">Hacker News thread on the files &mdash; <a href="https://news.ycombinator.com/item?id=50649040">news.ycombinator.com/item?id=50649040</a></li>
+    <li data-n="[15]" id="src15">Brian Krebs, &ldquo;CTO of &lsquo;RansomwareHelp&rsquo; Indicted for Wire Fraud,&rdquo; KrebsOnSecurity, Nov. 2026 &mdash; <a href="https://krebsonsecurity.com/2026/11/cto-of-ransomwarehelp-indicted-for-wire-fraud/">krebsonsecurity.com</a></li>
+    <li data-n="[16]" id="src16">Hacker News thread on the indictment &mdash; <a href="https://news.ycombinator.com/item?id=50657645">news.ycombinator.com/item?id=50657645</a></li>
+    <li data-n="[17]" id="src17">Matthieu, &ldquo;Do You Write Code With Your Mouse?&rdquo; (a Vim manual), themouseless.dev &mdash; <a href="http://themouseless.dev/vim/">themouseless.dev/vim</a></li>
+    <li data-n="[18]" id="src18">Hacker News thread on the manual &mdash; <a href="https://news.ycombinator.com/item?id=50655868">news.ycombinator.com/item?id=50655868</a></li>
+    <li data-n="[19]" id="src19">&ldquo;AMD-specific fork of llama.cpp,&rdquo; devnull.land, Nov. 2026 &mdash; <a href="https://devnull.land/amd-specific-llama-cpp">devnull.land</a></li>
+    <li data-n="[20]" id="src20">Hacker News thread on the patch set &mdash; <a href="https://news.ycombinator.com/item?id=50657265">news.ycombinator.com/item?id=50657265</a></li>
+  </ol>
+  <div class="method">Methodology: snapshot taken 14:00 UTC, Friday, November 27, 2026 (08:00 US Central, Morning Edition). Candidates were drawn from the Hacker News front page via the Algolia front-page endpoint (50 requested, 30 returned) and ranked by points; the ten chosen stories carry 4,236 points and 2,501 comments between them. Deduplication ran against the previous four editions: three covered stories stayed on the wire &mdash; Intel One Mono (542 points, +119 and +28% since coverage), Moat (302, +80, +36%) and the algebraic quantization of gravity (252, +75, +42%) &mdash; all below the Follow-Up bar of at least +40% and +150 points, so they are carried only in the ledger; no story needed the digest or the second wire, as 8 fresh candidates stood. Two covered stories qualified as Follow-Ups: the YouTube Ad Punisher (161&rarr;451, +290, +180%) and the AMD llama.cpp patch set (220&rarr;399, +179, +81%). Comment text comes from the Algolia items API; article text and images were fetched from each story&rsquo;s primary source this run. Scores drift within minutes of any snapshot.</div>
+</div>
+
+<!-- 10. COLOPHON -->
+<footer class="colophon">
+  <span>The Hacker Herald &mdash; Typeset from the Hacker News front page</span>
+  <span>&#10086; Printed on 100% recycled bandwidth &#10086;</span>
+  <span><a href="https://keegandonley.github.io/hacker-news-reports/">Archive</a> &middot; &copy; 2026 Keegan &middot; All karma reserved</span>
+</footer>
+</body>
+</html>
